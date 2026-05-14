@@ -1,0 +1,127 @@
+---
+import type { ResourceEntry } from '../data/resources';
+
+interface Props {
+	resource: ResourceEntry;
+}
+
+const { resource } = Astro.props;
+---
+
+<article class="resource-card card">
+	<div class="resource-card__header">
+		<div class="resource-card__labels">
+			<p>{resource.category}</p>
+			<span>{resource.status}</span>
+		</div>
+		<h3>{resource.title}</h3>
+		<p>{resource.excerpt}</p>
+	</div>
+
+	<div class="resource-card__footer">
+		<p>
+			<strong>Related service</strong>
+			<span>{resource.relatedService}</span>
+		</p>
+		<a href={resource.ctaHref}>{resource.ctaLabel}</a>
+	</div>
+</article>
+
+<style>
+	.resource-card {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		min-height: 100%;
+		padding: 1.35rem;
+		border-radius: 20px;
+		transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+	}
+
+	.resource-card:hover {
+		transform: translateY(-2px);
+		border-color: color-mix(in srgb, var(--color-accent) 34%, var(--color-border));
+		box-shadow: 0 20px 48px rgba(15, 23, 42, 0.06);
+	}
+
+	.resource-card__labels {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		align-items: center;
+		justify-content: space-between;
+		margin-bottom: 1.25rem;
+	}
+
+	.resource-card__labels p,
+	.resource-card__labels span {
+		margin: 0;
+		font-size: 0.75rem;
+		font-weight: 800;
+		letter-spacing: 0.08em;
+		line-height: 1;
+		text-transform: uppercase;
+	}
+
+	.resource-card__labels p {
+		color: var(--color-accent-dark);
+	}
+
+	.resource-card__labels span {
+		padding: 0.38rem 0.5rem;
+		border: 1px solid color-mix(in srgb, var(--color-accent) 28%, var(--color-border));
+		border-radius: 999px;
+		background: var(--color-accent-light);
+		color: var(--color-accent-dark);
+	}
+
+	.resource-card h3 {
+		font-size: 1.15rem;
+		letter-spacing: -0.02em;
+	}
+
+	.resource-card__header > p {
+		font-size: 0.9375rem;
+		line-height: 1.6;
+	}
+
+	.resource-card__footer {
+		display: grid;
+		gap: 1.1rem;
+		margin-top: 1.5rem;
+		padding-top: 1.25rem;
+		border-top: 1px solid var(--color-border);
+	}
+
+	.resource-card__footer p {
+		display: grid;
+		gap: 0.35rem;
+		margin: 0;
+	}
+
+	.resource-card__footer strong {
+		color: var(--color-accent-dark);
+		font-size: 0.75rem;
+		font-weight: 800;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+	}
+
+	.resource-card__footer span {
+		color: var(--color-muted);
+		font-size: 0.9rem;
+		line-height: 1.55;
+	}
+
+	.resource-card__footer a {
+		display: inline-flex;
+		width: fit-content;
+		color: var(--color-text);
+		font-size: 0.9375rem;
+		font-weight: 700;
+	}
+
+	.resource-card__footer a:hover {
+		color: var(--color-accent-dark);
+	}
+</style>
