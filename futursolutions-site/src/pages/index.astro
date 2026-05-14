@@ -24,10 +24,20 @@ const homepage = await sanityClient.fetch<{
   heroSubheading?: string | null;
 } | null>(homepageQuery);
 
-const pageTitle = homepage?.title?.trim() || 'Future Solutions';
+const pageTitle = 'Future Solutions | Healthcare Websites, SEO & Backend Systems';
+const pageDescription =
+	'Future Solutions builds modern healthcare websites, templates, SEO foundations, and backend lead systems for health and wellness businesses.';
+const canonicalUrl = 'https://futursolutions.vercel.app/';
 ---
 
-<BaseLayout title={pageTitle}>
+<BaseLayout
+	title={pageTitle}
+	description={pageDescription}
+	canonicalUrl={canonicalUrl}
+	ogTitle={pageTitle}
+	ogDescription={pageDescription}
+	ogUrl={canonicalUrl}
+>
 	<section class="section homepage-hero" aria-labelledby="homepage-heading">
 		<div class="site-container homepage-hero__inner">
 			<div class="homepage-hero__content">
