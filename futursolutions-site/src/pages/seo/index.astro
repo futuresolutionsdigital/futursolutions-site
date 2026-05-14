@@ -1,0 +1,361 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const pageTitle = 'SEO & Local Visibility | Future Solutions';
+const pageDescription =
+	'Future Solutions helps health and wellness businesses structure their websites for clearer services, better local visibility, and stronger conversion paths.';
+const canonicalUrl = 'https://futursolutions.vercel.app/seo/';
+
+const problems = [
+	{
+		title: 'Vague service pages',
+		text: 'Visitors and search engines need clear pages for specific services.',
+	},
+	{
+		title: 'Weak metadata',
+		text: 'Page titles and descriptions should help clarify what each page is about.',
+	},
+	{
+		title: 'Poor internal linking',
+		text: 'Important services should not be buried or disconnected.',
+	},
+	{
+		title: 'Thin local context',
+		text: 'Your site should make location, audience, and service relevance easier to understand.',
+	},
+];
+
+const foundationItems = [
+	'Service page structure',
+	'Metadata recommendations',
+	'Internal linking paths',
+	'Local keyword targeting',
+	'Google Business Profile alignment',
+	'Blog/content foundation',
+	'Search-friendly page hierarchy',
+	'Clear calls-to-action',
+];
+
+const conversionCards = [
+	{
+		title: 'Get found',
+		text: 'Structure pages around real services and local search intent.',
+	},
+	{
+		title: 'Build trust',
+		text: 'Use clear content, FAQs, proof, and service education.',
+	},
+	{
+		title: 'Drive action',
+		text: 'Make booking, contact, and follow-up paths obvious.',
+	},
+];
+
+const processSteps = [
+	{
+		step: '01',
+		title: 'Audit',
+		text: 'Review current pages, service structure, and local visibility gaps.',
+	},
+	{
+		step: '02',
+		title: 'Structure',
+		text: 'Map pages around services, audience, and location intent.',
+	},
+	{
+		step: '03',
+		title: 'Optimize',
+		text: 'Add metadata, internal links, and clearer service education.',
+	},
+	{
+		step: '04',
+		title: 'Improve',
+		text: 'Use ongoing content and refinements to strengthen visibility over time.',
+	},
+];
+---
+
+<BaseLayout
+	title={pageTitle}
+	description={pageDescription}
+	canonicalUrl={canonicalUrl}
+	ogTitle={pageTitle}
+	ogDescription={pageDescription}
+	ogUrl={canonicalUrl}
+>
+	<section class="section differentiator-hero" aria-labelledby="seo-heading">
+		<div class="site-container differentiator-hero__inner">
+			<p class="eyebrow">SEO / Local Visibility</p>
+			<h1 id="seo-heading">Make your website easier for patients and search engines to understand.</h1>
+			<p class="lead">
+				Local visibility starts with clear service pages, useful content, structured metadata, and a website that explains what you offer and where you serve.
+			</p>
+			<div class="button-row">
+				<a class="button button-primary" href="/audit">Get a Website Audit</a>
+				<a class="button button-secondary" href="/templates">View Templates</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="section section-muted differentiator-problem" aria-labelledby="seo-problem-heading">
+		<div class="site-container">
+			<div class="differentiator-intro">
+				<p class="eyebrow">The structure gap</p>
+				<h2 id="seo-problem-heading">Most websites are not structured around how people search.</h2>
+				<p class="lead">
+					A good-looking site can still be hard for patients to find if services are grouped vaguely, locations are unclear, metadata is missing, or pages do not answer real questions.
+				</p>
+			</div>
+			<div class="differentiator-grid differentiator-grid--4">
+				{problems.map((problem) => (
+					<article class="card differentiator-card">
+						<h3>{problem.title}</h3>
+						<p>{problem.text}</p>
+					</article>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<section class="section differentiator-checklist" aria-labelledby="seo-foundation-heading">
+		<div class="site-container">
+			<div class="differentiator-intro">
+				<p class="eyebrow">Foundation</p>
+				<h2 id="seo-foundation-heading">A practical local visibility foundation.</h2>
+			</div>
+			<div class="differentiator-grid differentiator-grid--2">
+				{foundationItems.map((item) => (
+					<article class="card checklist-card">
+						<span aria-hidden="true">✓</span>
+						<p>{item}</p>
+					</article>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<section class="section section-muted differentiator-conversion" aria-labelledby="seo-conversion-heading">
+		<div class="site-container">
+			<div class="differentiator-intro">
+				<p class="eyebrow">Conversion connection</p>
+				<h2 id="seo-conversion-heading">Visibility only matters if the page helps people take action.</h2>
+				<p class="lead">
+					Future Solutions approaches SEO as part of the full website system. The goal is not traffic for its own sake. The goal is helping the right visitors understand your services, trust your business, and take the next step.
+				</p>
+			</div>
+			<div class="differentiator-grid differentiator-grid--3">
+				{conversionCards.map((card) => (
+					<article class="card differentiator-card">
+						<h3>{card.title}</h3>
+						<p>{card.text}</p>
+					</article>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<section class="section differentiator-process" aria-labelledby="seo-process-heading">
+		<div class="site-container">
+			<div class="differentiator-intro">
+				<p class="eyebrow">Process</p>
+				<h2 id="seo-process-heading">How the SEO foundation comes together.</h2>
+			</div>
+			<div class="differentiator-grid differentiator-grid--4">
+				{processSteps.map((step) => (
+					<article class="card process-card">
+						<span>{step.step}</span>
+						<h3>{step.title}</h3>
+						<p>{step.text}</p>
+					</article>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<section class="section differentiator-final" aria-labelledby="seo-final-heading">
+		<div class="site-container">
+			<div class="differentiator-final__card">
+				<div>
+					<p class="eyebrow">Website audit</p>
+					<h2 id="seo-final-heading">Want to know what your site is missing?</h2>
+					<p class="lead">
+						Request a website audit and get a practical review of your site’s trust, visibility, service clarity, and conversion path.
+					</p>
+				</div>
+				<div class="button-row">
+					<a class="button button-primary" href="/audit">Get a Website Audit</a>
+					<a class="button button-secondary" href="/services">View Services</a>
+				</div>
+			</div>
+		</div>
+	</section>
+</BaseLayout>
+
+<style>
+	.differentiator-hero {
+		position: relative;
+		overflow: hidden;
+		padding-block: clamp(5rem, 8vw, 8rem);
+	}
+
+	.differentiator-hero::before {
+		position: absolute;
+		inset: 0;
+		z-index: -1;
+		background:
+			radial-gradient(circle at 76% 14%, rgba(95, 143, 139, 0.12), transparent 30%),
+			linear-gradient(180deg, var(--color-white) 0%, var(--color-bg) 72%);
+		content: '';
+	}
+
+	.differentiator-hero__inner,
+	.differentiator-intro {
+		max-width: 820px;
+	}
+
+	.differentiator-hero h1 {
+		max-width: 900px;
+	}
+
+	.differentiator-grid {
+		display: grid;
+		gap: 1rem;
+		margin-top: clamp(2rem, 4vw, 3rem);
+	}
+
+	.differentiator-grid--2 {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	.differentiator-grid--3 {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+
+	.differentiator-grid--4 {
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+	}
+
+	.differentiator-card,
+	.checklist-card,
+	.process-card {
+		padding: 1.25rem;
+	}
+
+	.differentiator-card h3,
+	.process-card h3 {
+		font-size: 1.1rem;
+		letter-spacing: -0.02em;
+	}
+
+	.differentiator-card p,
+	.process-card p {
+		font-size: 0.9375rem;
+		line-height: 1.6;
+	}
+
+	.checklist-card {
+		display: grid;
+		grid-template-columns: auto 1fr;
+		gap: 0.8rem;
+		align-items: start;
+	}
+
+	.checklist-card span,
+	.process-card span {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		border: 1px solid color-mix(in srgb, var(--color-accent) 35%, var(--color-border));
+		border-radius: 999px;
+		background: var(--color-accent-light);
+		color: var(--color-accent-dark);
+		font-size: 0.72rem;
+		font-weight: 800;
+		line-height: 1;
+	}
+
+	.checklist-card span {
+		width: 1.35rem;
+		height: 1.35rem;
+		margin-top: 0.1rem;
+	}
+
+	.checklist-card p {
+		margin: 0;
+		font-size: 0.9375rem;
+		font-weight: 700;
+		line-height: 1.5;
+	}
+
+	.process-card span {
+		width: fit-content;
+		margin-bottom: 1.25rem;
+		padding: 0.35rem 0.52rem;
+	}
+
+	.differentiator-final {
+		background: var(--color-accent-light);
+	}
+
+	.differentiator-final__card {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) auto;
+		gap: 2rem;
+		align-items: end;
+		padding: clamp(1.5rem, 4vw, 3rem);
+		border: 1px solid color-mix(in srgb, var(--color-accent) 24%, transparent);
+		border-radius: 20px;
+		background: var(--color-text);
+		box-shadow: 0 24px 60px rgba(15, 23, 42, 0.12);
+	}
+
+	.differentiator-final .eyebrow {
+		color: color-mix(in srgb, var(--color-accent-light) 84%, var(--color-white));
+	}
+
+	.differentiator-final h2,
+	.differentiator-final .lead {
+		color: var(--color-white);
+	}
+
+	.differentiator-final .lead {
+		opacity: 0.78;
+	}
+
+	.differentiator-final .button-row {
+		justify-content: flex-end;
+		margin-top: 0;
+	}
+
+	.differentiator-final .button-secondary {
+		background: transparent;
+		border-color: rgba(255, 255, 255, 0.22);
+		color: var(--color-white);
+	}
+
+	.differentiator-final .button-secondary:hover {
+		background: rgba(255, 255, 255, 0.08);
+		border-color: rgba(255, 255, 255, 0.38);
+		color: var(--color-white);
+	}
+
+	@media (max-width: 1040px) {
+		.differentiator-grid--3,
+		.differentiator-grid--4 {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+
+	@media (max-width: 720px) {
+		.differentiator-grid--2,
+		.differentiator-grid--3,
+		.differentiator-grid--4,
+		.differentiator-final__card {
+			grid-template-columns: 1fr;
+		}
+
+		.differentiator-final .button-row {
+			justify-content: flex-start;
+		}
+	}
+</style>
