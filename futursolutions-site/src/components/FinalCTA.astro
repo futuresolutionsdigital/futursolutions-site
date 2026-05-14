@@ -1,0 +1,81 @@
+<section class="section final-cta" aria-labelledby="final-cta-heading">
+	<div class="site-container">
+		<div class="final-cta__card">
+			<div>
+				<p class="eyebrow">Website audit</p>
+				<h2 id="final-cta-heading">Want to know what your website is missing?</h2>
+				<p class="lead">
+					Request a website audit and get a clear breakdown of how your site could improve trust, visibility, and conversions.
+				</p>
+			</div>
+			<div class="button-row">
+				<a class="button button-primary" href="/contact">Get a Website Audit</a>
+				<a class="button button-secondary" href="/templates">View Templates</a>
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.final-cta {
+		background: var(--color-accent-light);
+	}
+
+	.final-cta__card {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) auto;
+		gap: 2rem;
+		align-items: end;
+		padding: clamp(1.5rem, 4vw, 3rem);
+		border: 1px solid color-mix(in srgb, var(--color-accent) 24%, transparent);
+		border-radius: 20px;
+		background: var(--color-text);
+		box-shadow: 0 24px 60px rgba(15, 23, 42, 0.12);
+	}
+
+	.final-cta .eyebrow {
+		color: color-mix(in srgb, var(--color-accent-light) 84%, var(--color-white));
+	}
+
+	.final-cta h2,
+	.final-cta .lead {
+		color: var(--color-white);
+	}
+
+	.final-cta h2 {
+		max-width: 720px;
+	}
+
+	.final-cta .lead {
+		max-width: 680px;
+		opacity: 0.78;
+	}
+
+	.final-cta .button-row {
+		justify-content: flex-end;
+		margin-top: 0;
+	}
+
+	.final-cta .button-secondary {
+		background: transparent;
+		border-color: rgba(255, 255, 255, 0.22);
+		color: var(--color-white);
+	}
+
+	.final-cta .button-secondary:hover {
+		background: rgba(255, 255, 255, 0.08);
+		border-color: rgba(255, 255, 255, 0.38);
+		color: var(--color-white);
+	}
+
+	@media (max-width: 860px) {
+		.final-cta__card {
+			grid-template-columns: 1fr;
+			align-items: start;
+		}
+
+		.final-cta .button-row {
+			justify-content: flex-start;
+		}
+	}
+</style>

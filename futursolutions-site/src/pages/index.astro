@@ -1,5 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import AudienceStrip from '../components/AudienceStrip.astro';
+import FinalCTA from '../components/FinalCTA.astro';
+import HeroSystemPreview from '../components/HeroSystemPreview.astro';
+import ProblemSection from '../components/ProblemSection.astro';
+import SystemSection from '../components/SystemSection.astro';
 import { sanityClient } from '../lib/sanity';
 
 const homepageQuery = `*[_type == "homepage"][0]{
@@ -15,15 +20,104 @@ const homepage = await sanityClient.fetch<{
 } | null>(homepageQuery);
 
 const pageTitle = homepage?.title?.trim() || 'Future Solutions';
-const heroHeading = homepage?.heroHeading?.trim() || 'Future Solutions';
-const heroSubheading =
-  homepage?.heroSubheading?.trim() ||
-  'Content will appear here when connected to Sanity.';
 ---
 
 <BaseLayout title={pageTitle}>
-	<section class="section site-container" aria-labelledby="homepage-heading">
-		<h1 id="homepage-heading">{heroHeading}</h1>
-		<p class="lead">{heroSubheading}</p>
+	<section class="section homepage-hero" aria-labelledby="homepage-heading">
+		<div class="site-container homepage-hero__inner">
+			<div class="homepage-hero__content">
+				<p class="homepage-hero__eyebrow">Healthcare Websites · SEO · Backend Systems</p>
+				<h1 id="homepage-heading">Turn your healthcare website into a system that earns trust and drives bookings.</h1>
+				<p class="lead">
+					Future Solutions builds modern websites, templates, SEO foundations, and backend lead systems for health and wellness businesses that need more than a polished homepage.
+				</p>
+				<div class="button-row">
+					<a class="button button-primary" href="/contact">Get a Website Audit</a>
+					<a class="button button-secondary" href="/templates">View Templates</a>
+				</div>
+				<p class="homepage-hero__trust">Built for med spas, solo practices, wellness clinics, and healthcare organizations.</p>
+			</div>
+
+			<HeroSystemPreview />
+		</div>
 	</section>
+
+	<AudienceStrip />
+	<ProblemSection />
+	<SystemSection />
+	<FinalCTA />
 </BaseLayout>
+
+<style>
+	.homepage-hero {
+		position: relative;
+		overflow: hidden;
+		padding-block: clamp(4.5rem, 8vw, 7.5rem);
+	}
+
+	.homepage-hero::before {
+		position: absolute;
+		inset: 0;
+		z-index: -1;
+		background:
+			radial-gradient(circle at 78% 18%, rgba(95, 143, 139, 0.12), transparent 30%),
+			linear-gradient(180deg, var(--color-white) 0%, var(--color-bg) 72%);
+		content: '';
+	}
+
+	.homepage-hero__inner {
+		display: grid;
+		grid-template-columns: minmax(0, 0.95fr) minmax(420px, 1fr);
+		gap: clamp(3rem, 6vw, 5rem);
+		align-items: center;
+	}
+
+	.homepage-hero__content {
+		max-width: 680px;
+	}
+
+	.homepage-hero__content h1 {
+		max-width: 12ch;
+	}
+
+	.homepage-hero__eyebrow {
+		display: inline-flex;
+		width: fit-content;
+		margin-bottom: 1.25rem;
+		padding: 0.45rem 0.7rem;
+		border: 1px solid color-mix(in srgb, var(--color-accent) 28%, var(--color-border));
+		border-radius: 999px;
+		background: var(--color-accent-light);
+		color: var(--color-accent-dark);
+		font-size: 0.8125rem;
+		font-weight: 700;
+		letter-spacing: 0.03em;
+		line-height: 1.2;
+	}
+
+	.homepage-hero__trust {
+		margin-top: 1.25rem;
+		color: var(--color-muted);
+		font-size: 0.9375rem;
+	}
+
+	@media (max-width: 980px) {
+		.homepage-hero__inner {
+			grid-template-columns: 1fr;
+		}
+
+		.homepage-hero__content h1 {
+			max-width: 760px;
+		}
+	}
+
+	@media (max-width: 620px) {
+		.homepage-hero {
+			padding-block: 3.75rem;
+		}
+
+		.homepage-hero__eyebrow {
+			font-size: 0.75rem;
+		}
+	}
+</style>

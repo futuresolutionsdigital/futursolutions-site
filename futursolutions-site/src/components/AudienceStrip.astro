@@ -1,0 +1,71 @@
+---
+const audiences = [
+	'Med Spas',
+	'Solo Practices',
+	'Wellness Clinics',
+	'Functional Medicine',
+	'Healthcare Associations',
+];
+---
+
+<section class="audience-strip" aria-label="Audience fit">
+	<div class="site-container audience-strip__inner">
+		<p>Built for health and wellness businesses where trust matters.</p>
+		<div class="audience-strip__chips" aria-label="Ideal audiences">
+			{audiences.map((audience) => <span>{audience}</span>)}
+		</div>
+	</div>
+</section>
+
+<style>
+	.audience-strip {
+		border-block: 1px solid var(--color-border);
+		background: var(--color-white);
+	}
+
+	.audience-strip__inner {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1.5rem;
+		padding-block: 1.25rem;
+	}
+
+	.audience-strip p {
+		margin: 0;
+		color: var(--color-text);
+		font-size: 0.95rem;
+		font-weight: 600;
+		letter-spacing: -0.01em;
+	}
+
+	.audience-strip__chips {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: flex-end;
+		gap: 0.55rem;
+	}
+
+	.audience-strip__chips span {
+		display: inline-flex;
+		align-items: center;
+		padding: 0.42rem 0.65rem;
+		border: 1px solid var(--color-border);
+		border-radius: 999px;
+		background: var(--color-bg);
+		color: var(--color-muted);
+		font-size: 0.8125rem;
+		font-weight: 600;
+	}
+
+	@media (max-width: 780px) {
+		.audience-strip__inner {
+			align-items: flex-start;
+			flex-direction: column;
+		}
+
+		.audience-strip__chips {
+			justify-content: flex-start;
+		}
+	}
+</style>
