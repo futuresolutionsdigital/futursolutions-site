@@ -1,4 +1,5 @@
 ---
+import BaseLayout from '../layouts/BaseLayout.astro';
 import { sanityClient } from '../lib/sanity';
 
 const homepageQuery = `*[_type == "homepage"][0]{
@@ -20,17 +21,9 @@ const heroSubheading =
   'Content will appear here when connected to Sanity.';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{pageTitle}</title>
-	</head>
-	<body>
-		<h1>{heroHeading}</h1>
+<BaseLayout title={pageTitle}>
+	<section aria-labelledby="homepage-heading">
+		<h1 id="homepage-heading">{heroHeading}</h1>
 		<p>{heroSubheading}</p>
-	</body>
-</html>
+	</section>
+</BaseLayout>
