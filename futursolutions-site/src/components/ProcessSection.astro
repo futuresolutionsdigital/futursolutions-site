@@ -1,0 +1,122 @@
+---
+const processSteps = [
+	{
+		number: '01',
+		title: 'Audit',
+		text: 'We review your current website, offer, visibility, and conversion path.',
+	},
+	{
+		number: '02',
+		title: 'Strategy',
+		text: 'We map the pages, content, backend system, and launch priorities.',
+	},
+	{
+		number: '03',
+		title: 'Build',
+		text: 'We design and develop the site with clean structure and integrated lead systems.',
+	},
+	{
+		number: '04',
+		title: 'Optimize',
+		text: 'We launch, refine, and continue improving visibility and conversions over time.',
+	},
+];
+---
+
+<section class="section section-muted process-section" aria-labelledby="process-heading">
+	<div class="site-container">
+		<div class="process-section__intro">
+			<p class="eyebrow">How the work moves</p>
+			<h2 id="process-heading">A clear process from audit to launch.</h2>
+			<p class="lead">
+				Every project starts by understanding what your current site is doing, where leads are getting lost, and what kind of system your business actually needs.
+			</p>
+		</div>
+
+		<div class="process-section__timeline">
+			{processSteps.map((step) => (
+				<article class="process-card card">
+					<span>{step.number}</span>
+					<h3>{step.title}</h3>
+					<p>{step.text}</p>
+				</article>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+	.process-section__intro {
+		max-width: 780px;
+	}
+
+	.process-section__timeline {
+		position: relative;
+		display: grid;
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+		gap: 1rem;
+		margin-top: clamp(2rem, 4vw, 3rem);
+	}
+
+	.process-section__timeline::before {
+		position: absolute;
+		top: 2.6rem;
+		right: 10%;
+		left: 10%;
+		height: 1px;
+		background: var(--color-border);
+		content: '';
+	}
+
+	.process-card {
+		position: relative;
+		padding: 1.35rem;
+	}
+
+	.process-card span {
+		position: relative;
+		z-index: 1;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 2.45rem;
+		height: 2.45rem;
+		margin-bottom: 2rem;
+		border: 1px solid color-mix(in srgb, var(--color-accent) 35%, var(--color-border));
+		border-radius: var(--radius-sm);
+		background: var(--color-accent-light);
+		color: var(--color-accent-dark);
+		font-size: 0.78rem;
+		font-weight: 800;
+	}
+
+	.process-card h3 {
+		font-size: 1.15rem;
+		letter-spacing: -0.02em;
+	}
+
+	.process-card p {
+		font-size: 0.9375rem;
+		line-height: 1.6;
+	}
+
+	@media (max-width: 980px) {
+		.process-section__timeline {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+
+		.process-section__timeline::before {
+			display: none;
+		}
+	}
+
+	@media (max-width: 620px) {
+		.process-section__timeline {
+			grid-template-columns: 1fr;
+		}
+
+		.process-card span {
+			margin-bottom: 1.35rem;
+		}
+	}
+</style>

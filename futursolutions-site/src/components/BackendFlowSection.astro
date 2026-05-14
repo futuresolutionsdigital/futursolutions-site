@@ -1,0 +1,158 @@
+---
+const flowSteps = [
+	{
+		title: 'Form Submission',
+		text: 'Lead captured from your website.',
+	},
+	{
+		title: 'CRM Contact',
+		text: 'Contact record created in GoHighLevel.',
+	},
+	{
+		title: 'Booking Request',
+		text: 'Visitor is directed toward a consultation or appointment.',
+	},
+	{
+		title: 'Follow-up',
+		text: 'Automated reminders and email sequences help prevent drop-off.',
+	},
+	{
+		title: 'Pipeline',
+		text: 'Every lead has a status, next step, and owner.',
+	},
+];
+---
+
+<section class="section backend-flow" aria-labelledby="backend-flow-heading">
+	<div class="site-container">
+		<div class="backend-flow__intro">
+			<p class="eyebrow">Lead system</p>
+			<h2 id="backend-flow-heading">What happens after someone fills out your form?</h2>
+			<p class="lead">
+				A conversion does not end at the website. Future Solutions can connect your site to a backend system for lead capture, booking, follow-up, and pipeline management.
+			</p>
+		</div>
+
+		<div class="backend-flow__diagram" aria-label="Backend lead system flow">
+			{flowSteps.map((step, index) => (
+				<article class="backend-flow__card card">
+					<span class="backend-flow__number">{String(index + 1).padStart(2, '0')}</span>
+					<h3>{step.title}</h3>
+					<p>{step.text}</p>
+				</article>
+			))}
+		</div>
+
+		<div class="backend-flow__callout">
+			<span aria-hidden="true"></span>
+			<p>Most websites collect leads. A real system manages them.</p>
+		</div>
+	</div>
+</section>
+
+<style>
+	.backend-flow {
+		background: var(--color-bg);
+	}
+
+	.backend-flow__intro {
+		max-width: 780px;
+	}
+
+	.backend-flow__diagram {
+		position: relative;
+		display: grid;
+		grid-template-columns: repeat(5, minmax(0, 1fr));
+		gap: 0.85rem;
+		margin-top: clamp(2rem, 4vw, 3rem);
+	}
+
+	.backend-flow__diagram::before {
+		position: absolute;
+		top: 2.25rem;
+		right: 8%;
+		left: 8%;
+		height: 1px;
+		background: var(--color-border);
+		content: '';
+	}
+
+	.backend-flow__card {
+		position: relative;
+		padding: 1.2rem;
+	}
+
+	.backend-flow__number {
+		position: relative;
+		z-index: 1;
+		display: inline-flex;
+		margin-bottom: 1.65rem;
+		padding: 0.35rem 0.52rem;
+		border: 1px solid color-mix(in srgb, var(--color-accent) 35%, var(--color-border));
+		border-radius: 999px;
+		background: var(--color-white);
+		color: var(--color-accent-dark);
+		font-size: 0.72rem;
+		font-weight: 800;
+		line-height: 1;
+	}
+
+	.backend-flow__card h3 {
+		font-size: 1rem;
+		letter-spacing: -0.02em;
+	}
+
+	.backend-flow__card p {
+		font-size: 0.9rem;
+		line-height: 1.55;
+	}
+
+	.backend-flow__callout {
+		display: flex;
+		align-items: center;
+		gap: 0.85rem;
+		width: fit-content;
+		max-width: 100%;
+		margin-top: 1.5rem;
+		padding: 0.85rem 1rem;
+		border: 1px solid var(--color-border);
+		border-radius: 999px;
+		background: var(--color-white);
+		box-shadow: 0 14px 36px rgba(15, 23, 42, 0.04);
+	}
+
+	.backend-flow__callout span {
+		width: 0.62rem;
+		height: 0.62rem;
+		border-radius: 999px;
+		background: var(--color-accent);
+	}
+
+	.backend-flow__callout p {
+		margin: 0;
+		color: var(--color-text);
+		font-size: 0.95rem;
+		font-weight: 700;
+	}
+
+	@media (max-width: 1080px) {
+		.backend-flow__diagram {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+
+		.backend-flow__diagram::before {
+			display: none;
+		}
+	}
+
+	@media (max-width: 620px) {
+		.backend-flow__diagram {
+			grid-template-columns: 1fr;
+		}
+
+		.backend-flow__callout {
+			align-items: flex-start;
+			border-radius: 18px;
+		}
+	}
+</style>

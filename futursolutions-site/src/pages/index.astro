@@ -1,10 +1,13 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import AudienceStrip from '../components/AudienceStrip.astro';
+import BackendFlowSection from '../components/BackendFlowSection.astro';
 import FinalCTA from '../components/FinalCTA.astro';
 import HeroSystemPreview from '../components/HeroSystemPreview.astro';
 import ProblemSection from '../components/ProblemSection.astro';
+import ProcessSection from '../components/ProcessSection.astro';
 import ServicesSnapshotSection from '../components/ServicesSnapshotSection.astro';
+import SeoVisibilitySection from '../components/SeoVisibilitySection.astro';
 import SystemSection from '../components/SystemSection.astro';
 import TemplatePreviewSection from '../components/TemplatePreviewSection.astro';
 import { sanityClient } from '../lib/sanity';
@@ -49,6 +52,9 @@ const pageTitle = homepage?.title?.trim() || 'Future Solutions';
 	<SystemSection />
 	<TemplatePreviewSection />
 	<ServicesSnapshotSection />
+	<SeoVisibilitySection />
+	<BackendFlowSection />
+	<ProcessSection />
 	<FinalCTA />
 </BaseLayout>
 
