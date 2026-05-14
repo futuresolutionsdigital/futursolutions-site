@@ -1,0 +1,139 @@
+---
+const services = [
+	{
+		title: 'Template Setup',
+		description: 'A polished website system based on one of our healthcare-focused templates.',
+		bestFor: 'Practices that want to launch quickly with a professional foundation.',
+		cta: 'Explore Templates',
+		href: '/templates',
+	},
+	{
+		title: 'Custom Website System',
+		description: 'A custom website built around your brand, services, content, and conversion goals.',
+		bestFor: 'Businesses that need a tailored digital presence.',
+		cta: 'Book a Strategy Call',
+		href: '/contact',
+	},
+	{
+		title: 'Ongoing Optimization',
+		description: 'Monthly support for updates, content, SEO improvements, and conversion refinements.',
+		bestFor: 'Businesses that want the site to keep improving after launch.',
+		cta: 'View Services',
+		href: '/services',
+	},
+];
+---
+
+<section class="section services-snapshot" aria-labelledby="services-snapshot-heading">
+	<div class="site-container">
+		<div class="services-snapshot__intro">
+			<p class="eyebrow">Ways to work together</p>
+			<h2 id="services-snapshot-heading">Build the level of system your business needs.</h2>
+			<p class="lead">
+				Whether you need a fast launch, a custom build, or ongoing optimization, Future Solutions structures the website around trust, visibility, and conversion.
+			</p>
+		</div>
+
+		<div class="services-snapshot__grid">
+			{services.map((service) => (
+				<article class="card service-card">
+					<div>
+						<span class="service-card__marker" aria-hidden="true"></span>
+						<h3>{service.title}</h3>
+						<p>{service.description}</p>
+					</div>
+
+					<div class="service-card__footer">
+						<p>
+							<strong>Best for</strong>
+							<span>{service.bestFor}</span>
+						</p>
+						<a href={service.href}>{service.cta}</a>
+					</div>
+				</article>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+	.services-snapshot {
+		background: var(--color-bg);
+	}
+
+	.services-snapshot__intro {
+		max-width: 780px;
+	}
+
+	.services-snapshot__grid {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 1rem;
+		margin-top: clamp(2rem, 4vw, 3rem);
+	}
+
+	.service-card {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		min-height: 100%;
+		padding: 1.5rem;
+	}
+
+	.service-card__marker {
+		display: block;
+		width: 2.4rem;
+		height: 0.25rem;
+		margin-bottom: 1.5rem;
+		border-radius: 999px;
+		background: var(--color-accent);
+	}
+
+	.service-card h3 {
+		font-size: 1.25rem;
+		letter-spacing: -0.025em;
+	}
+
+	.service-card > div:first-child p {
+		font-size: 0.9625rem;
+		line-height: 1.65;
+	}
+
+	.service-card__footer {
+		margin-top: 2rem;
+		padding-top: 1.25rem;
+		border-top: 1px solid var(--color-border);
+	}
+
+	.service-card__footer p {
+		display: grid;
+		gap: 0.4rem;
+		margin-bottom: 1.15rem;
+		font-size: 0.9rem;
+		line-height: 1.55;
+	}
+
+	.service-card__footer strong {
+		color: var(--color-accent-dark);
+		font-size: 0.75rem;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+	}
+
+	.service-card__footer a {
+		display: inline-flex;
+		color: var(--color-text);
+		font-size: 0.9375rem;
+		font-weight: 700;
+	}
+
+	.service-card__footer a:hover {
+		color: var(--color-accent-dark);
+	}
+
+	@media (max-width: 900px) {
+		.services-snapshot__grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

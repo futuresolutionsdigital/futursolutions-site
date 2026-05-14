@@ -1,0 +1,266 @@
+---
+const templates = [
+	{
+		category: 'Association Template',
+		name: 'Medical Association Template',
+		description: 'For professional organizations, healthcare education, advocacy groups, and member communities.',
+		features: ['Events', 'Resources', 'Member navigation', 'Advocacy pages'],
+	},
+	{
+		category: 'Clinic Template',
+		name: 'Med Spa Template',
+		description: 'For aesthetic clinics, wellness brands, weight loss clinics, hormone therapy, and IV therapy.',
+		features: ['Treatment pages', 'Booking flow', 'Trust sections', 'Local SEO'],
+	},
+	{
+		category: 'Provider Template',
+		name: 'Solo Practice Template',
+		description: 'For independent providers, nurse practitioners, functional medicine clinics, and boutique healthcare brands.',
+		features: ['Provider trust', 'Service clarity', 'Patient education', 'Lead capture'],
+	},
+];
+---
+
+<section class="section section-muted template-preview" aria-labelledby="template-preview-heading">
+	<div class="site-container">
+		<div class="template-preview__intro">
+			<p class="eyebrow">Template systems</p>
+			<h2 id="template-preview-heading">Launch-ready website systems for health and wellness brands.</h2>
+			<p class="lead">
+				Start with a polished template built around the pages, trust signals, and conversion paths your business already needs.
+			</p>
+		</div>
+
+		<div class="template-preview__grid">
+			{templates.map((template, index) => (
+				<article class="template-card card">
+					<div class="template-card__mockup" aria-hidden="true">
+						<div class="template-card__topbar">
+							<span></span>
+							<span></span>
+							<span></span>
+						</div>
+						<div class="template-card__screen">
+							<div class="template-card__hero-lines">
+								<span></span>
+								<span></span>
+								<span></span>
+							</div>
+							<div class={`template-card__panel template-card__panel--${index + 1}`}>
+								<span></span>
+							</div>
+							<div class="template-card__tiles">
+								<span></span>
+								<span></span>
+								<span></span>
+							</div>
+						</div>
+					</div>
+
+					<div class="template-card__content">
+						<p class="template-card__category">{template.category}</p>
+						<h3>{template.name}</h3>
+						<p>{template.description}</p>
+						<div class="template-card__features" aria-label={`${template.name} features`}>
+							{template.features.map((feature) => <span>{feature}</span>)}
+						</div>
+						<a class="template-card__link" href="/templates">View Demo</a>
+					</div>
+				</article>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+	.template-preview__intro {
+		max-width: 780px;
+	}
+
+	.template-preview__grid {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 1rem;
+		margin-top: clamp(2rem, 4vw, 3rem);
+	}
+
+	.template-card {
+		overflow: hidden;
+		border-radius: 24px;
+		box-shadow: 0 20px 54px rgba(15, 23, 42, 0.05);
+	}
+
+	.template-card__mockup {
+		padding: 0.85rem;
+		border-bottom: 1px solid var(--color-border);
+		background:
+			linear-gradient(135deg, rgba(230, 240, 239, 0.9), rgba(245, 247, 249, 0.96)),
+			var(--color-bg-secondary);
+	}
+
+	.template-card__topbar {
+		display: flex;
+		gap: 0.38rem;
+		align-items: center;
+		padding: 0.7rem 0.85rem;
+		border: 1px solid var(--color-border);
+		border-bottom: 0;
+		border-radius: 16px 16px 0 0;
+		background: rgba(255, 255, 255, 0.84);
+	}
+
+	.template-card__topbar span {
+		width: 0.46rem;
+		height: 0.46rem;
+		border-radius: 999px;
+		background: color-mix(in srgb, var(--color-muted) 28%, var(--color-white));
+	}
+
+	.template-card__screen {
+		display: grid;
+		grid-template-columns: 1.15fr 0.85fr;
+		gap: 0.8rem;
+		min-height: 190px;
+		padding: 1rem;
+		border: 1px solid var(--color-border);
+		border-radius: 0 0 16px 16px;
+		background: var(--color-white);
+	}
+
+	.template-card__hero-lines {
+		display: flex;
+		flex-direction: column;
+		gap: 0.55rem;
+		justify-content: center;
+	}
+
+	.template-card__hero-lines span {
+		display: block;
+		height: 0.65rem;
+		border-radius: 999px;
+		background: var(--color-border);
+	}
+
+	.template-card__hero-lines span:first-child {
+		width: 42%;
+		background: var(--color-accent-light);
+	}
+
+	.template-card__hero-lines span:nth-child(2) {
+		width: 82%;
+		height: 1rem;
+		background: color-mix(in srgb, var(--color-text) 16%, var(--color-border));
+	}
+
+	.template-card__hero-lines span:last-child {
+		width: 68%;
+	}
+
+	.template-card__panel {
+		display: flex;
+		align-items: flex-end;
+		min-height: 112px;
+		padding: 0.65rem;
+		border: 1px solid color-mix(in srgb, var(--color-accent) 28%, var(--color-border));
+		border-radius: 14px;
+		background:
+			linear-gradient(180deg, rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0)),
+			var(--color-accent-light);
+	}
+
+	.template-card__panel span {
+		width: 72%;
+		height: 0.55rem;
+		border-radius: 999px;
+		background: var(--color-accent);
+	}
+
+	.template-card__panel--2 span {
+		width: 52%;
+	}
+
+	.template-card__panel--3 span {
+		width: 86%;
+	}
+
+	.template-card__tiles {
+		grid-column: 1 / -1;
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 0.55rem;
+	}
+
+	.template-card__tiles span {
+		min-height: 2.25rem;
+		border: 1px solid var(--color-border);
+		border-radius: 12px;
+		background: var(--color-bg-secondary);
+	}
+
+	.template-card__content {
+		padding: 1.35rem;
+	}
+
+	.template-card__category {
+		margin-bottom: 0.65rem;
+		color: var(--color-accent-dark);
+		font-size: 0.75rem;
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+	}
+
+	.template-card h3 {
+		font-size: 1.25rem;
+		letter-spacing: -0.025em;
+	}
+
+	.template-card__content > p:not(.template-card__category) {
+		font-size: 0.9375rem;
+		line-height: 1.6;
+	}
+
+	.template-card__features {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		margin-top: 1.2rem;
+	}
+
+	.template-card__features span {
+		display: inline-flex;
+		padding: 0.35rem 0.55rem;
+		border: 1px solid var(--color-border);
+		border-radius: 999px;
+		background: var(--color-bg);
+		color: var(--color-muted);
+		font-size: 0.78rem;
+		font-weight: 600;
+		line-height: 1;
+	}
+
+	.template-card__link {
+		display: inline-flex;
+		margin-top: 1.35rem;
+		color: var(--color-text);
+		font-size: 0.9375rem;
+		font-weight: 700;
+	}
+
+	.template-card__link:hover {
+		color: var(--color-accent-dark);
+	}
+
+	@media (max-width: 1040px) {
+		.template-preview__grid {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+
+	@media (max-width: 700px) {
+		.template-preview__grid,
+		.template-card__screen {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

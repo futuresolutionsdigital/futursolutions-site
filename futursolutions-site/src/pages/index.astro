@@ -4,7 +4,9 @@ import AudienceStrip from '../components/AudienceStrip.astro';
 import FinalCTA from '../components/FinalCTA.astro';
 import HeroSystemPreview from '../components/HeroSystemPreview.astro';
 import ProblemSection from '../components/ProblemSection.astro';
+import ServicesSnapshotSection from '../components/ServicesSnapshotSection.astro';
 import SystemSection from '../components/SystemSection.astro';
+import TemplatePreviewSection from '../components/TemplatePreviewSection.astro';
 import { sanityClient } from '../lib/sanity';
 
 const homepageQuery = `*[_type == "homepage"][0]{
@@ -45,6 +47,8 @@ const pageTitle = homepage?.title?.trim() || 'Future Solutions';
 	<AudienceStrip />
 	<ProblemSection />
 	<SystemSection />
+	<TemplatePreviewSection />
+	<ServicesSnapshotSection />
 	<FinalCTA />
 </BaseLayout>
 
