@@ -39,7 +39,7 @@ export const serviceOfferings: ServiceOffering[] = [
 		],
 		whyItMatters: 'Your site is structured around your actual business, not forced into a generic layout.',
 		ctaLabel: 'Request a Website Audit',
-		ctaHref: '/#audit',
+		ctaHref: '/audit',
 	},
 	{
 		slug: 'seo-local-visibility-foundation',
@@ -59,7 +59,7 @@ export const serviceOfferings: ServiceOffering[] = [
 		],
 		whyItMatters: 'Visibility starts with clear structure, useful pages, and search-aware content.',
 		ctaLabel: 'Improve Local Visibility',
-		ctaHref: '/#audit',
+		ctaHref: '/audit',
 	},
 	{
 		slug: 'backend-system-setup',
@@ -71,7 +71,7 @@ export const serviceOfferings: ServiceOffering[] = [
 		includes: ['Lead capture flow', 'Booking path', 'CRM contact creation', 'Follow-up sequence planning', 'Pipeline structure'],
 		whyItMatters: 'Most websites collect leads. A real system manages them.',
 		ctaLabel: 'Set Up Your Backend System',
-		ctaHref: '/#audit',
+		ctaHref: '/audit',
 	},
 	{
 		slug: 'ongoing-optimization',
@@ -84,6 +84,6 @@ export const serviceOfferings: ServiceOffering[] = [
 		includes: ['Website updates', 'New pages', 'SEO improvements', 'Content publishing', 'Conversion refinements', 'Technical maintenance'],
 		whyItMatters: 'Your website should evolve with your business, offers, and audience.',
 		ctaLabel: 'View Optimization Options',
-		ctaHref: '/#audit',
+		ctaHref: '/audit',
 	},
 ];

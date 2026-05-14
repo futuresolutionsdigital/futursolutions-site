@@ -1,0 +1,181 @@
+---
+const businessTypes = ['Med Spa', 'Solo Practice', 'Wellness Clinic', 'Functional Medicine', 'Healthcare Association', 'Other'];
+const primaryGoals = [
+	'More bookings',
+	'Better website design',
+	'Better local visibility',
+	'Better lead follow-up',
+	'Template setup',
+	'Custom website',
+	'Not sure yet',
+];
+const preferredNextSteps = ['Website audit', 'Template recommendation', 'Strategy call', 'Not sure yet'];
+---
+
+<div id="audit-form" class="audit-form-shell card">
+	<div class="audit-form-shell__intro">
+		<p class="eyebrow">Audit request</p>
+		<h2>Tell us what you are working with.</h2>
+		<p>After submitting, we’ll review your site and follow up with next steps.</p>
+	</div>
+
+	<!-- TODO: Replace this form shell with GoHighLevel embed or connected form when GHL is ready. -->
+	<form class="audit-form-shell__form" method="post" aria-label="Website audit request form">
+		<div class="audit-form-shell__grid">
+			<label>
+				<span>Name</span>
+				<input type="text" name="name" autocomplete="name" />
+			</label>
+
+			<label>
+				<span>Email</span>
+				<input type="email" name="email" autocomplete="email" />
+			</label>
+
+			<label>
+				<span>Business name</span>
+				<input type="text" name="business-name" autocomplete="organization" />
+			</label>
+
+			<label>
+				<span>Website URL</span>
+				<input type="url" name="website-url" inputmode="url" />
+			</label>
+
+			<label>
+				<span>Business type</span>
+				<select name="business-type">
+					<option value="">Select business type</option>
+					{businessTypes.map((type) => <option value={type}>{type}</option>)}
+				</select>
+			</label>
+
+			<label>
+				<span>Primary goal</span>
+				<select name="primary-goal">
+					<option value="">Select primary goal</option>
+					{primaryGoals.map((goal) => <option value={goal}>{goal}</option>)}
+				</select>
+			</label>
+		</div>
+
+		<label>
+			<span>Biggest website issue</span>
+			<textarea name="biggest-website-issue" rows="4"></textarea>
+		</label>
+
+		<label>
+			<span>Preferred next step</span>
+			<select name="preferred-next-step">
+				<option value="">Select preferred next step</option>
+				{preferredNextSteps.map((step) => <option value={step}>{step}</option>)}
+			</select>
+		</label>
+
+		<div class="audit-form-shell__footer">
+			<button class="button button-primary" type="button">Request My Website Audit</button>
+			<p>This form is a planning shell for now. It will be connected when the backend is ready.</p>
+		</div>
+	</form>
+</div>
+
+<style>
+	.audit-form-shell {
+		padding: clamp(1.35rem, 3vw, 2rem);
+		border-radius: 24px;
+		box-shadow: 0 24px 70px rgba(15, 23, 42, 0.06);
+	}
+
+	.audit-form-shell__intro {
+		margin-bottom: 1.5rem;
+	}
+
+	.audit-form-shell__intro h2 {
+		margin-bottom: 0.75rem;
+		font-size: clamp(1.65rem, 1.45rem + 0.8vw, 2rem);
+	}
+
+	.audit-form-shell__intro p:not(.eyebrow) {
+		font-size: 0.95rem;
+		line-height: 1.6;
+	}
+
+	.audit-form-shell__form,
+	.audit-form-shell__grid,
+	.audit-form-shell label {
+		display: grid;
+		gap: 1rem;
+	}
+
+	.audit-form-shell__grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	.audit-form-shell label {
+		gap: 0.45rem;
+	}
+
+	.audit-form-shell label span {
+		color: var(--color-text);
+		font-size: 0.875rem;
+		font-weight: 700;
+	}
+
+	.audit-form-shell input,
+	.audit-form-shell select,
+	.audit-form-shell textarea {
+		width: 100%;
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-sm);
+		background: var(--color-bg);
+		color: var(--color-text);
+		font-size: 0.95rem;
+		line-height: 1.4;
+	}
+
+	.audit-form-shell input,
+	.audit-form-shell select {
+		min-height: 2.85rem;
+		padding: 0.7rem 0.8rem;
+	}
+
+	.audit-form-shell textarea {
+		resize: vertical;
+		min-height: 7rem;
+		padding: 0.8rem;
+	}
+
+	.audit-form-shell input:focus,
+	.audit-form-shell select:focus,
+	.audit-form-shell textarea:focus {
+		border-color: color-mix(in srgb, var(--color-accent) 55%, var(--color-border));
+		outline: none;
+		background: var(--color-white);
+	}
+
+	.audit-form-shell__footer {
+		display: grid;
+		gap: 0.8rem;
+		margin-top: 0.25rem;
+	}
+
+	.audit-form-shell__footer .button {
+		width: fit-content;
+	}
+
+	.audit-form-shell__footer p {
+		max-width: 440px;
+		font-size: 0.85rem;
+		line-height: 1.55;
+	}
+
+	@media (max-width: 620px) {
+		.audit-form-shell__grid {
+			grid-template-columns: 1fr;
+		}
+
+		.audit-form-shell__footer .button {
+			width: 100%;
+		}
+	}
+</style>

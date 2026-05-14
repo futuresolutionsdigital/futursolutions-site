@@ -1,0 +1,370 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AuditFormShell from '../../components/AuditFormShell.astro';
+
+const pageTitle = 'Website Audit | Future Solutions';
+const pageDescription =
+	'Request a Future Solutions website audit and get a clear breakdown of how your healthcare website could improve trust, visibility, and conversions.';
+const canonicalUrl = 'https://futursolutions.vercel.app/audit/';
+
+const expectations = [
+	'Trust and first impression',
+	'Service clarity',
+	'CTA and booking flow',
+	'Local visibility structure',
+	'Lead capture and follow-up path',
+];
+
+const reviewCards = [
+	{
+		title: 'First impression',
+		text: 'Does the site feel credible, modern, and trustworthy within seconds?',
+	},
+	{
+		title: 'Service clarity',
+		text: 'Can visitors quickly understand what you offer and who it is for?',
+	},
+	{
+		title: 'Conversion path',
+		text: 'Are the next steps, forms, booking links, and CTAs obvious?',
+	},
+	{
+		title: 'Local visibility',
+		text: 'Are service pages and metadata structured for local discovery?',
+	},
+	{
+		title: 'Mobile experience',
+		text: 'Does the site feel clean and usable on smaller screens?',
+	},
+	{
+		title: 'Follow-up system',
+		text: 'Is there a clear process after someone fills out a form?',
+	},
+];
+
+const audiences = ['Med Spas', 'Solo Practices', 'Wellness Clinics', 'Functional Medicine', 'Healthcare Associations', 'Treatment-Based Clinics'];
+
+const processSteps = [
+	{
+		step: '01',
+		title: 'Submit your site',
+		text: 'Share your current website, business type, and main goal.',
+	},
+	{
+		step: '02',
+		title: 'Review',
+		text: 'We look for trust, visibility, conversion, and follow-up gaps.',
+	},
+	{
+		step: '03',
+		title: 'Recommendation',
+		text: 'You get a clear next-step recommendation: template, custom build, SEO foundation, backend system, or ongoing optimization.',
+	},
+	{
+		step: '04',
+		title: 'Next step',
+		text: 'If there is a fit, we can map a launch path around your business.',
+	},
+];
+---
+
+<BaseLayout
+	title={pageTitle}
+	description={pageDescription}
+	canonicalUrl={canonicalUrl}
+	ogTitle={pageTitle}
+	ogDescription={pageDescription}
+	ogUrl={canonicalUrl}
+>
+	<section class="section audit-hero" aria-labelledby="audit-heading">
+		<div class="site-container audit-hero__inner">
+			<div class="audit-hero__content">
+				<p class="eyebrow">Website Audit</p>
+				<h1 id="audit-heading">Find the hidden gaps in your healthcare website.</h1>
+				<p class="lead">
+					Request a website audit and get a clear breakdown of how your site could improve trust, service clarity, local visibility, and conversion flow.
+				</p>
+				<p class="audit-hero__helper">
+					Built for med spas, solo practices, wellness clinics, functional medicine providers, and healthcare organizations.
+				</p>
+				<ul class="audit-hero__expectations" aria-label="Audit focus areas">
+					{expectations.map((expectation) => (
+						<li>
+							<span aria-hidden="true"></span>
+							{expectation}
+						</li>
+					))}
+				</ul>
+			</div>
+
+			<AuditFormShell />
+		</div>
+	</section>
+
+	<section class="section section-muted audit-review" aria-labelledby="audit-review-heading">
+		<div class="site-container">
+			<div class="audit-review__intro">
+				<p class="eyebrow">Review areas</p>
+				<h2 id="audit-review-heading">What we look for.</h2>
+			</div>
+			<div class="audit-review__grid">
+				{reviewCards.map((card) => (
+					<article class="card audit-review__card">
+						<h3>{card.title}</h3>
+						<p>{card.text}</p>
+					</article>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<section class="section audit-audience" aria-labelledby="audit-audience-heading">
+		<div class="site-container">
+			<div class="audit-audience__intro">
+				<p class="eyebrow">Best fit</p>
+				<h2 id="audit-audience-heading">Built for health and wellness businesses where trust matters.</h2>
+			</div>
+			<div class="audit-audience__chips" aria-label="Best-fit audiences">
+				{audiences.map((audience) => <span>{audience}</span>)}
+			</div>
+		</div>
+	</section>
+
+	<section class="section section-muted audit-process" aria-labelledby="audit-process-heading">
+		<div class="site-container">
+			<div class="audit-process__intro">
+				<p class="eyebrow">Process</p>
+				<h2 id="audit-process-heading">What happens next?</h2>
+			</div>
+			<div class="audit-process__grid">
+				{processSteps.map((process) => (
+					<article class="card audit-process__card">
+						<span>{process.step}</span>
+						<h3>{process.title}</h3>
+						<p>{process.text}</p>
+					</article>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<section class="section audit-final" aria-labelledby="audit-final-heading">
+		<div class="site-container">
+			<div class="audit-final__card">
+				<div>
+					<p class="eyebrow">Next step</p>
+					<h2 id="audit-final-heading">Want a clearer picture of what your site needs?</h2>
+					<p class="lead">
+						Start with an audit and get a practical recommendation before committing to a template, custom site, or backend system.
+					</p>
+				</div>
+				<div class="button-row">
+					<a class="button button-primary" href="#audit-form">Back to audit form</a>
+					<a class="button button-secondary" href="/templates">View Templates</a>
+				</div>
+			</div>
+		</div>
+	</section>
+</BaseLayout>
+
+<style>
+	.audit-hero {
+		position: relative;
+		overflow: hidden;
+		padding-block: clamp(5rem, 8vw, 8rem);
+	}
+
+	.audit-hero::before {
+		position: absolute;
+		inset: 0;
+		z-index: -1;
+		background:
+			radial-gradient(circle at 78% 18%, rgba(95, 143, 139, 0.12), transparent 30%),
+			linear-gradient(180deg, var(--color-white) 0%, var(--color-bg) 72%);
+		content: '';
+	}
+
+	.audit-hero__inner {
+		display: grid;
+		grid-template-columns: minmax(0, 0.92fr) minmax(420px, 0.8fr);
+		gap: clamp(3rem, 6vw, 5rem);
+		align-items: start;
+	}
+
+	.audit-hero__content {
+		max-width: 760px;
+		padding-top: 1rem;
+	}
+
+	.audit-hero h1 {
+		max-width: 760px;
+	}
+
+	.audit-hero__helper {
+		max-width: 620px;
+		margin-top: 1.25rem;
+		font-size: 0.95rem;
+		line-height: 1.65;
+	}
+
+	.audit-hero__expectations {
+		display: grid;
+		gap: 0.8rem;
+		margin: 2rem 0 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.audit-hero__expectations li {
+		display: flex;
+		gap: 0.7rem;
+		align-items: center;
+		color: var(--color-text);
+		font-size: 0.95rem;
+		font-weight: 700;
+	}
+
+	.audit-hero__expectations span {
+		width: 0.55rem;
+		height: 0.55rem;
+		border-radius: 999px;
+		background: var(--color-accent);
+	}
+
+	.audit-review__intro,
+	.audit-audience__intro,
+	.audit-process__intro {
+		max-width: 780px;
+	}
+
+	.audit-review__grid,
+	.audit-process__grid {
+		display: grid;
+		gap: 1rem;
+		margin-top: clamp(2rem, 4vw, 3rem);
+	}
+
+	.audit-review__grid {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+
+	.audit-process__grid {
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+	}
+
+	.audit-review__card,
+	.audit-process__card {
+		padding: 1.25rem;
+	}
+
+	.audit-review__card h3,
+	.audit-process__card h3 {
+		font-size: 1.1rem;
+		letter-spacing: -0.02em;
+	}
+
+	.audit-review__card p,
+	.audit-process__card p {
+		font-size: 0.9375rem;
+		line-height: 1.6;
+	}
+
+	.audit-audience__chips {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.7rem;
+		margin-top: 2rem;
+	}
+
+	.audit-audience__chips span {
+		display: inline-flex;
+		padding: 0.55rem 0.75rem;
+		border: 1px solid color-mix(in srgb, var(--color-accent) 28%, var(--color-border));
+		border-radius: 999px;
+		background: var(--color-white);
+		color: var(--color-accent-dark);
+		font-size: 0.875rem;
+		font-weight: 700;
+		line-height: 1;
+	}
+
+	.audit-process__card span {
+		display: inline-flex;
+		margin-bottom: 1.25rem;
+		padding: 0.35rem 0.52rem;
+		border: 1px solid color-mix(in srgb, var(--color-accent) 35%, var(--color-border));
+		border-radius: 999px;
+		background: var(--color-accent-light);
+		color: var(--color-accent-dark);
+		font-size: 0.72rem;
+		font-weight: 800;
+		line-height: 1;
+	}
+
+	.audit-final {
+		background: var(--color-accent-light);
+	}
+
+	.audit-final__card {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) auto;
+		gap: 2rem;
+		align-items: end;
+		padding: clamp(1.5rem, 4vw, 3rem);
+		border: 1px solid color-mix(in srgb, var(--color-accent) 24%, transparent);
+		border-radius: 20px;
+		background: var(--color-text);
+		box-shadow: 0 24px 60px rgba(15, 23, 42, 0.12);
+	}
+
+	.audit-final .eyebrow {
+		color: color-mix(in srgb, var(--color-accent-light) 84%, var(--color-white));
+	}
+
+	.audit-final h2,
+	.audit-final .lead {
+		color: var(--color-white);
+	}
+
+	.audit-final .lead {
+		opacity: 0.78;
+	}
+
+	.audit-final .button-row {
+		justify-content: flex-end;
+		margin-top: 0;
+	}
+
+	.audit-final .button-secondary {
+		background: transparent;
+		border-color: rgba(255, 255, 255, 0.22);
+		color: var(--color-white);
+	}
+
+	.audit-final .button-secondary:hover {
+		background: rgba(255, 255, 255, 0.08);
+		border-color: rgba(255, 255, 255, 0.38);
+		color: var(--color-white);
+	}
+
+	@media (max-width: 1040px) {
+		.audit-hero__inner,
+		.audit-review__grid,
+		.audit-process__grid {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+
+	@media (max-width: 800px) {
+		.audit-hero__inner,
+		.audit-review__grid,
+		.audit-process__grid,
+		.audit-final__card {
+			grid-template-columns: 1fr;
+		}
+
+		.audit-final .button-row {
+			justify-content: flex-start;
+		}
+	}
+</style>
