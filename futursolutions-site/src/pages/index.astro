@@ -1,5 +1,23 @@
 ---
+import { sanityClient } from '../lib/sanity';
 
+const homepageQuery = `*[_type == "homepage"][0]{
+  title,
+  heroHeading,
+  heroSubheading
+}`;
+
+const homepage = await sanityClient.fetch<{
+  title?: string | null;
+  heroHeading?: string | null;
+  heroSubheading?: string | null;
+} | null>(homepageQuery);
+
+const pageTitle = homepage?.title?.trim() || 'Future Solutions';
+const heroHeading = homepage?.heroHeading?.trim() || 'Future Solutions';
+const heroSubheading =
+  homepage?.heroSubheading?.trim() ||
+  'Content will appear here when connected to Sanity.';
 ---
 
 <html lang="en">
@@ -9,9 +27,10 @@
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>{pageTitle}</title>
 	</head>
 	<body>
-		<h1>Astro</h1>
+		<h1>{heroHeading}</h1>
+		<p>{heroSubheading}</p>
 	</body>
 </html>
