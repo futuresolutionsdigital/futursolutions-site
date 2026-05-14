@@ -1,0 +1,95 @@
+---
+interface Props {
+	heading?: string;
+	description?: string;
+	primaryText?: string;
+	secondaryText?: string;
+}
+
+const {
+	heading = 'Want this system customized for your business?',
+	description = 'Request a website audit and get a clear recommendation based on your business, services, current site, and conversion goals.',
+	primaryText = 'Get This Template Customized',
+	secondaryText = 'Request a Website Audit',
+} = Astro.props;
+---
+
+<section class="section template-final-cta" aria-labelledby="template-final-cta-heading">
+	<div class="site-container">
+		<div class="template-final-cta__card">
+			<div>
+				<p class="eyebrow">Next step</p>
+				<h2 id="template-final-cta-heading">{heading}</h2>
+				<p class="lead">{description}</p>
+			</div>
+			<div class="button-row">
+				<a class="button button-primary" href="/#audit">{primaryText}</a>
+				<a class="button button-secondary" href="/#audit">{secondaryText}</a>
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.template-final-cta {
+		background: var(--color-accent-light);
+	}
+
+	.template-final-cta__card {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) auto;
+		gap: 2rem;
+		align-items: end;
+		padding: clamp(1.5rem, 4vw, 3rem);
+		border: 1px solid color-mix(in srgb, var(--color-accent) 24%, transparent);
+		border-radius: 20px;
+		background: var(--color-text);
+		box-shadow: 0 24px 60px rgba(15, 23, 42, 0.12);
+	}
+
+	.template-final-cta .eyebrow {
+		color: color-mix(in srgb, var(--color-accent-light) 84%, var(--color-white));
+	}
+
+	.template-final-cta h2,
+	.template-final-cta .lead {
+		color: var(--color-white);
+	}
+
+	.template-final-cta h2 {
+		max-width: 760px;
+	}
+
+	.template-final-cta .lead {
+		max-width: 680px;
+		opacity: 0.78;
+	}
+
+	.template-final-cta .button-row {
+		justify-content: flex-end;
+		margin-top: 0;
+	}
+
+	.template-final-cta .button-secondary {
+		background: transparent;
+		border-color: rgba(255, 255, 255, 0.22);
+		color: var(--color-white);
+	}
+
+	.template-final-cta .button-secondary:hover {
+		background: rgba(255, 255, 255, 0.08);
+		border-color: rgba(255, 255, 255, 0.38);
+		color: var(--color-white);
+	}
+
+	@media (max-width: 860px) {
+		.template-final-cta__card {
+			grid-template-columns: 1fr;
+			align-items: start;
+		}
+
+		.template-final-cta .button-row {
+			justify-content: flex-start;
+		}
+	}
+</style>

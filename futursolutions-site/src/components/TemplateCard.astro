@@ -1,0 +1,215 @@
+---
+import type { TemplateSystem } from '../data/templates';
+
+interface Props {
+	template: TemplateSystem;
+	priority?: number;
+}
+
+const { template, priority = 1 } = Astro.props;
+const visibleFeatures = template.features.slice(0, 4);
+---
+
+<article class="template-system-card card">
+	<div class="template-system-card__mockup" aria-hidden="true">
+		<div class="template-system-card__chrome">
+			<span></span>
+			<span></span>
+			<span></span>
+		</div>
+		<div class="template-system-card__screen">
+			<div class="template-system-card__lines">
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>
+			<div class="template-system-card__panel">
+				<span>{String(priority).padStart(2, '0')}</span>
+			</div>
+			<div class="template-system-card__tiles">
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>
+		</div>
+	</div>
+
+	<div class="template-system-card__body">
+		<p class="template-system-card__category">{template.category}</p>
+		<h3>{template.name}</h3>
+		<p>{template.shortDescription}</p>
+		<div class="template-system-card__features" aria-label={`${template.name} features`}>
+			{visibleFeatures.map((feature) => <span>{feature}</span>)}
+		</div>
+		<div class="template-system-card__actions">
+			<a class="button button-primary" href={template.detailUrl}>See Details</a>
+			<span class="template-system-card__demo">Demo Coming Soon</span>
+		</div>
+	</div>
+</article>
+
+<style>
+	.template-system-card {
+		overflow: hidden;
+		border-radius: 24px;
+		box-shadow: 0 20px 54px rgba(15, 23, 42, 0.05);
+	}
+
+	.template-system-card__mockup {
+		padding: 0.9rem;
+		border-bottom: 1px solid var(--color-border);
+		background:
+			linear-gradient(135deg, rgba(230, 240, 239, 0.9), rgba(245, 247, 249, 0.96)),
+			var(--color-bg-secondary);
+	}
+
+	.template-system-card__chrome {
+		display: flex;
+		gap: 0.38rem;
+		padding: 0.7rem 0.85rem;
+		border: 1px solid var(--color-border);
+		border-bottom: 0;
+		border-radius: 16px 16px 0 0;
+		background: rgba(255, 255, 255, 0.84);
+	}
+
+	.template-system-card__chrome span {
+		width: 0.46rem;
+		height: 0.46rem;
+		border-radius: 999px;
+		background: color-mix(in srgb, var(--color-muted) 28%, var(--color-white));
+	}
+
+	.template-system-card__screen {
+		display: grid;
+		grid-template-columns: 1.12fr 0.88fr;
+		gap: 0.8rem;
+		min-height: 190px;
+		padding: 1rem;
+		border: 1px solid var(--color-border);
+		border-radius: 0 0 16px 16px;
+		background: var(--color-white);
+	}
+
+	.template-system-card__lines {
+		display: flex;
+		flex-direction: column;
+		gap: 0.55rem;
+		justify-content: center;
+	}
+
+	.template-system-card__lines span {
+		display: block;
+		height: 0.65rem;
+		border-radius: 999px;
+		background: var(--color-border);
+	}
+
+	.template-system-card__lines span:first-child {
+		width: 42%;
+		background: var(--color-accent-light);
+	}
+
+	.template-system-card__lines span:nth-child(2) {
+		width: 84%;
+		height: 1rem;
+		background: color-mix(in srgb, var(--color-text) 16%, var(--color-border));
+	}
+
+	.template-system-card__lines span:last-child {
+		width: 70%;
+	}
+
+	.template-system-card__panel {
+		display: flex;
+		align-items: flex-end;
+		justify-content: flex-end;
+		min-height: 112px;
+		padding: 0.7rem;
+		border: 1px solid color-mix(in srgb, var(--color-accent) 28%, var(--color-border));
+		border-radius: 14px;
+		background: var(--color-accent-light);
+	}
+
+	.template-system-card__panel span {
+		color: var(--color-accent-dark);
+		font-size: 0.8rem;
+		font-weight: 800;
+	}
+
+	.template-system-card__tiles {
+		grid-column: 1 / -1;
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 0.55rem;
+	}
+
+	.template-system-card__tiles span {
+		min-height: 2.25rem;
+		border: 1px solid var(--color-border);
+		border-radius: 12px;
+		background: var(--color-bg-secondary);
+	}
+
+	.template-system-card__body {
+		padding: 1.4rem;
+	}
+
+	.template-system-card__category {
+		margin-bottom: 0.65rem;
+		color: var(--color-accent-dark);
+		font-size: 0.75rem;
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+	}
+
+	.template-system-card h3 {
+		font-size: 1.25rem;
+		letter-spacing: -0.025em;
+	}
+
+	.template-system-card__body > p:not(.template-system-card__category) {
+		font-size: 0.9375rem;
+		line-height: 1.6;
+	}
+
+	.template-system-card__features {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		margin-top: 1.25rem;
+	}
+
+	.template-system-card__features span,
+	.template-system-card__demo {
+		display: inline-flex;
+		padding: 0.35rem 0.55rem;
+		border: 1px solid var(--color-border);
+		border-radius: 999px;
+		background: var(--color-bg);
+		color: var(--color-muted);
+		font-size: 0.78rem;
+		font-weight: 600;
+		line-height: 1;
+	}
+
+	.template-system-card__actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.75rem;
+		align-items: center;
+		margin-top: 1.5rem;
+	}
+
+	.template-system-card__actions .button {
+		min-height: 2.5rem;
+		padding-inline: 0.9rem;
+	}
+
+	@media (max-width: 700px) {
+		.template-system-card__screen {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

@@ -1,24 +1,5 @@
 ---
-const templates = [
-	{
-		category: 'Association Template',
-		name: 'Medical Association Template',
-		description: 'For professional organizations, healthcare education, advocacy groups, and member communities.',
-		features: ['Events', 'Resources', 'Member navigation', 'Advocacy pages'],
-	},
-	{
-		category: 'Clinic Template',
-		name: 'Med Spa Template',
-		description: 'For aesthetic clinics, wellness brands, weight loss clinics, hormone therapy, and IV therapy.',
-		features: ['Treatment pages', 'Booking flow', 'Trust sections', 'Local SEO'],
-	},
-	{
-		category: 'Provider Template',
-		name: 'Solo Practice Template',
-		description: 'For independent providers, nurse practitioners, functional medicine clinics, and boutique healthcare brands.',
-		features: ['Provider trust', 'Service clarity', 'Patient education', 'Lead capture'],
-	},
-];
+import { templateSystems } from '../data/templates';
 ---
 
 <section id="templates" class="section section-muted template-preview" aria-labelledby="template-preview-heading">
@@ -32,7 +13,7 @@ const templates = [
 		</div>
 
 		<div class="template-preview__grid">
-			{templates.map((template, index) => (
+			{templateSystems.map((template, index) => (
 				<article class="template-card card">
 					<div class="template-card__mockup" aria-hidden="true">
 						<div class="template-card__topbar">
@@ -60,14 +41,17 @@ const templates = [
 					<div class="template-card__content">
 						<p class="template-card__category">{template.category}</p>
 						<h3>{template.name}</h3>
-						<p>{template.description}</p>
+						<p>{template.shortDescription}</p>
 						<div class="template-card__features" aria-label={`${template.name} features`}>
-							{template.features.map((feature) => <span>{feature}</span>)}
+							{template.features.slice(0, 4).map((feature) => <span>{feature}</span>)}
 						</div>
-						<a class="template-card__link" href="#templates">View Demo</a>
+						<a class="template-card__link" href={template.detailUrl}>See Details</a>
 					</div>
 				</article>
 			))}
+		</div>
+		<div class="template-preview__cta">
+			<a class="button button-secondary" href="/templates">View Templates</a>
 		</div>
 	</div>
 </section>
@@ -249,6 +233,10 @@ const templates = [
 
 	.template-card__link:hover {
 		color: var(--color-accent-dark);
+	}
+
+	.template-preview__cta {
+		margin-top: 2rem;
 	}
 
 	@media (max-width: 1040px) {

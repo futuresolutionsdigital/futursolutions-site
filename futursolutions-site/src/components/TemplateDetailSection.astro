@@ -1,0 +1,123 @@
+---
+interface Item {
+	title?: string;
+	text: string;
+}
+
+interface Props {
+	id?: string;
+	eyebrow?: string;
+	heading: string;
+	description?: string;
+	items: Array<string | Item>;
+	variant?: 'default' | 'muted' | 'checklist';
+	columns?: 2 | 3 | 4;
+}
+
+const { id, eyebrow, heading, description, items, variant = 'default', columns = 3 } = Astro.props;
+const headingId = `${heading
+	.toLowerCase()
+	.replace(/[^a-z0-9]+/g, '-')
+	.replace(/^-|-$/g, '')}-heading`;
+const sectionClass = ['template-detail-section', variant === 'muted' ? 'section-muted' : ''].filter(Boolean).join(' ');
+const cardClass = ['card', 'template-detail-section__card', variant === 'checklist' ? 'template-detail-section__card--check' : '']
+	.filter(Boolean)
+	.join(' ');
+---
+
+<section id={id} class={`section ${sectionClass}`} aria-labelledby={headingId}>
+	<div class="site-container">
+		<div class="template-detail-section__intro">
+			{eyebrow && <p class="eyebrow">{eyebrow}</p>}
+			<h2 id={headingId}>{heading}</h2>
+			{description && <p class="lead">{description}</p>}
+		</div>
+
+		<div class={`template-detail-section__grid template-detail-section__grid--${columns}`}>
+			{items.map((item) => {
+				const normalized = typeof item === 'string' ? { text: item } : item;
+				return (
+					<article class={cardClass}>
+						{variant === 'checklist' && <span aria-hidden="true">✓</span>}
+						{normalized.title && <h3>{normalized.title}</h3>}
+						<p>{normalized.text}</p>
+					</article>
+				);
+			})}
+		</div>
+	</div>
+</section>
+
+<style>
+	.template-detail-section__intro {
+		max-width: 780px;
+	}
+
+	.template-detail-section__grid {
+		display: grid;
+		gap: 1rem;
+		margin-top: clamp(2rem, 4vw, 3rem);
+	}
+
+	.template-detail-section__grid--2 {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	.template-detail-section__grid--3 {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+
+	.template-detail-section__grid--4 {
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+	}
+
+	.template-detail-section__card {
+		padding: 1.25rem;
+	}
+
+	.template-detail-section__card h3 {
+		font-size: 1.1rem;
+		letter-spacing: -0.02em;
+	}
+
+	.template-detail-section__card p {
+		font-size: 0.9375rem;
+		line-height: 1.6;
+	}
+
+	.template-detail-section__card--check {
+		display: grid;
+		grid-template-columns: auto 1fr;
+		gap: 0.8rem;
+		align-items: start;
+	}
+
+	.template-detail-section__card--check span {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 1.35rem;
+		height: 1.35rem;
+		margin-top: 0.1rem;
+		border-radius: 999px;
+		background: var(--color-accent-light);
+		color: var(--color-accent-dark);
+		font-size: 0.78rem;
+		font-weight: 800;
+	}
+
+	@media (max-width: 920px) {
+		.template-detail-section__grid--3,
+		.template-detail-section__grid--4 {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+
+	@media (max-width: 620px) {
+		.template-detail-section__grid--2,
+		.template-detail-section__grid--3,
+		.template-detail-section__grid--4 {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

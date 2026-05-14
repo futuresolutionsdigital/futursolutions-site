@@ -1,0 +1,210 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import TemplateDetailHero from '../../components/TemplateDetailHero.astro';
+import TemplateDetailSection from '../../components/TemplateDetailSection.astro';
+import TemplateFinalCTA from '../../components/TemplateFinalCTA.astro';
+import { templateSystems, type TemplateSystem } from '../../data/templates';
+
+export function getStaticPaths() {
+	return templateSystems.map((template) => ({
+		params: { slug: template.slug },
+		props: { template },
+	}));
+}
+
+interface Props {
+	template: TemplateSystem;
+}
+
+const { template } = Astro.props;
+const pageTitle = `${template.name} | Future Solutions`;
+const pageDescription = template.shortDescription;
+const canonicalUrl = `https://futursolutions.vercel.app${template.detailUrl}`;
+const backendFlow = ['Form Submission', 'CRM Contact', 'Booking Request', 'Follow-Up', 'Pipeline'];
+const processSteps = [
+	'Choose the template',
+	'Customize brand, content, and services',
+	'Connect SEO and backend systems',
+	'Launch and optimize',
+];
+---
+
+<BaseLayout
+	title={pageTitle}
+	description={pageDescription}
+	canonicalUrl={canonicalUrl}
+	ogTitle={pageTitle}
+	ogDescription={pageDescription}
+	ogUrl={canonicalUrl}
+>
+	<TemplateDetailHero template={template} />
+
+	<TemplateDetailSection
+		eyebrow="Audience"
+		heading="Who it’s for"
+		description={template.audience}
+		items={template.businessTypes}
+		columns={3}
+	/>
+
+	<TemplateDetailSection
+		variant="muted"
+		eyebrow="Problems solved"
+		heading="What this system helps fix"
+		description="The structure is designed to address common gaps that keep healthcare websites from earning trust, being found, and converting qualified visitors."
+		items={template.problemsSolved}
+		columns={2}
+	/>
+
+	<TemplateDetailSection
+		eyebrow="Included pages"
+		heading="Core pages included"
+		description="Each page is planned as part of a practical website system, not as a disconnected design mockup."
+		items={template.includedPages}
+		variant="checklist"
+		columns={3}
+	/>
+
+	<TemplateDetailSection
+		variant="muted"
+		eyebrow="Conversion"
+		heading="Conversion features"
+		items={template.conversionFeatures}
+		columns={2}
+	/>
+
+	<TemplateDetailSection
+		eyebrow="Local visibility"
+		heading="SEO and local visibility features"
+		items={template.seoFeatures}
+		variant="checklist"
+		columns={2}
+	/>
+
+	<section class="section section-muted detail-backend" aria-labelledby="detail-backend-heading">
+		<div class="site-container">
+			<div class="detail-backend__intro">
+				<p class="eyebrow">Backend system add-ons</p>
+				<h2 id="detail-backend-heading">Ready for a backend lead system when you are.</h2>
+				<p class="lead">
+					This template can later connect to GoHighLevel for lead capture, booking, CRM follow-up, and pipeline tracking.
+				</p>
+			</div>
+			<div class="detail-backend__flow" aria-label="Backend workflow">
+				{backendFlow.map((step, index) => (
+					<div class="card detail-backend__step">
+						<span>{String(index + 1).padStart(2, '0')}</span>
+						<p>{step}</p>
+					</div>
+				))}
+			</div>
+			<div class="detail-backend__features">
+				{template.backendFeatures.map((feature) => <span>{feature}</span>)}
+			</div>
+		</div>
+	</section>
+
+	<section class="section detail-process" aria-labelledby="detail-process-heading">
+		<div class="site-container">
+			<div class="detail-process__intro">
+				<p class="eyebrow">Customization process</p>
+				<h2 id="detail-process-heading">From template to launch-ready system.</h2>
+			</div>
+			<div class="detail-process__grid">
+				{processSteps.map((step, index) => (
+					<article class="card detail-process__card">
+						<span>{String(index + 1).padStart(2, '0')}</span>
+						<h3>{step}</h3>
+					</article>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<TemplateFinalCTA />
+</BaseLayout>
+
+<style>
+	.detail-backend__intro,
+	.detail-process__intro {
+		max-width: 780px;
+	}
+
+	.detail-backend__flow,
+	.detail-process__grid {
+		display: grid;
+		gap: 1rem;
+		margin-top: clamp(2rem, 4vw, 3rem);
+	}
+
+	.detail-backend__flow {
+		grid-template-columns: repeat(5, minmax(0, 1fr));
+	}
+
+	.detail-process__grid {
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+	}
+
+	.detail-backend__step,
+	.detail-process__card {
+		padding: 1.25rem;
+	}
+
+	.detail-backend__step span,
+	.detail-process__card span {
+		display: inline-flex;
+		margin-bottom: 1.25rem;
+		padding: 0.35rem 0.52rem;
+		border: 1px solid color-mix(in srgb, var(--color-accent) 35%, var(--color-border));
+		border-radius: 999px;
+		background: var(--color-accent-light);
+		color: var(--color-accent-dark);
+		font-size: 0.72rem;
+		font-weight: 800;
+		line-height: 1;
+	}
+
+	.detail-backend__step p {
+		margin: 0;
+		color: var(--color-text);
+		font-size: 0.95rem;
+		font-weight: 700;
+	}
+
+	.detail-process__card h3 {
+		font-size: 1.1rem;
+		letter-spacing: -0.02em;
+	}
+
+	.detail-backend__features {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.55rem;
+		margin-top: 1.5rem;
+	}
+
+	.detail-backend__features span {
+		display: inline-flex;
+		padding: 0.42rem 0.65rem;
+		border: 1px solid var(--color-border);
+		border-radius: 999px;
+		background: var(--color-white);
+		color: var(--color-muted);
+		font-size: 0.8125rem;
+		font-weight: 700;
+	}
+
+	@media (max-width: 1060px) {
+		.detail-backend__flow,
+		.detail-process__grid {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+
+	@media (max-width: 620px) {
+		.detail-backend__flow,
+		.detail-process__grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>
