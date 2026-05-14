@@ -1,3 +1,51 @@
-<footer>
-	<p>&copy; {new Date().getFullYear()} Future Solutions. All rights reserved.</p>
+<footer class="site-footer">
+	<div class="site-container site-footer__inner">
+		<div>
+			<a class="site-footer__brand" href="/">Future Solutions</a>
+			<p>Modern healthcare websites and backend systems.</p>
+		</div>
+		<p class="site-footer__copyright">&copy; {new Date().getFullYear()} Future Solutions. All rights reserved.</p>
+	</div>
 </footer>
+
+<style>
+	.site-footer {
+		border-top: 1px solid var(--color-border);
+		background: var(--color-bg);
+	}
+
+	.site-footer__inner {
+		display: flex;
+		align-items: flex-start;
+		justify-content: space-between;
+		gap: 2rem;
+		padding-block: 2.5rem;
+	}
+
+	.site-footer__brand {
+		display: inline-flex;
+		margin-bottom: 0.5rem;
+		color: var(--color-text);
+		font-weight: 600;
+		letter-spacing: -0.02em;
+	}
+
+	.site-footer p {
+		font-size: 0.9375rem;
+		line-height: 1.55;
+	}
+
+	.site-footer__copyright {
+		text-align: right;
+	}
+
+	@media (max-width: 720px) {
+		.site-footer__inner {
+			flex-direction: column;
+		}
+
+		.site-footer__copyright {
+			text-align: left;
+		}
+	}
+</style>
