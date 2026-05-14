@@ -1,0 +1,77 @@
+---
+interface Props {
+	heading: string;
+	items: string[];
+	variant?: 'default' | 'muted';
+}
+
+const { heading, items, variant = 'default' } = Astro.props;
+---
+
+<section class={`section service-included ${variant === 'muted' ? 'section-muted' : ''}`} aria-labelledby="service-included-heading">
+	<div class="site-container">
+		<div class="service-included__intro">
+			<p class="eyebrow">What’s included</p>
+			<h2 id="service-included-heading">{heading}</h2>
+		</div>
+		<div class="service-included__grid">
+			{items.map((item) => (
+				<article class="card service-included__card">
+					<span aria-hidden="true">✓</span>
+					<p>{item}</p>
+				</article>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+	.service-included__intro {
+		max-width: 780px;
+	}
+
+	.service-included__grid {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 1rem;
+		margin-top: clamp(2rem, 4vw, 3rem);
+	}
+
+	.service-included__card {
+		display: grid;
+		grid-template-columns: auto 1fr;
+		gap: 0.8rem;
+		align-items: start;
+		padding: 1.25rem;
+	}
+
+	.service-included__card span {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 1.35rem;
+		height: 1.35rem;
+		margin-top: 0.1rem;
+		border: 1px solid color-mix(in srgb, var(--color-accent) 35%, var(--color-border));
+		border-radius: 999px;
+		background: var(--color-accent-light);
+		color: var(--color-accent-dark);
+		font-size: 0.72rem;
+		font-weight: 800;
+		line-height: 1;
+	}
+
+	.service-included__card p {
+		margin: 0;
+		color: var(--color-text);
+		font-size: 0.9375rem;
+		font-weight: 700;
+		line-height: 1.5;
+	}
+
+	@media (max-width: 680px) {
+		.service-included__grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

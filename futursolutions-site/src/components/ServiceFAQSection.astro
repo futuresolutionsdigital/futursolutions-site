@@ -1,0 +1,59 @@
+---
+import type { ServiceFAQ } from '../data/serviceDetails';
+
+interface Props {
+	faqs: ServiceFAQ[];
+}
+
+const { faqs } = Astro.props;
+---
+
+<section class="section section-muted service-faq" aria-labelledby="service-faq-heading">
+	<div class="site-container">
+		<div class="service-faq__intro">
+			<p class="eyebrow">FAQ</p>
+			<h2 id="service-faq-heading">Common questions.</h2>
+		</div>
+		<div class="service-faq__grid">
+			{faqs.map((faq) => (
+				<article class="card service-faq__card">
+					<h3>{faq.question}</h3>
+					<p>{faq.answer}</p>
+				</article>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+	.service-faq__intro {
+		max-width: 780px;
+	}
+
+	.service-faq__grid {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 1rem;
+		margin-top: clamp(2rem, 4vw, 3rem);
+	}
+
+	.service-faq__card {
+		padding: 1.25rem;
+	}
+
+	.service-faq__card h3 {
+		font-size: 1.1rem;
+		letter-spacing: -0.02em;
+	}
+
+	.service-faq__card p {
+		font-size: 0.9375rem;
+		line-height: 1.6;
+	}
+
+	@media (max-width: 720px) {
+		.service-faq__grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

@@ -20,8 +20,8 @@ export const serviceOfferings: ServiceOffering[] = [
 		bestFor: 'Practices that want to launch quickly with a professional foundation.',
 		includes: ['Template customization', 'Core page setup', 'Basic SEO foundation', 'Trust and conversion sections', 'Launch support'],
 		whyItMatters: 'You start from a healthcare-specific structure instead of a blank page or generic theme.',
-		ctaLabel: 'Explore Templates',
-		ctaHref: '/templates',
+		ctaLabel: 'View Template Setup',
+		ctaHref: '/services/template-setup',
 	},
 	{
 		slug: 'custom-website-system',
@@ -38,8 +38,8 @@ export const serviceOfferings: ServiceOffering[] = [
 			'Conversion-focused layout',
 		],
 		whyItMatters: 'Your site is structured around your actual business, not forced into a generic layout.',
-		ctaLabel: 'Request a Website Audit',
-		ctaHref: '/audit',
+		ctaLabel: 'View Custom Websites',
+		ctaHref: '/services/custom-healthcare-websites',
 	},
 	{
 		slug: 'seo-local-visibility-foundation',
@@ -59,7 +59,7 @@ export const serviceOfferings: ServiceOffering[] = [
 		],
 		whyItMatters: 'Visibility starts with clear structure, useful pages, and search-aware content.',
 		ctaLabel: 'Improve Local Visibility',
-		ctaHref: '/audit',
+		ctaHref: '/seo',
 	},
 	{
 		slug: 'backend-system-setup',
@@ -71,7 +71,7 @@ export const serviceOfferings: ServiceOffering[] = [
 		includes: ['Lead capture flow', 'Booking path', 'CRM contact creation', 'Follow-up sequence planning', 'Pipeline structure'],
 		whyItMatters: 'Most websites collect leads. A real system manages them.',
 		ctaLabel: 'Set Up Your Backend System',
-		ctaHref: '/audit',
+		ctaHref: '/backend',
 	},
 	{
 		slug: 'ongoing-optimization',
@@ -84,6 +84,6 @@ export const serviceOfferings: ServiceOffering[] = [
 		includes: ['Website updates', 'New pages', 'SEO improvements', 'Content publishing', 'Conversion refinements', 'Technical maintenance'],
 		whyItMatters: 'Your website should evolve with your business, offers, and audience.',
 		ctaLabel: 'View Optimization Options',
-		ctaHref: '/audit',
+		ctaHref: '/services/ongoing-optimization',
 	},
 ];

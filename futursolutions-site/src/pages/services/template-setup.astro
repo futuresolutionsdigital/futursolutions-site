@@ -1,0 +1,238 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import RelatedServicesSection from '../../components/RelatedServicesSection.astro';
+import ServiceDetailHero from '../../components/ServiceDetailHero.astro';
+import ServiceFAQSection from '../../components/ServiceFAQSection.astro';
+import ServiceIncludedSection from '../../components/ServiceIncludedSection.astro';
+import { serviceDetails } from '../../data/serviceDetails';
+
+const service = serviceDetails['template-setup'];
+const canonicalUrl = `https://futursolutions.vercel.app${service.canonicalPath}`;
+const processSteps = [
+	{ step: '01', title: 'Choose the template', text: 'Start with the system that best matches your practice, audience, and service model.' },
+	{ step: '02', title: 'Customize the foundation', text: 'Adjust brand, content, imagery, services, and trust sections around your business.' },
+	{ step: '03', title: 'Prepare for launch', text: 'Set up core pages, basic SEO, mobile behavior, and clear conversion paths.' },
+	{ step: '04', title: 'Improve over time', text: 'Add content, SEO refinements, and backend system connections as the business grows.' },
+];
+---
+
+<BaseLayout title={service.title} description={service.description} canonicalUrl={canonicalUrl} ogTitle={service.title} ogDescription={service.description} ogUrl={canonicalUrl}>
+	<ServiceDetailHero
+		eyebrow={service.eyebrow}
+		heading={service.heading}
+		supportingCopy={service.supportingCopy}
+		primaryCta={service.primaryCta}
+		secondaryCta={service.secondaryCta}
+	/>
+
+	<section class="section section-muted service-detail-section" aria-labelledby="service-problem-heading">
+		<div class="site-container">
+			<div class="service-detail-section__intro">
+				<p class="eyebrow">Problem</p>
+				<h2 id="service-problem-heading">{service.problemHeading}</h2>
+			</div>
+			<div class="service-detail-grid service-detail-grid--4">
+				{service.problems.map((problem) => (
+					<article class="card service-detail-card">
+						<p>{problem}</p>
+					</article>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<section class="section service-detail-section" aria-labelledby="service-solution-heading">
+		<div class="site-container">
+			<div class="service-detail-section__intro">
+				<p class="eyebrow">Approach</p>
+				<h2 id="service-solution-heading">{service.solutionHeading}</h2>
+				<p class="lead">{service.solutionCopy}</p>
+			</div>
+		</div>
+	</section>
+
+	<ServiceIncludedSection heading="What’s included in template setup." items={service.included} variant="muted" />
+
+	<section class="section service-detail-section" aria-labelledby="service-audience-heading">
+		<div class="site-container">
+			<div class="service-detail-section__intro">
+				<p class="eyebrow">Best fit</p>
+				<h2 id="service-audience-heading">Who it’s for.</h2>
+			</div>
+			<div class="service-detail-chips">
+				{service.whoItsFor.map((item) => <span>{item}</span>)}
+			</div>
+		</div>
+	</section>
+
+	<section class="section section-muted service-detail-section" aria-labelledby="service-process-heading">
+		<div class="site-container">
+			<div class="service-detail-section__intro">
+				<p class="eyebrow">Process</p>
+				<h2 id="service-process-heading">How the work comes together.</h2>
+			</div>
+			<div class="service-detail-grid service-detail-grid--4">
+				{processSteps.map((step) => (
+					<article class="card service-process-card">
+						<span>{step.step}</span>
+						<h3>{step.title}</h3>
+						<p>{step.text}</p>
+					</article>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<RelatedServicesSection services={service.relatedServices} />
+	<ServiceFAQSection faqs={service.faqs} />
+
+	<section class="section service-detail-final" aria-labelledby="service-final-heading">
+		<div class="site-container">
+			<div class="service-detail-final__card">
+				<div>
+					<p class="eyebrow">Next step</p>
+					<h2 id="service-final-heading">{service.finalHeading}</h2>
+					<p class="lead">{service.finalCopy}</p>
+				</div>
+				<div class="button-row">
+					<a class="button button-primary" href={service.finalPrimaryCta.href}>{service.finalPrimaryCta.label}</a>
+					<a class="button button-secondary" href={service.finalSecondaryCta.href}>{service.finalSecondaryCta.label}</a>
+				</div>
+			</div>
+		</div>
+	</section>
+</BaseLayout>
+
+<style>
+	.service-detail-section__intro {
+		max-width: 780px;
+	}
+
+	.service-detail-grid {
+		display: grid;
+		gap: 1rem;
+		margin-top: clamp(2rem, 4vw, 3rem);
+	}
+
+	.service-detail-grid--4 {
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+	}
+
+	.service-detail-card,
+	.service-process-card {
+		padding: 1.25rem;
+	}
+
+	.service-detail-card p {
+		color: var(--color-text);
+		font-size: 0.9375rem;
+		font-weight: 700;
+		line-height: 1.55;
+	}
+
+	.service-process-card span {
+		display: inline-flex;
+		width: fit-content;
+		margin-bottom: 1.25rem;
+		padding: 0.35rem 0.52rem;
+		border: 1px solid color-mix(in srgb, var(--color-accent) 35%, var(--color-border));
+		border-radius: 999px;
+		background: var(--color-accent-light);
+		color: var(--color-accent-dark);
+		font-size: 0.72rem;
+		font-weight: 800;
+		line-height: 1;
+	}
+
+	.service-process-card h3 {
+		font-size: 1.1rem;
+		letter-spacing: -0.02em;
+	}
+
+	.service-process-card p {
+		font-size: 0.9375rem;
+		line-height: 1.6;
+	}
+
+	.service-detail-chips {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.7rem;
+		margin-top: 2rem;
+	}
+
+	.service-detail-chips span {
+		display: inline-flex;
+		padding: 0.55rem 0.75rem;
+		border: 1px solid color-mix(in srgb, var(--color-accent) 28%, var(--color-border));
+		border-radius: 999px;
+		background: var(--color-white);
+		color: var(--color-accent-dark);
+		font-size: 0.875rem;
+		font-weight: 700;
+		line-height: 1;
+	}
+
+	.service-detail-final {
+		background: var(--color-accent-light);
+	}
+
+	.service-detail-final__card {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) auto;
+		gap: 2rem;
+		align-items: end;
+		padding: clamp(1.5rem, 4vw, 3rem);
+		border: 1px solid color-mix(in srgb, var(--color-accent) 24%, transparent);
+		border-radius: 20px;
+		background: var(--color-text);
+		box-shadow: 0 24px 60px rgba(15, 23, 42, 0.12);
+	}
+
+	.service-detail-final .eyebrow {
+		color: color-mix(in srgb, var(--color-accent-light) 84%, var(--color-white));
+	}
+
+	.service-detail-final h2,
+	.service-detail-final .lead {
+		color: var(--color-white);
+	}
+
+	.service-detail-final .lead {
+		opacity: 0.78;
+	}
+
+	.service-detail-final .button-row {
+		justify-content: flex-end;
+		margin-top: 0;
+	}
+
+	.service-detail-final .button-secondary {
+		background: transparent;
+		border-color: rgba(255, 255, 255, 0.22);
+		color: var(--color-white);
+	}
+
+	.service-detail-final .button-secondary:hover {
+		background: rgba(255, 255, 255, 0.08);
+		border-color: rgba(255, 255, 255, 0.38);
+		color: var(--color-white);
+	}
+
+	@media (max-width: 1040px) {
+		.service-detail-grid--4 {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+
+	@media (max-width: 720px) {
+		.service-detail-grid--4,
+		.service-detail-final__card {
+			grid-template-columns: 1fr;
+		}
+
+		.service-detail-final .button-row {
+			justify-content: flex-start;
+		}
+	}
+</style>

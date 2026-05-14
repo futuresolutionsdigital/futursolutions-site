@@ -1,0 +1,51 @@
+---
+import type { ServiceLink } from '../data/serviceDetails';
+
+interface Props {
+	eyebrow: string;
+	heading: string;
+	supportingCopy: string;
+	primaryCta: ServiceLink;
+	secondaryCta: ServiceLink;
+}
+
+const { eyebrow, heading, supportingCopy, primaryCta, secondaryCta } = Astro.props;
+---
+
+<section class="section service-detail-hero" aria-labelledby="service-detail-heading">
+	<div class="site-container service-detail-hero__inner">
+		<p class="eyebrow">{eyebrow}</p>
+		<h1 id="service-detail-heading">{heading}</h1>
+		<p class="lead">{supportingCopy}</p>
+		<div class="button-row">
+			<a class="button button-primary" href={primaryCta.href}>{primaryCta.label}</a>
+			<a class="button button-secondary" href={secondaryCta.href}>{secondaryCta.label}</a>
+		</div>
+	</div>
+</section>
+
+<style>
+	.service-detail-hero {
+		position: relative;
+		overflow: hidden;
+		padding-block: clamp(5rem, 8vw, 8rem);
+	}
+
+	.service-detail-hero::before {
+		position: absolute;
+		inset: 0;
+		z-index: -1;
+		background:
+			radial-gradient(circle at 76% 14%, rgba(95, 143, 139, 0.12), transparent 30%),
+			linear-gradient(180deg, var(--color-white) 0%, var(--color-bg) 72%);
+		content: '';
+	}
+
+	.service-detail-hero__inner {
+		max-width: 900px;
+	}
+
+	.service-detail-hero h1 {
+		max-width: 920px;
+	}
+</style>
