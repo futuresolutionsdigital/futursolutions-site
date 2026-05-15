@@ -45,7 +45,16 @@ import { templateSystems } from '../data/templates';
 						<div class="template-card__features" aria-label={`${template.name} features`}>
 							{template.features.slice(0, 4).map((feature) => <span>{feature}</span>)}
 						</div>
-						<a class="template-card__link" href={template.detailUrl}>See Details</a>
+						<div class="template-card__actions">
+							<a class="template-card__link" href={template.detailUrl}>See Details</a>
+							{
+								template.demoUrl ? (
+									<a class="template-card__link template-card__link--demo" href={template.demoUrl}>View Live Demo</a>
+								) : (
+									<span class="template-card__demo-status">Demo Coming Soon</span>
+								)
+							}
+						</div>
 					</div>
 				</article>
 			))}
@@ -223,9 +232,16 @@ import { templateSystems } from '../data/templates';
 		line-height: 1;
 	}
 
+	.template-card__actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.8rem;
+		align-items: center;
+		margin-top: 1.35rem;
+	}
+
 	.template-card__link {
 		display: inline-flex;
-		margin-top: 1.35rem;
 		color: var(--color-text);
 		font-size: 0.9375rem;
 		font-weight: 700;
@@ -233,6 +249,22 @@ import { templateSystems } from '../data/templates';
 
 	.template-card__link:hover {
 		color: var(--color-accent-dark);
+	}
+
+	.template-card__link--demo {
+		color: var(--color-accent-dark);
+	}
+
+	.template-card__demo-status {
+		display: inline-flex;
+		padding: 0.35rem 0.55rem;
+		border: 1px solid var(--color-border);
+		border-radius: 999px;
+		background: var(--color-bg);
+		color: var(--color-muted);
+		font-size: 0.78rem;
+		font-weight: 600;
+		line-height: 1;
 	}
 
 	.template-preview__cta {

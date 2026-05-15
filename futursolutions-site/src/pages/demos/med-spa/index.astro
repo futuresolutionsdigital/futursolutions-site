@@ -1,0 +1,417 @@
+---
+import DemoLayout from '../../../layouts/DemoLayout.astro';
+
+const treatments = [
+	{
+		title: 'Injectables',
+		text: 'Thoughtful consultation-based aesthetic treatments designed around natural-looking results.',
+	},
+	{
+		title: 'Medical Weight Loss',
+		text: 'Structured support for clients seeking a clearer wellness path.',
+	},
+	{
+		title: 'Hormone Support',
+		text: 'Education-focused care pathways for clients exploring hormone balance.',
+	},
+	{
+		title: 'IV Therapy',
+		text: 'Wellness-focused treatments presented with clear expectations and next steps.',
+	},
+];
+
+const trustCards = ['Clear treatment education', 'Repeated booking prompts', 'Calm premium design', 'Local visibility-ready service structure'];
+const flowSteps = ['Treatment interest', 'Consultation request', 'Intake questions', 'Follow-up'];
+---
+
+<DemoLayout
+	title="Luma Aesthetics Demo | Future Solutions"
+	description="A Future Solutions med spa website demo for treatment-based health and wellness brands."
+	canonicalUrl="https://futursolutions.vercel.app/demos/med-spa/"
+>
+	<section class="luma-hero" aria-labelledby="luma-heading">
+		<div class="site-container luma-hero__inner">
+			<div>
+				<p class="luma-eyebrow">Med Spa Website Demo</p>
+				<h1 id="luma-heading">Modern aesthetic care with a calm, clinical touch.</h1>
+				<p class="luma-lead">
+					Luma Aesthetics is a fictional med spa brand designed to show how a treatment-based wellness website can build trust, explain services clearly, and guide visitors toward booking.
+				</p>
+				<div class="luma-button-row">
+					<a class="luma-button luma-button--primary" href="/demos/med-spa/contact">Book Consultation</a>
+					<a class="luma-button luma-button--secondary" href="/demos/med-spa/treatments">View Treatments</a>
+				</div>
+				<p class="luma-trust-line">
+					Demo template for med spas, aesthetic clinics, weight loss clinics, hormone therapy, IV therapy, and wellness studios.
+				</p>
+			</div>
+			<div class="luma-hero__panel" aria-hidden="true">
+				<div class="luma-hero__card">
+					<span>Consultation Path</span>
+					<strong>Treatment interest captured</strong>
+					<p>Service education · Consultation request · Follow-up ready</p>
+				</div>
+				<div class="luma-hero__metric">
+					<span>Premium care, clearly explained.</span>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="luma-section luma-section--muted" aria-labelledby="treatment-preview-heading">
+		<div class="site-container">
+			<div class="luma-section__intro">
+				<p class="luma-eyebrow">Treatment clarity</p>
+				<h2 id="treatment-preview-heading">Treatments organized around what visitors need to understand.</h2>
+			</div>
+			<div class="luma-grid luma-grid--4">
+				{treatments.map((treatment) => (
+					<article class="luma-card">
+						<h3>{treatment.title}</h3>
+						<p>{treatment.text}</p>
+					</article>
+				))}
+			</div>
+			<a class="luma-link-cta" href="/demos/med-spa/treatments">View All Treatments</a>
+		</div>
+	</section>
+
+	<section class="luma-section" aria-labelledby="trust-heading">
+		<div class="site-container">
+			<div class="luma-section__intro">
+				<p class="luma-eyebrow">Trust system</p>
+				<h2 id="trust-heading">Built to earn trust before the consultation.</h2>
+			</div>
+			<div class="luma-grid luma-grid--4">
+				{trustCards.map((card) => (
+					<article class="luma-card luma-card--compact">
+						<span aria-hidden="true"></span>
+						<h3>{card}</h3>
+					</article>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<section id="about" class="luma-section luma-about" aria-labelledby="about-heading">
+		<div class="site-container luma-about__card">
+			<p class="luma-eyebrow">About the demo</p>
+			<h2 id="about-heading">A calmer way to present aesthetic care.</h2>
+			<p class="luma-lead">
+				This demo shows how a med spa website can feel premium without becoming cluttered, exaggerated, or overly sales-driven. The structure gives visitors enough information to feel confident taking the next step.
+			</p>
+		</div>
+	</section>
+
+	<section class="luma-section luma-section--muted" aria-labelledby="conversion-heading">
+		<div class="site-container">
+			<div class="luma-section__intro">
+				<p class="luma-eyebrow">Conversion flow</p>
+				<h2 id="conversion-heading">Make the next step obvious.</h2>
+				<p class="luma-lead">
+					Every major section gives visitors a clear path toward consultation while keeping the tone calm and professional.
+				</p>
+			</div>
+			<div class="luma-flow" aria-label="Demo conversion flow">
+				{flowSteps.map((step, index) => (
+					<div class="luma-flow__step">
+						<span>{String(index + 1).padStart(2, '0')}</span>
+						<p>{step}</p>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<section class="luma-section luma-final" aria-labelledby="final-heading">
+		<div class="site-container luma-final__card">
+			<div>
+				<p class="luma-eyebrow">Future Solutions template</p>
+				<h2 id="final-heading">Want this med spa system customized for your brand?</h2>
+				<p class="luma-lead">
+					This demo can be adapted around your services, brand, local visibility goals, and backend lead system.
+				</p>
+			</div>
+			<div class="luma-button-row">
+				<a class="luma-button luma-button--primary" href="/audit">Get This Template Customized</a>
+				<a class="luma-button luma-button--secondary" href="/templates/med-spa">Back to Template Details</a>
+			</div>
+		</div>
+	</section>
+</DemoLayout>
+
+<style>
+	.luma-hero,
+	.luma-section {
+		padding-block: clamp(4.5rem, 8vw, 7rem);
+	}
+
+	.luma-hero {
+		background:
+			radial-gradient(circle at 82% 12%, rgba(143, 111, 99, 0.16), transparent 30%),
+			linear-gradient(180deg, #ffffff 0%, #fbfaf7 78%);
+	}
+
+	.luma-hero__inner {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) minmax(340px, 0.72fr);
+		gap: clamp(3rem, 6vw, 5rem);
+		align-items: center;
+	}
+
+	.luma-eyebrow {
+		margin-bottom: 1rem;
+		color: #8f6f63;
+		font-size: 0.8125rem;
+		font-weight: 800;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+	}
+
+	.luma-hero h1,
+	.luma-section h2 {
+		color: #17202a;
+	}
+
+	.luma-hero h1 {
+		max-width: 11.5ch;
+		font-size: clamp(3.1rem, 2.4rem + 3vw, 4.6rem);
+	}
+
+	.luma-lead {
+		max-width: 700px;
+		color: #64706f;
+		font-size: clamp(1.08rem, 1rem + 0.32vw, 1.25rem);
+		line-height: 1.65;
+	}
+
+	.luma-button-row {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.875rem;
+		margin-top: 2rem;
+	}
+
+	.luma-button {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 2.875rem;
+		padding: 0.8rem 1.1rem;
+		border: 1px solid transparent;
+		border-radius: 999px;
+		font-size: 0.9375rem;
+		font-weight: 800;
+		line-height: 1;
+	}
+
+	.luma-button--primary {
+		background: #8f6f63;
+		color: #ffffff;
+	}
+
+	.luma-button--primary:hover {
+		background: #6f554b;
+		color: #ffffff;
+	}
+
+	.luma-button--secondary {
+		border-color: rgba(42, 54, 65, 0.12);
+		background: #ffffff;
+		color: #17202a;
+	}
+
+	.luma-button--secondary:hover {
+		background: #efe7e1;
+		color: #6f554b;
+	}
+
+	.luma-trust-line {
+		max-width: 620px;
+		margin-top: 1.25rem;
+		color: #64706f;
+		font-size: 0.9375rem;
+	}
+
+	.luma-hero__panel {
+		display: grid;
+		gap: 1rem;
+	}
+
+	.luma-hero__card,
+	.luma-hero__metric,
+	.luma-card,
+	.luma-flow__step {
+		border: 1px solid rgba(42, 54, 65, 0.1);
+		border-radius: 22px;
+		background: #ffffff;
+		box-shadow: 0 20px 52px rgba(42, 54, 65, 0.05);
+	}
+
+	.luma-hero__card {
+		min-height: 320px;
+		padding: 1.5rem;
+		background:
+			linear-gradient(135deg, rgba(239, 231, 225, 0.84), rgba(255, 255, 255, 0.9)),
+			#ffffff;
+	}
+
+	.luma-hero__card span,
+	.luma-hero__metric span {
+		color: #8f6f63;
+		font-size: 0.8rem;
+		font-weight: 800;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+	}
+
+	.luma-hero__card strong {
+		display: block;
+		max-width: 280px;
+		margin-top: 8rem;
+		color: #17202a;
+		font-size: 1.7rem;
+		letter-spacing: -0.04em;
+		line-height: 1.1;
+	}
+
+	.luma-hero__card p {
+		margin-top: 1rem;
+		color: #64706f;
+	}
+
+	.luma-hero__metric {
+		padding: 1.2rem;
+	}
+
+	.luma-section--muted {
+		border-block: 1px solid rgba(42, 54, 65, 0.1);
+		background: #f5f0eb;
+	}
+
+	.luma-section__intro {
+		max-width: 780px;
+	}
+
+	.luma-grid {
+		display: grid;
+		gap: 1rem;
+		margin-top: clamp(2rem, 4vw, 3rem);
+	}
+
+	.luma-grid--4 {
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+	}
+
+	.luma-card {
+		padding: 1.25rem;
+	}
+
+	.luma-card h3 {
+		color: #17202a;
+		font-size: 1.12rem;
+		letter-spacing: -0.02em;
+	}
+
+	.luma-card p {
+		color: #64706f;
+		font-size: 0.9375rem;
+		line-height: 1.6;
+	}
+
+	.luma-card--compact span {
+		display: block;
+		width: 2.25rem;
+		height: 0.25rem;
+		margin-bottom: 1.25rem;
+		border-radius: 999px;
+		background: #8f6f63;
+	}
+
+	.luma-link-cta {
+		display: inline-flex;
+		margin-top: 2rem;
+		color: #17202a;
+		font-weight: 800;
+	}
+
+	.luma-link-cta:hover {
+		color: #6f554b;
+	}
+
+	.luma-about__card,
+	.luma-final__card {
+		padding: clamp(1.5rem, 4vw, 3rem);
+		border: 1px solid rgba(42, 54, 65, 0.1);
+		border-radius: 24px;
+		background: #ffffff;
+	}
+
+	.luma-flow {
+		display: grid;
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+		gap: 1rem;
+		margin-top: 2rem;
+	}
+
+	.luma-flow__step {
+		padding: 1.2rem;
+	}
+
+	.luma-flow__step span {
+		display: inline-flex;
+		margin-bottom: 1rem;
+		color: #8f6f63;
+		font-size: 0.75rem;
+		font-weight: 800;
+	}
+
+	.luma-flow__step p {
+		margin: 0;
+		color: #17202a;
+		font-weight: 800;
+	}
+
+	.luma-final {
+		background: #efe7e1;
+	}
+
+	.luma-final__card {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) auto;
+		gap: 2rem;
+		align-items: end;
+		background: #17202a;
+	}
+
+	.luma-final h2,
+	.luma-final .luma-lead {
+		color: #ffffff;
+	}
+
+	.luma-final .luma-lead {
+		opacity: 0.78;
+	}
+
+	@media (max-width: 980px) {
+		.luma-hero__inner,
+		.luma-grid--4,
+		.luma-flow,
+		.luma-final__card {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+
+	@media (max-width: 700px) {
+		.luma-hero__inner,
+		.luma-grid--4,
+		.luma-flow,
+		.luma-final__card {
+			grid-template-columns: 1fr;
+		}
+
+		.luma-hero h1 {
+			max-width: 760px;
+		}
+	}
+</style>

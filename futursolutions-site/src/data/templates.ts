@@ -51,7 +51,7 @@ export const templateSystems: TemplateSystem[] = [
 		backendFeatures: ['Inquiry capture', 'Booking request routing', 'CRM-ready contact fields', 'Follow-up sequence readiness'],
 		complexity: 'Growth',
 		detailUrl: '/templates/med-spa',
-		demoUrl: null,
+		demoUrl: '/demos/med-spa',
 		featured: true,
 	},
 	{

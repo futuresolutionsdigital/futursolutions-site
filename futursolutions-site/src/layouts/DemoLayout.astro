@@ -1,0 +1,205 @@
+---
+import DemoBanner from '../components/DemoBanner.astro';
+import '../styles/global.css';
+
+interface Props {
+	title: string;
+	description: string;
+	canonicalUrl?: string;
+}
+
+const { title, description, canonicalUrl } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content={description} />
+		{canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:type" content="website" />
+		{canonicalUrl && <meta property="og:url" content={canonicalUrl} />}
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+		<title>{title}</title>
+	</head>
+	<body class="demo-site">
+		<DemoBanner />
+		<header class="demo-header">
+			<div class="site-container demo-header__inner">
+				<a class="demo-header__brand" href="/demos/med-spa" aria-label="Luma Aesthetics demo home">
+					<span>Luma</span>
+					<span>Aesthetics</span>
+				</a>
+				<nav class="demo-header__nav" aria-label="Luma Aesthetics demo navigation">
+					<a href="/demos/med-spa/treatments">Treatments</a>
+					<a href="/demos/med-spa/#about">About</a>
+					<a href="/demos/med-spa/contact">Contact</a>
+				</nav>
+				<a class="demo-header__cta" href="/demos/med-spa/contact">Book Consultation</a>
+			</div>
+		</header>
+		<main>
+			<slot />
+		</main>
+		<footer class="demo-footer">
+			<div class="site-container demo-footer__inner">
+				<div>
+					<a class="demo-footer__brand" href="/demos/med-spa">Luma Aesthetics</a>
+					<p>A fictional med spa demo by Future Solutions.</p>
+				</div>
+				<div class="demo-footer__links" aria-label="Luma Aesthetics demo footer links">
+					<a href="/demos/med-spa/treatments">Treatments</a>
+					<a href="/demos/med-spa/contact">Consultation</a>
+					<a href="/templates/med-spa">Template Details</a>
+				</div>
+			</div>
+		</footer>
+	</body>
+</html>
+
+<style>
+	:global(.demo-site) {
+		background: #fbfaf7;
+		color: #17202a;
+	}
+
+	.demo-header {
+		position: sticky;
+		top: 3.6rem;
+		z-index: 12;
+		border-bottom: 1px solid rgba(42, 54, 65, 0.1);
+		background: rgba(251, 250, 247, 0.92);
+		backdrop-filter: blur(16px);
+	}
+
+	.demo-header__inner {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1.5rem;
+		min-height: 5rem;
+	}
+
+	.demo-header__brand {
+		display: inline-grid;
+		gap: 0.05rem;
+		color: #17202a;
+		font-weight: 800;
+		letter-spacing: -0.04em;
+		line-height: 1;
+	}
+
+	.demo-header__brand span:last-child {
+		color: #8f6f63;
+		font-size: 0.88rem;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+	}
+
+	.demo-header__nav {
+		display: flex;
+		align-items: center;
+		gap: 1.2rem;
+		color: #64706f;
+		font-size: 0.92rem;
+		font-weight: 700;
+	}
+
+	.demo-header__nav a:hover {
+		color: #17202a;
+	}
+
+	.demo-header__cta {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 2.45rem;
+		padding: 0.7rem 0.9rem;
+		border: 1px solid rgba(143, 111, 99, 0.26);
+		border-radius: 999px;
+		background: #ffffff;
+		color: #17202a;
+		font-size: 0.875rem;
+		font-weight: 800;
+		line-height: 1;
+		white-space: nowrap;
+	}
+
+	.demo-header__cta:hover {
+		background: #efe7e1;
+		color: #6f554b;
+	}
+
+	.demo-footer {
+		border-top: 1px solid rgba(42, 54, 65, 0.1);
+		background: #f5f0eb;
+	}
+
+	.demo-footer__inner {
+		display: flex;
+		justify-content: space-between;
+		gap: 2rem;
+		padding-block: 2.5rem;
+	}
+
+	.demo-footer__brand {
+		display: inline-flex;
+		margin-bottom: 0.5rem;
+		color: #17202a;
+		font-weight: 800;
+		letter-spacing: -0.035em;
+	}
+
+	.demo-footer p {
+		font-size: 0.9375rem;
+	}
+
+	.demo-footer__links {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1rem;
+		align-items: flex-start;
+		justify-content: flex-end;
+		color: #64706f;
+		font-size: 0.9375rem;
+		font-weight: 700;
+	}
+
+	.demo-footer__links a:hover {
+		color: #6f554b;
+	}
+
+	@media (max-width: 860px) {
+		.demo-header {
+			top: 6.9rem;
+		}
+
+		.demo-header__nav {
+			display: none;
+		}
+	}
+
+	@media (max-width: 700px) {
+		.demo-footer__inner {
+			flex-direction: column;
+		}
+
+		.demo-footer__links {
+			justify-content: flex-start;
+		}
+	}
+
+	@media (max-width: 420px) {
+		.demo-header__cta {
+			display: none;
+		}
+	}
+</style>

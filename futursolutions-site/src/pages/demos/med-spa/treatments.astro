@@ -1,0 +1,338 @@
+---
+import DemoLayout from '../../../layouts/DemoLayout.astro';
+
+const treatments = [
+	{
+		title: 'Injectables',
+		description: 'Consultation-based aesthetic treatments with education around goals, preferences, and next steps.',
+		bestFor: 'Clients exploring subtle aesthetic refreshment.',
+	},
+	{
+		title: 'Skin Rejuvenation',
+		description: 'Skin-focused services presented with clear expectations, supportive education, and consultation prompts.',
+		bestFor: 'Clients interested in texture, tone, and overall skin care planning.',
+	},
+	{
+		title: 'Medical Weight Loss',
+		description: 'A structured wellness pathway that explains support options without overpromising outcomes.',
+		bestFor: 'Clients seeking guided conversations about weight and wellness goals.',
+	},
+	{
+		title: 'Hormone Support',
+		description: 'Education-first care pathways for clients who want to discuss symptoms, options, and provider guidance.',
+		bestFor: 'Clients exploring hormone-related wellness conversations.',
+	},
+	{
+		title: 'IV Therapy',
+		description: 'Wellness-focused treatments explained with practical expectations and simple booking direction.',
+		bestFor: 'Clients interested in wellness support and hydration-focused services.',
+	},
+	{
+		title: 'Wellness Consultation',
+		description: 'A clear entry point for visitors who are not sure which service is the right fit.',
+		bestFor: 'New clients who want guidance before choosing a treatment path.',
+	},
+];
+
+const faqs = [
+	{
+		question: 'How do I know which treatment is right for me?',
+		answer: 'A consultation-focused structure helps visitors ask questions, share goals, and choose the next step with guidance rather than guessing.',
+	},
+	{
+		question: 'Why does each treatment need its own page?',
+		answer: 'Dedicated pages give each service room for education, expectations, FAQs, trust signals, and a clear consultation prompt.',
+	},
+	{
+		question: 'Can this structure support local SEO?',
+		answer: 'Yes. Service-specific pages can be structured around search-friendly headings, metadata, internal links, and local service relevance.',
+	},
+	{
+		question: 'Can this connect to a booking or follow-up system?',
+		answer: 'Yes. In a real build, treatment interest can connect to forms, booking steps, CRM tags, follow-up reminders, and pipeline tracking.',
+	},
+];
+---
+
+<DemoLayout
+	title="Treatments | Luma Aesthetics Demo"
+	description="A demo treatments page showing how med spa services can be organized for clarity, trust, and booking conversion."
+	canonicalUrl="https://futursolutions.vercel.app/demos/med-spa/treatments/"
+>
+	<section class="luma-page-hero" aria-labelledby="treatments-heading">
+		<div class="site-container">
+			<p class="luma-eyebrow">Treatments</p>
+			<h1 id="treatments-heading">Clear treatment pages help visitors choose the right next step.</h1>
+			<p class="luma-lead">
+				This page demonstrates how treatment-based services can be organized with clear descriptions, expectations, FAQs, and consultation-focused CTAs.
+			</p>
+			<div class="luma-button-row">
+				<a class="luma-button luma-button--primary" href="/demos/med-spa/contact">Book Consultation</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="luma-section luma-section--muted" aria-labelledby="treatment-grid-heading">
+		<div class="site-container">
+			<div class="luma-section__intro">
+				<p class="luma-eyebrow">Service clarity</p>
+				<h2 id="treatment-grid-heading">Treatment options with clear next steps.</h2>
+			</div>
+			<div class="luma-treatment-grid">
+				{treatments.map((treatment) => (
+					<article class="luma-treatment-card">
+						<h3>{treatment.title}</h3>
+						<p>{treatment.description}</p>
+						<div class="luma-treatment-card__meta">
+							<strong>Best for</strong>
+							<span>{treatment.bestFor}</span>
+						</div>
+						<a href="/demos/med-spa/contact">Ask About This Treatment</a>
+					</article>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<section class="luma-section" aria-labelledby="structure-heading">
+		<div class="site-container luma-callout">
+			<p class="luma-eyebrow">Service page system</p>
+			<h2 id="structure-heading">Each service can become its own conversion page.</h2>
+			<p class="luma-lead">
+				For a real med spa, each treatment can have a dedicated page with education, FAQs, trust signals, local SEO structure, and booking prompts.
+			</p>
+		</div>
+	</section>
+
+	<section class="luma-section luma-section--muted" aria-labelledby="faq-heading">
+		<div class="site-container">
+			<div class="luma-section__intro">
+				<p class="luma-eyebrow">FAQ</p>
+				<h2 id="faq-heading">Questions this structure can answer.</h2>
+			</div>
+			<div class="luma-faq-grid">
+				{faqs.map((faq) => (
+					<article class="luma-faq-card">
+						<h3>{faq.question}</h3>
+						<p>{faq.answer}</p>
+					</article>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<section class="luma-section luma-final" aria-labelledby="final-heading">
+		<div class="site-container luma-final__card">
+			<div>
+				<p class="luma-eyebrow">Future Solutions template</p>
+				<h2 id="final-heading">Ready to adapt this treatment structure?</h2>
+			</div>
+			<div class="luma-button-row">
+				<a class="luma-button luma-button--primary" href="/audit">Get This Template Customized</a>
+				<a class="luma-button luma-button--secondary" href="/demos/med-spa">Back to Demo Home</a>
+			</div>
+		</div>
+	</section>
+</DemoLayout>
+
+<style>
+	.luma-page-hero,
+	.luma-section {
+		padding-block: clamp(4.5rem, 8vw, 7rem);
+	}
+
+	.luma-page-hero {
+		background:
+			radial-gradient(circle at 82% 12%, rgba(143, 111, 99, 0.16), transparent 30%),
+			linear-gradient(180deg, #ffffff 0%, #fbfaf7 78%);
+	}
+
+	.luma-eyebrow {
+		margin-bottom: 1rem;
+		color: #8f6f63;
+		font-size: 0.8125rem;
+		font-weight: 800;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+	}
+
+	.luma-page-hero h1,
+	.luma-section h2 {
+		max-width: 900px;
+		color: #17202a;
+	}
+
+	.luma-lead {
+		max-width: 720px;
+		color: #64706f;
+		font-size: clamp(1.08rem, 1rem + 0.32vw, 1.25rem);
+		line-height: 1.65;
+	}
+
+	.luma-button-row {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.875rem;
+		margin-top: 2rem;
+	}
+
+	.luma-button {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 2.875rem;
+		padding: 0.8rem 1.1rem;
+		border: 1px solid transparent;
+		border-radius: 999px;
+		font-size: 0.9375rem;
+		font-weight: 800;
+		line-height: 1;
+	}
+
+	.luma-button--primary {
+		background: #8f6f63;
+		color: #ffffff;
+	}
+
+	.luma-button--primary:hover {
+		background: #6f554b;
+		color: #ffffff;
+	}
+
+	.luma-button--secondary {
+		border-color: rgba(42, 54, 65, 0.12);
+		background: #ffffff;
+		color: #17202a;
+	}
+
+	.luma-button--secondary:hover {
+		background: #efe7e1;
+		color: #6f554b;
+	}
+
+	.luma-section--muted {
+		border-block: 1px solid rgba(42, 54, 65, 0.1);
+		background: #f5f0eb;
+	}
+
+	.luma-section__intro {
+		max-width: 780px;
+	}
+
+	.luma-treatment-grid,
+	.luma-faq-grid {
+		display: grid;
+		gap: 1rem;
+		margin-top: clamp(2rem, 4vw, 3rem);
+	}
+
+	.luma-treatment-grid {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+
+	.luma-faq-grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	.luma-treatment-card,
+	.luma-faq-card,
+	.luma-callout {
+		border: 1px solid rgba(42, 54, 65, 0.1);
+		border-radius: 22px;
+		background: #ffffff;
+		box-shadow: 0 20px 52px rgba(42, 54, 65, 0.05);
+	}
+
+	.luma-treatment-card,
+	.luma-faq-card {
+		padding: 1.25rem;
+	}
+
+	.luma-treatment-card h3,
+	.luma-faq-card h3 {
+		color: #17202a;
+		font-size: 1.12rem;
+		letter-spacing: -0.02em;
+	}
+
+	.luma-treatment-card p,
+	.luma-faq-card p {
+		color: #64706f;
+		font-size: 0.9375rem;
+		line-height: 1.6;
+	}
+
+	.luma-treatment-card__meta {
+		display: grid;
+		gap: 0.35rem;
+		margin-top: 1.25rem;
+		padding-top: 1rem;
+		border-top: 1px solid rgba(42, 54, 65, 0.1);
+	}
+
+	.luma-treatment-card__meta strong {
+		color: #8f6f63;
+		font-size: 0.75rem;
+		font-weight: 800;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+	}
+
+	.luma-treatment-card__meta span {
+		color: #64706f;
+		font-size: 0.9rem;
+		line-height: 1.5;
+	}
+
+	.luma-treatment-card a {
+		display: inline-flex;
+		margin-top: 1.25rem;
+		color: #17202a;
+		font-size: 0.9375rem;
+		font-weight: 800;
+	}
+
+	.luma-treatment-card a:hover {
+		color: #6f554b;
+	}
+
+	.luma-callout {
+		padding: clamp(1.5rem, 4vw, 3rem);
+	}
+
+	.luma-final {
+		background: #efe7e1;
+	}
+
+	.luma-final__card {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) auto;
+		gap: 2rem;
+		align-items: end;
+		padding: clamp(1.5rem, 4vw, 3rem);
+		border: 1px solid rgba(42, 54, 65, 0.1);
+		border-radius: 24px;
+		background: #17202a;
+	}
+
+	.luma-final h2 {
+		color: #ffffff;
+	}
+
+	@media (max-width: 980px) {
+		.luma-treatment-grid {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+
+		.luma-final__card {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	@media (max-width: 700px) {
+		.luma-treatment-grid,
+		.luma-faq-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

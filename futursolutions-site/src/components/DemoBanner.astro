@@ -1,0 +1,87 @@
+<aside class="demo-banner" aria-label="Future Solutions demo notice">
+	<div class="demo-banner__inner">
+		<p>You’re viewing a Future Solutions demo template. Want this customized for your business?</p>
+		<div class="demo-banner__actions">
+			<a href="/audit">Get This Template Customized</a>
+			<a href="/templates">Back to Templates</a>
+		</div>
+	</div>
+</aside>
+
+<style>
+	.demo-banner {
+		position: sticky;
+		top: 0;
+		z-index: 20;
+		border-bottom: 1px solid var(--color-border);
+		background: color-mix(in srgb, var(--color-white) 94%, transparent);
+		backdrop-filter: blur(14px);
+	}
+
+	.demo-banner__inner {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1rem;
+		width: min(100% - 2rem, var(--max-width));
+		margin-inline: auto;
+		padding-block: 0.7rem;
+	}
+
+	.demo-banner p {
+		margin: 0;
+		color: var(--color-text);
+		font-size: 0.875rem;
+		font-weight: 600;
+		line-height: 1.4;
+	}
+
+	.demo-banner__actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.55rem;
+		justify-content: flex-end;
+	}
+
+	.demo-banner__actions a {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 2.15rem;
+		padding: 0.55rem 0.75rem;
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-sm);
+		background: var(--color-white);
+		color: var(--color-text);
+		font-size: 0.8125rem;
+		font-weight: 800;
+		line-height: 1;
+	}
+
+	.demo-banner__actions a:first-child {
+		border-color: color-mix(in srgb, var(--color-accent) 38%, var(--color-border));
+		background: var(--color-accent);
+		color: var(--color-white);
+	}
+
+	.demo-banner__actions a:hover {
+		border-color: var(--color-accent);
+		color: var(--color-accent-dark);
+	}
+
+	.demo-banner__actions a:first-child:hover {
+		background: var(--color-accent-dark);
+		color: var(--color-white);
+	}
+
+	@media (max-width: 760px) {
+		.demo-banner__inner {
+			align-items: flex-start;
+			flex-direction: column;
+		}
+
+		.demo-banner__actions {
+			justify-content: flex-start;
+		}
+	}
+</style>
