@@ -22,9 +22,14 @@ import { featuredTreatments } from '../data/aurea';
 								<span class="ft__tag">{tag}</span>
 							))}
 						</div>
-						<a href="#location" class="ft__link">
-							Book Consultation &rarr;
+					{treatment.href !== '/demos/med-spa/contact' && (
+						<a href={treatment.href} class="ft__link">
+							Learn More &rarr;
 						</a>
+					)}
+					<a href="/demos/med-spa/contact" class="ft__link">
+						Book Consultation &rarr;
+					</a>
 					</article>
 				))
 			}

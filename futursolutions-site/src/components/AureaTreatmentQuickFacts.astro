@@ -1,0 +1,128 @@
+---
+interface QuickFact {
+	label: string;
+	value: string;
+}
+
+interface Props {
+	facts: QuickFact[];
+}
+
+const { facts } = Astro.props;
+---
+
+<aside class="qf" aria-label="Treatment quick facts">
+	<div class="qf__header">
+		<span class="qf__badge" aria-hidden="true">
+			<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+		</span>
+		<h2 class="qf__title">Quick Facts</h2>
+	</div>
+	<dl class="qf__list">
+		{facts.map((fact) => (
+			<div class="qf__item">
+				<dt>{fact.label}</dt>
+				<dd>{fact.value}</dd>
+			</div>
+		))}
+	</dl>
+</aside>
+
+<style>
+	.qf {
+		border: 1px solid var(--aurea-border);
+		border-radius: var(--aurea-radius-lg);
+		background: var(--aurea-white);
+		box-shadow:
+			0 16px 48px rgba(36, 35, 33, 0.05),
+			0 4px 12px rgba(36, 35, 33, 0.02);
+		padding: clamp(1.75rem, 3vw, 2.5rem);
+		overflow: hidden;
+	}
+
+	.qf__header {
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+		margin-bottom: 1.75rem;
+		padding-bottom: 1.25rem;
+		border-bottom: 1px solid var(--aurea-border);
+	}
+
+	.qf__badge {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 2.25rem;
+		height: 2.25rem;
+		border-radius: 50%;
+		background: color-mix(in srgb, var(--aurea-champagne) 12%, var(--aurea-ivory));
+		color: var(--aurea-champagne);
+		flex-shrink: 0;
+	}
+
+	.qf__title {
+		font-family: var(--aurea-font-heading);
+		font-size: 1.2rem;
+		font-weight: 600;
+		margin: 0;
+		color: var(--aurea-charcoal);
+	}
+
+	.qf__list {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 0;
+		margin: 0;
+	}
+
+	.qf__item {
+		display: flex;
+		flex-direction: column;
+		gap: 0.3rem;
+		padding: 1rem 1rem;
+		border-bottom: 1px solid var(--aurea-border);
+	}
+
+	.qf__item:nth-last-child(-n+2) {
+		border-bottom: none;
+	}
+
+	.qf__item:nth-child(odd) {
+		border-right: 1px solid var(--aurea-border);
+	}
+
+	.qf__item dt {
+		font-size: 0.72rem;
+		font-weight: 700;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		color: var(--aurea-champagne);
+	}
+
+	.qf__item dd {
+		margin: 0;
+		font-size: 0.95rem;
+		font-weight: 600;
+		color: var(--aurea-charcoal);
+		line-height: 1.4;
+	}
+
+	@media (max-width: 560px) {
+		.qf__list {
+			grid-template-columns: 1fr;
+		}
+
+		.qf__item:nth-child(odd) {
+			border-right: none;
+		}
+
+		.qf__item:nth-last-child(-n+2) {
+			border-bottom: 1px solid var(--aurea-border);
+		}
+
+		.qf__item:last-child {
+			border-bottom: none;
+		}
+	}
+</style>

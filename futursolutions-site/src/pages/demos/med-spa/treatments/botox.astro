@@ -1,0 +1,1241 @@
+---
+import AureaLayout from '../../../../layouts/AureaLayout.astro';
+import AureaTreatmentQuickFacts from '../../../../components/AureaTreatmentQuickFacts.astro';
+
+const quickFacts = [
+	{ label: 'Treatment time', value: '15–30 minutes' },
+	{ label: 'Downtime', value: 'Minimal' },
+	{ label: 'Results begin', value: '3–7 days' },
+	{ label: 'Full results', value: 'About 2 weeks' },
+	{ label: 'Lasts', value: 'Typically 3–4 months' },
+	{ label: 'Best for', value: 'Forehead lines, frown lines, crow\'s feet' },
+	{ label: 'Provider', value: 'Licensed medical provider' },
+	{ label: 'Pricing', value: 'Consultation required' },
+];
+
+const treatmentAreas = [
+	{ title: 'Forehead lines', description: 'Horizontal lines that appear when raising the brows, often among the first signs of facial aging.' },
+	{ title: 'Frown lines / "11s"', description: 'Vertical creases between the brows caused by squinting, concentrating, or frowning.' },
+	{ title: 'Crow\'s feet', description: 'Fine lines radiating from the outer corners of the eyes, most visible when smiling or squinting.' },
+	{ title: 'Brow lift refinement', description: 'Subtle relaxation of the muscles that pull the brow downward, helping create a more open, refreshed appearance.' },
+	{ title: 'Bunny lines', description: 'Fine diagonal wrinkles across the bridge of the nose, often visible when scrunching or laughing.' },
+	{ title: 'Chin dimpling', description: 'A textured, "orange peel" appearance on the chin caused by overactive mentalis muscle contractions.' },
+	{ title: 'Jawline / masseter', description: 'Treatment of the masseter muscle may help slim the jawline and relieve tension.', note: 'Candidacy varies — your provider will assess your anatomy and goals.' },
+];
+
+const goodFit = [
+	'You want to soften expression lines',
+	'You prefer subtle, natural-looking results',
+	'You are new to aesthetics and want a conservative first step',
+	'You want a low-downtime treatment',
+	'You are comfortable starting with a consultation',
+];
+
+const notRight = [
+	'You are pregnant or breastfeeding',
+	'You have certain neuromuscular conditions',
+	'You have an active infection near the treatment area',
+	'You want permanent results',
+	'Your provider recommends another option',
+];
+
+const timeline = [
+	{ step: 'Consultation', description: 'We discuss your goals, facial movement, medical history, and preferred level of correction.' },
+	{ step: 'Treatment plan', description: 'Your provider maps conservative placement based on your anatomy.' },
+	{ step: 'Treatment', description: 'Small injections are placed in targeted areas. Most appointments take 15–30 minutes.' },
+	{ step: 'Results develop', description: 'You may begin noticing softening in 3–7 days, with full results around 2 weeks.' },
+	{ step: 'Maintenance', description: 'Results typically last 3–4 months. Your provider can recommend a maintenance rhythm.' },
+];
+
+const beforeAfterAreas = [
+	{ area: 'Forehead lines', id: 'forehead' },
+	{ area: 'Frown lines', id: 'frown' },
+	{ area: 'Crow\'s feet', id: 'crows-feet' },
+];
+
+const pricingCards = [
+	{ title: 'New patient consultation', description: 'Your first visit includes a complete assessment and treatment recommendation.' },
+	{ title: 'Per-unit treatment planning', description: 'Pricing is based on the number of units your provider recommends for optimal results.' },
+	{ title: 'Maintenance visits', description: 'Returning patients benefit from streamlined appointments and continued treatment refinement.' },
+	{ title: 'Membership savings', description: 'Members receive preferred pricing, priority booking, and bundled treatment benefits.' },
+];
+
+const safetyItems = [
+	{ title: 'Licensed medical providers', description: 'Every injection is performed or supervised by trained, licensed medical professionals.' },
+	{ title: 'Conservative first-time approach', description: 'First-time patients receive conservative dosing to build confidence and allow your provider to refine your treatment plan.' },
+	{ title: 'Facial anatomy assessment', description: 'Your provider evaluates your facial structure, movement patterns, and skin quality before recommending placement.' },
+	{ title: 'Clear aftercare guidance', description: 'You\'ll receive written aftercare instructions and know exactly what to expect during your recovery.' },
+	{ title: 'Follow-up recommendations', description: 'We recommend a follow-up visit to assess your results and fine-tune your treatment if needed.' },
+	{ title: 'Realistic expectations', description: 'We discuss what wrinkle relaxers can and cannot achieve so you feel confident and informed before treatment.' },
+];
+
+const faqs = [
+	{ question: 'Will I still look natural?', answer: 'That\'s our priority. Your provider uses conservative placement designed to soften lines while preserving your natural expressions. The goal is a refreshed look, not a frozen one.' },
+	{ question: 'Does Botox hurt?', answer: 'Most patients describe it as a brief pinch. The needles are very fine, and treatment is quick — typically under 30 minutes. Your provider can discuss comfort options if needed.' },
+	{ question: 'How long does treatment take?', answer: 'Most wrinkle relaxer appointments take 15–30 minutes, including consultation and treatment time.' },
+	{ question: 'When will I see results?', answer: 'You may begin to notice softening within 3–7 days. Full results typically develop over about 2 weeks.' },
+	{ question: 'How long does Botox last?', answer: 'Results typically last 3–4 months. Your provider can recommend a maintenance schedule that keeps results consistent over time.' },
+	{ question: 'Is there downtime?', answer: 'Most patients return to normal activities the same day. Your provider will advise on a few simple precautions to follow in the hours after treatment.' },
+	{ question: 'Can I combine Botox with fillers or skin treatments?', answer: 'Yes. Many patients combine wrinkle relaxers with fillers for facial balancing, or with treatments like Hydrafacial or Morpheus8 for comprehensive results. Your provider will design a plan that makes sense.' },
+	{ question: 'How do I know how many units I need?', answer: 'Unit count depends on the treatment area, your facial anatomy, and your desired outcome. Your provider will recommend a specific plan during your consultation.' },
+	{ question: 'What should I avoid after treatment?', answer: 'Your provider will give you detailed aftercare instructions. Common recommendations include avoiding strenuous exercise, lying flat, and rubbing the treatment area for several hours.' },
+	{ question: 'Who performs the treatment?', answer: 'All wrinkle relaxer treatments at Auréa are performed by licensed medical providers — including physicians and nurse practitioners — with specialized training in facial anatomy and injection technique.' },
+];
+
+const relatedTreatments = [
+	{ title: 'Dermal Fillers', description: 'Restore lost volume in areas like cheeks, lips, and under-eyes for a more balanced, refreshed contour. Often combined with Botox for full facial balancing.', href: '/demos/med-spa/treatments' },
+	{ title: 'Sculptra', description: 'A collagen-stimulating injectable that gradually restores facial volume over a series of treatments, ideal for patients seeking subtle, long-term improvement.', href: '/demos/med-spa/treatments' },
+	{ title: 'Morpheus8', description: 'RF microneedling that firms, smooths, and remodels skin texture — a strong complement to injectables for patients focused on skin quality.', href: '/demos/med-spa/treatments' },
+	{ title: 'Hydrafacial', description: 'A gentle, no-downtime facial that deeply cleanses and hydrates — a popular add-on to keep skin healthy between injectable appointments.', href: '/demos/med-spa/treatments' },
+];
+---
+
+<AureaLayout
+	title="Botox & Wrinkle Relaxers | Auréa Skin & Aesthetics"
+	description="Explore natural-looking Botox and wrinkle relaxer treatments from Auréa Skin & Aesthetics, a premium med spa demo focused on consultation-first care, medical guidance, and refined aesthetic results."
+>
+	<!-- 1. Treatment Hero -->
+	<section class="botox-hero" aria-labelledby="botox-hero-heading">
+		<div class="aurea-container botox-hero__inner">
+			<div class="botox-hero__content">
+				<p class="aurea-eyebrow">Injectables</p>
+				<h1 id="botox-hero-heading">Smooth expression lines without losing expression.</h1>
+				<p class="aurea-lead">
+					Wrinkle relaxer treatments designed to soften forehead lines, frown lines, and crow's feet while keeping your results balanced, natural, and true to your features.
+				</p>
+				<div class="aurea-btn-row">
+					<a class="aurea-btn aurea-btn--primary" href="/demos/med-spa/contact">Book a Consultation</a>
+					<a class="aurea-btn aurea-btn--secondary" href="#before-after">View Before &amp; After</a>
+				</div>
+				<ul class="botox-hero__trust" aria-label="Trust highlights">
+					<li><span aria-hidden="true"></span>Licensed medical providers</li>
+					<li><span aria-hidden="true"></span>Consultation-first approach</li>
+					<li><span aria-hidden="true"></span>Natural-looking results</li>
+				</ul>
+			</div>
+
+			<div class="botox-hero__visual" aria-hidden="true">
+				<div class="botox-hero__panel">
+					<div class="botox-hero__panel-corner"></div>
+					<div class="botox-hero__panel-ambiance">
+						<div class="botox-hero__panel-orb botox-hero__panel-orb--1"></div>
+						<div class="botox-hero__panel-orb botox-hero__panel-orb--2"></div>
+						<div class="botox-hero__panel-lines">
+							<div></div><div></div><div></div>
+						</div>
+					</div>
+
+					<div class="botox-hero__detail-card">
+						<div class="botox-hero__detail-accent"></div>
+						<div class="botox-hero__detail-name">Wrinkle Relaxer</div>
+						<div class="botox-hero__detail-tags">Forehead &middot; Frown lines &middot; Crow's feet</div>
+					</div>
+				</div>
+
+				<div class="botox-hero__stat-badge">
+					<div class="botox-hero__stat-icon">
+						<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+					</div>
+					<div class="botox-hero__stat-text">
+						<span class="botox-hero__stat-value">15–30 min</span>
+						<span class="botox-hero__stat-label">Treatment time</span>
+					</div>
+				</div>
+
+				<div class="botox-hero__consult-badge">
+					<span class="botox-hero__consult-dot"></span>
+					Minimal downtime
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- 2. Quick Facts Panel -->
+	<section class="aurea-section" id="botox-facts" aria-labelledby="botox-facts-heading">
+		<div class="aurea-container botox-facts__wrap">
+			<AureaTreatmentQuickFacts facts={quickFacts} />
+		</div>
+	</section>
+
+	<!-- 3. Overview Section -->
+	<section class="aurea-section" id="botox-overview" aria-labelledby="botox-overview-heading">
+		<div class="aurea-container">
+			<div class="botox-section-header">
+				<p class="aurea-eyebrow">Overview</p>
+				<h2 id="botox-overview-heading">A refreshed look, not a different face.</h2>
+				<p class="aurea-lead">
+					Botox and other wrinkle relaxers work by temporarily relaxing targeted facial muscles that contribute to expression lines. The goal is subtlety — softening visible creases while preserving the natural movement, balance, and character of your face. Your provider's understanding of facial anatomy and conservative placement is what makes the difference between a natural result and an overdone one.
+				</p>
+			</div>
+			<div class="botox-overview__grid">
+				<article class="aurea-card botox-overview__card">
+					<div class="botox-overview__card-icon" aria-hidden="true">
+						<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+					</div>
+					<h3>Softens visible expression lines</h3>
+					<p>Wrinkle relaxers are designed to reduce the appearance of dynamic lines that develop from repeated facial expressions.</p>
+				</article>
+				<article class="aurea-card botox-overview__card">
+					<div class="botox-overview__card-icon" aria-hidden="true">
+						<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M16 16s-1.5-2-4-2-4 2-4 2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+					</div>
+					<h3>Helps prevent deeper creasing</h3>
+					<p>When used over time, treatment may help slow the progression of expression lines into deeper, more permanent creases.</p>
+				</article>
+				<article class="aurea-card botox-overview__card">
+					<div class="botox-overview__card-icon" aria-hidden="true">
+						<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+					</div>
+					<h3>Preserves natural facial movement</h3>
+					<p>Thoughtful, conservative placement focuses on softening lines while maintaining the expressions that make your face yours.</p>
+				</article>
+			</div>
+		</div>
+	</section>
+
+	<!-- 4. Treatment Areas -->
+	<section class="aurea-section aurea-section--warm" id="botox-areas" aria-labelledby="botox-areas-heading">
+		<div class="aurea-container">
+			<div class="botox-section-header">
+				<p class="aurea-eyebrow">Treatment Areas</p>
+				<h2 id="botox-areas-heading">Areas wrinkle relaxers can address.</h2>
+			</div>
+			<div class="botox-areas__grid">
+				{treatmentAreas.map((area) => (
+					<article class="aurea-card botox-areas__card">
+						<h3>{area.title}</h3>
+						<p>{area.description}</p>
+						{area.note && <p class="botox-areas__note"><em>{area.note}</em></p>}
+					</article>
+				))}
+			</div>
+			<div class="botox-areas__disclaimer">
+				<p>Not every area is appropriate for every patient. Your provider will assess your facial anatomy and recommend only the treatment areas that align with your goals.</p>
+			</div>
+		</div>
+	</section>
+
+	<!-- 5. Best Candidate Section -->
+	<section class="aurea-section" id="botox-candidate" aria-labelledby="botox-candidate-heading">
+		<div class="aurea-container">
+			<div class="botox-section-header">
+				<p class="aurea-eyebrow">Candidacy</p>
+				<h2 id="botox-candidate-heading">Is Botox right for you?</h2>
+				<p class="aurea-lead">
+					Wrinkle relaxers are one of the most popular aesthetic treatments, but they're not for everyone. Here's a general guide — your provider will make a personalized recommendation during your consultation.
+				</p>
+			</div>
+			<div class="botox-candidate__grid">
+				<div class="aurea-card botox-candidate__card botox-candidate__card--good">
+					<h3>
+						<span class="botox-candidate__icon botox-candidate__icon--good" aria-hidden="true">
+							<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+						</span>
+						Good fit if:
+					</h3>
+					<ul>
+						{goodFit.map((item) => (
+							<li>{item}</li>
+						))}
+					</ul>
+				</div>
+				<div class="aurea-card botox-candidate__card botox-candidate__card--not">
+					<h3>
+						<span class="botox-candidate__icon botox-candidate__icon--not" aria-hidden="true">
+							<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+						</span>
+						May not be right if:
+					</h3>
+					<ul>
+						{notRight.map((item) => (
+							<li>{item}</li>
+						))}
+					</ul>
+				</div>
+			</div>
+			<div class="botox-candidate__note aurea-card">
+				<p>Your provider will review your goals, health history, and facial anatomy before recommending treatment.</p>
+			</div>
+		</div>
+	</section>
+
+	<!-- 6. Treatment Process Timeline -->
+	<section class="aurea-section aurea-section--warm" id="botox-process" aria-labelledby="botox-process-heading">
+		<div class="aurea-container">
+			<div class="botox-section-header">
+				<p class="aurea-eyebrow">Your Visit</p>
+				<h2 id="botox-process-heading">What to expect from consultation to results.</h2>
+			</div>
+			<div class="botox-timeline">
+				{timeline.map((item, i) => (
+					<div class="botox-timeline__item">
+						<div class="botox-timeline__marker">
+							<span class="botox-timeline__number">{i + 1}</span>
+							{i < timeline.length - 1 && <div class="botox-timeline__line" aria-hidden="true"></div>}
+						</div>
+						<div class="botox-timeline__content">
+							<h3>{item.step}</h3>
+							<p>{item.description}</p>
+						</div>
+					</div>
+				))}
+			</div>
+			<div class="botox-timeline__cta">
+				<a class="aurea-btn aurea-btn--primary" href="/demos/med-spa/contact">Book Your Consultation</a>
+			</div>
+		</div>
+	</section>
+
+	<!-- 7. Before & After Preview -->
+	<section class="aurea-section" id="before-after" aria-labelledby="botox-ba-heading">
+		<div class="aurea-container">
+			<div class="botox-section-header">
+				<p class="aurea-eyebrow">Results</p>
+				<h2 id="botox-ba-heading">Real improvement. Realistic expectations.</h2>
+			</div>
+			<div class="botox-ba__grid">
+				{beforeAfterAreas.map((item) => (
+					<article class="aurea-card botox-ba__card">
+						<h3>{item.area}</h3>
+						<div class="botox-ba__visual">
+							<div class={`botox-ba__side botox-ba__side--before botox-ba__side--${item.id}`}>
+								<span class="botox-ba__label">Before</span>
+							</div>
+							<div class="botox-ba__divider" aria-hidden="true"></div>
+							<div class={`botox-ba__side botox-ba__side--after botox-ba__side--${item.id}`}>
+								<span class="botox-ba__label">After</span>
+							</div>
+						</div>
+					</article>
+				))}
+			</div>
+			<p class="botox-ba__disclaimer">
+				Individual results vary. Images are for demonstration purposes in this template. A consultation is required to determine candidacy.
+			</p>
+		</div>
+	</section>
+
+	<!-- 8. Pricing / Membership Section -->
+	<section class="aurea-section aurea-section--warm" id="botox-pricing" aria-labelledby="botox-pricing-heading">
+		<div class="aurea-container">
+			<div class="botox-section-header">
+				<p class="aurea-eyebrow">Pricing</p>
+				<h2 id="botox-pricing-heading">Pricing is personalized to your treatment plan.</h2>
+				<p class="aurea-lead">
+					Wrinkle relaxer pricing depends on treatment area, dosage, provider recommendation, and your goals. During your consultation, we'll review your options before treatment begins.
+				</p>
+			</div>
+			<div class="botox-pricing__grid">
+				{pricingCards.map((card) => (
+					<article class="aurea-card botox-pricing__card">
+						<h3>{card.title}</h3>
+						<p>{card.description}</p>
+					</article>
+				))}
+			</div>
+			<div class="botox-pricing__cta">
+				<a class="aurea-btn aurea-btn--primary" href="/demos/med-spa/contact">Ask About Pricing</a>
+			</div>
+		</div>
+	</section>
+
+	<!-- 9. Safety / Trust Section -->
+	<section class="aurea-section aurea-section--warm" id="botox-safety" aria-labelledby="botox-safety-heading">
+		<div class="aurea-container">
+			<div class="botox-section-header">
+				<p class="aurea-eyebrow">Safety &amp; Standards</p>
+				<h2 id="botox-safety-heading">Designed with restraint, anatomy, and safety in mind.</h2>
+				<p class="aurea-lead">
+					At Auréa, every treatment decision is guided by medical expertise, conservative technique, and your individual anatomy — not trends or pressure.
+				</p>
+			</div>
+			<div class="botox-safety__grid">
+				{safetyItems.map((item) => (
+					<article class="aurea-card botox-safety__card">
+						<h3>{item.title}</h3>
+						<p>{item.description}</p>
+					</article>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- 10. FAQ Section -->
+	<section class="aurea-section" id="botox-faq" aria-labelledby="botox-faq-heading">
+		<div class="aurea-container">
+			<div class="botox-section-header">
+				<p class="aurea-eyebrow">FAQ</p>
+				<h2 id="botox-faq-heading">Botox questions, answered honestly.</h2>
+			</div>
+			<div class="botox-faq__list">
+				{faqs.map((faq) => (
+					<details class="botox-faq__item">
+						<summary>{faq.question}</summary>
+						<p>{faq.answer}</p>
+					</details>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- 11. Related Treatments -->
+	<section class="aurea-section aurea-section--warm" id="botox-related" aria-labelledby="botox-related-heading">
+		<div class="aurea-container">
+			<div class="botox-section-header">
+				<p class="aurea-eyebrow">Related Treatments</p>
+				<h2 id="botox-related-heading">Treatments that complement wrinkle relaxers.</h2>
+			</div>
+			<div class="botox-related__grid">
+				{relatedTreatments.map((t) => (
+					<article class="aurea-card botox-related__card">
+						<h3>{t.title}</h3>
+						<p>{t.description}</p>
+						<a class="botox-related__link" href={t.href}>Learn More &rarr;</a>
+					</article>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- 12. Final CTA -->
+	<section class="botox-final" id="botox-cta" aria-labelledby="botox-final-heading">
+		<div class="aurea-container">
+			<div class="botox-final__inner">
+				<h2 id="botox-final-heading">Ready to start with a natural-looking refresh?</h2>
+				<p>Book a consultation and we'll help you understand whether wrinkle relaxers are the right first step for your goals.</p>
+				<div class="aurea-btn-row botox-final__actions">
+					<a class="aurea-btn aurea-btn--champagne" href="/demos/med-spa/contact">Book a Consultation</a>
+					<a class="aurea-btn botox-final__ghost" href="/demos/med-spa/treatments">Explore All Treatments</a>
+				</div>
+			</div>
+		</div>
+	</section>
+</AureaLayout>
+
+<style>
+	/* ===== 1. Hero ===== */
+
+	.botox-hero {
+		padding-block: clamp(6rem, 10vw, 10rem) clamp(5rem, 8vw, 8rem);
+		background:
+			radial-gradient(ellipse at 80% 12%, color-mix(in srgb, var(--aurea-champagne) 16%, transparent), transparent 55%),
+			radial-gradient(ellipse at 15% 90%, color-mix(in srgb, var(--aurea-sage) 10%, transparent), transparent 45%),
+			radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--aurea-champagne) 4%, transparent), transparent 70%),
+			linear-gradient(175deg, var(--aurea-white) 0%, var(--aurea-bg) 60%, var(--aurea-bg-warm) 100%);
+	}
+
+	.botox-hero__inner {
+		display: grid;
+		grid-template-columns: minmax(0, 1.15fr) minmax(360px, 0.82fr);
+		gap: clamp(3rem, 6vw, 6rem);
+		align-items: center;
+	}
+
+	.botox-hero__content h1 {
+		max-width: 15ch;
+	}
+
+	.botox-hero__trust {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1.35rem;
+		margin: 2.25rem 0 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.botox-hero__trust li {
+		display: flex;
+		align-items: center;
+		gap: 0.55rem;
+		font-size: 0.88rem;
+		font-weight: 600;
+		color: var(--aurea-muted);
+	}
+
+	.botox-hero__trust span {
+		display: block;
+		width: 0.45rem;
+		height: 0.45rem;
+		border-radius: 999px;
+		background: var(--aurea-champagne);
+	}
+
+	.botox-hero__visual {
+		position: relative;
+		min-height: 480px;
+	}
+
+	.botox-hero__panel {
+		position: relative;
+		width: 100%;
+		height: 420px;
+		border-radius: var(--aurea-radius-lg);
+		background:
+			linear-gradient(
+				155deg,
+				color-mix(in srgb, var(--aurea-sage) 22%, var(--aurea-ivory)),
+				color-mix(in srgb, var(--aurea-stone) 30%, var(--aurea-white)) 55%,
+				color-mix(in srgb, var(--aurea-champagne) 12%, var(--aurea-ivory))
+			);
+		border: 1px solid var(--aurea-border);
+		box-shadow:
+			0 24px 64px rgba(36, 35, 33, 0.07),
+			0 4px 16px rgba(36, 35, 33, 0.03);
+		overflow: hidden;
+	}
+
+	.botox-hero__panel-corner {
+		position: absolute;
+		top: 16px;
+		right: 16px;
+		width: 56px;
+		height: 56px;
+		border-top: 1.5px solid var(--aurea-champagne);
+		border-right: 1.5px solid var(--aurea-champagne);
+		border-radius: 0 12px 0 0;
+		opacity: 0.5;
+	}
+
+	.botox-hero__panel-ambiance {
+		position: absolute;
+		inset: 0;
+		overflow: hidden;
+	}
+
+	.botox-hero__panel-orb {
+		position: absolute;
+		border-radius: 50%;
+		filter: blur(50px);
+	}
+
+	.botox-hero__panel-orb--1 {
+		top: 15%;
+		left: 20%;
+		width: 180px;
+		height: 180px;
+		background: color-mix(in srgb, var(--aurea-sage) 18%, transparent);
+	}
+
+	.botox-hero__panel-orb--2 {
+		bottom: 20%;
+		right: 15%;
+		width: 140px;
+		height: 140px;
+		background: color-mix(in srgb, var(--aurea-champagne) 15%, transparent);
+	}
+
+	.botox-hero__panel-lines {
+		position: absolute;
+		top: 30%;
+		left: 10%;
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+		opacity: 0.15;
+	}
+
+	.botox-hero__panel-lines div {
+		height: 1px;
+		background: var(--aurea-charcoal);
+		border-radius: 1px;
+	}
+
+	.botox-hero__panel-lines div:nth-child(1) { width: 120px; }
+	.botox-hero__panel-lines div:nth-child(2) { width: 80px; }
+	.botox-hero__panel-lines div:nth-child(3) { width: 100px; }
+
+	.botox-hero__detail-card {
+		position: absolute;
+		bottom: 24px;
+		left: 20px;
+		background: var(--aurea-white);
+		border: 1px solid var(--aurea-border);
+		border-radius: var(--aurea-radius);
+		padding: 1rem 1.2rem;
+		box-shadow: 0 10px 32px rgba(36, 35, 33, 0.08);
+		min-width: 200px;
+	}
+
+	.botox-hero__detail-accent {
+		width: 32px;
+		height: 3px;
+		border-radius: 2px;
+		background: var(--aurea-champagne);
+		margin-bottom: 0.65rem;
+	}
+
+	.botox-hero__detail-name {
+		font-family: var(--aurea-font-heading);
+		font-size: 1.05rem;
+		font-weight: 600;
+		color: var(--aurea-charcoal);
+		line-height: 1.2;
+		margin-bottom: 0.3rem;
+	}
+
+	.botox-hero__detail-tags {
+		font-size: 0.78rem;
+		font-weight: 500;
+		color: var(--aurea-muted);
+		letter-spacing: 0.01em;
+	}
+
+	.botox-hero__stat-badge {
+		position: absolute;
+		bottom: -12px;
+		right: -8px;
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+		padding: 1rem 1.25rem;
+		border: 1px solid var(--aurea-border);
+		border-radius: var(--aurea-radius);
+		background: var(--aurea-white);
+		box-shadow:
+			0 16px 48px rgba(36, 35, 33, 0.08),
+			0 4px 12px rgba(36, 35, 33, 0.03);
+		z-index: 2;
+	}
+
+	.botox-hero__stat-icon {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 2.25rem;
+		height: 2.25rem;
+		border-radius: 50%;
+		background: color-mix(in srgb, var(--aurea-champagne) 12%, var(--aurea-ivory));
+		color: var(--aurea-champagne);
+		flex-shrink: 0;
+	}
+
+	.botox-hero__stat-text {
+		display: flex;
+		flex-direction: column;
+		gap: 0.15rem;
+	}
+
+	.botox-hero__stat-value {
+		font-family: var(--aurea-font-heading);
+		font-size: 1.15rem;
+		font-weight: 700;
+		color: var(--aurea-charcoal);
+		line-height: 1.1;
+	}
+
+	.botox-hero__stat-label {
+		font-size: 0.78rem;
+		font-weight: 600;
+		color: var(--aurea-muted);
+		white-space: nowrap;
+	}
+
+	.botox-hero__consult-badge {
+		position: absolute;
+		top: -10px;
+		right: 24px;
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		padding: 0.55rem 1rem;
+		border: 1px solid var(--aurea-border);
+		border-radius: 999px;
+		background: var(--aurea-white);
+		font-size: 0.78rem;
+		font-weight: 600;
+		color: var(--aurea-charcoal);
+		box-shadow: 0 8px 24px rgba(36, 35, 33, 0.06);
+		z-index: 2;
+		white-space: nowrap;
+	}
+
+	.botox-hero__consult-dot {
+		display: block;
+		width: 7px;
+		height: 7px;
+		border-radius: 50%;
+		background: var(--aurea-sage);
+		box-shadow: 0 0 0 3px color-mix(in srgb, var(--aurea-sage) 20%, transparent);
+	}
+
+	/* ===== 2. Quick Facts ===== */
+
+	.botox-facts__wrap {
+		max-width: 800px;
+		margin-inline: auto;
+	}
+
+	/* ===== Shared section header ===== */
+
+	.botox-section-header {
+		max-width: 720px;
+		margin-bottom: clamp(2rem, 4vw, 3rem);
+	}
+
+	/* ===== 3. Overview ===== */
+
+	.botox-overview__grid {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 1.25rem;
+	}
+
+	.botox-overview__card {
+		padding: clamp(1.5rem, 3vw, 2rem);
+	}
+
+	.botox-overview__card-icon {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 3rem;
+		height: 3rem;
+		border-radius: 50%;
+		background: color-mix(in srgb, var(--aurea-champagne) 10%, var(--aurea-ivory));
+		color: var(--aurea-champagne);
+		margin-bottom: 1.25rem;
+	}
+
+	/* ===== 4. Treatment Areas ===== */
+
+	.botox-areas__grid {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 1.25rem;
+	}
+
+	.botox-areas__card {
+		padding: clamp(1.5rem, 3vw, 2rem);
+	}
+
+	.botox-areas__note {
+		margin-top: 0.5rem;
+		font-size: 0.88rem;
+		color: var(--aurea-champagne);
+	}
+
+	.botox-areas__disclaimer {
+		margin-top: 2rem;
+		padding: 1.25rem 1.5rem;
+		border-radius: var(--aurea-radius);
+		background: color-mix(in srgb, var(--aurea-champagne) 6%, var(--aurea-white));
+		border: 1px solid color-mix(in srgb, var(--aurea-champagne) 15%, var(--aurea-border));
+	}
+
+	.botox-areas__disclaimer p {
+		margin: 0;
+		font-size: 0.92rem;
+		font-style: italic;
+		color: var(--aurea-muted);
+	}
+
+	/* ===== 5. Candidacy ===== */
+
+	.botox-candidate__grid {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 1.25rem;
+	}
+
+	.botox-candidate__card {
+		padding: clamp(1.5rem, 3vw, 2rem);
+	}
+
+	.botox-candidate__card h3 {
+		display: flex;
+		align-items: center;
+		gap: 0.65rem;
+	}
+
+	.botox-candidate__icon {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 2rem;
+		height: 2rem;
+		border-radius: 50%;
+		flex-shrink: 0;
+	}
+
+	.botox-candidate__icon--good {
+		background: color-mix(in srgb, var(--aurea-sage) 15%, var(--aurea-ivory));
+		color: var(--aurea-sage);
+	}
+
+	.botox-candidate__icon--not {
+		background: color-mix(in srgb, var(--aurea-taupe) 15%, var(--aurea-ivory));
+		color: var(--aurea-taupe);
+	}
+
+	.botox-candidate__card ul {
+		list-style: none;
+		padding: 0;
+		margin: 1rem 0 0;
+		display: grid;
+		gap: 0.75rem;
+	}
+
+	.botox-candidate__card li {
+		position: relative;
+		padding-left: 1.25rem;
+		font-size: 0.95rem;
+		color: var(--aurea-muted);
+		line-height: 1.55;
+	}
+
+	.botox-candidate__card li::before {
+		content: '';
+		position: absolute;
+		left: 0;
+		top: 0.55em;
+		width: 6px;
+		height: 6px;
+		border-radius: 50%;
+	}
+
+	.botox-candidate__card--good li::before {
+		background: var(--aurea-sage);
+	}
+
+	.botox-candidate__card--not li::before {
+		background: var(--aurea-taupe);
+	}
+
+	.botox-candidate__note {
+		margin-top: 1.5rem;
+		padding: 1.25rem 1.5rem;
+		text-align: center;
+	}
+
+	.botox-candidate__note p {
+		margin: 0;
+		font-size: 0.95rem;
+		font-weight: 600;
+		color: var(--aurea-charcoal);
+	}
+
+	/* ===== 6. Timeline ===== */
+
+	.botox-timeline {
+		display: flex;
+		flex-direction: column;
+		gap: 0;
+		max-width: 720px;
+	}
+
+	.botox-timeline__item {
+		display: flex;
+		gap: 1.5rem;
+	}
+
+	.botox-timeline__marker {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		flex-shrink: 0;
+	}
+
+	.botox-timeline__number {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 2.5rem;
+		height: 2.5rem;
+		border-radius: 50%;
+		background: var(--aurea-charcoal);
+		color: var(--aurea-white);
+		font-family: var(--aurea-font-heading);
+		font-size: 1rem;
+		font-weight: 700;
+		flex-shrink: 0;
+	}
+
+	.botox-timeline__line {
+		width: 2px;
+		flex: 1;
+		background: var(--aurea-border);
+		min-height: 24px;
+	}
+
+	.botox-timeline__content {
+		padding-bottom: 2.5rem;
+	}
+
+	.botox-timeline__content h3 {
+		margin-bottom: 0.35rem;
+	}
+
+	.botox-timeline__content p {
+		margin: 0;
+		font-size: 0.95rem;
+		line-height: 1.6;
+	}
+
+	.botox-timeline__cta {
+		margin-top: 2rem;
+	}
+
+	/* ===== 7. Before & After ===== */
+
+	.botox-ba__grid {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 1.25rem;
+	}
+
+	.botox-ba__card {
+		padding: clamp(1.25rem, 2vw, 1.5rem);
+	}
+
+	.botox-ba__card h3 {
+		margin-bottom: 1rem;
+		font-size: 1.1rem;
+	}
+
+	.botox-ba__visual {
+		display: flex;
+		border-radius: 12px;
+		overflow: hidden;
+		height: 180px;
+		border: 1px solid var(--aurea-border);
+	}
+
+	.botox-ba__side {
+		flex: 1;
+		display: flex;
+		align-items: flex-end;
+		justify-content: center;
+		padding: 0.75rem;
+		position: relative;
+	}
+
+	.botox-ba__side--before {
+		background:
+			repeating-linear-gradient(
+				0deg,
+				transparent,
+				transparent 10px,
+				color-mix(in srgb, var(--aurea-stone) 25%, transparent) 10px,
+				color-mix(in srgb, var(--aurea-stone) 25%, transparent) 11px
+			),
+			linear-gradient(160deg, var(--aurea-ivory), var(--aurea-stone));
+	}
+
+	.botox-ba__side--before.botox-ba__side--frown {
+		background:
+			repeating-linear-gradient(
+				90deg,
+				transparent,
+				transparent 14px,
+				color-mix(in srgb, var(--aurea-stone) 30%, transparent) 14px,
+				color-mix(in srgb, var(--aurea-stone) 30%, transparent) 15px
+			),
+			linear-gradient(160deg, var(--aurea-ivory), var(--aurea-stone));
+	}
+
+	.botox-ba__side--before.botox-ba__side--crows-feet {
+		background:
+			radial-gradient(circle at 30% 40%, color-mix(in srgb, var(--aurea-stone) 35%, transparent) 0%, transparent 60%),
+			repeating-linear-gradient(
+				-30deg,
+				transparent,
+				transparent 8px,
+				color-mix(in srgb, var(--aurea-stone) 20%, transparent) 8px,
+				color-mix(in srgb, var(--aurea-stone) 20%, transparent) 9px
+			),
+			linear-gradient(160deg, var(--aurea-ivory), var(--aurea-stone));
+	}
+
+	.botox-ba__side--after {
+		background: linear-gradient(160deg, var(--aurea-bg), color-mix(in srgb, var(--aurea-sage) 10%, var(--aurea-ivory)));
+	}
+
+	.botox-ba__label {
+		font-size: 0.72rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+		color: var(--aurea-muted);
+		background: color-mix(in srgb, var(--aurea-white) 85%, transparent);
+		padding: 0.25rem 0.65rem;
+		border-radius: 999px;
+	}
+
+	.botox-ba__divider {
+		width: 2px;
+		background: var(--aurea-white);
+		flex-shrink: 0;
+	}
+
+	.botox-ba__disclaimer {
+		margin-top: 2rem;
+		font-size: 0.88rem;
+		font-style: italic;
+		color: var(--aurea-muted);
+		max-width: 680px;
+	}
+
+	/* ===== 8. Pricing ===== */
+
+	.botox-pricing__grid {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 1.25rem;
+	}
+
+	.botox-pricing__card {
+		padding: clamp(1.5rem, 3vw, 2rem);
+	}
+
+	.botox-pricing__cta {
+		margin-top: 2.5rem;
+		text-align: center;
+	}
+
+	/* ===== 9. Safety ===== */
+
+	.botox-safety__grid {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 1.25rem;
+	}
+
+	.botox-safety__card {
+		padding: clamp(1.5rem, 3vw, 2rem);
+	}
+
+	/* ===== 10. FAQ ===== */
+
+	.botox-faq__list {
+		display: grid;
+		gap: 0.75rem;
+		max-width: 800px;
+	}
+
+	.botox-faq__item {
+		border: 1px solid var(--aurea-border);
+		border-radius: var(--aurea-radius);
+		background: var(--aurea-white);
+		overflow: hidden;
+		transition: box-shadow 0.2s ease;
+	}
+
+	.botox-faq__item:hover {
+		box-shadow: 0 8px 24px rgba(36, 35, 33, 0.04);
+	}
+
+	.botox-faq__item[open] {
+		box-shadow: 0 8px 24px rgba(36, 35, 33, 0.06);
+	}
+
+	.botox-faq__item summary {
+		padding: 1.25rem 1.5rem;
+		font-weight: 700;
+		font-size: 1rem;
+		color: var(--aurea-charcoal);
+		cursor: pointer;
+		list-style: none;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1rem;
+	}
+
+	.botox-faq__item summary::-webkit-details-marker {
+		display: none;
+	}
+
+	.botox-faq__item summary::after {
+		content: '+';
+		flex-shrink: 0;
+		width: 1.5rem;
+		height: 1.5rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 50%;
+		background: var(--aurea-bg-warm);
+		color: var(--aurea-champagne);
+		font-size: 1.1rem;
+		font-weight: 700;
+		transition: transform 0.2s ease;
+	}
+
+	.botox-faq__item[open] summary::after {
+		content: '\2212';
+		transform: rotate(180deg);
+	}
+
+	.botox-faq__item p {
+		padding: 0 1.5rem 1.25rem;
+		margin: 0;
+		color: var(--aurea-muted);
+		font-size: 0.95rem;
+		line-height: 1.65;
+	}
+
+	/* ===== 11. Related Treatments ===== */
+
+	.botox-related__grid {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 1.25rem;
+	}
+
+	.botox-related__card {
+		padding: clamp(1.5rem, 3vw, 2rem);
+		display: flex;
+		flex-direction: column;
+	}
+
+	.botox-related__card p {
+		flex: 1;
+	}
+
+	.botox-related__link {
+		display: inline-flex;
+		align-items: center;
+		margin-top: 1.25rem;
+		padding-top: 1rem;
+		border-top: 1px solid var(--aurea-border);
+		color: var(--aurea-charcoal);
+		font-size: 0.9rem;
+		font-weight: 700;
+	}
+
+	.botox-related__link:hover {
+		color: var(--aurea-champagne);
+	}
+
+	/* ===== 12. Final CTA ===== */
+
+	.botox-final {
+		padding-block: clamp(5.5rem, 10vw, 9rem);
+		background: var(--aurea-charcoal);
+	}
+
+	.botox-final__inner {
+		text-align: center;
+		max-width: 640px;
+		margin-inline: auto;
+	}
+
+	.botox-final h2 {
+		color: var(--aurea-white);
+	}
+
+	.botox-final p {
+		color: rgba(255, 255, 255, 0.6);
+		font-size: clamp(1.05rem, 1rem + 0.2vw, 1.15rem);
+		line-height: 1.6;
+	}
+
+	.botox-final__actions {
+		justify-content: center;
+	}
+
+	.botox-final__ghost {
+		border-color: rgba(255, 255, 255, 0.2);
+		background: transparent;
+		color: rgba(255, 255, 255, 0.8);
+	}
+
+	.botox-final__ghost:hover {
+		border-color: rgba(255, 255, 255, 0.4);
+		background: rgba(255, 255, 255, 0.06);
+		color: var(--aurea-white);
+	}
+
+	/* ===== Responsive ===== */
+
+	@media (max-width: 960px) {
+		.botox-hero__inner {
+			grid-template-columns: 1fr;
+		}
+
+		.botox-hero__content h1 {
+			max-width: none;
+		}
+
+		.botox-hero__visual {
+			min-height: 380px;
+			max-width: 480px;
+		}
+
+		.botox-hero__panel {
+			height: 340px;
+		}
+
+		.botox-hero__stat-badge {
+			right: 0;
+			bottom: -8px;
+		}
+
+		.botox-overview__grid {
+			grid-template-columns: 1fr;
+		}
+
+		.botox-areas__grid {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+
+		.botox-safety__grid {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+
+		.botox-ba__grid {
+			grid-template-columns: 1fr;
+			max-width: 480px;
+		}
+	}
+
+	@media (max-width: 768px) {
+		.botox-candidate__grid {
+			grid-template-columns: 1fr;
+		}
+
+		.botox-pricing__grid {
+			grid-template-columns: 1fr;
+		}
+
+		.botox-related__grid {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	@media (max-width: 560px) {
+		.botox-hero__visual {
+			min-height: 320px;
+		}
+
+		.botox-hero__panel {
+			height: 280px;
+		}
+
+		.botox-hero__stat-badge {
+			padding: 0.85rem 1rem;
+			gap: 0.6rem;
+		}
+
+		.botox-hero__stat-value {
+			font-size: 1rem;
+		}
+
+		.botox-hero__consult-badge {
+			right: 8px;
+		}
+
+		.botox-areas__grid {
+			grid-template-columns: 1fr;
+		}
+
+		.botox-safety__grid {
+			grid-template-columns: 1fr;
+		}
+
+		.botox-hero__trust {
+			gap: 0.75rem 1.25rem;
+		}
+	}
+</style>

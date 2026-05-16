@@ -1,6 +1,6 @@
 ---
-import AureaLayout from '../../../layouts/AureaLayout.astro';
-import { treatmentCategories, featuredTreatments } from '../../../data/aurea';
+import AureaLayout from '../../../../layouts/AureaLayout.astro';
+import { treatmentCategories, featuredTreatments } from '../../../../data/aurea';
 
 const categoryTreatmentMap: Record<string, string[]> = {
 	'Injectables': ['Botox / Wrinkle Relaxers', 'Dermal Fillers', 'Lip Filler'],
@@ -71,7 +71,10 @@ const treatmentFaqs = [
 									<span class="treatment-card__pill">{tag}</span>
 								))}
 							</div>
-							<a class="treatment-card__link" href="/demos/med-spa/contact">Book Consultation &rarr;</a>
+							{treatment.href !== '/demos/med-spa/contact' && (
+							<a class="treatment-card__link" href={treatment.href}>Learn More &rarr;</a>
+						)}
+						<a class="treatment-card__link" href="/demos/med-spa/contact">Book Consultation &rarr;</a>
 						</article>
 					))}
 				</div>
@@ -125,7 +128,7 @@ const treatmentFaqs = [
 
 <style>
 	.treatments-hero {
-		padding-block: clamp(5.5rem, 10vw, 9rem);
+		padding-block: clamp(4rem, 8vw, 7rem);
 		background:
 			radial-gradient(ellipse at 75% 20%, color-mix(in srgb, var(--aurea-champagne) 12%, transparent), transparent 55%),
 			linear-gradient(180deg, var(--aurea-bg) 0%, var(--aurea-ivory) 100%);
