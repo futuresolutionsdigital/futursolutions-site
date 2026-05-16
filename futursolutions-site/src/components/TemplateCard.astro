@@ -1,5 +1,6 @@
 ---
 import type { TemplateSystem } from '../data/templates';
+import { getTemplateMatchFilterIds } from '../data/templates';
 
 interface Props {
 	template: TemplateSystem;
@@ -8,9 +9,15 @@ interface Props {
 
 const { template, priority = 1 } = Astro.props;
 const visibleFeatures = template.features.slice(0, 4);
+const matchFilters = getTemplateMatchFilterIds(template).join(' ');
 ---
 
-<article class="template-system-card card">
+<article
+	class="template-system-card card"
+	data-template-card
+	data-template-filters={matchFilters}
+	data-template-slug={template.slug}
+>
 	<div class="template-system-card__mockup" aria-hidden="true">
 		<div class="template-system-card__chrome">
 			<span></span>
@@ -41,15 +48,25 @@ const visibleFeatures = template.features.slice(0, 4);
 		<div class="template-system-card__features" aria-label={`${template.name} features`}>
 			{visibleFeatures.map((feature) => <span>{feature}</span>)}
 		</div>
-		<div class="template-system-card__actions">
+		<div class="template-system-card__row">
 			<a class="button button-primary" href={template.detailUrl}>See Details</a>
+			<button type="button" class="template-system-card__quick" data-template-quick-view={template.slug}>
+				Quick View
+			</button>
+		</div>
+		<div class="template-system-card__demo-row">
 			{
 				template.demoUrl ? (
-					<a class="template-system-card__demo template-system-card__demo--link" href={template.demoUrl}>View Live Demo</a>
+					<a class="template-system-card__demo template-system-card__demo--link" href={template.demoUrl}>
+						View Live Demo
+					</a>
 				) : (
 					<span class="template-system-card__demo">Demo Coming Soon</span>
 				)
 			}
+			<a class="template-system-card__customize" href={template.auditUrl}>
+				Get This Customized
+			</a>
 		</div>
 	</div>
 </article>
@@ -187,7 +204,64 @@ const visibleFeatures = template.features.slice(0, 4);
 		margin-top: 1.25rem;
 	}
 
-	.template-system-card__features span,
+	.template-system-card__features span {
+		display: inline-flex;
+		padding: 0.35rem 0.55rem;
+		border: 1px solid var(--color-border);
+		border-radius: 999px;
+		background: var(--color-bg);
+		color: var(--color-muted);
+		font-size: 0.78rem;
+		font-weight: 600;
+		line-height: 1;
+	}
+
+	.template-system-card__row {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.65rem;
+		align-items: center;
+		margin-top: 1.5rem;
+	}
+
+	.template-system-card__row .button {
+		min-height: 2.5rem;
+		padding-inline: 0.9rem;
+	}
+
+	.template-system-card__quick {
+		min-height: 2.5rem;
+		padding: 0.55rem 0.85rem;
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-sm);
+		background: var(--color-white);
+		color: var(--color-text);
+		font-family: inherit;
+		font-size: 0.875rem;
+		font-weight: 800;
+		line-height: 1;
+		cursor: pointer;
+	}
+
+	.template-system-card__quick:hover {
+		border-color: color-mix(in srgb, var(--color-accent) 42%, var(--color-border));
+		background: var(--color-accent-light);
+		color: var(--color-accent-dark);
+	}
+
+	.template-system-card__quick:focus-visible {
+		outline: 2px solid var(--color-accent);
+		outline-offset: 2px;
+	}
+
+	.template-system-card__demo-row {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.75rem;
+		align-items: center;
+		margin-top: 0.9rem;
+	}
+
 	.template-system-card__demo {
 		display: inline-flex;
 		padding: 0.35rem 0.55rem;
@@ -210,17 +284,15 @@ const visibleFeatures = template.features.slice(0, 4);
 		color: var(--color-accent-dark);
 	}
 
-	.template-system-card__actions {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 0.75rem;
-		align-items: center;
-		margin-top: 1.5rem;
+	.template-system-card__customize {
+		color: var(--color-accent-dark);
+		font-size: 0.875rem;
+		font-weight: 800;
+		text-decoration-color: color-mix(in srgb, var(--color-accent) 45%, transparent);
 	}
 
-	.template-system-card__actions .button {
-		min-height: 2.5rem;
-		padding-inline: 0.9rem;
+	.template-system-card__customize:hover {
+		text-decoration-thickness: 2px;
 	}
 
 	@media (max-width: 700px) {

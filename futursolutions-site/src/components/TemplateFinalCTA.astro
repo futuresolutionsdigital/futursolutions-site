@@ -4,6 +4,8 @@ interface Props {
 	description?: string;
 	primaryText?: string;
 	secondaryText?: string;
+	primaryHref?: string;
+	secondaryHref?: string;
 }
 
 const {
@@ -11,6 +13,8 @@ const {
 	description = 'Request a website audit and get a clear recommendation based on your business, services, current site, and conversion goals.',
 	primaryText = 'Get This Template Customized',
 	secondaryText = 'Request a Website Audit',
+	primaryHref = '/audit',
+	secondaryHref = '/audit',
 } = Astro.props;
 ---
 
@@ -23,8 +27,8 @@ const {
 				<p class="lead">{description}</p>
 			</div>
 			<div class="button-row">
-				<a class="button button-primary" href="/audit">{primaryText}</a>
-				<a class="button button-secondary" href="/audit">{secondaryText}</a>
+				<a class="button button-primary" href={primaryHref}>{primaryText}</a>
+				<a class="button button-secondary" href={secondaryHref}>{secondaryText}</a>
 			</div>
 		</div>
 	</div>

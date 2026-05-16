@@ -1,4 +1,6 @@
 ---
+import { auditTemplateSlugToName } from '../data/templates';
+
 const businessTypes = ['Med Spa', 'Solo Practice', 'Wellness Clinic', 'Functional Medicine', 'Healthcare Association', 'Other'];
 const primaryGoals = [
 	'More bookings',
@@ -13,14 +15,30 @@ const preferredNextSteps = ['Website audit', 'Template recommendation', 'Strateg
 ---
 
 <div id="audit-form" class="audit-form-shell card">
+	<div
+		id="audit-template-interest-banner"
+		class="audit-template-interest"
+		data-audit-interest="template"
+		hidden
+		aria-live="polite"
+	>
+		<p>
+			<strong>Template interest detected:</strong>{' '}
+			<span id="audit-template-interest-name"></span>
+		</p>
+	</div>
+
 	<div class="audit-form-shell__intro">
 		<p class="eyebrow">Audit request</p>
 		<h2>Tell us what you are working with.</h2>
-		<p>After submitting, we’ll review your site and follow up with next steps.</p>
+		<p>When submission is enabled, we’ll review your site and follow up with next steps via GoHighLevel.</p>
 	</div>
 
 	<!-- TODO: Replace this form shell with GoHighLevel embed or connected form when GHL is ready. -->
-	<form class="audit-form-shell__form" method="post" aria-label="Website audit request form">
+	<form class="audit-form-shell__form" aria-label="Website audit request form" onsubmit="return false">
+		<input type="hidden" name="templateInterest" id="field-template-interest" value="" autocomplete="off" />
+		<input type="hidden" name="source" id="field-source" value="audit-page" autocomplete="off" />
+
 		<div class="audit-form-shell__grid">
 			<label>
 				<span>Name</span>
@@ -74,12 +92,54 @@ const preferredNextSteps = ['Website audit', 'Template recommendation', 'Strateg
 
 		<div class="audit-form-shell__footer">
 			<button class="button button-primary" type="button">Request My Website Audit</button>
-			<p>This form is a planning shell for now. It will be connected when the backend is ready.</p>
+			<p>
+				This form is a preview only and does not submit yet. GoHighLevel will be connected soon so replies can be tracked in your
+				CMS pipeline.
+			</p>
 		</div>
 	</form>
 </div>
 
+<script define:vars={{ templateInterestLabels: auditTemplateSlugToName }}>
+	(() => {
+		const allowed = ['med-spa', 'solo-practice', 'association'];
+		const params = typeof window !== 'undefined' ? new URLSearchParams(window.location.search) : null;
+		const raw = params && params.get('template');
+		const slug = raw && allowed.includes(raw) ? raw : null;
+
+		const banner = document.getElementById('audit-template-interest-banner');
+		const nameEl = document.getElementById('audit-template-interest-name');
+		const interestField = document.getElementById('field-template-interest');
+
+		if (slug && banner && nameEl) {
+			const label = templateInterestLabels[slug] || slug;
+			nameEl.textContent = label;
+			banner.hidden = false;
+			if (interestField instanceof HTMLInputElement) interestField.value = slug;
+		}
+	})();
+</script>
+
 <style>
+	.audit-template-interest {
+		padding: 0.85rem 1rem;
+		border: 1px solid color-mix(in srgb, var(--color-accent) 32%, var(--color-border));
+		border-radius: 14px;
+		background: var(--color-accent-light);
+		margin-bottom: 1.25rem;
+	}
+
+	.audit-template-interest p {
+		margin: 0;
+		font-size: 0.9rem;
+		line-height: 1.5;
+		color: var(--color-text);
+	}
+
+	.audit-template-interest strong {
+		font-weight: 800;
+	}
+
 	.audit-form-shell {
 		padding: clamp(1.35rem, 3vw, 2rem);
 		border-radius: 24px;

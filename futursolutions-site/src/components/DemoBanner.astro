@@ -1,8 +1,16 @@
+---
+interface Props {
+	customizeHref?: string;
+}
+
+const { customizeHref = '/audit' } = Astro.props;
+---
+
 <aside class="demo-banner" aria-label="Future Solutions demo notice">
 	<div class="demo-banner__inner">
 		<p>You’re viewing a Future Solutions demo template. Want this customized for your business?</p>
 		<div class="demo-banner__actions">
-			<a href="/audit">Get This Template Customized</a>
+			<a href={customizeHref}>Get This Template Customized</a>
 			<a href="/templates">Back to Templates</a>
 		</div>
 	</div>

@@ -54,6 +54,9 @@ import { templateSystems } from '../data/templates';
 									<span class="template-card__demo-status">Demo Coming Soon</span>
 								)
 							}
+							<a class="template-card__link template-card__link--accent" href={template.auditUrl}>
+								Get This Customized
+							</a>
 						</div>
 					</div>
 				</article>
@@ -253,6 +256,12 @@ import { templateSystems } from '../data/templates';
 
 	.template-card__link--demo {
 		color: var(--color-accent-dark);
+	}
+
+	.template-card__link--accent {
+		color: var(--color-accent-dark);
+		text-decoration-thickness: 1px;
+		text-underline-offset: 2px;
 	}
 
 	.template-card__demo-status {

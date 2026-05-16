@@ -1,8 +1,8 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import TemplateCard from '../../components/TemplateCard.astro';
-import TemplateFilterBar from '../../components/TemplateFilterBar.astro';
-import { templateSystems } from '../../data/templates';
+import TemplateQuickView from '../../components/TemplateQuickView.astro';
+import { templateSystems, templateBrowseFilterDefs } from '../../data/templates';
 
 const pageTitle = 'Website Template Systems | Future Solutions';
 const pageDescription =
@@ -69,7 +69,6 @@ const comparisons = [
 				<a class="button button-primary" href="/audit">Get a Website Audit</a>
 				<a class="button button-secondary" href="#featured-templates">View Featured Templates</a>
 			</div>
-			<TemplateFilterBar />
 		</div>
 	</section>
 
@@ -82,11 +81,64 @@ const comparisons = [
 					Each Future Solutions template is structured around the pages, trust signals, local visibility, and conversion paths health and wellness businesses need.
 				</p>
 			</div>
-			<div class="featured-templates__grid">
+			<div
+				id="template-browse-toolbar"
+				class="template-browse-filters"
+				role="toolbar"
+				aria-label="Filter template systems"
+			>
+				<button type="button" class="template-browse-filters__chip is-active" data-template-filter="all" aria-pressed="true">
+					All
+				</button>
+				{templateBrowseFilterDefs.map((chip) => (
+					<button
+						type="button"
+						class="template-browse-filters__chip"
+						data-template-filter={chip.id}
+						aria-pressed="false"
+					>
+						{chip.label}
+					</button>
+				))}
+			</div>
+			<div id="featured-templates-grid" class="featured-templates__grid">
 				{templateSystems.map((template, index) => <TemplateCard template={template} priority={index + 1} />)}
 			</div>
+			<TemplateQuickView templates={templateSystems} />
 		</div>
 	</section>
+
+	<script is:inline>
+		(() => {
+			const grid = document.getElementById('featured-templates-grid');
+			const toolbar = document.getElementById('template-browse-toolbar');
+			if (!grid || !toolbar) return;
+			const chips = toolbar.querySelectorAll('[data-template-filter]');
+			const cards = grid.querySelectorAll('[data-template-card]');
+
+			function apply(filterId) {
+				chips.forEach((chip) => {
+					const id = chip.getAttribute('data-template-filter') || 'all';
+					const active = id === filterId;
+					chip.setAttribute('aria-pressed', active ? 'true' : 'false');
+					chip.classList.toggle('is-active', active);
+				});
+
+				cards.forEach((card) => {
+					const raw = card.getAttribute('data-template-filters') || '';
+					const tokens = raw.split(/\s+/).filter(Boolean);
+					const show = filterId === 'all' || tokens.includes(filterId);
+					card.hidden = !show;
+				});
+			}
+
+			toolbar.addEventListener('click', (event) => {
+				const chip = event.target && event.target.closest('[data-template-filter]');
+				if (!chip || !toolbar.contains(chip)) return;
+				apply(chip.getAttribute('data-template-filter') || 'all');
+			});
+		})();
+	</script>
 
 	<section class="section template-difference" aria-labelledby="template-difference-heading">
 		<div class="site-container">
@@ -198,6 +250,52 @@ const comparisons = [
 
 	.featured-templates__grid {
 		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+
+	.template-browse-filters {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.6rem;
+		margin-top: 1.75rem;
+	}
+
+	.template-browse-filters__chip {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 2.25rem;
+		padding: 0.42rem 0.82rem;
+		border: 1px solid var(--color-border);
+		border-radius: 999px;
+		background: var(--color-white);
+		color: var(--color-muted);
+		font-family: inherit;
+		font-size: 0.8125rem;
+		font-weight: 700;
+		line-height: 1;
+		cursor: pointer;
+		transition:
+			border-color 0.12s ease,
+			background-color 0.12s ease,
+			color 0.12s ease;
+	}
+
+	.template-browse-filters__chip:hover {
+		border-color: color-mix(in srgb, var(--color-accent) 38%, var(--color-border));
+		color: var(--color-accent-dark);
+		background: color-mix(in srgb, var(--color-accent-light) 76%, var(--color-white));
+	}
+
+	.template-browse-filters__chip:focus-visible {
+		outline: 2px solid var(--color-accent-dark);
+		outline-offset: 2px;
+	}
+
+	.template-browse-filters__chip.is-active {
+		border-color: color-mix(in srgb, var(--color-accent) 48%, var(--color-border));
+		background: color-mix(in srgb, var(--color-accent-light) 88%, var(--color-white));
+		color: var(--color-accent-dark);
+		box-shadow: 0 0 0 1px color-mix(in srgb, var(--color-accent) 22%, transparent);
 	}
 
 	.template-difference__grid,

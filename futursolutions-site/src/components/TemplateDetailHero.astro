@@ -15,7 +15,7 @@ const { template } = Astro.props;
 			<h1 id="template-detail-heading">{template.name}</h1>
 			<p class="lead">{template.longDescription || template.shortDescription}</p>
 			<div class="button-row">
-				<a class="button button-primary" href="/audit">Get This Template Customized</a>
+				<a class="button button-primary" href={template.auditUrl}>Get This Template Customized</a>
 				{
 					template.demoUrl ? (
 						<a class="button button-secondary" href={template.demoUrl}>View Live Demo</a>

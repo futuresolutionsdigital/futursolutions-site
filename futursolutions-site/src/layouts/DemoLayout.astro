@@ -74,6 +74,9 @@ const activeConfig =
 		: medSpaConfig;
 
 const { title, description, canonicalUrl } = props;
+
+const demoBannerCustomizeHref =
+	demoVariant === 'solo-practice' ? '/audit?template=solo-practice' : '/audit?template=med-spa';
 ---
 
 <!doctype html>
@@ -96,7 +99,7 @@ const { title, description, canonicalUrl } = props;
 		<title>{title}</title>
 	</head>
 	<body class:list={['demo-site', activeConfig.variantClass]}>
-		<DemoBanner />
+		<DemoBanner customizeHref={demoBannerCustomizeHref} />
 		<header class="demo-header">
 			<div class="site-container demo-header__inner">
 				<a class="demo-header__brand" href={activeConfig.brandHomeHref} aria-label={activeConfig.brandAriaLabel}>
