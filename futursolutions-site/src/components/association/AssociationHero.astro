@@ -1,0 +1,236 @@
+---
+import { homepageHero, proofStats } from '../../data/association';
+---
+
+<section class="hero" aria-labelledby="hero-heading">
+	<div class="assoc-container hero__inner">
+		<div class="hero__content">
+			<p class="assoc-eyebrow">Meridian Health Professionals Association</p>
+			<h1 id="hero-heading">{homepageHero.headline}</h1>
+			<p class="hero__sub">{homepageHero.subheadline}</p>
+			<div class="assoc-btn-row">
+				<a class="assoc-btn assoc-btn--primary" href={homepageHero.primaryCta.href}>{homepageHero.primaryCta.text}</a>
+				<a class="assoc-btn assoc-btn--secondary" href={homepageHero.secondaryCta.href}>{homepageHero.secondaryCta.text}</a>
+			</div>
+			<a class="hero__tertiary" href={homepageHero.tertiaryLink.href}>{homepageHero.tertiaryLink.text}</a>
+		</div>
+		<div class="hero__visual" aria-hidden="true">
+			<div class="hero__card hero__card--activity">
+				<div class="hero__card-header">
+					<span class="hero__card-dot hero__card-dot--teal"></span>
+					<span>Association Activity</span>
+				</div>
+				<div class="hero__card-stats">
+					{proofStats.slice(0, 3).map((stat) => (
+						<div class="hero__mini-stat">
+							<span class="hero__mini-stat-val">{stat.value}</span>
+							<span class="hero__mini-stat-label">{stat.label}</span>
+						</div>
+					))}
+				</div>
+			</div>
+			<div class="hero__card hero__card--alert">
+				<div class="hero__card-header">
+					<span class="hero__card-dot hero__card-dot--coral"></span>
+					<span>Advocacy Alert</span>
+				</div>
+				<p>SB-1247: Scope of Practice — Action needed</p>
+			</div>
+			<div class="hero__card hero__card--event">
+				<div class="hero__card-header">
+					<span class="hero__card-dot hero__card-dot--navy"></span>
+					<span>Next Event</span>
+				</div>
+				<p>Clinical Leadership Conference</p>
+				<span class="hero__card-meta">Oct 15–17, 2026 · Sacramento</span>
+			</div>
+			<div class="hero__badge">
+				<span>24</span>
+				<small>chapters</small>
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.hero {
+		padding-block: clamp(3.5rem, 7vw, 6rem) clamp(3rem, 6vw, 5rem);
+		background:
+			radial-gradient(ellipse at 80% 30%, color-mix(in srgb, var(--assoc-teal) 6%, transparent), transparent 60%),
+			linear-gradient(175deg, var(--assoc-bg) 40%, color-mix(in srgb, var(--assoc-sand) 45%, var(--assoc-bg)) 100%);
+	}
+
+	.hero__inner {
+		display: grid;
+		grid-template-columns: 1.1fr 0.9fr;
+		align-items: center;
+		gap: clamp(2rem, 5vw, 4rem);
+	}
+
+	.hero__content h1 {
+		max-width: 640px;
+		text-wrap: balance;
+	}
+
+	.hero__sub {
+		max-width: 540px;
+		font-size: clamp(1.05rem, 1rem + 0.2vw, 1.15rem);
+		line-height: 1.6;
+		color: var(--assoc-slate);
+	}
+
+	.hero__tertiary {
+		display: inline-block;
+		margin-top: 1rem;
+		font-size: 0.9rem;
+		font-weight: 700;
+		color: var(--assoc-coral);
+	}
+
+	.hero__tertiary:hover {
+		color: color-mix(in srgb, var(--assoc-coral) 80%, var(--assoc-navy));
+	}
+
+	/* ── Visual cluster ── */
+
+	.hero__visual {
+		position: relative;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 0.75rem;
+		padding: 1rem;
+	}
+
+	.hero__card {
+		padding: 1rem 1.1rem;
+		border: 1px solid var(--assoc-border);
+		border-radius: var(--assoc-radius);
+		background: var(--assoc-white);
+		box-shadow: 0 4px 20px rgba(16, 42, 67, 0.05);
+	}
+
+	.hero__card--activity {
+		grid-column: 1 / -1;
+	}
+
+	.hero__card-header {
+		display: flex;
+		align-items: center;
+		gap: 0.4rem;
+		margin-bottom: 0.65rem;
+		font-size: 0.72rem;
+		font-weight: 700;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+		color: var(--assoc-slate);
+	}
+
+	.hero__card-dot {
+		width: 7px;
+		height: 7px;
+		border-radius: 50%;
+	}
+
+	.hero__card-dot--teal { background: var(--assoc-teal); }
+	.hero__card-dot--coral { background: var(--assoc-coral); }
+	.hero__card-dot--navy { background: var(--assoc-navy); }
+
+	.hero__card-stats {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 0.5rem;
+	}
+
+	.hero__mini-stat {
+		display: flex;
+		flex-direction: column;
+		text-align: center;
+		padding: 0.5rem 0.25rem;
+		border-radius: 8px;
+		background: color-mix(in srgb, var(--assoc-teal) 5%, var(--assoc-bg));
+	}
+
+	.hero__mini-stat-val {
+		font-size: 1.15rem;
+		font-weight: 800;
+		color: var(--assoc-navy);
+		letter-spacing: -0.02em;
+	}
+
+	.hero__mini-stat-label {
+		font-size: 0.68rem;
+		font-weight: 600;
+		color: var(--assoc-slate);
+		margin-top: 0.15rem;
+	}
+
+	.hero__card p {
+		font-size: 0.82rem;
+		font-weight: 600;
+		color: var(--assoc-navy);
+		margin: 0;
+		line-height: 1.35;
+	}
+
+	.hero__card-meta {
+		display: block;
+		margin-top: 0.3rem;
+		font-size: 0.72rem;
+		color: var(--assoc-slate);
+	}
+
+	.hero__badge {
+		position: absolute;
+		top: -0.5rem;
+		right: -0.25rem;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		width: 3.5rem;
+		height: 3.5rem;
+		border-radius: 50%;
+		background: var(--assoc-teal);
+		color: var(--assoc-white);
+		box-shadow: 0 4px 16px rgba(31, 111, 120, 0.25);
+	}
+
+	.hero__badge span {
+		font-size: 1.1rem;
+		font-weight: 800;
+		line-height: 1;
+	}
+
+	.hero__badge small {
+		font-size: 0.55rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.04em;
+		opacity: 0.85;
+	}
+
+	@media (max-width: 900px) {
+		.hero__inner {
+			grid-template-columns: 1fr;
+		}
+
+		.hero__visual {
+			max-width: 480px;
+		}
+	}
+
+	@media (max-width: 520px) {
+		.hero__card--activity .hero__card-stats {
+			grid-template-columns: 1fr 1fr;
+		}
+
+		.hero__badge {
+			width: 2.8rem;
+			height: 2.8rem;
+		}
+
+		.hero__badge span {
+			font-size: 0.9rem;
+		}
+	}
+</style>

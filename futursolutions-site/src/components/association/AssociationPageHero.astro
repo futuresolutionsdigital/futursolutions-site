@@ -1,0 +1,79 @@
+---
+interface Props {
+	eyebrow: string;
+	headline: string;
+	lead?: string;
+	primaryCta?: { text: string; href: string };
+	secondaryCta?: { text: string; href: string };
+	align?: 'left' | 'center';
+}
+
+const { eyebrow, headline, lead, primaryCta, secondaryCta, align = 'left' } = Astro.props;
+const headingId = `hero-${eyebrow.toLowerCase().replace(/[^a-z]+/g, '-')}`;
+---
+
+<section
+	class:list={['assoc-page-hero', { 'assoc-page-hero--center': align === 'center' }]}
+	aria-labelledby={headingId}
+>
+	<div class="assoc-container">
+		<div class="assoc-page-hero__content">
+			<p class="assoc-eyebrow">{eyebrow}</p>
+			<h1 id={headingId}>{headline}</h1>
+			{lead && <p class="assoc-lead">{lead}</p>}
+			{(primaryCta || secondaryCta) && (
+				<div class="assoc-btn-row">
+					{primaryCta && <a class="assoc-btn assoc-btn--primary" href={primaryCta.href}>{primaryCta.text}</a>}
+					{secondaryCta && <a class="assoc-btn assoc-btn--secondary" href={secondaryCta.href}>{secondaryCta.text}</a>}
+				</div>
+			)}
+		</div>
+	</div>
+</section>
+
+<style>
+	.assoc-page-hero {
+		padding-block: clamp(3rem, 6vw, 5rem);
+		background: linear-gradient(180deg, var(--assoc-bg) 0%, color-mix(in srgb, var(--assoc-sand) 40%, var(--assoc-bg)) 100%);
+		border-bottom: 1px solid var(--assoc-border);
+	}
+
+	.assoc-page-hero__content h1 {
+		max-width: 720px;
+		text-wrap: balance;
+	}
+
+	.assoc-page-hero__content .assoc-lead {
+		max-width: 620px;
+	}
+
+	.assoc-page-hero--center .assoc-page-hero__content {
+		text-align: center;
+		margin-inline: auto;
+		max-width: 860px;
+	}
+
+	.assoc-page-hero--center .assoc-page-hero__content h1 {
+		max-width: 800px;
+		margin-inline: auto;
+	}
+
+	.assoc-page-hero--center .assoc-lead {
+		max-width: 660px;
+		margin-inline: auto;
+	}
+
+	.assoc-page-hero--center .assoc-btn-row {
+		justify-content: center;
+	}
+
+	@media (max-width: 768px) {
+		.assoc-page-hero {
+			padding-block: clamp(2rem, 5vw, 3.5rem);
+		}
+
+		.assoc-page-hero__content h1 {
+			text-wrap: unset;
+		}
+	}
+</style>

@@ -1,0 +1,75 @@
+---
+import { partners } from '../../data/association';
+---
+
+<section class="partners" aria-label="Partners and sponsors">
+	<div class="assoc-container">
+		<p class="partners__label">Trusted by partners across healthcare</p>
+		<div class="partners__grid">
+			{partners.map((name) => (
+				<div class="partners__item" aria-label={name}>
+					<span>{name}</span>
+				</div>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+	.partners {
+		padding-block: clamp(2rem, 4vw, 3rem);
+		border-top: 1px solid var(--assoc-border);
+	}
+
+	.partners__label {
+		text-align: center;
+		font-size: 0.72rem;
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: var(--assoc-slate);
+		opacity: 0.6;
+		margin-bottom: 1.25rem;
+	}
+
+	.partners__grid {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		align-items: center;
+		gap: 1rem 2rem;
+	}
+
+	.partners__item {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0.6rem 1.25rem;
+		border: 1px solid var(--assoc-border);
+		border-radius: 8px;
+		background: var(--assoc-white);
+	}
+
+	.partners__item span {
+		font-size: 0.82rem;
+		font-weight: 700;
+		color: var(--assoc-navy);
+		opacity: 0.55;
+		white-space: nowrap;
+		letter-spacing: -0.01em;
+	}
+
+	@media (max-width: 520px) {
+		.partners__grid {
+			gap: 0.6rem 0.75rem;
+		}
+
+		.partners__item {
+			padding: 0.5rem 0.85rem;
+		}
+
+		.partners__item span {
+			font-size: 0.75rem;
+		}
+	}
+</style>

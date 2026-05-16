@@ -1,0 +1,82 @@
+---
+import { careerCenterPreview } from '../../data/association';
+---
+
+<section class="assoc-section" id="career" aria-labelledby="career-heading">
+	<div class="assoc-container">
+		<div class="career__header">
+			<p class="assoc-eyebrow">Career Center</p>
+			<h2 id="career-heading">{careerCenterPreview.title}</h2>
+			<p class="assoc-lead">{careerCenterPreview.description}</p>
+		</div>
+		<div class="career-grid">
+			{careerCenterPreview.features.map((feature) => (
+				<a href={feature.href} class="assoc-card career-card">
+					<h3>{feature.title}</h3>
+					<p>{feature.description}</p>
+					<span class="career-card__link" aria-hidden="true">Explore →</span>
+				</a>
+			))}
+		</div>
+		<div class="career__cta-row">
+			<a class="assoc-btn assoc-btn--secondary" href={careerCenterPreview.cta.href}>{careerCenterPreview.cta.text}</a>
+		</div>
+	</div>
+</section>
+
+<style>
+	.career__header {
+		max-width: 640px;
+		margin-bottom: 2rem;
+	}
+
+	.career-grid {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 1rem;
+	}
+
+	.career-card {
+		display: flex;
+		flex-direction: column;
+		padding: 1.5rem;
+	}
+
+	.career-card:hover {
+		border-color: var(--assoc-teal);
+		transform: translateY(-2px);
+	}
+
+	.career-card h3 {
+		font-size: 1.05rem;
+	}
+
+	.career-card p {
+		font-size: 0.88rem;
+		line-height: 1.5;
+		flex: 1;
+	}
+
+	.career-card__link {
+		margin-top: 0.75rem;
+		font-size: 0.82rem;
+		font-weight: 700;
+		color: var(--assoc-teal);
+	}
+
+	.career__cta-row {
+		margin-top: 1.5rem;
+	}
+
+	@media (max-width: 768px) {
+		.career-grid {
+			grid-template-columns: 1fr 1fr;
+		}
+	}
+
+	@media (max-width: 520px) {
+		.career-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

@@ -1,0 +1,111 @@
+---
+import { valuePillars } from '../../data/association';
+---
+
+<section class="assoc-section assoc-section--warm" id="member-value" aria-labelledby="pillars-heading">
+	<div class="assoc-container">
+		<p class="assoc-eyebrow">Member Value</p>
+		<h2 id="pillars-heading">Built around what healthcare professionals actually need.</h2>
+		<p class="assoc-lead">Every dollar of your dues supports advocacy, education, community, and career resources — designed by members, for members.</p>
+
+		<div class="pillars-grid">
+			{valuePillars.map((pillar) => (
+				<div class="pillar-card">
+					<div class="pillar-card__accent"></div>
+					<div class="pillar-card__content">
+						<h3>{pillar.title}</h3>
+						<p>{pillar.description}</p>
+						<div class="pillar-card__footer">
+							<span class="pillar-card__stat">{pillar.stats}</span>
+							<a href={pillar.href} class="pillar-card__link">{pillar.linkText} →</a>
+						</div>
+					</div>
+				</div>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+	.pillars-grid {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 1rem;
+		margin-top: 2.5rem;
+	}
+
+	.pillar-card {
+		display: flex;
+		border: 1px solid var(--assoc-border);
+		border-radius: var(--assoc-radius);
+		background: var(--assoc-white);
+		overflow: hidden;
+		transition: box-shadow 0.22s ease, transform 0.22s ease;
+	}
+
+	.pillar-card:hover {
+		box-shadow: 0 6px 24px rgba(16, 42, 67, 0.06);
+		transform: translateY(-1px);
+	}
+
+	.pillar-card__accent {
+		width: 4px;
+		flex-shrink: 0;
+		background: var(--assoc-teal);
+	}
+
+	.pillar-card:nth-child(2) .pillar-card__accent { background: var(--assoc-navy); }
+	.pillar-card:nth-child(3) .pillar-card__accent { background: var(--assoc-coral); }
+	.pillar-card:nth-child(4) .pillar-card__accent { background: var(--assoc-slate); }
+
+	.pillar-card__content {
+		display: flex;
+		flex-direction: column;
+		padding: 1.5rem;
+		flex: 1;
+	}
+
+	.pillar-card__content h3 {
+		font-size: 1.1rem;
+	}
+
+	.pillar-card__content p {
+		font-size: 0.9rem;
+		line-height: 1.55;
+		flex: 1;
+	}
+
+	.pillar-card__footer {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1rem;
+		margin-top: 1rem;
+		padding-top: 0.85rem;
+		border-top: 1px solid var(--assoc-border);
+	}
+
+	.pillar-card__stat {
+		font-size: 0.78rem;
+		font-weight: 700;
+		color: var(--assoc-navy);
+		letter-spacing: -0.01em;
+	}
+
+	.pillar-card__link {
+		font-size: 0.82rem;
+		font-weight: 700;
+		color: var(--assoc-teal);
+		white-space: nowrap;
+	}
+
+	.pillar-card__link:hover {
+		color: var(--assoc-navy);
+	}
+
+	@media (max-width: 700px) {
+		.pillars-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

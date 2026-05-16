@@ -1,0 +1,82 @@
+---
+import { chapterPreview } from '../../data/association';
+---
+
+<section class="assoc-section assoc-section--warm" id="chapters" aria-labelledby="chapters-heading">
+	<div class="assoc-container chapters__inner">
+		<div class="chapters__content">
+			<p class="assoc-eyebrow">Local Chapters</p>
+			<h2 id="chapters-heading">{chapterPreview.title}</h2>
+			<p class="assoc-lead">{chapterPreview.description}</p>
+			<a class="assoc-btn assoc-btn--primary" href={chapterPreview.cta.href}>{chapterPreview.cta.text}</a>
+		</div>
+		<div class="chapters__regions">
+			{chapterPreview.regions.map((region) => (
+				<div class="chapters__region">
+					<span class="chapters__region-name">{region.name}</span>
+					<div class="chapters__region-stats">
+						<span>{region.chapters} chapters</span>
+						<span class="chapters__region-dot" aria-hidden="true">·</span>
+						<span>{region.members} members</span>
+					</div>
+				</div>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+	.chapters__inner {
+		display: grid;
+		grid-template-columns: 1.1fr 0.9fr;
+		gap: clamp(2rem, 5vw, 4rem);
+		align-items: start;
+	}
+
+	.chapters__content .assoc-lead {
+		margin-bottom: 2rem;
+	}
+
+	.chapters__regions {
+		display: grid;
+		gap: 0;
+	}
+
+	.chapters__region {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1rem;
+		padding: 1rem 0;
+		border-bottom: 1px solid var(--assoc-border);
+	}
+
+	.chapters__region:last-child {
+		border-bottom: none;
+	}
+
+	.chapters__region-name {
+		font-weight: 700;
+		color: var(--assoc-navy);
+		font-size: 0.95rem;
+	}
+
+	.chapters__region-stats {
+		display: flex;
+		align-items: center;
+		gap: 0.4rem;
+		font-size: 0.82rem;
+		color: var(--assoc-slate);
+		white-space: nowrap;
+	}
+
+	.chapters__region-dot {
+		opacity: 0.4;
+	}
+
+	@media (max-width: 768px) {
+		.chapters__inner {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

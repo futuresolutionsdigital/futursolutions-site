@@ -1,0 +1,33 @@
+---
+import AssociationLayout from '../../../layouts/AssociationLayout.astro';
+import AssociationPageHero from '../../../components/association/AssociationPageHero.astro';
+import AssociationFinalCTA from '../../../components/association/AssociationFinalCTA.astro';
+import { routeMetadata } from '../../../data/association';
+
+const meta = routeMetadata['/demos/association/chapters'];
+---
+
+<AssociationLayout title={meta.title} description={meta.description}>
+	<AssociationPageHero
+		eyebrow="Chapters"
+		headline="Find your people. Find your chapter."
+		lead="24 local chapters across the state — hosting meetups, CE dinners, mentorship circles, and advocacy events that keep you connected beyond the workplace."
+		primaryCta={{ text: 'Find Your Chapter', href: '/demos/association/chapters' }}
+		secondaryCta={{ text: 'Join the Association', href: '/demos/association/membership' }}
+	/>
+	<section class="assoc-section">
+		<div class="assoc-container placeholder">
+			<div class="placeholder__badge">Coming Soon</div>
+			<h2>Chapter map, regional events, and leadership</h2>
+			<p class="assoc-lead">This page will include an interactive chapter map, regional event calendars, chapter leadership contacts, and community highlights — all part of the MHPA demo system.</p>
+			<a class="assoc-btn assoc-btn--secondary" href="/demos/association">← Back to Homepage</a>
+		</div>
+	</section>
+	<AssociationFinalCTA />
+</AssociationLayout>
+
+<style>
+	.placeholder { text-align: center; max-width: 600px; margin-inline: auto; }
+	.placeholder .assoc-lead { margin-inline: auto; margin-bottom: 2rem; }
+	.placeholder__badge { display: inline-block; margin-bottom: 1.5rem; padding: 0.3rem 0.8rem; border-radius: 999px; background: var(--assoc-teal-light); color: var(--assoc-teal); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+</style>

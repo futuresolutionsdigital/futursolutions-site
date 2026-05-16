@@ -1,0 +1,68 @@
+---
+const ctaData = {
+	headline: 'Stronger practice starts with stronger association.',
+	description: 'Get the advocacy, education, career tools, local connections, and professional community that help you move forward — at every stage of your career.',
+	primaryCta: { text: 'Join the Association', href: '/demos/association/membership' },
+	secondaryCta: { text: 'Explore Member Benefits', href: '/demos/association/membership' },
+};
+---
+
+<section class="final-cta" aria-labelledby="final-cta-heading">
+	<div class="assoc-container final-cta__inner">
+		<h2 id="final-cta-heading">{ctaData.headline}</h2>
+		<p class="assoc-lead">{ctaData.description}</p>
+		<div class="assoc-btn-row">
+			<a class="assoc-btn assoc-btn--primary final-cta__btn" href={ctaData.primaryCta.href}>{ctaData.primaryCta.text}</a>
+			<a class="assoc-btn final-cta__ghost" href={ctaData.secondaryCta.href}>{ctaData.secondaryCta.text}</a>
+		</div>
+	</div>
+</section>
+
+<style>
+	.final-cta {
+		padding-block: var(--assoc-section-spacing);
+		background: var(--assoc-navy);
+		color: var(--assoc-white);
+	}
+
+	.final-cta__inner {
+		max-width: 680px;
+		text-align: center;
+		margin-inline: auto;
+	}
+
+	.final-cta h2 {
+		color: var(--assoc-white);
+		text-wrap: balance;
+	}
+
+	.final-cta .assoc-lead {
+		color: rgba(255, 255, 255, 0.6);
+		margin-inline: auto;
+	}
+
+	.final-cta .assoc-btn-row {
+		justify-content: center;
+	}
+
+	.final-cta__btn {
+		background: var(--assoc-teal) !important;
+		color: var(--assoc-white) !important;
+	}
+
+	.final-cta__btn:hover {
+		background: color-mix(in srgb, var(--assoc-teal) 80%, var(--assoc-white)) !important;
+	}
+
+	.final-cta__ghost {
+		border-color: rgba(255, 255, 255, 0.2) !important;
+		background: transparent !important;
+		color: var(--assoc-white) !important;
+	}
+
+	.final-cta__ghost:hover {
+		border-color: rgba(255, 255, 255, 0.4) !important;
+		background: rgba(255, 255, 255, 0.06) !important;
+		color: var(--assoc-white) !important;
+	}
+</style>

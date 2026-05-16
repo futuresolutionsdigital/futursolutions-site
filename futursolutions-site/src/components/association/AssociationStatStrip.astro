@@ -1,0 +1,61 @@
+---
+import { proofStats } from '../../data/association';
+---
+
+<section class="stat-strip" aria-label="Association impact">
+	<div class="assoc-container stat-strip__inner">
+		{proofStats.map((stat) => (
+			<div class="stat-strip__item">
+				<span class="stat-strip__value">{stat.value}</span>
+				<span class="stat-strip__label">{stat.label}</span>
+			</div>
+		))}
+	</div>
+</section>
+
+<style>
+	.stat-strip {
+		padding-block: clamp(1.5rem, 3vw, 2.25rem);
+		background: var(--assoc-navy);
+		color: var(--assoc-white);
+	}
+
+	.stat-strip__inner {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: clamp(1.5rem, 4vw, 3rem);
+	}
+
+	.stat-strip__item {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+		gap: 0.15rem;
+	}
+
+	.stat-strip__value {
+		font-size: clamp(1.5rem, 1.3rem + 0.8vw, 2rem);
+		font-weight: 800;
+		letter-spacing: -0.02em;
+		line-height: 1;
+	}
+
+	.stat-strip__label {
+		font-size: 0.74rem;
+		font-weight: 600;
+		color: rgba(255, 255, 255, 0.55);
+		letter-spacing: 0.02em;
+	}
+
+	@media (max-width: 600px) {
+		.stat-strip__inner {
+			gap: 1.25rem 1.5rem;
+		}
+
+		.stat-strip__item {
+			min-width: 80px;
+		}
+	}
+</style>

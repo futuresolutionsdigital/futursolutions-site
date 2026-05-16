@@ -1,0 +1,33 @@
+---
+import AssociationLayout from '../../../../layouts/AssociationLayout.astro';
+import AssociationPageHero from '../../../../components/association/AssociationPageHero.astro';
+import AssociationFinalCTA from '../../../../components/association/AssociationFinalCTA.astro';
+import { routeMetadata } from '../../../../data/association';
+
+const meta = routeMetadata['/demos/association/events'];
+---
+
+<AssociationLayout title={meta.title} description={meta.description}>
+	<AssociationPageHero
+		eyebrow="Education & Events"
+		headline="Learn from the best. Earn the credits you need."
+		lead="Browse accredited CE courses, on-demand webinars, specialty workshops, and the flagship Annual Clinical Leadership Conference."
+		primaryCta={{ text: 'Register for Conference', href: '/demos/association/events/annual-conference' }}
+		secondaryCta={{ text: 'Browse CE Courses', href: '/demos/association/events' }}
+	/>
+	<section class="assoc-section">
+		<div class="assoc-container placeholder">
+			<div class="placeholder__badge">Coming Soon</div>
+			<h2>CE courses, webinars, and event calendar</h2>
+			<p class="assoc-lead">This page will include filterable CE courses, upcoming webinars, event calendar, and on-demand learning modules — all part of the MHPA demo system.</p>
+			<a class="assoc-btn assoc-btn--secondary" href="/demos/association">← Back to Homepage</a>
+		</div>
+	</section>
+	<AssociationFinalCTA />
+</AssociationLayout>
+
+<style>
+	.placeholder { text-align: center; max-width: 600px; margin-inline: auto; }
+	.placeholder .assoc-lead { margin-inline: auto; margin-bottom: 2rem; }
+	.placeholder__badge { display: inline-block; margin-bottom: 1.5rem; padding: 0.3rem 0.8rem; border-radius: 999px; background: var(--assoc-teal-light); color: var(--assoc-teal); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+</style>

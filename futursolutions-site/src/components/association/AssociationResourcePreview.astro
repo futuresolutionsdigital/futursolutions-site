@@ -1,0 +1,144 @@
+---
+import { resourcePreview } from '../../data/association';
+---
+
+<section class="assoc-section" id="resources" aria-labelledby="resources-heading">
+	<div class="assoc-container">
+		<div class="resources__header">
+			<div>
+				<p class="assoc-eyebrow">Education & Resources</p>
+				<h2 id="resources-heading">Stay current. Stay prepared. Stay ahead.</h2>
+				<p class="assoc-lead">Accredited CE courses, practice toolkits, clinical guidelines, and salary data — curated for working healthcare professionals.</p>
+			</div>
+			<div class="resources__header-actions">
+				<a class="assoc-btn assoc-btn--secondary" href="/demos/association/events">Browse All Education</a>
+				<a class="assoc-btn assoc-btn--secondary" href="/demos/association/resources">Browse Resources</a>
+			</div>
+		</div>
+		<div class="resources-grid">
+			{resourcePreview.map((item) => (
+				<a href={item.href} class="assoc-card resource-card">
+					<span class="resource-card__category">{item.category}</span>
+					<h3>{item.title}</h3>
+					<p>{item.description}</p>
+					<span class="resource-card__meta">{item.meta}</span>
+				</a>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+	.resources__header {
+		display: flex;
+		align-items: flex-start;
+		justify-content: space-between;
+		gap: 2rem;
+		margin-bottom: 2rem;
+	}
+
+	.resources__header-actions {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+		flex-shrink: 0;
+		margin-top: 0.5rem;
+	}
+
+	.resources-grid {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 1rem;
+	}
+
+	.resource-card {
+		display: flex;
+		flex-direction: column;
+		padding: 1.5rem;
+	}
+
+	.resource-card:hover {
+		border-color: var(--assoc-teal);
+		transform: translateY(-2px);
+	}
+
+	.resource-card__category {
+		display: inline-block;
+		align-self: flex-start;
+		margin-bottom: 0.75rem;
+		padding: 0.2rem 0.55rem;
+		border-radius: 6px;
+		font-size: 0.7rem;
+		font-weight: 700;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+	}
+
+	.resource-card:nth-child(1) .resource-card__category {
+		background: var(--assoc-teal-light);
+		color: var(--assoc-teal);
+	}
+
+	.resource-card:nth-child(2) .resource-card__category {
+		background: color-mix(in srgb, var(--assoc-navy) 8%, var(--assoc-white));
+		color: var(--assoc-navy);
+	}
+
+	.resource-card:nth-child(3) .resource-card__category {
+		background: var(--assoc-teal-light);
+		color: var(--assoc-teal);
+	}
+
+	.resource-card:nth-child(4) .resource-card__category {
+		background: color-mix(in srgb, var(--assoc-navy) 8%, var(--assoc-white));
+		color: var(--assoc-navy);
+	}
+
+	.resource-card h3 {
+		font-size: 1.05rem;
+		margin-bottom: 0.4rem;
+	}
+
+	.resource-card p {
+		font-size: 0.85rem;
+		line-height: 1.5;
+		flex: 1;
+	}
+
+	.resource-card__meta {
+		display: block;
+		margin-top: 0.75rem;
+		padding-top: 0.65rem;
+		border-top: 1px solid var(--assoc-border);
+		font-size: 0.75rem;
+		font-weight: 600;
+		color: var(--assoc-teal);
+	}
+
+	@media (max-width: 960px) {
+		.resources-grid {
+			grid-template-columns: 1fr 1fr;
+		}
+	}
+
+	@media (max-width: 700px) {
+		.resources__header {
+			flex-direction: column;
+		}
+
+		.resources__header-actions {
+			flex-direction: row;
+		}
+	}
+
+	@media (max-width: 520px) {
+		.resources-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.resources__header-actions {
+			flex-direction: column;
+			width: 100%;
+		}
+	}
+</style>

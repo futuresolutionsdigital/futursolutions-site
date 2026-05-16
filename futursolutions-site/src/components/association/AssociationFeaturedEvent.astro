@@ -1,0 +1,133 @@
+---
+import { featuredConference } from '../../data/association';
+---
+
+<section class="assoc-section" id="conference" aria-labelledby="event-heading">
+	<div class="assoc-container event__inner">
+		<div class="event__content">
+			<p class="assoc-eyebrow">{featuredConference.eyebrow}</p>
+			<h2 id="event-heading">{featuredConference.title}</h2>
+			<div class="event__meta">
+				<span class="event__meta-item">
+					<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+					{featuredConference.date}
+				</span>
+				<span class="event__meta-item">
+					<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+					{featuredConference.location}
+				</span>
+				<span class="event__meta-item event__meta-item--badge">{featuredConference.attendees}</span>
+			</div>
+			<p class="event__desc">{featuredConference.description}</p>
+			<div class="assoc-btn-row">
+				<a class="assoc-btn assoc-btn--primary" href={featuredConference.primaryCta.href}>{featuredConference.primaryCta.text}</a>
+				<a class="assoc-btn assoc-btn--secondary" href={featuredConference.secondaryCta.href}>{featuredConference.secondaryCta.text}</a>
+			</div>
+		</div>
+		<div class="event__highlights" aria-label="Conference highlights">
+			<h3>Conference Highlights</h3>
+			<ul>
+				{featuredConference.highlights.map((item) => (
+					<li>
+						<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+						<span>{item}</span>
+					</li>
+				))}
+			</ul>
+		</div>
+	</div>
+</section>
+
+<style>
+	.event__inner {
+		display: grid;
+		grid-template-columns: 1.15fr 0.85fr;
+		gap: clamp(2rem, 5vw, 4rem);
+		align-items: start;
+	}
+
+	.event__meta {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1rem;
+		margin-bottom: 1.25rem;
+	}
+
+	.event__meta-item {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.35rem;
+		font-size: 0.85rem;
+		font-weight: 600;
+		color: var(--assoc-slate);
+	}
+
+	.event__meta-item svg {
+		display: inline;
+		flex-shrink: 0;
+		color: var(--assoc-teal);
+	}
+
+	.event__meta-item--badge {
+		padding: 0.25rem 0.65rem;
+		border-radius: 999px;
+		background: var(--assoc-teal-light);
+		color: var(--assoc-teal);
+		font-size: 0.78rem;
+		font-weight: 700;
+	}
+
+	.event__desc {
+		font-size: 1rem;
+		line-height: 1.6;
+		max-width: 540px;
+	}
+
+	.event__highlights {
+		border: 1px solid var(--assoc-border);
+		border-radius: var(--assoc-radius-lg);
+		background: var(--assoc-white);
+		padding: 1.75rem;
+		box-shadow: 0 4px 20px rgba(16, 42, 67, 0.04);
+	}
+
+	.event__highlights h3 {
+		font-size: 0.85rem;
+		font-weight: 700;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+		color: var(--assoc-teal);
+		margin-bottom: 1.25rem;
+	}
+
+	.event__highlights ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		display: grid;
+		gap: 0.85rem;
+	}
+
+	.event__highlights li {
+		display: flex;
+		align-items: flex-start;
+		gap: 0.6rem;
+		font-size: 0.9rem;
+		font-weight: 500;
+		color: var(--assoc-navy);
+		line-height: 1.4;
+	}
+
+	.event__highlights li svg {
+		display: inline;
+		flex-shrink: 0;
+		margin-top: 0.15rem;
+		color: var(--assoc-teal);
+	}
+
+	@media (max-width: 768px) {
+		.event__inner {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>
