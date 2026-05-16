@@ -1,0 +1,345 @@
+---
+import AureaLayout from '../../../layouts/AureaLayout.astro';
+import { concernPaths } from '../../../data/aurea';
+
+const mainConcerns = concernPaths.slice(0, 8);
+const unsureConcern = concernPaths[8];
+
+const wisdomCards = [
+	{
+		title: 'Start with your goal, not a trend',
+		text: 'The best treatments come from understanding what matters to you — not what\u2019s popular online. Your provider will help you separate good options from hype.',
+	},
+	{
+		title: 'Consider downtime and timing',
+		text: 'Some treatments have zero downtime. Others need a few days to heal. Planning around your schedule ensures the best experience.',
+	},
+	{
+		title: 'Match treatment to anatomy',
+		text: 'Every face is different. What works for one patient may not be the best choice for another. Your provider evaluates your unique anatomy before recommending treatment.',
+	},
+	{
+		title: 'Let your provider confirm candidacy',
+		text: 'Not every treatment is appropriate for everyone. A proper consultation ensures safety and realistic expectations.',
+	},
+];
+---
+
+<AureaLayout
+	title="Concerns | Auréa Skin & Aesthetics"
+	description="Not sure which treatment is right for you? Use the Auréa concern guide to explore treatment paths based on your aesthetic goals — from lines and volume to skin texture and wellness."
+>
+	<section class="concerns-hero" aria-labelledby="concerns-heading">
+		<div class="aurea-container">
+			<p class="aurea-eyebrow">Concern Guide</p>
+			<h1 id="concerns-heading">Find the right path for your aesthetic goals.</h1>
+			<p class="aurea-lead">
+				Not every patient arrives knowing which treatment they need. Start with what you want to improve, then explore the treatments that may fit your goals.
+			</p>
+			<div class="aurea-btn-row">
+				<a class="aurea-btn aurea-btn--primary" href="#concern-paths">Find My Treatment Path</a>
+				<a class="aurea-btn aurea-btn--secondary" href="/demos/med-spa/contact">Book a Consultation</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="aurea-section" id="concern-paths" aria-labelledby="paths-heading">
+		<div class="aurea-container">
+			<div class="concerns-paths__header">
+				<p class="aurea-eyebrow">Treatment Paths</p>
+				<h2 id="paths-heading">What would you like to improve?</h2>
+				<p class="concerns-paths__lead">Select a concern below to explore suggested treatments. Each path is a starting point — your provider will personalize from there.</p>
+			</div>
+			<div class="concerns-grid">
+				{mainConcerns.map((item, i) => (
+					<article class:list={['concerns-card', { 'concerns-card--featured': i === 0 }]}>
+						<p class="concerns-card__eyebrow">Best starting point</p>
+						<h3>{item.concern}</h3>
+						<p class="concerns-card__desc">{item.description}</p>
+						<p class="concerns-card__suggested">{item.suggestedPath}</p>
+						<a class="concerns-card__link" href={item.href}>
+							{item.href.includes('contact') ? 'Book Consultation' : 'Explore This Path'} &rarr;
+						</a>
+					</article>
+				))}
+			</div>
+
+			<div class="concerns-unsure">
+				<div class="concerns-unsure__inner">
+					<h3>{unsureConcern.concern}</h3>
+					<p>{unsureConcern.description}</p>
+					<a class="aurea-btn aurea-btn--primary" href={unsureConcern.href}>{unsureConcern.suggestedPath} &rarr;</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="aurea-section aurea-section--warm" aria-labelledby="wisdom-heading">
+		<div class="aurea-container">
+			<div class="concerns-wisdom__header">
+				<p class="aurea-eyebrow">Choosing Wisely</p>
+				<h2 id="wisdom-heading">A better treatment plan starts with the right question.</h2>
+				<p class="concerns-wisdom__lead">Aesthetic treatments work best when they're chosen thoughtfully. Here are a few principles we encourage every patient to consider.</p>
+			</div>
+			<div class="concerns-wisdom__grid">
+				{wisdomCards.map((card) => (
+					<article class="concerns-wisdom__card">
+						<h3>{card.title}</h3>
+						<p>{card.text}</p>
+					</article>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<section class="concerns-final" aria-labelledby="final-heading">
+		<div class="aurea-container">
+			<div class="concerns-final__inner">
+				<h2 id="final-heading">Still unsure? That's what the consultation is for.</h2>
+				<p>You don't need to know the exact treatment before booking. We'll help you understand your options and choose a plan that fits your goals, comfort level, and timeline.</p>
+				<div class="aurea-btn-row concerns-final__actions">
+					<a class="aurea-btn aurea-btn--champagne" href="/demos/med-spa/contact">Book a Consultation</a>
+					<a class="aurea-btn concerns-final__ghost" href="/demos/med-spa/treatments">Explore Treatments</a>
+				</div>
+			</div>
+		</div>
+	</section>
+</AureaLayout>
+
+<style>
+	/* ── Hero ── */
+	.concerns-hero {
+		padding-block: clamp(4rem, 8vw, 7rem);
+		background:
+			radial-gradient(ellipse at 75% 20%, color-mix(in srgb, var(--aurea-champagne) 12%, transparent), transparent 55%),
+			linear-gradient(180deg, var(--aurea-bg) 0%, var(--aurea-ivory) 100%);
+	}
+
+	.concerns-hero h1 {
+		max-width: 780px;
+	}
+
+	/* ── Concern Paths Section ── */
+	.concerns-paths__header {
+		max-width: 680px;
+		margin-bottom: clamp(2rem, 4vw, 3rem);
+	}
+
+	.concerns-paths__lead {
+		color: var(--aurea-muted);
+		font-size: clamp(1rem, 0.95rem + 0.2vw, 1.1rem);
+		line-height: 1.65;
+	}
+
+	.concerns-grid {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 1.25rem;
+	}
+
+	/* ── Concern Card ── */
+	.concerns-card {
+		padding: 1.75rem;
+		border: 1px solid var(--aurea-border);
+		border-radius: var(--aurea-radius);
+		background: var(--aurea-white);
+		display: flex;
+		flex-direction: column;
+		transition: transform 0.25s ease, box-shadow 0.25s ease;
+	}
+
+	.concerns-card:hover {
+		transform: translateY(-3px);
+		box-shadow: 0 16px 40px rgba(36, 35, 33, 0.07);
+	}
+
+	.concerns-card--featured {
+		border-left: 3px solid var(--aurea-champagne);
+	}
+
+	.concerns-card__eyebrow {
+		margin: 0 0 0.75rem;
+		color: var(--aurea-champagne);
+		font-size: 0.7rem;
+		font-weight: 700;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+	}
+
+	.concerns-card h3 {
+		font-family: var(--aurea-font-heading);
+		font-size: clamp(1.15rem, 1rem + 0.3vw, 1.35rem);
+		color: var(--aurea-charcoal);
+		margin: 0 0 0.5rem;
+	}
+
+	.concerns-card__desc {
+		color: var(--aurea-muted);
+		font-size: 0.93rem;
+		line-height: 1.6;
+		flex: 1;
+	}
+
+	.concerns-card__suggested {
+		margin-top: 1rem;
+		padding: 0.4rem 0.85rem;
+		align-self: flex-start;
+		border-radius: 999px;
+		background: var(--aurea-bg-warm);
+		border: 1px solid var(--aurea-border);
+		color: var(--aurea-muted);
+		font-size: 0.78rem;
+		font-weight: 600;
+		white-space: nowrap;
+	}
+
+	.concerns-card__link {
+		display: inline-flex;
+		align-items: center;
+		margin-top: 1.25rem;
+		padding-top: 1rem;
+		border-top: 1px solid var(--aurea-border);
+		color: var(--aurea-charcoal);
+		font-size: 0.9rem;
+		font-weight: 700;
+	}
+
+	.concerns-card__link:hover {
+		color: var(--aurea-champagne);
+	}
+
+	/* ── "Not sure yet" Callout ── */
+	.concerns-unsure {
+		margin-top: 2rem;
+	}
+
+	.concerns-unsure__inner {
+		max-width: 720px;
+		margin-inline: auto;
+		padding: clamp(2rem, 4vw, 3rem);
+		border: 1px solid var(--aurea-border);
+		border-radius: var(--aurea-radius-lg);
+		background: var(--aurea-white);
+		text-align: center;
+		box-shadow: 0 16px 48px rgba(36, 35, 33, 0.05);
+	}
+
+	.concerns-unsure__inner h3 {
+		font-family: var(--aurea-font-heading);
+		font-size: clamp(1.25rem, 1.1rem + 0.4vw, 1.5rem);
+		color: var(--aurea-charcoal);
+		margin: 0 0 0.5rem;
+	}
+
+	.concerns-unsure__inner p {
+		color: var(--aurea-muted);
+		font-size: clamp(1rem, 0.95rem + 0.2vw, 1.1rem);
+		line-height: 1.65;
+		max-width: 480px;
+		margin-inline: auto;
+	}
+
+	/* ── Wisdom / "Choosing Wisely" ── */
+	.concerns-wisdom__header {
+		max-width: 680px;
+		margin-bottom: clamp(2rem, 4vw, 3rem);
+	}
+
+	.concerns-wisdom__lead {
+		color: var(--aurea-muted);
+		font-size: clamp(1rem, 0.95rem + 0.2vw, 1.1rem);
+		line-height: 1.65;
+	}
+
+	.concerns-wisdom__grid {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 1.25rem;
+	}
+
+	.concerns-wisdom__card {
+		padding: 1.5rem;
+		border: 1px solid var(--aurea-border);
+		border-radius: var(--aurea-radius);
+		background: var(--aurea-white);
+	}
+
+	.concerns-wisdom__card h3 {
+		font-family: var(--aurea-font-heading);
+		font-size: clamp(1.05rem, 1rem + 0.2vw, 1.2rem);
+		color: var(--aurea-charcoal);
+		margin: 0 0 0.5rem;
+	}
+
+	.concerns-wisdom__card p {
+		margin: 0;
+		color: var(--aurea-muted);
+		font-size: 0.93rem;
+		line-height: 1.65;
+	}
+
+	/* ── Final CTA ── */
+	.concerns-final {
+		padding-block: clamp(5.5rem, 10vw, 9rem);
+		background: var(--aurea-charcoal);
+	}
+
+	.concerns-final__inner {
+		text-align: center;
+		max-width: 640px;
+		margin-inline: auto;
+	}
+
+	.concerns-final h2 {
+		color: var(--aurea-white);
+	}
+
+	.concerns-final p {
+		color: rgba(255, 255, 255, 0.6);
+		font-size: clamp(1.05rem, 1rem + 0.2vw, 1.15rem);
+		line-height: 1.65;
+	}
+
+	.concerns-final__actions {
+		justify-content: center;
+	}
+
+	.concerns-final__ghost {
+		border-color: rgba(255, 255, 255, 0.2);
+		background: transparent;
+		color: rgba(255, 255, 255, 0.8);
+	}
+
+	.concerns-final__ghost:hover {
+		border-color: rgba(255, 255, 255, 0.4);
+		background: rgba(255, 255, 255, 0.06);
+		color: var(--aurea-white);
+	}
+
+	/* ── Responsive ── */
+	@media (max-width: 960px) {
+		.concerns-grid {
+			gap: 1rem;
+		}
+	}
+
+	@media (max-width: 768px) {
+		.concerns-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.concerns-wisdom__grid {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	@media (max-width: 560px) {
+		.concerns-card {
+			padding: 1.4rem;
+		}
+
+		.concerns-unsure__inner {
+			padding: 1.75rem;
+		}
+	}
+</style>

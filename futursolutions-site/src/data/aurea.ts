@@ -1,9 +1,9 @@
 export const aureaNav = [
 	{ label: 'Treatments', href: '/demos/med-spa/treatments' },
-	{ label: 'Concerns', href: '/demos/med-spa/#concerns' },
-	{ label: 'Results', href: '/demos/med-spa/#results' },
-	{ label: 'Providers', href: '/demos/med-spa/#providers' },
-	{ label: 'Membership', href: '/demos/med-spa/#membership' },
+	{ label: 'Concerns', href: '/demos/med-spa/concerns' },
+	{ label: 'Results', href: '/demos/med-spa/results' },
+	{ label: 'Providers', href: '/demos/med-spa/providers' },
+	{ label: 'Membership', href: '/demos/med-spa/membership' },
 	{ label: 'Contact', href: '/demos/med-spa/contact' },
 ];
 
@@ -27,6 +27,12 @@ export const concernPaths = [
 		href: '/demos/med-spa/treatments',
 	},
 	{
+		concern: 'Even tone & redness',
+		description: 'Reduce sun damage, redness, and uneven pigmentation for a clearer, more even complexion.',
+		suggestedPath: 'IPL Photofacial / Chemical Peels',
+		href: '/demos/med-spa/treatments',
+	},
+	{
 		concern: 'Lift & tighten',
 		description: 'Firm sagging skin and redefine contours without surgery.',
 		suggestedPath: 'Morpheus8 / RF Microneedling',
@@ -36,6 +42,12 @@ export const concernPaths = [
 		concern: 'Reduce unwanted hair',
 		description: 'Long-lasting hair reduction for face and body with medical-grade lasers.',
 		suggestedPath: 'Laser Hair Removal',
+		href: '/demos/med-spa/treatments',
+	},
+	{
+		concern: 'Refresh before an event',
+		description: 'Quick, no-downtime options to look your best before a special occasion.',
+		suggestedPath: 'Hydrafacial / Botox / Light Peels',
 		href: '/demos/med-spa/treatments',
 	},
 	{
@@ -179,18 +191,24 @@ export const providers = [
 		credential: 'MD, Medical Director',
 		specialty: 'Facial balancing, injectables, medical aesthetics oversight',
 		knownFor: 'Precision injectable work with an emphasis on subtle, natural-looking results.',
+		treatmentFocus: ['Botox', 'Dermal Fillers', 'Sculptra', 'Facial Balancing'],
+		bio: 'Dr. Marlow brings over a decade of experience in medical aesthetics and facial anatomy. As Medical Director, she oversees all treatment protocols and ensures every patient receives care that prioritizes safety, subtlety, and individual goals.',
 	},
 	{
 		name: 'Maya Ellis',
 		credential: 'NP-C, Nurse Practitioner',
 		specialty: 'Natural injectables, skin rejuvenation, first-time aesthetics patients',
 		knownFor: 'Making first-time patients feel comfortable and informed throughout the process.',
+		treatmentFocus: ['Botox', 'Lip Filler', 'Skin Rejuvenation', 'First-Time Patients'],
+		bio: 'Maya specializes in helping patients navigate their first aesthetic experience with confidence. Her approach is conservative, communicative, and focused on building trust before recommending any treatment plan.',
 	},
 	{
 		name: 'Lena Torres',
 		credential: 'Licensed Aesthetician',
 		specialty: 'Facials, peels, skincare plans, pre-event skin prep',
 		knownFor: 'Building personalized skincare routines that complement in-office treatments.',
+		treatmentFocus: ['Hydrafacial', 'Chemical Peels', 'Microneedling', 'Skincare Plans'],
+		bio: 'Lena combines clinical skincare expertise with a warm, personalized approach. She works closely with each patient to design maintenance plans that extend and enhance the results of in-office treatments.',
 	},
 ];
 
@@ -298,22 +316,19 @@ export const footerNavGroups = [
 	{
 		title: 'Treatments',
 		links: [
-			{ label: 'Injectables', href: '/demos/med-spa/treatments' },
+			{ label: 'All Treatments', href: '/demos/med-spa/treatments' },
 			{ label: 'Botox', href: '/demos/med-spa/treatments/botox' },
-			{ label: 'Lasers & Light', href: '/demos/med-spa/treatments' },
-			{ label: 'Skin Treatments', href: '/demos/med-spa/treatments' },
-			{ label: 'Body Contouring', href: '/demos/med-spa/treatments' },
-			{ label: 'Wellness', href: '/demos/med-spa/treatments' },
+			{ label: 'Concern Guide', href: '/demos/med-spa/concerns' },
+			{ label: 'Results', href: '/demos/med-spa/results' },
 		],
 	},
 	{
 		title: 'Clinic',
 		links: [
-			{ label: 'About', href: '/demos/med-spa/#providers' },
-			{ label: 'Providers', href: '/demos/med-spa/#providers' },
-			{ label: 'Results', href: '/demos/med-spa/#results' },
-			{ label: 'Membership', href: '/demos/med-spa/#membership' },
+			{ label: 'Providers', href: '/demos/med-spa/providers' },
+			{ label: 'Membership', href: '/demos/med-spa/membership' },
 			{ label: 'FAQ', href: '/demos/med-spa/#faq' },
+			{ label: 'About', href: '/demos/med-spa/providers' },
 		],
 	},
 	{

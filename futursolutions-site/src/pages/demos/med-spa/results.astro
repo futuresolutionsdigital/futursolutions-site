@@ -1,0 +1,473 @@
+---
+import AureaLayout from '../../../layouts/AureaLayout.astro';
+
+const filterPills = ['All', 'Botox', 'Fillers', 'Skin Texture', 'Tone & Pigment', 'Hydration', 'Wellness'];
+
+const resultCards = [
+	{ treatment: 'Botox', area: 'Forehead Lines', timeline: 'Visible softening after 2 weeks' },
+	{ treatment: 'Botox', area: 'Frown Lines', timeline: 'Noticeable improvement in 7–14 days' },
+	{ treatment: 'Botox', area: 'Crow\'s Feet', timeline: 'Gradual smoothing over 2 weeks' },
+	{ treatment: 'Filler', area: 'Facial Balancing', timeline: 'Immediate improvement, refined over 2 weeks' },
+	{ treatment: 'Morpheus8', area: 'Skin Texture', timeline: 'Progressive improvement over 3–6 months' },
+	{ treatment: 'IPL', area: 'Tone & Pigment', timeline: 'Clearer complexion after 2–3 sessions' },
+	{ treatment: 'Hydrafacial', area: 'Glow & Hydration', timeline: 'Instant radiance after one session' },
+	{ treatment: 'Morpheus8', area: 'Skin Firmness', timeline: 'Tightening visible after series of treatments' },
+	{ treatment: 'Medical Weight Loss', area: 'Wellness Journey', timeline: 'Gradual, sustainable progress over months' },
+];
+
+const responsiblePoints = [
+	{
+		title: 'Results vary by patient',
+		body: 'Individual anatomy, skin type, and treatment history all influence outcomes. What works for one patient may look different for another.',
+	},
+	{
+		title: 'Candidacy matters',
+		body: 'Not every treatment is appropriate for every patient. Results galleries should always be understood in the context of professional assessment.',
+	},
+	{
+		title: 'Consistency matters',
+		body: 'Lighting, angles, and timing should be consistent between before and after images for honest representation.',
+	},
+	{
+		title: 'Consultations set expectations',
+		body: 'The most responsible approach is a direct conversation with your provider about what is realistically achievable for you.',
+	},
+	{
+		title: 'Honesty builds trust',
+		body: 'Before-and-after galleries should be contextual, honest, and accompanied by appropriate disclaimers.',
+	},
+];
+---
+
+<AureaLayout
+	title="Results | Auréa Skin & Aesthetics"
+	description="Explore how a premium med spa can showcase treatment results responsibly. View demo before-and-after examples for Botox, fillers, skin treatments, and more."
+>
+	<!-- Hero -->
+	<section class="results-hero" aria-labelledby="results-heading">
+		<div class="aurea-container">
+			<p class="aurea-eyebrow">Results Gallery</p>
+			<h1 id="results-heading">Realistic results, presented responsibly.</h1>
+			<p class="aurea-lead">
+				Explore how a med spa can showcase treatment outcomes with context, discretion, and clear expectations.
+			</p>
+			<div class="aurea-btn-row">
+				<a class="aurea-btn aurea-btn--primary" href="/demos/med-spa/contact">Book a Consultation</a>
+				<a class="aurea-btn aurea-btn--secondary" href="/demos/med-spa/treatments">Explore Treatments</a>
+			</div>
+		</div>
+	</section>
+
+	<!-- Filter Pills -->
+	<section class="results-filters" aria-labelledby="results-filters-heading">
+		<div class="aurea-container">
+			<h2 class="sr-only" id="results-filters-heading">Filter results by treatment type</h2>
+			<div class="results-filters__row" role="toolbar" aria-label="Filter results">
+				{filterPills.map((pill) => (
+					<button
+						type="button"
+						class:list={['results-pill', { 'results-pill--active': pill === 'All' }]}
+						aria-pressed={pill === 'All' ? 'true' : 'false'}
+					>
+						{pill}
+					</button>
+				))}
+			</div>
+			<p class="results-filters__note">Filter functionality available in full build.</p>
+		</div>
+	</section>
+
+	<!-- Result Gallery -->
+	<section class="aurea-section" aria-labelledby="gallery-heading">
+		<div class="aurea-container">
+			<h2 class="sr-only" id="gallery-heading">Treatment result examples</h2>
+			<div class="results-grid">
+				{resultCards.map((card) => (
+					<article class="results-card aurea-card">
+						<div class="results-card__visual" aria-label={`Demo before and after placeholder for ${card.treatment} — ${card.area}`}>
+							<div class="results-card__before">
+								<span class="results-card__label">Before</span>
+							</div>
+							<div class="results-card__after">
+								<span class="results-card__label">After</span>
+							</div>
+						</div>
+						<div class="results-card__body">
+							<h3 class="results-card__treatment">{card.treatment}</h3>
+							<p class="results-card__area">{card.area}</p>
+							<p class="results-card__timeline">{card.timeline}</p>
+							<p class="results-card__disclaimer">Results vary by patient.</p>
+						</div>
+					</article>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- Responsible Results -->
+	<section class="aurea-section aurea-section--warm" aria-labelledby="responsible-heading">
+		<div class="aurea-container results-responsible">
+			<div class="results-responsible__intro">
+				<p class="aurea-eyebrow">Responsible Marketing</p>
+				<h2 id="responsible-heading">Results should educate, not overpromise.</h2>
+				<p class="aurea-lead">
+					Responsible aesthetic marketing means showing real outcomes in context — with appropriate disclaimers, consistent presentation, and an emphasis on individual consultation.
+				</p>
+			</div>
+			<div class="results-responsible__points">
+				{responsiblePoints.map((point, i) => (
+					<div class="results-responsible__item">
+						<span class="results-responsible__number">{String(i + 1).padStart(2, '0')}</span>
+						<div>
+							<h3 class="results-responsible__title">{point.title}</h3>
+							<p class="results-responsible__body">{point.body}</p>
+						</div>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- Final CTA -->
+	<section class="results-cta" aria-labelledby="results-cta-heading">
+		<div class="aurea-container">
+			<div class="results-cta__inner">
+				<h2 id="results-cta-heading">Want to understand what's realistic for you?</h2>
+				<p class="aurea-lead results-cta__lead">
+					Book a consultation and your provider will help you understand what results you can realistically expect based on your individual goals and anatomy.
+				</p>
+				<div class="aurea-btn-row results-cta__buttons">
+					<a class="aurea-btn aurea-btn--champagne" href="/demos/med-spa/contact">Book a Consultation</a>
+					<a class="aurea-btn results-btn--ghost" href="/demos/med-spa/treatments/botox">View Botox Treatment</a>
+				</div>
+			</div>
+		</div>
+	</section>
+</AureaLayout>
+
+<style>
+	/* Hero */
+	.results-hero {
+		padding: clamp(4rem, 8vw, 7rem) 0;
+		background:
+			radial-gradient(ellipse at 30% 20%, color-mix(in srgb, var(--aurea-champagne) 12%, transparent) 0%, transparent 60%),
+			radial-gradient(ellipse at 70% 80%, color-mix(in srgb, var(--aurea-ivory) 60%, transparent) 0%, transparent 55%),
+			var(--aurea-bg);
+		text-align: center;
+	}
+
+	.results-hero .aurea-lead {
+		margin-inline: auto;
+	}
+
+	.results-hero .aurea-btn-row {
+		justify-content: center;
+	}
+
+	/* Filter Pills */
+	.results-filters {
+		padding: 2rem 0 0;
+	}
+
+	.results-filters__row {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		justify-content: center;
+	}
+
+	.results-pill {
+		padding: 0.5rem 1.15rem;
+		border: 1px solid var(--aurea-border);
+		border-radius: 999px;
+		background: var(--aurea-white);
+		color: var(--aurea-muted);
+		font-size: 0.85rem;
+		font-weight: 600;
+		cursor: default;
+		transition:
+			background var(--aurea-transition),
+			color var(--aurea-transition),
+			border-color var(--aurea-transition);
+	}
+
+	.results-pill--active {
+		background: var(--aurea-champagne);
+		color: var(--aurea-charcoal);
+		border-color: var(--aurea-champagne);
+		font-weight: 700;
+	}
+
+	.results-filters__note {
+		text-align: center;
+		margin-top: 1rem;
+		font-size: 0.8rem;
+		color: var(--aurea-muted);
+		font-style: italic;
+	}
+
+	.sr-only {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		padding: 0;
+		margin: -1px;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+		white-space: nowrap;
+		border: 0;
+	}
+
+	/* Result Gallery */
+	.results-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 1.5rem;
+	}
+
+	.results-card {
+		overflow: hidden;
+		transition: transform var(--aurea-transition), box-shadow var(--aurea-transition);
+	}
+
+	.results-card:hover {
+		transform: translateY(-3px);
+		box-shadow: 0 16px 48px rgba(36, 35, 33, 0.08);
+	}
+
+	.results-card__visual {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		height: 120px;
+	}
+
+	.results-card__before {
+		display: flex;
+		align-items: flex-end;
+		justify-content: center;
+		padding-bottom: 0.6rem;
+		background:
+			repeating-linear-gradient(
+				0deg,
+				transparent,
+				transparent 5px,
+				color-mix(in srgb, var(--aurea-stone) 15%, transparent) 5px,
+				color-mix(in srgb, var(--aurea-stone) 15%, transparent) 6px
+			),
+			linear-gradient(
+				135deg,
+				color-mix(in srgb, var(--aurea-stone) 30%, var(--aurea-ivory)),
+				color-mix(in srgb, var(--aurea-stone) 18%, var(--aurea-ivory))
+			);
+	}
+
+	.results-card__after {
+		display: flex;
+		align-items: flex-end;
+		justify-content: center;
+		padding-bottom: 0.6rem;
+		background:
+			linear-gradient(
+				135deg,
+				var(--aurea-ivory),
+				color-mix(in srgb, var(--aurea-ivory) 85%, var(--aurea-white))
+			);
+	}
+
+	.results-card__label {
+		font-size: 0.68rem;
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: var(--aurea-muted);
+		opacity: 0.7;
+	}
+
+	.results-card__body {
+		padding: 1.15rem 1.25rem 1.25rem;
+	}
+
+	.results-card__treatment {
+		font-family: var(--aurea-font-heading);
+		font-size: 1.1rem;
+		font-weight: 600;
+		margin-bottom: 0.2rem;
+		color: var(--aurea-charcoal);
+	}
+
+	.results-card__area {
+		font-size: 0.88rem;
+		font-weight: 600;
+		color: var(--aurea-champagne);
+		margin-bottom: 0.5rem;
+	}
+
+	.results-card__timeline {
+		font-size: 0.88rem;
+		color: var(--aurea-muted);
+		margin-bottom: 0.6rem;
+		line-height: 1.5;
+	}
+
+	.results-card__disclaimer {
+		font-size: 0.75rem;
+		color: var(--aurea-taupe);
+		font-style: italic;
+		margin-bottom: 0;
+	}
+
+	/* Responsible Results */
+	.results-responsible {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: clamp(2.5rem, 5vw, 4rem);
+		align-items: start;
+	}
+
+	.results-responsible__intro {
+		position: sticky;
+		top: 10rem;
+	}
+
+	.results-responsible__points {
+		display: flex;
+		flex-direction: column;
+		gap: 0;
+	}
+
+	.results-responsible__item {
+		display: flex;
+		gap: 1.25rem;
+		padding: 1.5rem 0;
+		border-bottom: 1px solid var(--aurea-border);
+	}
+
+	.results-responsible__item:first-child {
+		padding-top: 0;
+	}
+
+	.results-responsible__item:last-child {
+		border-bottom: none;
+	}
+
+	.results-responsible__number {
+		flex-shrink: 0;
+		font-family: var(--aurea-font-heading);
+		font-size: 1.3rem;
+		font-weight: 600;
+		color: var(--aurea-champagne);
+		line-height: 1.3;
+		opacity: 0.6;
+	}
+
+	.results-responsible__title {
+		font-family: var(--aurea-font-body);
+		font-size: 1rem;
+		font-weight: 700;
+		margin-bottom: 0.35rem;
+		color: var(--aurea-charcoal);
+	}
+
+	.results-responsible__body {
+		font-size: 0.92rem;
+		color: var(--aurea-muted);
+		line-height: 1.6;
+		margin-bottom: 0;
+	}
+
+	/* Final CTA */
+	.results-cta {
+		padding: var(--aurea-section-spacing) 0;
+		background: var(--aurea-charcoal);
+		color: var(--aurea-white);
+	}
+
+	.results-cta__inner {
+		max-width: 640px;
+		margin-inline: auto;
+		text-align: center;
+	}
+
+	.results-cta h2 {
+		color: var(--aurea-white);
+	}
+
+	.results-cta__lead {
+		color: rgba(255, 255, 255, 0.65);
+	}
+
+	.results-cta__buttons {
+		justify-content: center;
+	}
+
+	.results-btn--ghost {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 3.25rem;
+		padding: 0.85rem 1.5rem;
+		border: 1px solid rgba(255, 255, 255, 0.25);
+		border-radius: 999px;
+		background: transparent;
+		color: var(--aurea-white);
+		font-size: 0.9375rem;
+		font-weight: 700;
+		line-height: 1;
+		white-space: nowrap;
+		transition:
+			transform var(--aurea-transition),
+			background var(--aurea-transition),
+			border-color var(--aurea-transition);
+	}
+
+	.results-btn--ghost:hover {
+		background: rgba(255, 255, 255, 0.08);
+		border-color: rgba(255, 255, 255, 0.4);
+		transform: translateY(-1px);
+	}
+
+	/* Responsive */
+	@media (max-width: 960px) {
+		.results-grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+
+		.results-responsible {
+			grid-template-columns: 1fr;
+		}
+
+		.results-responsible__intro {
+			position: static;
+		}
+	}
+
+	@media (max-width: 768px) {
+		.results-hero {
+			text-align: left;
+		}
+
+		.results-hero .aurea-btn-row {
+			justify-content: flex-start;
+		}
+
+		.results-filters__row {
+			justify-content: flex-start;
+		}
+
+		.results-cta__buttons {
+			flex-direction: column;
+			align-items: center;
+		}
+	}
+
+	@media (max-width: 560px) {
+		.results-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.results-responsible__item {
+			flex-direction: column;
+			gap: 0.5rem;
+		}
+	}
+</style>

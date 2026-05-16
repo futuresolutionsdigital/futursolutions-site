@@ -41,6 +41,9 @@ import { beforeAfterCases } from '../data/aurea';
 			<a href="/demos/med-spa/contact" class="aurea-btn aurea-btn--champagne">
 				See what&rsquo;s possible &mdash; Book a Consultation
 			</a>
+			<a href="/demos/med-spa/results" class="ba__cta-link">
+				View All Results &rarr;
+			</a>
 		</div>
 
 		<p class="ba__disclaimer">
@@ -160,8 +163,22 @@ import { beforeAfterCases } from '../data/aurea';
 
 	/* ── CTA & disclaimer ── */
 	.ba__cta {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 1rem;
 		margin-top: 2.5rem;
 		text-align: center;
+	}
+
+	.ba__cta-link {
+		font-size: 0.9rem;
+		font-weight: 700;
+		color: var(--aurea-charcoal);
+	}
+
+	.ba__cta-link:hover {
+		color: var(--aurea-champagne);
 	}
 
 	.ba__disclaimer {

@@ -1,0 +1,651 @@
+---
+import AureaLayout from '../../../layouts/AureaLayout.astro';
+
+const tiers = [
+	{
+		name: 'Essential Glow',
+		pill: 'Skin Maintenance',
+		bestFor: 'Best for monthly skin maintenance',
+		includes: [
+			'Monthly facial treatment credit',
+			'15% off skincare products',
+			'Priority booking access',
+			'Complimentary skin assessment',
+		],
+		pricing: 'Monthly plan available — ask during consultation',
+		featured: false,
+	},
+	{
+		name: 'Refined Refresh',
+		pill: 'Most Popular',
+		bestFor: 'Best for injectables and seasonal skin treatments',
+		includes: [
+			'Injectable savings on Botox and fillers',
+			'Quarterly treatment credits',
+			'Annual skin plan review with provider',
+			'Member-only event access',
+		],
+		pricing: 'Custom pricing based on treatment plan',
+		featured: true,
+	},
+	{
+		name: 'Complete Confidence',
+		pill: 'Comprehensive',
+		bestFor: 'Best for patients maintaining multiple services',
+		includes: [
+			'Larger monthly treatment bank',
+			'Priority scheduling and provider access',
+			'Annual comprehensive skin planning session',
+			'Exclusive savings across all services',
+		],
+		pricing: 'Personalized to your treatment goals',
+		featured: false,
+	},
+];
+
+const packages = [
+	{
+		title: 'Event-Ready Skin',
+		description: 'Hydrafacial + light peel + post-treatment skincare guidance. Designed for patients prepping for a wedding, event, or special occasion.',
+	},
+	{
+		title: 'Injectable Maintenance',
+		description: 'Scheduled Botox and filler visits at preferred pricing. Designed to keep your results consistent without starting over each visit.',
+	},
+	{
+		title: 'Texture & Tone',
+		description: 'Morpheus8 + chemical peels in a progressive series. Designed to address acne scarring, uneven texture, and skin firmness over time.',
+	},
+	{
+		title: 'Wellness Support',
+		description: 'Medical weight loss + ongoing accountability visits. Designed for patients who want structured, clinician-guided wellness support.',
+	},
+];
+
+const paymentOptions = [
+	{
+		title: 'Third-party financing available',
+		description: 'Partner with trusted financing options so you can space payments comfortably.',
+	},
+	{
+		title: 'Treatment planning before payment',
+		description: 'Know exactly what your plan includes and costs before you commit to anything.',
+	},
+	{
+		title: 'Transparent cost estimates',
+		description: 'Your provider will discuss pricing openly so there are no surprises.',
+	},
+	{
+		title: 'No-obligation consultations',
+		description: 'The consultation is about understanding your options — not about committing to a treatment on the spot.',
+	},
+];
+
+const faqs = [
+	{
+		question: 'Do I need to be a member to book?',
+		answer: 'No. Membership is optional and designed for patients who want ongoing savings and structured care. Anyone can book a consultation or treatment without a membership.',
+	},
+	{
+		question: 'Can membership savings apply to injectables?',
+		answer: 'Yes. The Refined Refresh and Complete Confidence tiers include injectable savings that apply to Botox, fillers, and other eligible treatments.',
+	},
+	{
+		question: 'Can I cancel or change my plan?',
+		answer: 'Yes. Membership terms are flexible. If your goals change, we\u2019ll work with you to adjust your plan accordingly.',
+	},
+	{
+		question: 'Are treatments customized even with a membership?',
+		answer: 'Absolutely. Membership provides savings and structure, but every treatment plan is still personalized to your individual goals, anatomy, and comfort level.',
+	},
+	{
+		question: 'Can I use membership benefits with packages?',
+		answer: 'In many cases, yes. Your provider can help determine how to combine membership benefits with package pricing for the best value.',
+	},
+];
+---
+
+<AureaLayout
+	title="Membership & Plans | Auréa Skin & Aesthetics"
+	description="Explore membership tiers, treatment packages, and flexible financing options at Auréa Skin & Aesthetics. Maintain your results with a plan designed around your goals."
+>
+	<!-- 1. Hero -->
+	<section class="memb-hero" aria-labelledby="memb-hero-heading">
+		<div class="aurea-container">
+			<p class="aurea-eyebrow">Membership &amp; Plans</p>
+			<h1 id="memb-hero-heading">Invest in your skin with a plan that fits.</h1>
+			<p class="aurea-lead memb-hero__lead">
+				Maintain your results, plan treatments on your schedule, and enjoy member-exclusive benefits — all structured around your individual goals.
+			</p>
+			<div class="aurea-btn-row memb-hero__btns">
+				<a class="aurea-btn aurea-btn--primary" href="/demos/med-spa/contact">Ask About Membership</a>
+				<a class="aurea-btn aurea-btn--secondary" href="/demos/med-spa/contact">Book a Consultation</a>
+			</div>
+		</div>
+	</section>
+
+	<!-- 2. Membership Tiers -->
+	<section class="aurea-section" aria-labelledby="memb-tiers-heading">
+		<div class="aurea-container">
+			<h2 class="sr-only" id="memb-tiers-heading">Membership tiers</h2>
+			<div class="memb-tiers">
+				{tiers.map((tier) => (
+					<article class:list={['memb-tier', { 'memb-tier--featured': tier.featured }]}>
+						<span class:list={['memb-tier__pill', { 'memb-tier__pill--featured': tier.featured }]}>{tier.pill}</span>
+						<h3 class="memb-tier__name">{tier.name}</h3>
+						<p class="memb-tier__best">{tier.bestFor}</p>
+						<ul class="memb-tier__includes">
+							{tier.includes.map((item) => (
+								<li>{item}</li>
+							))}
+						</ul>
+						<p class="memb-tier__pricing">{tier.pricing}</p>
+						<a class="memb-tier__cta" href="/demos/med-spa/contact">Inquire &rarr;</a>
+					</article>
+				))}
+			</div>
+			<p class="memb-tiers__note">Membership pricing is customized to your treatment plan. All details are discussed during your consultation.</p>
+		</div>
+	</section>
+
+	<!-- 3. Treatment Packages -->
+	<section class="aurea-section aurea-section--warm" aria-labelledby="memb-packages-heading">
+		<div class="aurea-container">
+			<p class="aurea-eyebrow">Packages</p>
+			<h2 id="memb-packages-heading">Treatment packages for targeted results.</h2>
+			<p class="aurea-lead">Bundled treatment plans designed to help you reach your goals efficiently while saving on individual session pricing.</p>
+			<div class="memb-packages">
+				{packages.map((pkg) => (
+					<article class="memb-package">
+						<h3 class="memb-package__title">{pkg.title}</h3>
+						<p class="memb-package__desc">{pkg.description}</p>
+						<p class="memb-package__note">Package pricing available</p>
+					</article>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- 4. Payment Flexibility -->
+	<section class="aurea-section" aria-labelledby="memb-payment-heading">
+		<div class="aurea-container">
+			<p class="aurea-eyebrow">Payment Options</p>
+			<h2 id="memb-payment-heading">Flexible options without pressure.</h2>
+			<p class="aurea-lead">We want treatment decisions to feel comfortable — not rushed. That includes how you plan for the financial side.</p>
+			<div class="memb-payment-grid">
+				{paymentOptions.map((opt) => (
+					<div class="memb-payment-item">
+						<span class="memb-payment-item__accent" aria-hidden="true"></span>
+						<div>
+							<h3 class="memb-payment-item__title">{opt.title}</h3>
+							<p class="memb-payment-item__desc">{opt.description}</p>
+						</div>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- 5. Membership FAQ -->
+	<section class="aurea-section aurea-section--warm" aria-labelledby="memb-faq-heading">
+		<div class="aurea-container">
+			<p class="aurea-eyebrow">FAQ</p>
+			<h2 id="memb-faq-heading">Membership questions, answered.</h2>
+			<div class="memb-faq__list">
+				{faqs.map((faq) => (
+					<details class="memb-faq__item">
+						<summary>{faq.question}</summary>
+						<p>{faq.answer}</p>
+					</details>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- 6. Final CTA -->
+	<section class="memb-cta" aria-labelledby="memb-cta-heading">
+		<div class="aurea-container">
+			<div class="memb-cta__inner">
+				<h2 id="memb-cta-heading">Build a plan around your goals.</h2>
+				<p class="aurea-lead memb-cta__lead">
+					Book a consultation and we'll help you find the right membership, package, or payment structure for your treatment plan.
+				</p>
+				<div class="aurea-btn-row memb-cta__btns">
+					<a class="aurea-btn aurea-btn--champagne" href="/demos/med-spa/contact">Ask About Membership</a>
+					<a class="aurea-btn memb-btn--ghost" href="/demos/med-spa/treatments">Explore Treatments</a>
+				</div>
+			</div>
+		</div>
+	</section>
+</AureaLayout>
+
+<style>
+	.sr-only {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		padding: 0;
+		margin: -1px;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+		white-space: nowrap;
+		border: 0;
+	}
+
+	/* ===== 1. Hero ===== */
+
+	.memb-hero {
+		padding: clamp(4rem, 8vw, 7rem) 0;
+		background:
+			radial-gradient(ellipse at 30% 20%, color-mix(in srgb, var(--aurea-champagne) 12%, transparent) 0%, transparent 60%),
+			radial-gradient(ellipse at 70% 80%, color-mix(in srgb, var(--aurea-ivory) 60%, transparent) 0%, transparent 55%),
+			var(--aurea-bg);
+		text-align: center;
+	}
+
+	.memb-hero__lead {
+		margin-inline: auto;
+	}
+
+	.memb-hero__btns {
+		justify-content: center;
+	}
+
+	/* ===== 2. Membership Tiers ===== */
+
+	.memb-tiers {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 1.5rem;
+	}
+
+	.memb-tier {
+		border: 1px solid var(--aurea-border);
+		border-radius: var(--aurea-radius);
+		background: var(--aurea-white);
+		padding: 2rem;
+		display: flex;
+		flex-direction: column;
+		transition: transform 0.2s ease, box-shadow 0.2s ease;
+	}
+
+	.memb-tier:hover {
+		transform: translateY(-3px);
+		box-shadow: 0 16px 48px rgba(36, 35, 33, 0.08);
+	}
+
+	.memb-tier--featured {
+		border-left: 3px solid var(--aurea-champagne);
+	}
+
+	.memb-tier__pill {
+		display: inline-block;
+		align-self: flex-start;
+		padding: 0.3rem 0.85rem;
+		border-radius: 999px;
+		background: var(--aurea-bg-warm);
+		color: var(--aurea-muted);
+		font-size: 0.75rem;
+		font-weight: 700;
+		letter-spacing: 0.04em;
+		margin-bottom: 1.25rem;
+	}
+
+	.memb-tier__pill--featured {
+		background: color-mix(in srgb, var(--aurea-champagne) 18%, var(--aurea-ivory));
+		color: var(--aurea-champagne);
+	}
+
+	.memb-tier__name {
+		font-family: var(--aurea-font-heading);
+		font-size: clamp(1.3rem, 1.2rem + 0.4vw, 1.55rem);
+		font-weight: 600;
+		color: var(--aurea-charcoal);
+		margin-bottom: 0.4rem;
+	}
+
+	.memb-tier__best {
+		font-size: 0.9rem;
+		color: var(--aurea-muted);
+		margin-bottom: 1.5rem;
+	}
+
+	.memb-tier__includes {
+		list-style: none;
+		padding: 0;
+		margin: 0 0 1.5rem;
+		display: flex;
+		flex-direction: column;
+		gap: 0.65rem;
+		flex: 1;
+	}
+
+	.memb-tier__includes li {
+		position: relative;
+		padding-left: 1.35rem;
+		font-size: 0.92rem;
+		color: var(--aurea-charcoal);
+		line-height: 1.5;
+	}
+
+	.memb-tier__includes li::before {
+		content: '';
+		position: absolute;
+		left: 0;
+		top: 0.45em;
+		width: 8px;
+		height: 8px;
+		border-radius: 50%;
+		background: var(--aurea-champagne);
+		opacity: 0.5;
+	}
+
+	.memb-tier--featured .memb-tier__includes li::before {
+		opacity: 0.85;
+	}
+
+	.memb-tier__pricing {
+		font-size: 0.84rem;
+		color: var(--aurea-muted);
+		font-style: italic;
+		margin-bottom: 1.25rem;
+		padding-top: 1rem;
+		border-top: 1px solid var(--aurea-border);
+	}
+
+	.memb-tier__cta {
+		display: inline-flex;
+		align-items: center;
+		align-self: flex-start;
+		font-size: 0.92rem;
+		font-weight: 700;
+		color: var(--aurea-champagne);
+		transition: color 0.2s ease;
+	}
+
+	.memb-tier__cta:hover {
+		color: var(--aurea-charcoal);
+	}
+
+	.memb-tiers__note {
+		text-align: center;
+		margin-top: 2rem;
+		font-size: 0.88rem;
+		color: var(--aurea-muted);
+		font-style: italic;
+	}
+
+	/* ===== 3. Treatment Packages ===== */
+
+	.memb-packages {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 1.5rem;
+		margin-top: 2.5rem;
+	}
+
+	.memb-package {
+		border: 1px solid var(--aurea-border);
+		border-radius: var(--aurea-radius);
+		background: var(--aurea-white);
+		padding: 1.75rem;
+		transition: transform 0.2s ease, box-shadow 0.2s ease;
+	}
+
+	.memb-package:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 12px 36px rgba(36, 35, 33, 0.06);
+	}
+
+	.memb-package__title {
+		font-family: var(--aurea-font-heading);
+		font-size: 1.15rem;
+		font-weight: 600;
+		color: var(--aurea-charcoal);
+		margin-bottom: 0.5rem;
+	}
+
+	.memb-package__desc {
+		font-size: 0.92rem;
+		color: var(--aurea-muted);
+		line-height: 1.6;
+		margin-bottom: 1rem;
+	}
+
+	.memb-package__note {
+		font-size: 0.78rem;
+		color: var(--aurea-taupe);
+		font-style: italic;
+		margin-bottom: 0;
+	}
+
+	/* ===== 4. Payment Flexibility ===== */
+
+	.memb-payment-grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 1.5rem;
+		margin-top: 2.5rem;
+	}
+
+	.memb-payment-item {
+		display: flex;
+		gap: 1rem;
+		align-items: flex-start;
+		padding: 1.5rem;
+		border: 1px solid var(--aurea-border);
+		border-radius: var(--aurea-radius);
+		background: var(--aurea-white);
+		transition: box-shadow 0.2s ease;
+	}
+
+	.memb-payment-item:hover {
+		box-shadow: 0 8px 24px rgba(36, 35, 33, 0.05);
+	}
+
+	.memb-payment-item__accent {
+		flex-shrink: 0;
+		width: 4px;
+		height: 100%;
+		min-height: 2.5rem;
+		border-radius: 2px;
+		background: var(--aurea-champagne);
+		opacity: 0.45;
+	}
+
+	.memb-payment-item__title {
+		font-family: var(--aurea-font-body);
+		font-size: 1rem;
+		font-weight: 700;
+		color: var(--aurea-charcoal);
+		margin-bottom: 0.3rem;
+	}
+
+	.memb-payment-item__desc {
+		font-size: 0.92rem;
+		color: var(--aurea-muted);
+		line-height: 1.6;
+		margin-bottom: 0;
+	}
+
+	/* ===== 5. FAQ ===== */
+
+	.memb-faq__list {
+		display: grid;
+		gap: 0.75rem;
+		max-width: 800px;
+	}
+
+	.memb-faq__item {
+		border: 1px solid var(--aurea-border);
+		border-radius: var(--aurea-radius);
+		background: var(--aurea-white);
+		overflow: hidden;
+		transition: box-shadow 0.2s ease;
+	}
+
+	.memb-faq__item:hover {
+		box-shadow: 0 8px 24px rgba(36, 35, 33, 0.04);
+	}
+
+	.memb-faq__item[open] {
+		box-shadow: 0 8px 24px rgba(36, 35, 33, 0.06);
+	}
+
+	.memb-faq__item summary {
+		padding: 1.25rem 1.5rem;
+		font-weight: 700;
+		font-size: 1rem;
+		color: var(--aurea-charcoal);
+		cursor: pointer;
+		list-style: none;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1rem;
+	}
+
+	.memb-faq__item summary::-webkit-details-marker {
+		display: none;
+	}
+
+	.memb-faq__item summary::after {
+		content: '+';
+		flex-shrink: 0;
+		width: 1.5rem;
+		height: 1.5rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 50%;
+		background: var(--aurea-bg-warm);
+		color: var(--aurea-champagne);
+		font-size: 1.1rem;
+		font-weight: 700;
+		transition: transform 0.2s ease;
+	}
+
+	.memb-faq__item[open] summary::after {
+		content: '\2212';
+		transform: rotate(180deg);
+	}
+
+	.memb-faq__item p {
+		padding: 0 1.5rem 1.25rem;
+		margin: 0;
+		color: var(--aurea-muted);
+		font-size: 0.95rem;
+		line-height: 1.65;
+	}
+
+	/* ===== 6. Final CTA ===== */
+
+	.memb-cta {
+		padding: var(--aurea-section-spacing) 0;
+		background: var(--aurea-charcoal);
+		color: var(--aurea-white);
+	}
+
+	.memb-cta__inner {
+		max-width: 640px;
+		margin-inline: auto;
+		text-align: center;
+	}
+
+	.memb-cta h2 {
+		color: var(--aurea-white);
+	}
+
+	.memb-cta__lead {
+		color: rgba(255, 255, 255, 0.65);
+	}
+
+	.memb-cta__btns {
+		justify-content: center;
+	}
+
+	.memb-btn--ghost {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 3.25rem;
+		padding: 0.85rem 1.5rem;
+		border: 1px solid rgba(255, 255, 255, 0.25);
+		border-radius: 999px;
+		background: transparent;
+		color: var(--aurea-white);
+		font-size: 0.9375rem;
+		font-weight: 700;
+		line-height: 1;
+		white-space: nowrap;
+		transition:
+			transform 0.2s ease,
+			background 0.2s ease,
+			border-color 0.2s ease;
+	}
+
+	.memb-btn--ghost:hover {
+		background: rgba(255, 255, 255, 0.08);
+		border-color: rgba(255, 255, 255, 0.4);
+		transform: translateY(-1px);
+	}
+
+	/* ===== Responsive ===== */
+
+	@media (max-width: 960px) {
+		.memb-tiers {
+			grid-template-columns: 1fr;
+			max-width: 480px;
+		}
+
+		.memb-packages {
+			grid-template-columns: 1fr;
+		}
+
+		.memb-payment-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	@media (max-width: 768px) {
+		.memb-hero {
+			text-align: left;
+		}
+
+		.memb-hero__lead {
+			margin-inline: 0;
+		}
+
+		.memb-hero__btns {
+			justify-content: flex-start;
+		}
+
+		.memb-cta__btns {
+			flex-direction: column;
+			align-items: center;
+		}
+	}
+
+	@media (max-width: 560px) {
+		.memb-tier {
+			padding: 1.5rem;
+		}
+
+		.memb-package {
+			padding: 1.35rem;
+		}
+
+		.memb-payment-item {
+			padding: 1.25rem;
+		}
+
+		.memb-faq__item summary {
+			padding: 1rem 1.15rem;
+			font-size: 0.95rem;
+		}
+
+		.memb-faq__item p {
+			padding: 0 1.15rem 1rem;
+		}
+	}
+</style>

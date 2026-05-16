@@ -1,0 +1,446 @@
+---
+import AureaLayout from '../../../layouts/AureaLayout.astro';
+import { providers } from '../../../data/aurea';
+
+const trustItems = [
+	{
+		title: 'Licensed providers',
+		text: 'Every treatment is performed or supervised by licensed medical professionals with specialized training.',
+	},
+	{
+		title: 'Medical director oversight',
+		text: 'Dr. Marlow reviews all treatment protocols, new patient plans, and clinical standards.',
+	},
+	{
+		title: 'Conservative first-time approach',
+		text: 'New patients receive conservative, measured treatment to build confidence and trust.',
+	},
+	{
+		title: 'Anatomy-based planning',
+		text: 'Treatment plans are based on individual facial structure and movement — not templates.',
+	},
+	{
+		title: 'Safety screening',
+		text: 'Every patient undergoes health screening and contraindication review before treatment begins.',
+	},
+	{
+		title: 'Clear aftercare',
+		text: 'Patients receive written instructions and follow-up guidance after every procedure.',
+	},
+];
+
+function getInitials(name: string) {
+	const parts = name.replace(/^(Dr\.\s+)/, '').split(' ');
+	return (parts[0]?.[0] ?? '') + (parts[parts.length - 1]?.[0] ?? '');
+}
+
+function getFirstName(name: string) {
+	return name.replace(/^Dr\.\s+/, '').split(' ')[0];
+}
+---
+
+<AureaLayout
+	title="Providers | Auréa Skin & Aesthetics"
+	description="Meet the licensed providers behind Auréa Skin & Aesthetics. Learn about the team's medical expertise, aesthetic specialties, and consultation-first approach."
+>
+	<!-- Hero -->
+	<section class="prov-hero" aria-labelledby="prov-heading">
+		<div class="aurea-container">
+			<p class="aurea-eyebrow">Providers</p>
+			<h1 id="prov-heading">Meet the team behind your treatment plan.</h1>
+			<p class="aurea-lead">
+				Auréa combines medical oversight, aesthetic judgment, and a conservative approach to help patients feel informed, comfortable, and cared for.
+			</p>
+			<div class="aurea-btn-row">
+				<a class="aurea-btn aurea-btn--primary" href="/demos/med-spa/contact">Book a Consultation</a>
+				<a class="aurea-btn aurea-btn--secondary" href="/demos/med-spa/treatments">Explore Treatments</a>
+			</div>
+		</div>
+	</section>
+
+	<!-- Provider Profile Cards -->
+	<section class="aurea-section" aria-labelledby="prov-profiles-heading">
+		<div class="aurea-container">
+			<h2 class="sr-only" id="prov-profiles-heading">Our Providers</h2>
+			<div class="prov-cards">
+				{providers.map((provider) => (
+					<article class="prov-card aurea-card">
+						<div class="prov-card__avatar-col">
+							<div class="prov-card__avatar-ring">
+								<div class="prov-card__avatar" aria-hidden="true">
+									{getInitials(provider.name)}
+								</div>
+							</div>
+							<span class="prov-card__avatar-label">{provider.credential}</span>
+						</div>
+						<div class="prov-card__content">
+							<h2 class="prov-card__name">{provider.name}</h2>
+							<span class="prov-card__credential">{provider.credential}</span>
+							<p class="prov-card__specialty">
+								<strong>Specialty:</strong> {provider.specialty}
+							</p>
+							<p class="prov-card__known-for">
+								<em>Known for: {provider.knownFor}</em>
+							</p>
+							<p class="prov-card__bio">{provider.bio}</p>
+							<div class="prov-card__pills">
+								{provider.treatmentFocus.map((t) => (
+									<span class="prov-card__pill">{t}</span>
+								))}
+							</div>
+							<a class="aurea-btn aurea-btn--secondary prov-card__cta" href="/demos/med-spa/contact">
+								Book with {getFirstName(provider.name)}
+							</a>
+						</div>
+					</article>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- Medical Oversight -->
+	<section class="aurea-section aurea-section--warm" aria-labelledby="prov-standards-heading">
+		<div class="aurea-container">
+			<div class="prov-standards__header">
+				<p class="aurea-eyebrow">Medical Standards</p>
+				<h2 id="prov-standards-heading">Aesthetic care with medical judgment behind it.</h2>
+				<p class="aurea-lead">
+					Every treatment at Auréa is guided by a licensed team focused on safety, conservative technique, and individual anatomy — not trends or pressure.
+				</p>
+			</div>
+			<div class="prov-standards__grid">
+				{trustItems.map((item) => (
+					<article class="prov-standards__card">
+						<h3>{item.title}</h3>
+						<p>{item.text}</p>
+					</article>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- Provider Matching -->
+	<section class="aurea-section" aria-labelledby="prov-matching-heading">
+		<div class="aurea-container">
+			<div class="prov-matching">
+				<p class="aurea-eyebrow">Provider Matching</p>
+				<h2 id="prov-matching-heading">Not sure who to book with?</h2>
+				<p class="aurea-lead prov-matching__lead">
+					Start with a consultation and our team will help match you with the right provider based on your goals, treatment interest, and comfort level.
+				</p>
+				<a class="aurea-btn aurea-btn--primary" href="/demos/med-spa/contact">Start With a Consultation</a>
+			</div>
+		</div>
+	</section>
+
+	<!-- Final CTA -->
+	<section class="prov-final" aria-labelledby="prov-final-heading">
+		<div class="aurea-container">
+			<div class="prov-final__inner">
+				<h2 id="prov-final-heading">Your treatment plan starts with the right team.</h2>
+				<p>Book a consultation and meet the providers who will guide your care from the very first visit.</p>
+				<div class="aurea-btn-row prov-final__actions">
+					<a class="aurea-btn aurea-btn--champagne" href="/demos/med-spa/contact">Book a Consultation</a>
+					<a class="aurea-btn prov-final__ghost" href="/demos/med-spa/treatments">Explore Treatments</a>
+				</div>
+			</div>
+		</div>
+	</section>
+</AureaLayout>
+
+<style>
+	.sr-only {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		padding: 0;
+		margin: -1px;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+		white-space: nowrap;
+		border: 0;
+	}
+
+	/* ── Hero ── */
+	.prov-hero {
+		padding-block: clamp(4rem, 8vw, 7rem);
+		background:
+			radial-gradient(ellipse at 75% 20%, color-mix(in srgb, var(--aurea-champagne) 12%, transparent), transparent 55%),
+			linear-gradient(180deg, var(--aurea-bg) 0%, var(--aurea-ivory) 100%);
+	}
+
+	.prov-hero h1 {
+		max-width: 780px;
+	}
+
+	/* ── Provider Cards ── */
+	.prov-cards {
+		display: grid;
+		gap: 1.5rem;
+	}
+
+	.prov-card {
+		display: grid;
+		grid-template-columns: auto 1fr;
+		gap: clamp(1.5rem, 3vw, 2.5rem);
+		padding: clamp(1.75rem, 3vw, 2.5rem);
+	}
+
+	.prov-card__avatar-col {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0.75rem;
+		padding-top: 0.25rem;
+	}
+
+	.prov-card__avatar-ring {
+		width: 7rem;
+		height: 7rem;
+		border-radius: 50%;
+		padding: 4px;
+		background: linear-gradient(135deg, var(--aurea-champagne), color-mix(in srgb, var(--aurea-champagne) 50%, var(--aurea-taupe)));
+		flex-shrink: 0;
+	}
+
+	.prov-card__avatar {
+		width: 100%;
+		height: 100%;
+		border-radius: 50%;
+		background: linear-gradient(145deg, var(--aurea-champagne), color-mix(in srgb, var(--aurea-champagne) 70%, var(--aurea-charcoal)));
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-family: var(--aurea-font-heading);
+		font-size: 1.75rem;
+		font-weight: 600;
+		color: var(--aurea-white);
+		letter-spacing: 0.02em;
+	}
+
+	.prov-card__avatar-label {
+		font-size: 0.72rem;
+		font-weight: 600;
+		color: var(--aurea-muted);
+		text-align: center;
+		line-height: 1.3;
+		max-width: 8rem;
+	}
+
+	.prov-card__content {
+		min-width: 0;
+	}
+
+	.prov-card__name {
+		font-family: var(--aurea-font-heading);
+		font-size: clamp(1.5rem, 1.3rem + 0.6vw, 1.85rem);
+		margin-bottom: 0.75rem;
+	}
+
+	.prov-card__credential {
+		display: inline-block;
+		padding: 0.3rem 0.85rem;
+		border-radius: 999px;
+		background: color-mix(in srgb, var(--aurea-champagne) 15%, var(--aurea-ivory));
+		color: var(--aurea-champagne);
+		font-size: 0.78rem;
+		font-weight: 700;
+		letter-spacing: 0.02em;
+		margin-bottom: 1rem;
+	}
+
+	.prov-card__specialty {
+		font-size: 0.95rem;
+		line-height: 1.6;
+		color: var(--aurea-muted);
+		margin-bottom: 0.5rem;
+	}
+
+	.prov-card__specialty strong {
+		color: var(--aurea-charcoal);
+		font-weight: 600;
+	}
+
+	.prov-card__known-for {
+		font-size: 0.95rem;
+		line-height: 1.6;
+		color: var(--aurea-muted);
+		margin-bottom: 1rem;
+	}
+
+	.prov-card__bio {
+		font-size: 0.95rem;
+		line-height: 1.7;
+		color: var(--aurea-muted);
+		margin-bottom: 1.25rem;
+	}
+
+	.prov-card__pills {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		margin-bottom: 1.5rem;
+	}
+
+	.prov-card__pill {
+		display: inline-block;
+		padding: 0.3rem 0.75rem;
+		border: 1px solid var(--aurea-border);
+		border-radius: 999px;
+		font-size: 0.78rem;
+		font-weight: 600;
+		color: var(--aurea-muted);
+		background: var(--aurea-bg);
+	}
+
+	.prov-card__cta {
+		margin-top: 0;
+	}
+
+	/* ── Medical Standards ── */
+	.prov-standards__header {
+		max-width: 680px;
+		margin-bottom: clamp(2rem, 4vw, 3rem);
+	}
+
+	.prov-standards__grid {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 1.25rem;
+	}
+
+	.prov-standards__card {
+		padding: 1.5rem;
+		border: 1px solid var(--aurea-border);
+		border-radius: var(--aurea-radius);
+		background: var(--aurea-white);
+		border-top: 3px solid var(--aurea-champagne);
+	}
+
+	.prov-standards__card h3 {
+		font-family: var(--aurea-font-heading);
+		font-size: clamp(1.05rem, 1rem + 0.2vw, 1.2rem);
+		color: var(--aurea-charcoal);
+		margin: 0 0 0.5rem;
+	}
+
+	.prov-standards__card p {
+		margin: 0;
+		color: var(--aurea-muted);
+		font-size: 0.93rem;
+		line-height: 1.65;
+	}
+
+	/* ── Provider Matching ── */
+	.prov-matching {
+		text-align: center;
+		max-width: 640px;
+		margin-inline: auto;
+		padding: clamp(2.5rem, 5vw, 3.5rem);
+		border: 1px solid var(--aurea-border);
+		border-radius: var(--aurea-radius-lg);
+		background: var(--aurea-white);
+		box-shadow: 0 16px 48px rgba(36, 35, 33, 0.05);
+	}
+
+	.prov-matching .aurea-eyebrow {
+		margin-bottom: 1rem;
+	}
+
+	.prov-matching h2 {
+		margin-bottom: 1rem;
+	}
+
+	.prov-matching__lead {
+		margin-inline: auto;
+		margin-bottom: 2rem;
+	}
+
+	/* ── Final CTA ── */
+	.prov-final {
+		padding-block: clamp(5.5rem, 10vw, 9rem);
+		background: var(--aurea-charcoal);
+	}
+
+	.prov-final__inner {
+		text-align: center;
+		max-width: 640px;
+		margin-inline: auto;
+	}
+
+	.prov-final h2 {
+		color: var(--aurea-white);
+	}
+
+	.prov-final p {
+		color: rgba(255, 255, 255, 0.6);
+		font-size: clamp(1.05rem, 1rem + 0.2vw, 1.15rem);
+		line-height: 1.65;
+	}
+
+	.prov-final__actions {
+		justify-content: center;
+	}
+
+	.prov-final__ghost {
+		border-color: rgba(255, 255, 255, 0.2);
+		background: transparent;
+		color: rgba(255, 255, 255, 0.8);
+	}
+
+	.prov-final__ghost:hover {
+		border-color: rgba(255, 255, 255, 0.4);
+		background: rgba(255, 255, 255, 0.06);
+		color: var(--aurea-white);
+	}
+
+	/* ── Responsive ── */
+	@media (max-width: 960px) {
+		.prov-standards__grid {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+
+	@media (max-width: 768px) {
+		.prov-card {
+			grid-template-columns: 1fr;
+			justify-items: start;
+		}
+
+		.prov-card__avatar-col {
+			flex-direction: row;
+			gap: 1rem;
+		}
+
+		.prov-card__avatar-ring {
+			width: 5rem;
+			height: 5rem;
+		}
+
+		.prov-card__avatar {
+			font-size: 1.3rem;
+		}
+
+		.prov-card__avatar-label {
+			text-align: left;
+		}
+
+		.prov-standards__grid {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+
+	@media (max-width: 560px) {
+		.prov-card {
+			padding: 1.5rem;
+		}
+
+		.prov-standards__grid {
+			grid-template-columns: 1fr;
+		}
+
+		.prov-matching {
+			padding: 1.75rem;
+		}
+	}
+</style>

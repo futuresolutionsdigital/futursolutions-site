@@ -47,10 +47,12 @@ const fallback = concernPaths[6];
 				</a>
 			)}
 
-			<div class="guidance__action">
-				<p>Or skip ahead &mdash;</p>
-				<a class="aurea-btn aurea-btn--champagne" href="/demos/med-spa/contact">Book a Consultation</a>
-			</div>
+		<div class="guidance__action">
+			<a href="/demos/med-spa/concerns" class="guidance__action-link">Explore All Concerns &rarr;</a>
+			<span class="guidance__action-sep" aria-hidden="true">&middot;</span>
+			<p>Or skip ahead &mdash;</p>
+			<a class="aurea-btn aurea-btn--champagne" href="/demos/med-spa/contact">Book a Consultation</a>
+		</div>
 		</div>
 	</div>
 </section>
@@ -210,6 +212,21 @@ const fallback = concernPaths[6];
 		margin-top: clamp(1.5rem, 3vw, 2.5rem);
 		padding-top: clamp(1.5rem, 3vw, 2.5rem);
 		border-top: 1px solid var(--aurea-border);
+	}
+
+	.guidance__action-link {
+		font-size: 0.9rem;
+		font-weight: 700;
+		color: var(--aurea-champagne);
+	}
+
+	.guidance__action-link:hover {
+		color: var(--aurea-charcoal);
+	}
+
+	.guidance__action-sep {
+		color: var(--aurea-muted);
+		opacity: 0.4;
 	}
 
 	.guidance__action p {
