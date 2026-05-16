@@ -10,6 +10,7 @@ interface Props {
 }
 
 const { title, description, canonicalUrl } = Astro.props;
+const currentPath = Astro.url.pathname;
 ---
 
 <!doctype html>
@@ -56,9 +57,14 @@ const { title, description, canonicalUrl } = Astro.props;
 					<span class="aurea-header__brand-name">Aur&eacute;a</span>
 					<span class="aurea-header__brand-sub">Skin &amp; Aesthetics</span>
 				</a>
-				<nav class="aurea-header__nav" aria-label="Main navigation">
-					{aureaNav.map((item) => <a href={item.href}>{item.label}</a>)}
-				</nav>
+			<nav class="aurea-header__nav" aria-label="Main navigation">
+				{aureaNav.map((item) => {
+					const isActive = item.href === '/demos/med-spa/contact'
+						? currentPath.startsWith('/demos/med-spa/contact')
+						: currentPath.startsWith(item.href) && item.href !== '/demos/med-spa/contact';
+					return <a href={item.href} class:list={[{ 'is-active': isActive }]} aria-current={isActive ? 'page' : undefined}>{item.label}</a>;
+				})}
+			</nav>
 				<div class="aurea-header__actions">
 					<a class="aurea-header__cta" href="/demos/med-spa/contact">Book Consultation</a>
 				</div>
@@ -73,8 +79,13 @@ const { title, description, canonicalUrl } = Astro.props;
 				</button>
 			</div>
 			<nav class="aurea-mobile-menu" id="aurea-mobile-menu" aria-label="Mobile navigation" hidden>
-				<div class="aurea-container aurea-mobile-menu__inner">
-					{aureaNav.map((item) => <a href={item.href}>{item.label}</a>)}
+			<div class="aurea-container aurea-mobile-menu__inner">
+				{aureaNav.map((item) => {
+					const isActive = item.href === '/demos/med-spa/contact'
+						? currentPath.startsWith('/demos/med-spa/contact')
+						: currentPath.startsWith(item.href) && item.href !== '/demos/med-spa/contact';
+					return <a href={item.href} class:list={[{ 'is-active': isActive }]} aria-current={isActive ? 'page' : undefined}>{item.label}</a>;
+				})}
 					<a class="aurea-mobile-menu__cta" href="/demos/med-spa/contact">Book Consultation</a>
 				</div>
 			</nav>
@@ -326,6 +337,10 @@ const { title, description, canonicalUrl } = Astro.props;
 		transform: translateY(-1px);
 	}
 
+	.aurea-btn:active {
+		transform: translateY(0);
+	}
+
 	.aurea-site .aurea-btn--primary {
 		background: var(--aurea-charcoal);
 		color: var(--aurea-white);
@@ -370,6 +385,11 @@ const { title, description, canonicalUrl } = Astro.props;
 		border-radius: var(--aurea-radius);
 		background: var(--aurea-white);
 		box-shadow: 0 12px 40px rgba(36, 35, 33, 0.04);
+		transition: box-shadow 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
+	}
+
+	.aurea-card:hover {
+		box-shadow: 0 16px 48px rgba(36, 35, 33, 0.06);
 	}
 
 	@media (prefers-reduced-motion: reduce) {
@@ -386,7 +406,7 @@ const { title, description, canonicalUrl } = Astro.props;
 	.aurea-trust-bar {
 		background: var(--aurea-charcoal);
 		color: rgba(255, 255, 255, 0.78);
-		font-size: 0.78rem;
+		font-size: 0.74rem;
 		font-weight: 600;
 		letter-spacing: 0.02em;
 	}
@@ -404,6 +424,10 @@ const { title, description, canonicalUrl } = Astro.props;
 		flex-wrap: wrap;
 		align-items: center;
 		gap: 0.5rem;
+	}
+
+	.aurea-trust-bar__items span {
+		white-space: nowrap;
 	}
 
 	.aurea-trust-bar__dot {
@@ -472,6 +496,27 @@ const { title, description, canonicalUrl } = Astro.props;
 		color: var(--aurea-charcoal);
 	}
 
+	.aurea-header__nav a.is-active {
+		color: var(--aurea-charcoal);
+		position: relative;
+	}
+
+	.aurea-header__nav a.is-active::after {
+		content: '';
+		position: absolute;
+		bottom: -4px;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 16px;
+		height: 2px;
+		border-radius: 1px;
+		background: var(--aurea-champagne);
+	}
+
+	.aurea-mobile-menu__inner a.is-active {
+		color: var(--aurea-champagne);
+	}
+
 	.aurea-header__cta {
 		display: inline-flex;
 		align-items: center;
@@ -497,9 +542,9 @@ const { title, description, canonicalUrl } = Astro.props;
 		flex-direction: column;
 		justify-content: center;
 		gap: 4px;
-		width: 2.2rem;
-		height: 2.2rem;
-		padding: 0.45rem;
+		width: 2.75rem;
+		height: 2.75rem;
+		padding: 0.65rem;
 		border: 1px solid var(--aurea-border);
 		border-radius: 8px;
 		background: var(--aurea-white);
@@ -717,6 +762,10 @@ const { title, description, canonicalUrl } = Astro.props;
 	}
 
 	@media (max-width: 768px) {
+		.aurea-trust-bar__items span:nth-child(n + 2) {
+			display: none;
+		}
+
 		.aurea-sticky-bar {
 			display: flex;
 		}

@@ -1,5 +1,6 @@
 ---
 import AureaLayout from '../../../layouts/AureaLayout.astro';
+import AureaPageHero from '../../../components/AureaPageHero.astro';
 import { concernPaths } from '../../../data/aurea';
 
 const mainConcerns = concernPaths.slice(0, 8);
@@ -29,19 +30,13 @@ const wisdomCards = [
 	title="Concerns | Auréa Skin & Aesthetics"
 	description="Not sure which treatment is right for you? Use the Auréa concern guide to explore treatment paths based on your aesthetic goals — from lines and volume to skin texture and wellness."
 >
-	<section class="concerns-hero" aria-labelledby="concerns-heading">
-		<div class="aurea-container">
-			<p class="aurea-eyebrow">Concern Guide</p>
-			<h1 id="concerns-heading">Find the right path for your aesthetic goals.</h1>
-			<p class="aurea-lead">
-				Not every patient arrives knowing which treatment they need. Start with what you want to improve, then explore the treatments that may fit your goals.
-			</p>
-			<div class="aurea-btn-row">
-				<a class="aurea-btn aurea-btn--primary" href="#concern-paths">Find My Treatment Path</a>
-				<a class="aurea-btn aurea-btn--secondary" href="/demos/med-spa/contact">Book a Consultation</a>
-			</div>
-		</div>
-	</section>
+	<AureaPageHero
+		eyebrow="Concern Guide"
+		headline="Find the right path for your aesthetic goals."
+		lead="Not every patient arrives knowing which treatment they need. Start with what you want to improve, then explore the treatments that may fit your goals."
+		primaryCta={{ text: 'Find My Treatment Path', href: '#concern-paths' }}
+		secondaryCta={{ text: 'Book a Consultation', href: '/demos/med-spa/contact' }}
+	/>
 
 	<section class="aurea-section" id="concern-paths" aria-labelledby="paths-heading">
 		<div class="aurea-container">
@@ -107,18 +102,6 @@ const wisdomCards = [
 </AureaLayout>
 
 <style>
-	/* ── Hero ── */
-	.concerns-hero {
-		padding-block: clamp(4rem, 8vw, 7rem);
-		background:
-			radial-gradient(ellipse at 75% 20%, color-mix(in srgb, var(--aurea-champagne) 12%, transparent), transparent 55%),
-			linear-gradient(180deg, var(--aurea-bg) 0%, var(--aurea-ivory) 100%);
-	}
-
-	.concerns-hero h1 {
-		max-width: 780px;
-	}
-
 	/* ── Concern Paths Section ── */
 	.concerns-paths__header {
 		max-width: 680px;

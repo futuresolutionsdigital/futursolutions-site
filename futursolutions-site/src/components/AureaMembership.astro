@@ -49,6 +49,12 @@ import { membershipOptions } from '../data/aurea';
 		display: flex;
 		flex-direction: column;
 		padding: 2rem;
+		transition: box-shadow 0.25s ease, transform 0.25s ease;
+	}
+
+	.mem__card:hover {
+		box-shadow: 0 12px 36px rgba(36, 35, 33, 0.06);
+		transform: translateY(-2px);
 	}
 
 	.mem__card--featured {

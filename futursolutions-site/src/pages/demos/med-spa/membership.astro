@@ -1,5 +1,6 @@
 ---
 import AureaLayout from '../../../layouts/AureaLayout.astro';
+import AureaPageHero from '../../../components/AureaPageHero.astro';
 
 const tiers = [
 	{
@@ -109,20 +110,13 @@ const faqs = [
 	title="Membership & Plans | Auréa Skin & Aesthetics"
 	description="Explore membership tiers, treatment packages, and flexible financing options at Auréa Skin & Aesthetics. Maintain your results with a plan designed around your goals."
 >
-	<!-- 1. Hero -->
-	<section class="memb-hero" aria-labelledby="memb-hero-heading">
-		<div class="aurea-container">
-			<p class="aurea-eyebrow">Membership &amp; Plans</p>
-			<h1 id="memb-hero-heading">Invest in your skin with a plan that fits.</h1>
-			<p class="aurea-lead memb-hero__lead">
-				Maintain your results, plan treatments on your schedule, and enjoy member-exclusive benefits — all structured around your individual goals.
-			</p>
-			<div class="aurea-btn-row memb-hero__btns">
-				<a class="aurea-btn aurea-btn--primary" href="/demos/med-spa/contact">Ask About Membership</a>
-				<a class="aurea-btn aurea-btn--secondary" href="/demos/med-spa/contact">Book a Consultation</a>
-			</div>
-		</div>
-	</section>
+	<AureaPageHero
+		eyebrow="Membership & Plans"
+		headline="Invest in your skin with a plan that fits."
+		lead="Maintain your results, plan treatments on your schedule, and enjoy member-exclusive benefits — all structured around your individual goals."
+		primaryCta={{ text: 'Ask About Membership', href: '/demos/med-spa/contact' }}
+		secondaryCta={{ text: 'Book a Consultation', href: '/demos/med-spa/contact' }}
+	/>
 
 	<!-- 2. Membership Tiers -->
 	<section class="aurea-section" aria-labelledby="memb-tiers-heading">
@@ -230,25 +224,6 @@ const faqs = [
 		clip: rect(0, 0, 0, 0);
 		white-space: nowrap;
 		border: 0;
-	}
-
-	/* ===== 1. Hero ===== */
-
-	.memb-hero {
-		padding: clamp(4rem, 8vw, 7rem) 0;
-		background:
-			radial-gradient(ellipse at 30% 20%, color-mix(in srgb, var(--aurea-champagne) 12%, transparent) 0%, transparent 60%),
-			radial-gradient(ellipse at 70% 80%, color-mix(in srgb, var(--aurea-ivory) 60%, transparent) 0%, transparent 55%),
-			var(--aurea-bg);
-		text-align: center;
-	}
-
-	.memb-hero__lead {
-		margin-inline: auto;
-	}
-
-	.memb-hero__btns {
-		justify-content: center;
 	}
 
 	/* ===== 2. Membership Tiers ===== */
@@ -608,18 +583,6 @@ const faqs = [
 	}
 
 	@media (max-width: 768px) {
-		.memb-hero {
-			text-align: left;
-		}
-
-		.memb-hero__lead {
-			margin-inline: 0;
-		}
-
-		.memb-hero__btns {
-			justify-content: flex-start;
-		}
-
 		.memb-cta__btns {
 			flex-direction: column;
 			align-items: center;

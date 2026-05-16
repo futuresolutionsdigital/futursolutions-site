@@ -4,15 +4,15 @@ import AureaLayout from '../../../layouts/AureaLayout.astro';
 const filterPills = ['All', 'Botox', 'Fillers', 'Skin Texture', 'Tone & Pigment', 'Hydration', 'Wellness'];
 
 const resultCards = [
-	{ treatment: 'Botox', area: 'Forehead Lines', timeline: 'Visible softening after 2 weeks' },
-	{ treatment: 'Botox', area: 'Frown Lines', timeline: 'Noticeable improvement in 7–14 days' },
-	{ treatment: 'Botox', area: 'Crow\'s Feet', timeline: 'Gradual smoothing over 2 weeks' },
-	{ treatment: 'Filler', area: 'Facial Balancing', timeline: 'Immediate improvement, refined over 2 weeks' },
-	{ treatment: 'Morpheus8', area: 'Skin Texture', timeline: 'Progressive improvement over 3–6 months' },
-	{ treatment: 'IPL', area: 'Tone & Pigment', timeline: 'Clearer complexion after 2–3 sessions' },
-	{ treatment: 'Hydrafacial', area: 'Glow & Hydration', timeline: 'Instant radiance after one session' },
-	{ treatment: 'Morpheus8', area: 'Skin Firmness', timeline: 'Tightening visible after series of treatments' },
-	{ treatment: 'Medical Weight Loss', area: 'Wellness Journey', timeline: 'Gradual, sustainable progress over months' },
+	{ treatment: 'Botox', area: 'Forehead Lines', timeline: 'Visible softening after 2 weeks', filter: 'Botox' },
+	{ treatment: 'Botox', area: 'Frown Lines', timeline: 'Noticeable improvement in 7–14 days', filter: 'Botox' },
+	{ treatment: 'Botox', area: 'Crow\'s Feet', timeline: 'Gradual smoothing over 2 weeks', filter: 'Botox' },
+	{ treatment: 'Filler', area: 'Facial Balancing', timeline: 'Immediate improvement, refined over 2 weeks', filter: 'Fillers' },
+	{ treatment: 'Morpheus8', area: 'Skin Texture', timeline: 'Progressive improvement over 3–6 months', filter: 'Skin Texture' },
+	{ treatment: 'IPL', area: 'Tone & Pigment', timeline: 'Clearer complexion after 2–3 sessions', filter: 'Tone & Pigment' },
+	{ treatment: 'Hydrafacial', area: 'Glow & Hydration', timeline: 'Instant radiance after one session', filter: 'Hydration' },
+	{ treatment: 'Morpheus8', area: 'Skin Firmness', timeline: 'Tightening visible after series of treatments', filter: 'Skin Texture' },
+	{ treatment: 'Medical Weight Loss', area: 'Wellness Journey', timeline: 'Gradual, sustainable progress over months', filter: 'Wellness' },
 ];
 
 const responsiblePoints = [
@@ -68,12 +68,13 @@ const responsiblePoints = [
 						type="button"
 						class:list={['results-pill', { 'results-pill--active': pill === 'All' }]}
 						aria-pressed={pill === 'All' ? 'true' : 'false'}
+						data-filter={pill}
 					>
 						{pill}
 					</button>
 				))}
 			</div>
-			<p class="results-filters__note">Filter functionality available in full build.</p>
+			<p class="results-filters__note">Select a category to filter results.</p>
 		</div>
 	</section>
 
@@ -83,7 +84,7 @@ const responsiblePoints = [
 			<h2 class="sr-only" id="gallery-heading">Treatment result examples</h2>
 			<div class="results-grid">
 				{resultCards.map((card) => (
-					<article class="results-card aurea-card">
+					<article class="results-card aurea-card" data-filter={card.filter}>
 						<div class="results-card__visual" aria-label={`Demo before and after placeholder for ${card.treatment} — ${card.area}`}>
 							<div class="results-card__before">
 								<span class="results-card__label">Before</span>
@@ -128,6 +129,35 @@ const responsiblePoints = [
 		</div>
 	</section>
 
+	<script is:inline>
+	(function () {
+		var toolbar = document.querySelector('.results-filters__row');
+		var cards = document.querySelectorAll('[data-filter].results-card');
+		if (!toolbar || !cards.length) return;
+
+		var buttons = toolbar.querySelectorAll('button[data-filter]');
+
+		function apply(filter) {
+			buttons.forEach(function (btn) {
+				var active = btn.getAttribute('data-filter') === filter;
+				btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+				btn.classList.toggle('results-pill--active', active);
+			});
+
+			cards.forEach(function (card) {
+				var match = filter === 'All' || card.getAttribute('data-filter') === filter;
+				card.hidden = !match;
+			});
+		}
+
+		toolbar.addEventListener('click', function (e) {
+			var btn = e.target && e.target.closest('button[data-filter]');
+			if (!btn) return;
+			apply(btn.getAttribute('data-filter'));
+		});
+	})();
+	</script>
+
 	<!-- Final CTA -->
 	<section class="results-cta" aria-labelledby="results-cta-heading">
 		<div class="aurea-container">
@@ -148,7 +178,7 @@ const responsiblePoints = [
 <style>
 	/* Hero */
 	.results-hero {
-		padding: clamp(4rem, 8vw, 7rem) 0;
+		padding: clamp(3.5rem, 7vw, 6rem) 0;
 		background:
 			radial-gradient(ellipse at 30% 20%, color-mix(in srgb, var(--aurea-champagne) 12%, transparent) 0%, transparent 60%),
 			radial-gradient(ellipse at 70% 80%, color-mix(in srgb, var(--aurea-ivory) 60%, transparent) 0%, transparent 55%),
@@ -184,7 +214,7 @@ const responsiblePoints = [
 		color: var(--aurea-muted);
 		font-size: 0.85rem;
 		font-weight: 600;
-		cursor: default;
+		cursor: pointer;
 		transition:
 			background var(--aurea-transition),
 			color var(--aurea-transition),
@@ -216,6 +246,10 @@ const responsiblePoints = [
 		clip: rect(0, 0, 0, 0);
 		white-space: nowrap;
 		border: 0;
+	}
+
+	.results-card[hidden] {
+		display: none;
 	}
 
 	/* Result Gallery */

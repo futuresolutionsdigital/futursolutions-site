@@ -1,5 +1,6 @@
 ---
 import AureaLayout from '../../../layouts/AureaLayout.astro';
+import AureaPageHero from '../../../components/AureaPageHero.astro';
 import { providers } from '../../../data/aurea';
 
 const trustItems = [
@@ -43,20 +44,13 @@ function getFirstName(name: string) {
 	title="Providers | Auréa Skin & Aesthetics"
 	description="Meet the licensed providers behind Auréa Skin & Aesthetics. Learn about the team's medical expertise, aesthetic specialties, and consultation-first approach."
 >
-	<!-- Hero -->
-	<section class="prov-hero" aria-labelledby="prov-heading">
-		<div class="aurea-container">
-			<p class="aurea-eyebrow">Providers</p>
-			<h1 id="prov-heading">Meet the team behind your treatment plan.</h1>
-			<p class="aurea-lead">
-				Auréa combines medical oversight, aesthetic judgment, and a conservative approach to help patients feel informed, comfortable, and cared for.
-			</p>
-			<div class="aurea-btn-row">
-				<a class="aurea-btn aurea-btn--primary" href="/demos/med-spa/contact">Book a Consultation</a>
-				<a class="aurea-btn aurea-btn--secondary" href="/demos/med-spa/treatments">Explore Treatments</a>
-			</div>
-		</div>
-	</section>
+	<AureaPageHero
+		eyebrow="Providers"
+		headline="Meet the team behind your treatment plan."
+		lead="Auréa combines medical oversight, aesthetic judgment, and a conservative approach to help patients feel informed, comfortable, and cared for."
+		primaryCta={{ text: 'Book a Consultation', href: '/demos/med-spa/contact' }}
+		secondaryCta={{ text: 'Explore Treatments', href: '/demos/med-spa/treatments' }}
+	/>
 
 	<!-- Provider Profile Cards -->
 	<section class="aurea-section" aria-labelledby="prov-profiles-heading">
@@ -159,18 +153,6 @@ function getFirstName(name: string) {
 		clip: rect(0, 0, 0, 0);
 		white-space: nowrap;
 		border: 0;
-	}
-
-	/* ── Hero ── */
-	.prov-hero {
-		padding-block: clamp(4rem, 8vw, 7rem);
-		background:
-			radial-gradient(ellipse at 75% 20%, color-mix(in srgb, var(--aurea-champagne) 12%, transparent), transparent 55%),
-			linear-gradient(180deg, var(--aurea-bg) 0%, var(--aurea-ivory) 100%);
-	}
-
-	.prov-hero h1 {
-		max-width: 780px;
 	}
 
 	/* ── Provider Cards ── */

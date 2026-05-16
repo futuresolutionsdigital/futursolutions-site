@@ -1,0 +1,64 @@
+---
+interface Props {
+	eyebrow: string;
+	headline: string;
+	lead?: string;
+	primaryCta?: { text: string; href: string };
+	secondaryCta?: { text: string; href: string };
+	align?: 'left' | 'center';
+}
+
+const { eyebrow, headline, lead, primaryCta, secondaryCta, align = 'left' } = Astro.props;
+const headingId = `hero-${eyebrow.toLowerCase().replace(/[^a-z]+/g, '-')}`;
+---
+
+<section
+	class:list={['aurea-page-hero', { 'aurea-page-hero--center': align === 'center' }]}
+	aria-labelledby={headingId}
+>
+	<div class="aurea-container">
+		<div class="aurea-page-hero__content">
+			<p class="aurea-eyebrow">{eyebrow}</p>
+			<h1 id={headingId}>{headline}</h1>
+			{lead && <p class="aurea-lead">{lead}</p>}
+			{(primaryCta || secondaryCta) && (
+				<div class="aurea-btn-row">
+					{primaryCta && <a class="aurea-btn aurea-btn--primary" href={primaryCta.href}>{primaryCta.text}</a>}
+					{secondaryCta && <a class="aurea-btn aurea-btn--secondary" href={secondaryCta.href}>{secondaryCta.text}</a>}
+				</div>
+			)}
+		</div>
+	</div>
+</section>
+
+<style>
+	.aurea-page-hero {
+		padding-block: clamp(3.5rem, 7vw, 6rem);
+		background:
+			radial-gradient(ellipse at 75% 20%, color-mix(in srgb, var(--aurea-champagne) 10%, transparent), transparent 55%),
+			linear-gradient(180deg, var(--aurea-bg) 0%, var(--aurea-ivory) 100%);
+	}
+
+	.aurea-page-hero__content {
+		max-width: 820px;
+	}
+
+	.aurea-page-hero--center .aurea-page-hero__content {
+		text-align: center;
+		margin-inline: auto;
+	}
+
+	.aurea-page-hero--center .aurea-lead {
+		margin-inline: auto;
+	}
+
+	.aurea-page-hero--center .aurea-btn-row {
+		justify-content: center;
+	}
+
+	@media (max-width: 768px) {
+		.aurea-page-hero {
+			padding-block: clamp(2.5rem, 6vw, 4rem);
+		}
+	}
+</style>

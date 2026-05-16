@@ -22,11 +22,11 @@ import { featuredTreatments } from '../data/aurea';
 								<span class="ft__tag">{tag}</span>
 							))}
 						</div>
-					{treatment.href !== '/demos/med-spa/contact' && (
-						<a href={treatment.href} class="ft__link">
-							Learn More &rarr;
-						</a>
-					)}
+				{treatment.href !== '/demos/med-spa/contact' && (
+					<a href={treatment.href} class="ft__link ft__link--learn">
+						Learn More &rarr;
+					</a>
+				)}
 					<a href="/demos/med-spa/contact" class="ft__link">
 						Book Consultation &rarr;
 					</a>
@@ -45,7 +45,7 @@ import { featuredTreatments } from '../data/aurea';
 
 	.ft__grid {
 		display: grid;
-		grid-template-columns: repeat(4, minmax(0, 1fr));
+		grid-template-columns: repeat(3, minmax(0, 1fr));
 		gap: 0.85rem;
 	}
 
@@ -53,6 +53,12 @@ import { featuredTreatments } from '../data/aurea';
 		display: flex;
 		flex-direction: column;
 		padding: 1.35rem;
+		transition: box-shadow 0.25s ease, transform 0.25s ease;
+	}
+
+	.ft__card:hover {
+		box-shadow: 0 12px 36px rgba(36, 35, 33, 0.06);
+		transform: translateY(-2px);
 	}
 
 	.ft__card h3 {
@@ -95,6 +101,20 @@ import { featuredTreatments } from '../data/aurea';
 
 	.ft__link:hover {
 		color: var(--aurea-champagne);
+	}
+
+	.ft__link--learn {
+		color: var(--aurea-champagne);
+	}
+
+	.ft__link--learn:hover {
+		color: var(--aurea-charcoal);
+	}
+
+	.ft__link + .ft__link {
+		margin-top: 0;
+		padding-top: 0.75rem;
+		border-top: 1px solid var(--aurea-border);
 	}
 
 	@media (max-width: 1080px) {

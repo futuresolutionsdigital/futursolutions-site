@@ -1,5 +1,6 @@
 ---
 import AureaLayout from '../../../../layouts/AureaLayout.astro';
+import AureaPageHero from '../../../../components/AureaPageHero.astro';
 import { treatmentCategories, featuredTreatments } from '../../../../data/aurea';
 
 const categoryTreatmentMap: Record<string, string[]> = {
@@ -40,19 +41,13 @@ const treatmentFaqs = [
 	title="Treatments | Auréa Skin & Aesthetics"
 	description="Explore injectables, laser treatments, skin therapies, and wellness services at Auréa Skin & Aesthetics in Temecula, CA."
 >
-	<section class="treatments-hero" aria-labelledby="treatments-heading">
-		<div class="aurea-container">
-			<p class="aurea-eyebrow">Treatment Menu</p>
-			<h1 id="treatments-heading">Explore treatments designed around your goals.</h1>
-			<p class="aurea-lead">
-				Browse injectables, laser treatments, skin therapies, body options, and wellness support — then start with a consultation when you're ready.
-			</p>
-			<div class="aurea-btn-row">
-				<a class="aurea-btn aurea-btn--primary" href="/demos/med-spa/contact">Book a Consultation</a>
-				<a class="aurea-btn aurea-btn--secondary" href="/demos/med-spa/#concerns">Find My Treatment Path</a>
-			</div>
-		</div>
-	</section>
+	<AureaPageHero
+		eyebrow="Treatment Menu"
+		headline="Explore treatments designed around your goals."
+		lead="Browse injectables, laser treatments, skin therapies, body options, and wellness support — then start with a consultation when you're ready."
+		primaryCta={{ text: 'Book a Consultation', href: '/demos/med-spa/contact' }}
+		secondaryCta={{ text: 'Find My Treatment Path', href: '/demos/med-spa/concerns' }}
+	/>
 
 	{categoryTreatments.map((category) => (
 		<section class="aurea-section aurea-section--warm treatments-category" aria-labelledby={`cat-${category.title.toLowerCase().replace(/[^a-z]+/g, '-')}`}>
@@ -127,17 +122,6 @@ const treatmentFaqs = [
 </AureaLayout>
 
 <style>
-	.treatments-hero {
-		padding-block: clamp(4rem, 8vw, 7rem);
-		background:
-			radial-gradient(ellipse at 75% 20%, color-mix(in srgb, var(--aurea-champagne) 12%, transparent), transparent 55%),
-			linear-gradient(180deg, var(--aurea-bg) 0%, var(--aurea-ivory) 100%);
-	}
-
-	.treatments-hero h1 {
-		max-width: 820px;
-	}
-
 	.treatments-category {
 		border-bottom: none;
 	}

@@ -15,16 +15,18 @@ import { beforeAfterCases } from '../data/aurea';
 			{
 				beforeAfterCases.map((c) => (
 					<article class="ba__card aurea-card">
-						<div class="ba__images">
-							<div class="ba__side ba__side--before">
-								<div class="ba__texture" aria-hidden="true"></div>
-								<span class="ba__label">Before</span>
-							</div>
-							<div class="ba__divider" aria-hidden="true"></div>
-							<div class="ba__side ba__side--after">
-								<span class="ba__label">After</span>
-							</div>
+					<div class="ba__images">
+						<div class="ba__side ba__side--before">
+							<div class="ba__texture" aria-hidden="true"></div>
+							<span class="ba__area-label" aria-hidden="true">{c.area}</span>
+							<span class="ba__label">Before</span>
 						</div>
+						<div class="ba__divider" aria-hidden="true"></div>
+						<div class="ba__side ba__side--after">
+							<span class="ba__area-label" aria-hidden="true">{c.area}</span>
+							<span class="ba__label">After</span>
+						</div>
+					</div>
 						<div class="ba__body">
 							<div class="ba__meta">
 								<span class="ba__area">{c.area}</span>
@@ -114,6 +116,22 @@ import { beforeAfterCases } from '../data/aurea';
 		background: var(--aurea-border);
 	}
 
+	.ba__area-label {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -55%);
+		font-family: var(--aurea-font-heading);
+		font-size: 0.85rem;
+		font-weight: 500;
+		font-style: italic;
+		color: var(--aurea-muted);
+		opacity: 0.35;
+		white-space: nowrap;
+		pointer-events: none;
+		user-select: none;
+	}
+
 	.ba__label {
 		position: relative;
 		z-index: 1;
@@ -172,9 +190,10 @@ import { beforeAfterCases } from '../data/aurea';
 	}
 
 	.ba__cta-link {
-		font-size: 0.9rem;
-		font-weight: 700;
-		color: var(--aurea-charcoal);
+		font-size: 0.84rem;
+		font-weight: 600;
+		color: var(--aurea-muted);
+		transition: color 0.15s ease;
 	}
 
 	.ba__cta-link:hover {

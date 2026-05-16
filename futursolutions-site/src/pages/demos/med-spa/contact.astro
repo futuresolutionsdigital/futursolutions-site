@@ -1,5 +1,6 @@
 ---
 import AureaLayout from '../../../layouts/AureaLayout.astro';
+import AureaPageHero from '../../../components/AureaPageHero.astro';
 
 const treatmentInterests = [
 	'Injectables',
@@ -41,19 +42,13 @@ const contactFaqs = [
 	title="Book Consultation | Auréa Skin & Aesthetics"
 	description="Request a consultation at Auréa Skin & Aesthetics in Temecula, CA. Share your goals and our team will guide your next step."
 >
-	<section class="contact-hero" aria-labelledby="contact-heading">
-		<div class="aurea-container">
-			<p class="aurea-eyebrow">Consultation</p>
-			<h1 id="contact-heading">Start with a consultation.</h1>
-			<p class="aurea-lead">
-				Tell us what you're considering and our team will help you choose the right next step.
-			</p>
-			<div class="aurea-btn-row">
-				<a class="aurea-btn aurea-btn--primary" href="tel:+19515550147">Call Now</a>
-				<a class="aurea-btn aurea-btn--secondary" href="/demos/med-spa/treatments">Explore Treatments</a>
-			</div>
-		</div>
-	</section>
+	<AureaPageHero
+		eyebrow="Consultation"
+		headline="Start with a consultation."
+		lead="Tell us what you're considering and our team will help you choose the right next step."
+		primaryCta={{ text: 'Call Now', href: 'tel:+19515550147' }}
+		secondaryCta={{ text: 'Explore Treatments', href: '/demos/med-spa/treatments' }}
+	/>
 
 	<section class="aurea-section" aria-labelledby="form-heading">
 		<div class="aurea-container contact-grid">
@@ -185,17 +180,6 @@ const contactFaqs = [
 </AureaLayout>
 
 <style>
-	.contact-hero {
-		padding-block: clamp(4rem, 8vw, 7rem);
-		background:
-			radial-gradient(ellipse at 75% 20%, color-mix(in srgb, var(--aurea-champagne) 12%, transparent), transparent 55%),
-			linear-gradient(180deg, var(--aurea-bg) 0%, var(--aurea-ivory) 100%);
-	}
-
-	.contact-hero h1 {
-		max-width: 720px;
-	}
-
 	.contact-grid {
 		display: grid;
 		grid-template-columns: minmax(0, 0.9fr) minmax(380px, 1fr);
