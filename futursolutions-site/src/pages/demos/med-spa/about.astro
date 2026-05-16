@@ -1,0 +1,214 @@
+---
+import AureaLayout from '../../../layouts/AureaLayout.astro';
+import AureaPageHero from '../../../components/AureaPageHero.astro';
+
+const philosophyCards = [
+	{
+		title: 'Natural, not overdone',
+		text: 'We focus on enhancing what\u2019s already there \u2014 not chasing trends, not overfilling, not overdoing. The goal is always: you, refreshed.',
+	},
+	{
+		title: 'Guided, not rushed',
+		text: 'Every treatment plan starts with a consultation. We explain options, set realistic expectations, and move at your pace.',
+	},
+	{
+		title: 'Premium, not impersonal',
+		text: 'From the environment to the follow-up, every touchpoint is designed to feel thoughtful, warm, and medically credible.',
+	},
+];
+
+const differentiators = [
+	{
+		title: 'Consultation-first care',
+		text: 'No treatment happens without a thorough assessment of your goals, anatomy, and comfort level.',
+	},
+	{
+		title: 'Licensed providers',
+		text: 'Every procedure is performed or supervised by trained, licensed medical professionals.',
+	},
+	{
+		title: 'Medical director oversight',
+		text: 'All protocols and treatment plans are reviewed under physician-level guidance.',
+	},
+	{
+		title: 'Responsible results',
+		text: 'We present outcomes honestly, with context, disclaimers, and realistic expectations.',
+	},
+	{
+		title: 'Personalized treatment paths',
+		text: 'No two patients receive the same plan. Everything is tailored to your individual needs.',
+	},
+	{
+		title: 'Transparent next steps',
+		text: 'You\u2019ll always know what to expect \u2014 from pricing conversations to aftercare instructions.',
+	},
+];
+---
+
+<AureaLayout
+	title="About | Auréa Skin & Aesthetics"
+	description="Learn about the Auréa Skin & Aesthetics philosophy — a premium med spa concept built around natural-looking results, medical guidance, and consultation-first care."
+>
+	<AureaPageHero
+		eyebrow="About Auréa"
+		headline="Medical aesthetics with a softer, more personal standard."
+		lead="Auréa Skin & Aesthetics is a fictional premium med spa concept designed around natural-looking results, thoughtful treatment planning, and consultation-first care."
+		primaryCta={{ text: 'Book a Consultation', href: '/demos/med-spa/contact' }}
+		secondaryCta={{ text: 'Meet the Providers', href: '/demos/med-spa/providers' }}
+	/>
+
+	<!-- Philosophy -->
+	<section class="aurea-section" aria-labelledby="about-philosophy-heading">
+		<div class="aurea-container">
+			<p class="aurea-eyebrow">Our Philosophy</p>
+			<h2 id="about-philosophy-heading">Designed around restraint, trust, and individual goals.</h2>
+			<p class="aurea-lead about-philosophy-lead">
+				Every decision at Aur&eacute;a &mdash; from the treatments we offer to the way we present results &mdash; is guided by a commitment to honesty, medical precision, and individual care. We believe the best outcomes start with the right conversation.
+			</p>
+			<div class="about-philosophy-grid">
+				{philosophyCards.map((card) => (
+					<div class="aurea-card about-philosophy-card">
+						<h3>{card.title}</h3>
+						<p>{card.text}</p>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- Why Auréa -->
+	<section class="aurea-section aurea-section--warm" aria-labelledby="about-why-heading">
+		<div class="aurea-container">
+			<p class="aurea-eyebrow">Why Aur&eacute;a</p>
+			<h2 id="about-why-heading">A higher standard for aesthetic care.</h2>
+			<div class="about-diff-grid">
+				{differentiators.map((item) => (
+					<div class="about-diff-card">
+						<h3>{item.title}</h3>
+						<p>{item.text}</p>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- Final CTA -->
+	<section class="about-cta" aria-labelledby="about-cta-heading">
+		<div class="aurea-container about-cta-inner">
+			<h2 id="about-cta-heading">Start with a conversation.</h2>
+			<p class="aurea-lead">Book a consultation and we&rsquo;ll help you understand your options &mdash; no commitment, no pressure.</p>
+			<div class="aurea-btn-row">
+				<a class="aurea-btn aurea-btn--champagne" href="/demos/med-spa/contact">Book a Consultation</a>
+				<a class="aurea-btn about-cta-ghost" href="/demos/med-spa/treatments">Explore Treatments</a>
+			</div>
+		</div>
+	</section>
+</AureaLayout>
+
+<style>
+	/* ── Philosophy ── */
+	.about-philosophy-lead {
+		margin-bottom: 2.5rem;
+	}
+
+	.about-philosophy-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 1.5rem;
+	}
+
+	.about-philosophy-card {
+		padding: 1.5rem;
+	}
+
+	.about-philosophy-card h3 {
+		font-family: var(--aurea-font-heading);
+	}
+
+	.about-philosophy-card p {
+		margin-bottom: 0;
+	}
+
+	/* ── Why Auréa (differentiators) ── */
+	.about-diff-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 1.5rem;
+		margin-top: 2.5rem;
+	}
+
+	.about-diff-card {
+		background: var(--aurea-white);
+		border: 1px solid var(--aurea-border);
+		border-radius: var(--aurea-radius);
+		padding: 1.5rem;
+	}
+
+	.about-diff-card h3 {
+		font-family: var(--aurea-font-heading);
+	}
+
+	.about-diff-card p {
+		margin-bottom: 0;
+	}
+
+	/* ── Final CTA ── */
+	.about-cta {
+		padding-block: var(--aurea-section-spacing);
+		background: var(--aurea-charcoal);
+		color: var(--aurea-white);
+	}
+
+	.about-cta-inner {
+		max-width: 640px;
+		text-align: center;
+		margin-inline: auto;
+	}
+
+	.about-cta h2 {
+		color: var(--aurea-white);
+	}
+
+	.about-cta .aurea-lead {
+		color: rgba(255, 255, 255, 0.65);
+	}
+
+	.about-cta .aurea-btn-row {
+		justify-content: center;
+	}
+
+	.about-cta-ghost {
+		border-color: rgba(255, 255, 255, 0.2);
+		background: transparent;
+		color: var(--aurea-white);
+	}
+
+	.about-cta-ghost:hover {
+		border-color: rgba(255, 255, 255, 0.45);
+		background: rgba(255, 255, 255, 0.06);
+		color: var(--aurea-white);
+	}
+
+	/* ── Responsive ── */
+	@media (max-width: 960px) {
+		.about-diff-grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	@media (max-width: 768px) {
+		.about-philosophy-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.about-diff-grid {
+			grid-template-columns: 1fr 1fr;
+		}
+	}
+
+	@media (max-width: 560px) {
+		.about-diff-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

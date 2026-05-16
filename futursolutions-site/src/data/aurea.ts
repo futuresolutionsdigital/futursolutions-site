@@ -325,10 +325,10 @@ export const footerNavGroups = [
 	{
 		title: 'Clinic',
 		links: [
+			{ label: 'About', href: '/demos/med-spa/about' },
 			{ label: 'Providers', href: '/demos/med-spa/providers' },
 			{ label: 'Membership', href: '/demos/med-spa/membership' },
 			{ label: 'FAQ', href: '/demos/med-spa/#faq' },
-			{ label: 'About', href: '/demos/med-spa/providers' },
 		],
 	},
 	{
