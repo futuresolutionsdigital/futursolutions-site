@@ -1,0 +1,175 @@
+---
+---
+
+<section id="location" class="aurea-section" aria-labelledby="location-heading">
+	<div class="aurea-container">
+		<div class="loc__grid">
+			<div class="loc__info">
+				<p class="aurea-eyebrow">Visit Aur&eacute;a</p>
+				<h2 id="location-heading">Book your consultation today.</h2>
+				<p class="aurea-lead">
+					Whether you're exploring your first treatment or maintaining an ongoing plan, we're here to help you take the next step.
+				</p>
+
+				<div class="loc__details">
+					<div class="loc__detail-item">
+						<span class="loc__detail-label">Address</span>
+						<span>123 V&iacute;a Belleza, Temecula, CA 92590</span>
+					</div>
+					<div class="loc__detail-item">
+						<span class="loc__detail-label">Phone</span>
+						<a href="tel:+19515550147">(951) 555-0147</a>
+					</div>
+					<div class="loc__detail-item">
+						<span class="loc__detail-label">Hours</span>
+						<span>Mon&ndash;Fri: 9 AM &ndash; 6 PM &middot; Sat: 9 AM &ndash; 3 PM</span>
+					</div>
+				</div>
+
+				<div class="aurea-btn-row">
+					<a class="aurea-btn aurea-btn--primary" href="#location">Book Consultation</a>
+					<a class="aurea-btn aurea-btn--secondary" href="tel:+19515550147">Call Now</a>
+					<a class="aurea-btn aurea-btn--secondary" href="#location">Get Directions</a>
+				</div>
+			</div>
+
+			<div class="loc__map" aria-label="Map placeholder">
+				<div class="loc__map-placeholder">
+					<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+					<p>Map placeholder</p>
+					<span>123 V&iacute;a Belleza, Temecula, CA 92590</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="loc__final">
+	<div class="aurea-container">
+		<div class="loc__final-card">
+			<div class="loc__final-content">
+				<p class="aurea-eyebrow loc__final-eyebrow">Next Step</p>
+				<h2>Natural results. Medical precision. Designed around you.</h2>
+				<p class="aurea-lead loc__final-lead">
+					Request a consultation and discover the treatment plan that's right for your goals, features, and comfort.
+				</p>
+			</div>
+			<div class="aurea-btn-row">
+				<a class="aurea-btn aurea-btn--champagne" href="#location">Book a Consultation</a>
+				<a class="aurea-btn aurea-btn--secondary loc__final-btn-secondary" href="#treatments">Explore Treatments</a>
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.loc__grid {
+		display: grid;
+		grid-template-columns: minmax(0, 1.2fr) minmax(300px, 0.8fr);
+		gap: clamp(2rem, 5vw, 4rem);
+		align-items: start;
+	}
+
+	.loc__details {
+		display: grid;
+		gap: 1rem;
+		margin-top: 2rem;
+	}
+
+	.loc__detail-item {
+		display: grid;
+		gap: 0.15rem;
+	}
+
+	.loc__detail-label {
+		font-size: 0.68rem;
+		font-weight: 700;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		color: var(--aurea-champagne);
+	}
+
+	.loc__detail-item > span:last-child,
+	.loc__detail-item > a {
+		font-size: 0.92rem;
+		color: var(--aurea-muted);
+		font-weight: 600;
+	}
+
+	.loc__detail-item a:hover {
+		color: var(--aurea-charcoal);
+	}
+
+	.loc__map-placeholder {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 0.65rem;
+		min-height: 340px;
+		border: 1px solid var(--aurea-border);
+		border-radius: var(--aurea-radius-lg);
+		background: color-mix(in srgb, var(--aurea-stone) 18%, var(--aurea-ivory));
+		color: var(--aurea-muted);
+	}
+
+	.loc__map-placeholder p {
+		margin: 0;
+		font-size: 0.82rem;
+		font-weight: 700;
+		color: var(--aurea-muted);
+	}
+
+	.loc__map-placeholder span {
+		font-size: 0.78rem;
+		color: var(--aurea-muted);
+		opacity: 0.6;
+	}
+
+	.loc__final {
+		padding-block: clamp(4rem, 7vw, 6rem);
+		background: var(--aurea-charcoal);
+	}
+
+	.loc__final-card {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) auto;
+		gap: 2rem;
+		align-items: end;
+	}
+
+	.loc__final h2 {
+		color: var(--aurea-white);
+		max-width: 14ch;
+	}
+
+	.loc__final-eyebrow {
+		color: var(--aurea-champagne) !important;
+	}
+
+	.loc__final-lead {
+		color: rgba(255, 255, 255, 0.6) !important;
+	}
+
+	.loc__final-btn-secondary {
+		background: transparent !important;
+		border-color: rgba(255, 255, 255, 0.18) !important;
+		color: var(--aurea-white) !important;
+	}
+
+	.loc__final-btn-secondary:hover {
+		background: rgba(255, 255, 255, 0.06) !important;
+		border-color: rgba(255, 255, 255, 0.32) !important;
+	}
+
+	@media (max-width: 860px) {
+		.loc__grid,
+		.loc__final-card {
+			grid-template-columns: 1fr;
+		}
+
+		.loc__map-placeholder {
+			min-height: 240px;
+		}
+	}
+</style>

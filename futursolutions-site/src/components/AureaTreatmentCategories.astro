@@ -1,0 +1,123 @@
+---
+import { treatmentCategories } from '../data/aurea';
+---
+
+<section id="treatments" class="aurea-section" aria-labelledby="categories-heading">
+	<div class="aurea-container">
+		<div class="cat__intro">
+			<p class="aurea-eyebrow">Treatment Categories</p>
+			<h2 id="categories-heading">Services designed around outcomes, not upsells.</h2>
+			<p class="aurea-lead">
+				Every treatment category is built around a specific goal so you can focus on what matters to you.
+			</p>
+		</div>
+		<div class="cat__grid">
+			{
+				treatmentCategories.map((cat) => (
+					<article class="cat__card aurea-card">
+						<h3>{cat.title}</h3>
+						<p>{cat.description}</p>
+						<div class="cat__popular">
+							<span class="cat__popular-label">Popular treatments</span>
+							<div class="cat__tags">
+								{cat.popularTreatments.map((t) => (
+									<span>{t}</span>
+								))}
+							</div>
+						</div>
+						<a href={cat.href} class="cat__link">
+							Explore {cat.title} &rarr;
+						</a>
+					</article>
+				))
+			}
+		</div>
+	</div>
+</section>
+
+<style>
+	.cat__intro {
+		max-width: 700px;
+		margin-bottom: clamp(2rem, 4vw, 3rem);
+	}
+
+	.cat__grid {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 0.85rem;
+	}
+
+	.cat__card {
+		display: flex;
+		flex-direction: column;
+		padding: 1.5rem;
+	}
+
+	.cat__card h3 {
+		font-family: var(--aurea-font-heading);
+	}
+
+	.cat__card > p {
+		font-size: 0.92rem;
+		line-height: 1.6;
+		color: var(--aurea-muted);
+		flex: 1;
+	}
+
+	.cat__popular {
+		margin-top: 1.5rem;
+		padding-top: 1.15rem;
+		border-top: 1px solid var(--aurea-border);
+	}
+
+	.cat__popular-label {
+		display: block;
+		margin-bottom: 0.6rem;
+		font-size: 0.68rem;
+		font-weight: 700;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		color: var(--aurea-champagne);
+	}
+
+	.cat__tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.35rem;
+	}
+
+	.cat__tags span {
+		display: inline-flex;
+		padding: 0.28rem 0.55rem;
+		border: 1px solid var(--aurea-border);
+		border-radius: 999px;
+		font-size: 0.75rem;
+		font-weight: 600;
+		color: var(--aurea-muted);
+		background: color-mix(in srgb, var(--aurea-ivory) 50%, var(--aurea-white));
+	}
+
+	.cat__link {
+		display: inline-flex;
+		margin-top: 1.25rem;
+		font-size: 0.88rem;
+		font-weight: 700;
+		color: var(--aurea-charcoal);
+	}
+
+	.cat__link:hover {
+		color: var(--aurea-champagne);
+	}
+
+	@media (max-width: 1040px) {
+		.cat__grid {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+
+	@media (max-width: 600px) {
+		.cat__grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

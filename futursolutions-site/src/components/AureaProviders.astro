@@ -1,0 +1,149 @@
+---
+import { providers } from '../data/aurea';
+---
+
+<section id="providers" class="aurea-section" aria-labelledby="providers-heading">
+	<div class="aurea-container">
+		<div class="prov__intro">
+			<p class="aurea-eyebrow">Our Providers</p>
+			<h2 id="providers-heading">Meet the team behind your treatment plan.</h2>
+			<p class="aurea-lead">
+				Licensed professionals with advanced training in medical aesthetics, committed to natural-looking results and patient-first care.
+			</p>
+		</div>
+		<div class="prov__grid">
+			{
+				providers.map((provider) => (
+					<article class="prov__card aurea-card">
+						<div class="prov__avatar" aria-hidden="true">
+							<span>{provider.name.split(' ').map((n) => n[0]).join('')}</span>
+						</div>
+						<div class="prov__body">
+							<h3>{provider.name}</h3>
+							<p class="prov__cred">{provider.credential}</p>
+							<div class="prov__detail">
+								<div class="prov__detail-item">
+									<span class="prov__detail-label">Specialty</span>
+									<span>{provider.specialty}</span>
+								</div>
+								<div class="prov__detail-item">
+									<span class="prov__detail-label">Known for</span>
+									<span>{provider.knownFor}</span>
+								</div>
+							</div>
+							<a href="#location" class="prov__link">Book with {provider.name.split(' ')[0]} &rarr;</a>
+						</div>
+					</article>
+				))
+			}
+		</div>
+	</div>
+</section>
+
+<style>
+	.prov__intro {
+		max-width: 700px;
+		margin-bottom: clamp(2rem, 4vw, 3rem);
+	}
+
+	.prov__grid {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 0.85rem;
+	}
+
+	.prov__card {
+		display: flex;
+		flex-direction: column;
+		overflow: hidden;
+	}
+
+	.prov__avatar {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 160px;
+		background:
+			linear-gradient(135deg, color-mix(in srgb, var(--aurea-stone) 35%, var(--aurea-ivory)), var(--aurea-ivory));
+	}
+
+	.prov__avatar span {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 4.5rem;
+		height: 4.5rem;
+		border-radius: 999px;
+		background: var(--aurea-white);
+		border: 1px solid var(--aurea-border);
+		font-family: var(--aurea-font-heading);
+		font-size: 1.25rem;
+		font-weight: 600;
+		color: var(--aurea-charcoal);
+		letter-spacing: 0.04em;
+	}
+
+	.prov__body {
+		display: flex;
+		flex-direction: column;
+		flex: 1;
+		padding: 1.35rem;
+	}
+
+	.prov__card h3 {
+		font-family: var(--aurea-font-heading);
+		font-size: 1.2rem;
+		margin-bottom: 0.2rem;
+	}
+
+	.prov__cred {
+		font-size: 0.82rem;
+		font-weight: 600;
+		color: var(--aurea-champagne);
+		margin-bottom: 1rem;
+	}
+
+	.prov__detail {
+		display: grid;
+		gap: 0.85rem;
+		flex: 1;
+	}
+
+	.prov__detail-item {
+		display: grid;
+		gap: 0.15rem;
+	}
+
+	.prov__detail-label {
+		font-size: 0.68rem;
+		font-weight: 700;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		color: var(--aurea-champagne);
+	}
+
+	.prov__detail-item > span:last-child {
+		font-size: 0.88rem;
+		line-height: 1.5;
+		color: var(--aurea-muted);
+	}
+
+	.prov__link {
+		display: inline-flex;
+		margin-top: 1.25rem;
+		font-size: 0.88rem;
+		font-weight: 700;
+		color: var(--aurea-charcoal);
+	}
+
+	.prov__link:hover {
+		color: var(--aurea-champagne);
+	}
+
+	@media (max-width: 900px) {
+		.prov__grid {
+			grid-template-columns: 1fr;
+			max-width: 440px;
+		}
+	}
+</style>

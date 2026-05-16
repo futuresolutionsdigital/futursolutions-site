@@ -1,0 +1,106 @@
+---
+import { featuredTreatments } from '../data/aurea';
+---
+
+<section class="aurea-section aurea-section--warm" aria-labelledby="featured-heading">
+	<div class="aurea-container">
+		<div class="ft__intro">
+			<p class="aurea-eyebrow">Featured Treatments</p>
+			<h2 id="featured-heading">Our most requested treatments.</h2>
+			<p class="aurea-lead">
+				Each treatment includes a personalized consultation, clear expectations, and follow-up support.
+			</p>
+		</div>
+		<div class="ft__grid">
+			{
+				featuredTreatments.map((treatment) => (
+					<article class="ft__card aurea-card">
+						<h3>{treatment.name}</h3>
+						<p>{treatment.benefit}</p>
+						<div class="ft__tags">
+							{treatment.tags.map((tag) => (
+								<span class="ft__tag">{tag}</span>
+							))}
+						</div>
+						<a href="#location" class="ft__link">
+							Book Consultation &rarr;
+						</a>
+					</article>
+				))
+			}
+		</div>
+	</div>
+</section>
+
+<style>
+	.ft__intro {
+		max-width: 680px;
+		margin-bottom: clamp(2rem, 4vw, 3rem);
+	}
+
+	.ft__grid {
+		display: grid;
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+		gap: 0.85rem;
+	}
+
+	.ft__card {
+		display: flex;
+		flex-direction: column;
+		padding: 1.35rem;
+	}
+
+	.ft__card h3 {
+		font-family: var(--aurea-font-heading);
+		font-size: 1.15rem;
+	}
+
+	.ft__card > p {
+		font-size: 0.88rem;
+		line-height: 1.55;
+		color: var(--aurea-muted);
+		flex: 1;
+	}
+
+	.ft__tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.35rem;
+		margin-top: 1.15rem;
+	}
+
+	.ft__tag {
+		display: inline-flex;
+		padding: 0.25rem 0.5rem;
+		border: 1px solid var(--aurea-border);
+		border-radius: 999px;
+		font-size: 0.72rem;
+		font-weight: 600;
+		color: var(--aurea-muted);
+		background: var(--aurea-white);
+	}
+
+	.ft__link {
+		display: inline-flex;
+		margin-top: 1.15rem;
+		font-size: 0.85rem;
+		font-weight: 700;
+		color: var(--aurea-charcoal);
+	}
+
+	.ft__link:hover {
+		color: var(--aurea-champagne);
+	}
+
+	@media (max-width: 1080px) {
+		.ft__grid {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+
+	@media (max-width: 560px) {
+		.ft__grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

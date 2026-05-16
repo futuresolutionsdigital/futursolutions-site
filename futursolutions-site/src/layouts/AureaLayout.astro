@@ -1,0 +1,746 @@
+---
+import DemoBanner from '../components/DemoBanner.astro';
+import { aureaNav, footerNavGroups } from '../data/aurea';
+import '../styles/global.css';
+
+interface Props {
+	title: string;
+	description: string;
+	canonicalUrl?: string;
+}
+
+const { title, description, canonicalUrl } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content={description} />
+		{canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:type" content="website" />
+		{canonicalUrl && <meta property="og:url" content={canonicalUrl} />}
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
+			rel="stylesheet"
+		/>
+		<title>{title}</title>
+	</head>
+	<body class="aurea-site">
+		<DemoBanner customizeHref="/audit?template=med-spa" />
+
+		<div class="aurea-trust-bar">
+			<div class="aurea-container aurea-trust-bar__inner">
+				<div class="aurea-trust-bar__items">
+					<span>4.9&#9733; rating</span>
+					<span aria-hidden="true" class="aurea-trust-bar__dot">&middot;</span>
+					<span>Licensed medical providers</span>
+					<span aria-hidden="true" class="aurea-trust-bar__dot">&middot;</span>
+					<span>New client consultations available</span>
+				</div>
+				<a href="tel:+19515550147" class="aurea-trust-bar__phone">(951) 555-0147</a>
+			</div>
+		</div>
+
+		<header class="aurea-header" id="aurea-header">
+			<div class="aurea-container aurea-header__inner">
+				<a class="aurea-header__brand" href="/demos/med-spa" aria-label="Aur&eacute;a Skin & Aesthetics home">
+					<span class="aurea-header__brand-name">Aur&eacute;a</span>
+					<span class="aurea-header__brand-sub">Skin &amp; Aesthetics</span>
+				</a>
+				<nav class="aurea-header__nav" aria-label="Main navigation">
+					{aureaNav.map((item) => <a href={item.href}>{item.label}</a>)}
+				</nav>
+				<div class="aurea-header__actions">
+					<a class="aurea-header__cta" href="#location">Book Consultation</a>
+				</div>
+				<button
+					class="aurea-header__menu-btn"
+					type="button"
+					aria-label="Open menu"
+					aria-expanded="false"
+					aria-controls="aurea-mobile-menu"
+				>
+					<span></span><span></span><span></span>
+				</button>
+			</div>
+			<nav class="aurea-mobile-menu" id="aurea-mobile-menu" aria-label="Mobile navigation" hidden>
+				<div class="aurea-container aurea-mobile-menu__inner">
+					{aureaNav.map((item) => <a href={item.href}>{item.label}</a>)}
+					<a class="aurea-mobile-menu__cta" href="#location">Book Consultation</a>
+				</div>
+			</nav>
+		</header>
+
+		<main>
+			<slot />
+		</main>
+
+		<footer class="aurea-footer" id="footer">
+			<div class="aurea-container aurea-footer__grid">
+				<div class="aurea-footer__brand-col">
+					<a class="aurea-footer__brand" href="/demos/med-spa">
+						<span>Aur&eacute;a</span>
+						<span>Skin &amp; Aesthetics</span>
+					</a>
+					<p>Natural results. Medical precision. Designed around you.</p>
+					<p class="aurea-footer__address">123 V&iacute;a Belleza, Temecula, CA 92590</p>
+					<p class="aurea-footer__phone"><a href="tel:+19515550147">(951) 555-0147</a></p>
+				</div>
+				{
+					footerNavGroups.map((group) => (
+						<nav class="aurea-footer__col" aria-label={`${group.title} footer links`}>
+							<h2>{group.title}</h2>
+							<ul>
+								{group.links.map((link) => (
+									<li>
+										<a href={link.href}>{link.label}</a>
+									</li>
+								))}
+							</ul>
+						</nav>
+					))
+				}
+			</div>
+			<div class="aurea-container aurea-footer__bottom">
+				<p>&copy; {new Date().getFullYear()} Aur&eacute;a Skin &amp; Aesthetics. All rights reserved.</p>
+				<p class="aurea-footer__disclaimer">
+					This is a fictional demonstration clinic built by <a href="/">Future Solutions</a>. All content, providers, and reviews
+					are for illustration purposes only. Results vary. A consultation is required to determine candidacy for any treatment.
+				</p>
+			</div>
+		</footer>
+
+		<div class="aurea-sticky-bar" aria-label="Quick actions">
+			<a href="tel:+19515550147" class="aurea-sticky-bar__item">
+				<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+				<span>Call</span>
+			</a>
+			<a href="#location" class="aurea-sticky-bar__item aurea-sticky-bar__item--primary">
+				<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+				<span>Book</span>
+			</a>
+			<a href="#location" class="aurea-sticky-bar__item">
+				<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+				<span>Directions</span>
+			</a>
+		</div>
+
+		<script is:inline>
+			(function () {
+				var btn = document.querySelector('.aurea-header__menu-btn');
+				var menu = document.getElementById('aurea-mobile-menu');
+				if (!btn || !menu) return;
+				btn.addEventListener('click', function () {
+					var open = menu.hidden;
+					menu.hidden = !open;
+					btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+					btn.classList.toggle('is-open', open);
+				});
+				menu.querySelectorAll('a').forEach(function (a) {
+					a.addEventListener('click', function () {
+						menu.hidden = true;
+						btn.setAttribute('aria-expanded', 'false');
+						btn.classList.remove('is-open');
+					});
+				});
+			})();
+		</script>
+	</body>
+</html>
+
+<style is:global>
+	.aurea-site {
+		--aurea-ivory: #f7f2ea;
+		--aurea-stone: #d8cec1;
+		--aurea-sage: #a8b5a2;
+		--aurea-charcoal: #242321;
+		--aurea-taupe: #b8a99a;
+		--aurea-champagne: #c7a978;
+		--aurea-white: #ffffff;
+		--aurea-border: rgba(36, 35, 33, 0.1);
+		--aurea-muted: #7a756d;
+		--aurea-bg: #faf8f5;
+		--aurea-bg-warm: #f3ede4;
+		--aurea-radius: 16px;
+		--aurea-radius-lg: 24px;
+		--aurea-font-heading: 'Playfair Display', Georgia, 'Times New Roman', serif;
+		--aurea-font-body: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+		--aurea-max-width: 1200px;
+		--aurea-section-spacing: clamp(5rem, 9vw, 8rem);
+		--aurea-transition: 0.2s ease;
+
+		margin: 0;
+		min-width: 320px;
+		background: var(--aurea-bg);
+		color: var(--aurea-charcoal);
+		font-family: var(--aurea-font-body);
+		font-size: clamp(1rem, 0.95rem + 0.25vw, 1.0625rem);
+		line-height: 1.65;
+		text-rendering: optimizeLegibility;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	}
+
+	.aurea-site *,
+	.aurea-site *::before,
+	.aurea-site *::after {
+		box-sizing: border-box;
+	}
+
+	.aurea-site img,
+	.aurea-site svg {
+		display: block;
+		max-width: 100%;
+	}
+
+	.aurea-site a {
+		color: inherit;
+		text-decoration: none;
+		transition:
+			color var(--aurea-transition),
+			background var(--aurea-transition),
+			border-color var(--aurea-transition),
+			opacity var(--aurea-transition);
+	}
+
+	.aurea-site h1,
+	.aurea-site h2,
+	.aurea-site h3 {
+		margin-top: 0;
+		font-family: var(--aurea-font-heading);
+		font-weight: 600;
+		color: var(--aurea-charcoal);
+		letter-spacing: -0.02em;
+	}
+
+	.aurea-site h1 {
+		font-size: clamp(2.8rem, 2.1rem + 3vw, 4.2rem);
+		line-height: 1.08;
+		margin-bottom: 1.25rem;
+	}
+
+	.aurea-site h2 {
+		font-size: clamp(2rem, 1.7rem + 1.2vw, 2.75rem);
+		line-height: 1.12;
+		margin-bottom: 1rem;
+	}
+
+	.aurea-site h3 {
+		font-size: clamp(1.25rem, 1.15rem + 0.4vw, 1.5rem);
+		line-height: 1.22;
+		margin-bottom: 0.75rem;
+	}
+
+	.aurea-site p {
+		margin-top: 0;
+		margin-bottom: 1rem;
+		color: var(--aurea-muted);
+	}
+
+	.aurea-site p:last-child {
+		margin-bottom: 0;
+	}
+
+	.aurea-site button,
+	.aurea-site input,
+	.aurea-site select,
+	.aurea-site textarea {
+		font: inherit;
+	}
+
+	.aurea-site button {
+		cursor: pointer;
+	}
+
+	.aurea-site :focus-visible {
+		outline: 2px solid var(--aurea-champagne);
+		outline-offset: 3px;
+		border-radius: 4px;
+	}
+
+	.aurea-site ::selection {
+		background: color-mix(in srgb, var(--aurea-champagne) 28%, var(--aurea-ivory));
+		color: var(--aurea-charcoal);
+	}
+
+	.aurea-container {
+		width: min(100% - 2rem, var(--aurea-max-width));
+		margin-inline: auto;
+	}
+
+	.aurea-section {
+		padding-block: var(--aurea-section-spacing);
+	}
+
+	.aurea-section--warm {
+		background: var(--aurea-ivory);
+		border-block: 1px solid var(--aurea-border);
+	}
+
+	.aurea-eyebrow {
+		margin-bottom: 1rem;
+		color: var(--aurea-champagne);
+		font-family: var(--aurea-font-body);
+		font-size: 0.78rem;
+		font-weight: 700;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+	}
+
+	.aurea-lead {
+		max-width: 660px;
+		color: var(--aurea-muted);
+		font-size: clamp(1.06rem, 1rem + 0.25vw, 1.2rem);
+		line-height: 1.65;
+	}
+
+	.aurea-btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 3rem;
+		padding: 0.8rem 1.25rem;
+		border: 1px solid transparent;
+		border-radius: 999px;
+		font-size: 0.9375rem;
+		font-weight: 700;
+		line-height: 1;
+		white-space: nowrap;
+		transition:
+			transform var(--aurea-transition),
+			background var(--aurea-transition),
+			color var(--aurea-transition),
+			border-color var(--aurea-transition);
+	}
+
+	.aurea-btn:hover {
+		transform: translateY(-1px);
+	}
+
+	.aurea-btn--primary {
+		background: var(--aurea-charcoal);
+		color: var(--aurea-white);
+	}
+
+	.aurea-btn--primary:hover {
+		background: color-mix(in srgb, var(--aurea-charcoal) 82%, var(--aurea-champagne));
+		color: var(--aurea-white);
+	}
+
+	.aurea-btn--secondary {
+		border-color: var(--aurea-border);
+		background: var(--aurea-white);
+		color: var(--aurea-charcoal);
+	}
+
+	.aurea-btn--secondary:hover {
+		border-color: var(--aurea-champagne);
+		background: var(--aurea-ivory);
+		color: var(--aurea-charcoal);
+	}
+
+	.aurea-btn--champagne {
+		background: var(--aurea-champagne);
+		color: var(--aurea-white);
+	}
+
+	.aurea-btn--champagne:hover {
+		background: color-mix(in srgb, var(--aurea-champagne) 82%, var(--aurea-charcoal));
+		color: var(--aurea-white);
+	}
+
+	.aurea-btn-row {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.875rem;
+		margin-top: 2rem;
+	}
+
+	.aurea-card {
+		border: 1px solid var(--aurea-border);
+		border-radius: var(--aurea-radius);
+		background: var(--aurea-white);
+		box-shadow: 0 12px 40px rgba(36, 35, 33, 0.04);
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.aurea-site *,
+		.aurea-site *::before,
+		.aurea-site *::after {
+			transition-duration: 0.01ms !important;
+			animation-duration: 0.01ms !important;
+		}
+	}
+</style>
+
+<style>
+	.aurea-trust-bar {
+		background: var(--aurea-charcoal);
+		color: rgba(255, 255, 255, 0.78);
+		font-size: 0.78rem;
+		font-weight: 600;
+		letter-spacing: 0.02em;
+	}
+
+	.aurea-trust-bar__inner {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1rem;
+		padding-block: 0.55rem;
+	}
+
+	.aurea-trust-bar__items {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 0.5rem;
+	}
+
+	.aurea-trust-bar__dot {
+		opacity: 0.4;
+	}
+
+	.aurea-trust-bar__phone {
+		color: var(--aurea-champagne);
+		font-weight: 700;
+		white-space: nowrap;
+	}
+
+	.aurea-trust-bar__phone:hover {
+		color: var(--aurea-white);
+	}
+
+	.aurea-header {
+		position: sticky;
+		top: 3.6rem;
+		z-index: 12;
+		border-bottom: 1px solid var(--aurea-border);
+		background: color-mix(in srgb, var(--aurea-bg) 92%, transparent);
+		backdrop-filter: blur(16px);
+	}
+
+	.aurea-header__inner {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1.25rem;
+		min-height: 4.5rem;
+	}
+
+	.aurea-header__brand {
+		display: flex;
+		align-items: baseline;
+		gap: 0.35rem;
+	}
+
+	.aurea-header__brand-name {
+		font-family: var(--aurea-font-heading);
+		font-size: 1.4rem;
+		font-weight: 700;
+		letter-spacing: -0.03em;
+		color: var(--aurea-charcoal);
+	}
+
+	.aurea-header__brand-sub {
+		font-size: 0.72rem;
+		font-weight: 700;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		color: var(--aurea-champagne);
+	}
+
+	.aurea-header__nav {
+		display: flex;
+		align-items: center;
+		gap: 1.4rem;
+		font-size: 0.88rem;
+		font-weight: 600;
+		color: var(--aurea-muted);
+	}
+
+	.aurea-header__nav a:hover {
+		color: var(--aurea-charcoal);
+	}
+
+	.aurea-header__cta {
+		display: inline-flex;
+		align-items: center;
+		min-height: 2.4rem;
+		padding: 0.55rem 1rem;
+		border: 1px solid color-mix(in srgb, var(--aurea-champagne) 40%, var(--aurea-border));
+		border-radius: 999px;
+		background: var(--aurea-white);
+		color: var(--aurea-charcoal);
+		font-size: 0.84rem;
+		font-weight: 700;
+		line-height: 1;
+	}
+
+	.aurea-header__cta:hover {
+		border-color: var(--aurea-champagne);
+		background: var(--aurea-ivory);
+		color: var(--aurea-charcoal);
+	}
+
+	.aurea-header__menu-btn {
+		display: none;
+		flex-direction: column;
+		justify-content: center;
+		gap: 4px;
+		width: 2.2rem;
+		height: 2.2rem;
+		padding: 0.45rem;
+		border: 1px solid var(--aurea-border);
+		border-radius: 8px;
+		background: var(--aurea-white);
+	}
+
+	.aurea-header__menu-btn span {
+		display: block;
+		width: 100%;
+		height: 2px;
+		border-radius: 2px;
+		background: var(--aurea-charcoal);
+		transition: transform 0.2s ease, opacity 0.2s ease;
+	}
+
+	.aurea-header__menu-btn.is-open span:nth-child(1) {
+		transform: translateY(6px) rotate(45deg);
+	}
+	.aurea-header__menu-btn.is-open span:nth-child(2) {
+		opacity: 0;
+	}
+	.aurea-header__menu-btn.is-open span:nth-child(3) {
+		transform: translateY(-6px) rotate(-45deg);
+	}
+
+	.aurea-mobile-menu {
+		border-top: 1px solid var(--aurea-border);
+		background: var(--aurea-white);
+	}
+
+	.aurea-mobile-menu__inner {
+		display: grid;
+		gap: 0;
+		padding-block: 0.5rem;
+	}
+
+	.aurea-mobile-menu__inner a {
+		display: block;
+		padding: 0.85rem 0;
+		font-size: 0.95rem;
+		font-weight: 700;
+		color: var(--aurea-charcoal);
+		border-bottom: 1px solid var(--aurea-border);
+	}
+
+	.aurea-mobile-menu__inner a:last-of-type:not(.aurea-mobile-menu__cta) {
+		border-bottom: none;
+	}
+
+	.aurea-mobile-menu__cta {
+		margin-top: 0.75rem;
+		text-align: center;
+		padding: 0.85rem !important;
+		border: none !important;
+		border-radius: 999px;
+		background: var(--aurea-charcoal);
+		color: var(--aurea-white) !important;
+	}
+
+	.aurea-footer {
+		border-top: 1px solid var(--aurea-border);
+		background: var(--aurea-charcoal);
+		color: rgba(255, 255, 255, 0.68);
+	}
+
+	.aurea-footer__grid {
+		display: grid;
+		grid-template-columns: minmax(220px, 1.5fr) repeat(3, minmax(0, 1fr));
+		gap: clamp(2rem, 5vw, 4rem);
+		padding-block: clamp(3rem, 6vw, 5rem);
+	}
+
+	.aurea-footer__brand {
+		display: flex;
+		align-items: baseline;
+		gap: 0.35rem;
+		margin-bottom: 0.85rem;
+	}
+
+	.aurea-footer__brand span:first-child {
+		font-family: var(--aurea-font-heading);
+		font-size: 1.35rem;
+		font-weight: 700;
+		color: var(--aurea-white);
+		letter-spacing: -0.02em;
+	}
+
+	.aurea-footer__brand span:last-child {
+		font-size: 0.7rem;
+		font-weight: 700;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		color: var(--aurea-champagne);
+	}
+
+	.aurea-footer__brand-col p {
+		font-size: 0.9rem;
+		line-height: 1.55;
+		color: rgba(255, 255, 255, 0.55);
+	}
+
+	.aurea-footer__address {
+		margin-top: 1.25rem !important;
+	}
+
+	.aurea-footer__phone a {
+		color: var(--aurea-champagne);
+	}
+
+	.aurea-footer__phone a:hover {
+		color: var(--aurea-white);
+	}
+
+	.aurea-footer__col h2 {
+		margin-bottom: 1rem;
+		font-family: var(--aurea-font-body);
+		font-size: 0.72rem;
+		font-weight: 700;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		color: rgba(255, 255, 255, 0.4);
+	}
+
+	.aurea-footer__col ul {
+		display: grid;
+		gap: 0.55rem;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.aurea-footer__col a {
+		font-size: 0.88rem;
+		font-weight: 600;
+		color: rgba(255, 255, 255, 0.62);
+	}
+
+	.aurea-footer__col a:hover {
+		color: var(--aurea-white);
+	}
+
+	.aurea-footer__bottom {
+		padding-block: 1.5rem;
+		border-top: 1px solid rgba(255, 255, 255, 0.08);
+	}
+
+	.aurea-footer__bottom p {
+		margin-bottom: 0.5rem;
+		font-size: 0.82rem;
+		color: rgba(255, 255, 255, 0.35);
+	}
+
+	.aurea-footer__disclaimer {
+		max-width: 680px;
+		font-size: 0.78rem !important;
+		line-height: 1.55;
+	}
+
+	.aurea-footer__disclaimer a {
+		color: var(--aurea-champagne);
+		text-decoration: underline;
+		text-underline-offset: 2px;
+	}
+
+	.aurea-sticky-bar {
+		display: none;
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		z-index: 30;
+		background: var(--aurea-white);
+		border-top: 1px solid var(--aurea-border);
+		box-shadow: 0 -4px 20px rgba(36, 35, 33, 0.06);
+		padding: 0.5rem 0.75rem;
+	}
+
+	.aurea-sticky-bar__item {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0.2rem;
+		flex: 1;
+		padding: 0.5rem;
+		border-radius: 12px;
+		font-size: 0.72rem;
+		font-weight: 700;
+		color: var(--aurea-muted);
+	}
+
+	.aurea-sticky-bar__item--primary {
+		background: var(--aurea-charcoal);
+		color: var(--aurea-white);
+	}
+
+	.aurea-sticky-bar__item--primary svg {
+		stroke: var(--aurea-white);
+	}
+
+	@media (max-width: 900px) {
+		.aurea-header__nav {
+			display: none;
+		}
+
+		.aurea-header__menu-btn {
+			display: flex;
+		}
+
+		.aurea-header {
+			top: 6rem;
+		}
+
+		.aurea-trust-bar__items span:nth-child(n + 4) {
+			display: none;
+		}
+	}
+
+	@media (max-width: 768px) {
+		.aurea-sticky-bar {
+			display: flex;
+		}
+
+		.aurea-footer__grid {
+			grid-template-columns: 1fr 1fr;
+		}
+
+		.aurea-footer__brand-col {
+			grid-column: 1 / -1;
+		}
+
+		.aurea-site main {
+			padding-bottom: 4.5rem;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.aurea-header__actions {
+			display: none;
+		}
+
+		.aurea-footer__grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

@@ -1,0 +1,134 @@
+---
+import { beforeAfterCases } from '../data/aurea';
+---
+
+<section id="results" class="aurea-section aurea-section--warm" aria-labelledby="results-heading">
+	<div class="aurea-container">
+		<div class="ba__intro">
+			<p class="aurea-eyebrow">Realistic Results</p>
+			<h2 id="results-heading">Real patients. Real outcomes. Realistic expectations.</h2>
+			<p class="aurea-lead">
+				Every result starts with a consultation and a personalized plan. These examples represent the kind of improvement patients can expect.
+			</p>
+		</div>
+		<div class="ba__grid">
+			{
+				beforeAfterCases.map((c) => (
+					<article class="ba__card aurea-card">
+						<div class="ba__images">
+							<div class="ba__placeholder">
+								<span>Before</span>
+							</div>
+							<div class="ba__placeholder ba__placeholder--after">
+								<span>After</span>
+							</div>
+						</div>
+						<div class="ba__body">
+							<div class="ba__meta">
+								<span class="ba__area">{c.area}</span>
+								<span class="ba__treatment">{c.treatment}</span>
+							</div>
+							<p>{c.description}</p>
+						</div>
+					</article>
+				))
+			}
+		</div>
+		<p class="ba__disclaimer">
+			Individual results vary. Images are placeholders for demonstration purposes. A consultation is required to determine candidacy for any treatment.
+		</p>
+	</div>
+</section>
+
+<style>
+	.ba__intro {
+		max-width: 700px;
+		margin-bottom: clamp(2rem, 4vw, 3rem);
+	}
+
+	.ba__grid {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 0.85rem;
+	}
+
+	.ba__card {
+		overflow: hidden;
+	}
+
+	.ba__images {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+	}
+
+	.ba__placeholder {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 180px;
+		background: color-mix(in srgb, var(--aurea-stone) 28%, var(--aurea-ivory));
+	}
+
+	.ba__placeholder--after {
+		background: color-mix(in srgb, var(--aurea-sage) 22%, var(--aurea-ivory));
+	}
+
+	.ba__placeholder span {
+		font-size: 0.72rem;
+		font-weight: 700;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		color: var(--aurea-muted);
+		opacity: 0.6;
+	}
+
+	.ba__body {
+		padding: 1.25rem;
+	}
+
+	.ba__meta {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		align-items: center;
+		margin-bottom: 0.65rem;
+	}
+
+	.ba__area {
+		font-family: var(--aurea-font-heading);
+		font-size: 1.05rem;
+		font-weight: 600;
+		color: var(--aurea-charcoal);
+	}
+
+	.ba__treatment {
+		display: inline-flex;
+		padding: 0.22rem 0.5rem;
+		border: 1px solid var(--aurea-border);
+		border-radius: 999px;
+		font-size: 0.72rem;
+		font-weight: 600;
+		color: var(--aurea-muted);
+	}
+
+	.ba__body > p {
+		font-size: 0.88rem;
+		line-height: 1.55;
+		color: var(--aurea-muted);
+	}
+
+	.ba__disclaimer {
+		margin-top: 2rem;
+		font-size: 0.82rem;
+		font-style: italic;
+		color: var(--aurea-muted);
+		opacity: 0.75;
+	}
+
+	@media (max-width: 900px) {
+		.ba__grid {
+			grid-template-columns: 1fr;
+			max-width: 480px;
+		}
+	}
+</style>

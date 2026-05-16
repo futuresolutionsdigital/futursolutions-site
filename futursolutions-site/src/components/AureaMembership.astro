@@ -1,0 +1,97 @@
+---
+import { membershipOptions } from '../data/aurea';
+---
+
+<section id="membership" class="aurea-section aurea-section--warm" aria-labelledby="membership-heading">
+	<div class="aurea-container">
+		<div class="mem__intro">
+			<p class="aurea-eyebrow">Membership &amp; Packages</p>
+			<h2 id="membership-heading">Invest in your skin with a plan that fits.</h2>
+			<p class="aurea-lead">
+				Maintain your results with structured plans, preferred pricing, and flexible options designed around ongoing care.
+			</p>
+		</div>
+		<div class="mem__grid">
+			{
+				membershipOptions.map((opt) => (
+					<article class="mem__card aurea-card">
+						<span class="mem__highlight">{opt.highlight}</span>
+						<h3>{opt.title}</h3>
+						<p>{opt.description}</p>
+						<a href="#location" class="mem__link">Learn More &rarr;</a>
+					</article>
+				))
+			}
+		</div>
+	</div>
+</section>
+
+<style>
+	.mem__intro {
+		max-width: 680px;
+		margin-bottom: clamp(2rem, 4vw, 3rem);
+	}
+
+	.mem__grid {
+		display: grid;
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+		gap: 0.85rem;
+	}
+
+	.mem__card {
+		display: flex;
+		flex-direction: column;
+		padding: 1.5rem;
+	}
+
+	.mem__highlight {
+		display: inline-flex;
+		align-self: flex-start;
+		padding: 0.25rem 0.55rem;
+		margin-bottom: 1rem;
+		border: 1px solid color-mix(in srgb, var(--aurea-champagne) 35%, var(--aurea-border));
+		border-radius: 999px;
+		background: color-mix(in srgb, var(--aurea-champagne) 10%, var(--aurea-white));
+		font-size: 0.68rem;
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: var(--aurea-champagne);
+	}
+
+	.mem__card h3 {
+		font-family: var(--aurea-font-heading);
+		font-size: 1.15rem;
+	}
+
+	.mem__card > p {
+		font-size: 0.88rem;
+		line-height: 1.55;
+		color: var(--aurea-muted);
+		flex: 1;
+	}
+
+	.mem__link {
+		display: inline-flex;
+		margin-top: 1.25rem;
+		font-size: 0.85rem;
+		font-weight: 700;
+		color: var(--aurea-charcoal);
+	}
+
+	.mem__link:hover {
+		color: var(--aurea-champagne);
+	}
+
+	@media (max-width: 1040px) {
+		.mem__grid {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+
+	@media (max-width: 560px) {
+		.mem__grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>
