@@ -27,17 +27,19 @@
 				</div>
 
 				<div class="aurea-btn-row">
-					<a class="aurea-btn aurea-btn--primary" href="#location">Book Consultation</a>
+					<a class="aurea-btn aurea-btn--primary" href="/demos/med-spa/contact">Book Consultation</a>
 					<a class="aurea-btn aurea-btn--secondary" href="tel:+19515550147">Call Now</a>
-					<a class="aurea-btn aurea-btn--secondary" href="#location">Get Directions</a>
 				</div>
 			</div>
 
-			<div class="loc__map" aria-label="Map placeholder">
-				<div class="loc__map-placeholder">
-					<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-					<p>Map placeholder</p>
-					<span>123 V&iacute;a Belleza, Temecula, CA 92590</span>
+			<div class="loc__map" aria-label="Clinic location card">
+				<div class="loc__map-card">
+					<div class="loc__map-pin" aria-hidden="true">
+						<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+					</div>
+					<h3 class="loc__map-name">Aur&eacute;a Skin &amp; Aesthetics</h3>
+					<p class="loc__map-address">123 V&iacute;a Belleza<br/>Temecula, CA 92590</p>
+					<span class="loc__map-label">Temecula, CA</span>
 				</div>
 			</div>
 		</div>
@@ -49,14 +51,14 @@
 		<div class="loc__final-card">
 			<div class="loc__final-content">
 				<p class="aurea-eyebrow loc__final-eyebrow">Next Step</p>
-				<h2>Natural results. Medical precision. Designed around you.</h2>
-				<p class="aurea-lead loc__final-lead">
+				<h2 class="loc__final-heading">Natural results. Medical precision. Designed around you.</h2>
+				<p class="loc__final-tagline">
 					Request a consultation and discover the treatment plan that's right for your goals, features, and comfort.
 				</p>
 			</div>
-			<div class="aurea-btn-row">
-				<a class="aurea-btn aurea-btn--champagne" href="#location">Book a Consultation</a>
-				<a class="aurea-btn aurea-btn--secondary loc__final-btn-secondary" href="#treatments">Explore Treatments</a>
+			<div class="aurea-btn-row loc__final-btns">
+				<a class="aurea-btn aurea-btn--champagne" href="/demos/med-spa/contact">Book a Consultation</a>
+				<a class="aurea-btn aurea-btn--secondary loc__final-btn-ghost" href="/demos/med-spa/treatments">Explore Treatments</a>
 			</div>
 		</div>
 	</div>
@@ -72,17 +74,17 @@
 
 	.loc__details {
 		display: grid;
-		gap: 1rem;
-		margin-top: 2rem;
+		gap: 1.25rem;
+		margin-top: 2.5rem;
 	}
 
 	.loc__detail-item {
 		display: grid;
-		gap: 0.15rem;
+		gap: 0.2rem;
 	}
 
 	.loc__detail-label {
-		font-size: 0.68rem;
+		font-size: 0.7rem;
 		font-weight: 700;
 		letter-spacing: 0.1em;
 		text-transform: uppercase;
@@ -91,85 +93,132 @@
 
 	.loc__detail-item > span:last-child,
 	.loc__detail-item > a {
-		font-size: 0.92rem;
-		color: var(--aurea-muted);
+		font-size: 1rem;
+		color: var(--aurea-charcoal);
 		font-weight: 600;
 	}
 
 	.loc__detail-item a:hover {
-		color: var(--aurea-charcoal);
+		color: var(--aurea-champagne);
 	}
 
-	.loc__map-placeholder {
+	/* Luxury location card */
+	.loc__map-card {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		gap: 0.65rem;
-		min-height: 340px;
+		text-align: center;
+		gap: 0.85rem;
+		min-height: 380px;
+		padding: 2.5rem 2rem;
 		border: 1px solid var(--aurea-border);
 		border-radius: var(--aurea-radius-lg);
-		background: color-mix(in srgb, var(--aurea-stone) 18%, var(--aurea-ivory));
-		color: var(--aurea-muted);
+		background: linear-gradient(160deg, var(--aurea-ivory) 0%, color-mix(in srgb, var(--aurea-stone) 15%, var(--aurea-ivory)) 100%);
+		box-shadow: inset 0 2px 12px rgba(0, 0, 0, 0.04);
 	}
 
-	.loc__map-placeholder p {
+	.loc__map-pin {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 3.5rem;
+		height: 3.5rem;
+		border-radius: 999px;
+		background: color-mix(in srgb, var(--aurea-champagne) 12%, var(--aurea-white));
+		border: 1px solid color-mix(in srgb, var(--aurea-champagne) 25%, var(--aurea-border));
+		color: var(--aurea-champagne);
+		margin-bottom: 0.5rem;
+	}
+
+	.loc__map-name {
+		font-family: var(--aurea-font-heading);
+		font-size: 1.25rem;
+		font-weight: 600;
+		color: var(--aurea-charcoal);
 		margin: 0;
-		font-size: 0.82rem;
+	}
+
+	.loc__map-address {
+		font-size: 0.9rem;
+		line-height: 1.55;
+		color: var(--aurea-muted);
+		margin: 0;
+	}
+
+	.loc__map-label {
+		display: inline-block;
+		margin-top: 0.35rem;
+		padding: 0.25rem 0.65rem;
+		border-radius: 999px;
+		background: color-mix(in srgb, var(--aurea-stone) 12%, var(--aurea-white));
+		border: 1px solid var(--aurea-border);
+		font-size: 0.7rem;
 		font-weight: 700;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
 		color: var(--aurea-muted);
 	}
 
-	.loc__map-placeholder span {
-		font-size: 0.78rem;
-		color: var(--aurea-muted);
-		opacity: 0.6;
-	}
-
+	/* Final dark CTA */
 	.loc__final {
-		padding-block: clamp(4rem, 7vw, 6rem);
+		padding-block: clamp(5rem, 8vw, 7rem);
 		background: var(--aurea-charcoal);
 	}
 
 	.loc__final-card {
 		display: grid;
 		grid-template-columns: minmax(0, 1fr) auto;
-		gap: 2rem;
+		gap: 3rem;
 		align-items: end;
 	}
 
-	.loc__final h2 {
+	.loc__final-heading {
+		font-size: clamp(1.8rem, 3.5vw, 2.6rem);
 		color: var(--aurea-white);
-		max-width: 14ch;
+		max-width: 16ch;
+		line-height: 1.15;
 	}
 
 	.loc__final-eyebrow {
 		color: var(--aurea-champagne) !important;
 	}
 
-	.loc__final-lead {
-		color: rgba(255, 255, 255, 0.6) !important;
+	.loc__final-tagline {
+		font-size: 1.05rem;
+		line-height: 1.6;
+		color: rgba(255, 255, 255, 0.55);
+		max-width: 48ch;
+		margin-top: 0.75rem;
 	}
 
-	.loc__final-btn-secondary {
+	.loc__final-btns {
+		flex-shrink: 0;
+	}
+
+	.loc__final-btn-ghost {
 		background: transparent !important;
 		border-color: rgba(255, 255, 255, 0.18) !important;
 		color: var(--aurea-white) !important;
 	}
 
-	.loc__final-btn-secondary:hover {
+	.loc__final-btn-ghost:hover {
 		background: rgba(255, 255, 255, 0.06) !important;
 		border-color: rgba(255, 255, 255, 0.32) !important;
 	}
 
 	@media (max-width: 860px) {
-		.loc__grid,
-		.loc__final-card {
+		.loc__grid {
 			grid-template-columns: 1fr;
 		}
 
-		.loc__map-placeholder {
-			min-height: 240px;
+		.loc__final-card {
+			grid-template-columns: 1fr;
+			align-items: start;
+		}
+
+		.loc__map-card {
+			min-height: 280px;
 		}
 	}
 </style>

@@ -11,19 +11,25 @@ import { processSteps } from '../data/aurea';
 				We designed the experience to feel calm, clear, and pressure-free from the moment you reach out.
 			</p>
 		</div>
-		<div class="proc__grid">
-			{
-				processSteps.map((s) => (
-					<article class="proc__card aurea-card">
-						<span class="proc__step">{s.step}</span>
-						<h3>{s.title}</h3>
-						<p>{s.text}</p>
-					</article>
-				))
-			}
+
+		<div class="proc__timeline">
+			{processSteps.map((s, i) => (
+				<div class:list={['proc__step', { 'proc__step--last': i === processSteps.length - 1 }]}>
+					<div class="proc__marker">
+						<span class="proc__number">{s.step}</span>
+					</div>
+					<div class="proc__body">
+						<h3 class="proc__title">{s.title}</h3>
+						<p class="proc__text">{s.text}</p>
+					</div>
+				</div>
+			))}
 		</div>
-		<div class="aurea-btn-row">
-			<a class="aurea-btn aurea-btn--primary" href="#location">Book Your Consultation</a>
+
+		<div class="proc__cta">
+			<a class="aurea-btn aurea-btn--primary" href="/demos/med-spa/contact">
+				Ready to start? Book a Consultation
+			</a>
 		</div>
 	</div>
 </section>
@@ -31,54 +37,124 @@ import { processSteps } from '../data/aurea';
 <style>
 	.proc__intro {
 		max-width: 680px;
-		margin-bottom: clamp(2rem, 4vw, 3rem);
+		margin-bottom: clamp(2.5rem, 5vw, 3.5rem);
 	}
 
-	.proc__grid {
-		display: grid;
-		grid-template-columns: repeat(4, minmax(0, 1fr));
-		gap: 0.85rem;
-	}
-
-	.proc__card {
-		padding: 1.5rem;
+	/* Desktop: horizontal timeline */
+	.proc__timeline {
+		display: flex;
+		gap: 0;
 	}
 
 	.proc__step {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+		position: relative;
+	}
+
+	/* Connecting line between steps (desktop) */
+	.proc__step::after {
+		content: '';
+		position: absolute;
+		top: 1.25rem;
+		left: calc(50% + 1.5rem);
+		right: calc(-50% + 1.5rem);
+		height: 1px;
+		background: var(--aurea-border);
+	}
+
+	.proc__step--last::after {
+		display: none;
+	}
+
+	.proc__marker {
+		position: relative;
+		z-index: 1;
+		margin-bottom: 1.25rem;
+	}
+
+	.proc__number {
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
-		width: 2.2rem;
-		height: 2.2rem;
-		margin-bottom: 1.15rem;
+		width: 2.5rem;
+		height: 2.5rem;
 		border-radius: 999px;
 		background: color-mix(in srgb, var(--aurea-champagne) 15%, var(--aurea-ivory));
-		border: 1px solid color-mix(in srgb, var(--aurea-champagne) 28%, var(--aurea-border));
-		font-size: 0.72rem;
+		border: 1.5px solid color-mix(in srgb, var(--aurea-champagne) 35%, var(--aurea-border));
+		font-size: 0.75rem;
 		font-weight: 800;
 		color: var(--aurea-champagne);
+		letter-spacing: 0.02em;
 	}
 
-	.proc__card h3 {
+	.proc__title {
 		font-family: var(--aurea-font-heading);
-		font-size: 1.1rem;
+		font-size: 1.15rem;
+		font-weight: 600;
+		color: var(--aurea-charcoal);
+		margin-bottom: 0.5rem;
 	}
 
-	.proc__card p {
+	.proc__text {
 		font-size: 0.88rem;
-		line-height: 1.55;
+		line-height: 1.6;
 		color: var(--aurea-muted);
+		max-width: 220px;
+		margin-inline: auto;
 	}
 
-	@media (max-width: 960px) {
-		.proc__grid {
-			grid-template-columns: repeat(2, minmax(0, 1fr));
+	.proc__cta {
+		margin-top: clamp(2.5rem, 5vw, 3.5rem);
+		text-align: center;
+	}
+
+	/* Mobile: vertical timeline with left line */
+	@media (max-width: 768px) {
+		.proc__timeline {
+			flex-direction: column;
+			gap: 0;
+			padding-left: 1.25rem;
 		}
-	}
 
-	@media (max-width: 560px) {
-		.proc__grid {
-			grid-template-columns: 1fr;
+		.proc__step {
+			flex-direction: row;
+			align-items: flex-start;
+			text-align: left;
+			gap: 1.25rem;
+			padding-bottom: 2rem;
+		}
+
+		.proc__step::after {
+			content: '';
+			position: absolute;
+			top: 2.5rem;
+			left: 1.25rem;
+			right: auto;
+			bottom: 0;
+			width: 1px;
+			height: auto;
+		}
+
+		.proc__step--last::after {
+			display: none;
+		}
+
+		.proc__marker {
+			flex-shrink: 0;
+			margin-bottom: 0;
+		}
+
+		.proc__body {
+			padding-top: 0.35rem;
+		}
+
+		.proc__text {
+			max-width: none;
+			margin-inline: 0;
 		}
 	}
 </style>

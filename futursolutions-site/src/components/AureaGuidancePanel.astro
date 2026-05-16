@@ -1,72 +1,128 @@
 ---
 import { concernPaths } from '../data/aurea';
+
+const mainConcerns = concernPaths.slice(0, 6);
+const fallback = concernPaths[6];
 ---
 
 <section id="concerns" class="aurea-section aurea-section--warm" aria-labelledby="guidance-heading">
 	<div class="aurea-container">
-		<div class="guidance__intro">
-			<p class="aurea-eyebrow">Treatment Pathways</p>
-			<h2 id="guidance-heading">Not sure where to start?</h2>
-			<p class="aurea-lead">
-				Choose your main concern and we'll point you toward the best treatment path. Every plan begins with a consultation.
-			</p>
-		</div>
-		<div class="guidance__grid">
-			{
-				concernPaths.map((item) => (
+		<div class="guidance__wrapper">
+			<div class="guidance__intro">
+				<p class="aurea-eyebrow">Treatment Pathways</p>
+				<h2 id="guidance-heading">Not sure where to start?</h2>
+				<p class="aurea-lead">
+					Choose your main concern and we'll point you toward the best treatment path. Every plan begins with a consultation.
+				</p>
+			</div>
+
+			<div class="guidance__grid">
+				{mainConcerns.map((item) => (
 					<a href={item.href} class="guidance__card aurea-card">
-						<div class="guidance__card-concern">{item.concern}</div>
+						<div class="guidance__card-concern">
+							<span class="guidance__card-dash" aria-hidden="true"></span>
+							{item.concern}
+						</div>
 						<p class="guidance__card-desc">{item.description}</p>
 						<div class="guidance__card-path">
 							<span class="guidance__card-label">Suggested path</span>
 							<span class="guidance__card-treatment">{item.suggestedPath}</span>
 						</div>
 					</a>
-				))
-			}
+				))}
+			</div>
+
+			{fallback && (
+				<a href={fallback.href} class="guidance__fallback aurea-card">
+					<div class="guidance__fallback-inner">
+						<div class="guidance__fallback-concern">
+							<span class="guidance__card-dash guidance__card-dash--center" aria-hidden="true"></span>
+							{fallback.concern}
+						</div>
+						<p class="guidance__fallback-desc">{fallback.description}</p>
+						<span class="guidance__fallback-cta">
+							{fallback.suggestedPath} &rarr;
+						</span>
+					</div>
+				</a>
+			)}
+
+			<div class="guidance__action">
+				<p>Or skip ahead &mdash;</p>
+				<a class="aurea-btn aurea-btn--champagne" href="/demos/med-spa/contact">Book a Consultation</a>
+			</div>
 		</div>
 	</div>
 </section>
 
 <style>
+	.guidance__wrapper {
+		border: 1px solid var(--aurea-border);
+		border-radius: var(--aurea-radius-lg);
+		background:
+			linear-gradient(
+				170deg,
+				color-mix(in srgb, var(--aurea-ivory) 60%, var(--aurea-white)),
+				var(--aurea-white) 70%
+			);
+		padding: clamp(2rem, 4vw, 3.5rem);
+	}
+
 	.guidance__intro {
 		max-width: 680px;
 		margin-bottom: clamp(2rem, 4vw, 3rem);
 	}
 
+	/* ---- Grid ---- */
+
 	.guidance__grid {
 		display: grid;
-		grid-template-columns: repeat(4, minmax(0, 1fr));
-		gap: 0.85rem;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 1rem;
 	}
+
+	/* ---- Cards ---- */
 
 	.guidance__card {
 		display: flex;
 		flex-direction: column;
-		padding: 1.35rem;
+		padding: 1.75rem;
 		transition:
-			border-color var(--aurea-transition),
-			box-shadow var(--aurea-transition),
-			transform var(--aurea-transition);
+			border-color 0.25s ease,
+			box-shadow 0.25s ease,
+			transform 0.25s ease;
 	}
 
 	.guidance__card:hover {
-		border-color: color-mix(in srgb, var(--aurea-champagne) 45%, var(--aurea-border));
-		box-shadow: 0 16px 44px rgba(36, 35, 33, 0.08);
-		transform: translateY(-2px);
+		border-color: color-mix(in srgb, var(--aurea-champagne) 50%, var(--aurea-border));
+		box-shadow: 0 18px 48px rgba(36, 35, 33, 0.09);
+		transform: translateY(-3px);
+	}
+
+	.guidance__card-dash {
+		display: block;
+		width: 20px;
+		height: 2.5px;
+		border-radius: 2px;
+		background: var(--aurea-champagne);
+		margin-bottom: 0.65rem;
+	}
+
+	.guidance__card-dash--center {
+		margin-inline: auto;
 	}
 
 	.guidance__card-concern {
 		font-family: var(--aurea-font-heading);
-		font-size: 1.15rem;
+		font-size: 1.25rem;
 		font-weight: 600;
 		color: var(--aurea-charcoal);
-		margin-bottom: 0.55rem;
+		margin-bottom: 0.6rem;
 	}
 
 	.guidance__card-desc {
 		font-size: 0.88rem;
-		line-height: 1.55;
+		line-height: 1.6;
 		color: var(--aurea-muted);
 		margin-bottom: auto;
 		flex: 1;
@@ -74,10 +130,12 @@ import { concernPaths } from '../data/aurea';
 
 	.guidance__card-path {
 		display: grid;
-		gap: 0.25rem;
-		margin-top: 1.25rem;
-		padding-top: 1rem;
-		border-top: 1px solid var(--aurea-border);
+		gap: 0.3rem;
+		margin-top: 1.35rem;
+		padding: 0.85rem;
+		border-radius: 10px;
+		background: color-mix(in srgb, var(--aurea-champagne) 8%, var(--aurea-white));
+		border: 1px solid color-mix(in srgb, var(--aurea-champagne) 15%, transparent);
 	}
 
 	.guidance__card-label {
@@ -89,10 +147,79 @@ import { concernPaths } from '../data/aurea';
 	}
 
 	.guidance__card-treatment {
-		font-size: 0.88rem;
+		font-size: 0.9rem;
 		font-weight: 700;
 		color: var(--aurea-charcoal);
 	}
+
+	/* ---- Fallback / "Not sure" card ---- */
+
+	.guidance__fallback {
+		display: block;
+		margin-top: 1rem;
+		padding: 1.75rem;
+		text-align: center;
+		border: 1.5px solid color-mix(in srgb, var(--aurea-champagne) 35%, var(--aurea-border));
+		transition:
+			border-color 0.25s ease,
+			box-shadow 0.25s ease,
+			transform 0.25s ease;
+	}
+
+	.guidance__fallback:hover {
+		border-color: var(--aurea-champagne);
+		box-shadow: 0 16px 44px rgba(36, 35, 33, 0.08);
+		transform: translateY(-2px);
+	}
+
+	.guidance__fallback-inner {
+		max-width: 460px;
+		margin-inline: auto;
+	}
+
+	.guidance__fallback-concern {
+		font-family: var(--aurea-font-heading);
+		font-size: 1.35rem;
+		font-weight: 600;
+		color: var(--aurea-charcoal);
+		margin-bottom: 0.4rem;
+	}
+
+	.guidance__fallback-desc {
+		font-size: 0.92rem;
+		line-height: 1.55;
+		color: var(--aurea-muted);
+		margin-bottom: 1rem;
+	}
+
+	.guidance__fallback-cta {
+		display: inline-block;
+		font-size: 0.9rem;
+		font-weight: 700;
+		color: var(--aurea-champagne);
+		letter-spacing: 0.01em;
+	}
+
+	/* ---- Bottom CTA ---- */
+
+	.guidance__action {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.85rem;
+		margin-top: clamp(1.5rem, 3vw, 2.5rem);
+		padding-top: clamp(1.5rem, 3vw, 2.5rem);
+		border-top: 1px solid var(--aurea-border);
+	}
+
+	.guidance__action p {
+		font-size: 0.95rem;
+		font-weight: 500;
+		color: var(--aurea-muted);
+		margin: 0;
+	}
+
+	/* ---- Responsive ---- */
 
 	@media (max-width: 1080px) {
 		.guidance__grid {
@@ -101,8 +228,17 @@ import { concernPaths } from '../data/aurea';
 	}
 
 	@media (max-width: 560px) {
+		.guidance__wrapper {
+			padding: clamp(1.5rem, 4vw, 2rem);
+		}
+
 		.guidance__grid {
 			grid-template-columns: 1fr;
+		}
+
+		.guidance__action {
+			flex-direction: column;
+			gap: 0.65rem;
 		}
 	}
 </style>

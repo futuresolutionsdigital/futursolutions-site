@@ -1,10 +1,10 @@
 export const aureaNav = [
-	{ label: 'Treatments', href: '#treatments' },
-	{ label: 'Concerns', href: '#concerns' },
-	{ label: 'Results', href: '#results' },
-	{ label: 'Providers', href: '#providers' },
-	{ label: 'Membership', href: '#membership' },
-	{ label: 'Location', href: '#location' },
+	{ label: 'Treatments', href: '/demos/med-spa/treatments' },
+	{ label: 'Concerns', href: '/demos/med-spa/#concerns' },
+	{ label: 'Results', href: '/demos/med-spa/#results' },
+	{ label: 'Providers', href: '/demos/med-spa/#providers' },
+	{ label: 'Membership', href: '/demos/med-spa/#membership' },
+	{ label: 'Contact', href: '/demos/med-spa/contact' },
 ];
 
 export const concernPaths = [
@@ -290,29 +290,29 @@ export const footerNavGroups = [
 	{
 		title: 'Treatments',
 		links: [
-			{ label: 'Injectables', href: '#treatments' },
-			{ label: 'Lasers & Light', href: '#treatments' },
-			{ label: 'Skin Treatments', href: '#treatments' },
-			{ label: 'Body Contouring', href: '#treatments' },
-			{ label: 'Wellness', href: '#treatments' },
+			{ label: 'Injectables', href: '/demos/med-spa/treatments' },
+			{ label: 'Lasers & Light', href: '/demos/med-spa/treatments' },
+			{ label: 'Skin Treatments', href: '/demos/med-spa/treatments' },
+			{ label: 'Body Contouring', href: '/demos/med-spa/treatments' },
+			{ label: 'Wellness', href: '/demos/med-spa/treatments' },
 		],
 	},
 	{
 		title: 'Clinic',
 		links: [
-			{ label: 'About', href: '#providers' },
-			{ label: 'Providers', href: '#providers' },
-			{ label: 'Results', href: '#results' },
-			{ label: 'Membership', href: '#membership' },
-			{ label: 'FAQ', href: '#faq' },
+			{ label: 'About', href: '/demos/med-spa/#providers' },
+			{ label: 'Providers', href: '/demos/med-spa/#providers' },
+			{ label: 'Results', href: '/demos/med-spa/#results' },
+			{ label: 'Membership', href: '/demos/med-spa/#membership' },
+			{ label: 'FAQ', href: '/demos/med-spa/#faq' },
 		],
 	},
 	{
 		title: 'Connect',
 		links: [
-			{ label: 'Book Consultation', href: '#location' },
+			{ label: 'Book Consultation', href: '/demos/med-spa/contact' },
 			{ label: 'Call (951) 555-0147', href: 'tel:+19515550147' },
-			{ label: 'Get Directions', href: '#location' },
+			{ label: 'Get Directions', href: '/demos/med-spa/contact' },
 			{ label: 'Instagram', href: '#' },
 			{ label: 'Facebook', href: '#' },
 		],

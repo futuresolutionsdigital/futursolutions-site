@@ -16,11 +16,13 @@ import { beforeAfterCases } from '../data/aurea';
 				beforeAfterCases.map((c) => (
 					<article class="ba__card aurea-card">
 						<div class="ba__images">
-							<div class="ba__placeholder">
-								<span>Before</span>
+							<div class="ba__side ba__side--before">
+								<div class="ba__texture" aria-hidden="true"></div>
+								<span class="ba__label">Before</span>
 							</div>
-							<div class="ba__placeholder ba__placeholder--after">
-								<span>After</span>
+							<div class="ba__divider" aria-hidden="true"></div>
+							<div class="ba__side ba__side--after">
+								<span class="ba__label">After</span>
 							</div>
 						</div>
 						<div class="ba__body">
@@ -34,6 +36,13 @@ import { beforeAfterCases } from '../data/aurea';
 				))
 			}
 		</div>
+
+		<div class="ba__cta">
+			<a href="/demos/med-spa/contact" class="aurea-btn aurea-btn--champagne">
+				See what&rsquo;s possible &mdash; Book a Consultation
+			</a>
+		</div>
+
 		<p class="ba__disclaimer">
 			Individual results vary. Images are placeholders for demonstration purposes. A consultation is required to determine candidacy for any treatment.
 		</p>
@@ -56,34 +65,66 @@ import { beforeAfterCases } from '../data/aurea';
 		overflow: hidden;
 	}
 
+	/* ── Image area ── */
 	.ba__images {
 		display: grid;
-		grid-template-columns: 1fr 1fr;
+		grid-template-columns: 1fr auto 1fr;
+		height: 200px;
 	}
 
-	.ba__placeholder {
+	.ba__side {
+		position: relative;
 		display: flex;
-		align-items: center;
+		align-items: flex-end;
 		justify-content: center;
-		min-height: 180px;
+		padding-bottom: 0.75rem;
+	}
+
+	.ba__side--before {
 		background: color-mix(in srgb, var(--aurea-stone) 28%, var(--aurea-ivory));
+		overflow: hidden;
 	}
 
-	.ba__placeholder--after {
-		background: color-mix(in srgb, var(--aurea-sage) 22%, var(--aurea-ivory));
+	.ba__texture {
+		position: absolute;
+		inset: 0;
+		background: repeating-linear-gradient(
+			0deg,
+			transparent,
+			transparent 5px,
+			color-mix(in srgb, var(--aurea-stone) 18%, transparent) 5px,
+			color-mix(in srgb, var(--aurea-stone) 18%, transparent) 6px
+		);
+		opacity: 0.5;
 	}
 
-	.ba__placeholder span {
-		font-size: 0.72rem;
+	.ba__side--after {
+		background: linear-gradient(
+			175deg,
+			color-mix(in srgb, var(--aurea-sage) 22%, var(--aurea-ivory)),
+			color-mix(in srgb, var(--aurea-sage) 8%, var(--aurea-ivory)) 80%
+		);
+	}
+
+	.ba__divider {
+		width: 1px;
+		background: var(--aurea-border);
+	}
+
+	.ba__label {
+		position: relative;
+		z-index: 1;
+		font-size: 0.65rem;
 		font-weight: 700;
-		letter-spacing: 0.1em;
+		letter-spacing: 0.12em;
 		text-transform: uppercase;
 		color: var(--aurea-muted);
-		opacity: 0.6;
+		opacity: 0.7;
 	}
 
+	/* ── Body ── */
 	.ba__body {
-		padding: 1.25rem;
+		padding: 1.35rem;
 	}
 
 	.ba__meta {
@@ -103,7 +144,7 @@ import { beforeAfterCases } from '../data/aurea';
 
 	.ba__treatment {
 		display: inline-flex;
-		padding: 0.22rem 0.5rem;
+		padding: 0.22rem 0.55rem;
 		border: 1px solid var(--aurea-border);
 		border-radius: 999px;
 		font-size: 0.72rem;
@@ -117,12 +158,19 @@ import { beforeAfterCases } from '../data/aurea';
 		color: var(--aurea-muted);
 	}
 
+	/* ── CTA & disclaimer ── */
+	.ba__cta {
+		margin-top: 2.5rem;
+		text-align: center;
+	}
+
 	.ba__disclaimer {
-		margin-top: 2rem;
+		margin-top: 1.75rem;
 		font-size: 0.82rem;
 		font-style: italic;
 		color: var(--aurea-muted);
 		opacity: 0.75;
+		text-align: center;
 	}
 
 	@media (max-width: 900px) {
