@@ -1,0 +1,455 @@
+---
+import DemoLayout from '../../../layouts/DemoLayout.astro';
+import { meridianDemoLayoutDefaults } from '../../../data/demoMeridianLayout';
+
+const servicesPreview = [
+	{
+		title: 'Functional Wellness',
+		text: 'Education-focused support for clients looking to understand symptoms, lifestyle patterns, and next steps.',
+	},
+	{
+		title: 'Hormone & Metabolic Support',
+		text: 'Consultation-led guidance for people exploring energy, weight, mood, and wellness concerns.',
+	},
+	{
+		title: 'Preventive Health Planning',
+		text: 'A structured path for clients who want proactive, personalized health guidance.',
+	},
+	{
+		title: 'Patient Education',
+		text: 'Clear resources and explanations that help visitors feel prepared before reaching out.',
+	},
+];
+
+const trustCards = ['Provider introduction', 'Clear service explanations', 'New patient guidance', 'Simple inquiry path'];
+
+const pathwaySteps = ['Learn about care', 'Review services', 'Submit inquiry', 'Next-step follow-up'];
+---
+
+<DemoLayout
+	variant="solo-practice"
+	{...meridianDemoLayoutDefaults}
+	title="Meridian Wellness Practice Demo | Future Solutions"
+	description="A Future Solutions solo practice website demo for independent providers, functional medicine practices, and boutique wellness clinics."
+	canonicalUrl="https://futursolutions.vercel.app/demos/solo-practice/"
+>
+	<section class="mw-hero" aria-labelledby="mw-heading">
+		<div class="site-container mw-hero__inner">
+			<div>
+				<p class="mw-eyebrow">Solo Practice Website Demo</p>
+				<h1 id="mw-heading">Personalized care with a clear path for new patients.</h1>
+				<p class="mw-lead">
+					Meridian Wellness Practice is a fictional solo practice website showing how independent providers can build trust, explain services clearly, and guide visitors toward a simple next step.
+				</p>
+				<div class="mw-button-row">
+					<a class="mw-button mw-button--primary" href="/demos/solo-practice/contact">Request Appointment</a>
+					<a class="mw-button mw-button--secondary" href="/demos/solo-practice/services">View Services</a>
+				</div>
+				<p class="mw-trust-line">
+					A Future Solutions demo template for solo practices, nurse practitioners, functional medicine providers, and boutique wellness clinics.
+				</p>
+			</div>
+			<div class="mw-hero__panel" aria-hidden="true">
+				<div class="mw-hero__card mw-hero__card--main">
+					<span>Practice snapshot</span>
+					<strong>Care designed around clarity.</strong>
+					<ul>
+						<li>Provider-led care</li>
+						<li>New patient path</li>
+						<li>Service clarity</li>
+						<li>Follow-up ready</li>
+					</ul>
+				</div>
+				<div class="mw-hero__card mw-hero__card--accent">
+					<p>Thoughtful pacing for questions, education, and next steps.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="mw-section mw-section--muted" aria-labelledby="svc-preview-heading">
+		<div class="site-container">
+			<div class="mw-section__intro">
+				<p class="mw-eyebrow">Care categories</p>
+				<h2 id="svc-preview-heading">Care categories explained with clarity.</h2>
+			</div>
+			<div class="mw-grid mw-grid--4">
+				{servicesPreview.map((item) => (
+					<article class="mw-card">
+						<h3>{item.title}</h3>
+						<p>{item.text}</p>
+					</article>
+				))}
+			</div>
+			<a class="mw-link-cta" href="/demos/solo-practice/services">View Services</a>
+		</div>
+	</section>
+
+	<section class="mw-section" aria-labelledby="trust-heading">
+		<div class="site-container">
+			<div class="mw-section__intro">
+				<p class="mw-eyebrow">Comfort first</p>
+				<h2 id="trust-heading">A website should help people feel comfortable before they reach out.</h2>
+			</div>
+			<div class="mw-grid mw-grid--4">
+				{trustCards.map((card) => (
+					<article class="mw-card mw-card--compact">
+						<span aria-hidden="true"></span>
+						<h3>{card}</h3>
+					</article>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<section id="about" class="mw-section mw-about" aria-labelledby="about-heading">
+		<div class="site-container mw-about__card">
+			<p class="mw-eyebrow">Practice approach</p>
+			<h2 id="about-heading">A more personal way to present care.</h2>
+			<p class="mw-lead">
+				This demo shows how a solo practice can communicate warmth, professionalism, and clarity without overwhelming visitors with dense medical language or generic wellness claims.
+			</p>
+		</div>
+	</section>
+
+	<section class="mw-section mw-section--muted" aria-labelledby="pathway-heading">
+		<div class="site-container">
+			<div class="mw-section__intro">
+				<p class="mw-eyebrow">New patient path</p>
+				<h2 id="pathway-heading">Make the first step feel simple.</h2>
+				<p class="mw-lead">
+					Visitors should understand who the practice helps, what services are available, and what happens after they submit an inquiry.
+				</p>
+			</div>
+			<div class="mw-flow" aria-label="Overview of the new patient journey">
+				{pathwaySteps.map((step, index) => (
+					<div class="mw-flow__step">
+						<span>{String(index + 1).padStart(2, '0')}</span>
+						<p>{step}</p>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<section class="mw-section mw-final" aria-labelledby="final-heading">
+		<div class="site-container mw-final__card">
+			<div>
+				<p class="mw-eyebrow mw-eyebrow--invert">Future Solutions template</p>
+				<h2 id="final-heading">Want this solo practice system customized for your brand?</h2>
+				<p class="mw-lead">
+					This demo can be adapted around your services, provider story, patient education, local visibility goals, and backend lead system.
+				</p>
+			</div>
+			<div class="mw-button-row">
+				<a class="mw-button mw-button--primary" href="/audit">Get This Template Customized</a>
+				<a class="mw-button mw-button--secondary mw-button--invert" href="/templates/solo-practice">Back to Template Details</a>
+			</div>
+		</div>
+	</section>
+</DemoLayout>
+
+<style>
+	.mw-hero,
+	.mw-section {
+		padding-block: clamp(4.5rem, 8vw, 7rem);
+	}
+
+	.mw-hero {
+		background:
+			radial-gradient(circle at 78% 8%, rgba(77, 122, 113, 0.12), transparent 32%),
+			linear-gradient(180deg, #ffffff 0%, #f9faf8 80%);
+	}
+
+	.mw-hero__inner {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) minmax(340px, 0.72fr);
+		gap: clamp(3rem, 6vw, 5rem);
+		align-items: center;
+	}
+
+	.mw-eyebrow {
+		margin-bottom: 1rem;
+		color: #4d7a71;
+		font-size: 0.8125rem;
+		font-weight: 800;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+	}
+
+	.mw-eyebrow--invert {
+		color: #b8d4cc;
+	}
+
+	.mw-hero h1,
+	.mw-section h2 {
+		color: #1a2330;
+		max-width: 900px;
+	}
+
+	.mw-hero h1 {
+		font-size: clamp(2.6rem, 2rem + 2.8vw, 4rem);
+		letter-spacing: -0.035em;
+		line-height: 1.12;
+	}
+
+	.mw-lead {
+		max-width: 700px;
+		color: #5c6b6a;
+		font-size: clamp(1.05rem, 1rem + 0.28vw, 1.22rem);
+		line-height: 1.66;
+	}
+
+	.mw-button-row {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.875rem;
+		margin-top: 2rem;
+	}
+
+	.mw-button {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 2.875rem;
+		padding: 0.8rem 1.1rem;
+		border: 1px solid transparent;
+		border-radius: 999px;
+		font-size: 0.9375rem;
+		font-weight: 800;
+		line-height: 1;
+	}
+
+	.mw-button--primary {
+		background: #4d7a71;
+		color: #ffffff;
+	}
+
+	.mw-button--primary:hover {
+		background: #3d615a;
+		color: #ffffff;
+	}
+
+	.mw-button--secondary {
+		border-color: rgba(42, 54, 65, 0.12);
+		background: #ffffff;
+		color: #1a2330;
+	}
+
+	.mw-button--secondary:hover {
+		background: #e8f0ee;
+		color: #3d5f57;
+	}
+
+	.mw-button--invert {
+		border-color: rgba(255, 255, 255, 0.35);
+		background: transparent;
+		color: #ffffff;
+	}
+
+	.mw-button--invert:hover {
+		background: rgba(255, 255, 255, 0.12);
+		color: #ffffff;
+	}
+
+	.mw-trust-line {
+		max-width: 640px;
+		margin-top: 1.25rem;
+		color: #5c6b6a;
+		font-size: 0.9375rem;
+	}
+
+	.mw-hero__panel {
+		display: grid;
+		gap: 1rem;
+	}
+
+	.mw-hero__card {
+		border: 1px solid rgba(26, 35, 48, 0.09);
+		border-radius: 20px;
+		background: #ffffff;
+		box-shadow: 0 18px 48px rgba(26, 35, 48, 0.06);
+	}
+
+	.mw-hero__card--main {
+		padding: 1.4rem;
+		background:
+			linear-gradient(145deg, rgba(232, 240, 238, 0.95), rgba(255, 255, 255, 0.98)),
+			#ffffff;
+	}
+
+	.mw-hero__card--main span {
+		display: block;
+		margin-bottom: 0.85rem;
+		color: #4d7a71;
+		font-size: 0.75rem;
+		font-weight: 800;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+	}
+
+	.mw-hero__card--main strong {
+		display: block;
+		margin-bottom: 1rem;
+		color: #1a2330;
+		font-size: 1.45rem;
+		letter-spacing: -0.03em;
+		line-height: 1.15;
+	}
+
+	.mw-hero__card--main ul {
+		padding-left: 1.15rem;
+		margin: 0;
+		color: #5c6b6a;
+		font-size: 0.9rem;
+		line-height: 1.65;
+	}
+
+	.mw-hero__card--accent {
+		padding: 1.25rem;
+	}
+
+	.mw-hero__card--accent p {
+		margin: 0;
+		color: #5c6b6a;
+		font-size: 0.95rem;
+		line-height: 1.55;
+	}
+
+	.mw-section--muted {
+		border-block: 1px solid rgba(26, 35, 48, 0.07);
+		background: #eef2f1;
+	}
+
+	.mw-section__intro {
+		max-width: 760px;
+	}
+
+	.mw-grid {
+		display: grid;
+		gap: 1rem;
+		margin-top: clamp(2rem, 4vw, 3rem);
+	}
+
+	.mw-grid--4 {
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+	}
+
+	.mw-card {
+		padding: 1.25rem;
+		border: 1px solid rgba(26, 35, 48, 0.09);
+		border-radius: 18px;
+		background: #ffffff;
+		box-shadow: 0 14px 40px rgba(26, 35, 48, 0.045);
+	}
+
+	.mw-card h3 {
+		margin-top: 0;
+		color: #1a2330;
+		font-size: 1.05rem;
+		letter-spacing: -0.02em;
+	}
+
+	.mw-card p {
+		color: #5c6b6a;
+		font-size: 0.92rem;
+		line-height: 1.62;
+	}
+
+	.mw-card--compact span {
+		display: block;
+		width: 2.25rem;
+		height: 0.25rem;
+		margin-bottom: 1rem;
+		border-radius: 999px;
+		background: #4d7a71;
+	}
+
+	.mw-link-cta {
+		display: inline-flex;
+		margin-top: 2rem;
+		color: #1a2330;
+		font-weight: 800;
+	}
+
+	.mw-link-cta:hover {
+		color: #3d615a;
+	}
+
+	.mw-about__card,
+	.mw-final__card {
+		padding: clamp(1.5rem, 4vw, 3rem);
+		border: 1px solid rgba(26, 35, 48, 0.09);
+		border-radius: 22px;
+		background: #ffffff;
+	}
+
+	.mw-flow {
+		display: grid;
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+		gap: 1rem;
+		margin-top: 2rem;
+	}
+
+	.mw-flow__step {
+		padding: 1.15rem;
+		border: 1px solid rgba(26, 35, 48, 0.09);
+		border-radius: 16px;
+		background: #ffffff;
+	}
+
+	.mw-flow__step span {
+		display: inline-flex;
+		margin-bottom: 0.75rem;
+		color: #4d7a71;
+		font-size: 0.75rem;
+		font-weight: 800;
+	}
+
+	.mw-flow__step p {
+		margin: 0;
+		color: #1a2330;
+		font-weight: 800;
+		font-size: 0.94rem;
+		line-height: 1.35;
+	}
+
+	.mw-final {
+		background: #dfe8e6;
+	}
+
+	.mw-final__card {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) auto;
+		gap: 2rem;
+		align-items: end;
+		background: #1a2733;
+		border-color: transparent;
+	}
+
+	.mw-final__card .mw-lead {
+		color: rgba(255, 255, 255, 0.82);
+	}
+
+	.mw-final h2 {
+		color: #ffffff;
+	}
+
+	@media (max-width: 980px) {
+		.mw-hero__inner,
+		.mw-grid--4,
+		.mw-flow,
+		.mw-final__card {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+
+	@media (max-width: 700px) {
+		.mw-hero__inner,
+		.mw-grid--4,
+		.mw-flow,
+		.mw-final__card {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

@@ -2,13 +2,78 @@
 import DemoBanner from '../components/DemoBanner.astro';
 import '../styles/global.css';
 
+interface NavItem {
+	label: string;
+	href: string;
+}
+
 interface Props {
 	title: string;
 	description: string;
 	canonicalUrl?: string;
+	variant?: 'med-spa' | 'solo-practice';
+	/** First line of header brand (e.g. Luma, Meridian). */
+	brandLine1?: string;
+	brandLine2?: string;
+	brandHomeHref?: string;
+	brandAriaLabel?: string;
+	navLabel?: string;
+	navItems?: NavItem[];
+	primaryCtaLabel?: string;
+	primaryCtaHref?: string;
+	footerBrandHref?: string;
+	footerBrandText?: string;
+	footerNote?: string;
+	footerLinks?: NavItem[];
 }
 
-const { title, description, canonicalUrl } = Astro.props;
+const medSpaConfig = {
+	variantClass: 'demo-site--med-spa',
+	brandLine1: 'Luma',
+	brandLine2: 'Aesthetics',
+	brandHomeHref: '/demos/med-spa',
+	brandAriaLabel: 'Luma Aesthetics demo home',
+	navLabel: 'Luma Aesthetics demo navigation',
+	navItems: [
+		{ label: 'Treatments', href: '/demos/med-spa/treatments' },
+		{ label: 'About', href: '/demos/med-spa/#about' },
+		{ label: 'Contact', href: '/demos/med-spa/contact' },
+	],
+	primaryCtaLabel: 'Book Consultation',
+	primaryCtaHref: '/demos/med-spa/contact',
+	footerBrandHref: '/demos/med-spa',
+	footerBrandText: 'Luma Aesthetics',
+	footerNote: 'Demonstration practice site showcasing a Future Solutions website template.',
+	footerLinks: [
+		{ label: 'Treatments', href: '/demos/med-spa/treatments' },
+		{ label: 'Consultation', href: '/demos/med-spa/contact' },
+		{ label: 'Template Details', href: '/templates/med-spa' },
+	],
+} as const;
+
+const props = Astro.props;
+const demoVariant = props.variant ?? 'med-spa';
+
+const activeConfig =
+	demoVariant === 'solo-practice'
+		? {
+				variantClass: 'demo-site--solo-practice',
+				brandLine1: props.brandLine1!,
+				brandLine2: props.brandLine2!,
+				brandHomeHref: props.brandHomeHref!,
+				brandAriaLabel: props.brandAriaLabel!,
+				navLabel: props.navLabel!,
+				navItems: props.navItems!,
+				primaryCtaLabel: props.primaryCtaLabel!,
+				primaryCtaHref: props.primaryCtaHref!,
+				footerBrandHref: props.footerBrandHref!,
+				footerBrandText: props.footerBrandText!,
+				footerNote: props.footerNote ?? 'Demonstration solo practice site showcasing a Future Solutions website template.',
+				footerLinks: props.footerLinks!,
+		  }
+		: medSpaConfig;
+
+const { title, description, canonicalUrl } = props;
 ---
 
 <!doctype html>
@@ -30,20 +95,20 @@ const { title, description, canonicalUrl } = Astro.props;
 		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 		<title>{title}</title>
 	</head>
-	<body class="demo-site">
+	<body class:list={['demo-site', activeConfig.variantClass]}>
 		<DemoBanner />
 		<header class="demo-header">
 			<div class="site-container demo-header__inner">
-				<a class="demo-header__brand" href="/demos/med-spa" aria-label="Luma Aesthetics demo home">
-					<span>Luma</span>
-					<span>Aesthetics</span>
+				<a class="demo-header__brand" href={activeConfig.brandHomeHref} aria-label={activeConfig.brandAriaLabel}>
+					<span>{activeConfig.brandLine1}</span>
+					<span>{activeConfig.brandLine2}</span>
 				</a>
-				<nav class="demo-header__nav" aria-label="Luma Aesthetics demo navigation">
-					<a href="/demos/med-spa/treatments">Treatments</a>
-					<a href="/demos/med-spa/#about">About</a>
-					<a href="/demos/med-spa/contact">Contact</a>
+				<nav class="demo-header__nav" aria-label={activeConfig.navLabel}>
+					{activeConfig.navItems.map((item) => (
+						<a href={item.href}>{item.label}</a>
+					))}
 				</nav>
-				<a class="demo-header__cta" href="/demos/med-spa/contact">Book Consultation</a>
+				<a class="demo-header__cta" href={activeConfig.primaryCtaHref}>{activeConfig.primaryCtaLabel}</a>
 			</div>
 		</header>
 		<main>
@@ -52,13 +117,13 @@ const { title, description, canonicalUrl } = Astro.props;
 		<footer class="demo-footer">
 			<div class="site-container demo-footer__inner">
 				<div>
-					<a class="demo-footer__brand" href="/demos/med-spa">Luma Aesthetics</a>
-					<p>Demonstration practice site showcasing a Future Solutions website template.</p>
+					<a class="demo-footer__brand" href={activeConfig.footerBrandHref}>{activeConfig.footerBrandText}</a>
+					<p>{activeConfig.footerNote}</p>
 				</div>
-				<div class="demo-footer__links" aria-label="Luma Aesthetics demo footer links">
-					<a href="/demos/med-spa/treatments">Treatments</a>
-					<a href="/demos/med-spa/contact">Consultation</a>
-					<a href="/templates/med-spa">Template Details</a>
+				<div class="demo-footer__links" aria-label={`${activeConfig.footerBrandText} demo footer links`}>
+					{activeConfig.footerLinks.map((link) => (
+						<a href={link.href}>{link.label}</a>
+					))}
 				</div>
 			</div>
 		</footer>
@@ -66,9 +131,14 @@ const { title, description, canonicalUrl } = Astro.props;
 </html>
 
 <style>
-	:global(.demo-site) {
+	.demo-site.demo-site--med-spa {
 		background: #fbfaf7;
 		color: #17202a;
+	}
+
+	.demo-site.demo-site--solo-practice {
+		background: #f9faf8;
+		color: #1a2330;
 	}
 
 	.demo-header {
@@ -76,8 +146,15 @@ const { title, description, canonicalUrl } = Astro.props;
 		top: 3.6rem;
 		z-index: 12;
 		border-bottom: 1px solid rgba(42, 54, 65, 0.1);
-		background: rgba(251, 250, 247, 0.92);
 		backdrop-filter: blur(16px);
+	}
+
+	.demo-site--med-spa .demo-header {
+		background: rgba(251, 250, 247, 0.92);
+	}
+
+	.demo-site--solo-practice .demo-header {
+		background: rgba(249, 250, 248, 0.94);
 	}
 
 	.demo-header__inner {
@@ -91,14 +168,28 @@ const { title, description, canonicalUrl } = Astro.props;
 	.demo-header__brand {
 		display: inline-grid;
 		gap: 0.05rem;
-		color: #17202a;
 		font-weight: 800;
 		letter-spacing: -0.04em;
 		line-height: 1;
 	}
 
-	.demo-header__brand span:last-child {
+	.demo-site--med-spa .demo-header__brand {
+		color: #17202a;
+	}
+
+	.demo-site--solo-practice .demo-header__brand {
+		color: #1a2330;
+	}
+
+	.demo-site--med-spa .demo-header__brand span:last-child {
 		color: #8f6f63;
+		font-size: 0.88rem;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+	}
+
+	.demo-site--solo-practice .demo-header__brand span:last-child {
+		color: #4d7a71;
 		font-size: 0.88rem;
 		letter-spacing: 0.08em;
 		text-transform: uppercase;
@@ -108,28 +199,55 @@ const { title, description, canonicalUrl } = Astro.props;
 		display: flex;
 		align-items: center;
 		gap: 1.2rem;
-		color: #64706f;
 		font-size: 0.92rem;
 		font-weight: 700;
+	}
+
+	.demo-site--med-spa .demo-header__nav {
+		color: #64706f;
+	}
+
+	.demo-site--solo-practice .demo-header__nav {
+		color: #5c6b6a;
 	}
 
 	.demo-header__nav a:hover {
 		color: #17202a;
 	}
 
-	.demo-header__brand:focus-visible,
-	.demo-header__nav a:focus-visible,
-	.demo-header__cta:focus-visible,
-	.demo-footer__brand:focus-visible,
-	.demo-footer__links a:focus-visible {
+	.demo-site--solo-practice .demo-header__nav a:hover {
+		color: #1a2330;
+	}
+
+	.demo-site--med-spa .demo-header__brand:focus-visible,
+	.demo-site--med-spa .demo-header__nav a:focus-visible,
+	.demo-site--med-spa .demo-header__cta:focus-visible,
+	.demo-site--med-spa .demo-footer__brand:focus-visible,
+	.demo-site--med-spa .demo-footer__links a:focus-visible {
 		outline: 2px solid #8f6f63;
 		outline-offset: 3px;
 		border-radius: 6px;
 	}
 
-	:global(main a:focus-visible),
-	:global(main button:focus-visible) {
+	.demo-site--solo-practice .demo-header__brand:focus-visible,
+	.demo-site--solo-practice .demo-header__nav a:focus-visible,
+	.demo-site--solo-practice .demo-header__cta:focus-visible,
+	.demo-site--solo-practice .demo-footer__brand:focus-visible,
+	.demo-site--solo-practice .demo-footer__links a:focus-visible {
+		outline: 2px solid #4d7a71;
+		outline-offset: 3px;
+		border-radius: 6px;
+	}
+
+	.demo-site--med-spa :global(main a:focus-visible),
+	.demo-site--med-spa :global(main button:focus-visible) {
 		outline: 2px solid #8f6f63;
+		outline-offset: 3px;
+	}
+
+	.demo-site--solo-practice :global(main a:focus-visible),
+	.demo-site--solo-practice :global(main button:focus-visible) {
+		outline: 2px solid #4d7a71;
 		outline-offset: 3px;
 	}
 
@@ -139,24 +257,44 @@ const { title, description, canonicalUrl } = Astro.props;
 		justify-content: center;
 		min-height: 2.45rem;
 		padding: 0.7rem 0.9rem;
-		border: 1px solid rgba(143, 111, 99, 0.26);
 		border-radius: 999px;
 		background: #ffffff;
-		color: #17202a;
 		font-size: 0.875rem;
 		font-weight: 800;
 		line-height: 1;
 		white-space: nowrap;
 	}
 
-	.demo-header__cta:hover {
+	.demo-site--med-spa .demo-header__cta {
+		border: 1px solid rgba(143, 111, 99, 0.26);
+		color: #17202a;
+	}
+
+	.demo-site--solo-practice .demo-header__cta {
+		border: 1px solid rgba(77, 122, 113, 0.35);
+		color: #1a2330;
+	}
+
+	.demo-site--med-spa .demo-header__cta:hover {
 		background: #efe7e1;
 		color: #6f554b;
 	}
 
+	.demo-site--solo-practice .demo-header__cta:hover {
+		background: #e8f0ee;
+		color: #3d5f57;
+	}
+
 	.demo-footer {
 		border-top: 1px solid rgba(42, 54, 65, 0.1);
+	}
+
+	.demo-site--med-spa .demo-footer {
 		background: #f5f0eb;
+	}
+
+	.demo-site--solo-practice .demo-footer {
+		background: #eef2f1;
 	}
 
 	.demo-footer__inner {
@@ -169,13 +307,24 @@ const { title, description, canonicalUrl } = Astro.props;
 	.demo-footer__brand {
 		display: inline-flex;
 		margin-bottom: 0.5rem;
-		color: #17202a;
 		font-weight: 800;
 		letter-spacing: -0.035em;
 	}
 
+	.demo-site--med-spa .demo-footer__brand {
+		color: #17202a;
+	}
+
+	.demo-site--solo-practice .demo-footer__brand {
+		color: #1a2330;
+	}
+
 	.demo-footer p {
 		font-size: 0.9375rem;
+	}
+
+	.demo-site--solo-practice .demo-footer p {
+		color: #5c6b6a;
 	}
 
 	.demo-footer__links {
@@ -184,13 +333,24 @@ const { title, description, canonicalUrl } = Astro.props;
 		gap: 1rem;
 		align-items: flex-start;
 		justify-content: flex-end;
-		color: #64706f;
 		font-size: 0.9375rem;
 		font-weight: 700;
 	}
 
-	.demo-footer__links a:hover {
+	.demo-site--med-spa .demo-footer__links {
+		color: #64706f;
+	}
+
+	.demo-site--solo-practice .demo-footer__links {
+		color: #5c6b6a;
+	}
+
+	.demo-site--med-spa .demo-footer__links a:hover {
 		color: #6f554b;
+	}
+
+	.demo-site--solo-practice .demo-footer__links a:hover {
+		color: #3d5f57;
 	}
 
 	@media (max-width: 860px) {

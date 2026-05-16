@@ -1,0 +1,300 @@
+---
+import DemoLayout from '../../../layouts/DemoLayout.astro';
+import { meridianDemoLayoutDefaults } from '../../../data/demoMeridianLayout';
+
+const whoFitCards = [
+	'People looking for more time and education',
+	'People with wellness questions they want to discuss clearly',
+	'People seeking a provider-led care path',
+	'People who want practical next steps',
+];
+
+const pathwaySteps = [
+	{ step: '01 — Share what you are looking for', detail: '' },
+	{ step: '02 — The practice reviews your inquiry', detail: '' },
+	{ step: '03 — You receive a recommended next step', detail: '' },
+	{ step: '04 — Follow-up or appointment path is organized', detail: '' },
+];
+
+const prepareChecklist = [
+	'Main health or wellness questions',
+	'Current goals',
+	'Relevant care history',
+	'Current medications or supplements if applicable',
+	'Preferred next step',
+];
+---
+
+<DemoLayout
+	variant="solo-practice"
+	{...meridianDemoLayoutDefaults}
+	title="New Patients | Meridian Wellness Practice Demo"
+	description="A solo practice demo new patient page showing how providers can explain the first step with clarity and reassurance."
+	canonicalUrl="https://futursolutions.vercel.app/demos/solo-practice/new-patients/"
+>
+	<section class="mw-page-hero" aria-labelledby="np-heading">
+		<div class="site-container">
+			<p class="mw-eyebrow">New Patients</p>
+			<h1 id="np-heading">A calmer first step for new patients.</h1>
+			<p class="mw-lead">
+				This page shows how a solo practice can explain what to expect, who the practice is for, and how to start without overwhelming visitors.
+			</p>
+			<div class="mw-button-row">
+				<a class="mw-button mw-button--primary" href="/demos/solo-practice/contact">Start an Inquiry</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="mw-section mw-section--muted" aria-labelledby="who-heading">
+		<div class="site-container">
+			<div class="mw-section__intro">
+				<p class="mw-eyebrow">Fit</p>
+				<h2 id="who-heading">Who this practice may fit</h2>
+			</div>
+			<div class="mw-grid mw-grid--2">
+				{whoFitCards.map((card) => (
+					<article class="mw-card">
+						<h3>{card}</h3>
+					</article>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<section class="mw-section" aria-labelledby="expect-heading">
+		<div class="site-container">
+			<div class="mw-section__intro">
+				<p class="mw-eyebrow">Experience</p>
+				<h2 id="expect-heading">What to expect</h2>
+			</div>
+			<ol class="mw-step-list">
+				{pathwaySteps.map((item) => (
+					<li>
+						<span class="mw-step-list__title">{item.step}</span>
+					</li>
+				))}
+			</ol>
+		</div>
+	</section>
+
+	<section class="mw-section mw-section--muted" aria-labelledby="prep-heading">
+		<div class="site-container">
+			<div class="mw-section__intro">
+				<p class="mw-eyebrow">Prep</p>
+				<h2 id="prep-heading">What to prepare</h2>
+				<p class="mw-lead">Having a short list ready can make your first inquiry or visit feel more grounded.</p>
+			</div>
+			<ul class="mw-checklist">
+				{prepareChecklist.map((item) => (
+					<li>{item}</li>
+				))}
+			</ul>
+		</div>
+	</section>
+
+	<section class="mw-section mw-reassure" aria-labelledby="re-heading">
+		<div class="site-container mw-reassure__inner">
+			<p class="mw-eyebrow">Comfort</p>
+			<h2 id="re-heading">Clear information before commitment.</h2>
+			<p class="mw-lead">
+				A strong new patient page helps visitors understand the process before they book or submit an inquiry. It reduces uncertainty and makes the next step feel less intimidating.
+			</p>
+		</div>
+	</section>
+
+	<section class="mw-section mw-final" aria-labelledby="final-heading">
+		<div class="site-container mw-final__card">
+			<div>
+				<p class="mw-eyebrow mw-eyebrow--invert">Future Solutions template</p>
+				<h2 id="final-heading">Want this new patient flow customized?</h2>
+			</div>
+			<div class="mw-button-row">
+				<a class="mw-button mw-button--primary" href="/audit">Get This Template Customized</a>
+				<a class="mw-button mw-button--secondary mw-button--invert" href="/demos/solo-practice/contact">Contact Demo Practice</a>
+			</div>
+		</div>
+	</section>
+</DemoLayout>
+
+<style>
+	.mw-page-hero,
+	.mw-section {
+		padding-block: clamp(4.5rem, 8vw, 7rem);
+	}
+
+	.mw-page-hero {
+		background:
+			radial-gradient(circle at 78% 8%, rgba(77, 122, 113, 0.12), transparent 32%),
+			linear-gradient(180deg, #ffffff 0%, #f9faf8 80%);
+	}
+
+	.mw-eyebrow {
+		margin-bottom: 1rem;
+		color: #4d7a71;
+		font-size: 0.8125rem;
+		font-weight: 800;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+	}
+
+	.mw-eyebrow--invert {
+		color: #b8d4cc;
+	}
+
+	.mw-page-hero h1,
+	.mw-section h2 {
+		max-width: 900px;
+		color: #1a2330;
+	}
+
+	.mw-section__intro {
+		max-width: 720px;
+	}
+
+	.mw-lead {
+		max-width: 720px;
+		color: #5c6b6a;
+		font-size: clamp(1.05rem, 1rem + 0.28vw, 1.22rem);
+		line-height: 1.66;
+	}
+
+	.mw-button-row {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.875rem;
+		margin-top: 2rem;
+	}
+
+	.mw-button {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 2.875rem;
+		padding: 0.8rem 1.1rem;
+		border-radius: 999px;
+		font-size: 0.9375rem;
+		font-weight: 800;
+		line-height: 1;
+	}
+
+	.mw-button--primary {
+		border: 1px solid transparent;
+		background: #4d7a71;
+		color: #ffffff;
+	}
+
+	.mw-button--primary:hover {
+		background: #3d615a;
+		color: #ffffff;
+	}
+
+	.mw-button--invert {
+		border: 1px solid rgba(255, 255, 255, 0.35);
+		background: transparent;
+		color: #ffffff;
+	}
+
+	.mw-button--invert:hover {
+		background: rgba(255, 255, 255, 0.12);
+		color: #ffffff;
+	}
+
+	.mw-section--muted {
+		border-block: 1px solid rgba(26, 35, 48, 0.07);
+		background: #eef2f1;
+	}
+
+	.mw-grid {
+		display: grid;
+		gap: 1rem;
+		margin-top: clamp(2rem, 4vw, 3rem);
+	}
+
+	.mw-grid--2 {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	.mw-card {
+		padding: 1.25rem;
+		border: 1px solid rgba(26, 35, 48, 0.09);
+		border-radius: 18px;
+		background: #ffffff;
+	}
+
+	.mw-card h3 {
+		margin: 0;
+		color: #1a2330;
+		font-size: 1rem;
+		font-weight: 800;
+		line-height: 1.45;
+	}
+
+	.mw-step-list {
+		margin: 2rem 0 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.mw-step-list li {
+		padding: 1.05rem 1.2rem;
+		border: 1px solid rgba(26, 35, 48, 0.09);
+		border-radius: 14px;
+		background: #ffffff;
+	}
+
+	.mw-step-list li + li {
+		margin-top: 0.75rem;
+	}
+
+	.mw-step-list__title {
+		color: #1a2330;
+		font-weight: 800;
+		font-size: 0.975rem;
+	}
+
+	.mw-checklist {
+		margin-top: 1.5rem;
+		padding-left: 1.2rem;
+		color: #5c6b6a;
+		line-height: 1.7;
+	}
+
+	.mw-checklist li + li {
+		margin-top: 0.4rem;
+	}
+
+	.mw-reassure__inner {
+		max-width: 760px;
+		padding: clamp(1.5rem, 4vw, 3rem);
+		border: 1px solid rgba(26, 35, 48, 0.09);
+		border-radius: 22px;
+		background: #ffffff;
+	}
+
+	.mw-final {
+		background: #dfe8e6;
+		padding-block: clamp(3rem, 6vw, 5rem);
+	}
+
+	.mw-final__card {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) auto;
+		gap: 2rem;
+		align-items: end;
+		padding: clamp(1.5rem, 4vw, 3rem);
+		border-radius: 22px;
+		background: #1a2733;
+		box-shadow: 0 24px 60px rgba(26, 35, 48, 0.12);
+	}
+
+	.mw-final h2 {
+		color: #ffffff;
+	}
+
+	@media (max-width: 700px) {
+		.mw-grid--2,
+		.mw-final__card {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

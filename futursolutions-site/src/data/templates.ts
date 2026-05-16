@@ -84,7 +84,7 @@ export const templateSystems: TemplateSystem[] = [
 		backendFeatures: ['Contact form readiness', 'Inquiry qualification fields', 'CRM-ready intake path', 'Follow-up readiness'],
 		complexity: 'Starter / Growth',
 		detailUrl: '/templates/solo-practice',
-		demoUrl: null,
+		demoUrl: '/demos/solo-practice',
 		featured: true,
 	},
 	{

@@ -1,0 +1,361 @@
+---
+import DemoLayout from '../../../layouts/DemoLayout.astro';
+import { meridianDemoLayoutDefaults } from '../../../data/demoMeridianLayout';
+
+const services = [
+	{
+		title: 'Functional Wellness',
+		description:
+			'Consultation-based visits designed to support a broader view of lifestyle habits, recurring symptoms, and practical next steps you can discuss with the provider.',
+		bestFor: 'Clients looking for a broader view of lifestyle, symptoms, and wellness patterns.',
+	},
+	{
+		title: 'Hormone & Metabolic Support',
+		description:
+			'Education-led conversations for people exploring energy changes, metabolic questions, mood concerns, or related wellness topics—focused on clarity, not hype.',
+		bestFor: 'Clients who want to discuss energy, weight, mood, or metabolic health questions.',
+	},
+	{
+		title: 'Preventive Health Planning',
+		description:
+			'Structured visits for clients who prefer proactive guidance, goal-setting discussions, and a practical plan shaped around their priorities.',
+		bestFor: 'Clients who want proactive care planning and clearer health direction.',
+	},
+	{
+		title: 'Lifestyle & Nutrition Support',
+		description:
+			'Collaborative coaching-style support that emphasizes sustainable habits, realistic routines, and steady progress over quick fixes.',
+		bestFor: 'Clients who want practical guidance around habits, routines, and sustainable changes.',
+	},
+	{
+		title: 'Patient Education Visits',
+		description:
+			'Appointment time reserved for explanation, diagrams or handouts where helpful, and space to ask follow-up questions at a comfortable pace.',
+		bestFor: 'Clients who want time to ask questions and understand options.',
+	},
+	{
+		title: 'Follow-Up Planning',
+		description:
+			'Continuing care conversations for monitoring, adjusting plans, accountability, or mapping the next milestone with your provider.',
+		bestFor: 'Clients who need ongoing support, accountability, or next-step guidance.',
+	},
+];
+
+const faqs = [
+	{
+		question: 'How do I know which service is right for me?',
+		answer:
+			'Many patients begin with an inquiry so the practice can hear your goals, suggest a sensible first appointment type, and help you prepare questions ahead of time.',
+	},
+	{
+		question: 'Why should each service have its own page?',
+		answer:
+			'Separate pages keep expectations readable, separate education from marketing noise, and help visitors compare options before they schedule or submit a request.',
+	},
+	{
+		question: 'Can this structure support local SEO?',
+		answer:
+			'Yes—clear headings, distinctive service descriptions, internal links between related topics, and location-appropriate wording can reinforce how people search for care nearby.',
+	},
+	{
+		question: 'Can inquiries connect to booking or follow-up?',
+		answer:
+			'Practice teams often route messages through scheduling software, encrypted email, or a CRM so every inquiry receives a tracked and consistent reply.',
+	},
+];
+---
+
+<DemoLayout
+	variant="solo-practice"
+	{...meridianDemoLayoutDefaults}
+	title="Services | Meridian Wellness Practice Demo"
+	description="A solo practice demo services page showing how independent providers can organize services for trust, clarity, and patient inquiries."
+	canonicalUrl="https://futursolutions.vercel.app/demos/solo-practice/services/"
+>
+	<section class="mw-page-hero" aria-labelledby="svc-heading">
+		<div class="site-container">
+			<p class="mw-eyebrow">Services</p>
+			<h1 id="svc-heading">Services organized around how patients make decisions.</h1>
+			<p class="mw-lead">
+				Explore care categories with clear explanations, practical expectations, and simple next steps for new patients.
+			</p>
+			<div class="mw-button-row">
+				<a class="mw-button mw-button--primary" href="/demos/solo-practice/contact">Request Appointment</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="mw-section mw-section--muted" aria-labelledby="grid-heading">
+		<div class="site-container">
+			<div class="mw-section__intro">
+				<p class="mw-eyebrow">Overview</p>
+				<h2 id="grid-heading">Care options with clear context.</h2>
+			</div>
+			<div class="mw-services-grid">
+				{services.map((svc) => (
+					<article class="mw-svc-card">
+						<h3>{svc.title}</h3>
+						<p>{svc.description}</p>
+						<div class="mw-svc-card__meta">
+							<strong>Best for</strong>
+							<span>{svc.bestFor}</span>
+						</div>
+						<a href="/demos/solo-practice/contact">Ask About This Service</a>
+					</article>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<section class="mw-section" aria-labelledby="edu-heading">
+		<div class="site-container mw-callout">
+			<p class="mw-eyebrow">Content depth</p>
+			<h2 id="edu-heading">Each service can become a clear education page.</h2>
+			<p class="mw-lead">
+				For a real solo practice website, each service can have its own page with patient education, FAQs, trust signals, local SEO structure, and inquiry prompts.
+			</p>
+		</div>
+	</section>
+
+	<section class="mw-section mw-section--muted" aria-labelledby="faq-heading">
+		<div class="site-container">
+			<div class="mw-section__intro">
+				<p class="mw-eyebrow">FAQ</p>
+				<h2 id="faq-heading">Questions patients often ask first.</h2>
+			</div>
+			<div class="mw-faq-grid">
+				{faqs.map((faq) => (
+					<article class="mw-faq-card">
+						<h3>{faq.question}</h3>
+						<p>{faq.answer}</p>
+					</article>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<section class="mw-section mw-final" aria-labelledby="final-heading">
+		<div class="site-container mw-final__card">
+			<div>
+				<p class="mw-eyebrow mw-eyebrow--invert">Future Solutions template</p>
+				<h2 id="final-heading">Ready to adapt this service structure?</h2>
+			</div>
+			<div class="mw-button-row">
+				<a class="mw-button mw-button--primary" href="/audit">Get This Template Customized</a>
+				<a class="mw-button mw-button--secondary mw-button--invert" href="/demos/solo-practice">Back to Demo Home</a>
+			</div>
+		</div>
+	</section>
+</DemoLayout>
+
+<style>
+	.mw-page-hero,
+	.mw-section {
+		padding-block: clamp(4.5rem, 8vw, 7rem);
+	}
+
+	.mw-page-hero {
+		background:
+			radial-gradient(circle at 78% 8%, rgba(77, 122, 113, 0.12), transparent 32%),
+			linear-gradient(180deg, #ffffff 0%, #f9faf8 80%);
+	}
+
+	.mw-eyebrow {
+		margin-bottom: 1rem;
+		color: #4d7a71;
+		font-size: 0.8125rem;
+		font-weight: 800;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+	}
+
+	.mw-eyebrow--invert {
+		color: #b8d4cc;
+	}
+
+	.mw-page-hero h1,
+	.mw-section h2 {
+		max-width: 900px;
+		color: #1a2330;
+	}
+
+	.mw-lead {
+		max-width: 720px;
+		color: #5c6b6a;
+		font-size: clamp(1.05rem, 1rem + 0.28vw, 1.22rem);
+		line-height: 1.66;
+	}
+
+	.mw-section__intro {
+		max-width: 760px;
+	}
+
+	.mw-button-row {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.875rem;
+		margin-top: 2rem;
+	}
+
+	.mw-button {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 2.875rem;
+		padding: 0.8rem 1.1rem;
+		border-radius: 999px;
+		font-size: 0.9375rem;
+		font-weight: 800;
+		line-height: 1;
+	}
+
+	.mw-button--primary {
+		border: 1px solid transparent;
+		background: #4d7a71;
+		color: #ffffff;
+	}
+
+	.mw-button--primary:hover {
+		background: #3d615a;
+		color: #ffffff;
+	}
+
+	.mw-button--secondary {
+		border-color: rgba(42, 54, 65, 0.12);
+		background: #ffffff;
+		color: #1a2330;
+	}
+
+	.mw-button--secondary:hover {
+		background: #e8f0ee;
+		color: #3d5f57;
+	}
+
+	.mw-button--invert {
+		border-color: rgba(255, 255, 255, 0.35);
+		background: transparent;
+		color: #ffffff;
+	}
+
+	.mw-button--invert:hover {
+		background: rgba(255, 255, 255, 0.12);
+		color: #ffffff;
+	}
+
+	.mw-section--muted {
+		border-block: 1px solid rgba(26, 35, 48, 0.07);
+		background: #eef2f1;
+	}
+
+	.mw-services-grid,
+	.mw-faq-grid {
+		display: grid;
+		gap: 1rem;
+		margin-top: clamp(2rem, 4vw, 3rem);
+	}
+
+	.mw-services-grid {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+
+	.mw-faq-grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	.mw-svc-card,
+	.mw-faq-card,
+	.mw-callout {
+		border: 1px solid rgba(26, 35, 48, 0.09);
+		border-radius: 18px;
+		background: #ffffff;
+		box-shadow: 0 14px 40px rgba(26, 35, 48, 0.045);
+	}
+
+	.mw-svc-card,
+	.mw-faq-card {
+		padding: 1.25rem;
+	}
+
+	.mw-svc-card h3,
+	.mw-faq-card h3 {
+		margin-top: 0;
+		color: #1a2330;
+		font-size: 1.05rem;
+		letter-spacing: -0.02em;
+	}
+
+	.mw-svc-card p,
+	.mw-faq-card p {
+		color: #5c6b6a;
+		font-size: 0.92rem;
+		line-height: 1.62;
+	}
+
+	.mw-svc-card__meta {
+		display: grid;
+		gap: 0.35rem;
+		margin-top: 1rem;
+		padding-top: 1rem;
+		border-top: 1px solid rgba(26, 35, 48, 0.08);
+	}
+
+	.mw-svc-card__meta strong {
+		color: #4d7a71;
+		font-size: 0.75rem;
+		font-weight: 800;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+	}
+
+	.mw-svc-card a {
+		display: inline-flex;
+		margin-top: 1rem;
+		color: #1a2330;
+		font-size: 0.92rem;
+		font-weight: 800;
+	}
+
+	.mw-svc-card a:hover {
+		color: #3d615a;
+	}
+
+	.mw-callout {
+		padding: clamp(1.5rem, 4vw, 3rem);
+	}
+
+	.mw-final {
+		background: #dfe8e6;
+	}
+
+	.mw-final__card {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) auto;
+		gap: 2rem;
+		align-items: end;
+		padding: clamp(1.5rem, 4vw, 3rem);
+		border-radius: 22px;
+		background: #1a2733;
+		box-shadow: 0 24px 60px rgba(26, 35, 48, 0.12);
+	}
+
+	.mw-final h2 {
+		color: #ffffff;
+	}
+
+	@media (max-width: 980px) {
+		.mw-services-grid {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+
+		.mw-final__card {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	@media (max-width: 700px) {
+		.mw-services-grid,
+		.mw-faq-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>
