@@ -3,12 +3,12 @@ import DemoLayout from '../../../layouts/DemoLayout.astro';
 
 const treatmentOptions = ['Injectables', 'Skin Rejuvenation', 'Medical Weight Loss', 'Hormone Support', 'IV Therapy', 'Not sure yet'];
 const nextSteps = ['Consultation', 'Ask a question', 'Learn about pricing', 'Not sure yet'];
-const flowSteps = ['Form submission', 'CRM contact', 'Treatment interest tag', 'Follow-up', 'Consultation path'];
+const flowSteps = ['Inquiry received', 'Team review', 'Interest noted', 'Follow-up', 'Consultation pathway'];
 ---
 
 <DemoLayout
 	title="Book Consultation | Luma Aesthetics Demo"
-	description="A demo consultation page showing how med spa websites can guide visitors toward booking or inquiry."
+	description="Request a consultation at Luma Aesthetics. Share your interests and the team will help guide your next steps."
 	canonicalUrl="https://futursolutions.vercel.app/demos/med-spa/contact/"
 >
 	<section class="luma-page-hero" aria-labelledby="contact-heading">
@@ -16,7 +16,7 @@ const flowSteps = ['Form submission', 'CRM contact', 'Treatment interest tag', '
 			<p class="luma-eyebrow">Consultation</p>
 			<h1 id="contact-heading">A clearer path from interest to consultation.</h1>
 			<p class="luma-lead">
-				This demo page shows how a med spa website can capture interest without overwhelming the visitor.
+				Share what you are interested in and the team will help guide you toward the right consultation path.
 			</p>
 		</div>
 	</section>
@@ -24,14 +24,14 @@ const flowSteps = ['Form submission', 'CRM contact', 'Treatment interest tag', '
 	<section class="luma-section luma-section--muted" aria-labelledby="form-heading">
 		<div class="site-container luma-contact-grid">
 			<div>
-				<p class="luma-eyebrow">Demo form shell</p>
-				<h2 id="form-heading">Capture treatment interest clearly.</h2>
+				<p class="luma-eyebrow">Consultation request</p>
+				<h2 id="form-heading">Request a consultation.</h2>
 				<p class="luma-lead">
-					The form structure keeps the request simple while still collecting enough information to route the inquiry.
+					This form structure keeps the first step simple while collecting enough information to route the inquiry.
 				</p>
 			</div>
 			<div class="luma-form-card">
-				<form aria-label="Luma Aesthetics demo consultation form">
+				<form novalidate onsubmit="return false" aria-label="Luma Aesthetics demo consultation form">
 					<label>
 						<span>Name</span>
 						<input type="text" name="name" autocomplete="name" />
@@ -70,13 +70,14 @@ const flowSteps = ['Form submission', 'CRM contact', 'Treatment interest tag', '
 	<section class="luma-section" aria-labelledby="backend-heading">
 		<div class="site-container">
 			<div class="luma-section__intro">
-				<p class="luma-eyebrow">Backend system</p>
-				<h2 id="backend-heading">This is where the system continues after the form.</h2>
+				<p class="luma-eyebrow">What happens next</p>
+				<h2 id="backend-heading">After you reach out, the practice can route your inquiry cleanly.</h2>
 				<p class="luma-lead">
-					In a real Future Solutions build, this form could create a contact, apply interest tags, trigger follow-up, and organize the lead in a pipeline.
+					Many clinics keep follow-up structured so no question gets missed—often through scheduling tools, secure email, or a CRM that tracks treatment interest.
+					In a full Future Solutions build, this pathway can tie into workflows like tagging, reminders, and pipeline organization.
 				</p>
 			</div>
-			<div class="luma-flow" aria-label="Demo backend flow">
+			<div class="luma-flow" aria-label="Typical inquiry follow-up pathway">
 				{flowSteps.map((step, index) => (
 					<div class="luma-flow__step">
 						<span>{String(index + 1).padStart(2, '0')}</span>

@@ -53,7 +53,7 @@ const { title, description, canonicalUrl } = Astro.props;
 			<div class="site-container demo-footer__inner">
 				<div>
 					<a class="demo-footer__brand" href="/demos/med-spa">Luma Aesthetics</a>
-					<p>A fictional med spa demo by Future Solutions.</p>
+					<p>Demonstration practice site showcasing a Future Solutions website template.</p>
 				</div>
 				<div class="demo-footer__links" aria-label="Luma Aesthetics demo footer links">
 					<a href="/demos/med-spa/treatments">Treatments</a>
@@ -115,6 +115,22 @@ const { title, description, canonicalUrl } = Astro.props;
 
 	.demo-header__nav a:hover {
 		color: #17202a;
+	}
+
+	.demo-header__brand:focus-visible,
+	.demo-header__nav a:focus-visible,
+	.demo-header__cta:focus-visible,
+	.demo-footer__brand:focus-visible,
+	.demo-footer__links a:focus-visible {
+		outline: 2px solid #8f6f63;
+		outline-offset: 3px;
+		border-radius: 6px;
+	}
+
+	:global(main a:focus-visible),
+	:global(main button:focus-visible) {
+		outline: 2px solid #8f6f63;
+		outline-offset: 3px;
 	}
 
 	.demo-header__cta {

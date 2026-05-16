@@ -4,55 +4,53 @@ import DemoLayout from '../../../layouts/DemoLayout.astro';
 const treatments = [
 	{
 		title: 'Injectables',
-		text: 'Thoughtful consultation-based aesthetic treatments designed around natural-looking results.',
+		text: 'Consultation-led aesthetic treatments focused on balance, facial harmony, and natural-looking refinement.',
 	},
 	{
 		title: 'Medical Weight Loss',
-		text: 'Structured support for clients seeking a clearer wellness path.',
+		text: 'A structured wellness pathway for clients looking for guided support, accountability, and clearer next steps.',
 	},
 	{
 		title: 'Hormone Support',
-		text: 'Education-focused care pathways for clients exploring hormone balance.',
+		text: 'Education-first consultations for clients exploring symptoms, options, and wellness goals.',
 	},
 	{
 		title: 'IV Therapy',
-		text: 'Wellness-focused treatments presented with clear expectations and next steps.',
+		text: 'Wellness-focused hydration services presented with clear expectations and simple booking prompts.',
 	},
 ];
 
-const trustCards = ['Clear treatment education', 'Repeated booking prompts', 'Calm premium design', 'Local visibility-ready service structure'];
+const trustCards = ['Thoughtful consultations', 'Clear treatment education', 'Calm clinical environment', 'Simple booking path'];
 const flowSteps = ['Treatment interest', 'Consultation request', 'Intake questions', 'Follow-up'];
 ---
 
 <DemoLayout
 	title="Luma Aesthetics Demo | Future Solutions"
-	description="A Future Solutions med spa website demo for treatment-based health and wellness brands."
+	description="Luma Aesthetics offers consultation-led aesthetic and wellness care with clear education and a calm, personalized experience."
 	canonicalUrl="https://futursolutions.vercel.app/demos/med-spa/"
 >
 	<section class="luma-hero" aria-labelledby="luma-heading">
 		<div class="site-container luma-hero__inner">
 			<div>
-				<p class="luma-eyebrow">Med Spa Website Demo</p>
+				<p class="luma-eyebrow">Aesthetic &amp; Wellness</p>
 				<h1 id="luma-heading">Modern aesthetic care with a calm, clinical touch.</h1>
 				<p class="luma-lead">
-					Luma Aesthetics is a fictional med spa brand designed to show how a treatment-based wellness website can build trust, explain services clearly, and guide visitors toward booking.
+					Luma Aesthetics helps clients explore aesthetic and wellness treatments through clear education, thoughtful consultations, and a calm, personalized experience.
 				</p>
 				<div class="luma-button-row">
 					<a class="luma-button luma-button--primary" href="/demos/med-spa/contact">Book Consultation</a>
 					<a class="luma-button luma-button--secondary" href="/demos/med-spa/treatments">View Treatments</a>
 				</div>
-				<p class="luma-trust-line">
-					Demo template for med spas, aesthetic clinics, weight loss clinics, hormone therapy, IV therapy, and wellness studios.
-				</p>
+				<p class="luma-trust-line">A Future Solutions demo template for med spas and treatment-based wellness clinics.</p>
 			</div>
 			<div class="luma-hero__panel" aria-hidden="true">
 				<div class="luma-hero__card">
-					<span>Consultation Path</span>
-					<strong>Treatment interest captured</strong>
-					<p>Service education · Consultation request · Follow-up ready</p>
+					<span>Consultation-ready</span>
+					<strong>Education first. Questions welcome.</strong>
+					<p>Learn about options · Speak with the team · Plan your next step</p>
 				</div>
 				<div class="luma-hero__metric">
-					<span>Premium care, clearly explained.</span>
+					<span>Calm pacing, attentive care.</span>
 				</div>
 			</div>
 		</div>
@@ -61,8 +59,8 @@ const flowSteps = ['Treatment interest', 'Consultation request', 'Intake questio
 	<section class="luma-section luma-section--muted" aria-labelledby="treatment-preview-heading">
 		<div class="site-container">
 			<div class="luma-section__intro">
-				<p class="luma-eyebrow">Treatment clarity</p>
-				<h2 id="treatment-preview-heading">Treatments organized around what visitors need to understand.</h2>
+				<p class="luma-eyebrow">Services</p>
+				<h2 id="treatment-preview-heading">Care categories with room to learn and ask questions.</h2>
 			</div>
 			<div class="luma-grid luma-grid--4">
 				{treatments.map((treatment) => (
@@ -79,8 +77,8 @@ const flowSteps = ['Treatment interest', 'Consultation request', 'Intake questio
 	<section class="luma-section" aria-labelledby="trust-heading">
 		<div class="site-container">
 			<div class="luma-section__intro">
-				<p class="luma-eyebrow">Trust system</p>
-				<h2 id="trust-heading">Built to earn trust before the consultation.</h2>
+				<p class="luma-eyebrow">What to expect</p>
+				<h2 id="trust-heading">Clear information and a steadier pace from first visit to consultation.</h2>
 			</div>
 			<div class="luma-grid luma-grid--4">
 				{trustCards.map((card) => (
@@ -95,10 +93,10 @@ const flowSteps = ['Treatment interest', 'Consultation request', 'Intake questio
 
 	<section id="about" class="luma-section luma-about" aria-labelledby="about-heading">
 		<div class="site-container luma-about__card">
-			<p class="luma-eyebrow">About the demo</p>
-			<h2 id="about-heading">A calmer way to present aesthetic care.</h2>
+			<p class="luma-eyebrow">About</p>
+			<h2 id="about-heading">A calmer approach to aesthetic care.</h2>
 			<p class="luma-lead">
-				This demo shows how a med spa website can feel premium without becoming cluttered, exaggerated, or overly sales-driven. The structure gives visitors enough information to feel confident taking the next step.
+				Luma Aesthetics is built around a calmer approach to aesthetic care: clear information, thoughtful recommendations, and a consultation process designed to help clients feel informed before taking the next step.
 			</p>
 		</div>
 	</section>
@@ -106,13 +104,13 @@ const flowSteps = ['Treatment interest', 'Consultation request', 'Intake questio
 	<section class="luma-section luma-section--muted" aria-labelledby="conversion-heading">
 		<div class="site-container">
 			<div class="luma-section__intro">
-				<p class="luma-eyebrow">Conversion flow</p>
-				<h2 id="conversion-heading">Make the next step obvious.</h2>
+				<p class="luma-eyebrow">Consultation journey</p>
+				<h2 id="conversion-heading">A simple path when you are ready to connect.</h2>
 				<p class="luma-lead">
-					Every major section gives visitors a clear path toward consultation while keeping the tone calm and professional.
+					When you find a service that fits your goals, you can request a consultation, share a few details, and hear back with next steps—without pressure or clutter.
 				</p>
 			</div>
-			<div class="luma-flow" aria-label="Demo conversion flow">
+			<div class="luma-flow" aria-label="Luma Aesthetics consultation journey">
 				{flowSteps.map((step, index) => (
 					<div class="luma-flow__step">
 						<span>{String(index + 1).padStart(2, '0')}</span>

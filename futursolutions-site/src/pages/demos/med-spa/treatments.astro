@@ -4,67 +4,77 @@ import DemoLayout from '../../../layouts/DemoLayout.astro';
 const treatments = [
 	{
 		title: 'Injectables',
-		description: 'Consultation-based aesthetic treatments with education around goals, preferences, and next steps.',
-		bestFor: 'Clients exploring subtle aesthetic refreshment.',
+		description:
+			'Consultation-based options designed to support natural-looking refinement, guided by your goals, preferences, and candidacy questions.',
+		bestFor: 'Clients who want to understand options before deciding what feels right.',
 	},
 	{
 		title: 'Skin Rejuvenation',
-		description: 'Skin-focused services presented with clear expectations, supportive education, and consultation prompts.',
-		bestFor: 'Clients interested in texture, tone, and overall skin care planning.',
+		description:
+			'Education-focused skin care guidance that helps you understand what each visit may involve, what to expect over time, and how to plan next steps.',
+		bestFor: 'Clients interested in texture, tone, and a steady, informed approach.',
 	},
 	{
 		title: 'Medical Weight Loss',
-		description: 'A structured wellness pathway that explains support options without overpromising outcomes.',
-		bestFor: 'Clients seeking guided conversations about weight and wellness goals.',
+		description:
+			'A structured, consultation-led pathway designed to support accountability and clarity—without promising specific outcomes.',
+		bestFor: 'Clients looking for guided support and a clearer conversation about wellness goals.',
 	},
 	{
 		title: 'Hormone Support',
-		description: 'Education-first care pathways for clients who want to discuss symptoms, options, and provider guidance.',
-		bestFor: 'Clients exploring hormone-related wellness conversations.',
+		description:
+			'Education-first visits that help you explore symptoms and options with a provider, so you can make informed decisions at your own pace.',
+		bestFor: 'Clients who want a calm setting to ask questions and understand next steps.',
 	},
 	{
 		title: 'IV Therapy',
-		description: 'Wellness-focused treatments explained with practical expectations and simple booking direction.',
-		bestFor: 'Clients interested in wellness support and hydration-focused services.',
+		description:
+			'Wellness-focused hydration services presented with practical expectations, safety-minded framing, and a simple path to book or ask questions.',
+		bestFor: 'Clients interested in supportive wellness visits with clear communication.',
 	},
 	{
 		title: 'Wellness Consultation',
-		description: 'A clear entry point for visitors who are not sure which service is the right fit.',
-		bestFor: 'New clients who want guidance before choosing a treatment path.',
+		description:
+			'A dedicated entry point when you are not sure where to start—focused on listening, guidance, and routing you toward the right conversation.',
+		bestFor: 'New clients who want help choosing a sensible first step.',
 	},
 ];
 
 const faqs = [
 	{
 		question: 'How do I know which treatment is right for me?',
-		answer: 'A consultation-focused structure helps visitors ask questions, share goals, and choose the next step with guidance rather than guessing.',
+		answer:
+			'Most clients start with a consultation so a provider can review your goals, explain candidacy in general terms, and recommend a sensible path forward.',
 	},
 	{
-		question: 'Why does each treatment need its own page?',
-		answer: 'Dedicated pages give each service room for education, expectations, FAQs, trust signals, and a clear consultation prompt.',
+		question: 'Why are treatments organized as separate pages?',
+		answer:
+			'Separate pages keep education focused, make expectations easier to scan, and give you a calm place to read before you reach out.',
 	},
 	{
-		question: 'Can this structure support local SEO?',
-		answer: 'Yes. Service-specific pages can be structured around search-friendly headings, metadata, internal links, and local service relevance.',
+		question: 'Can my local community find detailed service information online?',
+		answer:
+			'Yes. When pages are structured clearly, practices can reinforce helpful headings, descriptive content, internal links between related services, and location-relevant detail.',
 	},
 	{
-		question: 'Can this connect to a booking or follow-up system?',
-		answer: 'Yes. In a real build, treatment interest can connect to forms, booking steps, CRM tags, follow-up reminders, and pipeline tracking.',
+		question: 'Can consultation requests connect to scheduling or follow-up?',
+		answer:
+			'Many practices route inquiries through email, scheduling tools, or a CRM so the team can respond consistently and stay organized.',
 	},
 ];
 ---
 
 <DemoLayout
 	title="Treatments | Luma Aesthetics Demo"
-	description="A demo treatments page showing how med spa services can be organized for clarity, trust, and booking conversion."
+	description="Explore Luma Aesthetics treatment categories with clear descriptions, practical expectations, and consultation-focused next steps."
 	canonicalUrl="https://futursolutions.vercel.app/demos/med-spa/treatments/"
 >
 	<section class="luma-page-hero" aria-labelledby="treatments-heading">
 		<div class="site-container">
 			<p class="luma-eyebrow">Treatments</p>
-			<h1 id="treatments-heading">Clear treatment pages help visitors choose the right next step.</h1>
+			<h1 id="treatments-heading">Care options explained with patience, clarity, and room for questions.</h1>
 			<p class="luma-lead">
-				This page demonstrates how treatment-based services can be organized with clear descriptions, expectations, FAQs, and consultation-focused CTAs.
+				Explore treatment categories with clear descriptions, practical expectations, and consultation-focused next steps.
 			</p>
 			<div class="luma-button-row">
 				<a class="luma-button luma-button--primary" href="/demos/med-spa/contact">Book Consultation</a>
@@ -75,8 +85,8 @@ const faqs = [
 	<section class="luma-section luma-section--muted" aria-labelledby="treatment-grid-heading">
 		<div class="site-container">
 			<div class="luma-section__intro">
-				<p class="luma-eyebrow">Service clarity</p>
-				<h2 id="treatment-grid-heading">Treatment options with clear next steps.</h2>
+				<p class="luma-eyebrow">Overview</p>
+				<h2 id="treatment-grid-heading">Services framed for clarity, questions, and consultation.</h2>
 			</div>
 			<div class="luma-treatment-grid">
 				{treatments.map((treatment) => (
@@ -96,10 +106,10 @@ const faqs = [
 
 	<section class="luma-section" aria-labelledby="structure-heading">
 		<div class="site-container luma-callout">
-			<p class="luma-eyebrow">Service page system</p>
-			<h2 id="structure-heading">Each service can become its own conversion page.</h2>
+			<p class="luma-eyebrow">How content can grow</p>
+			<h2 id="structure-heading">Room to grow with dedicated treatment pages.</h2>
 			<p class="luma-lead">
-				For a real med spa, each treatment can have a dedicated page with education, FAQs, trust signals, local SEO structure, and booking prompts.
+				For a real med spa website, each treatment can become a dedicated page with education, FAQs, trust signals, local SEO structure, and booking prompts.
 			</p>
 		</div>
 	</section>
@@ -108,7 +118,7 @@ const faqs = [
 		<div class="site-container">
 			<div class="luma-section__intro">
 				<p class="luma-eyebrow">FAQ</p>
-				<h2 id="faq-heading">Questions this structure can answer.</h2>
+				<h2 id="faq-heading">Questions clients often ask first.</h2>
 			</div>
 			<div class="luma-faq-grid">
 				{faqs.map((faq) => (
