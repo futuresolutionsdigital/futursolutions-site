@@ -48,7 +48,7 @@ const fallback = concernPaths[6];
 			)}
 
 		<div class="guidance__action">
-			<a href="/demos/med-spa/concerns" class="guidance__action-link">Explore All Concerns &rarr;</a>
+			<a href="/demos/med-spa/concerns" class="guidance__action-link">Find My Treatment Path &rarr;</a>
 			<span class="guidance__action-sep" aria-hidden="true">&middot;</span>
 			<p>Or skip ahead &mdash;</p>
 			<a class="aurea-btn aurea-btn--champagne" href="/demos/med-spa/contact">Book a Consultation</a>
@@ -253,9 +253,21 @@ const fallback = concernPaths[6];
 			grid-template-columns: 1fr;
 		}
 
+		.guidance__card {
+			padding: 1.35rem;
+		}
+
+		.guidance__fallback {
+			padding: 1.35rem;
+		}
+
 		.guidance__action {
 			flex-direction: column;
 			gap: 0.65rem;
+		}
+
+		.guidance__action-sep {
+			display: none;
 		}
 	}
 </style>

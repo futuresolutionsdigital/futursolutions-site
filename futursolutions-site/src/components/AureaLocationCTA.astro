@@ -27,7 +27,7 @@
 				</div>
 
 				<div class="aurea-btn-row">
-					<a class="aurea-btn aurea-btn--primary" href="/demos/med-spa/contact">Book Consultation</a>
+					<a class="aurea-btn aurea-btn--primary" href="/demos/med-spa/contact">Book a Consultation</a>
 					<a class="aurea-btn aurea-btn--secondary" href="tel:+19515550147">Call Now</a>
 				</div>
 			</div>
@@ -176,7 +176,7 @@
 	.loc__final-heading {
 		font-size: clamp(1.8rem, 3.5vw, 2.6rem);
 		color: var(--aurea-white);
-		max-width: 16ch;
+		max-width: 20ch;
 		line-height: 1.15;
 	}
 
@@ -215,10 +215,25 @@
 		.loc__final-card {
 			grid-template-columns: 1fr;
 			align-items: start;
+			text-align: center;
+		}
+
+		.loc__final-heading {
+			max-width: none;
+		}
+
+		.loc__final-tagline {
+			margin-inline: auto;
+		}
+
+		.loc__final-btns {
+			justify-content: center;
 		}
 
 		.loc__map-card {
 			min-height: 280px;
+			max-width: 400px;
+			margin-inline: auto;
 		}
 	}
 </style>
