@@ -235,11 +235,13 @@ import { resourceLibraryItems, resourceFilters } from '../../data/association';
 	.res-empty p { font-size: 0.95rem; color: var(--assoc-slate); margin-bottom: 1rem; }
 
 	.res-pagination { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 0.35rem; margin-top: 1.5rem; }
-	.res-pg__btn, .res-pg__num { padding: 0.4rem 0.75rem; border: 1px solid var(--assoc-border); border-radius: 6px; background: var(--assoc-white); color: var(--assoc-navy); font-size: 0.8rem; font-weight: 700; font-family: inherit; cursor: pointer; line-height: 1; }
-	.res-pg__btn:hover:not(:disabled), .res-pg__num:hover:not(.res-pg__num--active) { border-color: var(--assoc-teal); color: var(--assoc-teal); }
-	.res-pg__btn:disabled { opacity: 0.35; cursor: default; }
-	.res-pg__num--active { background: var(--assoc-teal); color: var(--assoc-white); border-color: var(--assoc-teal); }
-	.res-pg__num { min-width: 2rem; text-align: center; }
+	.res-pagination :global(.res-pg__btn),
+	.res-pagination :global(.res-pg__num) { padding: 0.45rem 0.8rem; border: 1px solid var(--assoc-border); border-radius: 8px; background: var(--assoc-white); color: var(--assoc-navy); font-size: 0.8rem; font-weight: 700; font-family: inherit; cursor: pointer; line-height: 1; min-height: 2.25rem; }
+	.res-pagination :global(.res-pg__btn:hover:not(:disabled)),
+	.res-pagination :global(.res-pg__num:hover:not(.res-pg__num--active)) { border-color: var(--assoc-teal); color: var(--assoc-teal); }
+	.res-pagination :global(.res-pg__btn:disabled) { opacity: 0.4; cursor: not-allowed; }
+	.res-pagination :global(.res-pg__num) { min-width: 2.25rem; text-align: center; }
+	.res-pagination :global(.res-pg__num--active) { background: var(--assoc-teal); color: #fff; border-color: var(--assoc-teal); box-shadow: 0 0 0 3px rgba(31, 111, 120, 0.14); }
 
 	@media (max-width: 960px) { .res-grid { grid-template-columns: 1fr 1fr; } }
 	@media (max-width: 600px) {

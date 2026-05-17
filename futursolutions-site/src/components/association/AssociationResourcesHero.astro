@@ -19,17 +19,18 @@ const h = resourcesHero;
 	</div>
 </section>
 
-<style>
+<style is:global>
 	.res-hero {
 		padding-block: clamp(3rem, 6vw, 5rem);
 		background: linear-gradient(175deg, var(--assoc-bg) 40%, color-mix(in srgb, var(--assoc-sand) 40%, var(--assoc-bg)) 100%);
 		border-bottom: 1px solid var(--assoc-border);
 	}
-	.res-hero__content { width: min(100%, 760px); margin-inline: auto; text-align: center; }
-	.res-hero h1 { text-wrap: balance; }
-	.res-hero__lead { font-size: clamp(1rem, 0.98rem + 0.15vw, 1.1rem); line-height: 1.6; color: var(--assoc-slate); margin-inline: auto; max-width: 620px; }
+	.res-hero__content { width: min(100%, 820px); max-width: 820px; margin-inline: auto; text-align: center; }
+	.res-hero__content h1 { text-wrap: balance; margin-inline: auto; }
+	.res-hero__content p { margin-inline: auto; }
+	.res-hero__lead { font-size: clamp(1rem, 0.98rem + 0.15vw, 1.1rem); line-height: 1.6; color: var(--assoc-slate); max-width: 620px; }
 	.res-hero__support { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.02em; color: var(--assoc-slate); opacity: 0.6; margin-bottom: 0.25rem; }
-	.res-hero .assoc-btn-row { justify-content: center; }
+	.res-hero__content .assoc-btn-row { justify-content: center; }
 	.res-hero__tertiary { display: inline-block; margin-top: 0.75rem; font-size: 0.85rem; font-weight: 700; color: var(--assoc-teal); }
 	.res-hero__tertiary:hover { color: var(--assoc-navy); }
 </style>

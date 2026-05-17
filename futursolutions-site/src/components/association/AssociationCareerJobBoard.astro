@@ -228,11 +228,13 @@ import { careerFeaturedJobs, careerJobFilters } from '../../data/association';
 	.cj-empty p { font-size: 0.95rem; color: var(--assoc-slate); margin-bottom: 1rem; }
 
 	.cj-pagination { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 0.35rem; margin-top: 1.5rem; }
-	.cj-pg__btn, .cj-pg__num { padding: 0.4rem 0.75rem; border: 1px solid var(--assoc-border); border-radius: 6px; background: var(--assoc-white); color: var(--assoc-navy); font-size: 0.8rem; font-weight: 700; font-family: inherit; cursor: pointer; line-height: 1; }
-	.cj-pg__btn:hover:not(:disabled), .cj-pg__num:hover:not(.cj-pg__num--active) { border-color: var(--assoc-teal); color: var(--assoc-teal); }
-	.cj-pg__btn:disabled { opacity: 0.35; cursor: default; }
-	.cj-pg__num--active { background: var(--assoc-teal); color: var(--assoc-white); border-color: var(--assoc-teal); }
-	.cj-pg__num { min-width: 2rem; text-align: center; }
+	.cj-pagination :global(.cj-pg__btn),
+	.cj-pagination :global(.cj-pg__num) { padding: 0.45rem 0.8rem; border: 1px solid var(--assoc-border); border-radius: 8px; background: var(--assoc-white); color: var(--assoc-navy); font-size: 0.8rem; font-weight: 700; font-family: inherit; cursor: pointer; line-height: 1; min-height: 2.25rem; }
+	.cj-pagination :global(.cj-pg__btn:hover:not(:disabled)),
+	.cj-pagination :global(.cj-pg__num:hover:not(.cj-pg__num--active)) { border-color: var(--assoc-teal); color: var(--assoc-teal); }
+	.cj-pagination :global(.cj-pg__btn:disabled) { opacity: 0.4; cursor: not-allowed; }
+	.cj-pagination :global(.cj-pg__num) { min-width: 2.25rem; text-align: center; }
+	.cj-pagination :global(.cj-pg__num--active) { background: var(--assoc-teal); color: #fff; border-color: var(--assoc-teal); box-shadow: 0 0 0 3px rgba(31, 111, 120, 0.14); }
 
 	@media (max-width: 768px) { .cj-filters__row { flex-direction: column; } .cj-filters__field, .cj-filters__field--search { min-width: 100%; flex: auto; } }
 	@media (max-width: 600px) { .cj-grid { grid-template-columns: 1fr; } }
