@@ -1,0 +1,28 @@
+---
+import { chapterDetailAnnouncements } from '../../data/association';
+---
+
+<section class="assoc-section" aria-labelledby="chd-announce-heading">
+	<div class="assoc-container">
+		<p class="assoc-eyebrow">Updates</p>
+		<h2 id="chd-announce-heading">Chapter announcements</h2>
+		<div class="chd-announce-grid">
+			{chapterDetailAnnouncements.map((a) => (
+				<div class="assoc-card chd-announce-card">
+					<span class="chd-announce-card__date">{a.date}</span>
+					<h3>{a.title}</h3>
+					<p>{a.summary}</p>
+				</div>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+	.chd-announce-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2rem; }
+	.chd-announce-card { padding: 1.25rem; }
+	.chd-announce-card__date { display: block; margin-bottom: 0.5rem; font-size: 0.72rem; font-weight: 600; color: var(--assoc-slate); }
+	.chd-announce-card h3 { font-size: 0.95rem; margin-bottom: 0.3rem; line-height: 1.3; }
+	.chd-announce-card p { font-size: 0.82rem; line-height: 1.5; margin: 0; }
+	@media (max-width: 768px) { .chd-announce-grid { grid-template-columns: 1fr; } }
+</style>

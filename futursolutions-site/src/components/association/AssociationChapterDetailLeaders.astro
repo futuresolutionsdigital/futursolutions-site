@@ -1,0 +1,40 @@
+---
+import { chapterDetailLeaders } from '../../data/association';
+const bgColors = ['var(--assoc-teal)', 'var(--assoc-navy)', 'var(--assoc-coral)'];
+---
+
+<section class="assoc-section" aria-labelledby="chd-leaders-heading">
+	<div class="assoc-container">
+		<p class="assoc-eyebrow">Chapter Leadership</p>
+		<h2 id="chd-leaders-heading">Meet your chapter leaders</h2>
+		<div class="chd-leaders-grid">
+			{chapterDetailLeaders.map((l, i) => (
+				<div class="assoc-card chd-leader-card">
+					<div class="chd-leader-card__avatar" style={`background: ${bgColors[i]}`} aria-hidden="true">
+						<span>{l.initials}</span>
+					</div>
+					<div class="chd-leader-card__body">
+						<h3>{l.name}</h3>
+						<p class="chd-leader-card__role">{l.role}</p>
+						<p>{l.bio}</p>
+						<a class="chd-leader-card__contact" href="/demos/association/contact">Contact →</a>
+					</div>
+				</div>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+	.chd-leaders-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2rem; }
+	.chd-leader-card { display: flex; gap: 1rem; padding: 1.25rem; }
+	.chd-leader-card__avatar { flex-shrink: 0; display: flex; align-items: center; justify-content: center; width: 3rem; height: 3rem; border-radius: 50%; color: var(--assoc-white); }
+	.chd-leader-card__avatar span { font-size: 0.82rem; font-weight: 800; letter-spacing: 0.03em; }
+	.chd-leader-card__body { flex: 1; }
+	.chd-leader-card h3 { font-size: 1rem; margin-bottom: 0.1rem; }
+	.chd-leader-card__role { font-size: 0.75rem; font-weight: 700; color: var(--assoc-teal); margin-bottom: 0.35rem; }
+	.chd-leader-card p:last-of-type { font-size: 0.82rem; line-height: 1.5; }
+	.chd-leader-card__contact { display: inline-block; margin-top: 0.5rem; font-size: 0.78rem; font-weight: 700; color: var(--assoc-teal); }
+	.chd-leader-card__contact:hover { color: var(--assoc-navy); }
+	@media (max-width: 768px) { .chd-leaders-grid { grid-template-columns: 1fr; } }
+</style>

@@ -1,0 +1,26 @@
+---
+import { chapterDetailQuickFacts } from '../../data/association';
+---
+
+<section class="assoc-section" aria-label="Chapter quick facts">
+	<div class="assoc-container">
+		<div class="chd-facts">
+			{chapterDetailQuickFacts.map((f) => (
+				<div class="chd-facts__item">
+					<span class="chd-facts__label">{f.label}</span>
+					<span class="chd-facts__value">{f.value}</span>
+				</div>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+	.chd-facts { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0; border: 1px solid var(--assoc-border); border-radius: var(--assoc-radius); background: var(--assoc-white); overflow: hidden; }
+	.chd-facts__item { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 1rem 0.5rem; border-right: 1px solid var(--assoc-border); }
+	.chd-facts__item:last-child { border-right: none; }
+	.chd-facts__label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--assoc-slate); margin-bottom: 0.2rem; }
+	.chd-facts__value { font-size: 0.92rem; font-weight: 800; color: var(--assoc-navy); }
+	@media (max-width: 768px) { .chd-facts { grid-template-columns: repeat(3, 1fr); } .chd-facts__item:nth-child(3) { border-right: none; } }
+	@media (max-width: 480px) { .chd-facts { grid-template-columns: repeat(2, 1fr); } .chd-facts__item:nth-child(even) { border-right: none; } }
+</style>

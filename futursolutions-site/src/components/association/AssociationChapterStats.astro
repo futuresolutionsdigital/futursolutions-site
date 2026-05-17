@@ -1,0 +1,23 @@
+---
+import { chapterStats } from '../../data/association';
+---
+
+<section class="ch-stats" aria-label="Chapter statistics">
+	<div class="assoc-container ch-stats__inner">
+		{chapterStats.map((s) => (
+			<div class="ch-stats__item">
+				<span class="ch-stats__value">{s.value}</span>
+				<span class="ch-stats__label">{s.label}</span>
+			</div>
+		))}
+	</div>
+</section>
+
+<style>
+	.ch-stats { padding-block: clamp(1.25rem, 2.5vw, 2rem); background: var(--assoc-navy); color: var(--assoc-white); }
+	.ch-stats__inner { display: flex; flex-wrap: wrap; justify-content: center; gap: clamp(1.25rem, 3.5vw, 2.75rem); }
+	.ch-stats__item { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 0.1rem; }
+	.ch-stats__value { font-size: clamp(1.4rem, 1.2rem + 0.7vw, 1.85rem); font-weight: 800; letter-spacing: -0.02em; line-height: 1; }
+	.ch-stats__label { font-size: 0.72rem; font-weight: 600; color: rgba(255, 255, 255, 0.55); }
+	@media (max-width: 520px) { .ch-stats__item { min-width: 70px; } }
+</style>

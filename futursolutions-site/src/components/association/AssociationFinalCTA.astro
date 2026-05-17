@@ -1,9 +1,23 @@
 ---
-const ctaData = {
+interface Props {
+	headline?: string;
+	subheadline?: string;
+	primaryCta?: { text: string; href: string };
+	secondaryCta?: { text: string; href: string };
+}
+
+const defaults = {
 	headline: 'Stronger practice starts with stronger association.',
-	description: 'Get the advocacy, education, career tools, local connections, and professional community that help you move forward — at every stage of your career.',
+	subheadline: 'Get the advocacy, education, career tools, local connections, and professional community that help you move forward — at every stage of your career.',
 	primaryCta: { text: 'Join the Association', href: '/demos/association/membership' },
 	secondaryCta: { text: 'Explore Member Benefits', href: '/demos/association/membership' },
+};
+
+const ctaData = {
+	headline: Astro.props.headline || defaults.headline,
+	description: Astro.props.subheadline || defaults.subheadline,
+	primaryCta: Astro.props.primaryCta || defaults.primaryCta,
+	secondaryCta: Astro.props.secondaryCta || defaults.secondaryCta,
 };
 ---
 

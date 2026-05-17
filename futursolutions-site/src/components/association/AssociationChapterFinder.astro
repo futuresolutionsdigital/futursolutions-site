@@ -1,0 +1,148 @@
+---
+import { chapterRegions, chapterFinderFilters } from '../../data/association';
+---
+
+<section class="assoc-section" id="finder" aria-labelledby="ch-finder-heading">
+	<div class="assoc-container">
+		<p class="assoc-eyebrow">Find Your Chapter</p>
+		<h2 id="ch-finder-heading">Find the chapter closest to you.</h2>
+
+		<div class="ch-finder-filters" role="search" aria-label="Filter chapters">
+			<div class="ch-finder-filters__row">
+				<div class="ch-finder-filters__field ch-finder-filters__field--search">
+					<label for="ch-search" class="sr-only">Search chapters</label>
+					<input type="text" id="ch-search" class="ch-finder-filters__input" placeholder="Search by city, region, or chapter…" data-ch-search />
+				</div>
+				<div class="ch-finder-filters__field">
+					<label for="ch-region" class="sr-only">Region</label>
+					<select id="ch-region" class="ch-finder-filters__select" data-ch-filter="region">
+						<option value="">All Regions</option>
+						{chapterFinderFilters.regions.map((r) => <option value={r}>{r}</option>)}
+					</select>
+				</div>
+				<div class="ch-finder-filters__field">
+					<label for="ch-interest" class="sr-only">Interest</label>
+					<select id="ch-interest" class="ch-finder-filters__select" data-ch-filter="interest">
+						<option value="">All Interests</option>
+						{chapterFinderFilters.interests.map((i) => <option value={i}>{i.charAt(0).toUpperCase() + i.slice(1)}</option>)}
+					</select>
+				</div>
+				<button class="ch-finder-filters__clear" type="button" data-ch-clear>Clear</button>
+			</div>
+		</div>
+
+		<p class="ch-finder-count" data-ch-count>Showing {chapterRegions.length} chapters</p>
+
+		<div class="ch-finder-grid" data-ch-grid>
+			{chapterRegions.map((c) => (
+				<a
+					href={c.href}
+					class="assoc-card ch-region-card"
+					data-ch-card
+					data-ch-name={c.name.toLowerCase()}
+					data-ch-summary={c.summary.toLowerCase()}
+					data-ch-city={c.cityFocus.toLowerCase()}
+					data-ch-region={c.region}
+					data-ch-tags={c.tags.join(' ')}
+				>
+					<h3>{c.name}</h3>
+					<p class="ch-region-card__summary">{c.summary}</p>
+					<div class="ch-region-card__meta">
+						<span>{c.memberCount} members</span>
+						<span class="ch-region-card__dot" aria-hidden="true">·</span>
+						<span>{c.upcomingEvents} upcoming events</span>
+						<span class="ch-region-card__dot" aria-hidden="true">·</span>
+						<span>{c.meetingFrequency}</span>
+					</div>
+					<div class="ch-region-card__tags">
+						{c.tags.map((t) => <span class="ch-region-card__tag">{t}</span>)}
+					</div>
+					<span class="ch-region-card__cta">View Chapter →</span>
+				</a>
+			))}
+		</div>
+
+		<div class="ch-finder-empty" data-ch-empty hidden>
+			<p>No chapters match your search. Try a different city or clear your filters.</p>
+			<button class="assoc-btn assoc-btn--secondary" type="button" data-ch-clear-empty>Clear Filters</button>
+		</div>
+	</div>
+</section>
+
+<script is:inline>
+(() => {
+	var grid = document.querySelector('[data-ch-grid]');
+	var cards = grid ? grid.querySelectorAll('[data-ch-card]') : [];
+	var search = document.querySelector('[data-ch-search]');
+	var regionSel = document.querySelector('[data-ch-filter="region"]');
+	var interestSel = document.querySelector('[data-ch-filter="interest"]');
+	var countEl = document.querySelector('[data-ch-count]');
+	var emptyEl = document.querySelector('[data-ch-empty]');
+	var clearBtns = document.querySelectorAll('[data-ch-clear], [data-ch-clear-empty]');
+	if (!grid || !cards.length) return;
+
+	function apply() {
+		var q = (search ? search.value : '').toLowerCase().trim();
+		var reg = regionSel ? regionSel.value : '';
+		var interest = interestSel ? interestSel.value : '';
+		var shown = 0;
+		cards.forEach(function(card) {
+			var match = true;
+			if (q) {
+				var n = card.getAttribute('data-ch-name') || '';
+				var s = card.getAttribute('data-ch-summary') || '';
+				var c = card.getAttribute('data-ch-city') || '';
+				if (n.indexOf(q) === -1 && s.indexOf(q) === -1 && c.indexOf(q) === -1) match = false;
+			}
+			if (match && reg && card.getAttribute('data-ch-region') !== reg) match = false;
+			if (match && interest) {
+				var tags = card.getAttribute('data-ch-tags') || '';
+				if (tags.indexOf(interest) === -1) match = false;
+			}
+			card.hidden = !match;
+			if (match) shown++;
+		});
+		if (countEl) countEl.textContent = 'Showing ' + shown + ' chapter' + (shown !== 1 ? 's' : '');
+		if (emptyEl) emptyEl.hidden = shown > 0;
+	}
+
+	if (search) search.addEventListener('input', apply);
+	if (regionSel) regionSel.addEventListener('change', apply);
+	if (interestSel) interestSel.addEventListener('change', apply);
+	clearBtns.forEach(function(btn) {
+		btn.addEventListener('click', function() {
+			if (search) search.value = '';
+			if (regionSel) regionSel.value = '';
+			if (interestSel) interestSel.value = '';
+			apply();
+		});
+	});
+})();
+</script>
+
+<style>
+	.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
+	.ch-finder-filters { margin-top: 2rem; }
+	.ch-finder-filters__row { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; }
+	.ch-finder-filters__field { flex: 1; min-width: 160px; }
+	.ch-finder-filters__field--search { flex: 2; min-width: 220px; }
+	.ch-finder-filters__input, .ch-finder-filters__select { width: 100%; padding: 0.55rem 0.75rem; border: 1px solid var(--assoc-border); border-radius: 8px; font-size: 0.85rem; font-family: inherit; background: var(--assoc-white); color: var(--assoc-navy); }
+	.ch-finder-filters__input:focus, .ch-finder-filters__select:focus { outline: 2px solid var(--assoc-teal); outline-offset: -1px; border-color: var(--assoc-teal); }
+	.ch-finder-filters__clear { padding: 0.55rem 1rem; border: 1px solid var(--assoc-border); border-radius: 8px; background: var(--assoc-white); color: var(--assoc-slate); font-size: 0.82rem; font-weight: 700; cursor: pointer; white-space: nowrap; }
+	.ch-finder-filters__clear:hover { border-color: var(--assoc-teal); color: var(--assoc-teal); }
+	.ch-finder-count { margin-top: 1rem; font-size: 0.82rem; font-weight: 700; color: var(--assoc-slate); }
+	.ch-finder-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 0.5rem; }
+	.ch-region-card { display: flex; flex-direction: column; padding: 1.5rem; transition: border-color 0.15s ease, transform 0.15s ease; }
+	.ch-region-card:hover { border-color: var(--assoc-teal); transform: translateY(-1px); }
+	.ch-region-card h3 { font-size: 1.1rem; margin-bottom: 0.35rem; }
+	.ch-region-card__summary { font-size: 0.85rem; line-height: 1.5; flex: 1; }
+	.ch-region-card__meta { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.65rem; padding-top: 0.55rem; border-top: 1px solid var(--assoc-border); font-size: 0.72rem; font-weight: 600; color: var(--assoc-slate); }
+	.ch-region-card__dot { opacity: 0.35; }
+	.ch-region-card__tags { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.5rem; }
+	.ch-region-card__tag { padding: 0.12rem 0.4rem; border-radius: 4px; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; background: var(--assoc-teal-light); color: var(--assoc-teal); }
+	.ch-region-card__cta { margin-top: 0.75rem; font-size: 0.82rem; font-weight: 700; color: var(--assoc-teal); }
+	.ch-finder-empty { text-align: center; padding: 3rem 1rem; }
+	.ch-finder-empty p { font-size: 0.95rem; color: var(--assoc-slate); margin-bottom: 1rem; }
+	@media (max-width: 768px) { .ch-finder-grid { grid-template-columns: 1fr 1fr; } }
+	@media (max-width: 520px) { .ch-finder-filters__row { flex-direction: column; } .ch-finder-filters__field, .ch-finder-filters__field--search { min-width: 100%; flex: auto; } .ch-finder-grid { grid-template-columns: 1fr; } }
+</style>

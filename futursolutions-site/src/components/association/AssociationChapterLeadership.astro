@@ -1,0 +1,30 @@
+---
+import { chapterLeadership } from '../../data/association';
+---
+
+<section class="assoc-section assoc-section--warm" id="leadership" aria-labelledby="ch-leadership-heading">
+	<div class="assoc-container">
+		<p class="assoc-eyebrow">Volunteer Leadership</p>
+		<h2 id="ch-leadership-heading">Lead locally. Shape the profession statewide.</h2>
+		<p class="assoc-lead">Chapter leadership is the backbone of the MHPA community. Volunteer roles offer professional development, network expansion, and direct influence on how the association serves members.</p>
+		<div class="ch-lead-grid">
+			{chapterLeadership.map((r) => (
+				<div class="assoc-card ch-lead-card">
+					<h3>{r.role}</h3>
+					<p>{r.summary}</p>
+					<span class="ch-lead-card__commit">{r.commitment}</span>
+				</div>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+	.ch-lead-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 2rem; }
+	.ch-lead-card { display: flex; flex-direction: column; padding: 1.25rem; }
+	.ch-lead-card h3 { font-size: 1rem; margin-bottom: 0.3rem; }
+	.ch-lead-card p { font-size: 0.85rem; line-height: 1.5; flex: 1; }
+	.ch-lead-card__commit { margin-top: 0.65rem; padding-top: 0.55rem; border-top: 1px solid var(--assoc-border); font-size: 0.72rem; font-weight: 700; color: var(--assoc-teal); }
+	@media (max-width: 900px) { .ch-lead-grid { grid-template-columns: 1fr 1fr; } }
+	@media (max-width: 520px) { .ch-lead-grid { grid-template-columns: 1fr; } }
+</style>

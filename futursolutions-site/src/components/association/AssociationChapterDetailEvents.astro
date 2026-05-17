@@ -1,0 +1,36 @@
+---
+import { chapterDetailEvents } from '../../data/association';
+---
+
+<section class="assoc-section assoc-section--warm" id="events" aria-labelledby="chd-events-heading">
+	<div class="assoc-container">
+		<p class="assoc-eyebrow">Upcoming Events</p>
+		<h2 id="chd-events-heading">Northern California chapter events</h2>
+		<div class="chd-events-grid">
+			{chapterDetailEvents.map((e) => (
+				<a href={e.href} class="assoc-card chd-event-card">
+					<div class="chd-event-card__top">
+						<span class="chd-event-card__date">{e.date}</span>
+						<span class="chd-event-card__type">{e.type}</span>
+					</div>
+					<h3>{e.title}</h3>
+					<p class="chd-event-card__loc">{e.location}</p>
+					<p>{e.summary}</p>
+				</a>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+	.chd-events-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 2rem; }
+	.chd-event-card { display: flex; flex-direction: column; padding: 1.25rem; transition: border-color 0.15s ease, transform 0.15s ease; }
+	.chd-event-card:hover { border-color: var(--assoc-teal); transform: translateY(-1px); }
+	.chd-event-card__top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem; }
+	.chd-event-card__date { font-size: 0.72rem; font-weight: 700; color: var(--assoc-slate); }
+	.chd-event-card__type { padding: 0.12rem 0.4rem; border-radius: 4px; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; background: var(--assoc-teal-light); color: var(--assoc-teal); }
+	.chd-event-card h3 { font-size: 1rem; margin-bottom: 0.15rem; }
+	.chd-event-card__loc { font-size: 0.75rem; font-weight: 600; color: var(--assoc-teal); margin-bottom: 0.35rem; }
+	.chd-event-card p:last-child { font-size: 0.82rem; line-height: 1.5; flex: 1; }
+	@media (max-width: 520px) { .chd-events-grid { grid-template-columns: 1fr; } }
+</style>

@@ -1,0 +1,32 @@
+---
+import AssociationLayout from '../../../../layouts/AssociationLayout.astro';
+import AssociationChapterDetailHero from '../../../../components/association/AssociationChapterDetailHero.astro';
+import AssociationChapterQuickFacts from '../../../../components/association/AssociationChapterQuickFacts.astro';
+import AssociationChapterDetailEvents from '../../../../components/association/AssociationChapterDetailEvents.astro';
+import AssociationChapterDetailLeaders from '../../../../components/association/AssociationChapterDetailLeaders.astro';
+import AssociationChapterLocalPriorities from '../../../../components/association/AssociationChapterLocalPriorities.astro';
+import AssociationChapterGetInvolved from '../../../../components/association/AssociationChapterGetInvolved.astro';
+import AssociationChapterDetailResources from '../../../../components/association/AssociationChapterDetailResources.astro';
+import AssociationChapterAnnouncements from '../../../../components/association/AssociationChapterAnnouncements.astro';
+import AssociationFinalCTA from '../../../../components/association/AssociationFinalCTA.astro';
+import { routeMetadata } from '../../../../data/association';
+
+const meta = routeMetadata['/demos/association/chapters/northern-california'];
+---
+
+<AssociationLayout title={meta.title} description={meta.description}>
+	<AssociationChapterDetailHero />
+	<AssociationChapterQuickFacts />
+	<AssociationChapterDetailEvents />
+	<AssociationChapterDetailLeaders />
+	<AssociationChapterLocalPriorities />
+	<AssociationChapterGetInvolved />
+	<AssociationChapterDetailResources />
+	<AssociationChapterAnnouncements />
+	<AssociationFinalCTA
+		headline="Your local professional network starts here."
+		subheadline="Connect with Northern California healthcare professionals through events, mentorship, and advocacy — all through your MHPA membership."
+		primaryCta={{ text: 'Attend an Event', href: '#events' }}
+		secondaryCta={{ text: 'Join MHPA', href: '/demos/association/membership' }}
+	/>
+</AssociationLayout>

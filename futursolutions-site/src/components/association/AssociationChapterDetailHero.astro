@@ -1,0 +1,39 @@
+---
+import { chapterDetailNorthernCalifornia } from '../../data/association';
+const d = chapterDetailNorthernCalifornia;
+---
+
+<section class="chd-hero" aria-labelledby="chd-hero-heading">
+	<div class="assoc-container chd-hero__inner">
+		<a class="chd-hero__back" href={d.tertiaryLink.href}>{d.tertiaryLink.text}</a>
+		<p class="assoc-eyebrow">{d.eyebrow}</p>
+		<h1 id="chd-hero-heading">{d.headline}</h1>
+		<p class="chd-hero__lead">{d.lead}</p>
+		<div class="chd-hero__badges">
+			<span class="chd-hero__badge">{d.memberCount} members</span>
+			<span class="chd-hero__badge">{d.upcomingEvents} upcoming events</span>
+			<span class="chd-hero__badge">{d.meetingFrequency}</span>
+			<span class="chd-hero__badge chd-hero__badge--teal">{d.advocacyStatus}</span>
+		</div>
+		<div class="assoc-btn-row">
+			<a class="assoc-btn assoc-btn--primary" href={d.primaryCta.href}>{d.primaryCta.text}</a>
+			<a class="assoc-btn assoc-btn--secondary" href={d.secondaryCta.href}>{d.secondaryCta.text}</a>
+		</div>
+	</div>
+</section>
+
+<style>
+	.chd-hero {
+		padding-block: clamp(2.5rem, 5vw, 4rem);
+		background: linear-gradient(175deg, var(--assoc-bg) 40%, color-mix(in srgb, var(--assoc-sand) 40%, var(--assoc-bg)) 100%);
+		border-bottom: 1px solid var(--assoc-border);
+	}
+	.chd-hero__inner { max-width: 720px; }
+	.chd-hero__back { display: inline-block; margin-bottom: 1rem; font-size: 0.82rem; font-weight: 700; color: var(--assoc-teal); }
+	.chd-hero__back:hover { color: var(--assoc-navy); }
+	.chd-hero h1 { text-wrap: balance; }
+	.chd-hero__lead { font-size: clamp(1rem, 0.98rem + 0.15vw, 1.1rem); line-height: 1.6; color: var(--assoc-slate); max-width: 600px; }
+	.chd-hero__badges { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.75rem; }
+	.chd-hero__badge { padding: 0.2rem 0.55rem; border-radius: 999px; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; background: color-mix(in srgb, var(--assoc-slate) 8%, var(--assoc-white)); color: var(--assoc-slate); }
+	.chd-hero__badge--teal { background: var(--assoc-teal-light); color: var(--assoc-teal); }
+</style>

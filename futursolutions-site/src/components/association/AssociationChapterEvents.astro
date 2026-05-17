@@ -1,0 +1,45 @@
+---
+import { chapterEvents } from '../../data/association';
+const typeColors: Record<string, string> = {
+	'Policy Briefing': 'var(--assoc-coral)',
+	Networking: 'var(--assoc-teal)',
+	'CE Event': 'var(--assoc-navy)',
+	Advocacy: 'var(--assoc-coral)',
+	Mentorship: 'var(--assoc-teal)',
+	Leadership: 'var(--assoc-navy)',
+};
+---
+
+<section class="assoc-section" id="events" aria-labelledby="ch-events-heading">
+	<div class="assoc-container">
+		<p class="assoc-eyebrow">Local Events</p>
+		<h2 id="ch-events-heading">Upcoming chapter events</h2>
+		<div class="ch-events-grid">
+			{chapterEvents.map((e) => (
+				<a href={e.href} class="assoc-card ch-event-card" style={`--ev-color: ${typeColors[e.type] || 'var(--assoc-teal)'}`}>
+					<div class="ch-event-card__top">
+						<span class="ch-event-card__date">{e.date}</span>
+						<span class="ch-event-card__type">{e.type}</span>
+					</div>
+					<h3>{e.title}</h3>
+					<p class="ch-event-card__chapter">{e.chapter}</p>
+					<p>{e.summary}</p>
+				</a>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+	.ch-events-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2rem; }
+	.ch-event-card { display: flex; flex-direction: column; padding: 1.25rem; transition: border-color 0.15s ease, transform 0.15s ease; }
+	.ch-event-card:hover { border-color: var(--assoc-teal); transform: translateY(-1px); }
+	.ch-event-card__top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.65rem; }
+	.ch-event-card__date { font-size: 0.72rem; font-weight: 700; color: var(--assoc-slate); }
+	.ch-event-card__type { padding: 0.12rem 0.4rem; border-radius: 4px; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; background: color-mix(in srgb, var(--ev-color) 10%, var(--assoc-white)); color: var(--ev-color); }
+	.ch-event-card h3 { font-size: 1rem; margin-bottom: 0.2rem; }
+	.ch-event-card__chapter { font-size: 0.75rem; font-weight: 600; color: var(--assoc-teal); margin-bottom: 0.35rem; }
+	.ch-event-card p:last-child { font-size: 0.82rem; line-height: 1.5; flex: 1; }
+	@media (max-width: 768px) { .ch-events-grid { grid-template-columns: 1fr 1fr; } }
+	@media (max-width: 520px) { .ch-events-grid { grid-template-columns: 1fr; } }
+</style>

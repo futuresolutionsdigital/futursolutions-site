@@ -1,0 +1,39 @@
+---
+import { chapterResourceCards } from '../../data/association';
+---
+
+<section class="assoc-section assoc-section--warm" id="resources" aria-labelledby="ch-res-heading">
+	<div class="assoc-container">
+		<p class="assoc-eyebrow">Chapter Resources</p>
+		<h2 id="ch-res-heading">Tools for members and chapter leaders.</h2>
+		<div class="ch-res-grid">
+			{chapterResourceCards.map((r) => (
+				<div class="assoc-card ch-res-card">
+					<div class="ch-res-card__tags">
+						<span class="ch-res-card__type">{r.type}</span>
+						<span class:list={['ch-res-card__access', { 'ch-res-card__access--member': r.access === 'Member-only' }]}>{r.access}</span>
+					</div>
+					<h3>{r.title}</h3>
+					<p>{r.summary}</p>
+				</div>
+			))}
+		</div>
+		<div class="ch-res-cta">
+			<a class="assoc-btn assoc-btn--secondary" href="/demos/association/resources">Browse All Resources →</a>
+		</div>
+	</div>
+</section>
+
+<style>
+	.ch-res-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2rem; }
+	.ch-res-card { display: flex; flex-direction: column; padding: 1.25rem; }
+	.ch-res-card__tags { display: flex; gap: 0.35rem; margin-bottom: 0.65rem; }
+	.ch-res-card__type { padding: 0.12rem 0.4rem; border-radius: 4px; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; background: var(--assoc-teal-light); color: var(--assoc-teal); }
+	.ch-res-card__access { padding: 0.12rem 0.4rem; border-radius: 4px; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; background: color-mix(in srgb, var(--assoc-slate) 8%, var(--assoc-white)); color: var(--assoc-slate); }
+	.ch-res-card__access--member { background: color-mix(in srgb, var(--assoc-coral) 8%, var(--assoc-white)); color: var(--assoc-coral); }
+	.ch-res-card h3 { font-size: 0.95rem; margin-bottom: 0.25rem; }
+	.ch-res-card p { font-size: 0.82rem; line-height: 1.5; margin: 0; flex: 1; }
+	.ch-res-cta { margin-top: 1.5rem; }
+	@media (max-width: 768px) { .ch-res-grid { grid-template-columns: 1fr 1fr; } }
+	@media (max-width: 520px) { .ch-res-grid { grid-template-columns: 1fr; } }
+</style>

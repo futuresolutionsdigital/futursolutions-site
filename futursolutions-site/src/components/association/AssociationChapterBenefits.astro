@@ -1,0 +1,28 @@
+---
+import { chapterCommunityBenefits } from '../../data/association';
+---
+
+<section class="assoc-section assoc-section--warm" aria-labelledby="ch-benefits-heading">
+	<div class="assoc-container">
+		<p class="assoc-eyebrow">Why Chapters Matter</p>
+		<h2 id="ch-benefits-heading">A statewide association feels stronger when it is local.</h2>
+		<div class="ch-benefits-grid">
+			{chapterCommunityBenefits.map((b, i) => (
+				<div class="assoc-card ch-benefit-card">
+					<span class="ch-benefit-card__num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+					<h3>{b.title}</h3>
+					<p>{b.description}</p>
+				</div>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+	.ch-benefits-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 2rem; }
+	.ch-benefit-card { padding: 1.5rem; }
+	.ch-benefit-card__num { font-size: 1.3rem; font-weight: 800; color: var(--assoc-teal); opacity: 0.3; line-height: 1; display: block; margin-bottom: 0.65rem; }
+	.ch-benefit-card h3 { font-size: 1.05rem; margin-bottom: 0.35rem; }
+	.ch-benefit-card p { font-size: 0.88rem; line-height: 1.5; margin: 0; }
+	@media (max-width: 600px) { .ch-benefits-grid { grid-template-columns: 1fr; } }
+</style>

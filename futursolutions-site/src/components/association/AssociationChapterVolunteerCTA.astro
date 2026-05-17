@@ -1,0 +1,27 @@
+---
+import { chapterVolunteerCTA } from '../../data/association';
+const v = chapterVolunteerCTA;
+---
+
+<section class="ch-volunteer" aria-labelledby="ch-volunteer-heading">
+	<div class="assoc-container ch-volunteer__inner">
+		<h2 id="ch-volunteer-heading">{v.headline}</h2>
+		<p class="ch-volunteer__desc">{v.description}</p>
+		<div class="assoc-btn-row">
+			<a class="assoc-btn ch-volunteer__btn-primary" href={v.primaryCta.href}>{v.primaryCta.text}</a>
+			<a class="assoc-btn ch-volunteer__btn-ghost" href={v.secondaryCta.href}>{v.secondaryCta.text}</a>
+		</div>
+	</div>
+</section>
+
+<style>
+	.ch-volunteer { padding-block: clamp(2.5rem, 4.5vw, 3.5rem); background: var(--assoc-sand); border-block: 1px solid var(--assoc-border); }
+	.ch-volunteer__inner { max-width: 680px; text-align: center; margin-inline: auto; }
+	.ch-volunteer h2 { text-wrap: balance; }
+	.ch-volunteer__desc { font-size: 0.95rem; line-height: 1.6; color: var(--assoc-slate); margin-bottom: 1.25rem; }
+	.ch-volunteer .assoc-btn-row { justify-content: center; }
+	.ch-volunteer__btn-primary { background: var(--assoc-teal) !important; color: var(--assoc-white) !important; }
+	.ch-volunteer__btn-primary:hover { background: color-mix(in srgb, var(--assoc-teal) 80%, var(--assoc-white)) !important; }
+	.ch-volunteer__btn-ghost { border-color: var(--assoc-border) !important; background: var(--assoc-white) !important; color: var(--assoc-navy) !important; }
+	.ch-volunteer__btn-ghost:hover { border-color: var(--assoc-teal) !important; }
+</style>

@@ -1,0 +1,38 @@
+---
+import AssociationLayout from '../../../../layouts/AssociationLayout.astro';
+import AssociationChaptersHero from '../../../../components/association/AssociationChaptersHero.astro';
+import AssociationChapterStats from '../../../../components/association/AssociationChapterStats.astro';
+import AssociationChapterFinder from '../../../../components/association/AssociationChapterFinder.astro';
+import AssociationChapterBenefits from '../../../../components/association/AssociationChapterBenefits.astro';
+import AssociationChapterEvents from '../../../../components/association/AssociationChapterEvents.astro';
+import AssociationChapterLeadership from '../../../../components/association/AssociationChapterLeadership.astro';
+import AssociationChapterMentorship from '../../../../components/association/AssociationChapterMentorship.astro';
+import AssociationChapterResources from '../../../../components/association/AssociationChapterResources.astro';
+import AssociationChapterStories from '../../../../components/association/AssociationChapterStories.astro';
+import AssociationChapterVolunteerCTA from '../../../../components/association/AssociationChapterVolunteerCTA.astro';
+import AssociationChapterFAQ from '../../../../components/association/AssociationChapterFAQ.astro';
+import AssociationFinalCTA from '../../../../components/association/AssociationFinalCTA.astro';
+import { routeMetadata } from '../../../../data/association';
+
+const meta = routeMetadata['/demos/association/chapters'];
+---
+
+<AssociationLayout title={meta.title} description={meta.description}>
+	<AssociationChaptersHero />
+	<AssociationChapterStats />
+	<AssociationChapterFinder />
+	<AssociationChapterBenefits />
+	<AssociationChapterEvents />
+	<AssociationChapterLeadership />
+	<AssociationChapterMentorship />
+	<AssociationChapterResources />
+	<AssociationChapterStories />
+	<AssociationChapterVolunteerCTA />
+	<AssociationChapterFAQ />
+	<AssociationFinalCTA
+		headline="Find your local network inside MHPA."
+		subheadline="Join the association and connect with the chapter, mentors, events, and professional relationships closest to you."
+		primaryCta={{ text: 'Find Your Chapter', href: '#finder' }}
+		secondaryCta={{ text: 'Join the Association', href: '/demos/association/membership' }}
+	/>
+</AssociationLayout>

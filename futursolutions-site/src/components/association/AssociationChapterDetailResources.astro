@@ -1,0 +1,30 @@
+---
+import { chapterDetailResources } from '../../data/association';
+---
+
+<section class="assoc-section assoc-section--warm" aria-labelledby="chd-res-heading">
+	<div class="assoc-container">
+		<p class="assoc-eyebrow">Chapter Resources</p>
+		<h2 id="chd-res-heading">Resources for this chapter</h2>
+		<div class="chd-res-grid">
+			{chapterDetailResources.map((r) => (
+				<a href={r.href} class="assoc-card chd-res-card">
+					<span class="chd-res-card__type">{r.type}</span>
+					<h3>{r.title}</h3>
+					<p>{r.summary}</p>
+				</a>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+	.chd-res-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 2rem; }
+	.chd-res-card { display: flex; flex-direction: column; padding: 1.15rem; transition: border-color 0.15s ease, transform 0.15s ease; }
+	.chd-res-card:hover { border-color: var(--assoc-teal); transform: translateY(-1px); }
+	.chd-res-card__type { display: inline-block; align-self: flex-start; margin-bottom: 0.5rem; padding: 0.12rem 0.4rem; border-radius: 4px; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; background: var(--assoc-teal-light); color: var(--assoc-teal); }
+	.chd-res-card h3 { font-size: 0.92rem; margin-bottom: 0.2rem; }
+	.chd-res-card p { font-size: 0.78rem; line-height: 1.45; margin: 0; flex: 1; }
+	@media (max-width: 768px) { .chd-res-grid { grid-template-columns: 1fr 1fr; } }
+	@media (max-width: 520px) { .chd-res-grid { grid-template-columns: 1fr; } }
+</style>

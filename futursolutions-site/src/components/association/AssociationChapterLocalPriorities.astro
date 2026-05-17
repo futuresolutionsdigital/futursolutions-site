@@ -1,0 +1,26 @@
+---
+import { chapterDetailPriorities } from '../../data/association';
+---
+
+<section class="assoc-section assoc-section--warm" aria-labelledby="chd-priorities-heading">
+	<div class="assoc-container">
+		<p class="assoc-eyebrow">Focus Areas</p>
+		<h2 id="chd-priorities-heading">What this chapter is focused on</h2>
+		<div class="chd-priorities-grid">
+			{chapterDetailPriorities.map((p) => (
+				<div class="assoc-card chd-priority-card">
+					<h3>{p.title}</h3>
+					<p>{p.description}</p>
+				</div>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+	.chd-priorities-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 2rem; }
+	.chd-priority-card { padding: 1.25rem; }
+	.chd-priority-card h3 { font-size: 1rem; margin-bottom: 0.3rem; }
+	.chd-priority-card p { font-size: 0.85rem; line-height: 1.5; margin: 0; }
+	@media (max-width: 520px) { .chd-priorities-grid { grid-template-columns: 1fr; } }
+</style>

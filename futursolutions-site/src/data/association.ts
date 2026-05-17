@@ -1461,6 +1461,197 @@ export const resourceGuidancePaths = [
 	{ title: 'I am early in my career', description: 'Start with career roadmaps and mentorship guides.', href: '#library', icon: 'career' },
 ];
 
+// ── Chapters: Hero ──
+
+export const chaptersHero = {
+	eyebrow: 'Chapters & Community',
+	headline: 'Your local chapter is where membership comes to life.',
+	lead: 'Connect with healthcare professionals in your region through local events, mentorship, leadership opportunities, advocacy briefings, and practical peer support.',
+	supportLine: 'Regional chapters · Local events · Mentorship · Volunteer leadership',
+	primaryCta: { text: 'Find Your Chapter', href: '#finder' },
+	secondaryCta: { text: 'Explore Local Events', href: '#events' },
+	tertiaryLink: { text: 'Become a Chapter Volunteer →', href: '#leadership' },
+} as const;
+
+// ── Chapters: Stats ──
+
+export const chapterStats = [
+	{ value: '24', label: 'local chapters' },
+	{ value: '6', label: 'regions' },
+	{ value: '120+', label: 'local events annually' },
+	{ value: '300+', label: 'volunteer leaders' },
+	{ value: '1', label: 'statewide network' },
+];
+
+// ── Chapters: Region Cards ──
+
+export const chapterRegions = [
+	{ name: 'Northern California', slug: 'northern-california', region: 'Northern California', summary: 'Chapters serving Sacramento, Chico, Redding, Davis, and surrounding areas with monthly events and strong advocacy participation.', memberCount: 850, upcomingEvents: 8, meetingFrequency: 'Monthly', cityFocus: 'Sacramento Chico Redding Davis', tags: ['networking', 'advocacy', 'mentorship', 'education'], href: '/demos/association/chapters/northern-california' },
+	{ name: 'Central Valley', slug: 'central-valley', region: 'Central Valley', summary: 'Covering Fresno, Bakersfield, Stockton, Modesto, and rural communities with a focus on workforce and access issues.', memberCount: 520, upcomingEvents: 5, meetingFrequency: 'Monthly', cityFocus: 'Fresno Bakersfield Stockton Modesto', tags: ['networking', 'advocacy', 'education'], href: '/demos/association/chapters' },
+	{ name: 'Southern California', slug: 'southern-california', region: 'Southern California', summary: 'The largest regional network, connecting professionals across Los Angeles, San Diego, Orange County, and surrounding areas.', memberCount: 1400, upcomingEvents: 12, meetingFrequency: 'Biweekly', cityFocus: 'Los Angeles San Diego Orange County', tags: ['networking', 'advocacy', 'mentorship', 'leadership', 'education'], href: '/demos/association/chapters' },
+	{ name: 'Inland Empire & Desert', slug: 'inland-empire', region: 'Inland Empire & Desert', summary: 'Serving Riverside, San Bernardino, Palm Springs, and desert communities with a focus on rural access and new professional support.', memberCount: 380, upcomingEvents: 4, meetingFrequency: 'Monthly', cityFocus: 'Riverside San Bernardino Palm Springs', tags: ['networking', 'mentorship', 'education'], href: '/demos/association/chapters' },
+	{ name: 'Bay Area', slug: 'bay-area', region: 'Bay Area', summary: 'Connecting professionals across San Francisco, Oakland, San Jose, and the broader Bay Area with robust CE programming and leadership development.', memberCount: 1100, upcomingEvents: 10, meetingFrequency: 'Biweekly', cityFocus: 'San Francisco Oakland San Jose', tags: ['networking', 'advocacy', 'mentorship', 'leadership', 'education'], href: '/demos/association/chapters' },
+	{ name: 'Coastal Region', slug: 'coastal-region', region: 'Coastal Region', summary: 'Chapters along the central coast serving Santa Barbara, San Luis Obispo, Monterey, and Santa Cruz communities.', memberCount: 290, upcomingEvents: 3, meetingFrequency: 'Monthly', cityFocus: 'Santa Barbara San Luis Obispo Monterey Santa Cruz', tags: ['networking', 'education'], href: '/demos/association/chapters' },
+];
+
+// ── Chapters: Finder Filters ──
+
+export const chapterFinderFilters = {
+	regions: ['Northern California', 'Central Valley', 'Southern California', 'Inland Empire & Desert', 'Bay Area', 'Coastal Region'],
+	interests: ['networking', 'advocacy', 'mentorship', 'education', 'leadership'],
+} as const;
+
+// ── Chapters: Community Benefits ──
+
+export const chapterCommunityBenefits = [
+	{ title: 'Meet peers who understand your work', description: 'Chapter events connect you with professionals in your area who face the same clinical, administrative, and career challenges.' },
+	{ title: 'Learn from local clinical and policy updates', description: 'Chapters host CE dinners, policy briefings, and practice-focused events tailored to regional needs.' },
+	{ title: 'Find mentors and leadership opportunities', description: 'Local peer circles, mentorship pairings, and chapter leadership roles build your professional network and resume.' },
+	{ title: 'Bring statewide advocacy into your community', description: 'Chapters coordinate local advocacy briefings, legislative outreach, and district-level engagement with elected officials.' },
+];
+
+// ── Chapters: Upcoming Events ──
+
+export const chapterEvents = [
+	{ date: 'May 22, 2026', chapter: 'Northern California', type: 'Policy Briefing', title: 'Policy Briefing Breakfast', summary: 'Legislative update and advocacy preparation over coffee with Northern California chapter members.', href: '/demos/association/events' },
+	{ date: 'May 28, 2026', chapter: 'Central Valley', type: 'Networking', title: 'New Professional Meetup', summary: 'Casual networking for new graduates and early-career professionals in the Fresno area.', href: '/demos/association/events' },
+	{ date: 'June 3, 2026', chapter: 'Bay Area', type: 'CE Event', title: 'CE Dinner: Telehealth Documentation', summary: '1.0 CE credit dinner event covering telehealth documentation best practices.', href: '/demos/association/events' },
+	{ date: 'June 10, 2026', chapter: 'Inland Empire & Desert', type: 'Advocacy', title: 'Advocacy Roundtable', summary: 'Discussion of local access issues and preparation for upcoming legislative outreach.', href: '/demos/association/advocacy' },
+	{ date: 'June 15, 2026', chapter: 'Southern California', type: 'Mentorship', title: 'Student Mentorship Night', summary: 'Structured mentorship conversations pairing students with practicing professionals.', href: '/demos/association/events' },
+	{ date: 'June 20, 2026', chapter: 'Coastal Region', type: 'Leadership', title: 'Leadership Coffee', summary: 'Informal leadership development and chapter planning conversation for current and aspiring leaders.', href: '/demos/association/events' },
+];
+
+// ── Chapters: Leadership Roles ──
+
+export const chapterLeadership = [
+	{ role: 'Chapter Chair', summary: 'Lead chapter strategy, coordinate events, and serve as the primary liaison to MHPA statewide leadership.', commitment: '5–8 hours/month' },
+	{ role: 'Education Coordinator', summary: 'Plan and organize local CE events, webinar watch parties, and educational programming for chapter members.', commitment: '3–5 hours/month' },
+	{ role: 'Advocacy Liaison', summary: 'Coordinate local advocacy briefings, connect chapter members to statewide campaigns, and support district outreach.', commitment: '3–5 hours/month' },
+	{ role: 'Student/New Professional Rep', summary: 'Welcome students and new graduates, organize mentorship events, and connect early-career professionals to chapter resources.', commitment: '2–4 hours/month' },
+];
+
+// ── Chapters: Mentorship ──
+
+export const chapterMentorship = {
+	headline: 'Find the people who help you grow.',
+	description: 'MHPA chapters support mentorship through structured pairings, informal peer circles, and career-stage community groups — all designed to help you learn from professionals who have walked the path before you.',
+	pathways: [
+		{ title: 'Find a mentor', description: 'Connect with an experienced professional in your specialty or career area through the MHPA mentorship network.', href: '/demos/association/contact' },
+		{ title: 'Become a mentor', description: 'Share your experience with the next generation. Mentors report stronger professional satisfaction and expanded networks.', href: '/demos/association/contact' },
+		{ title: 'Join a peer circle', description: 'Small-group professional support sessions organized by chapter, career stage, or specialty interest.', href: '#events' },
+	],
+	cta: { text: 'Explore Mentorship', href: '/demos/association/contact' },
+} as const;
+
+// ── Chapters: Resources ──
+
+export const chapterResourceCards = [
+	{ title: 'Chapter Meeting Planning Template', type: 'Template', access: 'Member-only', summary: 'Agenda templates, logistics checklists, and speaker coordination guides for chapter events.' },
+	{ title: 'Local Advocacy Toolkit', type: 'Toolkit', access: 'Member-only', summary: 'District outreach guides, legislator meeting prep, and grassroots organizing resources.' },
+	{ title: 'Mentorship Conversation Guide', type: 'Guide', access: 'Public', summary: 'Structured conversation frameworks for mentors and mentees at different career stages.' },
+	{ title: 'Event Promotion Checklist', type: 'Template', access: 'Public', summary: 'Step-by-step checklist for promoting chapter events through email, social media, and word of mouth.' },
+	{ title: 'Chapter Leader Onboarding Guide', type: 'Guide', access: 'Member-only', summary: 'Everything new chapter leaders need to know about operations, events, budgets, and MHPA support.' },
+	{ title: 'New Member Welcome Script', type: 'Template', access: 'Public', summary: 'Sample welcome messages and onboarding resources for new chapter members.' },
+];
+
+// ── Chapters: Member Stories ──
+
+export const chapterStories = [
+	{ name: 'Mara Jensen', role: 'FNP-C', chapter: 'Northern California', quote: 'My chapter helped me find people facing the same practice questions, learn what was happening in policy, and get involved without feeling overwhelmed.' },
+	{ name: 'David Okafor', role: 'DNP Student', chapter: 'Bay Area', quote: 'As a student, the chapter mentorship night was the first time I felt like I had a real professional network outside my program.' },
+	{ name: 'Lisa Reyes', role: 'PA-C, Chapter Chair', chapter: 'Southern California', quote: 'Volunteering as chapter chair gave me leadership experience I could not have gotten anywhere else — and it connected me to the statewide advocacy work.' },
+];
+
+// ── Chapters: Volunteer CTA ──
+
+export const chapterVolunteerCTA = {
+	headline: 'Want to help build your local professional community?',
+	description: 'Chapter volunteers host events, welcome new members, support advocacy, and create the local relationships that make statewide membership valuable.',
+	primaryCta: { text: 'Become a Chapter Volunteer', href: '/demos/association/contact' },
+	secondaryCta: { text: 'Contact Chapter Support', href: '/demos/association/contact' },
+} as const;
+
+// ── Chapters: FAQ ──
+
+export const chapterFaqs = [
+	{ question: 'Do I need to be a member to attend chapter events?', answer: 'Most chapter events are open to both members and non-members. Some events — such as CE dinners and mentorship pairings — may be member-only or offer member pricing.' },
+	{ question: 'How do I find my chapter?', answer: 'Use the chapter finder above to search by region, city, or interest area. Each chapter page includes meeting details, upcoming events, and contact information for local leaders.' },
+	{ question: 'Can students join chapter activities?', answer: 'Absolutely. Student members are welcome at all chapter events and can apply for the Student/New Professional Representative volunteer role.' },
+	{ question: 'How often do chapters meet?', answer: 'Most chapters meet monthly. Some larger chapters in urban areas meet biweekly. Meeting frequency and format are listed on each chapter detail page.' },
+	{ question: 'Can I volunteer with my chapter?', answer: 'Yes. Chapters are always looking for volunteers — from event planning to advocacy liaison to mentorship coordination. Contact your local chapter leaders to learn about openings.' },
+	{ question: 'Are chapter events eligible for CE?', answer: 'Many chapter events offer CE credit, including CE dinners, clinical workshops, and practice-focused presentations. CE eligibility is noted on each event listing.' },
+	{ question: 'What if my area does not have an active chapter?', answer: 'Contact MHPA chapter support. The association provides tools and guidance for members interested in starting or reactivating a local chapter.' },
+	{ question: 'How do chapters connect to statewide advocacy?', answer: 'Each chapter has an advocacy liaison who coordinates with the MHPA advocacy team. Chapters host local policy briefings, district outreach, and legislative meeting preparation.' },
+];
+
+// ── Chapter Detail: Northern California ──
+
+export const chapterDetailNorthernCalifornia = {
+	eyebrow: 'Local Chapter',
+	headline: 'Northern California Chapter',
+	lead: 'A regional network for healthcare professionals across Sacramento, Chico, Redding, Davis, and surrounding communities.',
+	memberCount: '850+',
+	upcomingEvents: '8',
+	meetingFrequency: 'Monthly meetings',
+	advocacyStatus: 'Advocacy active',
+	regionServed: 'Sacramento, Chico, Redding, Davis, and surrounding areas',
+	focusAreas: ['Rural access', 'Workforce development', 'New professional mentorship', 'Legislative outreach'],
+	leadershipOpenings: 2,
+	studentActivity: 'Active student/new professional programming',
+	primaryCta: { text: 'Attend an Event', href: '#events' },
+	secondaryCta: { text: 'Contact Chapter Leaders', href: '/demos/association/contact' },
+	tertiaryLink: { text: '← Back to Chapters', href: '/demos/association/chapters' },
+} as const;
+
+export const chapterDetailQuickFacts = [
+	{ label: 'Region', value: 'Northern CA' },
+	{ label: 'Meetings', value: 'Monthly' },
+	{ label: 'Members', value: '850+' },
+	{ label: 'Focus', value: 'Rural access' },
+	{ label: 'Openings', value: '2 roles' },
+	{ label: 'Students', value: 'Active' },
+];
+
+export const chapterDetailEvents = [
+	{ date: 'May 22, 2026', type: 'Policy Briefing', title: 'Policy Briefing Breakfast', location: 'Sacramento', summary: 'Legislative update and advocacy preparation over coffee with chapter members.', href: '/demos/association/events' },
+	{ date: 'June 5, 2026', type: 'Peer Circle', title: 'New Professional Peer Circle', location: 'Davis', summary: 'Small-group conversation for early-career professionals on practice transitions and career planning.', href: '/demos/association/events' },
+	{ date: 'June 18, 2026', type: 'CE Event', title: 'CE Dinner: Documentation Updates', location: 'Sacramento', summary: '1.0 CE credit dinner covering documentation best practices and compliance updates.', href: '/demos/association/events' },
+	{ date: 'July 10, 2026', type: 'Open House', title: 'Chapter Leadership Open House', location: 'Chico', summary: 'Learn about volunteer leadership roles and meet current chapter leaders.', href: '/demos/association/chapters/northern-california' },
+];
+
+export const chapterDetailLeaders = [
+	{ name: 'Dr. Karen Ishida', initials: 'KI', role: 'Chapter Chair', bio: 'Family nurse practitioner with 12 years of practice experience in Sacramento. Focused on workforce development and rural access.' },
+	{ name: 'Thomas Obi', initials: 'TO', role: 'Education Coordinator', bio: 'PA-C specializing in emergency medicine. Organizes CE events and clinical education programming for the chapter.' },
+	{ name: 'Sofia Delgado', initials: 'SD', role: 'Advocacy Liaison', bio: 'Public health professional coordinating local legislative outreach and connecting members to statewide advocacy campaigns.' },
+];
+
+export const chapterDetailPriorities = [
+	{ title: 'Rural access and workforce', description: 'Supporting healthcare professionals in underserved Northern California communities and advocating for workforce incentives.' },
+	{ title: 'New professional mentorship', description: 'Connecting new graduates with experienced mentors through structured pairings and peer circle events.' },
+	{ title: 'Local CE programming', description: 'Hosting CE dinners, clinical workshops, and practice-focused presentations tailored to regional needs.' },
+	{ title: 'Advocacy participation', description: 'Preparing members for legislative outreach, Lobby Day, and district-level engagement with elected officials.' },
+];
+
+export const chapterDetailInvolvement = [
+	{ title: 'Attend a chapter event', description: 'Join a CE dinner, policy briefing, or networking meetup in your area.', href: '#events' },
+	{ title: 'Join a peer circle', description: 'Small-group professional support organized by career stage or specialty.', href: '/demos/association/contact' },
+	{ title: 'Volunteer for a role', description: 'Chapter leadership, education, advocacy, or student representative.', href: '/demos/association/contact' },
+	{ title: 'Bring an issue to the chapter', description: 'Share a practice barrier or policy concern for chapter discussion.', href: '/demos/association/contact' },
+];
+
+export const chapterDetailResources = [
+	{ title: 'Meeting Calendar', type: 'Calendar', summary: 'Full schedule of upcoming chapter meetings, events, and deadlines.', href: '/demos/association/events' },
+	{ title: 'Local Advocacy Toolkit', type: 'Toolkit', summary: 'District outreach guides and legislator meeting preparation resources.', href: '/demos/association/advocacy#toolkit' },
+	{ title: 'New Member Guide', type: 'Guide', summary: 'Welcome information, onboarding checklist, and chapter contact details.', href: '/demos/association/resources' },
+	{ title: 'Chapter Volunteer Guide', type: 'Guide', summary: 'Roles, expectations, and support resources for chapter volunteers.', href: '/demos/association/resources' },
+];
+
+export const chapterDetailAnnouncements = [
+	{ date: 'May 14, 2026', title: 'Next chapter meeting announced', summary: 'The May meeting will focus on Lobby Day preparation and local advocacy priorities.' },
+	{ date: 'May 8, 2026', title: 'Volunteer roles opening in June', summary: 'Education Coordinator and Student Representative positions will be open for applications starting June 1.' },
+	{ date: 'May 2, 2026', title: 'Advocacy briefing recap available', summary: 'A summary of the April policy briefing, including SB-1247 talking points and member feedback, is available in the resource library.' },
+];
+
 // ── Future Route Metadata ──
 
 export const routeMetadata: Record<string, { title: string; description: string }> = {
@@ -1503,6 +1694,11 @@ export const routeMetadata: Record<string, { title: string; description: string 
 		title: 'Career Center | MHPA',
 		description:
 			'Search healthcare jobs, compare salary benchmarks, build your CV, and connect with mentors.',
+	},
+	'/demos/association/chapters/northern-california': {
+		title: 'Northern California Chapter | MHPA',
+		description:
+			'Connect with healthcare professionals across Sacramento, Chico, Redding, and Davis through the MHPA Northern California Chapter.',
 	},
 	'/demos/association/resources/pharmacology-update-2026': {
 		title: 'Pharmacology Update: 2026 Guidelines | MHPA Resources',
