@@ -111,7 +111,7 @@ import { careerFeaturedJobs, careerJobFilters } from '../../data/association';
 			if (match && cat && card.getAttribute('data-cj-category') !== cat) match = false;
 			if (match && wt && card.getAttribute('data-cj-worktype') !== wt) match = false;
 			if (match && exp && card.getAttribute('data-cj-experience') !== exp) match = false;
-			card.hidden = !match;
+			card.classList.toggle('is-hidden', !match);
 			if (match) shown++;
 		});
 		if (countEl) countEl.textContent = 'Showing ' + shown + ' opportunit' + (shown !== 1 ? 'ies' : 'y');
@@ -147,6 +147,7 @@ import { careerFeaturedJobs, careerJobFilters } from '../../data/association';
 	.cj-count { margin-top: 1rem; font-size: 0.82rem; font-weight: 700; color: var(--assoc-slate); }
 	.cj-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 0.5rem; }
 	.cj-card { display: flex; flex-direction: column; padding: 1.35rem; transition: border-color 0.15s ease, transform 0.15s ease; }
+	.cj-card.is-hidden { display: none; }
 	.cj-card:hover { border-color: var(--assoc-teal); transform: translateY(-1px); }
 	.cj-card--featured { border-left: 3px solid var(--assoc-coral); }
 	.cj-card__featured { display: inline-block; align-self: flex-start; margin-bottom: 0.45rem; padding: 0.12rem 0.45rem; border-radius: 4px; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; background: color-mix(in srgb, var(--assoc-coral) 10%, var(--assoc-white)); color: var(--assoc-coral); }

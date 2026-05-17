@@ -99,7 +99,7 @@ import { chapterRegions, chapterFinderFilters } from '../../data/association';
 				var tags = card.getAttribute('data-ch-tags') || '';
 				if (tags.indexOf(interest) === -1) match = false;
 			}
-			card.hidden = !match;
+			card.classList.toggle('is-hidden', !match);
 			if (match) shown++;
 		});
 		if (countEl) countEl.textContent = 'Showing ' + shown + ' chapter' + (shown !== 1 ? 's' : '');
@@ -133,6 +133,7 @@ import { chapterRegions, chapterFinderFilters } from '../../data/association';
 	.ch-finder-count { margin-top: 1rem; font-size: 0.82rem; font-weight: 700; color: var(--assoc-slate); }
 	.ch-finder-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 0.5rem; }
 	.ch-region-card { display: flex; flex-direction: column; padding: 1.5rem; transition: border-color 0.15s ease, transform 0.15s ease; }
+	.ch-region-card.is-hidden { display: none; }
 	.ch-region-card:hover { border-color: var(--assoc-teal); transform: translateY(-1px); }
 	.ch-region-card h3 { font-size: 1.1rem; margin-bottom: 0.35rem; }
 	.ch-region-card__summary { font-size: 0.85rem; line-height: 1.5; flex: 1; }

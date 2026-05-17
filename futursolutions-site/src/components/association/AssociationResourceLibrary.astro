@@ -116,7 +116,7 @@ import { resourceLibraryItems, resourceFilters } from '../../data/association';
 			if (match && vals.type && card.getAttribute('data-res-type') !== vals.type) match = false;
 			if (match && vals.access && card.getAttribute('data-res-access') !== vals.access) match = false;
 			if (match && vals.ce && card.getAttribute('data-res-ce') !== vals.ce) match = false;
-			card.hidden = !match;
+			card.classList.toggle('is-hidden', !match);
 			if (match) shown++;
 		});
 		if (countEl) countEl.textContent = 'Showing ' + shown + ' resource' + (shown !== 1 ? 's' : '');
@@ -158,6 +158,7 @@ import { resourceLibraryItems, resourceFilters } from '../../data/association';
 
 	.res-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 0.5rem; }
 	.res-card { display: flex; flex-direction: column; padding: 1.25rem; transition: border-color 0.15s ease, transform 0.15s ease; }
+	.res-card.is-hidden { display: none; }
 	.res-card:hover { border-color: var(--assoc-teal); transform: translateY(-1px); }
 	.res-card__tags { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-bottom: 0.65rem; }
 	.res-card__type { padding: 0.12rem 0.4rem; border-radius: 4px; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; background: var(--assoc-teal-light); color: var(--assoc-teal); }
