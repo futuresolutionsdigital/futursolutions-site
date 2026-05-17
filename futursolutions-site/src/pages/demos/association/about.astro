@@ -2,13 +2,18 @@
 import AssociationLayout from '../../../layouts/AssociationLayout.astro';
 import AssociationAboutHero from '../../../components/association/AssociationAboutHero.astro';
 import AssociationAboutMission from '../../../components/association/AssociationAboutMission.astro';
-import AssociationAboutWhatWeDo from '../../../components/association/AssociationAboutWhatWeDo.astro';
 import AssociationAboutImpact from '../../../components/association/AssociationAboutImpact.astro';
+import AssociationAboutWhatWeDo from '../../../components/association/AssociationAboutWhatWeDo.astro';
+import AssociationAboutOperatingModel from '../../../components/association/AssociationAboutOperatingModel.astro';
 import AssociationAboutPriorities from '../../../components/association/AssociationAboutPriorities.astro';
+import AssociationAboutPublicVoice from '../../../components/association/AssociationAboutPublicVoice.astro';
 import AssociationAboutLeadership from '../../../components/association/AssociationAboutLeadership.astro';
+import AssociationAboutCouncils from '../../../components/association/AssociationAboutCouncils.astro';
 import AssociationAboutGovernance from '../../../components/association/AssociationAboutGovernance.astro';
+import AssociationAboutAnnualReport from '../../../components/association/AssociationAboutAnnualReport.astro';
 import AssociationAboutTimeline from '../../../components/association/AssociationAboutTimeline.astro';
 import AssociationAboutPartners from '../../../components/association/AssociationAboutPartners.astro';
+import AssociationAboutRecognition from '../../../components/association/AssociationAboutRecognition.astro';
 import AssociationAboutFAQ from '../../../components/association/AssociationAboutFAQ.astro';
 import AssociationFinalCTA from '../../../components/association/AssociationFinalCTA.astro';
 import { routeMetadata } from '../../../data/association';
@@ -19,18 +24,23 @@ const meta = routeMetadata['/demos/association/about'];
 <AssociationLayout title={meta.title} description={meta.description}>
 	<AssociationAboutHero />
 	<AssociationAboutMission />
-	<AssociationAboutWhatWeDo />
 	<AssociationAboutImpact />
+	<AssociationAboutWhatWeDo />
+	<AssociationAboutOperatingModel />
 	<AssociationAboutPriorities />
+	<AssociationAboutPublicVoice />
 	<AssociationAboutLeadership />
+	<AssociationAboutCouncils />
 	<AssociationAboutGovernance />
+	<AssociationAboutAnnualReport />
 	<AssociationAboutTimeline />
 	<AssociationAboutPartners />
+	<AssociationAboutRecognition />
 	<AssociationAboutFAQ />
 	<AssociationFinalCTA
-		headline="See how a modern association website can work."
-		subheadline="Explore the full MHPA demo system across membership, advocacy, events, resources, chapters, and careers."
-		primaryCta={{ text: 'Explore Membership', href: '/demos/association/membership' }}
+		headline="A stronger association story builds stronger member trust."
+		subheadline="This demo shows how a professional association can present its mission, scale, leadership, history, and active work in a way that supports membership, advocacy, events, resources, chapters, and careers."
+		primaryCta={{ text: 'Explore the Membership System', href: '/demos/association/membership' }}
 		secondaryCta={{ text: 'Contact FutureSolutions', href: '/' }}
 	/>
 </AssociationLayout>

@@ -1,0 +1,29 @@
+---
+import { aboutRecognition } from '../../data/association';
+---
+
+<section class="assoc-section assoc-section--warm" aria-labelledby="about-recog-heading">
+	<div class="assoc-container">
+		<p class="assoc-eyebrow">Recognition & Social Proof</p>
+		<h2 id="about-recog-heading">Signals of trust and participation.</h2>
+		<div class="about-recog-grid">
+			{aboutRecognition.map((r) => (
+				<div class="assoc-card about-recog-card">
+					<h3>{r.title}</h3>
+					<p>{r.description}</p>
+				</div>
+			))}
+		</div>
+		<p class="about-recog-note">These modules show how a real association could surface recognition, member achievements, sponsor trust, and professional participation without relying on generic testimonials.</p>
+	</div>
+</section>
+
+<style>
+	.about-recog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2rem; }
+	.about-recog-card { padding: 1.25rem 1.5rem; }
+	.about-recog-card h3 { font-size: 0.88rem; font-weight: 800; margin-bottom: 0.25rem; }
+	.about-recog-card p { font-size: 0.82rem; line-height: 1.55; margin: 0; color: var(--assoc-slate); }
+	.about-recog-note { margin-top: 1.25rem; font-size: 0.72rem; font-weight: 600; color: var(--assoc-slate); opacity: 0.5; text-align: center; max-width: 560px; margin-inline: auto; }
+	@media (max-width: 768px) { .about-recog-grid { grid-template-columns: 1fr 1fr; } }
+	@media (max-width: 520px) { .about-recog-grid { grid-template-columns: 1fr; } }
+</style>

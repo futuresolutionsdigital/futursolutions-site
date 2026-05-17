@@ -1,0 +1,26 @@
+---
+import { aboutOperatingModel } from '../../data/association';
+---
+
+<section class="assoc-section" aria-labelledby="about-ops-heading">
+	<div class="assoc-container">
+		<p class="assoc-eyebrow">Year-Round Activity</p>
+		<h2 id="about-ops-heading">Active year-round, not only during conference season.</h2>
+		<div class="about-ops-grid">
+			{aboutOperatingModel.map((item) => (
+				<div class="assoc-card about-ops-card">
+					<h3>{item.title}</h3>
+					<p>{item.description}</p>
+				</div>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+	.about-ops-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; margin-top: 2rem; }
+	.about-ops-card { padding: 1.5rem 1.75rem; }
+	.about-ops-card h3 { font-size: 0.95rem; font-weight: 800; margin-bottom: 0.35rem; }
+	.about-ops-card p { font-size: 0.88rem; line-height: 1.6; margin: 0; color: var(--assoc-slate); }
+	@media (max-width: 600px) { .about-ops-grid { grid-template-columns: 1fr; } }
+</style>

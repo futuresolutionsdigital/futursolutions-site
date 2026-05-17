@@ -1901,9 +1901,9 @@ export const careerRelatedJobs = [
 
 export const aboutHero = {
 	eyebrow: 'About MHPA',
-	headline: 'A professional home for healthcare leaders moving care forward.',
-	lead: 'Meridian Health Professionals Association is a fictional statewide professional association built around advocacy, education, career growth, local connection, and practical resources for healthcare professionals.',
-	supportLine: 'Fictional association · Healthcare leadership · Advocacy · Education · Community',
+	headline: 'A professional home with the scale, structure, and voice to move healthcare forward.',
+	lead: 'Meridian Health Professionals Association is a fictional statewide professional association built to demonstrate how membership, advocacy, education, local chapters, career support, and practical resources can work together inside one credible association platform.',
+	supportLine: 'Fictional association · Statewide reach · Advocacy · Education · Chapters · Careers',
 	primaryCta: { text: 'Explore Membership', href: '/demos/association/membership' },
 	secondaryCta: { text: 'View Strategic Priorities', href: '#priorities' },
 	tertiaryLink: { text: 'Contact MHPA →', href: '/demos/association/contact' },
@@ -1914,17 +1914,18 @@ export const aboutHero = {
 export const aboutMission = {
 	mission: 'To help healthcare professionals learn, lead, advocate, and connect through a modern association built around practical support and professional influence.',
 	vision: 'A stronger healthcare workforce where professionals have the education, community, and policy voice needed to improve care access and outcomes.',
+	promise: 'To turn membership into practical value: representation, learning, connection, resources, and career support that members can use throughout the year.',
 } as const;
 
 // ── About: What We Do ──
 
 export const aboutWhatWeDo = [
-	{ title: 'Advocate for the profession', description: 'Track legislation, mobilize members, and amplify the professional voice in policy decisions that shape practice.', href: '/demos/association/advocacy' },
-	{ title: 'Deliver continuing education', description: 'Offer CE courses, webinars, and on-demand learning that keep professionals current and compliant.', href: '/demos/association/resources' },
-	{ title: 'Connect local chapters', description: 'Support 24 regional chapters that host events, mentorship, and advocacy activity across the state.', href: '/demos/association/chapters' },
-	{ title: 'Support career growth', description: 'Provide job listings, salary data, mentorship matching, and career resources at every stage.', href: '/demos/association/career-center' },
-	{ title: 'Provide practical resources', description: 'Maintain a library of toolkits, templates, clinical guides, and practice support materials for members.', href: '/demos/association/resources' },
-	{ title: 'Convene flagship events', description: 'Host the annual Clinical Leadership Conference and regional events that bring the profession together.', href: '/demos/association/events/annual-conference' },
+	{ title: 'Advocate for the profession', description: 'Track legislation, mobilize members, coordinate coalitions, and amplify the professional voice in state and federal policy decisions.', href: '/demos/association/advocacy' },
+	{ title: 'Convene statewide events', description: 'Host the annual Clinical Leadership Conference and regional CE events that bring professionals together for learning and strategy.', href: '/demos/association/events/annual-conference' },
+	{ title: 'Publish practical resources', description: 'Maintain a growing library of toolkits, clinical guides, CE courses, policy briefs, and practice support materials.', href: '/demos/association/resources' },
+	{ title: 'Support chapter communities', description: 'Fund and coordinate 24 regional chapters that host events, mentorship, advocacy briefings, and volunteer leadership.', href: '/demos/association/chapters' },
+	{ title: 'Build career pathways', description: 'Operate a career center with job listings, salary benchmarks, mentorship matching, and employer partnerships.', href: '/demos/association/career-center' },
+	{ title: 'Equip future leaders', description: 'Develop leadership pipelines through chapter roles, committee service, conference programming, and mentorship networks.', href: '/demos/association/membership' },
 ];
 
 // ── About: Impact Stats ──
@@ -1932,19 +1933,19 @@ export const aboutWhatWeDo = [
 export const aboutImpactStats = [
 	{ value: '8,200+', label: 'members represented' },
 	{ value: '24', label: 'local chapters' },
+	{ value: '300+', label: 'volunteer leaders' },
 	{ value: '120+', label: 'annual learning hours' },
 	{ value: '36', label: 'policy updates tracked' },
 	{ value: '1', label: 'flagship annual conference' },
-	{ value: '300+', label: 'volunteer leaders' },
 ];
 
 // ── About: Strategic Priorities ──
 
 export const aboutStrategicPriorities = [
-	{ title: 'Practice & Policy Influence', description: 'Strengthen the profession\'s voice in legislative and regulatory decisions through coordinated advocacy, coalition building, and grassroots engagement.', href: '/demos/association/advocacy' },
-	{ title: 'Continuing Education & Professional Standards', description: 'Expand CE offerings, develop clinical practice resources, and support competency frameworks that elevate care quality.', href: '/demos/association/resources' },
-	{ title: 'Local Community & Leadership', description: 'Grow chapter engagement, mentorship participation, and volunteer leadership pipelines to strengthen the association from the ground up.', href: '/demos/association/chapters' },
-	{ title: 'Career Growth & Workforce Sustainability', description: 'Address workforce shortages, support career transitions, expand employer partnerships, and connect members with opportunities.', href: '/demos/association/career-center' },
+	{ title: 'Practice & Policy Influence', description: 'Strengthen the profession\'s voice in legislative and regulatory decisions through coordinated advocacy, coalition building, grassroots engagement, and sustained policy monitoring across legislative sessions.', href: '/demos/association/advocacy' },
+	{ title: 'Education & Professional Standards', description: 'Expand CE offerings, develop clinical practice resources, support competency frameworks, and build learning pathways that elevate care quality and professional readiness across career stages.', href: '/demos/association/resources' },
+	{ title: 'Local Leadership & Community', description: 'Grow chapter engagement, mentorship participation, and volunteer leadership pipelines to ensure the association is built from the ground up — not only from the top down.', href: '/demos/association/chapters' },
+	{ title: 'Workforce & Career Sustainability', description: 'Address workforce shortages, support career transitions at every stage, expand employer partnerships, and connect members with the salary data, tools, and opportunities that drive professional mobility.', href: '/demos/association/career-center' },
 ];
 
 // ── About: Leadership ──
@@ -1964,39 +1965,94 @@ export const aboutGovernance = [
 	{ title: 'Board oversight', description: 'An elected board of directors sets strategic direction, approves budgets, and ensures organizational accountability.' },
 	{ title: 'Chapter representation', description: 'The Chapter Council connects local leadership to statewide governance, ensuring regional perspectives are heard.' },
 	{ title: 'Annual planning', description: 'Strategic priorities are reviewed and updated annually through member input, board workshops, and stakeholder feedback.' },
-	{ title: 'Member feedback loops', description: 'Member surveys, town halls, and chapter forums create ongoing channels for input on programs and policy direction.' },
+	{ title: 'Board reporting', description: 'The board publishes annual reports summarizing financial performance, program outcomes, and strategic progress.' },
+	{ title: 'Member surveys', description: 'Regular surveys, town halls, and chapter forums create ongoing channels for member input on programs and policy direction.' },
+	{ title: 'Resource review cycle', description: 'Educational content, practice resources, and policy materials are reviewed on a rolling schedule by subject-matter committees.' },
 ];
 
 // ── About: Timeline ──
 
 export const aboutTimeline = [
+	{ year: '2018', milestone: 'Founding member network formed with initial regional leadership councils.' },
+	{ year: '2019', milestone: 'First regional education forums launched across three pilot chapters.' },
+	{ year: '2020', milestone: 'Virtual learning and policy update systems expanded statewide.' },
+	{ year: '2021', milestone: 'Chapter leadership model formalized with standardized governance structure.' },
 	{ year: '2022', milestone: 'Regional chapter network expanded to 24 chapters across 6 regions.' },
 	{ year: '2023', milestone: 'Resource library launched with CE courses, toolkits, and practice guides.' },
-	{ year: '2024', milestone: 'Advocacy alerts modernized with legislative tracking and action tools.' },
-	{ year: '2025', milestone: 'Career center and mentorship pathways expanded statewide.' },
+	{ year: '2024', milestone: 'Advocacy alerts modernized with legislative tracking and member action tools.' },
+	{ year: '2025', milestone: 'Career center and mentorship pathways expanded statewide with employer partnerships.' },
 	{ year: '2026', milestone: 'Clinical Leadership Conference introduced as flagship annual event.' },
 ];
 
 // ── About: Partners ──
 
-export const aboutPartners = [
-	'Pacific Health Systems',
-	'Valley Medical Group',
-	'Coastal Clinical Partners',
-	'Summit Education Network',
-	'Golden State University',
-	'Workforce Access Coalition',
-];
+export const aboutPartners = {
+	categories: [
+		{ label: 'Health Systems', names: ['Pacific Health Systems', 'Valley Medical Group'] },
+		{ label: 'Education Partners', names: ['Summit Education Network', 'Golden State University'] },
+		{ label: 'Workforce Coalitions', names: ['Workforce Access Coalition', 'Statewide Health Workforce Board'] },
+		{ label: 'Community Health', names: ['Coastal Clinical Partners', 'Rural Health Access Network'] },
+		{ label: 'Employer Partners', names: ['Sierra Clinical Group', 'Bay Area Integrated Health System'] },
+		{ label: 'Sponsor Network', names: ['MedTech Solutions', 'Capitol Health Policy Institute'] },
+	],
+} as const;
 
 // ── About: FAQ ──
 
 export const aboutFaqs = [
-	{ question: 'Is MHPA a real association?', answer: 'No. Meridian Health Professionals Association is a fictional professional association created by FutureSolutions to demonstrate a modern association website system. All content, data, and organizations are fictional.' },
-	{ question: 'Who does MHPA represent in this demo?', answer: 'MHPA represents a fictional statewide community of healthcare professionals — including nurse practitioners, physician assistants, clinical leaders, students, and allied health professionals.' },
-	{ question: 'What does the association model include?', answer: 'The demo covers membership, advocacy, events, resources/CE, chapters, career center, and organizational pages — the core systems a modern professional association needs.' },
-	{ question: 'How does advocacy connect to membership?', answer: 'Advocacy is a core membership benefit. The demo shows how policy priorities, action alerts, legislative tracking, and Lobby Day fit into the association value proposition.' },
-	{ question: 'How do chapters fit into the organization?', answer: 'Chapters are local extensions of the statewide association. They host events, mentorship, leadership development, and advocacy activity — all connected to the central MHPA system.' },
-	{ question: 'How would this template adapt to a real association?', answer: 'A real implementation would replace fictional content with the association\'s actual mission, leadership, events, resources, and branding. The technical structure, navigation, and page architecture are designed to be reusable.' },
+	{ question: 'Is MHPA a real association?', answer: 'No. Meridian Health Professionals Association is a fictional professional association created by FutureSolutions to demonstrate a modern association website system. All content, data, leadership, partners, and organizations shown are entirely fictional.' },
+	{ question: 'What kind of real association could use this template?', answer: 'This template is designed for statewide or national professional associations — particularly those in healthcare, nursing, advanced practice, public health, or allied health fields that need membership, advocacy, events, CE, chapters, and career support.' },
+	{ question: 'How would this About page change for a real organization?', answer: 'A real implementation would replace fictional content with the organization\'s actual mission, leadership bios and photos, real milestones, audited metrics, verified partner logos, and governance documents. The structure and hierarchy are designed to be reusable.' },
+	{ question: 'Can this support board, staff, committees, and annual reports?', answer: 'Yes. The About page demonstrates board leadership, committee/council structure, governance transparency, timeline history, partner networks, and annual impact highlights — all common components of association credibility pages.' },
+	{ question: 'How does this template help build trust with members and partners?', answer: 'By presenting institutional scale, active governance, public voice, strategic priorities, and annual impact in a clean, accessible format — the kind of transparency that helps members, sponsors, employers, and policymakers take the association seriously.' },
+	{ question: 'How do chapters fit into the organization?', answer: 'Chapters are local extensions of the statewide association. They host events, mentorship, leadership development, and advocacy activity — all connected to the central MHPA system through the Chapter Council.' },
+];
+
+// ── About: Operating Model ──
+
+export const aboutOperatingModel = [
+	{ title: 'Policy monitoring', description: 'Track legislative and regulatory developments that affect practice, access, and workforce planning — year-round, not only during session.' },
+	{ title: 'Learning calendar', description: 'Publish CE courses, webinars, practice guides, and on-demand resources throughout the year to keep members current.' },
+	{ title: 'Chapter activity', description: 'Support local meetings, mentorship pairings, leadership development, and advocacy briefings across every region.' },
+	{ title: 'Member support', description: 'Route members toward the right resources, career tools, events, and support teams through structured engagement pathways.' },
+];
+
+// ── About: Public Voice ──
+
+export const aboutPublicVoice = [
+	{ title: 'Policy briefs and testimony', description: 'Develop issue briefs, prepare written and oral testimony, and communicate professional perspectives to legislative committees and regulatory bodies.' },
+	{ title: 'Coalition participation', description: 'Coordinate with healthcare coalitions, workforce boards, and partner organizations to amplify professional advocacy on shared priorities.' },
+	{ title: 'Professional standards resources', description: 'Publish clinical guides, practice standards, and competency frameworks that demonstrate the profession\'s commitment to quality.' },
+	{ title: 'Public and media education', description: 'Create accessible materials that explain the profession\'s scope, training, and value to policymakers, media, and public audiences.' },
+];
+
+// ── About: Councils ──
+
+export const aboutCouncils = [
+	{ title: 'Advocacy Council', purpose: 'Guide legislative strategy, policy priorities, and grassroots mobilization.', influences: 'Policy alerts, testimony, Lobby Day, PAC direction' },
+	{ title: 'Education & CE Committee', purpose: 'Oversee CE program quality, accreditation alignment, and learning pathway development.', influences: 'Course catalog, webinar schedule, conference programming' },
+	{ title: 'Chapter Leadership Council', purpose: 'Connect regional chapter leaders to statewide governance and strategic priorities.', influences: 'Chapter funding, local event support, volunteer development' },
+	{ title: 'Student & New Professional Council', purpose: 'Represent student and early-career perspectives in association strategy and programming.', influences: 'Student membership, mentorship programs, career readiness' },
+	{ title: 'Career & Workforce Advisory Group', purpose: 'Advise on workforce trends, employer partnerships, salary data, and career resource strategy.', influences: 'Career center, employer relationships, workforce policy' },
+];
+
+// ── About: Annual Report Highlights ──
+
+export const aboutAnnualReport = [
+	{ area: 'Advocacy activity', description: 'Policy alerts sent, issue briefs published, member action messages delivered, and coalition meetings attended.', metric: '36 policy updates · 4 coalitions' },
+	{ area: 'Education activity', description: 'CE programming delivered, webinars hosted, conference sessions recorded, and on-demand courses maintained.', metric: '120+ learning hours · 35 resources' },
+	{ area: 'Community activity', description: 'Chapter events hosted, volunteer leaders active, mentorship pairings made, and local advocacy briefings held.', metric: '24 chapters · 300+ volunteers' },
+	{ area: 'Career activity', description: 'Job listings maintained, employer partners engaged, salary resources updated, and career pathway tools expanded.', metric: '120+ opportunities · 48 employers' },
+];
+
+// ── About: Recognition ──
+
+export const aboutRecognition = [
+	{ title: 'Featured speaker network', description: 'Conference speakers, chapter presenters, and webinar faculty recognized for clinical expertise and education leadership.' },
+	{ title: 'Chapter volunteer recognition', description: 'Annual awards for outstanding chapter chairs, advocacy liaisons, education coordinators, and student representatives.' },
+	{ title: 'Sponsor and employer participation', description: 'Visible partner acknowledgment for organizations that support conference programming, chapter events, and career services.' },
+	{ title: 'Member leadership awards', description: 'Recognition for members who advance the profession through advocacy, education, mentorship, or community leadership.' },
+	{ title: 'Student and new professional spotlights', description: 'Quarterly features highlighting early-career members making an impact through practice, research, or volunteer leadership.' },
 ];
 
 // ── Contact: Hero ──

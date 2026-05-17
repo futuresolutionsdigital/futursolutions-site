@@ -1,12 +1,17 @@
 ---
 import { aboutLeadership } from '../../data/association';
 const bgColors = ['var(--assoc-teal)', 'var(--assoc-navy)', 'var(--assoc-coral)', 'var(--assoc-teal)', 'var(--assoc-navy)', 'var(--assoc-coral)'];
+const govTags = ['Board-led', 'Chapter-informed', 'Committee-supported', 'Member-responsive'];
 ---
 
 <section class="assoc-section assoc-section--warm" aria-labelledby="about-lead-heading">
 	<div class="assoc-container">
-		<p class="assoc-eyebrow">Leadership</p>
+		<p class="assoc-eyebrow">Leadership & Governance</p>
 		<h2 id="about-lead-heading">Member-led. Profession-focused.</h2>
+		<p class="assoc-lead">MHPA is modeled as a member-led association supported by board oversight, chapter representation, specialized committees, and professional staff.</p>
+		<div class="about-lead-tags">
+			{govTags.map((tag) => <span class="about-lead-tag">{tag}</span>)}
+		</div>
 		<div class="about-lead-grid">
 			{aboutLeadership.map((l, i) => (
 				<div class="assoc-card about-lead-card">
@@ -25,7 +30,9 @@ const bgColors = ['var(--assoc-teal)', 'var(--assoc-navy)', 'var(--assoc-coral)'
 </section>
 
 <style>
-	.about-lead-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2rem; }
+	.about-lead-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.5rem; }
+	.about-lead-tag { padding: 0.2rem 0.6rem; border-radius: 999px; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; background: var(--assoc-teal-light); color: var(--assoc-teal); }
+	.about-lead-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1.5rem; }
 	.about-lead-card { display: flex; gap: 1rem; padding: 1.25rem; }
 	.about-lead-card__avatar { flex-shrink: 0; display: flex; align-items: center; justify-content: center; width: 3rem; height: 3rem; border-radius: 50%; color: var(--assoc-white); }
 	.about-lead-card__avatar span { font-size: 0.82rem; font-weight: 800; letter-spacing: 0.03em; }

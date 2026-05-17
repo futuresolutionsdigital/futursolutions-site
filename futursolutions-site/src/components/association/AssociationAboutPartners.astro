@@ -3,13 +3,16 @@ import { aboutPartners } from '../../data/association';
 ---
 
 <section class="assoc-section" aria-labelledby="about-partners-heading">
-	<div class="assoc-container about-partners-inner">
-		<p class="assoc-eyebrow">Collaboration</p>
-		<h2 id="about-partners-heading">Collaboration strengthens the profession.</h2>
-		<div class="about-partners-grid">
-			{aboutPartners.map((name) => (
-				<div class="about-partner-badge">
-					<span>{name}</span>
+	<div class="assoc-container">
+		<p class="assoc-eyebrow">Partnerships</p>
+		<h2 id="about-partners-heading">Partnerships that extend professional impact.</h2>
+		<div class="about-partners-cats">
+			{aboutPartners.categories.map((cat) => (
+				<div class="about-partners-cat">
+					<h3>{cat.label}</h3>
+					<div class="about-partners-badges">
+						{cat.names.map((name) => <span class="about-partner-badge">{name}</span>)}
+					</div>
 				</div>
 			))}
 		</div>
@@ -17,8 +20,10 @@ import { aboutPartners } from '../../data/association';
 </section>
 
 <style>
-	.about-partners-inner { text-align: center; }
-	.about-partners-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem; margin-top: 2rem; }
-	.about-partner-badge { padding: 0.65rem 1.25rem; border: 1px solid var(--assoc-border); border-radius: var(--assoc-radius); background: var(--assoc-white); }
-	.about-partner-badge span { font-size: 0.82rem; font-weight: 700; color: var(--assoc-navy); letter-spacing: 0.01em; }
+	.about-partners-cats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 2rem; }
+	.about-partners-cat h3 { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--assoc-teal); margin-bottom: 0.5rem; }
+	.about-partners-badges { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+	.about-partner-badge { padding: 0.5rem 0.85rem; border: 1px solid var(--assoc-border); border-radius: var(--assoc-radius); background: var(--assoc-white); font-size: 0.78rem; font-weight: 700; color: var(--assoc-navy); }
+	@media (max-width: 768px) { .about-partners-cats { grid-template-columns: 1fr 1fr; } }
+	@media (max-width: 520px) { .about-partners-cats { grid-template-columns: 1fr; } }
 </style>

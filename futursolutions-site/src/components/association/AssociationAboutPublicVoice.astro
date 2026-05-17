@@ -1,0 +1,28 @@
+---
+import { aboutPublicVoice } from '../../data/association';
+---
+
+<section class="assoc-section assoc-section--warm" aria-labelledby="about-voice-heading">
+	<div class="assoc-container">
+		<p class="assoc-eyebrow">Public Authority</p>
+		<h2 id="about-voice-heading">A public voice for professional expertise.</h2>
+		<div class="about-voice-grid">
+			{aboutPublicVoice.map((item) => (
+				<div class="assoc-card about-voice-card">
+					<h3>{item.title}</h3>
+					<p>{item.description}</p>
+				</div>
+			))}
+		</div>
+		<p class="about-voice-note">MHPA's demo advocacy model shows how an association can publish issue briefs, prepare testimony, participate in coalitions, and explain the profession to public audiences.</p>
+	</div>
+</section>
+
+<style>
+	.about-voice-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; margin-top: 2rem; }
+	.about-voice-card { padding: 1.5rem 1.75rem; border-left: 3px solid var(--assoc-teal); }
+	.about-voice-card h3 { font-size: 0.95rem; font-weight: 800; margin-bottom: 0.35rem; }
+	.about-voice-card p { font-size: 0.88rem; line-height: 1.6; margin: 0; color: var(--assoc-slate); }
+	.about-voice-note { margin-top: 1.25rem; font-size: 0.72rem; font-weight: 600; color: var(--assoc-slate); opacity: 0.55; text-align: center; }
+	@media (max-width: 600px) { .about-voice-grid { grid-template-columns: 1fr; } }
+</style>

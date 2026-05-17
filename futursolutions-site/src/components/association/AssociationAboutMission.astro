@@ -15,6 +15,10 @@ import { aboutMission } from '../../data/association';
 				<h3>Vision</h3>
 				<p>{aboutMission.vision}</p>
 			</div>
+			<div class="assoc-card about-mission-card about-mission-card--promise">
+				<h3>Promise to Members</h3>
+				<p>{aboutMission.promise}</p>
+			</div>
 		</div>
 	</div>
 </section>
@@ -24,5 +28,8 @@ import { aboutMission } from '../../data/association';
 	.about-mission-card { padding: 2rem; }
 	.about-mission-card h3 { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--assoc-teal); margin-bottom: 0.75rem; }
 	.about-mission-card p { font-size: 1rem; line-height: 1.7; margin: 0; }
-	@media (max-width: 600px) { .about-mission-grid { grid-template-columns: 1fr; } }
+	.about-mission-card--promise { grid-column: 1 / -1; background: var(--assoc-navy); color: var(--assoc-white); }
+	.about-mission-card--promise h3 { color: rgba(255, 255, 255, 0.5); }
+	.about-mission-card--promise p { color: var(--assoc-white); }
+	@media (max-width: 600px) { .about-mission-grid { grid-template-columns: 1fr; } .about-mission-card--promise { grid-column: auto; } }
 </style>

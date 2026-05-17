@@ -1,0 +1,30 @@
+---
+import { aboutCouncils } from '../../data/association';
+---
+
+<section class="assoc-section" aria-labelledby="about-councils-heading">
+	<div class="assoc-container">
+		<p class="assoc-eyebrow">Committees & Councils</p>
+		<h2 id="about-councils-heading">Specialized councils keep the work moving.</h2>
+		<div class="about-councils-grid">
+			{aboutCouncils.map((c) => (
+				<div class="assoc-card about-council-card">
+					<h3>{c.title}</h3>
+					<p class="about-council-purpose">{c.purpose}</p>
+					<p class="about-council-inf"><strong>Influences:</strong> {c.influences}</p>
+				</div>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+	.about-councils-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2rem; }
+	.about-council-card { padding: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem; }
+	.about-council-card h3 { font-size: 0.92rem; font-weight: 800; }
+	.about-council-purpose { font-size: 0.85rem; line-height: 1.55; color: var(--assoc-slate); margin: 0; }
+	.about-council-inf { font-size: 0.72rem; line-height: 1.4; color: var(--assoc-slate); opacity: 0.7; margin: 0; margin-top: auto; }
+	.about-council-inf strong { color: var(--assoc-teal); font-weight: 700; }
+	@media (max-width: 768px) { .about-councils-grid { grid-template-columns: 1fr 1fr; } }
+	@media (max-width: 520px) { .about-councils-grid { grid-template-columns: 1fr; } }
+</style>
