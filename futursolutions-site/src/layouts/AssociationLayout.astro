@@ -139,6 +139,21 @@ const currentPath = Astro.url.pathname;
 			</div>
 		</footer>
 
+		<nav class="assoc-sticky-bar" aria-label="Quick actions">
+			<a href="/demos/association/membership" class="assoc-sticky-bar__item">
+				<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>
+				<span>Join</span>
+			</a>
+			<a href="/demos/association/events/annual-conference" class="assoc-sticky-bar__item">
+				<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+				<span>Events</span>
+			</a>
+			<a href="/demos/association/advocacy/scope-of-practice" class="assoc-sticky-bar__item assoc-sticky-bar__item--accent">
+				<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+				<span>Take Action</span>
+			</a>
+		</nav>
+
 		<script is:inline>
 			(function () {
 				var btn = document.querySelector('.assoc-header__menu-btn');
@@ -793,6 +808,67 @@ const currentPath = Astro.url.pathname;
 
 		.assoc-footer__grid {
 			grid-template-columns: 1fr;
+		}
+	}
+
+	/* ── Mobile Sticky Action Bar ── */
+
+	.assoc-sticky-bar {
+		display: none;
+	}
+
+	@media (max-width: 768px) {
+		.assoc-sticky-bar {
+			position: fixed;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			z-index: 20;
+			display: flex;
+			align-items: stretch;
+			background: var(--assoc-navy);
+			border-top: 1px solid rgba(255, 255, 255, 0.08);
+			box-shadow: 0 -4px 16px rgba(16, 42, 67, 0.18);
+		}
+
+		.assoc-sticky-bar__item {
+			flex: 1;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			gap: 0.15rem;
+			padding: 0.55rem 0.25rem;
+			color: rgba(255, 255, 255, 0.7);
+			font-size: 0.65rem;
+			font-weight: 700;
+			letter-spacing: 0.02em;
+			text-align: center;
+		}
+
+		.assoc-sticky-bar__item svg {
+			display: inline;
+			flex-shrink: 0;
+		}
+
+		.assoc-sticky-bar__item:hover,
+		.assoc-sticky-bar__item:active {
+			color: var(--assoc-white);
+			background: rgba(255, 255, 255, 0.06);
+		}
+
+		.assoc-sticky-bar__item--accent {
+			background: var(--assoc-teal);
+			color: var(--assoc-white);
+		}
+
+		.assoc-sticky-bar__item--accent:hover,
+		.assoc-sticky-bar__item--accent:active {
+			background: color-mix(in srgb, var(--assoc-teal) 85%, var(--assoc-navy));
+		}
+
+		.assoc-footer {
+			padding-bottom: 3.5rem;
 		}
 	}
 </style>

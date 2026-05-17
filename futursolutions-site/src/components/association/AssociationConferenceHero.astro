@@ -6,6 +6,7 @@ const h = annualConferenceHero;
 <section class="conf-hero" aria-labelledby="conf-hero-heading">
 	<div class="assoc-container conf-hero__inner">
 		<div class="conf-hero__content">
+			<a class="conf-hero__back" href="/demos/association/events">← Back to Education &amp; Events</a>
 			<p class="assoc-eyebrow">{h.eyebrow}</p>
 			<h1 id="conf-hero-heading">{h.headline}</h1>
 			<p class="conf-hero__lead">{h.lead}</p>
@@ -124,6 +125,9 @@ const h = annualConferenceHero;
 		color: var(--assoc-coral);
 	}
 	.conf-hero__tertiary:hover { color: var(--assoc-navy); }
+
+	.conf-hero__back { display: inline-block; margin-bottom: 0.75rem; font-size: 0.82rem; font-weight: 700; color: var(--assoc-teal); }
+	.conf-hero__back:hover { color: var(--assoc-navy); }
 
 	/* Visual cluster */
 	.conf-hero__visual {
