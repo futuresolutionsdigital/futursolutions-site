@@ -1,0 +1,36 @@
+---
+import { contactHero } from '../../data/association';
+const h = contactHero;
+---
+
+<section class="contact-hero" aria-labelledby="contact-hero-heading">
+	<div class="assoc-container">
+		<div class="contact-hero__content">
+			<p class="assoc-eyebrow">{h.eyebrow}</p>
+			<h1 id="contact-hero-heading">{h.headline}</h1>
+			<p class="contact-hero__lead">{h.lead}</p>
+			<p class="contact-hero__support">{h.supportLine}</p>
+			<div class="assoc-btn-row">
+				<a class="assoc-btn assoc-btn--primary" href={h.primaryCta.href}>{h.primaryCta.text}</a>
+				<a class="assoc-btn assoc-btn--secondary" href={h.secondaryCta.href}>{h.secondaryCta.text}</a>
+			</div>
+			<a class="contact-hero__tertiary" href={h.tertiaryLink.href}>{h.tertiaryLink.text}</a>
+		</div>
+	</div>
+</section>
+
+<style is:global>
+	.contact-hero {
+		padding-block: clamp(3rem, 6vw, 5rem);
+		background: linear-gradient(175deg, var(--assoc-bg) 40%, color-mix(in srgb, var(--assoc-sand) 40%, var(--assoc-bg)) 100%);
+		border-bottom: 1px solid var(--assoc-border);
+	}
+	.contact-hero__content { width: min(100%, 820px); max-width: 820px; margin-inline: auto; text-align: center; }
+	.contact-hero__content h1 { text-wrap: balance; margin-inline: auto; }
+	.contact-hero__content p { margin-inline: auto; }
+	.contact-hero__lead { font-size: clamp(1rem, 0.98rem + 0.15vw, 1.1rem); line-height: 1.6; color: var(--assoc-slate); max-width: 640px; }
+	.contact-hero__support { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.02em; color: var(--assoc-slate); opacity: 0.6; margin-bottom: 0.25rem; }
+	.contact-hero__content .assoc-btn-row { justify-content: center; }
+	.contact-hero__tertiary { display: inline-block; margin-top: 0.75rem; font-size: 0.85rem; font-weight: 700; color: var(--assoc-teal); }
+	.contact-hero__tertiary:hover { color: var(--assoc-navy); }
+</style>

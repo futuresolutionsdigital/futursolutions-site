@@ -1,0 +1,27 @@
+---
+import { aboutTimeline } from '../../data/association';
+---
+
+<section class="assoc-section assoc-section--warm" aria-labelledby="about-tl-heading">
+	<div class="assoc-container about-tl-inner">
+		<p class="assoc-eyebrow">Momentum</p>
+		<h2 id="about-tl-heading">A modern association built for what comes next.</h2>
+		<div class="about-tl-list">
+			{aboutTimeline.map((t) => (
+				<div class="about-tl-item">
+					<span class="about-tl-item__year">{t.year}</span>
+					<p class="about-tl-item__text">{t.milestone}</p>
+				</div>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+	.about-tl-inner { max-width: 720px; }
+	.about-tl-list { display: grid; gap: 0; margin-top: 2rem; border-left: 2px solid var(--assoc-teal); }
+	.about-tl-item { display: flex; gap: 1rem; align-items: flex-start; padding: 0.85rem 0 0.85rem 1.5rem; position: relative; }
+	.about-tl-item::before { content: ''; position: absolute; left: -6px; top: 1.1rem; width: 10px; height: 10px; border-radius: 50%; background: var(--assoc-teal); }
+	.about-tl-item__year { flex-shrink: 0; font-size: 0.88rem; font-weight: 800; color: var(--assoc-teal); min-width: 3rem; }
+	.about-tl-item__text { font-size: 0.92rem; line-height: 1.5; margin: 0; }
+</style>

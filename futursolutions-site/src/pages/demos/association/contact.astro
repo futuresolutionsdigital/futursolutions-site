@@ -1,6 +1,12 @@
 ---
 import AssociationLayout from '../../../layouts/AssociationLayout.astro';
-import AssociationPageHero from '../../../components/association/AssociationPageHero.astro';
+import AssociationContactHero from '../../../components/association/AssociationContactHero.astro';
+import AssociationContactPaths from '../../../components/association/AssociationContactPaths.astro';
+import AssociationContactForm from '../../../components/association/AssociationContactForm.astro';
+import AssociationContactProcess from '../../../components/association/AssociationContactProcess.astro';
+import AssociationContactQuickLinks from '../../../components/association/AssociationContactQuickLinks.astro';
+import AssociationContactDirectory from '../../../components/association/AssociationContactDirectory.astro';
+import AssociationContactFAQ from '../../../components/association/AssociationContactFAQ.astro';
 import AssociationFinalCTA from '../../../components/association/AssociationFinalCTA.astro';
 import { routeMetadata } from '../../../data/association';
 
@@ -8,25 +14,17 @@ const meta = routeMetadata['/demos/association/contact'];
 ---
 
 <AssociationLayout title={meta.title} description={meta.description}>
-	<AssociationPageHero
-		eyebrow="Contact"
-		headline="We're here to help."
-		lead="Questions about membership, events, advocacy, or anything else? Reach out to the MHPA team and we'll get back to you."
-		primaryCta={{ text: 'Join the Association', href: '/demos/association/membership' }}
+	<AssociationContactHero />
+	<AssociationContactPaths />
+	<AssociationContactForm />
+	<AssociationContactProcess />
+	<AssociationContactQuickLinks />
+	<AssociationContactDirectory />
+	<AssociationContactFAQ />
+	<AssociationFinalCTA
+		headline="Ready to turn association interest into action?"
+		subheadline="A modern contact system should route members, sponsors, employers, and stakeholders to the right next step quickly."
+		primaryCta={{ text: 'Explore Membership', href: '/demos/association/membership' }}
+		secondaryCta={{ text: 'Back to Homepage', href: '/demos/association' }}
 	/>
-	<section class="assoc-section">
-		<div class="assoc-container placeholder">
-			<div class="placeholder__badge">Coming Soon</div>
-			<h2>Contact form, department contacts, and office information</h2>
-			<p class="assoc-lead">This page will include a contact form, department-specific contact details, mailing address, and office hours — all part of the MHPA demo system.</p>
-			<a class="assoc-btn assoc-btn--secondary" href="/demos/association">← Back to Homepage</a>
-		</div>
-	</section>
-	<AssociationFinalCTA />
 </AssociationLayout>
-
-<style>
-	.placeholder { text-align: center; max-width: 600px; margin-inline: auto; }
-	.placeholder .assoc-lead { margin-inline: auto; margin-bottom: 2rem; }
-	.placeholder__badge { display: inline-block; margin-bottom: 1.5rem; padding: 0.3rem 0.8rem; border-radius: 999px; background: var(--assoc-teal-light); color: var(--assoc-teal); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
-</style>

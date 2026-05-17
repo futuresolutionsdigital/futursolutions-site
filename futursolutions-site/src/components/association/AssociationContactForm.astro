@@ -1,0 +1,93 @@
+---
+import { contactFormSubjects, contactOffice } from '../../data/association';
+---
+
+<section class="assoc-section assoc-section--warm" id="form" aria-labelledby="contact-form-heading">
+	<div class="assoc-container">
+		<p class="assoc-eyebrow">Get in Touch</p>
+		<h2 id="contact-form-heading">Send a demo request</h2>
+		<div class="contact-form-grid">
+			<form class="contact-form" onsubmit="return false" novalidate>
+				<div class="contact-form__field">
+					<label for="cf-name">Name</label>
+					<input type="text" id="cf-name" placeholder="Your name" />
+				</div>
+				<div class="contact-form__field">
+					<label for="cf-email">Email</label>
+					<input type="email" id="cf-email" placeholder="you@example.com" />
+				</div>
+				<div class="contact-form__field">
+					<label for="cf-org">Organization <span class="contact-form__opt">(optional)</span></label>
+					<input type="text" id="cf-org" placeholder="Your organization" />
+				</div>
+				<div class="contact-form__field">
+					<label for="cf-subject">Inquiry Type</label>
+					<select id="cf-subject">
+						<option value="">Select a topic…</option>
+						{contactFormSubjects.map((s) => <option value={s}>{s}</option>)}
+					</select>
+				</div>
+				<div class="contact-form__field contact-form__field--full">
+					<label for="cf-message">Message</label>
+					<textarea id="cf-message" rows="5" placeholder="How can we help?"></textarea>
+				</div>
+				<div class="contact-form__field contact-form__field--full">
+					<label class="contact-form__check">
+						<input type="checkbox" />
+						<span>I understand this is a fictional demo form.</span>
+					</label>
+				</div>
+				<div class="contact-form__field contact-form__field--full">
+					<button type="submit" class="assoc-btn assoc-btn--primary contact-form__submit">Send Message</button>
+				</div>
+				<p class="contact-form__note">This demo form does not submit. A live association site would connect this form to the organization's CRM, AMS, helpdesk, or email workflow.</p>
+			</form>
+
+			<div class="contact-info">
+				<div class="contact-info__card assoc-card">
+					<h3>Office</h3>
+					<p class="contact-info__name">{contactOffice.name}</p>
+					<p>{contactOffice.address}</p>
+					<p>{contactOffice.city}</p>
+				</div>
+				<div class="contact-info__card assoc-card">
+					<h3>Phone & Email</h3>
+					<p>{contactOffice.phone}</p>
+					<p>{contactOffice.email}</p>
+				</div>
+				<div class="contact-info__card assoc-card">
+					<h3>Support Hours</h3>
+					<p>{contactOffice.hours}</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.contact-form-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: clamp(2rem, 4vw, 3.5rem); align-items: start; margin-top: 2rem; }
+	.contact-form { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+	.contact-form__field--full { grid-column: 1 / -1; }
+	.contact-form label { display: block; font-size: 0.82rem; font-weight: 700; color: var(--assoc-navy); margin-bottom: 0.25rem; }
+	.contact-form__opt { font-weight: 400; color: var(--assoc-slate); }
+	.contact-form input[type="text"],
+	.contact-form input[type="email"],
+	.contact-form select,
+	.contact-form textarea { width: 100%; padding: 0.6rem 0.75rem; border: 1px solid var(--assoc-border); border-radius: 8px; font-size: 0.88rem; font-family: inherit; background: var(--assoc-white); color: var(--assoc-navy); }
+	.contact-form input:focus,
+	.contact-form select:focus,
+	.contact-form textarea:focus { outline: 2px solid var(--assoc-teal); outline-offset: -1px; border-color: var(--assoc-teal); }
+	.contact-form textarea { resize: vertical; min-height: 100px; }
+	.contact-form__check { display: flex; align-items: flex-start; gap: 0.5rem; font-weight: 400; font-size: 0.82rem; cursor: pointer; }
+	.contact-form__check input { margin-top: 0.15rem; }
+	.contact-form__submit { width: 100%; justify-content: center; }
+	.contact-form__note { grid-column: 1 / -1; margin-top: 0.25rem; padding: 0.5rem 0.75rem; border-radius: 6px; background: color-mix(in srgb, var(--assoc-coral) 6%, var(--assoc-white)); font-size: 0.72rem; font-weight: 600; color: var(--assoc-coral); line-height: 1.45; }
+
+	.contact-info { display: grid; gap: 0.75rem; }
+	.contact-info__card { padding: 1.25rem; }
+	.contact-info__card h3 { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--assoc-teal); margin-bottom: 0.5rem; }
+	.contact-info__name { font-weight: 700; color: var(--assoc-navy); }
+	.contact-info__card p { font-size: 0.88rem; line-height: 1.5; margin: 0 0 0.15rem; }
+
+	@media (max-width: 768px) { .contact-form-grid { grid-template-columns: 1fr; } .contact-form { grid-template-columns: 1fr; } }
+</style>

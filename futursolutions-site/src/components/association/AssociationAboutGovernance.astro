@@ -1,0 +1,31 @@
+---
+import { aboutGovernance } from '../../data/association';
+---
+
+<section class="assoc-section" aria-labelledby="about-gov-heading">
+	<div class="assoc-container">
+		<p class="assoc-eyebrow">Governance</p>
+		<h2 id="about-gov-heading">Designed for accountability and member trust.</h2>
+		<div class="about-gov-grid">
+			{aboutGovernance.map((g) => (
+				<div class="assoc-card about-gov-card">
+					<h3>{g.title}</h3>
+					<p>{g.description}</p>
+				</div>
+			))}
+		</div>
+		<div class="about-gov-cta">
+			<a class="assoc-btn assoc-btn--secondary" href="/demos/association/resources">View Member Resources →</a>
+		</div>
+	</div>
+</section>
+
+<style>
+	.about-gov-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 2rem; }
+	.about-gov-card { padding: 1.25rem; }
+	.about-gov-card h3 { font-size: 0.95rem; margin-bottom: 0.25rem; }
+	.about-gov-card p { font-size: 0.82rem; line-height: 1.5; margin: 0; }
+	.about-gov-cta { margin-top: 1.5rem; }
+	@media (max-width: 768px) { .about-gov-grid { grid-template-columns: 1fr 1fr; } }
+	@media (max-width: 520px) { .about-gov-grid { grid-template-columns: 1fr; } }
+</style>

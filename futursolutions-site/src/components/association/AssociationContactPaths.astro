@@ -1,0 +1,30 @@
+---
+import { contactSupportPaths } from '../../data/association';
+---
+
+<section class="assoc-section" id="support" aria-labelledby="contact-paths-heading">
+	<div class="assoc-container">
+		<p class="assoc-eyebrow">Support</p>
+		<h2 id="contact-paths-heading">What can we help you with?</h2>
+		<div class="contact-paths-grid">
+			{contactSupportPaths.map((p) => (
+				<a href={p.href} class="assoc-card contact-path-card">
+					<h3>{p.title}</h3>
+					<p class="contact-path-card__audience">{p.audience}</p>
+					<p>{p.description}</p>
+				</a>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+	.contact-paths-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2rem; }
+	.contact-path-card { display: flex; flex-direction: column; padding: 1.35rem; transition: border-color 0.15s ease, transform 0.15s ease; }
+	.contact-path-card:hover { border-color: var(--assoc-teal); transform: translateY(-1px); }
+	.contact-path-card h3 { font-size: 1rem; margin-bottom: 0.15rem; }
+	.contact-path-card__audience { font-size: 0.72rem; font-weight: 700; color: var(--assoc-teal); margin-bottom: 0.35rem; }
+	.contact-path-card p:last-child { font-size: 0.82rem; line-height: 1.5; flex: 1; }
+	@media (max-width: 768px) { .contact-paths-grid { grid-template-columns: 1fr 1fr; } }
+	@media (max-width: 520px) { .contact-paths-grid { grid-template-columns: 1fr; } }
+</style>

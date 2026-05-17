@@ -1,0 +1,28 @@
+---
+import { aboutMission } from '../../data/association';
+---
+
+<section class="assoc-section" aria-labelledby="about-mission-heading">
+	<div class="assoc-container">
+		<p class="assoc-eyebrow">Purpose</p>
+		<h2 id="about-mission-heading">Why MHPA exists</h2>
+		<div class="about-mission-grid">
+			<div class="assoc-card about-mission-card">
+				<h3>Mission</h3>
+				<p>{aboutMission.mission}</p>
+			</div>
+			<div class="assoc-card about-mission-card">
+				<h3>Vision</h3>
+				<p>{aboutMission.vision}</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.about-mission-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-top: 2rem; }
+	.about-mission-card { padding: 2rem; }
+	.about-mission-card h3 { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--assoc-teal); margin-bottom: 0.75rem; }
+	.about-mission-card p { font-size: 1rem; line-height: 1.7; margin: 0; }
+	@media (max-width: 600px) { .about-mission-grid { grid-template-columns: 1fr; } }
+</style>

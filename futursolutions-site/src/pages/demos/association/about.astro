@@ -1,6 +1,15 @@
 ---
 import AssociationLayout from '../../../layouts/AssociationLayout.astro';
-import AssociationPageHero from '../../../components/association/AssociationPageHero.astro';
+import AssociationAboutHero from '../../../components/association/AssociationAboutHero.astro';
+import AssociationAboutMission from '../../../components/association/AssociationAboutMission.astro';
+import AssociationAboutWhatWeDo from '../../../components/association/AssociationAboutWhatWeDo.astro';
+import AssociationAboutImpact from '../../../components/association/AssociationAboutImpact.astro';
+import AssociationAboutPriorities from '../../../components/association/AssociationAboutPriorities.astro';
+import AssociationAboutLeadership from '../../../components/association/AssociationAboutLeadership.astro';
+import AssociationAboutGovernance from '../../../components/association/AssociationAboutGovernance.astro';
+import AssociationAboutTimeline from '../../../components/association/AssociationAboutTimeline.astro';
+import AssociationAboutPartners from '../../../components/association/AssociationAboutPartners.astro';
+import AssociationAboutFAQ from '../../../components/association/AssociationAboutFAQ.astro';
 import AssociationFinalCTA from '../../../components/association/AssociationFinalCTA.astro';
 import { routeMetadata } from '../../../data/association';
 
@@ -8,26 +17,20 @@ const meta = routeMetadata['/demos/association/about'];
 ---
 
 <AssociationLayout title={meta.title} description={meta.description}>
-	<AssociationPageHero
-		eyebrow="About MHPA"
-		headline="A modern association built for healthcare professionals."
-		lead="The Meridian Health Professionals Association represents 8,200+ members through advocacy, education, career development, and local community — because better-supported professionals deliver better care."
-		primaryCta={{ text: 'Join the Association', href: '/demos/association/membership' }}
-		secondaryCta={{ text: 'View Policy Priorities', href: '/demos/association/advocacy' }}
+	<AssociationAboutHero />
+	<AssociationAboutMission />
+	<AssociationAboutWhatWeDo />
+	<AssociationAboutImpact />
+	<AssociationAboutPriorities />
+	<AssociationAboutLeadership />
+	<AssociationAboutGovernance />
+	<AssociationAboutTimeline />
+	<AssociationAboutPartners />
+	<AssociationAboutFAQ />
+	<AssociationFinalCTA
+		headline="See how a modern association website can work."
+		subheadline="Explore the full MHPA demo system across membership, advocacy, events, resources, chapters, and careers."
+		primaryCta={{ text: 'Explore Membership', href: '/demos/association/membership' }}
+		secondaryCta={{ text: 'Contact FutureSolutions', href: '/' }}
 	/>
-	<section class="assoc-section">
-		<div class="assoc-container placeholder">
-			<div class="placeholder__badge">Coming Soon</div>
-			<h2>Mission, leadership, history, and governance</h2>
-			<p class="assoc-lead">This page will include MHPA's mission and values, board of directors, organizational history, strategic plan overview, and governance documents — all part of the MHPA demo system.</p>
-			<a class="assoc-btn assoc-btn--secondary" href="/demos/association">← Back to Homepage</a>
-		</div>
-	</section>
-	<AssociationFinalCTA />
 </AssociationLayout>
-
-<style>
-	.placeholder { text-align: center; max-width: 600px; margin-inline: auto; }
-	.placeholder .assoc-lead { margin-inline: auto; margin-bottom: 2rem; }
-	.placeholder__badge { display: inline-block; margin-bottom: 1.5rem; padding: 0.3rem 0.8rem; border-radius: 999px; background: var(--assoc-teal-light); color: var(--assoc-teal); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
-</style>

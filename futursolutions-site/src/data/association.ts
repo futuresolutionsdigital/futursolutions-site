@@ -1897,6 +1897,198 @@ export const careerRelatedJobs = [
 	{ title: 'Workforce Policy Specialist', employer: 'State Healthcare Workforce Commission', location: 'Sacramento, CA', workType: 'Hybrid', salaryRange: '$88,000–$105,000', href: '/demos/association/career-center' },
 ];
 
+// ── About: Hero ──
+
+export const aboutHero = {
+	eyebrow: 'About MHPA',
+	headline: 'A professional home for healthcare leaders moving care forward.',
+	lead: 'Meridian Health Professionals Association is a fictional statewide professional association built around advocacy, education, career growth, local connection, and practical resources for healthcare professionals.',
+	supportLine: 'Fictional association · Healthcare leadership · Advocacy · Education · Community',
+	primaryCta: { text: 'Explore Membership', href: '/demos/association/membership' },
+	secondaryCta: { text: 'View Strategic Priorities', href: '#priorities' },
+	tertiaryLink: { text: 'Contact MHPA →', href: '/demos/association/contact' },
+} as const;
+
+// ── About: Mission ──
+
+export const aboutMission = {
+	mission: 'To help healthcare professionals learn, lead, advocate, and connect through a modern association built around practical support and professional influence.',
+	vision: 'A stronger healthcare workforce where professionals have the education, community, and policy voice needed to improve care access and outcomes.',
+} as const;
+
+// ── About: What We Do ──
+
+export const aboutWhatWeDo = [
+	{ title: 'Advocate for the profession', description: 'Track legislation, mobilize members, and amplify the professional voice in policy decisions that shape practice.', href: '/demos/association/advocacy' },
+	{ title: 'Deliver continuing education', description: 'Offer CE courses, webinars, and on-demand learning that keep professionals current and compliant.', href: '/demos/association/resources' },
+	{ title: 'Connect local chapters', description: 'Support 24 regional chapters that host events, mentorship, and advocacy activity across the state.', href: '/demos/association/chapters' },
+	{ title: 'Support career growth', description: 'Provide job listings, salary data, mentorship matching, and career resources at every stage.', href: '/demos/association/career-center' },
+	{ title: 'Provide practical resources', description: 'Maintain a library of toolkits, templates, clinical guides, and practice support materials for members.', href: '/demos/association/resources' },
+	{ title: 'Convene flagship events', description: 'Host the annual Clinical Leadership Conference and regional events that bring the profession together.', href: '/demos/association/events/annual-conference' },
+];
+
+// ── About: Impact Stats ──
+
+export const aboutImpactStats = [
+	{ value: '8,200+', label: 'members represented' },
+	{ value: '24', label: 'local chapters' },
+	{ value: '120+', label: 'annual learning hours' },
+	{ value: '36', label: 'policy updates tracked' },
+	{ value: '1', label: 'flagship annual conference' },
+	{ value: '300+', label: 'volunteer leaders' },
+];
+
+// ── About: Strategic Priorities ──
+
+export const aboutStrategicPriorities = [
+	{ title: 'Practice & Policy Influence', description: 'Strengthen the profession\'s voice in legislative and regulatory decisions through coordinated advocacy, coalition building, and grassroots engagement.', href: '/demos/association/advocacy' },
+	{ title: 'Continuing Education & Professional Standards', description: 'Expand CE offerings, develop clinical practice resources, and support competency frameworks that elevate care quality.', href: '/demos/association/resources' },
+	{ title: 'Local Community & Leadership', description: 'Grow chapter engagement, mentorship participation, and volunteer leadership pipelines to strengthen the association from the ground up.', href: '/demos/association/chapters' },
+	{ title: 'Career Growth & Workforce Sustainability', description: 'Address workforce shortages, support career transitions, expand employer partnerships, and connect members with opportunities.', href: '/demos/association/career-center' },
+];
+
+// ── About: Leadership ──
+
+export const aboutLeadership = [
+	{ name: 'Dr. Elaine Nakamura', initials: 'EN', role: 'Board President', bio: 'Family nurse practitioner and clinical educator with 18 years of practice and advocacy experience.' },
+	{ name: 'Dr. Marcus Webb', initials: 'MW', role: 'President-Elect', bio: 'Emergency medicine PA-C focused on workforce policy and rural healthcare access.' },
+	{ name: 'Dr. Priya Raghavan', initials: 'PR', role: 'VP of Education', bio: 'Clinical pharmacology specialist leading CE program strategy and accreditation partnerships.' },
+	{ name: 'Tomás Herrera', initials: 'TH', role: 'VP of Advocacy', bio: 'Public health professional coordinating statewide legislative strategy and member mobilization.' },
+	{ name: 'Angela Liu', initials: 'AL', role: 'Chapter Council Chair', bio: 'Northern California chapter leader connecting regional chapters with statewide priorities.' },
+	{ name: 'David Okafor', initials: 'DO', role: 'Executive Director', bio: 'Association management professional overseeing operations, partnerships, and strategic planning.' },
+];
+
+// ── About: Governance ──
+
+export const aboutGovernance = [
+	{ title: 'Board oversight', description: 'An elected board of directors sets strategic direction, approves budgets, and ensures organizational accountability.' },
+	{ title: 'Chapter representation', description: 'The Chapter Council connects local leadership to statewide governance, ensuring regional perspectives are heard.' },
+	{ title: 'Annual planning', description: 'Strategic priorities are reviewed and updated annually through member input, board workshops, and stakeholder feedback.' },
+	{ title: 'Member feedback loops', description: 'Member surveys, town halls, and chapter forums create ongoing channels for input on programs and policy direction.' },
+];
+
+// ── About: Timeline ──
+
+export const aboutTimeline = [
+	{ year: '2022', milestone: 'Regional chapter network expanded to 24 chapters across 6 regions.' },
+	{ year: '2023', milestone: 'Resource library launched with CE courses, toolkits, and practice guides.' },
+	{ year: '2024', milestone: 'Advocacy alerts modernized with legislative tracking and action tools.' },
+	{ year: '2025', milestone: 'Career center and mentorship pathways expanded statewide.' },
+	{ year: '2026', milestone: 'Clinical Leadership Conference introduced as flagship annual event.' },
+];
+
+// ── About: Partners ──
+
+export const aboutPartners = [
+	'Pacific Health Systems',
+	'Valley Medical Group',
+	'Coastal Clinical Partners',
+	'Summit Education Network',
+	'Golden State University',
+	'Workforce Access Coalition',
+];
+
+// ── About: FAQ ──
+
+export const aboutFaqs = [
+	{ question: 'Is MHPA a real association?', answer: 'No. Meridian Health Professionals Association is a fictional professional association created by FutureSolutions to demonstrate a modern association website system. All content, data, and organizations are fictional.' },
+	{ question: 'Who does MHPA represent in this demo?', answer: 'MHPA represents a fictional statewide community of healthcare professionals — including nurse practitioners, physician assistants, clinical leaders, students, and allied health professionals.' },
+	{ question: 'What does the association model include?', answer: 'The demo covers membership, advocacy, events, resources/CE, chapters, career center, and organizational pages — the core systems a modern professional association needs.' },
+	{ question: 'How does advocacy connect to membership?', answer: 'Advocacy is a core membership benefit. The demo shows how policy priorities, action alerts, legislative tracking, and Lobby Day fit into the association value proposition.' },
+	{ question: 'How do chapters fit into the organization?', answer: 'Chapters are local extensions of the statewide association. They host events, mentorship, leadership development, and advocacy activity — all connected to the central MHPA system.' },
+	{ question: 'How would this template adapt to a real association?', answer: 'A real implementation would replace fictional content with the association\'s actual mission, leadership, events, resources, and branding. The technical structure, navigation, and page architecture are designed to be reusable.' },
+];
+
+// ── Contact: Hero ──
+
+export const contactHero = {
+	eyebrow: 'Contact',
+	headline: 'Get to the right team faster.',
+	lead: 'Whether you have a membership question, event inquiry, advocacy request, chapter need, employer opportunity, or partnership idea, this demo contact system shows how association support can be routed clearly.',
+	supportLine: 'Membership · Events · Advocacy · Chapters · Careers · Partnerships',
+	primaryCta: { text: 'Start a Request', href: '#form' },
+	secondaryCta: { text: 'View Support Paths', href: '#support' },
+	tertiaryLink: { text: 'Explore Membership →', href: '/demos/association/membership' },
+} as const;
+
+// ── Contact: Support Paths ──
+
+export const contactSupportPaths = [
+	{ title: 'Membership Support', audience: 'Current and prospective members', description: 'Questions about joining, renewing, benefits, student membership, or account access.', href: '#form' },
+	{ title: 'Event & CE Questions', audience: 'Attendees and presenters', description: 'Conference registration, CE credit claiming, speaker submissions, or event logistics.', href: '#form' },
+	{ title: 'Advocacy & Policy Questions', audience: 'Members and policymakers', description: 'Legislative updates, advocacy campaigns, Lobby Day, PAC inquiries, or policy resources.', href: '#form' },
+	{ title: 'Chapter Support', audience: 'Chapter leaders and members', description: 'Local chapter operations, event planning, volunteer roles, mentorship, or chapter resources.', href: '#form' },
+	{ title: 'Career Center / Employers', audience: 'Job seekers and employers', description: 'Job posting inquiries, employer partnerships, career fair participation, or career resource access.', href: '#form' },
+	{ title: 'Sponsorship & Partnerships', audience: 'Organizations and sponsors', description: 'Conference sponsorship, chapter partnerships, advertising, or organizational collaboration.', href: '#form' },
+];
+
+// ── Contact: Form Subjects ──
+
+export const contactFormSubjects = [
+	'Membership',
+	'Event / CE',
+	'Advocacy',
+	'Chapters',
+	'Career Center',
+	'Sponsorship / Partnership',
+	'Media',
+	'General',
+] as const;
+
+// ── Contact: Office ──
+
+export const contactOffice = {
+	name: 'Meridian Health Professionals Association',
+	address: '1200 Capitol Commons Drive, Suite 400',
+	city: 'Sacramento, CA 95814',
+	phone: '(916) 555-0184',
+	email: 'hello@meridianhpa.example',
+	hours: 'Monday–Friday, 9:00 AM–5:00 PM PT',
+} as const;
+
+// ── Contact: Response Process ──
+
+export const contactResponseProcess = [
+	{ step: 1, title: 'Choose your inquiry type', description: 'Select the topic that best matches your question so it reaches the right team.' },
+	{ step: 2, title: 'Message routes to the right team', description: 'Your inquiry is directed to membership, events, advocacy, chapters, careers, or partnerships staff.' },
+	{ step: 3, title: 'Staff reviews context and next steps', description: 'The assigned team reviews your message and gathers any needed information before responding.' },
+	{ step: 4, title: 'You receive a reply or follow-up resource', description: 'Expect a response within 1–2 business days, including relevant links, documents, or next steps.' },
+];
+
+// ── Contact: Quick Links ──
+
+export const contactQuickLinks = [
+	{ title: 'Join or Renew', href: '/demos/association/membership' },
+	{ title: 'Register for Conference', href: '/demos/association/events/annual-conference' },
+	{ title: 'Browse Resources', href: '/demos/association/resources' },
+	{ title: 'Take Advocacy Action', href: '/demos/association/advocacy' },
+	{ title: 'Find Your Chapter', href: '/demos/association/chapters' },
+	{ title: 'Post a Job', href: '/demos/association/career-center#employers' },
+];
+
+// ── Contact: Department Directory ──
+
+export const contactDepartments = [
+	{ name: 'Membership Services', email: 'membership@meridianhpa.example' },
+	{ name: 'Education & Events', email: 'events@meridianhpa.example' },
+	{ name: 'Advocacy Team', email: 'advocacy@meridianhpa.example' },
+	{ name: 'Chapter Support', email: 'chapters@meridianhpa.example' },
+	{ name: 'Career Center', email: 'careers@meridianhpa.example' },
+	{ name: 'Partnerships', email: 'partners@meridianhpa.example' },
+	{ name: 'Media / Public Inquiries', email: 'media@meridianhpa.example' },
+];
+
+// ── Contact: FAQ ──
+
+export const contactFaqs = [
+	{ question: 'Is this form live?', answer: 'No. This is a fictional demo form. It does not submit data or send messages. A live implementation would connect to the association\'s CRM, AMS, helpdesk, or email system.' },
+	{ question: 'How would this connect to a real association system?', answer: 'The form structure supports integration with membership management platforms, CRM tools, and helpdesk systems through standard form submission, webhooks, or API connections.' },
+	{ question: 'Can different inquiry types route to different teams?', answer: 'Yes. The inquiry type selector is designed to support automated routing to the correct department — membership, events, advocacy, chapters, careers, or partnerships.' },
+	{ question: 'Can this connect to an AMS or CRM?', answer: 'Yes. Modern association management systems support form integrations that can create tickets, update member records, and trigger automated responses based on inquiry type.' },
+	{ question: 'Can members get priority support?', answer: 'Yes. A live system could identify logged-in members and route their inquiries to priority support queues with faster response commitments.' },
+	{ question: 'Can sponsors or employers use this page?', answer: 'Yes. Sponsor and employer inquiries are explicitly supported through the inquiry type selector, routing partnership and job-posting questions to the right team.' },
+];
+
 // ── Future Route Metadata ──
 
 export const routeMetadata: Record<string, { title: string; description: string }> = {

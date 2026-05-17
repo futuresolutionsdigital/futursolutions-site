@@ -1,0 +1,29 @@
+---
+import { contactDepartments } from '../../data/association';
+---
+
+<section class="assoc-section" aria-labelledby="contact-dir-heading">
+	<div class="assoc-container">
+		<p class="assoc-eyebrow">Departments</p>
+		<h2 id="contact-dir-heading">Common support areas</h2>
+		<div class="contact-dir-grid">
+			{contactDepartments.map((d) => (
+				<div class="contact-dir-item">
+					<h3>{d.name}</h3>
+					<p>{d.email}</p>
+				</div>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+	.contact-dir-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 2rem; border: 1px solid var(--assoc-border); border-radius: var(--assoc-radius); background: var(--assoc-white); overflow: hidden; }
+	.contact-dir-item { padding: 1rem 1.15rem; border-right: 1px solid var(--assoc-border); border-bottom: 1px solid var(--assoc-border); }
+	.contact-dir-item:nth-child(4n) { border-right: none; }
+	.contact-dir-item:nth-last-child(-n+4) { border-bottom: none; }
+	.contact-dir-item h3 { font-size: 0.85rem; margin-bottom: 0.2rem; }
+	.contact-dir-item p { font-size: 0.78rem; color: var(--assoc-teal); font-weight: 600; margin: 0; word-break: break-all; }
+	@media (max-width: 768px) { .contact-dir-grid { grid-template-columns: repeat(2, 1fr); } .contact-dir-item:nth-child(4n) { border-right: 1px solid var(--assoc-border); } .contact-dir-item:nth-child(2n) { border-right: none; } .contact-dir-item:nth-last-child(-n+4) { border-bottom: 1px solid var(--assoc-border); } .contact-dir-item:nth-last-child(-n+2) { border-bottom: none; } }
+	@media (max-width: 480px) { .contact-dir-grid { grid-template-columns: 1fr; } .contact-dir-item { border-right: none !important; } .contact-dir-item:last-child { border-bottom: none; } }
+</style>

@@ -1,0 +1,31 @@
+---
+import { aboutStrategicPriorities } from '../../data/association';
+---
+
+<section class="assoc-section" id="priorities" aria-labelledby="about-priorities-heading">
+	<div class="assoc-container">
+		<p class="assoc-eyebrow">Strategic Direction</p>
+		<h2 id="about-priorities-heading">Strategic priorities for a stronger profession.</h2>
+		<div class="about-pri-grid">
+			{aboutStrategicPriorities.map((p, i) => (
+				<a href={p.href} class="assoc-card about-pri-card">
+					<span class="about-pri-card__num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+					<h3>{p.title}</h3>
+					<p>{p.description}</p>
+					<span class="about-pri-card__cta">Learn More →</span>
+				</a>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+	.about-pri-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 2rem; }
+	.about-pri-card { display: flex; flex-direction: column; padding: 1.5rem; transition: border-color 0.15s ease, transform 0.15s ease; }
+	.about-pri-card:hover { border-color: var(--assoc-teal); transform: translateY(-1px); }
+	.about-pri-card__num { font-size: 1.3rem; font-weight: 800; color: var(--assoc-teal); opacity: 0.3; line-height: 1; display: block; margin-bottom: 0.65rem; }
+	.about-pri-card h3 { font-size: 1.05rem; margin-bottom: 0.35rem; }
+	.about-pri-card p { font-size: 0.88rem; line-height: 1.55; flex: 1; }
+	.about-pri-card__cta { margin-top: 0.65rem; font-size: 0.8rem; font-weight: 700; color: var(--assoc-teal); }
+	@media (max-width: 600px) { .about-pri-grid { grid-template-columns: 1fr; } }
+</style>
