@@ -1652,6 +1652,218 @@ export const chapterDetailAnnouncements = [
 	{ date: 'May 2, 2026', title: 'Advocacy briefing recap available', summary: 'A summary of the April policy briefing, including SB-1247 talking points and member feedback, is available in the resource library.' },
 ];
 
+// ── Career Center: Hero ──
+
+export const careerHero = {
+	eyebrow: 'Career Center',
+	headline: 'Your next career move starts here.',
+	lead: 'Explore healthcare opportunities, salary insights, mentorship, career resources, and employer connections designed for every stage of your professional journey.',
+	supportLine: 'Jobs · Salary tools · Mentorship · Career resources · Employer connections',
+	primaryCta: { text: 'Browse Jobs', href: '#jobs' },
+	secondaryCta: { text: 'Post a Job', href: '#employers' },
+	tertiaryLink: { text: 'Explore Career Resources →', href: '#resources' },
+} as const;
+
+// ── Career Center: Stats ──
+
+export const careerStats = [
+	{ value: '120+', label: 'active opportunities' },
+	{ value: '48', label: 'employers' },
+	{ value: '6', label: 'career resource tracks' },
+	{ value: '300+', label: 'mentorship connections' },
+	{ value: 'Weekly', label: 'updates' },
+];
+
+// ── Career Center: Job Filters ──
+
+export const careerJobFilters = {
+	categories: ['Clinical Leadership', 'Education', 'Practice Operations', 'Telehealth', 'Public Health', 'Policy & Advocacy', 'Preceptorship', 'Administration'],
+	workTypes: ['Full-time', 'Part-time', 'Hybrid', 'Remote', 'On-site'],
+	experienceLevels: ['Entry', 'Mid-career', 'Senior', 'Executive'],
+} as const;
+
+// ── Career Center: Featured Jobs ──
+
+export const careerFeaturedJobs = [
+	{ title: 'Clinical Program Director', employer: 'Summit Valley Health Collaborative', location: 'Sacramento, CA', workType: 'Hybrid', schedule: 'Full-time', salaryRange: '$142,000–$168,000', category: 'Clinical Leadership', experienceLevel: 'Senior', postedDate: 'May 14, 2026', summary: 'Lead a multidisciplinary clinical program focused on access, quality improvement, and team-based care.', tags: ['leadership', 'quality', 'hybrid'], href: '/demos/association/career-center/clinical-program-director', featured: true },
+	{ title: 'Telehealth Clinical Lead', employer: 'Pacific Northwest Virtual Care', location: 'Remote', workType: 'Remote', schedule: 'Full-time', salaryRange: '$118,000–$138,000', category: 'Telehealth', experienceLevel: 'Senior', postedDate: 'May 12, 2026', summary: 'Lead the clinical telehealth team, design care protocols, and oversee quality for a growing virtual health program.', tags: ['telehealth', 'leadership', 'remote'], href: '/demos/association/career-center', featured: true },
+	{ title: 'Education Program Manager', employer: 'Redwood Health Education Center', location: 'San Francisco, CA', workType: 'On-site', schedule: 'Full-time', salaryRange: '$95,000–$115,000', category: 'Education', experienceLevel: 'Mid-career', postedDate: 'May 11, 2026', summary: 'Manage CE programming, coordinate faculty development, and build partnerships with clinical training sites.', tags: ['education', 'CE', 'management'], href: '/demos/association/career-center', featured: false },
+	{ title: 'Workforce Policy Specialist', employer: 'State Healthcare Workforce Commission', location: 'Sacramento, CA', workType: 'Hybrid', schedule: 'Full-time', salaryRange: '$88,000–$105,000', category: 'Policy & Advocacy', experienceLevel: 'Mid-career', postedDate: 'May 10, 2026', summary: 'Analyze healthcare workforce data, draft policy recommendations, and support legislative outreach campaigns.', tags: ['policy', 'advocacy', 'workforce'], href: '/demos/association/career-center', featured: false },
+	{ title: 'Preceptor Coordinator', employer: 'Golden State Clinical Training Network', location: 'Los Angeles, CA', workType: 'On-site', schedule: 'Full-time', salaryRange: '$72,000–$88,000', category: 'Preceptorship', experienceLevel: 'Mid-career', postedDate: 'May 9, 2026', summary: 'Match students with preceptors, manage rotation schedules, and support clinical education quality standards.', tags: ['preceptorship', 'education', 'coordination'], href: '/demos/association/career-center', featured: false },
+	{ title: 'Practice Operations Manager', employer: 'Coastal Medical Partners', location: 'San Diego, CA', workType: 'On-site', schedule: 'Full-time', salaryRange: '$82,000–$98,000', category: 'Practice Operations', experienceLevel: 'Mid-career', postedDate: 'May 8, 2026', summary: 'Oversee daily practice operations, revenue cycle management, staffing, and patient experience initiatives.', tags: ['operations', 'management', 'revenue'], href: '/demos/association/career-center', featured: false },
+	{ title: 'Public Health Program Coordinator', employer: 'Central Valley Community Health Alliance', location: 'Fresno, CA', workType: 'On-site', schedule: 'Full-time', salaryRange: '$65,000–$78,000', category: 'Public Health', experienceLevel: 'Entry', postedDate: 'May 7, 2026', summary: 'Coordinate community health programs, support outreach efforts, and track population health outcomes.', tags: ['public health', 'community', 'coordination'], href: '/demos/association/career-center', featured: false },
+	{ title: 'Clinical Quality Analyst', employer: 'Bay Area Integrated Health System', location: 'Oakland, CA', workType: 'Hybrid', schedule: 'Full-time', salaryRange: '$78,000–$95,000', category: 'Administration', experienceLevel: 'Mid-career', postedDate: 'May 6, 2026', summary: 'Analyze clinical quality metrics, prepare regulatory reports, and support performance improvement initiatives.', tags: ['quality', 'analytics', 'administration'], href: '/demos/association/career-center', featured: false },
+	{ title: 'Director of Nursing Education', employer: 'Sierra Health Sciences University', location: 'Sacramento, CA', workType: 'On-site', schedule: 'Full-time', salaryRange: '$125,000–$150,000', category: 'Education', experienceLevel: 'Executive', postedDate: 'May 5, 2026', summary: 'Lead curriculum development, faculty recruitment, accreditation compliance, and clinical partnership strategy.', tags: ['education', 'leadership', 'executive'], href: '/demos/association/career-center', featured: true },
+	{ title: 'Part-Time Telehealth Provider', employer: 'Digital Health Access Network', location: 'Remote', workType: 'Remote', schedule: 'Part-time', salaryRange: '$60–$85/hr', category: 'Telehealth', experienceLevel: 'Mid-career', postedDate: 'May 4, 2026', summary: 'Provide virtual primary care visits for underserved communities through a telehealth-first care model.', tags: ['telehealth', 'part-time', 'remote'], href: '/demos/association/career-center', featured: false },
+];
+
+// ── Career Center: Pathways ──
+
+export const careerPathways = [
+	{ title: 'Student & New Professional', summary: 'First role guidance, mentorship access, resume help, and career readiness resources for students and recent graduates.', cta: { text: 'Explore Student Support', href: '#students' } },
+	{ title: 'Practicing Professional', summary: 'Salary benchmarks, CE pathways, leadership development, and opportunities matched to your experience and goals.', cta: { text: 'Browse Opportunities', href: '#jobs' } },
+	{ title: 'Clinical Leader', summary: 'Executive roles, compensation insights, board development, and strategic networking for current and aspiring leaders.', cta: { text: 'View Leadership Roles', href: '#jobs' } },
+	{ title: 'Employer / Recruiter', summary: 'Post opportunities, gain featured visibility, and connect with qualified professionals across California.', cta: { text: 'Post a Job', href: '#employers' } },
+];
+
+// ── Career Center: Salary Insights ──
+
+export const careerSalaryData = [
+	{ title: 'Salary Benchmark Report', summary: 'Statewide and regional salary data for healthcare professionals across practice settings, specialties, and career stages.', href: '/demos/association/resources' },
+	{ title: 'Benefits & Negotiation Guide', summary: 'Practical strategies for evaluating benefits packages, negotiating offers, and understanding total compensation.', href: '/demos/association/resources' },
+	{ title: 'Regional Workforce Trends', summary: 'Analysis of hiring activity, demand by specialty, and workforce projections across California regions.', href: '/demos/association/resources' },
+	{ title: 'Leadership Compensation Brief', summary: 'Compensation benchmarks and career data for clinical directors, program leaders, and executive-level roles.', href: '/demos/association/resources' },
+];
+
+// ── Career Center: Mentorship ──
+
+export const careerMentorship = {
+	headline: 'Career growth is easier with the right people.',
+	description: 'MHPA connects members with mentors, peer circles, and professional networks that help you navigate career transitions, build leadership skills, and find the roles that match your goals.',
+	pathways: [
+		{ title: 'Find a mentor', description: 'Connect with an experienced professional in your specialty or career area through the MHPA mentorship network.', href: '/demos/association/chapters#mentorship' },
+		{ title: 'Become a mentor', description: 'Share your experience with the next generation. Mentors report stronger professional satisfaction and expanded networks.', href: '/demos/association/chapters#mentorship' },
+		{ title: 'Join a peer circle', description: 'Small-group professional support organized by career stage, specialty, or leadership interest.', href: '/demos/association/chapters#mentorship' },
+	],
+	cta: { text: 'Explore Mentorship', href: '/demos/association/chapters#mentorship' },
+} as const;
+
+// ── Career Center: Resources ──
+
+export const careerResources = [
+	{ title: 'Resume Review Checklist', type: 'Checklist', audience: 'All professionals', access: 'Public', summary: 'Step-by-step guide to reviewing and strengthening your healthcare resume before applying.' },
+	{ title: 'Interview Preparation Guide', type: 'Guide', audience: 'All professionals', access: 'Member-only', summary: 'Common healthcare interview questions, behavioral question frameworks, and practice strategies.' },
+	{ title: 'New Professional Career Roadmap', type: 'Roadmap', audience: 'Students & new professionals', access: 'Public', summary: 'A visual career map for students and new graduates entering the healthcare workforce.' },
+	{ title: 'Leadership Role Readiness Guide', type: 'Guide', audience: 'Clinical leaders', access: 'Member-only', summary: 'Self-assessment tools and preparation guidance for professionals considering leadership roles.' },
+	{ title: 'Employer Question Checklist', type: 'Checklist', audience: 'All professionals', access: 'Public', summary: 'Questions to ask during interviews about culture, benefits, professional development, and practice environment.' },
+	{ title: 'Contract Conversation Guide', type: 'Guide', audience: 'Practicing professionals', access: 'Member-only', summary: 'How to evaluate employment contracts, negotiate terms, and understand non-compete and benefits clauses.' },
+];
+
+// ── Career Center: Employer Block ──
+
+export const careerEmployerBlock = {
+	headline: 'Reach qualified healthcare professionals.',
+	subheadline: 'Post opportunities, promote leadership roles, and connect your organization with professionals already engaged in MHPA education, events, and chapters.',
+	values: [
+		{ title: 'Targeted professional audience', description: 'Your listing reaches healthcare professionals who are already investing in their careers through education, advocacy, and professional development.' },
+		{ title: 'Featured employer visibility', description: 'Featured employer packages include homepage placement, newsletter inclusion, and conference recruiting access.' },
+		{ title: 'Conference and chapter recruiting', description: 'Connect with candidates at local chapter events, the annual conference career fair, and CE programming.' },
+	],
+	primaryCta: { text: 'Post a Job', href: '/demos/association/contact' },
+	secondaryCta: { text: 'Sponsor or Exhibit', href: '/demos/association/events/annual-conference' },
+} as const;
+
+// ── Career Center: Student Support ──
+
+export const careerStudentSupport = [
+	{ title: 'First role guidance', description: 'Practical advice on finding, evaluating, and preparing for your first healthcare position after graduation.' },
+	{ title: 'Mentorship access', description: 'Connect with practicing professionals who can help you navigate the transition from student to practitioner.' },
+	{ title: 'Student event discounts', description: 'Reduced pricing on conferences, CE events, and chapter programming for student and new professional members.' },
+	{ title: 'Career readiness resources', description: 'Resume templates, interview guides, career roadmaps, and salary data to help you start strong.' },
+];
+
+// ── Career Center: Stories ──
+
+export const careerStories = [
+	{ name: 'Rachel Torres', role: 'DNP, FNP-C', region: 'Northern California', quote: 'Through MHPA, I found a local mentor, attended a leadership workshop, and discovered a role that matched the kind of practice I wanted to build.', outcome: 'Transitioned from clinical practice to clinical program leadership' },
+	{ name: 'James Okwu', role: 'PA-C', region: 'Bay Area', quote: 'The career center helped me understand my market value. The salary benchmark report gave me the confidence to negotiate a better offer.', outcome: 'Negotiated a 15% salary increase during job transition' },
+	{ name: 'Priya Naidu', role: 'MSN Student', region: 'Southern California', quote: 'As a student, I had no professional network. MHPA chapter events and the mentorship program changed that completely.', outcome: 'Secured first clinical role before graduation' },
+];
+
+// ── Career Center: FAQ ──
+
+export const careerFaqs = [
+	{ question: 'Do I need to be a member to view jobs?', answer: 'Most job listings are publicly visible. Some featured opportunities and employer details may be available only to MHPA members.' },
+	{ question: 'Are job postings verified?', answer: 'MHPA reviews submitted postings for relevance and quality. Listings come from healthcare employers, academic institutions, and partner organizations.' },
+	{ question: 'Can employers post opportunities?', answer: 'Yes. Employers and recruiters can submit job listings through the MHPA career center. Featured and sponsored placement options are available.' },
+	{ question: 'Are salary resources member-only?', answer: 'The salary benchmark summary is publicly available. Detailed regional breakdowns and compensation tools are available to MHPA members.' },
+	{ question: 'Can students use the career center?', answer: 'Yes. Student members have full access to the career center, mentorship matching, career resources, and student-specific event programming.' },
+	{ question: 'How does mentorship work?', answer: 'Members can request mentorship through their local chapter or the MHPA mentorship network. Matches are based on career interests, specialty, and region.' },
+	{ question: 'Can I get help preparing for interviews?', answer: 'Yes. MHPA offers interview preparation guides, resume review checklists, and chapter-hosted career workshops for members.' },
+	{ question: 'How often are jobs updated?', answer: 'New opportunities are added weekly. Featured roles and employer partnerships are reviewed and refreshed monthly.' },
+];
+
+// ── Career Center: Job Detail – Clinical Program Director ──
+
+export const careerJobDetail = {
+	eyebrow: 'Featured Role',
+	title: 'Clinical Program Director',
+	employer: 'Summit Valley Health Collaborative',
+	lead: 'Lead a multidisciplinary clinical program focused on access, quality improvement, team-based care, and professional development.',
+	badges: ['Full-time', 'Hybrid', 'Sacramento, CA', 'Clinical Leadership', 'Posted May 14, 2026'],
+	salaryRange: '$142,000–$168,000',
+	primaryCta: { text: 'Apply Through Employer', href: '#application' },
+	secondaryCta: { text: 'Save Role', href: '#application' },
+	tertiaryLink: { text: '← Back to Career Center', href: '/demos/association/career-center' },
+	demoNote: 'This is a fictional job listing for demo purposes.',
+} as const;
+
+export const careerJobDetailQuickFacts = [
+	{ label: 'Location', value: 'Sacramento, CA' },
+	{ label: 'Work Type', value: 'Hybrid' },
+	{ label: 'Schedule', value: 'Full-time' },
+	{ label: 'Salary', value: '$142K–$168K' },
+	{ label: 'Experience', value: 'Senior' },
+	{ label: 'Posted', value: 'May 14, 2026' },
+];
+
+export const careerJobDetailOverview = [
+	'Summit Valley Health Collaborative is seeking a Clinical Program Director to lead a growing multidisciplinary clinical program serving Sacramento and surrounding communities. This role oversees program operations, clinical quality, team development, and community partnerships.',
+	'The ideal candidate brings a strong clinical background, experience leading teams, and a commitment to improving healthcare access. The Clinical Program Director reports to the Chief Clinical Officer and works closely with medical staff, community organizations, and state-level partners.',
+	'This is an opportunity to shape a program that directly impacts access, care quality, and professional development across the region.',
+];
+
+export const careerJobDetailResponsibilities = [
+	'Lead daily program operations and clinical team coordination',
+	'Design and implement clinical quality improvement initiatives',
+	'Support staff professional development and continuing education',
+	'Build and maintain partnerships with community organizations and referral networks',
+	'Track program outcomes, prepare reports, and present to organizational leadership',
+	'Represent the program in regional leadership meetings and stakeholder forums',
+];
+
+export const careerJobDetailQualifications = {
+	required: [
+		'Advanced healthcare credential (NP, PA, DNP, or equivalent clinical background)',
+		'5+ years of clinical or program leadership experience',
+		'Familiarity with quality improvement methodologies',
+		'Strong written and verbal communication skills',
+	],
+	preferred: [
+		'Experience working with underserved or rural communities',
+		'Background in clinical education or preceptorship',
+		'Policy, advocacy, or legislative engagement experience',
+		'Association or chapter leadership experience',
+	],
+} as const;
+
+export const careerJobDetailBenefits = [
+	{ title: 'Leadership growth', description: 'Direct influence on program strategy, clinical quality, and team development within a growing organization.' },
+	{ title: 'Community impact', description: 'Lead programs that improve access and outcomes in underserved Sacramento-area communities.' },
+	{ title: 'Hybrid flexibility', description: 'Flexible hybrid schedule with a mix of on-site clinical leadership and remote administrative work.' },
+	{ title: 'Professional development', description: 'Annual CE budget, conference attendance support, and access to leadership development programming.' },
+];
+
+export const careerJobApplicationProcess = [
+	{ step: 1, title: 'Review role', description: 'Read the full role description, qualifications, and benefits to confirm alignment with your goals.' },
+	{ step: 2, title: 'Prepare resume and cover letter', description: 'Use MHPA career resources to refine your resume and prepare a targeted cover letter.' },
+	{ step: 3, title: 'Apply through employer', description: 'Submit your application directly through Summit Valley Health Collaborative\'s hiring portal.' },
+	{ step: 4, title: 'Employer follows up', description: 'The employer will contact qualified applicants directly. MHPA does not manage the application process.' },
+];
+
+export const careerJobRelatedResources = [
+	{ title: 'Resume Review Checklist', type: 'Checklist', href: '/demos/association/resources' },
+	{ title: 'Leadership Role Readiness Guide', type: 'Guide', href: '/demos/association/resources' },
+	{ title: 'Salary Benchmark Report', type: 'Report', href: '/demos/association/resources' },
+	{ title: 'Interview Preparation Guide', type: 'Guide', href: '/demos/association/resources' },
+];
+
+export const careerRelatedJobs = [
+	{ title: 'Telehealth Clinical Lead', employer: 'Pacific Northwest Virtual Care', location: 'Remote', workType: 'Remote', salaryRange: '$118,000–$138,000', href: '/demos/association/career-center' },
+	{ title: 'Education Program Manager', employer: 'Redwood Health Education Center', location: 'San Francisco, CA', workType: 'On-site', salaryRange: '$95,000–$115,000', href: '/demos/association/career-center' },
+	{ title: 'Workforce Policy Specialist', employer: 'State Healthcare Workforce Commission', location: 'Sacramento, CA', workType: 'Hybrid', salaryRange: '$88,000–$105,000', href: '/demos/association/career-center' },
+];
+
 // ── Future Route Metadata ──
 
 export const routeMetadata: Record<string, { title: string; description: string }> = {
@@ -1694,6 +1906,11 @@ export const routeMetadata: Record<string, { title: string; description: string 
 		title: 'Career Center | MHPA',
 		description:
 			'Search healthcare jobs, compare salary benchmarks, build your CV, and connect with mentors.',
+	},
+	'/demos/association/career-center/clinical-program-director': {
+		title: 'Clinical Program Director | MHPA Career Center',
+		description:
+			'Lead a multidisciplinary clinical program at Summit Valley Health Collaborative. Hybrid role in Sacramento, CA.',
 	},
 	'/demos/association/chapters/northern-california': {
 		title: 'Northern California Chapter | MHPA',

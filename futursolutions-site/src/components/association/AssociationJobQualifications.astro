@@ -1,0 +1,35 @@
+---
+import { careerJobDetailQualifications } from '../../data/association';
+const q = careerJobDetailQualifications;
+---
+
+<section class="assoc-section assoc-section--warm" aria-labelledby="job-qual-heading">
+	<div class="assoc-container">
+		<p class="assoc-eyebrow">Qualifications</p>
+		<h2 id="job-qual-heading">What we are looking for</h2>
+		<div class="jq-grid">
+			<div class="jq-col">
+				<h3>Required</h3>
+				<ul class="jq-list">
+					{q.required.map((r) => <li>{r}</li>)}
+				</ul>
+			</div>
+			<div class="jq-col">
+				<h3>Preferred</h3>
+				<ul class="jq-list jq-list--preferred">
+					{q.preferred.map((p) => <li>{p}</li>)}
+				</ul>
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.jq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1.25rem; }
+	.jq-col h3 { font-size: 0.88rem; margin-bottom: 0.65rem; }
+	.jq-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.55rem; }
+	.jq-list li { position: relative; padding-left: 1.35rem; font-size: 0.88rem; line-height: 1.5; }
+	.jq-list li::before { content: ''; position: absolute; left: 0; top: 0.45rem; width: 8px; height: 8px; border-radius: 2px; background: var(--assoc-teal); }
+	.jq-list--preferred li::before { background: var(--assoc-sand); border: 1.5px solid var(--assoc-teal); }
+	@media (max-width: 600px) { .jq-grid { grid-template-columns: 1fr; } }
+</style>

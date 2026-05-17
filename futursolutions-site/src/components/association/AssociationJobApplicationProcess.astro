@@ -1,0 +1,32 @@
+---
+import { careerJobApplicationProcess } from '../../data/association';
+---
+
+<section class="assoc-section assoc-section--warm" id="application" aria-labelledby="job-app-heading">
+	<div class="assoc-container jap-inner">
+		<p class="assoc-eyebrow">How to Apply</p>
+		<h2 id="job-app-heading">Application process</h2>
+		<div class="jap-steps">
+			{careerJobApplicationProcess.map((s) => (
+				<div class="jap-step">
+					<span class="jap-step__num" aria-hidden="true">{s.step}</span>
+					<div>
+						<h3>{s.title}</h3>
+						<p>{s.description}</p>
+					</div>
+				</div>
+			))}
+		</div>
+		<p class="jap-note">MHPA does not manage job applications. Submissions go directly to the employer.</p>
+	</div>
+</section>
+
+<style>
+	.jap-inner { max-width: 720px; }
+	.jap-steps { display: grid; gap: 0.75rem; margin-top: 1.5rem; margin-bottom: 1.25rem; }
+	.jap-step { display: flex; gap: 1rem; align-items: flex-start; padding: 1rem; border: 1px solid var(--assoc-border); border-radius: var(--assoc-radius); background: var(--assoc-white); }
+	.jap-step__num { flex-shrink: 0; display: flex; align-items: center; justify-content: center; width: 2.25rem; height: 2.25rem; border-radius: 50%; background: var(--assoc-teal-light); color: var(--assoc-teal); font-size: 0.92rem; font-weight: 800; }
+	.jap-step h3 { font-size: 0.92rem; margin-bottom: 0.15rem; }
+	.jap-step p { font-size: 0.82rem; line-height: 1.45; margin: 0; }
+	.jap-note { font-size: 0.75rem; font-weight: 600; color: var(--assoc-slate); opacity: 0.7; padding: 0.5rem 0.75rem; border-radius: 6px; background: color-mix(in srgb, var(--assoc-slate) 5%, var(--assoc-white)); display: inline-block; }
+</style>

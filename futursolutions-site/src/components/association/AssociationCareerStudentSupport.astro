@@ -1,0 +1,33 @@
+---
+import { careerStudentSupport } from '../../data/association';
+---
+
+<section class="assoc-section assoc-section--warm" id="students" aria-labelledby="career-students-heading">
+	<div class="assoc-container">
+		<p class="assoc-eyebrow">Students & New Professionals</p>
+		<h2 id="career-students-heading">Start your career with a stronger foundation.</h2>
+		<div class="css-grid">
+			{careerStudentSupport.map((s, i) => (
+				<div class="assoc-card css-card">
+					<span class="css-card__num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+					<h3>{s.title}</h3>
+					<p>{s.description}</p>
+				</div>
+			))}
+		</div>
+		<div class="css-cta">
+			<a class="assoc-btn assoc-btn--primary" href="/demos/association/membership">Explore Student Membership</a>
+		</div>
+	</div>
+</section>
+
+<style>
+	.css-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 2rem; }
+	.css-card { padding: 1.25rem; }
+	.css-card__num { font-size: 1.3rem; font-weight: 800; color: var(--assoc-teal); opacity: 0.3; line-height: 1; display: block; margin-bottom: 0.65rem; }
+	.css-card h3 { font-size: 0.95rem; margin-bottom: 0.25rem; }
+	.css-card p { font-size: 0.82rem; line-height: 1.5; margin: 0; }
+	.css-cta { margin-top: 1.5rem; }
+	@media (max-width: 900px) { .css-grid { grid-template-columns: 1fr 1fr; } }
+	@media (max-width: 520px) { .css-grid { grid-template-columns: 1fr; } }
+</style>

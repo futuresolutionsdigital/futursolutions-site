@@ -1,0 +1,41 @@
+---
+import { careerJobDetail } from '../../data/association';
+const d = careerJobDetail;
+---
+
+<section class="jd-hero" aria-labelledby="jd-hero-heading">
+	<div class="assoc-container jd-hero__inner">
+		<a class="jd-hero__back" href={d.tertiaryLink.href}>{d.tertiaryLink.text}</a>
+		<p class="assoc-eyebrow">{d.eyebrow}</p>
+		<h1 id="jd-hero-heading">{d.title}</h1>
+		<p class="jd-hero__employer">{d.employer}</p>
+		<p class="jd-hero__lead">{d.lead}</p>
+		<div class="jd-hero__badges">
+			{d.badges.map((b) => <span class="jd-hero__badge">{b}</span>)}
+			<span class="jd-hero__badge jd-hero__badge--teal">{d.salaryRange}</span>
+		</div>
+		<div class="assoc-btn-row">
+			<a class="assoc-btn assoc-btn--primary" href={d.primaryCta.href}>{d.primaryCta.text}</a>
+			<a class="assoc-btn assoc-btn--secondary" href={d.secondaryCta.href}>{d.secondaryCta.text}</a>
+		</div>
+		<p class="jd-hero__demo-note">{d.demoNote}</p>
+	</div>
+</section>
+
+<style>
+	.jd-hero {
+		padding-block: clamp(2.5rem, 5vw, 4rem);
+		background: linear-gradient(175deg, var(--assoc-bg) 40%, color-mix(in srgb, var(--assoc-sand) 40%, var(--assoc-bg)) 100%);
+		border-bottom: 1px solid var(--assoc-border);
+	}
+	.jd-hero__inner { max-width: 720px; }
+	.jd-hero__back { display: inline-block; margin-bottom: 1rem; font-size: 0.82rem; font-weight: 700; color: var(--assoc-teal); }
+	.jd-hero__back:hover { color: var(--assoc-navy); }
+	.jd-hero h1 { text-wrap: balance; }
+	.jd-hero__employer { font-size: 1rem; font-weight: 700; color: var(--assoc-teal); margin-bottom: 0.5rem; }
+	.jd-hero__lead { font-size: clamp(1rem, 0.98rem + 0.15vw, 1.1rem); line-height: 1.6; color: var(--assoc-slate); max-width: 600px; }
+	.jd-hero__badges { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.75rem; }
+	.jd-hero__badge { padding: 0.2rem 0.55rem; border-radius: 999px; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; background: color-mix(in srgb, var(--assoc-slate) 8%, var(--assoc-white)); color: var(--assoc-slate); }
+	.jd-hero__badge--teal { background: var(--assoc-teal-light); color: var(--assoc-teal); }
+	.jd-hero__demo-note { margin-top: 0.75rem; padding: 0.5rem 0.75rem; border-radius: 6px; background: color-mix(in srgb, var(--assoc-coral) 8%, var(--assoc-white)); font-size: 0.72rem; font-weight: 600; color: var(--assoc-coral); display: inline-block; }
+</style>

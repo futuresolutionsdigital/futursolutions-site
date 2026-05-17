@@ -1,0 +1,38 @@
+---
+import AssociationLayout from '../../../../layouts/AssociationLayout.astro';
+import AssociationCareerHero from '../../../../components/association/AssociationCareerHero.astro';
+import AssociationCareerStats from '../../../../components/association/AssociationCareerStats.astro';
+import AssociationCareerJobBoard from '../../../../components/association/AssociationCareerJobBoard.astro';
+import AssociationCareerPathways from '../../../../components/association/AssociationCareerPathways.astro';
+import AssociationCareerSalaryInsights from '../../../../components/association/AssociationCareerSalaryInsights.astro';
+import AssociationCareerMentorship from '../../../../components/association/AssociationCareerMentorship.astro';
+import AssociationCareerResources from '../../../../components/association/AssociationCareerResources.astro';
+import AssociationCareerEmployers from '../../../../components/association/AssociationCareerEmployers.astro';
+import AssociationCareerStudentSupport from '../../../../components/association/AssociationCareerStudentSupport.astro';
+import AssociationCareerStories from '../../../../components/association/AssociationCareerStories.astro';
+import AssociationCareerFAQ from '../../../../components/association/AssociationCareerFAQ.astro';
+import AssociationFinalCTA from '../../../../components/association/AssociationFinalCTA.astro';
+import { routeMetadata } from '../../../../data/association';
+
+const meta = routeMetadata['/demos/association/career-center'];
+---
+
+<AssociationLayout title={meta.title} description={meta.description}>
+	<AssociationCareerHero />
+	<AssociationCareerStats />
+	<AssociationCareerJobBoard />
+	<AssociationCareerPathways />
+	<AssociationCareerSalaryInsights />
+	<AssociationCareerMentorship />
+	<AssociationCareerResources />
+	<AssociationCareerEmployers />
+	<AssociationCareerStudentSupport />
+	<AssociationCareerStories />
+	<AssociationCareerFAQ />
+	<AssociationFinalCTA
+		headline="Build the next stage of your career with MHPA."
+		subheadline="Explore jobs, resources, mentors, salary insights, and professional connections designed for healthcare professionals."
+		primaryCta={{ text: 'Browse Jobs', href: '#jobs' }}
+		secondaryCta={{ text: 'Join the Association', href: '/demos/association/membership' }}
+	/>
+</AssociationLayout>

@@ -1,0 +1,30 @@
+---
+import { careerSalaryData } from '../../data/association';
+---
+
+<section class="assoc-section" id="salary" aria-labelledby="career-salary-heading">
+	<div class="assoc-container">
+		<p class="assoc-eyebrow">Salary & Market Insights</p>
+		<h2 id="career-salary-heading">Make informed career decisions.</h2>
+		<div class="cs-grid">
+			{careerSalaryData.map((s) => (
+				<a href={s.href} class="assoc-card cs-card">
+					<h3>{s.title}</h3>
+					<p>{s.summary}</p>
+					<span class="cs-card__cta">View Resource →</span>
+				</a>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+	.cs-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 2rem; }
+	.cs-card { display: flex; flex-direction: column; padding: 1.25rem; transition: border-color 0.15s ease, transform 0.15s ease; }
+	.cs-card:hover { border-color: var(--assoc-teal); transform: translateY(-1px); }
+	.cs-card h3 { font-size: 0.95rem; margin-bottom: 0.25rem; }
+	.cs-card p { font-size: 0.82rem; line-height: 1.5; flex: 1; }
+	.cs-card__cta { margin-top: 0.65rem; font-size: 0.78rem; font-weight: 700; color: var(--assoc-teal); }
+	@media (max-width: 768px) { .cs-grid { grid-template-columns: 1fr 1fr; } }
+	@media (max-width: 520px) { .cs-grid { grid-template-columns: 1fr; } }
+</style>

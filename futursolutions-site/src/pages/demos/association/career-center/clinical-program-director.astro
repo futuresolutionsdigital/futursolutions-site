@@ -1,0 +1,34 @@
+---
+import AssociationLayout from '../../../../layouts/AssociationLayout.astro';
+import AssociationJobDetailHero from '../../../../components/association/AssociationJobDetailHero.astro';
+import AssociationJobQuickFacts from '../../../../components/association/AssociationJobQuickFacts.astro';
+import AssociationJobOverview from '../../../../components/association/AssociationJobOverview.astro';
+import AssociationJobResponsibilities from '../../../../components/association/AssociationJobResponsibilities.astro';
+import AssociationJobQualifications from '../../../../components/association/AssociationJobQualifications.astro';
+import AssociationJobBenefits from '../../../../components/association/AssociationJobBenefits.astro';
+import AssociationJobApplicationProcess from '../../../../components/association/AssociationJobApplicationProcess.astro';
+import AssociationJobRelatedResources from '../../../../components/association/AssociationJobRelatedResources.astro';
+import AssociationRelatedJobs from '../../../../components/association/AssociationRelatedJobs.astro';
+import AssociationFinalCTA from '../../../../components/association/AssociationFinalCTA.astro';
+import { routeMetadata } from '../../../../data/association';
+
+const meta = routeMetadata['/demos/association/career-center/clinical-program-director'];
+---
+
+<AssociationLayout title={meta.title} description={meta.description}>
+	<AssociationJobDetailHero />
+	<AssociationJobQuickFacts />
+	<AssociationJobOverview />
+	<AssociationJobResponsibilities />
+	<AssociationJobQualifications />
+	<AssociationJobBenefits />
+	<AssociationJobApplicationProcess />
+	<AssociationJobRelatedResources />
+	<AssociationRelatedJobs />
+	<AssociationFinalCTA
+		headline="Find a role that fits your next stage."
+		subheadline="Explore healthcare opportunities, career resources, and professional connections through the MHPA Career Center."
+		primaryCta={{ text: 'Browse All Jobs', href: '/demos/association/career-center#jobs' }}
+		secondaryCta={{ text: 'Explore Career Resources', href: '/demos/association/resources' }}
+	/>
+</AssociationLayout>

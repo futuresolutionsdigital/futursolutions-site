@@ -1,0 +1,27 @@
+---
+import { careerJobDetailBenefits } from '../../data/association';
+---
+
+<section class="assoc-section" aria-labelledby="job-benefits-heading">
+	<div class="assoc-container">
+		<p class="assoc-eyebrow">Why This Role</p>
+		<h2 id="job-benefits-heading">Benefits and professional fit</h2>
+		<div class="jb-grid">
+			{careerJobDetailBenefits.map((b) => (
+				<div class="assoc-card jb-card">
+					<h3>{b.title}</h3>
+					<p>{b.description}</p>
+				</div>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+	.jb-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 2rem; }
+	.jb-card { padding: 1.25rem; }
+	.jb-card h3 { font-size: 0.95rem; margin-bottom: 0.25rem; }
+	.jb-card p { font-size: 0.82rem; line-height: 1.5; margin: 0; }
+	@media (max-width: 768px) { .jb-grid { grid-template-columns: 1fr 1fr; } }
+	@media (max-width: 520px) { .jb-grid { grid-template-columns: 1fr; } }
+</style>

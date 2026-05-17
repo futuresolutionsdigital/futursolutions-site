@@ -1,0 +1,165 @@
+---
+import { careerFeaturedJobs, careerJobFilters } from '../../data/association';
+---
+
+<section class="assoc-section" id="jobs" aria-labelledby="career-jobs-heading">
+	<div class="assoc-container">
+		<p class="assoc-eyebrow">Opportunities</p>
+		<h2 id="career-jobs-heading">Featured opportunities</h2>
+
+		<div class="cj-filters" role="search" aria-label="Filter job listings">
+			<div class="cj-filters__row">
+				<div class="cj-filters__field cj-filters__field--search">
+					<label for="cj-search" class="sr-only">Search jobs</label>
+					<input type="text" id="cj-search" class="cj-filters__input" placeholder="Search by role, employer, or keyword…" data-cj-search />
+				</div>
+				<div class="cj-filters__field">
+					<label for="cj-cat" class="sr-only">Category</label>
+					<select id="cj-cat" class="cj-filters__select" data-cj-filter="category">
+						<option value="">All Categories</option>
+						{careerJobFilters.categories.map((c) => <option value={c}>{c}</option>)}
+					</select>
+				</div>
+				<div class="cj-filters__field">
+					<label for="cj-type" class="sr-only">Work type</label>
+					<select id="cj-type" class="cj-filters__select" data-cj-filter="workType">
+						<option value="">All Work Types</option>
+						{careerJobFilters.workTypes.map((t) => <option value={t}>{t}</option>)}
+					</select>
+				</div>
+				<div class="cj-filters__field">
+					<label for="cj-exp" class="sr-only">Experience level</label>
+					<select id="cj-exp" class="cj-filters__select" data-cj-filter="experience">
+						<option value="">All Levels</option>
+						{careerJobFilters.experienceLevels.map((l) => <option value={l}>{l}</option>)}
+					</select>
+				</div>
+				<button class="cj-filters__clear" type="button" data-cj-clear>Clear</button>
+			</div>
+		</div>
+
+		<p class="cj-count" data-cj-count>Showing {careerFeaturedJobs.length} opportunities</p>
+
+		<div class="cj-grid" data-cj-grid>
+			{careerFeaturedJobs.map((j) => (
+				<a
+					href={j.href}
+					class:list={['assoc-card cj-card', { 'cj-card--featured': j.featured }]}
+					data-cj-card
+					data-cj-title={j.title.toLowerCase()}
+					data-cj-employer={j.employer.toLowerCase()}
+					data-cj-summary={j.summary.toLowerCase()}
+					data-cj-tags={j.tags.join(' ')}
+					data-cj-category={j.category}
+					data-cj-worktype={j.workType}
+					data-cj-experience={j.experienceLevel}
+				>
+					{j.featured && <span class="cj-card__featured">Featured</span>}
+					<h3>{j.title}</h3>
+					<p class="cj-card__employer">{j.employer}</p>
+					<p class="cj-card__summary">{j.summary}</p>
+					<div class="cj-card__meta">
+						<span>{j.location}</span>
+						<span class="cj-card__dot" aria-hidden="true">·</span>
+						<span>{j.workType}</span>
+						<span class="cj-card__dot" aria-hidden="true">·</span>
+						<span>{j.salaryRange}</span>
+					</div>
+					<div class="cj-card__foot">
+						<span class="cj-card__date">{j.postedDate}</span>
+						<span class="cj-card__cta">View Role →</span>
+					</div>
+				</a>
+			))}
+		</div>
+
+		<div class="cj-empty" data-cj-empty hidden>
+			<p>No opportunities match your search. Try a different keyword or clear your filters.</p>
+			<button class="assoc-btn assoc-btn--secondary" type="button" data-cj-clear-empty>Clear Filters</button>
+		</div>
+	</div>
+</section>
+
+<script is:inline>
+(() => {
+	var grid = document.querySelector('[data-cj-grid]');
+	var cards = grid ? grid.querySelectorAll('[data-cj-card]') : [];
+	var search = document.querySelector('[data-cj-search]');
+	var catSel = document.querySelector('[data-cj-filter="category"]');
+	var typeSel = document.querySelector('[data-cj-filter="workType"]');
+	var expSel = document.querySelector('[data-cj-filter="experience"]');
+	var countEl = document.querySelector('[data-cj-count]');
+	var emptyEl = document.querySelector('[data-cj-empty]');
+	var clearBtns = document.querySelectorAll('[data-cj-clear], [data-cj-clear-empty]');
+	if (!grid || !cards.length) return;
+
+	function apply() {
+		var q = (search ? search.value : '').toLowerCase().trim();
+		var cat = catSel ? catSel.value : '';
+		var wt = typeSel ? typeSel.value : '';
+		var exp = expSel ? expSel.value : '';
+		var shown = 0;
+		cards.forEach(function(card) {
+			var match = true;
+			if (q) {
+				var t = card.getAttribute('data-cj-title') || '';
+				var e = card.getAttribute('data-cj-employer') || '';
+				var s = card.getAttribute('data-cj-summary') || '';
+				var tg = card.getAttribute('data-cj-tags') || '';
+				if (t.indexOf(q) === -1 && e.indexOf(q) === -1 && s.indexOf(q) === -1 && tg.indexOf(q) === -1) match = false;
+			}
+			if (match && cat && card.getAttribute('data-cj-category') !== cat) match = false;
+			if (match && wt && card.getAttribute('data-cj-worktype') !== wt) match = false;
+			if (match && exp && card.getAttribute('data-cj-experience') !== exp) match = false;
+			card.hidden = !match;
+			if (match) shown++;
+		});
+		if (countEl) countEl.textContent = 'Showing ' + shown + ' opportunit' + (shown !== 1 ? 'ies' : 'y');
+		if (emptyEl) emptyEl.hidden = shown > 0;
+	}
+
+	if (search) search.addEventListener('input', apply);
+	if (catSel) catSel.addEventListener('change', apply);
+	if (typeSel) typeSel.addEventListener('change', apply);
+	if (expSel) expSel.addEventListener('change', apply);
+	clearBtns.forEach(function(btn) {
+		btn.addEventListener('click', function() {
+			if (search) search.value = '';
+			if (catSel) catSel.value = '';
+			if (typeSel) typeSel.value = '';
+			if (expSel) expSel.value = '';
+			apply();
+		});
+	});
+})();
+</script>
+
+<style>
+	.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
+	.cj-filters { margin-top: 2rem; }
+	.cj-filters__row { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; }
+	.cj-filters__field { flex: 1; min-width: 140px; }
+	.cj-filters__field--search { flex: 2; min-width: 220px; }
+	.cj-filters__input, .cj-filters__select { width: 100%; padding: 0.55rem 0.75rem; border: 1px solid var(--assoc-border); border-radius: 8px; font-size: 0.85rem; font-family: inherit; background: var(--assoc-white); color: var(--assoc-navy); }
+	.cj-filters__input:focus, .cj-filters__select:focus { outline: 2px solid var(--assoc-teal); outline-offset: -1px; border-color: var(--assoc-teal); }
+	.cj-filters__clear { padding: 0.55rem 1rem; border: 1px solid var(--assoc-border); border-radius: 8px; background: var(--assoc-white); color: var(--assoc-slate); font-size: 0.82rem; font-weight: 700; cursor: pointer; white-space: nowrap; }
+	.cj-filters__clear:hover { border-color: var(--assoc-teal); color: var(--assoc-teal); }
+	.cj-count { margin-top: 1rem; font-size: 0.82rem; font-weight: 700; color: var(--assoc-slate); }
+	.cj-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 0.5rem; }
+	.cj-card { display: flex; flex-direction: column; padding: 1.35rem; transition: border-color 0.15s ease, transform 0.15s ease; }
+	.cj-card:hover { border-color: var(--assoc-teal); transform: translateY(-1px); }
+	.cj-card--featured { border-left: 3px solid var(--assoc-coral); }
+	.cj-card__featured { display: inline-block; align-self: flex-start; margin-bottom: 0.45rem; padding: 0.12rem 0.45rem; border-radius: 4px; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; background: color-mix(in srgb, var(--assoc-coral) 10%, var(--assoc-white)); color: var(--assoc-coral); }
+	.cj-card h3 { font-size: 1.05rem; margin-bottom: 0.15rem; }
+	.cj-card__employer { font-size: 0.8rem; font-weight: 600; color: var(--assoc-teal); margin-bottom: 0.35rem; }
+	.cj-card__summary { font-size: 0.85rem; line-height: 1.5; flex: 1; }
+	.cj-card__meta { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.65rem; padding-top: 0.55rem; border-top: 1px solid var(--assoc-border); font-size: 0.72rem; font-weight: 600; color: var(--assoc-slate); }
+	.cj-card__dot { opacity: 0.35; }
+	.cj-card__foot { display: flex; justify-content: space-between; align-items: center; margin-top: 0.5rem; }
+	.cj-card__date { font-size: 0.68rem; color: var(--assoc-slate); opacity: 0.6; }
+	.cj-card__cta { font-size: 0.8rem; font-weight: 700; color: var(--assoc-teal); }
+	.cj-empty { text-align: center; padding: 3rem 1rem; }
+	.cj-empty p { font-size: 0.95rem; color: var(--assoc-slate); margin-bottom: 1rem; }
+	@media (max-width: 768px) { .cj-filters__row { flex-direction: column; } .cj-filters__field, .cj-filters__field--search { min-width: 100%; flex: auto; } }
+	@media (max-width: 600px) { .cj-grid { grid-template-columns: 1fr; } }
+</style>

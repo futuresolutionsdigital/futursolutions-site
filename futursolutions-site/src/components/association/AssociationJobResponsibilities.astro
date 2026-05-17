@@ -1,0 +1,20 @@
+---
+import { careerJobDetailResponsibilities } from '../../data/association';
+---
+
+<section class="assoc-section" aria-labelledby="job-resp-heading">
+	<div class="assoc-container jr-inner">
+		<p class="assoc-eyebrow">Responsibilities</p>
+		<h2 id="job-resp-heading">What you will do</h2>
+		<ul class="jr-list">
+			{careerJobDetailResponsibilities.map((r) => <li>{r}</li>)}
+		</ul>
+	</div>
+</section>
+
+<style>
+	.jr-inner { max-width: 720px; }
+	.jr-list { list-style: none; padding: 0; margin: 1.25rem 0 0; display: grid; gap: 0.65rem; }
+	.jr-list li { position: relative; padding-left: 1.35rem; font-size: 0.92rem; line-height: 1.55; }
+	.jr-list li::before { content: ''; position: absolute; left: 0; top: 0.55rem; width: 6px; height: 6px; border-radius: 50%; background: var(--assoc-teal); }
+</style>

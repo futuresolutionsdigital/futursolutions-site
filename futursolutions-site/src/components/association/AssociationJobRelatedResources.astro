@@ -1,0 +1,28 @@
+---
+import { careerJobRelatedResources } from '../../data/association';
+---
+
+<section class="assoc-section" aria-labelledby="job-relres-heading">
+	<div class="assoc-container">
+		<p class="assoc-eyebrow">Career Resources</p>
+		<h2 id="job-relres-heading">Related career resources</h2>
+		<div class="jrr-grid">
+			{careerJobRelatedResources.map((r) => (
+				<a href={r.href} class="assoc-card jrr-card">
+					<span class="jrr-card__type">{r.type}</span>
+					<h3>{r.title}</h3>
+				</a>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+	.jrr-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 2rem; }
+	.jrr-card { display: flex; flex-direction: column; padding: 1.15rem; transition: border-color 0.15s ease, transform 0.15s ease; }
+	.jrr-card:hover { border-color: var(--assoc-teal); transform: translateY(-1px); }
+	.jrr-card__type { display: inline-block; align-self: flex-start; margin-bottom: 0.5rem; padding: 0.12rem 0.4rem; border-radius: 4px; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; background: var(--assoc-teal-light); color: var(--assoc-teal); }
+	.jrr-card h3 { font-size: 0.92rem; margin: 0; }
+	@media (max-width: 768px) { .jrr-grid { grid-template-columns: 1fr 1fr; } }
+	@media (max-width: 520px) { .jrr-grid { grid-template-columns: 1fr; } }
+</style>

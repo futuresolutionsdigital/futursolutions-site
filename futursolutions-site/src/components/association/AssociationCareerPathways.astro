@@ -1,0 +1,30 @@
+---
+import { careerPathways } from '../../data/association';
+---
+
+<section class="assoc-section assoc-section--warm" id="pathways" aria-labelledby="career-pathways-heading">
+	<div class="assoc-container">
+		<p class="assoc-eyebrow">Career Pathways</p>
+		<h2 id="career-pathways-heading">Find support for your stage.</h2>
+		<div class="cp-grid">
+			{careerPathways.map((p) => (
+				<a href={p.cta.href} class="assoc-card cp-card">
+					<h3>{p.title}</h3>
+					<p>{p.summary}</p>
+					<span class="cp-card__cta">{p.cta.text} →</span>
+				</a>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+	.cp-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 2rem; }
+	.cp-card { display: flex; flex-direction: column; padding: 1.35rem; transition: border-color 0.15s ease, transform 0.15s ease; }
+	.cp-card:hover { border-color: var(--assoc-teal); transform: translateY(-1px); }
+	.cp-card h3 { font-size: 1rem; margin-bottom: 0.3rem; }
+	.cp-card p { font-size: 0.85rem; line-height: 1.5; flex: 1; }
+	.cp-card__cta { margin-top: 0.65rem; font-size: 0.82rem; font-weight: 700; color: var(--assoc-teal); }
+	@media (max-width: 900px) { .cp-grid { grid-template-columns: 1fr 1fr; } }
+	@media (max-width: 520px) { .cp-grid { grid-template-columns: 1fr; } }
+</style>

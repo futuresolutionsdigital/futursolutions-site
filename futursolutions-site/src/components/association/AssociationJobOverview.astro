@@ -1,0 +1,17 @@
+---
+import { careerJobDetailOverview } from '../../data/association';
+---
+
+<section class="assoc-section assoc-section--warm" aria-labelledby="job-overview-heading">
+	<div class="assoc-container jo-inner">
+		<p class="assoc-eyebrow">Role Overview</p>
+		<h2 id="job-overview-heading">About this role</h2>
+		{careerJobDetailOverview.map((p) => <p class="jo-para">{p}</p>)}
+	</div>
+</section>
+
+<style>
+	.jo-inner { max-width: 720px; }
+	.jo-para { font-size: 0.95rem; line-height: 1.7; margin-bottom: 0.75rem; }
+	.jo-para:last-child { margin-bottom: 0; }
+</style>

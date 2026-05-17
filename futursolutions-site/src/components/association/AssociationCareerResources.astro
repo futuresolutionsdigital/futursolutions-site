@@ -1,0 +1,41 @@
+---
+import { careerResources } from '../../data/association';
+---
+
+<section class="assoc-section" id="resources" aria-labelledby="career-res-heading">
+	<div class="assoc-container">
+		<p class="assoc-eyebrow">Career Resources</p>
+		<h2 id="career-res-heading">Practical tools for your next step.</h2>
+		<div class="cr-grid">
+			{careerResources.map((r) => (
+				<div class="assoc-card cr-card">
+					<div class="cr-card__tags">
+						<span class="cr-card__type">{r.type}</span>
+						<span class:list={['cr-card__access', { 'cr-card__access--member': r.access === 'Member-only' }]}>{r.access}</span>
+					</div>
+					<h3>{r.title}</h3>
+					<p class="cr-card__audience">{r.audience}</p>
+					<p>{r.summary}</p>
+				</div>
+			))}
+		</div>
+		<div class="cr-cta">
+			<a class="assoc-btn assoc-btn--secondary" href="/demos/association/resources">Browse All Resources →</a>
+		</div>
+	</div>
+</section>
+
+<style>
+	.cr-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2rem; }
+	.cr-card { display: flex; flex-direction: column; padding: 1.25rem; }
+	.cr-card__tags { display: flex; gap: 0.35rem; margin-bottom: 0.65rem; }
+	.cr-card__type { padding: 0.12rem 0.4rem; border-radius: 4px; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; background: var(--assoc-teal-light); color: var(--assoc-teal); }
+	.cr-card__access { padding: 0.12rem 0.4rem; border-radius: 4px; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; background: color-mix(in srgb, var(--assoc-slate) 8%, var(--assoc-white)); color: var(--assoc-slate); }
+	.cr-card__access--member { background: color-mix(in srgb, var(--assoc-coral) 8%, var(--assoc-white)); color: var(--assoc-coral); }
+	.cr-card h3 { font-size: 0.95rem; margin-bottom: 0.15rem; }
+	.cr-card__audience { font-size: 0.72rem; font-weight: 600; color: var(--assoc-teal); margin-bottom: 0.3rem; }
+	.cr-card p:last-child { font-size: 0.82rem; line-height: 1.5; flex: 1; }
+	.cr-cta { margin-top: 1.5rem; }
+	@media (max-width: 768px) { .cr-grid { grid-template-columns: 1fr 1fr; } }
+	@media (max-width: 520px) { .cr-grid { grid-template-columns: 1fr; } }
+</style>

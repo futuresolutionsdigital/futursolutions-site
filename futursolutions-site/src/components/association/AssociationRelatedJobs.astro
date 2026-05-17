@@ -1,0 +1,38 @@
+---
+import { careerRelatedJobs } from '../../data/association';
+---
+
+<section class="assoc-section assoc-section--warm" aria-labelledby="related-jobs-heading">
+	<div class="assoc-container">
+		<p class="assoc-eyebrow">Similar Opportunities</p>
+		<h2 id="related-jobs-heading">Related jobs</h2>
+		<div class="rj-grid">
+			{careerRelatedJobs.map((j) => (
+				<a href={j.href} class="assoc-card rj-card">
+					<h3>{j.title}</h3>
+					<p class="rj-card__employer">{j.employer}</p>
+					<div class="rj-card__meta">
+						<span>{j.location}</span>
+						<span class="rj-card__dot" aria-hidden="true">·</span>
+						<span>{j.workType}</span>
+						<span class="rj-card__dot" aria-hidden="true">·</span>
+						<span>{j.salaryRange}</span>
+					</div>
+					<span class="rj-card__cta">View Role →</span>
+				</a>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+	.rj-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2rem; }
+	.rj-card { display: flex; flex-direction: column; padding: 1.25rem; transition: border-color 0.15s ease, transform 0.15s ease; }
+	.rj-card:hover { border-color: var(--assoc-teal); transform: translateY(-1px); }
+	.rj-card h3 { font-size: 1rem; margin-bottom: 0.15rem; }
+	.rj-card__employer { font-size: 0.8rem; font-weight: 600; color: var(--assoc-teal); margin-bottom: 0.5rem; }
+	.rj-card__meta { display: flex; flex-wrap: wrap; gap: 0.3rem; font-size: 0.72rem; font-weight: 600; color: var(--assoc-slate); }
+	.rj-card__dot { opacity: 0.35; }
+	.rj-card__cta { margin-top: 0.65rem; font-size: 0.8rem; font-weight: 700; color: var(--assoc-teal); }
+	@media (max-width: 768px) { .rj-grid { grid-template-columns: 1fr; } }
+</style>
