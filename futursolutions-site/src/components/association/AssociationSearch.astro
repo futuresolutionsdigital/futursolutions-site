@@ -1,0 +1,428 @@
+---
+import { associationSearchIndex } from '../../data/association';
+const indexJson = JSON.stringify(associationSearchIndex);
+---
+
+<div class="assoc-search-overlay" id="assoc-search-overlay" role="dialog" aria-modal="true" aria-label="Search MHPA" hidden>
+	<div class="assoc-search-backdrop" data-search-close></div>
+	<div class="assoc-search-panel">
+		<div class="assoc-search-header">
+			<h2 class="assoc-search-title">Search MHPA</h2>
+			<button class="assoc-search-close" type="button" data-search-close aria-label="Close search">
+				<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+			</button>
+		</div>
+		<div class="assoc-search-field">
+			<svg class="assoc-search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+			<input type="text" class="assoc-search-input" id="assoc-search-input" placeholder="Search resources, events, advocacy, chapters, jobs…" autocomplete="off" />
+			<kbd class="assoc-search-kbd" aria-hidden="true">Esc</kbd>
+		</div>
+		<div class="assoc-search-body" id="assoc-search-body">
+			<div class="assoc-search-quick" id="assoc-search-quick">
+				<p class="assoc-search-quick__label">Quick links</p>
+				<a class="assoc-search-quick__link" href="/demos/association/membership">
+					<span class="assoc-search-cat">Membership</span> Join Membership
+				</a>
+				<a class="assoc-search-quick__link" href="/demos/association/events/annual-conference">
+					<span class="assoc-search-cat">Event</span> Register for Conference
+				</a>
+				<a class="assoc-search-quick__link" href="/demos/association/advocacy/scope-of-practice">
+					<span class="assoc-search-cat">Advocacy</span> Take Advocacy Action
+				</a>
+				<a class="assoc-search-quick__link" href="/demos/association/resources">
+					<span class="assoc-search-cat">Resource</span> Browse Resources
+				</a>
+				<a class="assoc-search-quick__link" href="/demos/association/chapters">
+					<span class="assoc-search-cat">Chapter</span> Find Your Chapter
+				</a>
+				<a class="assoc-search-quick__link" href="/demos/association/career-center">
+					<span class="assoc-search-cat">Career</span> Browse Career Center
+				</a>
+			</div>
+			<div class="assoc-search-results" id="assoc-search-results" hidden></div>
+			<div class="assoc-search-empty" id="assoc-search-empty" hidden>
+				<p>No results found.</p>
+				<p class="assoc-search-empty__hint">Try searching for membership, CE, advocacy, chapters, jobs, or conference.</p>
+			</div>
+		</div>
+		<div class="assoc-search-footer">
+			<span><kbd>↑</kbd><kbd>↓</kbd> navigate</span>
+			<span><kbd>Enter</kbd> open</span>
+			<span><kbd>Esc</kbd> close</span>
+		</div>
+	</div>
+</div>
+
+<script is:inline define:vars={{ indexJson }}>
+(function () {
+	var overlay = document.getElementById('assoc-search-overlay');
+	var input = document.getElementById('assoc-search-input');
+	var resultsEl = document.getElementById('assoc-search-results');
+	var quickEl = document.getElementById('assoc-search-quick');
+	var emptyEl = document.getElementById('assoc-search-empty');
+	if (!overlay || !input || !resultsEl || !quickEl || !emptyEl) return;
+
+	var index = JSON.parse(indexJson);
+	var activeIdx = -1;
+
+	function openSearch() {
+		overlay.hidden = false;
+		document.body.style.overflow = 'hidden';
+		input.value = '';
+		showQuick();
+		requestAnimationFrame(function () { input.focus(); });
+	}
+
+	function closeSearch() {
+		overlay.hidden = true;
+		document.body.style.overflow = '';
+		activeIdx = -1;
+	}
+
+	function showQuick() {
+		quickEl.hidden = false;
+		resultsEl.hidden = true;
+		emptyEl.hidden = true;
+		resultsEl.innerHTML = '';
+		activeIdx = -1;
+	}
+
+	function renderResults(matches) {
+		quickEl.hidden = true;
+		if (matches.length === 0) {
+			resultsEl.hidden = true;
+			emptyEl.hidden = false;
+			resultsEl.innerHTML = '';
+			activeIdx = -1;
+			return;
+		}
+		emptyEl.hidden = true;
+		resultsEl.hidden = false;
+		var html = '';
+		var max = Math.min(matches.length, 20);
+		for (var i = 0; i < max; i++) {
+			var m = matches[i];
+			html += '<a class="assoc-search-result" href="' + m.href + '" data-search-result>' +
+				'<span class="assoc-search-cat">' + m.category + '</span>' +
+				'<span class="assoc-search-result__title">' + esc(m.title) + '</span>' +
+				'<span class="assoc-search-result__summary">' + esc(m.summary) + '</span>' +
+				'</a>';
+		}
+		if (matches.length > 20) {
+			html += '<p class="assoc-search-more">' + (matches.length - 20) + ' more results…</p>';
+		}
+		resultsEl.innerHTML = html;
+		activeIdx = -1;
+	}
+
+	function esc(s) {
+		var d = document.createElement('span');
+		d.textContent = s;
+		return d.innerHTML;
+	}
+
+	function search(q) {
+		q = q.trim().toLowerCase();
+		if (!q) { showQuick(); return; }
+		var terms = q.split(/\s+/);
+		var scored = [];
+		for (var i = 0; i < index.length; i++) {
+			var item = index[i];
+			var blob = (item.title + ' ' + item.summary + ' ' + item.category + ' ' + (item.keywords ? item.keywords.join(' ') : '')).toLowerCase();
+			var matched = true;
+			var score = 0;
+			for (var t = 0; t < terms.length; t++) {
+				if (blob.indexOf(terms[t]) === -1) { matched = false; break; }
+				if (item.title.toLowerCase().indexOf(terms[t]) !== -1) score += 10;
+				if (item.category.toLowerCase().indexOf(terms[t]) !== -1) score += 5;
+				score += 1;
+			}
+			if (matched) scored.push({ item: item, score: score });
+		}
+		scored.sort(function (a, b) { return b.score - a.score; });
+		renderResults(scored.map(function (s) { return s.item; }));
+	}
+
+	function highlightResult(dir) {
+		var links = resultsEl.querySelectorAll('[data-search-result]');
+		if (!links.length) return;
+		activeIdx += dir;
+		if (activeIdx < 0) activeIdx = links.length - 1;
+		if (activeIdx >= links.length) activeIdx = 0;
+		for (var i = 0; i < links.length; i++) {
+			links[i].classList.toggle('is-highlighted', i === activeIdx);
+		}
+		links[activeIdx].scrollIntoView({ block: 'nearest' });
+	}
+
+	// Wire search triggers
+	document.querySelectorAll('[data-open-search]').forEach(function (btn) {
+		btn.addEventListener('click', function (e) { e.preventDefault(); openSearch(); });
+	});
+
+	overlay.querySelectorAll('[data-search-close]').forEach(function (el) {
+		el.addEventListener('click', closeSearch);
+	});
+
+	input.addEventListener('input', function () { search(input.value); });
+
+	input.addEventListener('keydown', function (e) {
+		if (e.key === 'Escape') { closeSearch(); e.preventDefault(); }
+		if (e.key === 'ArrowDown') { e.preventDefault(); highlightResult(1); }
+		if (e.key === 'ArrowUp') { e.preventDefault(); highlightResult(-1); }
+		if (e.key === 'Enter') {
+			var links = resultsEl.querySelectorAll('[data-search-result]');
+			if (activeIdx >= 0 && activeIdx < links.length) {
+				links[activeIdx].click();
+				e.preventDefault();
+			} else if (links.length === 1) {
+				links[0].click();
+				e.preventDefault();
+			}
+		}
+	});
+
+	document.addEventListener('keydown', function (e) {
+		if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+			e.preventDefault();
+			if (overlay.hidden) openSearch(); else closeSearch();
+		}
+		if (e.key === '/' && overlay.hidden) {
+			var tag = document.activeElement ? document.activeElement.tagName : '';
+			if (tag !== 'INPUT' && tag !== 'TEXTAREA' && tag !== 'SELECT') {
+				e.preventDefault();
+				openSearch();
+			}
+		}
+		if (e.key === 'Escape' && !overlay.hidden) { closeSearch(); }
+	});
+})();
+</script>
+
+<style is:global>
+	.assoc-search-overlay {
+		position: fixed;
+		inset: 0;
+		z-index: 100;
+		display: flex;
+		align-items: flex-start;
+		justify-content: center;
+		padding-top: clamp(4rem, 12vh, 8rem);
+	}
+
+	.assoc-search-overlay[hidden] { display: none; }
+
+	.assoc-search-backdrop {
+		position: absolute;
+		inset: 0;
+		background: rgba(16, 42, 67, 0.55);
+		backdrop-filter: blur(4px);
+	}
+
+	.assoc-search-panel {
+		position: relative;
+		width: min(100% - 2rem, 600px);
+		max-height: min(80vh, 520px);
+		display: flex;
+		flex-direction: column;
+		background: var(--assoc-white);
+		border-radius: var(--assoc-radius-lg);
+		box-shadow: 0 24px 64px rgba(16, 42, 67, 0.22), 0 0 0 1px rgba(16, 42, 67, 0.06);
+		overflow: hidden;
+	}
+
+	.assoc-search-header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 0.75rem 1rem 0;
+	}
+
+	.assoc-search-title {
+		font-size: 0.72rem !important;
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: var(--assoc-slate);
+		margin: 0 !important;
+	}
+
+	.assoc-search-close {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 2rem;
+		height: 2rem;
+		border: none;
+		border-radius: 6px;
+		background: transparent;
+		color: var(--assoc-slate);
+	}
+
+	.assoc-search-close:hover { background: var(--assoc-bg); color: var(--assoc-navy); }
+	.assoc-search-close svg { display: inline; }
+
+	.assoc-search-field {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		padding: 0.6rem 1rem;
+		border-bottom: 1px solid var(--assoc-border);
+	}
+
+	.assoc-search-icon { flex-shrink: 0; color: var(--assoc-slate); display: inline; }
+
+	.assoc-search-input {
+		flex: 1;
+		border: none;
+		outline: none;
+		background: transparent;
+		font-size: 1rem;
+		font-weight: 500;
+		color: var(--assoc-navy);
+	}
+
+	.assoc-search-input::placeholder { color: var(--assoc-muted); }
+
+	.assoc-search-kbd {
+		padding: 0.1rem 0.35rem;
+		border: 1px solid var(--assoc-border);
+		border-radius: 4px;
+		background: var(--assoc-bg);
+		font-size: 0.62rem;
+		font-weight: 700;
+		font-family: var(--assoc-font);
+		color: var(--assoc-muted);
+		line-height: 1;
+	}
+
+	.assoc-search-body {
+		flex: 1;
+		overflow-y: auto;
+		padding: 0.5rem;
+	}
+
+	.assoc-search-quick__label {
+		padding: 0.25rem 0.5rem;
+		font-size: 0.68rem;
+		font-weight: 700;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+		color: var(--assoc-muted);
+	}
+
+	.assoc-search-quick__link {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		padding: 0.55rem 0.6rem;
+		border-radius: 8px;
+		font-size: 0.9rem;
+		font-weight: 600;
+		color: var(--assoc-navy);
+	}
+
+	.assoc-search-quick__link:hover {
+		background: var(--assoc-bg);
+	}
+
+	.assoc-search-cat {
+		display: inline-block;
+		padding: 0.12rem 0.4rem;
+		border-radius: 4px;
+		background: var(--assoc-teal-light);
+		font-size: 0.6rem;
+		font-weight: 700;
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
+		color: var(--assoc-teal);
+		flex-shrink: 0;
+	}
+
+	.assoc-search-result {
+		display: flex;
+		flex-direction: column;
+		gap: 0.15rem;
+		padding: 0.55rem 0.6rem;
+		border-radius: 8px;
+		text-decoration: none;
+	}
+
+	.assoc-search-result:hover,
+	.assoc-search-result.is-highlighted {
+		background: var(--assoc-bg);
+	}
+
+	.assoc-search-result .assoc-search-cat {
+		align-self: flex-start;
+		margin-bottom: 0.05rem;
+	}
+
+	.assoc-search-result__title {
+		font-size: 0.9rem;
+		font-weight: 700;
+		color: var(--assoc-navy);
+		line-height: 1.3;
+	}
+
+	.assoc-search-result__summary {
+		font-size: 0.78rem;
+		color: var(--assoc-slate);
+		line-height: 1.4;
+		display: -webkit-box;
+		-webkit-line-clamp: 2;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+	}
+
+	.assoc-search-more {
+		padding: 0.4rem 0.6rem;
+		font-size: 0.72rem;
+		font-weight: 600;
+		color: var(--assoc-muted);
+	}
+
+	.assoc-search-empty {
+		padding: 2rem 1rem;
+		text-align: center;
+	}
+
+	.assoc-search-empty p:first-child {
+		font-weight: 700;
+		color: var(--assoc-navy);
+	}
+
+	.assoc-search-empty__hint {
+		font-size: 0.82rem;
+		color: var(--assoc-muted);
+	}
+
+	.assoc-search-footer {
+		display: flex;
+		gap: 1rem;
+		padding: 0.5rem 1rem;
+		border-top: 1px solid var(--assoc-border);
+		font-size: 0.65rem;
+		font-weight: 600;
+		color: var(--assoc-muted);
+	}
+
+	.assoc-search-footer kbd {
+		display: inline-block;
+		padding: 0.08rem 0.3rem;
+		border: 1px solid var(--assoc-border);
+		border-radius: 3px;
+		background: var(--assoc-bg);
+		font-size: 0.6rem;
+		font-weight: 700;
+		font-family: var(--assoc-font);
+		color: var(--assoc-slate);
+		margin-right: 0.15rem;
+	}
+
+	@media (max-width: 480px) {
+		.assoc-search-overlay { padding-top: 1rem; }
+		.assoc-search-panel { max-height: 90vh; border-radius: var(--assoc-radius); }
+		.assoc-search-footer { display: none; }
+	}
+</style>

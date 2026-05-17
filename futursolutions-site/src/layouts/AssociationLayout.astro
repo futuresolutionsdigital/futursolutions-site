@@ -1,5 +1,6 @@
 ---
 import DemoBanner from '../components/DemoBanner.astro';
+import AssociationSearch from '../components/association/AssociationSearch.astro';
 import { assocBrand, utilityLinks, primaryNav, footerNavGroups } from '../data/association';
 import '../styles/global.css';
 
@@ -50,10 +51,10 @@ const currentPath = Astro.url.pathname;
 						</a>
 					))}
 				</div>
-				<button type="button" class="assoc-utility-bar__search" aria-label="Search MHPA">
-					<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-					<span>Search</span>
-				</button>
+			<button type="button" class="assoc-utility-bar__search" aria-label="Search MHPA" data-open-search>
+				<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+				<span>Search</span>
+			</button>
 			</div>
 		</div>
 
@@ -138,6 +139,8 @@ const currentPath = Astro.url.pathname;
 				</p>
 			</div>
 		</footer>
+
+		<AssociationSearch />
 
 		<nav class="assoc-sticky-bar" aria-label="Quick actions">
 			<a href="/demos/association/membership" class="assoc-sticky-bar__item">

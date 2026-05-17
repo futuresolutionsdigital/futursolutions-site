@@ -2145,6 +2145,70 @@ export const contactFaqs = [
 	{ question: 'Can sponsors or employers use this page?', answer: 'Yes. Sponsor and employer inquiries are explicitly supported through the inquiry type selector, routing partnership and job-posting questions to the right team.' },
 ];
 
+// ── Search Index ──
+
+export interface SearchEntry {
+	title: string;
+	summary: string;
+	category: string;
+	href: string;
+	keywords?: string[];
+}
+
+const pageEntries: SearchEntry[] = [
+	{ title: 'MHPA Homepage', summary: 'The professional home for healthcare leaders. Overview of membership, advocacy, events, resources, chapters, and careers.', category: 'Page', href: '/demos/association', keywords: ['home', 'association', 'meridian', 'overview'] },
+	{ title: 'Membership', summary: 'Join MHPA. Membership tiers, benefits comparison, audience segments, and conversion pathways.', category: 'Membership', href: '/demos/association/membership', keywords: ['join', 'renew', 'member', 'tiers', 'benefits', 'dues'] },
+	{ title: 'Education & Events', summary: 'CE courses, webinars, upcoming events, and the annual Clinical Leadership Conference.', category: 'Event', href: '/demos/association/events', keywords: ['education', 'events', 'ce', 'webinar', 'learning', 'calendar'] },
+	{ title: 'Clinical Leadership Conference 2026', summary: 'Three days of clinical education, policy briefings, leadership development, and career growth. 18 CE hours.', category: 'Event', href: '/demos/association/events/annual-conference', keywords: ['conference', 'annual', 'register', 'registration', 'sacramento', 'keynote', 'speakers', 'agenda'] },
+	{ title: 'Advocacy', summary: 'Policy priorities, action alerts, legislative tracking, and tools to advocate for the profession.', category: 'Advocacy', href: '/demos/association/advocacy', keywords: ['advocacy', 'policy', 'legislation', 'lobby', 'action', 'PAC', 'grassroots'] },
+	{ title: 'Scope of Practice — Policy Issue', summary: 'A proposed policy to reduce outdated practice barriers and improve access in underserved communities.', category: 'Advocacy', href: '/demos/association/advocacy/scope-of-practice', keywords: ['scope', 'practice', 'SB-1247', 'bill', 'legislation', 'testimony'] },
+	{ title: 'Resource Library', summary: 'Browse CE courses, toolkits, clinical guides, policy briefs, webinars, and practice resources.', category: 'Resource', href: '/demos/association/resources', keywords: ['resources', 'library', 'ce', 'toolkit', 'guide', 'template', 'webinar'] },
+	{ title: 'Chapters & Community', summary: 'Find your local chapter. 24 chapters across 6 regions with events, mentorship, and advocacy.', category: 'Chapter', href: '/demos/association/chapters', keywords: ['chapters', 'community', 'local', 'region', 'volunteer', 'mentorship'] },
+	{ title: 'Career Center', summary: 'Job board, salary data, employer partnerships, mentorship, and career pathways.', category: 'Career', href: '/demos/association/career-center', keywords: ['career', 'jobs', 'job board', 'salary', 'employer', 'mentorship', 'hiring'] },
+	{ title: 'About MHPA', summary: 'Mission, leadership, governance, institutional scale, councils, timeline, partnerships, and annual impact.', category: 'About', href: '/demos/association/about', keywords: ['about', 'mission', 'vision', 'leadership', 'board', 'governance', 'history', 'timeline'] },
+	{ title: 'Contact MHPA', summary: 'Support paths, contact form, department directory, and response process.', category: 'Contact', href: '/demos/association/contact', keywords: ['contact', 'support', 'email', 'phone', 'help', 'directory'] },
+];
+
+const resourceEntries: SearchEntry[] = resourceLibraryItems.slice(0, 20).map((r) => ({
+	title: r.title,
+	summary: r.summary,
+	category: 'Resource',
+	href: r.href,
+	keywords: [r.type.toLowerCase(), r.topic.toLowerCase(), r.access.toLowerCase()],
+}));
+
+const careerEntries: SearchEntry[] = careerFeaturedJobs.slice(0, 16).map((j) => ({
+	title: j.title,
+	summary: `${j.employer} · ${j.location} · ${j.workType} · ${j.salaryRange}`,
+	category: 'Career',
+	href: j.href,
+	keywords: [j.category.toLowerCase(), j.workType.toLowerCase(), j.employer.toLowerCase(), ...j.tags],
+}));
+
+const chapterEntries: SearchEntry[] = chapterRegions.map((c) => ({
+	title: `${c.name} Chapter`,
+	summary: c.summary,
+	category: 'Chapter',
+	href: c.href,
+	keywords: [c.region.toLowerCase(), ...c.tags, c.cityFocus.toLowerCase()],
+}));
+
+const advocacyEntries: SearchEntry[] = advocacyPriorities.map((p) => ({
+	title: p.title,
+	summary: p.summary,
+	category: 'Advocacy',
+	href: p.href,
+	keywords: ['policy', 'priority', p.title.toLowerCase()],
+}));
+
+export const associationSearchIndex: SearchEntry[] = [
+	...pageEntries,
+	...resourceEntries,
+	...careerEntries,
+	...chapterEntries,
+	...advocacyEntries,
+];
+
 // ── Future Route Metadata ──
 
 export const routeMetadata: Record<string, { title: string; description: string }> = {
