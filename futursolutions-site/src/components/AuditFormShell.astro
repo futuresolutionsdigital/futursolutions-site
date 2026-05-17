@@ -1,17 +1,42 @@
 ---
 import { auditTemplateSlugToName } from '../data/templates';
 
-const businessTypes = ['Med Spa', 'Solo Practice', 'Wellness Clinic', 'Functional Medicine', 'Healthcare Association', 'Other'];
+const businessTypes = ['Med Spa', 'Solo Practice', 'Wellness Clinic', 'Functional Medicine', 'Healthcare Association', 'Treatment-Based Clinic', 'Other'];
 const primaryGoals = [
-	'More bookings',
+	'More bookings or leads',
 	'Better website design',
 	'Better local visibility',
-	'Better lead follow-up',
+	'Clearer service pages',
+	'Better follow-up system',
 	'Template setup',
 	'Custom website',
 	'Not sure yet',
 ];
-const preferredNextSteps = ['Website audit', 'Template recommendation', 'Strategy call', 'Not sure yet'];
+const biggestIssues = [
+	'Site feels outdated',
+	'Not enough bookings or leads',
+	'Not showing up locally',
+	'Services are unclear',
+	'Booking/contact flow is confusing',
+	'No follow-up system',
+	'Need a more professional image',
+	'Other',
+];
+const servicesOfInterest = [
+	'Website/template setup',
+	'Custom website',
+	'SEO/local visibility',
+	'Backend lead system',
+	'Ongoing support',
+	'Not sure yet',
+];
+const preferredNextSteps = [
+	'Send me audit notes',
+	'Send me a Loom video',
+	'I want to book a call',
+	'I am just exploring options',
+	'Not sure yet',
+];
 ---
 
 <div id="audit-form" class="audit-form-shell card">
@@ -22,22 +47,21 @@ const preferredNextSteps = ['Website audit', 'Template recommendation', 'Strateg
 		hidden
 		aria-live="polite"
 	>
-		<p>
-			<strong>Template interest detected:</strong>{' '}
-			<span id="audit-template-interest-name"></span>
-		</p>
+		<p class="audit-template-interest__label">Template selected</p>
+		<p class="audit-template-interest__name" id="audit-template-interest-name"></p>
+		<p class="audit-template-interest__note">We'll use this context when recommending the right website path.</p>
 	</div>
 
 	<div class="audit-form-shell__intro">
 		<p class="eyebrow">Audit request</p>
 		<h2>Tell us what you are working with.</h2>
-		<p>When submission is enabled, we’ll review your site and follow up with next steps via GoHighLevel.</p>
+		<p>Share your current site and goals so we can recommend the right website path for your business.</p>
 	</div>
 
-	<!-- TODO: Replace this form shell with GoHighLevel embed or connected form when GHL is ready. -->
 	<form class="audit-form-shell__form" aria-label="Website audit request form" onsubmit="return false">
 		<input type="hidden" name="templateInterest" id="field-template-interest" value="" autocomplete="off" />
-		<input type="hidden" name="source" id="field-source" value="audit-page" autocomplete="off" />
+		<input type="hidden" name="source" id="field-source" value="Website Audit Page" autocomplete="off" />
+		<input type="hidden" name="leadType" id="field-lead-type" value="Website Audit Request" autocomplete="off" />
 
 		<div class="audit-form-shell__grid">
 			<label>
@@ -79,8 +103,23 @@ const preferredNextSteps = ['Website audit', 'Template recommendation', 'Strateg
 
 		<label>
 			<span>Biggest website issue</span>
-			<textarea name="biggest-website-issue" rows="4"></textarea>
+			<select name="biggest-website-issue">
+				<option value="">Select biggest issue</option>
+				{biggestIssues.map((issue) => <option value={issue}>{issue}</option>)}
+			</select>
 		</label>
+
+		<fieldset class="audit-form-shell__checkboxes">
+			<legend>Services of interest</legend>
+			<div class="audit-form-shell__checkbox-grid">
+				{servicesOfInterest.map((svc) => (
+					<label class="audit-form-shell__checkbox-label">
+						<input type="checkbox" name="services-of-interest" value={svc} />
+						<span>{svc}</span>
+					</label>
+				))}
+			</div>
+		</fieldset>
 
 		<label>
 			<span>Preferred next step</span>
@@ -93,8 +132,7 @@ const preferredNextSteps = ['Website audit', 'Template recommendation', 'Strateg
 		<div class="audit-form-shell__footer">
 			<button class="button button-primary" type="button">Request My Website Audit</button>
 			<p>
-				This form is a preview only and does not submit yet. GoHighLevel will be connected soon so replies can be tracked in your
-				CMS pipeline.
+				This form is currently a preview while the backend is being finalized. Once connected, requests will route into the Future Solutions lead pipeline.
 			</p>
 		</div>
 	</form>
@@ -129,15 +167,28 @@ const preferredNextSteps = ['Website audit', 'Template recommendation', 'Strateg
 		margin-bottom: 1.25rem;
 	}
 
-	.audit-template-interest p {
-		margin: 0;
-		font-size: 0.9rem;
-		line-height: 1.5;
-		color: var(--color-text);
+	.audit-template-interest__label {
+		margin: 0 0 0.15rem;
+		font-size: 0.72rem;
+		font-weight: 700;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+		color: var(--color-accent-dark);
 	}
 
-	.audit-template-interest strong {
+	.audit-template-interest__name {
+		margin: 0 0 0.25rem;
+		font-size: 1.05rem;
 		font-weight: 800;
+		color: var(--color-text);
+		line-height: 1.3;
+	}
+
+	.audit-template-interest__note {
+		margin: 0;
+		font-size: 0.82rem;
+		line-height: 1.5;
+		color: color-mix(in srgb, var(--color-text) 65%, transparent);
 	}
 
 	.audit-form-shell {
@@ -162,7 +213,7 @@ const preferredNextSteps = ['Website audit', 'Template recommendation', 'Strateg
 
 	.audit-form-shell__form,
 	.audit-form-shell__grid,
-	.audit-form-shell label {
+	.audit-form-shell > form > label {
 		display: grid;
 		gap: 1rem;
 	}
@@ -171,17 +222,25 @@ const preferredNextSteps = ['Website audit', 'Template recommendation', 'Strateg
 		grid-template-columns: repeat(2, minmax(0, 1fr));
 	}
 
-	.audit-form-shell label {
-		gap: 0.45rem;
-	}
-
-	.audit-form-shell label span {
+	.audit-form-shell label span,
+	.audit-form-shell legend {
 		color: var(--color-text);
 		font-size: 0.875rem;
 		font-weight: 700;
 	}
 
-	.audit-form-shell input,
+	.audit-form-shell > form > label {
+		gap: 0.45rem;
+	}
+
+	.audit-form-shell__grid label {
+		display: grid;
+		gap: 0.45rem;
+	}
+
+	.audit-form-shell input[type="text"],
+	.audit-form-shell input[type="email"],
+	.audit-form-shell input[type="url"],
 	.audit-form-shell select,
 	.audit-form-shell textarea {
 		width: 100%;
@@ -193,7 +252,9 @@ const preferredNextSteps = ['Website audit', 'Template recommendation', 'Strateg
 		line-height: 1.4;
 	}
 
-	.audit-form-shell input,
+	.audit-form-shell input[type="text"],
+	.audit-form-shell input[type="email"],
+	.audit-form-shell input[type="url"],
 	.audit-form-shell select {
 		min-height: 2.85rem;
 		padding: 0.7rem 0.8rem;
@@ -205,12 +266,61 @@ const preferredNextSteps = ['Website audit', 'Template recommendation', 'Strateg
 		padding: 0.8rem;
 	}
 
-	.audit-form-shell input:focus,
+	.audit-form-shell input[type="text"]:focus,
+	.audit-form-shell input[type="email"]:focus,
+	.audit-form-shell input[type="url"]:focus,
 	.audit-form-shell select:focus,
 	.audit-form-shell textarea:focus {
 		border-color: color-mix(in srgb, var(--color-accent) 55%, var(--color-border));
 		outline: none;
 		background: var(--color-white);
+	}
+
+	.audit-form-shell__checkboxes {
+		border: none;
+		padding: 0;
+		margin: 0;
+	}
+
+	.audit-form-shell__checkboxes legend {
+		margin-bottom: 0.5rem;
+	}
+
+	.audit-form-shell__checkbox-grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 0.45rem;
+	}
+
+	.audit-form-shell__checkbox-label {
+		display: flex !important;
+		align-items: center;
+		gap: 0.45rem;
+		padding: 0.45rem 0.6rem;
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-sm);
+		background: var(--color-bg);
+		cursor: pointer;
+		transition: border-color 0.15s ease, background 0.15s ease;
+	}
+
+	.audit-form-shell__checkbox-label:hover {
+		border-color: color-mix(in srgb, var(--color-accent) 40%, var(--color-border));
+		background: var(--color-white);
+	}
+
+	.audit-form-shell__checkbox-label input[type="checkbox"] {
+		width: 1rem;
+		height: 1rem;
+		flex-shrink: 0;
+		accent-color: var(--color-accent-dark);
+	}
+
+	.audit-form-shell__checkbox-label span {
+		font-size: 0.85rem;
+		font-weight: 600;
+		color: var(--color-text);
+		line-height: 1.3;
 	}
 
 	.audit-form-shell__footer {
@@ -224,13 +334,15 @@ const preferredNextSteps = ['Website audit', 'Template recommendation', 'Strateg
 	}
 
 	.audit-form-shell__footer p {
-		max-width: 440px;
-		font-size: 0.85rem;
+		max-width: 480px;
+		font-size: 0.82rem;
 		line-height: 1.55;
+		color: color-mix(in srgb, var(--color-text) 55%, transparent);
 	}
 
 	@media (max-width: 620px) {
-		.audit-form-shell__grid {
+		.audit-form-shell__grid,
+		.audit-form-shell__checkbox-grid {
 			grid-template-columns: 1fr;
 		}
 
