@@ -1,0 +1,84 @@
+---
+import { membershipEducation } from '../../data/association';
+---
+
+<section class="assoc-section" aria-labelledby="edu-heading">
+	<div class="assoc-container">
+		<div class="edu__header">
+			<div>
+				<p class="assoc-eyebrow">Education & Savings</p>
+				<h2 id="edu-heading">{membershipEducation.headline}</h2>
+				<p class="assoc-lead">{membershipEducation.description}</p>
+			</div>
+		</div>
+		<div class="edu-grid">
+			{membershipEducation.benefits.map((b) => (
+				<div class="edu-card">
+					<h3>{b.title}</h3>
+					<p>{b.detail}</p>
+				</div>
+			))}
+		</div>
+		<div class="edu__cta-row">
+			<a class="assoc-btn assoc-btn--secondary" href={membershipEducation.cta.href}>{membershipEducation.cta.text}</a>
+		</div>
+	</div>
+</section>
+
+<style>
+	.edu__header {
+		margin-bottom: 2rem;
+	}
+
+	.edu-grid {
+		display: grid;
+		grid-template-columns: repeat(5, 1fr);
+		gap: 1rem;
+	}
+
+	.edu-card {
+		padding: 1.25rem;
+		border: 1px solid var(--assoc-border);
+		border-radius: var(--assoc-radius);
+		background: var(--assoc-white);
+		transition: box-shadow 0.22s ease, transform 0.22s ease;
+	}
+
+	.edu-card:hover {
+		box-shadow: 0 4px 16px rgba(16, 42, 67, 0.06);
+		transform: translateY(-1px);
+	}
+
+	.edu-card h3 {
+		font-size: 0.95rem;
+		margin-bottom: 0.3rem;
+	}
+
+	.edu-card p {
+		font-size: 0.82rem;
+		line-height: 1.45;
+		margin: 0;
+	}
+
+	.edu__cta-row {
+		margin-top: 1.5rem;
+	}
+
+	@media (max-width: 960px) {
+		.edu-grid {
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
+
+	@media (max-width: 600px) {
+		.edu-grid {
+			grid-template-columns: 1fr 1fr;
+		}
+	}
+
+	@media (max-width: 420px) {
+		.edu-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

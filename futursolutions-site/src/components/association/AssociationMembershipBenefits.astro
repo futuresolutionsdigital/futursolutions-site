@@ -1,0 +1,90 @@
+---
+import { membershipBenefitPillars } from '../../data/association';
+
+const accentColors = [
+	'var(--assoc-teal)',
+	'var(--assoc-navy)',
+	'var(--assoc-coral)',
+	'var(--assoc-slate)',
+	'var(--assoc-teal)',
+	'var(--assoc-navy)',
+];
+---
+
+<section class="assoc-section assoc-section--warm" id="benefits" aria-labelledby="benefits-heading">
+	<div class="assoc-container">
+		<p class="assoc-eyebrow">Member Benefits</p>
+		<h2 id="benefits-heading">What membership unlocks</h2>
+		<p class="assoc-lead">Every area of MHPA membership is designed to make you more informed, more connected, more effective, and more supported.</p>
+
+		<div class="benefits-grid">
+			{membershipBenefitPillars.map((pillar, i) => (
+				<a href={pillar.href} class="benefit-card" style={`--accent: ${accentColors[i]}`}>
+					<div class="benefit-card__accent"></div>
+					<h3>{pillar.title}</h3>
+					<p>{pillar.description}</p>
+				</a>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+	.benefits-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 1rem;
+		margin-top: 2rem;
+	}
+
+	.benefit-card {
+		display: flex;
+		flex-direction: column;
+		padding: 1.5rem;
+		border: 1px solid var(--assoc-border);
+		border-radius: var(--assoc-radius);
+		background: var(--assoc-white);
+		position: relative;
+		overflow: hidden;
+		transition: box-shadow 0.22s ease, transform 0.22s ease, border-color 0.22s ease;
+	}
+
+	.benefit-card:hover {
+		box-shadow: 0 6px 24px rgba(16, 42, 67, 0.07);
+		transform: translateY(-1px);
+		border-color: var(--accent);
+	}
+
+	.benefit-card__accent {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		height: 3px;
+		background: var(--accent);
+	}
+
+	.benefit-card h3 {
+		font-size: 1.05rem;
+		margin-bottom: 0.35rem;
+		margin-top: 0.25rem;
+	}
+
+	.benefit-card p {
+		font-size: 0.88rem;
+		line-height: 1.5;
+		margin: 0;
+	}
+
+	@media (max-width: 768px) {
+		.benefits-grid {
+			grid-template-columns: 1fr 1fr;
+		}
+	}
+
+	@media (max-width: 520px) {
+		.benefits-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

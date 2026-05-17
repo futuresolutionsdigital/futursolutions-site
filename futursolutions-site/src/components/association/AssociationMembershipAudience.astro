@@ -1,0 +1,102 @@
+---
+import { membershipAudience } from '../../data/association';
+
+const iconPaths: Record<string, string> = {
+	student: 'M12 14l9-5-9-5-9 5 9 5Zm0 0v7M21 12v7',
+	'new-pro': 'M12 2L2 7l10 5 10-5-10-5ZM2 17l10 5 10-5M2 12l10 5 10-5',
+	professional: 'M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M12 7a4 4 0 1 0-8 0 4 4 0 0 0 8 0Zm9 14v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75',
+	leader: 'M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z',
+	employer: 'M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 14v3M12 14v3M16 14v3',
+	retired: 'M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z',
+};
+---
+
+<section class="assoc-section" id="paths" aria-labelledby="audience-heading">
+	<div class="assoc-container">
+		<p class="assoc-eyebrow">Who Membership Is For</p>
+		<h2 id="audience-heading">Find the membership path built for your stage.</h2>
+		<p class="assoc-lead">Whether you are studying, practicing, leading, hiring, or staying connected after retirement, MHPA membership meets you where you are.</p>
+
+		<div class="audience-grid">
+			{membershipAudience.map((seg) => (
+				<a href={seg.cta.href} class="assoc-card audience-card">
+					<div class="audience-card__icon">
+						<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+							<path d={iconPaths[seg.icon] || iconPaths.professional} />
+						</svg>
+					</div>
+					<h3>{seg.title}</h3>
+					<p>{seg.summary}</p>
+					<span class="audience-card__cta">{seg.cta.text} →</span>
+				</a>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+	.audience-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 1rem;
+		margin-top: 2rem;
+	}
+
+	.audience-card {
+		display: flex;
+		flex-direction: column;
+		padding: 1.5rem;
+	}
+
+	.audience-card:hover {
+		border-color: var(--assoc-teal);
+		transform: translateY(-2px);
+	}
+
+	.audience-card__icon {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 2.5rem;
+		height: 2.5rem;
+		border-radius: 10px;
+		background: var(--assoc-teal-light);
+		color: var(--assoc-teal);
+		margin-bottom: 1rem;
+	}
+
+	.audience-card h3 {
+		font-size: 1.05rem;
+		margin-bottom: 0.35rem;
+	}
+
+	.audience-card p {
+		font-size: 0.88rem;
+		line-height: 1.5;
+		flex: 1;
+	}
+
+	.audience-card__cta {
+		margin-top: 0.75rem;
+		font-size: 0.82rem;
+		font-weight: 700;
+		color: var(--assoc-teal);
+		transition: color 0.18s ease;
+	}
+
+	.audience-card:hover .audience-card__cta {
+		color: var(--assoc-navy);
+	}
+
+	@media (max-width: 768px) {
+		.audience-grid {
+			grid-template-columns: 1fr 1fr;
+		}
+	}
+
+	@media (max-width: 520px) {
+		.audience-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

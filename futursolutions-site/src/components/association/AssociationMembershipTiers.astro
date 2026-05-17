@@ -1,0 +1,172 @@
+---
+import { membershipTiers } from '../../data/association';
+---
+
+<section class="assoc-section" id="tiers" aria-labelledby="tiers-heading">
+	<div class="assoc-container">
+		<p class="assoc-eyebrow">Membership Options</p>
+		<h2 id="tiers-heading">Choose the membership that fits your role.</h2>
+		<p class="assoc-lead">Each tier is designed to match your stage, your goals, and the level of engagement that works for you.</p>
+		<p class="tiers-note">All prices are fictional and for demonstration purposes only.</p>
+
+		<div class="tiers-grid">
+			{membershipTiers.map((tier) => (
+				<div class:list={['tier-card', { 'tier-card--featured': tier.featured }]}>
+					{tier.featured && <div class="tier-card__badge">Most Popular</div>}
+					<h3 class="tier-card__name">{tier.name}</h3>
+					<div class="tier-card__price">
+						<span class="tier-card__amount">{tier.price}</span>
+						<span class="tier-card__period">{tier.period}</span>
+					</div>
+					<p class="tier-card__best">{tier.bestFor}</p>
+					<ul class="tier-card__includes">
+						{tier.includes.map((item) => (
+							<li>
+								<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+								<span>{item}</span>
+							</li>
+						))}
+					</ul>
+					<a
+						class:list={['assoc-btn', tier.featured ? 'assoc-btn--primary' : 'assoc-btn--secondary', 'tier-card__cta']}
+						href={tier.cta.href}
+					>
+						{tier.cta.text}
+					</a>
+				</div>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+	.tiers-note {
+		font-size: 0.78rem;
+		color: var(--assoc-slate);
+		opacity: 0.7;
+		margin-top: -0.5rem;
+	}
+
+	.tiers-grid {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 1rem;
+		margin-top: 2rem;
+		align-items: start;
+	}
+
+	.tier-card {
+		display: flex;
+		flex-direction: column;
+		padding: 1.75rem 1.5rem;
+		border: 1px solid var(--assoc-border);
+		border-radius: var(--assoc-radius);
+		background: var(--assoc-white);
+		position: relative;
+		box-shadow: 0 2px 12px rgba(16, 42, 67, 0.04);
+	}
+
+	.tier-card--featured {
+		border-color: var(--assoc-teal);
+		box-shadow: 0 8px 32px rgba(31, 111, 120, 0.1);
+	}
+
+	.tier-card__badge {
+		position: absolute;
+		top: -0.6rem;
+		left: 50%;
+		transform: translateX(-50%);
+		padding: 0.2rem 0.75rem;
+		border-radius: 999px;
+		background: var(--assoc-teal);
+		color: var(--assoc-white);
+		font-size: 0.68rem;
+		font-weight: 700;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+		white-space: nowrap;
+	}
+
+	.tier-card__name {
+		font-size: 1.1rem;
+		margin-bottom: 0.5rem;
+	}
+
+	.tier-card--featured .tier-card__name {
+		margin-top: 0.5rem;
+	}
+
+	.tier-card__price {
+		display: flex;
+		align-items: baseline;
+		gap: 0.2rem;
+		margin-bottom: 0.75rem;
+	}
+
+	.tier-card__amount {
+		font-size: 2rem;
+		font-weight: 800;
+		color: var(--assoc-navy);
+		letter-spacing: -0.02em;
+		line-height: 1;
+	}
+
+	.tier-card__period {
+		font-size: 0.85rem;
+		font-weight: 600;
+		color: var(--assoc-slate);
+	}
+
+	.tier-card__best {
+		font-size: 0.82rem;
+		line-height: 1.4;
+		margin-bottom: 1.25rem;
+		padding-bottom: 1rem;
+		border-bottom: 1px solid var(--assoc-border);
+	}
+
+	.tier-card__includes {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		display: grid;
+		gap: 0.55rem;
+		flex: 1;
+	}
+
+	.tier-card__includes li {
+		display: flex;
+		align-items: flex-start;
+		gap: 0.5rem;
+		font-size: 0.85rem;
+		font-weight: 500;
+		color: var(--assoc-navy);
+		line-height: 1.35;
+	}
+
+	.tier-card__includes li svg {
+		display: inline;
+		flex-shrink: 0;
+		margin-top: 0.1rem;
+		color: var(--assoc-teal);
+	}
+
+	.tier-card__cta {
+		margin-top: 1.5rem;
+		width: 100%;
+		text-align: center;
+	}
+
+	@media (max-width: 960px) {
+		.tiers-grid {
+			grid-template-columns: 1fr 1fr;
+		}
+	}
+
+	@media (max-width: 520px) {
+		.tiers-grid {
+			grid-template-columns: 1fr;
+			max-width: 400px;
+		}
+	}
+</style>

@@ -1,0 +1,81 @@
+---
+import { membershipAdvocacy } from '../../data/association';
+---
+
+<section class="advocacy-value" aria-labelledby="advocacy-value-heading">
+	<div class="assoc-container advocacy-value__inner">
+		<div class="advocacy-value__intro">
+			<p class="assoc-eyebrow advocacy-value__eyebrow">Advocacy Value</p>
+			<h2 id="advocacy-value-heading">{membershipAdvocacy.headline}</h2>
+			<p class="advocacy-value__desc">{membershipAdvocacy.description}</p>
+			<a class="assoc-btn assoc-btn--coral" href={membershipAdvocacy.cta.href}>{membershipAdvocacy.cta.text}</a>
+		</div>
+		<div class="advocacy-value__points">
+			{membershipAdvocacy.points.map((point) => (
+				<div class="advocacy-point">
+					<h3>{point.title}</h3>
+					<p>{point.description}</p>
+				</div>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+	.advocacy-value {
+		padding-block: var(--assoc-section-spacing);
+		background: var(--assoc-coral-light);
+		border-block: 1px solid color-mix(in srgb, var(--assoc-coral) 12%, transparent);
+	}
+
+	.advocacy-value__inner {
+		display: grid;
+		grid-template-columns: 1.1fr 0.9fr;
+		gap: clamp(2rem, 5vw, 4rem);
+		align-items: start;
+	}
+
+	.advocacy-value__eyebrow {
+		color: var(--assoc-coral) !important;
+	}
+
+	.advocacy-value h2 {
+		text-wrap: balance;
+	}
+
+	.advocacy-value__desc {
+		font-size: 1rem;
+		line-height: 1.6;
+		max-width: 480px;
+		margin-bottom: 1.5rem;
+	}
+
+	.advocacy-value__points {
+		display: grid;
+		gap: 1rem;
+	}
+
+	.advocacy-point {
+		padding: 1.25rem;
+		border: 1px solid color-mix(in srgb, var(--assoc-coral) 15%, var(--assoc-border));
+		border-radius: var(--assoc-radius);
+		background: var(--assoc-white);
+	}
+
+	.advocacy-point h3 {
+		font-size: 1rem;
+		margin-bottom: 0.3rem;
+	}
+
+	.advocacy-point p {
+		font-size: 0.88rem;
+		line-height: 1.5;
+		margin: 0;
+	}
+
+	@media (max-width: 768px) {
+		.advocacy-value__inner {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

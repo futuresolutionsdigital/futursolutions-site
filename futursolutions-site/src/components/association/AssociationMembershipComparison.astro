@@ -1,0 +1,121 @@
+---
+import { membershipComparisonRows } from '../../data/association';
+---
+
+<section class="assoc-section assoc-section--warm" id="compare" aria-labelledby="compare-heading">
+	<div class="assoc-container">
+		<p class="assoc-eyebrow">Comparison</p>
+		<h2 id="compare-heading">Compare membership benefits</h2>
+		<p class="assoc-lead">See what each tier includes so you can choose the right fit for your role and goals.</p>
+
+		<div class="compare-wrapper">
+			<table class="compare-table" role="table">
+				<thead>
+					<tr>
+						<th scope="col" class="compare-table__feature-col">Benefit</th>
+						<th scope="col">Student</th>
+						<th scope="col">Professional</th>
+						<th scope="col">Leadership</th>
+						<th scope="col">Retired</th>
+					</tr>
+				</thead>
+				<tbody>
+					{membershipComparisonRows.map((row) => (
+						<tr>
+							<td class="compare-table__feature">{row.feature}</td>
+							<td class={row.student === 'Included' ? 'compare-table__check' : ''}>{row.student === 'Included' ? '✓' : row.student}</td>
+							<td class={row.professional === 'Included' || row.professional === 'Full access' ? 'compare-table__check' : ''}>{row.professional === 'Included' ? '✓' : row.professional}</td>
+							<td class={row.leadership === 'Included' || row.leadership === 'Full access' ? 'compare-table__check' : ''}>{row.leadership === 'Included' ? '✓' : row.leadership}</td>
+							<td class={row.retired === 'Included' ? 'compare-table__check' : ''}>{row.retired === 'Included' ? '✓' : row.retired}</td>
+						</tr>
+					))}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</section>
+
+<style>
+	.compare-wrapper {
+		margin-top: 2rem;
+		overflow-x: auto;
+		-webkit-overflow-scrolling: touch;
+		border: 1px solid var(--assoc-border);
+		border-radius: var(--assoc-radius);
+		background: var(--assoc-white);
+	}
+
+	.compare-table {
+		width: 100%;
+		min-width: 640px;
+		border-collapse: collapse;
+		font-size: 0.88rem;
+	}
+
+	.compare-table thead {
+		background: var(--assoc-navy);
+		color: var(--assoc-white);
+	}
+
+	.compare-table th {
+		padding: 0.85rem 1rem;
+		font-size: 0.78rem;
+		font-weight: 700;
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
+		text-align: center;
+		white-space: nowrap;
+	}
+
+	.compare-table__feature-col {
+		text-align: left !important;
+		min-width: 200px;
+	}
+
+	.compare-table td {
+		padding: 0.75rem 1rem;
+		text-align: center;
+		border-bottom: 1px solid var(--assoc-border);
+		color: var(--assoc-slate);
+		font-weight: 500;
+	}
+
+	.compare-table__feature {
+		text-align: left !important;
+		font-weight: 600 !important;
+		color: var(--assoc-navy) !important;
+	}
+
+	.compare-table__check {
+		color: var(--assoc-teal) !important;
+		font-weight: 700 !important;
+		font-size: 1.1rem;
+	}
+
+	.compare-table tbody tr:last-child td {
+		border-bottom: none;
+	}
+
+	.compare-table tbody tr:hover {
+		background: color-mix(in srgb, var(--assoc-teal) 3%, var(--assoc-white));
+	}
+
+	@media (max-width: 700px) {
+		.compare-wrapper {
+			margin-left: -0.5rem;
+			margin-right: -0.5rem;
+			border-radius: 8px;
+		}
+
+		.compare-wrapper::after {
+			content: 'Scroll →';
+			display: block;
+			padding: 0.4rem 1rem;
+			text-align: right;
+			font-size: 0.7rem;
+			font-weight: 600;
+			color: var(--assoc-slate);
+			opacity: 0.6;
+		}
+	}
+</style>

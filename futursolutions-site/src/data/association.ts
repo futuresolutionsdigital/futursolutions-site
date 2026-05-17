@@ -346,6 +346,301 @@ export const footerNavGroups = [
 	},
 ];
 
+// ── Membership: Audience Segments ──
+
+export const membershipAudience = [
+	{
+		title: 'Student',
+		summary: 'Build your professional foundation early with discounted membership, mentorship, and learning access.',
+		cta: { text: 'Explore Student Membership', href: '#tiers' },
+		icon: 'student',
+	},
+	{
+		title: 'New Professional',
+		summary: 'Get practical guidance, CE, career tools, and local connections as you begin practice.',
+		cta: { text: 'Start Your First Year', href: '#tiers' },
+		icon: 'new-pro',
+	},
+	{
+		title: 'Practicing Professional',
+		summary: 'Stay current, protected, connected, and represented through every stage of your career.',
+		cta: { text: 'Join as a Professional', href: '#tiers' },
+		icon: 'professional',
+	},
+	{
+		title: 'Clinical Leader',
+		summary: 'Access leadership resources, policy updates, team education, and professional visibility.',
+		cta: { text: 'Explore Leadership Benefits', href: '#tiers' },
+		icon: 'leader',
+	},
+	{
+		title: 'Employer / Partner',
+		summary: 'Reach qualified professionals, post opportunities, sponsor events, and support the profession.',
+		cta: { text: 'Partner With MHPA', href: '/demos/association/contact' },
+		icon: 'employer',
+	},
+	{
+		title: 'Retired / Emeritus',
+		summary: 'Stay connected to the profession, support advocacy, and mentor the next generation.',
+		cta: { text: 'Stay Connected', href: '#tiers' },
+		icon: 'retired',
+	},
+];
+
+// ── Membership: Benefit Pillars ──
+
+export const membershipBenefitPillars = [
+	{
+		title: 'Advocacy Representation',
+		description: 'A unified voice on the policy issues that shape practice, access, and professional opportunity.',
+		href: '/demos/association/advocacy',
+	},
+	{
+		title: 'Continuing Education',
+		description: 'Live webinars, CE activities, conference programming, and practical learning pathways.',
+		href: '/demos/association/events',
+	},
+	{
+		title: 'Local Chapters',
+		description: 'Regional networks for connection, leadership, mentorship, and local events.',
+		href: '/demos/association/chapters',
+	},
+	{
+		title: 'Career Support',
+		description: 'Job opportunities, salary tools, mentoring resources, leadership development, and employer visibility.',
+		href: '/demos/association/career-center',
+	},
+	{
+		title: 'Practice Resources',
+		description: 'Toolkits, clinical guides, policy briefs, templates, and member-only professional materials.',
+		href: '/demos/association/resources',
+	},
+	{
+		title: 'Member Savings',
+		description: 'Discounted event registration, preferred pricing on education, and access to exclusive resources.',
+		href: '/demos/association/membership',
+	},
+];
+
+// ── Membership: Tiers ──
+
+export const membershipTiers = [
+	{
+		name: 'Student Member',
+		price: '$75',
+		period: '/year',
+		bestFor: 'Students preparing for professional practice',
+		featured: false,
+		includes: [
+			'Discounted student rate',
+			'Student-focused webinars',
+			'Local chapter access',
+			'Mentorship opportunities',
+			'Career preparation resources',
+		],
+		cta: { text: 'Join as Student', href: '/demos/association/contact' },
+	},
+	{
+		name: 'Professional Member',
+		price: '$245',
+		period: '/year',
+		bestFor: 'Licensed or practicing healthcare professionals',
+		featured: true,
+		includes: [
+			'Full advocacy representation',
+			'CE and webinar access',
+			'Member resource library',
+			'Chapter participation',
+			'Career center access',
+			'Conference member pricing',
+		],
+		cta: { text: 'Join as Professional', href: '/demos/association/contact' },
+	},
+	{
+		name: 'Leadership Member',
+		price: '$345',
+		period: '/year',
+		bestFor: 'Clinical leaders, educators, and advanced professionals',
+		featured: false,
+		includes: [
+			'Everything in Professional',
+			'Leadership roundtables',
+			'Policy briefing access',
+			'Speaker/volunteer opportunities',
+			'Recognition and leadership pathways',
+		],
+		cta: { text: 'Explore Leadership', href: '/demos/association/contact' },
+	},
+	{
+		name: 'Retired / Emeritus',
+		price: '$95',
+		period: '/year',
+		bestFor: 'Retired professionals who want to stay connected',
+		featured: false,
+		includes: [
+			'Chapter access',
+			'Advocacy updates',
+			'Mentorship opportunities',
+			'Select event discounts',
+			'Community participation',
+		],
+		cta: { text: 'Stay Connected', href: '/demos/association/contact' },
+	},
+];
+
+// ── Membership: Comparison Table ──
+
+export const membershipComparisonRows = [
+	{ feature: 'Advocacy representation', student: 'Included', professional: 'Included', leadership: 'Included', retired: 'Included' },
+	{ feature: 'Local chapter access', student: 'Included', professional: 'Included', leadership: 'Included', retired: 'Included' },
+	{ feature: 'Resource library', student: 'Limited', professional: 'Full access', leadership: 'Full access', retired: 'Limited' },
+	{ feature: 'CE and webinar access', student: 'Student track', professional: 'Full access', leadership: 'Full access', retired: 'Select' },
+	{ feature: 'Conference member pricing', student: 'Student rate', professional: 'Member rate', leadership: 'Member rate', retired: 'Discounted' },
+	{ feature: 'Career center access', student: 'Included', professional: 'Included', leadership: 'Included', retired: '—' },
+	{ feature: 'Mentorship opportunities', student: 'As mentee', professional: 'Both roles', leadership: 'Both roles', retired: 'As mentor' },
+	{ feature: 'Leadership opportunities', student: '—', professional: 'Committee access', leadership: 'Full access', retired: 'Advisory' },
+	{ feature: 'Policy briefings', student: '—', professional: 'Summary', leadership: 'Full access', retired: 'Summary' },
+	{ feature: 'Employer visibility', student: '—', professional: '—', leadership: 'Directory listing', retired: '—' },
+];
+
+// ── Membership: Outcome Blocks ──
+
+export const membershipOutcomes = [
+	{
+		title: 'Keep your practice current',
+		description: 'Access CE courses, clinical guidelines, and webinars that reflect the latest in evidence-based practice — not just checkbox education.',
+		linkText: 'Explore Education',
+		href: '/demos/association/events',
+	},
+	{
+		title: 'Understand policy changes before they affect you',
+		description: 'Get clear, actionable advocacy alerts and legislative summaries so you can respond to changes that affect your scope, your patients, and your livelihood.',
+		linkText: 'View Policy Priorities',
+		href: '/demos/association/advocacy',
+	},
+	{
+		title: 'Find your local professional network',
+		description: 'Join one of 24 chapters for meetups, CE dinners, mentorship circles, and regional events that connect you with peers who understand your day-to-day reality.',
+		linkText: 'Find Your Chapter',
+		href: '/demos/association/chapters',
+	},
+	{
+		title: 'Advance your career with credible support',
+		description: 'Use the job board, salary benchmarks, CV builder, and mentorship program to make confident career moves — whether you\'re starting out or stepping into leadership.',
+		linkText: 'Explore Career Center',
+		href: '/demos/association/career-center',
+	},
+];
+
+// ── Membership: Advocacy Value ──
+
+export const membershipAdvocacy = {
+	headline: 'Your membership strengthens the voice of the profession.',
+	description: 'Every MHPA member adds weight to the collective voice that shapes policy, protects practice, and expands professional opportunity.',
+	points: [
+		{
+			title: 'Track legislation in real time',
+			description: 'MHPA monitors state and federal policy developments and keeps members informed through clear legislative summaries.',
+		},
+		{
+			title: 'Mobilize when it matters',
+			description: 'When key votes approach, MHPA activates its member network with targeted action alerts and direct legislator contact tools.',
+		},
+		{
+			title: 'Support long-term professional influence',
+			description: 'Member dues fund sustained advocacy, public awareness campaigns, and long-term relationship building with legislators who affect your profession.',
+		},
+	],
+	cta: { text: 'View Advocacy Priorities', href: '/demos/association/advocacy' },
+} as const;
+
+// ── Membership: Education & Savings ──
+
+export const membershipEducation = {
+	headline: 'Learn more, attend more, save more.',
+	description: 'Your membership includes access to education and events that keep you clinically current, professionally engaged, and financially ahead.',
+	benefits: [
+		{ title: 'CE Course Access', detail: '120+ annual hours across specialty tracks' },
+		{ title: 'Live Webinars', detail: 'Monthly sessions with expert faculty' },
+		{ title: 'Conference Pricing', detail: 'Save up to $150 on annual conference registration' },
+		{ title: 'On-Demand Library', detail: 'Self-paced modules available year-round' },
+		{ title: 'Professional Development', detail: 'Leadership workshops and career webinars' },
+	],
+	cta: { text: 'Explore Education & Events', href: '/demos/association/events' },
+} as const;
+
+// ── Membership: Community / Chapters ──
+
+export const membershipCommunity = {
+	headline: 'A statewide network that feels local.',
+	description: 'MHPA membership connects you to a professional community that extends far beyond your workplace — and meets you where you live.',
+	benefits: [
+		'Access to 24 local chapters across the state',
+		'Regional meetups, CE dinners, and advocacy events',
+		'Mentorship matching with experienced professionals',
+		'Volunteer and chapter leadership opportunities',
+		'Online community forums and peer groups',
+	],
+	cta: { text: 'Find Your Chapter', href: '/demos/association/chapters' },
+} as const;
+
+// ── Membership: Stories ──
+
+export const membershipStories = [
+	{
+		quote: 'Joining MHPA helped me find a local chapter, understand the policy issues affecting my work, and feel connected to a profession bigger than my own workplace.',
+		name: 'Sarah Kimura, NP',
+		role: 'Primary Care · Bay Area Chapter',
+	},
+	{
+		quote: 'The leadership member benefits gave me access to policy briefings and a network of clinical leaders I never would have found on my own.',
+		name: 'David Okonkwo, DNP, APRN',
+		role: 'Clinical Director · Central Valley Chapter',
+	},
+	{
+		quote: 'As a student member, I got mentorship, career prep, and CE access at a price I could afford. It made the transition to practice so much smoother.',
+		name: 'Elena Reyes, BSN Student',
+		role: 'Nursing Student · Southern California Chapter',
+	},
+];
+
+// ── Membership: FAQ ──
+
+export const membershipFaqs = [
+	{
+		question: 'Who can join MHPA?',
+		answer: 'MHPA membership is open to licensed healthcare professionals, students enrolled in accredited healthcare programs, retired practitioners, clinical educators, and organizational partners across the state.',
+	},
+	{
+		question: 'Is there a student membership option?',
+		answer: 'Yes. Student membership is available at a reduced rate of $75/year and includes chapter access, mentorship, career resources, student-focused webinars, and discounted conference registration.',
+	},
+	{
+		question: 'What is included with professional membership?',
+		answer: 'Professional membership ($245/year) includes full advocacy representation, CE and webinar access, the member resource library, chapter participation, career center access, and conference member pricing.',
+	},
+	{
+		question: 'Do members receive event and conference discounts?',
+		answer: 'Yes. All members receive preferred pricing on the Annual Clinical Leadership Conference and select CE events. Savings vary by tier and can total $150 or more per year.',
+	},
+	{
+		question: 'Can employers or organizations partner with MHPA?',
+		answer: 'Yes. Employers and organizations can partner with MHPA through sponsorship, job board access, event participation, and group membership options. Contact us for partnership details.',
+	},
+	{
+		question: 'How do renewals work?',
+		answer: 'Memberships renew annually. Members receive renewal reminders via email 60 and 30 days before expiration. Online renewal takes less than two minutes through the member portal.',
+	},
+	{
+		question: 'Are practice resources member-only?',
+		answer: 'Most toolkits, clinical guides, salary data, and templates are exclusive to members. Select public resources are available to non-members for preview purposes.',
+	},
+	{
+		question: 'Can I participate in advocacy as a member?',
+		answer: 'Absolutely. All members can respond to action alerts, contact legislators through MHPA tools, attend advocacy events, and support the political action committee. Leadership members receive additional policy briefing access.',
+	},
+];
+
 // ── Future Route Metadata ──
 
 export const routeMetadata: Record<string, { title: string; description: string }> = {

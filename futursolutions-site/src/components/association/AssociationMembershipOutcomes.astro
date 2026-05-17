@@ -1,0 +1,84 @@
+---
+import { membershipOutcomes } from '../../data/association';
+---
+
+<section class="assoc-section" aria-labelledby="outcomes-heading">
+	<div class="assoc-container">
+		<p class="assoc-eyebrow">Real Outcomes</p>
+		<h2 id="outcomes-heading">Built around the work you actually do.</h2>
+		<p class="assoc-lead">Membership is practical — designed to help you stay current, stay protected, stay connected, and move forward.</p>
+
+		<div class="outcomes-list">
+			{membershipOutcomes.map((item, i) => (
+				<div class="outcome-block">
+					<div class="outcome-block__number" aria-hidden="true">{String(i + 1).padStart(2, '0')}</div>
+					<div class="outcome-block__content">
+						<h3>{item.title}</h3>
+						<p>{item.description}</p>
+						<a class="outcome-block__link" href={item.href}>{item.linkText} →</a>
+					</div>
+				</div>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+	.outcomes-list {
+		display: grid;
+		gap: 0;
+		margin-top: 2.5rem;
+	}
+
+	.outcome-block {
+		display: flex;
+		align-items: flex-start;
+		gap: 1.5rem;
+		padding: 1.5rem 0;
+		border-bottom: 1px solid var(--assoc-border);
+	}
+
+	.outcome-block:last-child {
+		border-bottom: none;
+	}
+
+	.outcome-block__number {
+		flex-shrink: 0;
+		font-size: 1.5rem;
+		font-weight: 800;
+		color: var(--assoc-teal);
+		opacity: 0.35;
+		line-height: 1;
+		min-width: 2rem;
+		padding-top: 0.15rem;
+		letter-spacing: -0.02em;
+	}
+
+	.outcome-block__content h3 {
+		font-size: 1.15rem;
+		margin-bottom: 0.35rem;
+	}
+
+	.outcome-block__content p {
+		font-size: 0.92rem;
+		line-height: 1.6;
+		max-width: 640px;
+	}
+
+	.outcome-block__link {
+		font-size: 0.85rem;
+		font-weight: 700;
+		color: var(--assoc-teal);
+	}
+
+	.outcome-block__link:hover {
+		color: var(--assoc-navy);
+	}
+
+	@media (max-width: 520px) {
+		.outcome-block {
+			flex-direction: column;
+			gap: 0.5rem;
+		}
+	}
+</style>
