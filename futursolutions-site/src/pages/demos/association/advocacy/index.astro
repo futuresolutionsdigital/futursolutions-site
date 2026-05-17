@@ -1,0 +1,61 @@
+---
+import AssociationLayout from '../../../../layouts/AssociationLayout.astro';
+import AssociationAdvocacyHero from '../../../../components/association/AssociationAdvocacyHero.astro';
+import AssociationAdvocacyCurrentAlert from '../../../../components/association/AssociationAdvocacyCurrentAlert.astro';
+import AssociationAdvocacyStats from '../../../../components/association/AssociationAdvocacyStats.astro';
+import AssociationPolicyPriorities from '../../../../components/association/AssociationPolicyPriorities.astro';
+import AssociationLegislativeTracker from '../../../../components/association/AssociationLegislativeTracker.astro';
+import AssociationAdvocacyProcess from '../../../../components/association/AssociationAdvocacyProcess.astro';
+import AssociationLobbyDay from '../../../../components/association/AssociationLobbyDay.astro';
+import AssociationAdvocacyToolkit from '../../../../components/association/AssociationAdvocacyToolkit.astro';
+import AssociationPolicyUpdates from '../../../../components/association/AssociationPolicyUpdates.astro';
+import AssociationAdvocacySupport from '../../../../components/association/AssociationAdvocacySupport.astro';
+import AssociationAdvocacyFAQ from '../../../../components/association/AssociationAdvocacyFAQ.astro';
+import { routeMetadata } from '../../../../data/association';
+
+const meta = routeMetadata['/demos/association/advocacy'];
+---
+
+<AssociationLayout title={meta.title} description={meta.description}>
+	<AssociationAdvocacyHero />
+	<AssociationAdvocacyCurrentAlert />
+	<AssociationAdvocacyStats />
+	<AssociationPolicyPriorities />
+	<AssociationLegislativeTracker />
+	<AssociationAdvocacyProcess />
+	<AssociationLobbyDay />
+	<AssociationAdvocacyToolkit />
+	<AssociationPolicyUpdates />
+	<AssociationAdvocacySupport />
+	<AssociationAdvocacyFAQ />
+
+	<!-- Final CTA -->
+	<section class="adv-final-cta" aria-labelledby="adv-final-heading">
+		<div class="assoc-container adv-final-cta__inner">
+			<h2 id="adv-final-heading">Your experience belongs in the policy conversation.</h2>
+			<p class="assoc-lead">Join MHPA members taking action on the issues that shape practice, access, and the future of healthcare.</p>
+			<div class="assoc-btn-row">
+				<a class="assoc-btn adv-final-cta__primary" href="#action">Take Action Now</a>
+				<a class="assoc-btn adv-final-cta__ghost" href="/demos/association/membership">Become a Member</a>
+			</div>
+		</div>
+	</section>
+</AssociationLayout>
+
+<style>
+	.adv-final-cta {
+		padding-block: var(--assoc-section-spacing);
+		background:
+			radial-gradient(ellipse at 50% 70%, color-mix(in srgb, var(--assoc-coral) 6%, transparent), transparent 55%),
+			var(--assoc-navy);
+		color: var(--assoc-white);
+	}
+	.adv-final-cta__inner { max-width: 680px; text-align: center; margin-inline: auto; }
+	.adv-final-cta h2 { color: var(--assoc-white); text-wrap: balance; }
+	.adv-final-cta .assoc-lead { color: rgba(255, 255, 255, 0.6); margin-inline: auto; }
+	.adv-final-cta .assoc-btn-row { justify-content: center; }
+	.adv-final-cta__primary { background: var(--assoc-coral) !important; color: var(--assoc-white) !important; border-color: var(--assoc-coral) !important; }
+	.adv-final-cta__primary:hover { background: color-mix(in srgb, var(--assoc-coral) 80%, var(--assoc-white)) !important; }
+	.adv-final-cta__ghost { border-color: rgba(255,255,255,0.2) !important; background: transparent !important; color: var(--assoc-white) !important; }
+	.adv-final-cta__ghost:hover { border-color: rgba(255,255,255,0.4) !important; background: rgba(255,255,255,0.06) !important; }
+</style>

@@ -1,0 +1,73 @@
+---
+import { advocacyIssueDetail } from '../../data/association';
+const d = advocacyIssueDetail;
+---
+
+<section class="issue-hero" aria-labelledby="issue-hero-heading">
+	<div class="assoc-container issue-hero__inner">
+		<div class="issue-hero__content">
+			<a class="issue-hero__back" href={d.tertiaryLink.href}>{d.tertiaryLink.text}</a>
+			<p class="assoc-eyebrow">{d.eyebrow}</p>
+			<h1 id="issue-hero-heading">{d.headline}</h1>
+			<p class="issue-hero__lead">{d.lead}</p>
+			<div class="issue-hero__meta">
+				<span class="issue-hero__meta-bill">{d.bill}</span>
+				<span class="issue-hero__meta-badge issue-hero__meta-badge--position">{d.position}</span>
+				<span class="issue-hero__meta-badge issue-hero__meta-badge--status">{d.status}</span>
+			</div>
+			<div class="issue-hero__deadline">
+				<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+				<span>{d.deadline}</span>
+			</div>
+			<div class="assoc-btn-row">
+				<a class="assoc-btn issue-hero__btn-primary" href={d.primaryCta.href}>{d.primaryCta.text}</a>
+				<a class="assoc-btn assoc-btn--secondary" href={d.secondaryCta.href}>{d.secondaryCta.text}</a>
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.issue-hero {
+		padding-block: clamp(2.5rem, 5vw, 4rem);
+		background:
+			radial-gradient(ellipse at 70% 30%, color-mix(in srgb, var(--assoc-coral) 4%, transparent), transparent 55%),
+			linear-gradient(175deg, var(--assoc-bg) 40%, color-mix(in srgb, var(--assoc-sand) 35%, var(--assoc-bg)) 100%);
+		border-bottom: 1px solid var(--assoc-border);
+	}
+	.issue-hero__content { max-width: 700px; }
+	.issue-hero__back {
+		display: inline-block;
+		margin-bottom: 1rem;
+		font-size: 0.82rem;
+		font-weight: 700;
+		color: var(--assoc-teal);
+	}
+	.issue-hero__back:hover { color: var(--assoc-navy); }
+	.issue-hero h1 { text-wrap: balance; }
+	.issue-hero__lead { font-size: clamp(1rem, 0.98rem + 0.15vw, 1.1rem); line-height: 1.6; color: var(--assoc-slate); max-width: 600px; }
+	.issue-hero__meta { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; }
+	.issue-hero__meta-bill { font-size: 0.88rem; font-weight: 800; color: var(--assoc-navy); }
+	.issue-hero__meta-badge {
+		padding: 0.18rem 0.55rem;
+		border-radius: 999px;
+		font-size: 0.68rem;
+		font-weight: 700;
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
+	}
+	.issue-hero__meta-badge--position { background: var(--assoc-teal-light); color: var(--assoc-teal); }
+	.issue-hero__meta-badge--status { background: var(--assoc-coral-light); color: var(--assoc-coral); }
+	.issue-hero__deadline {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.35rem;
+		margin-bottom: 0.75rem;
+		font-size: 0.82rem;
+		font-weight: 700;
+		color: var(--assoc-coral);
+	}
+	.issue-hero__deadline svg { display: inline; flex-shrink: 0; }
+	.issue-hero__btn-primary { background: var(--assoc-coral) !important; color: var(--assoc-white) !important; border-color: var(--assoc-coral) !important; }
+	.issue-hero__btn-primary:hover { background: color-mix(in srgb, var(--assoc-coral) 85%, var(--assoc-navy)) !important; }
+</style>

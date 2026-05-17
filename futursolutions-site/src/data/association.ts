@@ -170,8 +170,8 @@ export const advocacyAlert = {
 	title: 'Support SB-1247: Expanding Scope of Practice',
 	description:
 		'SB-1247 would update scope-of-practice regulations to better reflect current clinical training standards. Your voice matters — send a message to your legislator today.',
-	cta: { text: 'Take Action Now', href: '/demos/association/advocacy' },
-	secondaryLink: { text: 'View All Policy Priorities', href: '/demos/association/advocacy' },
+	cta: { text: 'Take Action Now', href: '/demos/association/advocacy/scope-of-practice' },
+	secondaryLink: { text: 'View All Policy Priorities', href: '/demos/association/advocacy#priorities' },
 	urgency: 'Senate vote expected June 2026',
 } as const;
 
@@ -1001,6 +1001,264 @@ export const annualConferenceFaqs = [
 	},
 ];
 
+// ── Advocacy: Hero ──
+
+export const advocacyHero = {
+	eyebrow: 'Advocacy',
+	headline: 'Your voice shapes the future of healthcare practice.',
+	lead: 'MHPA tracks legislation, mobilizes members, and gives healthcare professionals a unified voice at every level of government.',
+	supportLine: 'Nonpartisan advocacy · Member action alerts · Policy tracking · Lobby Day preparation',
+	primaryCta: { text: 'Take Action Now', href: '#action' },
+	secondaryCta: { text: 'View Policy Priorities', href: '#priorities' },
+	tertiaryLink: { text: 'Explore Lobby Day →', href: '#lobby-day' },
+} as const;
+
+// ── Advocacy: Current Alert ──
+
+export const advocacyCurrentAlert = {
+	headline: 'Action needed this week',
+	title: 'Support SB-1247: Expanding Scope of Practice Access',
+	status: 'Committee hearing scheduled',
+	deadline: 'Submit comments by Friday at 5:00 PM',
+	summary: 'A proposed bill would expand access to care by reducing outdated practice restrictions and improving patient access in underserved communities.',
+	primaryCta: { text: 'Send a Message', href: '#action' },
+	secondaryCta: { text: 'Read the Issue Brief', href: '/demos/association/advocacy/scope-of-practice' },
+} as const;
+
+// ── Advocacy: Stats ──
+
+export const advocacyStats = [
+	{ value: '36', label: 'policy updates tracked' },
+	{ value: '4,800+', label: 'member messages sent' },
+	{ value: '18', label: 'coalition partners' },
+	{ value: '24', label: 'chapters mobilized' },
+	{ value: '1', label: 'annual Lobby Day' },
+];
+
+// ── Advocacy: Policy Priorities ──
+
+export const advocacyPriorities = [
+	{
+		title: 'Practice Authority',
+		summary: 'Protecting the ability of qualified professionals to practice to the full extent of their training.',
+		tag: 'Active',
+		href: '/demos/association/advocacy/scope-of-practice',
+	},
+	{
+		title: 'Patient Access',
+		summary: 'Expanding timely care access in rural, underserved, and high-need communities.',
+		tag: 'Monitoring',
+		href: '/demos/association/advocacy',
+	},
+	{
+		title: 'Workforce Development',
+		summary: 'Supporting pipelines, mentorship, retention, and sustainable healthcare careers.',
+		tag: 'Active',
+		href: '/demos/association/advocacy',
+	},
+	{
+		title: 'Reimbursement & Recognition',
+		summary: 'Advancing fair recognition and payment for professional services.',
+		tag: 'Monitoring',
+		href: '/demos/association/advocacy',
+	},
+	{
+		title: 'Education & Preceptorship',
+		summary: 'Strengthening clinical education, preceptorship, and early-career support.',
+		tag: 'Active',
+		href: '/demos/association/advocacy',
+	},
+	{
+		title: 'Public Health Readiness',
+		summary: 'Ensuring professionals are equipped to respond to changing community health needs.',
+		tag: 'Watch',
+		href: '/demos/association/advocacy',
+	},
+];
+
+// ── Advocacy: Legislative Tracker ──
+
+export const advocacyLegislativeTracker = [
+	{
+		bill: 'SB-1247',
+		issue: 'Expanding Scope of Practice Access',
+		status: 'Hearing Scheduled',
+		position: 'Support',
+		priority: 'high',
+		href: '/demos/association/advocacy/scope-of-practice',
+	},
+	{
+		bill: 'AB-2089',
+		issue: 'Workforce Training Grant Program',
+		status: 'In Review',
+		position: 'Monitoring',
+		priority: 'medium',
+		href: '/demos/association/advocacy',
+	},
+	{
+		bill: 'SB-931',
+		issue: 'Telehealth Continuity Act',
+		status: 'Floor Vote',
+		position: 'Support',
+		priority: 'high',
+		href: '/demos/association/advocacy',
+	},
+	{
+		bill: 'AB-1442',
+		issue: 'Clinical Preceptor Incentive Pilot',
+		status: 'Introduced',
+		position: 'Support',
+		priority: 'medium',
+		href: '/demos/association/advocacy',
+	},
+	{
+		bill: 'Budget 4260',
+		issue: 'Healthcare Workforce Funding',
+		status: 'Budget Review',
+		position: 'Watch',
+		priority: 'low',
+		href: '/demos/association/advocacy',
+	},
+];
+
+// ── Advocacy: How It Works ──
+
+export const advocacyProcess = [
+	{ step: '01', title: 'Members surface practice barriers', description: 'Frontline professionals report scope challenges, access issues, and policy gaps through MHPA channels.' },
+	{ step: '02', title: 'MHPA evaluates policy impact', description: 'The advocacy team reviews proposed legislation, assesses workforce and patient impact, and develops evidence-based positions.' },
+	{ step: '03', title: 'Advocacy team coordinates action', description: 'MHPA builds coalitions, prepares testimony, creates member action tools, and engages legislative offices.' },
+	{ step: '04', title: 'Members mobilize and lawmakers hear from the profession', description: 'Thousands of members send messages, attend hearings, and meet with legislators — amplifying the professional voice.' },
+];
+
+// ── Advocacy: Lobby Day ──
+
+export const advocacyLobbyDay = {
+	title: 'Healthcare Advocacy Day 2026',
+	date: 'May 5, 2026',
+	location: 'Sacramento, CA',
+	summary: 'A full-day advocacy event where members receive policy briefings, meet with legislative offices, and speak directly about the issues shaping healthcare practice.',
+	schedule: [
+		'Morning policy briefing and issue training',
+		'Chapter delegation preparation sessions',
+		'Legislative office visits by district',
+		'Post-visit debrief and next steps',
+		'Advocacy resources and follow-up toolkit',
+	],
+	primaryCta: { text: 'Explore Lobby Day', href: '/demos/association/events' },
+	secondaryCta: { text: 'Prepare for Advocacy Day', href: '#toolkit' },
+} as const;
+
+// ── Advocacy: Toolkit ──
+
+export const advocacyToolkit = [
+	{ title: 'Legislator Meeting Guide', format: 'PDF Guide', audience: 'All Members', summary: 'Step-by-step preparation for meetings with elected officials, including scheduling, talking points, and follow-up.', access: 'Public' },
+	{ title: 'Talking Points Template', format: 'Template', audience: 'All Members', summary: 'Customizable talking points for phone calls, emails, and in-person legislative meetings.', access: 'Public' },
+	{ title: 'Policy Brief Library', format: 'Resource Hub', audience: 'All Members', summary: 'One-page summaries of active policy issues, MHPA positions, and key data points.', access: 'Public' },
+	{ title: 'Chapter Advocacy Toolkit', format: 'Toolkit', audience: 'Chapter Leaders', summary: 'Tools for organizing local advocacy events, hosting legislative forums, and coordinating district outreach.', access: 'Member-only' },
+	{ title: 'Testimony Preparation Guide', format: 'PDF Guide', audience: 'Advanced Advocates', summary: 'How to prepare, deliver, and follow up on written and oral testimony for legislative hearings.', access: 'Member-only' },
+	{ title: 'Media & Letter Writing Guide', format: 'Template', audience: 'All Members', summary: 'Templates and tips for writing letters to the editor, op-eds, and social media advocacy posts.', access: 'Public' },
+];
+
+// ── Advocacy: Policy Updates ──
+
+export const advocacyPolicyUpdates = [
+	{ date: 'May 12, 2026', category: 'Legislative', title: 'Committee hearing scheduled for SB-1247', summary: 'The Senate Health Committee will hear testimony on SB-1247 next week. MHPA is preparing member comments.', href: '/demos/association/advocacy/scope-of-practice' },
+	{ date: 'May 8, 2026', category: 'Coalition', title: 'MHPA joins workforce development coalition', summary: 'MHPA announced partnership with 12 organizations to advocate for healthcare workforce funding and retention programs.', href: '/demos/association/advocacy' },
+	{ date: 'May 3, 2026', category: 'Legislative', title: 'New telehealth continuity bill introduced', summary: 'SB-931 proposes extending pandemic-era telehealth flexibilities for qualified healthcare professionals.', href: '/demos/association/advocacy' },
+	{ date: 'April 28, 2026', category: 'Events', title: 'Lobby Day registration opening soon', summary: 'Healthcare Advocacy Day 2026 registration will open in two weeks. Priority access for chapter leaders.', href: '/demos/association/advocacy' },
+];
+
+// ── Advocacy: Support / PAC ──
+
+export const advocacyPacBlock = {
+	headline: 'Support long-term professional influence.',
+	description: 'MHPA\\\'s advocacy work is supported through member engagement, coalition partnerships, and optional contributions to advocacy programs. Sustained advocacy ensures the profession has a credible, consistent voice in policy conversations — not just when a crisis hits.',
+	primaryCta: { text: 'Learn About Advocacy Support', href: '/demos/association/contact' },
+	secondaryCta: { text: 'Join Advocacy Alerts', href: '/demos/association/contact' },
+	disclaimer: 'This section is fictional demo content. No real donations or contributions are processed.',
+} as const;
+
+// ── Advocacy: FAQ ──
+
+export const advocacyFaqs = [
+	{ question: 'Is MHPA advocacy partisan?', answer: 'No. MHPA advocacy is nonpartisan and focused on issues that affect healthcare practice, patient access, and workforce strength — regardless of party affiliation.' },
+	{ question: 'Do I need policy experience to participate?', answer: 'Not at all. MHPA provides talking points, training, and step-by-step guides that make it easy for any member to participate in advocacy activities.' },
+	{ question: 'How do action alerts work?', answer: 'When legislation moves that affects the profession, MHPA sends targeted alerts with background information, talking points, and simple tools to contact legislators directly.' },
+	{ question: 'Can students participate in advocacy?', answer: 'Yes. Student members can join action alerts, attend Lobby Day, participate in chapter advocacy events, and access all public advocacy resources.' },
+	{ question: 'What happens during Lobby Day?', answer: 'Lobby Day includes morning policy briefings, issue-specific training, chapter delegation meetings, and scheduled visits to legislative offices in Sacramento.' },
+	{ question: 'Are advocacy resources member-only?', answer: 'Many core resources — talking points, issue briefs, and legislator guides — are publicly available. Advanced toolkits and chapter-level resources are member-only.' },
+	{ question: 'How are policy priorities selected?', answer: 'MHPA\\\'s policy priorities are developed through member input, practice barrier data, chapter feedback, and review by the advocacy committee and board of directors.' },
+	{ question: 'How do I stay updated on advocacy?', answer: 'Join MHPA advocacy alerts for real-time updates. You can also follow the legislative tracker on this page and check the advocacy updates section for recent news.' },
+];
+
+// ── Advocacy: Issue Detail (Scope of Practice) ──
+
+export const advocacyIssueDetail = {
+	eyebrow: 'Policy Issue',
+	headline: 'Expanding Scope of Practice Access',
+	lead: 'A proposed policy package to reduce outdated practice barriers and improve access to timely care in underserved communities.',
+	bill: 'SB-1247',
+	position: 'Support',
+	status: 'Committee hearing scheduled',
+	deadline: 'Comments due Friday at 5:00 PM',
+	primaryCta: { text: 'Send a Message', href: '#take-action' },
+	secondaryCta: { text: 'Download Issue Brief', href: '#resources' },
+	tertiaryLink: { text: '← Back to Advocacy', href: '/demos/association/advocacy' },
+} as const;
+
+export const advocacyIssueWhyItMatters = [
+	{ title: 'Patients wait longer when outdated barriers limit access', description: 'In communities with provider shortages, restrictive practice laws delay care and increase emergency utilization when patients cannot see qualified professionals in a timely manner.' },
+	{ title: 'Professionals need clarity to practice to their full training', description: 'Ambiguous or outdated scope-of-practice definitions create confusion, limit care options, and undermine the value of advanced clinical education and certification.' },
+	{ title: 'Underserved communities are affected most', description: 'Rural, low-income, and medically underserved populations bear the greatest burden of workforce constraints, facing longer wait times and fewer available providers.' },
+];
+
+export const advocacyIssueTimeline = [
+	{ label: 'Introduced', date: 'January 2026', status: 'complete' },
+	{ label: 'Referred to Committee', date: 'February 2026', status: 'complete' },
+	{ label: 'Committee Hearing Scheduled', date: 'May 2026', status: 'active' },
+	{ label: 'Member Comment Period Open', date: 'May 2026', status: 'active' },
+	{ label: 'Committee Vote', date: 'June 2026 (expected)', status: 'upcoming' },
+];
+
+export const advocacyIssuePosition = [
+	'Reduce unnecessary practice barriers that limit access without improving safety',
+	'Preserve high standards for education and clinical preparation',
+	'Expand access in rural and underserved areas where provider shortages are most acute',
+	'Improve team-based care coordination across professions',
+	'Track outcomes and implementation responsibly with evidence-based review',
+];
+
+export const advocacyIssueActions = {
+	headline: 'Take action in three minutes',
+	steps: [
+		{ num: '1', title: 'Review the talking points', description: 'Read the one-page issue brief so you understand the key arguments and data.' },
+		{ num: '2', title: 'Personalize your message', description: 'Use the template to add your professional experience and your community context.' },
+		{ num: '3', title: 'Send to your representative', description: 'Submit your message through the advocacy portal — it takes less than two minutes.' },
+	],
+	primaryCta: { text: 'Send a Message', href: '/demos/association/contact' },
+	secondaryCta: { text: 'Download Talking Points', href: '#resources' },
+} as const;
+
+export const advocacyIssueDates = [
+	{ date: 'May 16, 2026', label: 'Comment deadline' },
+	{ date: 'May 20, 2026', label: 'Committee hearing' },
+	{ date: 'May 5, 2026', label: 'Lobby Day briefing' },
+	{ date: 'June 2026', label: 'Expected vote window' },
+];
+
+export const advocacyIssueResources = [
+	{ title: 'One-Page Issue Brief', format: 'PDF', summary: 'Key data, arguments, and MHPA position on SB-1247 in a shareable one-page format.', access: 'Public' },
+	{ title: 'Talking Points', format: 'Template', summary: 'Customizable talking points for calls, emails, and meetings with legislators.', access: 'Public' },
+	{ title: 'Member Testimony Guide', format: 'PDF Guide', summary: 'How to prepare and submit written or oral testimony for the committee hearing.', access: 'Member-only' },
+	{ title: 'Chapter Discussion Guide', format: 'Toolkit', summary: 'Facilitation guide for chapter-level conversations about scope-of-practice policy.', access: 'Member-only' },
+];
+
+export const advocacyIssueUpdates = [
+	{ date: 'May 12, 2026', title: 'Committee hearing date confirmed', summary: 'The Senate Health Committee confirmed the hearing for May 20. MHPA is coordinating member testimony.' },
+	{ date: 'May 8, 2026', title: 'Coalition support grows to 18 organizations', summary: 'Three additional workforce organizations joined the coalition supporting SB-1247 this week.' },
+	{ date: 'April 22, 2026', title: 'Member comment period opened', summary: 'MHPA sent action alerts to 4,800+ members with talking points and comment submission tools.' },
+];
+
 // ── Future Route Metadata ──
 
 export const routeMetadata: Record<string, { title: string; description: string }> = {
@@ -1043,6 +1301,11 @@ export const routeMetadata: Record<string, { title: string; description: string 
 		title: 'Career Center | MHPA',
 		description:
 			'Search healthcare jobs, compare salary benchmarks, build your CV, and connect with mentors.',
+	},
+	'/demos/association/advocacy/scope-of-practice': {
+		title: 'Expanding Scope of Practice Access | MHPA Advocacy',
+		description:
+			'Learn about SB-1247, MHPA position on scope-of-practice reform, and how to take action to expand patient access.',
 	},
 	'/demos/association/about': {
 		title: 'About | MHPA',

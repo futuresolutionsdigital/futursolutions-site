@@ -1,0 +1,52 @@
+---
+import { advocacyFaqs } from '../../data/association';
+---
+
+<section class="assoc-section" id="faq" aria-labelledby="adv-faq-heading">
+	<div class="assoc-container adv-faq__inner">
+		<div class="adv-faq__intro">
+			<p class="assoc-eyebrow">FAQ</p>
+			<h2 id="adv-faq-heading">Advocacy questions, answered.</h2>
+			<p class="assoc-lead">Have a question not covered here? Contact the MHPA advocacy team.</p>
+			<a class="assoc-btn assoc-btn--secondary" href="/demos/association/contact">Contact Us</a>
+		</div>
+		<div class="adv-faq__list">
+			{advocacyFaqs.map((faq) => (
+				<details class="adv-faq-item">
+					<summary>
+						<span>{faq.question}</span>
+						<svg class="adv-faq-item__chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+					</summary>
+					<div class="adv-faq-item__answer"><p>{faq.answer}</p></div>
+				</details>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+	.adv-faq__inner { display: grid; grid-template-columns: 0.4fr 0.6fr; gap: clamp(2rem, 5vw, 4rem); align-items: start; }
+	.adv-faq__intro .assoc-lead { margin-bottom: 1.5rem; }
+	.adv-faq__list { display: grid; gap: 0; }
+	.adv-faq-item { border-bottom: 1px solid var(--assoc-border); }
+	.adv-faq-item summary {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1rem;
+		padding: 1rem 0;
+		cursor: pointer;
+		list-style: none;
+		font-size: 0.95rem;
+		font-weight: 700;
+		color: var(--assoc-navy);
+		line-height: 1.35;
+	}
+	.adv-faq-item summary::-webkit-details-marker { display: none; }
+	.adv-faq-item summary::marker { content: ''; }
+	.adv-faq-item__chevron { flex-shrink: 0; color: var(--assoc-slate); transition: transform 0.2s ease; display: inline; }
+	.adv-faq-item[open] .adv-faq-item__chevron { transform: rotate(180deg); }
+	.adv-faq-item__answer { padding-bottom: 1rem; }
+	.adv-faq-item__answer p { font-size: 0.9rem; line-height: 1.6; margin: 0; }
+	@media (max-width: 768px) { .adv-faq__inner { grid-template-columns: 1fr; } }
+</style>

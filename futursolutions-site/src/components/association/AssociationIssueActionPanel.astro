@@ -1,0 +1,112 @@
+---
+import { advocacyIssueActions, advocacyIssueDates, advocacyIssueResources } from '../../data/association';
+const act = advocacyIssueActions;
+---
+
+<!-- Action panel -->
+<section class="issue-action" id="take-action" aria-labelledby="issue-action-heading">
+	<div class="assoc-container issue-action__inner">
+		<div class="issue-action__steps">
+			<p class="issue-action__eyebrow">Take Action</p>
+			<h2 id="issue-action-heading">{act.headline}</h2>
+			<div class="issue-action__step-list">
+				{act.steps.map((s) => (
+					<div class="issue-action__step">
+						<span class="issue-action__step-num">{s.num}</span>
+						<div>
+							<h3>{s.title}</h3>
+							<p>{s.description}</p>
+						</div>
+					</div>
+				))}
+			</div>
+			<div class="assoc-btn-row">
+				<a class="assoc-btn issue-action__btn-primary" href={act.primaryCta.href}>{act.primaryCta.text}</a>
+				<a class="assoc-btn assoc-btn--secondary" href={act.secondaryCta.href}>{act.secondaryCta.text}</a>
+			</div>
+		</div>
+		<div class="issue-action__sidebar">
+			<!-- Key dates -->
+			<div class="issue-dates">
+				<h3>Key Dates</h3>
+				{advocacyIssueDates.map((d) => (
+					<div class="issue-dates__item">
+						<span class="issue-dates__date">{d.date}</span>
+						<span class="issue-dates__label">{d.label}</span>
+					</div>
+				))}
+			</div>
+			<!-- Resources -->
+			<div class="issue-resources" id="resources">
+				<h3>Resources</h3>
+				{advocacyIssueResources.map((r) => (
+					<div class="issue-resource-card">
+						<div class="issue-resource-card__top">
+							<span class="issue-resource-card__format">{r.format}</span>
+							<span class:list={['issue-resource-card__access', { 'issue-resource-card__access--member': r.access === 'Member-only' }]}>{r.access}</span>
+						</div>
+						<h4>{r.title}</h4>
+						<p>{r.summary}</p>
+					</div>
+				))}
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.issue-action {
+		padding-block: var(--assoc-section-spacing);
+		background: var(--assoc-coral-light);
+		border-block: 1px solid color-mix(in srgb, var(--assoc-coral) 12%, transparent);
+	}
+	.issue-action__inner { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: clamp(2rem, 5vw, 4rem); align-items: start; }
+	.issue-action__eyebrow { font-size: 0.72rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--assoc-coral); margin-bottom: 0.5rem; }
+	.issue-action h2 { font-size: clamp(1.2rem, 1.1rem + 0.5vw, 1.55rem); margin-bottom: 1.25rem; }
+	.issue-action__step-list { display: grid; gap: 1rem; margin-bottom: 1.5rem; }
+	.issue-action__step { display: flex; gap: 1rem; align-items: flex-start; }
+	.issue-action__step-num {
+		flex-shrink: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 2.25rem;
+		height: 2.25rem;
+		border-radius: 50%;
+		background: var(--assoc-coral);
+		color: var(--assoc-white);
+		font-size: 0.88rem;
+		font-weight: 800;
+	}
+	.issue-action__step h3 { font-size: 0.95rem; margin-bottom: 0.15rem; }
+	.issue-action__step p { font-size: 0.85rem; line-height: 1.5; margin: 0; }
+	.issue-action__btn-primary { background: var(--assoc-coral) !important; color: var(--assoc-white) !important; border-color: var(--assoc-coral) !important; }
+	.issue-action__btn-primary:hover { background: color-mix(in srgb, var(--assoc-coral) 85%, var(--assoc-navy)) !important; }
+
+	.issue-action__sidebar { display: grid; gap: 1.5rem; }
+
+	.issue-dates { padding: 1.25rem; border: 1px solid var(--assoc-border); border-radius: var(--assoc-radius); background: var(--assoc-white); }
+	.issue-dates h3 { font-size: 0.88rem; margin-bottom: 0.75rem; }
+	.issue-dates__item { display: flex; align-items: center; gap: 0.75rem; padding: 0.5rem 0; border-bottom: 1px solid var(--assoc-border); }
+	.issue-dates__item:last-child { border-bottom: none; }
+	.issue-dates__date { flex-shrink: 0; min-width: 5.5rem; font-size: 0.82rem; font-weight: 800; color: var(--assoc-coral); }
+	.issue-dates__label { font-size: 0.82rem; font-weight: 600; color: var(--assoc-navy); }
+
+	.issue-resources h3 { font-size: 0.88rem; margin-bottom: 0.5rem; }
+	.issue-resource-card {
+		padding: 1rem;
+		border: 1px solid var(--assoc-border);
+		border-radius: var(--assoc-radius);
+		background: var(--assoc-white);
+		margin-bottom: 0.5rem;
+	}
+	.issue-resource-card:last-child { margin-bottom: 0; }
+	.issue-resource-card__top { display: flex; gap: 0.4rem; margin-bottom: 0.35rem; }
+	.issue-resource-card__format { padding: 0.12rem 0.4rem; border-radius: 4px; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; background: var(--assoc-teal-light); color: var(--assoc-teal); }
+	.issue-resource-card__access { padding: 0.12rem 0.4rem; border-radius: 4px; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; background: color-mix(in srgb, var(--assoc-slate) 8%, var(--assoc-white)); color: var(--assoc-slate); }
+	.issue-resource-card__access--member { background: color-mix(in srgb, var(--assoc-navy) 8%, var(--assoc-white)); color: var(--assoc-navy); }
+	.issue-resource-card h4 { font-size: 0.88rem; margin-bottom: 0.15rem; }
+	.issue-resource-card p { font-size: 0.78rem; line-height: 1.45; margin: 0; }
+
+	@media (max-width: 768px) { .issue-action__inner { grid-template-columns: 1fr; } }
+</style>

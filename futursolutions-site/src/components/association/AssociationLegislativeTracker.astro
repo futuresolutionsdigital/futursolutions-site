@@ -1,0 +1,93 @@
+---
+import { advocacyLegislativeTracker } from '../../data/association';
+const priorityColors: Record<string, string> = {
+	high: 'var(--assoc-coral)',
+	medium: 'var(--assoc-teal)',
+	low: 'var(--assoc-slate)',
+};
+---
+
+<section class="assoc-section assoc-section--warm" id="tracker" aria-labelledby="tracker-heading">
+	<div class="assoc-container">
+		<p class="assoc-eyebrow">Legislative Tracker</p>
+		<h2 id="tracker-heading">Track what is moving now.</h2>
+		<p class="assoc-lead">Active bills and budget items MHPA is tracking this session.</p>
+		<div class="tracker-scroll-hint" aria-hidden="true">Scroll →</div>
+		<div class="tracker-wrap">
+			<table class="tracker-table" role="table" aria-label="Legislative bill tracker">
+				<thead>
+					<tr>
+						<th scope="col">Bill</th>
+						<th scope="col">Issue</th>
+						<th scope="col">Status</th>
+						<th scope="col">MHPA Position</th>
+						<th scope="col"></th>
+					</tr>
+				</thead>
+				<tbody>
+					{advocacyLegislativeTracker.map((bill) => (
+						<tr>
+							<td><span class="tracker-bill">{bill.bill}</span></td>
+							<td class="tracker-issue">{bill.issue}</td>
+							<td><span class="tracker-status" style={`--s-color: ${priorityColors[bill.priority] || priorityColors.medium}`}>{bill.status}</span></td>
+							<td><span class="tracker-position">{bill.position}</span></td>
+							<td><a class="tracker-link" href={bill.href}>Details →</a></td>
+						</tr>
+					))}
+				</tbody>
+			</table>
+		</div>
+		<p class="tracker-note">All bills and legislative references are fictional content for this demo.</p>
+	</div>
+</section>
+
+<style>
+	.tracker-scroll-hint { display: none; }
+	.tracker-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+	.tracker-table { width: 100%; border-collapse: collapse; min-width: 680px; }
+	.tracker-table th {
+		text-align: left;
+		padding: 0.65rem 0.85rem;
+		font-size: 0.7rem;
+		font-weight: 700;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+		color: var(--assoc-slate);
+		border-bottom: 2px solid var(--assoc-border);
+	}
+	.tracker-table td {
+		padding: 0.85rem;
+		font-size: 0.88rem;
+		border-bottom: 1px solid var(--assoc-border);
+		vertical-align: middle;
+	}
+	.tracker-table tbody tr:last-child td { border-bottom: none; }
+	.tracker-table tbody tr { background: var(--assoc-white); }
+	.tracker-table tbody tr:hover { background: color-mix(in srgb, var(--assoc-teal) 3%, var(--assoc-white)); }
+	.tracker-bill { font-weight: 800; color: var(--assoc-navy); font-size: 0.85rem; white-space: nowrap; }
+	.tracker-issue { font-weight: 600; color: var(--assoc-navy); max-width: 260px; line-height: 1.35; }
+	.tracker-status {
+		display: inline-block;
+		padding: 0.2rem 0.55rem;
+		border-radius: 999px;
+		font-size: 0.7rem;
+		font-weight: 700;
+		background: color-mix(in srgb, var(--s-color) 10%, var(--assoc-white));
+		color: var(--s-color);
+		white-space: nowrap;
+	}
+	.tracker-position { font-size: 0.82rem; font-weight: 600; color: var(--assoc-slate); }
+	.tracker-link { font-size: 0.8rem; font-weight: 700; color: var(--assoc-teal); white-space: nowrap; }
+	.tracker-link:hover { color: var(--assoc-navy); }
+	.tracker-note { font-size: 0.74rem; color: var(--assoc-slate); opacity: 0.6; margin-top: 0.75rem; }
+	@media (max-width: 700px) {
+		.tracker-scroll-hint {
+			display: block;
+			text-align: right;
+			font-size: 0.72rem;
+			font-weight: 700;
+			color: var(--assoc-teal);
+			margin-bottom: 0.35rem;
+		}
+	}
+</style>

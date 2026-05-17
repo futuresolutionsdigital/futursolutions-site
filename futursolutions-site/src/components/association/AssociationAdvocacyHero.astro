@@ -1,0 +1,138 @@
+---
+import { advocacyHero } from '../../data/association';
+const h = advocacyHero;
+---
+
+<section class="adv-hero" aria-labelledby="adv-hero-heading">
+	<div class="assoc-container adv-hero__inner">
+		<div class="adv-hero__content">
+			<p class="assoc-eyebrow">{h.eyebrow}</p>
+			<h1 id="adv-hero-heading">{h.headline}</h1>
+			<p class="adv-hero__lead">{h.lead}</p>
+			<p class="adv-hero__support">{h.supportLine}</p>
+			<div class="assoc-btn-row">
+				<a class="assoc-btn assoc-btn--primary" href={h.primaryCta.href}>{h.primaryCta.text}</a>
+				<a class="assoc-btn assoc-btn--secondary" href={h.secondaryCta.href}>{h.secondaryCta.text}</a>
+			</div>
+			<a class="adv-hero__tertiary" href={h.tertiaryLink.href}>{h.tertiaryLink.text}</a>
+		</div>
+		<div class="adv-hero__visual" aria-hidden="true">
+			<div class="adv-hero__card adv-hero__card--alert">
+				<div class="adv-hero__card-dot adv-hero__card-dot--coral"></div>
+				<span class="adv-hero__card-label">Current Alert</span>
+				<span class="adv-hero__card-value">SB-1247 Hearing</span>
+			</div>
+			<div class="adv-hero__card">
+				<div class="adv-hero__card-dot adv-hero__card-dot--teal"></div>
+				<span class="adv-hero__card-label">Bills Tracked</span>
+				<span class="adv-hero__card-value">36</span>
+			</div>
+			<div class="adv-hero__card">
+				<div class="adv-hero__card-dot adv-hero__card-dot--navy"></div>
+				<span class="adv-hero__card-label">Messages Sent</span>
+				<span class="adv-hero__card-value">4,800+</span>
+			</div>
+			<div class="adv-hero__card adv-hero__card--wide">
+				<div class="adv-hero__card-dot adv-hero__card-dot--coral"></div>
+				<span class="adv-hero__card-label">Comment Deadline</span>
+				<span class="adv-hero__card-value">Friday 5 PM</span>
+			</div>
+			<div class="adv-hero__card adv-hero__card--wide">
+				<div class="adv-hero__card-dot adv-hero__card-dot--teal"></div>
+				<span class="adv-hero__card-label">Lobby Day</span>
+				<span class="adv-hero__card-value">May 5, Sacramento</span>
+			</div>
+			<div class="adv-hero__badge">
+				<span>24</span>
+				<small>chapters</small>
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.adv-hero {
+		padding-block: clamp(3rem, 6vw, 5rem);
+		background:
+			radial-gradient(ellipse at 80% 25%, color-mix(in srgb, var(--assoc-coral) 4%, transparent), transparent 55%),
+			linear-gradient(175deg, var(--assoc-bg) 40%, color-mix(in srgb, var(--assoc-sand) 40%, var(--assoc-bg)) 100%);
+		border-bottom: 1px solid var(--assoc-border);
+	}
+	.adv-hero__inner {
+		display: grid;
+		grid-template-columns: 1.15fr 0.85fr;
+		align-items: center;
+		gap: clamp(2rem, 5vw, 4rem);
+	}
+	.adv-hero__content h1 { max-width: 560px; text-wrap: balance; }
+	.adv-hero__lead {
+		max-width: 520px;
+		font-size: clamp(1.02rem, 1rem + 0.15vw, 1.12rem);
+		line-height: 1.6;
+		color: var(--assoc-slate);
+	}
+	.adv-hero__support {
+		font-size: 0.78rem;
+		font-weight: 600;
+		letter-spacing: 0.02em;
+		color: var(--assoc-slate);
+		opacity: 0.65;
+		margin-bottom: 0.25rem;
+	}
+	.adv-hero__tertiary {
+		display: inline-block;
+		margin-top: 0.75rem;
+		font-size: 0.88rem;
+		font-weight: 700;
+		color: var(--assoc-coral);
+	}
+	.adv-hero__tertiary:hover { color: var(--assoc-navy); }
+
+	.adv-hero__visual {
+		position: relative;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 0.65rem;
+		padding: 0.75rem;
+	}
+	.adv-hero__card {
+		display: flex;
+		flex-direction: column;
+		gap: 0.25rem;
+		padding: 0.85rem 1rem;
+		border: 1px solid var(--assoc-border);
+		border-radius: var(--assoc-radius);
+		background: var(--assoc-white);
+		box-shadow: 0 3px 14px rgba(16, 42, 67, 0.04);
+	}
+	.adv-hero__card--wide { grid-column: 1 / -1; flex-direction: row; align-items: center; gap: 0.6rem; }
+	.adv-hero__card--alert { background: var(--assoc-coral-light); border-color: color-mix(in srgb, var(--assoc-coral) 15%, transparent); grid-column: 1 / -1; flex-direction: row; align-items: center; gap: 0.6rem; }
+	.adv-hero__card--alert .adv-hero__card-value { color: var(--assoc-coral); }
+	.adv-hero__card-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+	.adv-hero__card-dot--teal { background: var(--assoc-teal); }
+	.adv-hero__card-dot--navy { background: var(--assoc-navy); }
+	.adv-hero__card-dot--coral { background: var(--assoc-coral); }
+	.adv-hero__card-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--assoc-slate); }
+	.adv-hero__card-value { font-size: 1rem; font-weight: 800; color: var(--assoc-navy); letter-spacing: -0.02em; }
+	.adv-hero__card--wide .adv-hero__card-value { margin-left: auto; }
+	.adv-hero__badge {
+		position: absolute;
+		top: -0.4rem;
+		right: -0.15rem;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		width: 3.2rem;
+		height: 3.2rem;
+		border-radius: 50%;
+		background: var(--assoc-coral);
+		color: var(--assoc-white);
+		box-shadow: 0 4px 14px rgba(16, 42, 67, 0.2);
+	}
+	.adv-hero__badge span { font-size: 1.05rem; font-weight: 800; line-height: 1; }
+	.adv-hero__badge small { font-size: 0.5rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; opacity: 0.75; }
+
+	@media (max-width: 900px) { .adv-hero__inner { grid-template-columns: 1fr; } .adv-hero__visual { max-width: 440px; } }
+	@media (max-width: 480px) { .adv-hero__badge { width: 2.6rem; height: 2.6rem; } .adv-hero__badge span { font-size: 0.85rem; } }
+</style>

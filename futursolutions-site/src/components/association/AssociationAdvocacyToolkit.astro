@@ -1,0 +1,56 @@
+---
+import { advocacyToolkit } from '../../data/association';
+---
+
+<section class="assoc-section" id="toolkit" aria-labelledby="toolkit-heading">
+	<div class="assoc-container">
+		<p class="assoc-eyebrow">Resources</p>
+		<h2 id="toolkit-heading">Tools that make advocacy easier.</h2>
+		<p class="assoc-lead">Guides, templates, and toolkits designed to help every member participate in advocacy — regardless of experience level.</p>
+		<div class="toolkit-grid">
+			{advocacyToolkit.map((t) => (
+				<div class="assoc-card toolkit-card">
+					<div class="toolkit-card__tags">
+						<span class="toolkit-card__format">{t.format}</span>
+						<span class:list={['toolkit-card__access', { 'toolkit-card__access--member': t.access === 'Member-only' }]}>{t.access}</span>
+					</div>
+					<h3>{t.title}</h3>
+					<p>{t.summary}</p>
+					<span class="toolkit-card__audience">{t.audience}</span>
+				</div>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+	.toolkit-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2rem; }
+	.toolkit-card { display: flex; flex-direction: column; padding: 1.25rem; }
+	.toolkit-card__tags { display: flex; gap: 0.4rem; margin-bottom: 0.75rem; }
+	.toolkit-card__format {
+		padding: 0.15rem 0.45rem;
+		border-radius: 4px;
+		font-size: 0.65rem;
+		font-weight: 700;
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
+		background: var(--assoc-teal-light);
+		color: var(--assoc-teal);
+	}
+	.toolkit-card__access {
+		padding: 0.15rem 0.45rem;
+		border-radius: 4px;
+		font-size: 0.65rem;
+		font-weight: 700;
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
+		background: color-mix(in srgb, var(--assoc-slate) 8%, var(--assoc-white));
+		color: var(--assoc-slate);
+	}
+	.toolkit-card__access--member { background: color-mix(in srgb, var(--assoc-navy) 8%, var(--assoc-white)); color: var(--assoc-navy); }
+	.toolkit-card h3 { font-size: 1rem; margin-bottom: 0.3rem; }
+	.toolkit-card p { font-size: 0.85rem; line-height: 1.5; flex: 1; }
+	.toolkit-card__audience { margin-top: 0.75rem; padding-top: 0.6rem; border-top: 1px solid var(--assoc-border); font-size: 0.72rem; font-weight: 600; color: var(--assoc-slate); }
+	@media (max-width: 768px) { .toolkit-grid { grid-template-columns: 1fr 1fr; } }
+	@media (max-width: 520px) { .toolkit-grid { grid-template-columns: 1fr; } }
+</style>

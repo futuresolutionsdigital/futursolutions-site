@@ -1,0 +1,26 @@
+---
+import { advocacyIssueWhyItMatters } from '../../data/association';
+---
+
+<section class="assoc-section" aria-labelledby="issue-why-heading">
+	<div class="assoc-container">
+		<p class="assoc-eyebrow">Background</p>
+		<h2 id="issue-why-heading">Why this issue matters</h2>
+		<div class="issue-why-grid">
+			{advocacyIssueWhyItMatters.map((item) => (
+				<div class="assoc-card issue-why-card">
+					<h3>{item.title}</h3>
+					<p>{item.description}</p>
+				</div>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+	.issue-why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2rem; }
+	.issue-why-card { padding: 1.5rem; }
+	.issue-why-card h3 { font-size: 1rem; margin-bottom: 0.4rem; line-height: 1.3; }
+	.issue-why-card p { font-size: 0.88rem; line-height: 1.55; margin: 0; }
+	@media (max-width: 768px) { .issue-why-grid { grid-template-columns: 1fr; } }
+</style>

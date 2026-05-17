@@ -1,0 +1,49 @@
+---
+import AssociationLayout from '../../../../layouts/AssociationLayout.astro';
+import AssociationIssueHero from '../../../../components/association/AssociationIssueHero.astro';
+import AssociationIssueSummary from '../../../../components/association/AssociationIssueSummary.astro';
+import AssociationIssueTimeline from '../../../../components/association/AssociationIssueTimeline.astro';
+import AssociationIssuePosition from '../../../../components/association/AssociationIssuePosition.astro';
+import AssociationIssueActionPanel from '../../../../components/association/AssociationIssueActionPanel.astro';
+import AssociationIssueUpdates from '../../../../components/association/AssociationIssueUpdates.astro';
+import { routeMetadata } from '../../../../data/association';
+
+const meta = routeMetadata['/demos/association/advocacy/scope-of-practice'];
+---
+
+<AssociationLayout title={meta.title} description={meta.description}>
+	<AssociationIssueHero />
+	<AssociationIssueSummary />
+	<AssociationIssueTimeline />
+	<AssociationIssuePosition />
+	<AssociationIssueActionPanel />
+	<AssociationIssueUpdates />
+
+	<!-- Final issue CTA -->
+	<section class="issue-final-cta" aria-labelledby="issue-final-heading">
+		<div class="assoc-container issue-final-cta__inner">
+			<h2 id="issue-final-heading">Help lawmakers hear from the profession.</h2>
+			<p class="assoc-lead">Your voice — combined with thousands of other MHPA members — is how policy changes.</p>
+			<div class="assoc-btn-row">
+				<a class="assoc-btn issue-final-cta__primary" href="#take-action">Take Action</a>
+				<a class="assoc-btn issue-final-cta__ghost" href="/demos/association/contact">Join Advocacy Alerts</a>
+			</div>
+		</div>
+	</section>
+</AssociationLayout>
+
+<style>
+	.issue-final-cta {
+		padding-block: var(--assoc-section-spacing);
+		background: var(--assoc-navy);
+		color: var(--assoc-white);
+	}
+	.issue-final-cta__inner { max-width: 680px; text-align: center; margin-inline: auto; }
+	.issue-final-cta h2 { color: var(--assoc-white); text-wrap: balance; }
+	.issue-final-cta .assoc-lead { color: rgba(255, 255, 255, 0.6); margin-inline: auto; }
+	.issue-final-cta .assoc-btn-row { justify-content: center; }
+	.issue-final-cta__primary { background: var(--assoc-coral) !important; color: var(--assoc-white) !important; border-color: var(--assoc-coral) !important; }
+	.issue-final-cta__primary:hover { background: color-mix(in srgb, var(--assoc-coral) 80%, var(--assoc-white)) !important; }
+	.issue-final-cta__ghost { border-color: rgba(255,255,255,0.2) !important; background: transparent !important; color: var(--assoc-white) !important; }
+	.issue-final-cta__ghost:hover { border-color: rgba(255,255,255,0.4) !important; background: rgba(255,255,255,0.06) !important; }
+</style>

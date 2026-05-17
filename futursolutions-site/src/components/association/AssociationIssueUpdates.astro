@@ -1,0 +1,28 @@
+---
+import { advocacyIssueUpdates } from '../../data/association';
+---
+
+<section class="assoc-section" aria-labelledby="issue-updates-heading">
+	<div class="assoc-container">
+		<p class="assoc-eyebrow">Updates</p>
+		<h2 id="issue-updates-heading">Related policy updates</h2>
+		<div class="issue-updates-grid">
+			{advocacyIssueUpdates.map((u) => (
+				<div class="assoc-card issue-update-card">
+					<span class="issue-update-card__date">{u.date}</span>
+					<h3>{u.title}</h3>
+					<p>{u.summary}</p>
+				</div>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+	.issue-updates-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2rem; }
+	.issue-update-card { padding: 1.25rem; }
+	.issue-update-card__date { display: block; margin-bottom: 0.5rem; font-size: 0.72rem; font-weight: 600; color: var(--assoc-slate); }
+	.issue-update-card h3 { font-size: 0.95rem; margin-bottom: 0.3rem; line-height: 1.3; }
+	.issue-update-card p { font-size: 0.82rem; line-height: 1.5; margin: 0; }
+	@media (max-width: 768px) { .issue-updates-grid { grid-template-columns: 1fr; } }
+</style>

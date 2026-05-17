@@ -1,0 +1,46 @@
+---
+import { advocacyProcess } from '../../data/association';
+---
+
+<section class="assoc-section" aria-labelledby="adv-process-heading">
+	<div class="assoc-container">
+		<p class="assoc-eyebrow">How Advocacy Works</p>
+		<h2 id="adv-process-heading">From member concern to policy action.</h2>
+		<div class="adv-process-grid">
+			{advocacyProcess.map((s) => (
+				<div class="adv-process-step">
+					<span class="adv-process-step__num" aria-hidden="true">{s.step}</span>
+					<div class="adv-process-step__body">
+						<h3>{s.title}</h3>
+						<p>{s.description}</p>
+					</div>
+				</div>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+	.adv-process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 2rem; }
+	.adv-process-step {
+		display: flex;
+		flex-direction: column;
+		padding: 1.25rem;
+		border: 1px solid var(--assoc-border);
+		border-radius: var(--assoc-radius);
+		background: var(--assoc-white);
+		position: relative;
+	}
+	.adv-process-step__num {
+		font-size: 1.6rem;
+		font-weight: 800;
+		color: var(--assoc-teal);
+		opacity: 0.25;
+		line-height: 1;
+		margin-bottom: 0.75rem;
+	}
+	.adv-process-step h3 { font-size: 0.95rem; margin-bottom: 0.3rem; }
+	.adv-process-step p { font-size: 0.85rem; line-height: 1.5; margin: 0; }
+	@media (max-width: 900px) { .adv-process-grid { grid-template-columns: 1fr 1fr; } }
+	@media (max-width: 520px) { .adv-process-grid { grid-template-columns: 1fr; } }
+</style>

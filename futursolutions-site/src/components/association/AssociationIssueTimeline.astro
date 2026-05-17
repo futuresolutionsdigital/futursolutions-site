@@ -1,0 +1,75 @@
+---
+import { advocacyIssueTimeline } from '../../data/association';
+const statusClass = (s: string) => s === 'complete' ? 'tl-step--complete' : s === 'active' ? 'tl-step--active' : 'tl-step--upcoming';
+---
+
+<section class="assoc-section assoc-section--warm" aria-labelledby="issue-timeline-heading">
+	<div class="assoc-container">
+		<p class="assoc-eyebrow">Status</p>
+		<h2 id="issue-timeline-heading">Where the issue stands now</h2>
+		<div class="tl-track">
+			{advocacyIssueTimeline.map((step) => (
+				<div class:list={['tl-step', statusClass(step.status)]}>
+					<div class="tl-step__dot"></div>
+					<div class="tl-step__body">
+						<span class="tl-step__label">{step.label}</span>
+						<span class="tl-step__date">{step.date}</span>
+					</div>
+				</div>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+	.tl-track {
+		display: flex;
+		gap: 0;
+		margin-top: 2rem;
+		position: relative;
+	}
+	.tl-track::before {
+		content: '';
+		position: absolute;
+		top: 0.55rem;
+		left: 0;
+		right: 0;
+		height: 3px;
+		background: var(--assoc-border);
+		z-index: 0;
+	}
+	.tl-step {
+		flex: 1;
+		position: relative;
+		z-index: 1;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+	}
+	.tl-step__dot {
+		width: 1rem;
+		height: 1rem;
+		border-radius: 50%;
+		border: 3px solid var(--assoc-border);
+		background: var(--assoc-white);
+		margin-bottom: 0.65rem;
+		position: relative;
+	}
+	.tl-step--complete .tl-step__dot { background: var(--assoc-teal); border-color: var(--assoc-teal); }
+	.tl-step--active .tl-step__dot {
+		background: var(--assoc-coral);
+		border-color: var(--assoc-coral);
+		box-shadow: 0 0 0 4px color-mix(in srgb, var(--assoc-coral) 15%, transparent);
+	}
+	.tl-step--upcoming .tl-step__dot { background: var(--assoc-white); border-color: var(--assoc-border); }
+	.tl-step__label { display: block; font-size: 0.82rem; font-weight: 700; color: var(--assoc-navy); line-height: 1.25; }
+	.tl-step__date { display: block; font-size: 0.72rem; font-weight: 600; color: var(--assoc-slate); margin-top: 0.15rem; }
+	.tl-step--upcoming .tl-step__label { color: var(--assoc-slate); }
+	@media (max-width: 600px) {
+		.tl-track { flex-direction: column; gap: 0; padding-left: 1rem; }
+		.tl-track::before { top: 0; bottom: 0; left: 0.45rem; width: 3px; height: auto; right: auto; }
+		.tl-step { flex-direction: row; align-items: flex-start; text-align: left; gap: 0.75rem; padding-bottom: 1.25rem; }
+		.tl-step__dot { margin-bottom: 0; flex-shrink: 0; }
+	}
+</style>

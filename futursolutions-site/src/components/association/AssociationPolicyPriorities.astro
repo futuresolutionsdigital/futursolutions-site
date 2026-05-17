@@ -1,0 +1,49 @@
+---
+import { advocacyPriorities } from '../../data/association';
+const tagColors: Record<string, string> = {
+	Active: 'var(--assoc-teal)',
+	Monitoring: 'var(--assoc-slate)',
+	Watch: 'var(--assoc-coral)',
+};
+---
+
+<section class="assoc-section" id="priorities" aria-labelledby="priorities-heading">
+	<div class="assoc-container">
+		<p class="assoc-eyebrow">Policy Priorities</p>
+		<h2 id="priorities-heading">Policy priorities built around practice, access, and workforce strength.</h2>
+		<div class="priorities-grid">
+			{advocacyPriorities.map((p) => (
+				<a href={p.href} class="assoc-card priority-card" style={`--tag-color: ${tagColors[p.tag] || tagColors.Active}`}>
+					<span class="priority-card__tag">{p.tag}</span>
+					<h3>{p.title}</h3>
+					<p>{p.summary}</p>
+					<span class="priority-card__link">Learn more →</span>
+				</a>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+	.priorities-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2rem; }
+	.priority-card { display: flex; flex-direction: column; padding: 1.5rem; transition: border-color 0.15s ease, transform 0.15s ease; }
+	.priority-card:hover { border-color: var(--assoc-teal); transform: translateY(-1px); }
+	.priority-card__tag {
+		display: inline-block;
+		align-self: flex-start;
+		margin-bottom: 0.75rem;
+		padding: 0.15rem 0.5rem;
+		border-radius: 6px;
+		font-size: 0.65rem;
+		font-weight: 700;
+		letter-spacing: 0.05em;
+		text-transform: uppercase;
+		background: color-mix(in srgb, var(--tag-color) 10%, var(--assoc-white));
+		color: var(--tag-color);
+	}
+	.priority-card h3 { font-size: 1.05rem; margin-bottom: 0.35rem; }
+	.priority-card p { font-size: 0.88rem; line-height: 1.5; flex: 1; }
+	.priority-card__link { margin-top: 0.75rem; font-size: 0.82rem; font-weight: 700; color: var(--assoc-teal); }
+	@media (max-width: 768px) { .priorities-grid { grid-template-columns: 1fr 1fr; } }
+	@media (max-width: 520px) { .priorities-grid { grid-template-columns: 1fr; } }
+</style>

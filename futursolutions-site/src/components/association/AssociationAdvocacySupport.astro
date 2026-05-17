@@ -1,0 +1,34 @@
+---
+import { advocacyPacBlock } from '../../data/association';
+const pac = advocacyPacBlock;
+---
+
+<section class="adv-support" aria-labelledby="adv-support-heading">
+	<div class="assoc-container adv-support__inner">
+		<p class="assoc-eyebrow" style="color: rgba(255,255,255,0.45)">Advocacy Support</p>
+		<h2 id="adv-support-heading">{pac.headline}</h2>
+		<p class="adv-support__desc">{pac.description}</p>
+		<div class="assoc-btn-row">
+			<a class="assoc-btn adv-support__btn-primary" href={pac.primaryCta.href}>{pac.primaryCta.text}</a>
+			<a class="assoc-btn adv-support__btn-ghost" href={pac.secondaryCta.href}>{pac.secondaryCta.text}</a>
+		</div>
+		<p class="adv-support__disclaimer">{pac.disclaimer}</p>
+	</div>
+</section>
+
+<style>
+	.adv-support {
+		padding-block: var(--assoc-section-spacing);
+		background: var(--assoc-navy);
+		color: var(--assoc-white);
+	}
+	.adv-support__inner { max-width: 680px; text-align: center; margin-inline: auto; }
+	.adv-support h2 { color: var(--assoc-white); text-wrap: balance; }
+	.adv-support__desc { font-size: 0.95rem; line-height: 1.6; color: rgba(255, 255, 255, 0.6); margin-bottom: 1.5rem; }
+	.adv-support .assoc-btn-row { justify-content: center; }
+	.adv-support__btn-primary { background: var(--assoc-teal) !important; color: var(--assoc-white) !important; }
+	.adv-support__btn-primary:hover { background: color-mix(in srgb, var(--assoc-teal) 80%, var(--assoc-white)) !important; }
+	.adv-support__btn-ghost { border-color: rgba(255,255,255,0.2) !important; background: transparent !important; color: var(--assoc-white) !important; }
+	.adv-support__btn-ghost:hover { border-color: rgba(255,255,255,0.4) !important; background: rgba(255,255,255,0.06) !important; }
+	.adv-support__disclaimer { margin-top: 1rem; font-size: 0.72rem; opacity: 0.35; }
+</style>

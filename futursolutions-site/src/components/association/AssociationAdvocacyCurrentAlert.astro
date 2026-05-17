@@ -1,0 +1,87 @@
+---
+import { advocacyCurrentAlert } from '../../data/association';
+const a = advocacyCurrentAlert;
+---
+
+<section class="adv-alert" id="action" aria-labelledby="adv-alert-heading">
+	<div class="assoc-container adv-alert__inner">
+		<div class="adv-alert__badge" aria-hidden="true">
+			<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+		</div>
+		<div class="adv-alert__content">
+			<p class="adv-alert__heading">{a.headline}</p>
+			<h2 id="adv-alert-heading">{a.title}</h2>
+			<div class="adv-alert__meta">
+				<span class="adv-alert__status">
+					<svg width="8" height="8" aria-hidden="true"><circle cx="4" cy="4" r="4" fill="currentColor"/></svg>
+					{a.status}
+				</span>
+				<span class="adv-alert__deadline">
+					<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+					{a.deadline}
+				</span>
+			</div>
+			<p class="adv-alert__summary">{a.summary}</p>
+			<div class="assoc-btn-row">
+				<a class="assoc-btn adv-alert__btn-primary" href={a.primaryCta.href}>{a.primaryCta.text}</a>
+				<a class="assoc-btn assoc-btn--secondary" href={a.secondaryCta.href}>{a.secondaryCta.text}</a>
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.adv-alert {
+		padding-block: clamp(2rem, 4vw, 3rem);
+		background: var(--assoc-coral-light);
+		border-bottom: 2px solid color-mix(in srgb, var(--assoc-coral) 20%, transparent);
+	}
+	.adv-alert__inner { display: flex; gap: 1.25rem; align-items: flex-start; }
+	.adv-alert__badge {
+		flex-shrink: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 2.75rem;
+		height: 2.75rem;
+		border-radius: 50%;
+		background: var(--assoc-coral);
+		color: var(--assoc-white);
+		margin-top: 0.15rem;
+	}
+	.adv-alert__heading {
+		font-size: 0.72rem;
+		font-weight: 800;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		color: var(--assoc-coral);
+		margin-bottom: 0.25rem;
+	}
+	.adv-alert h2 { font-size: clamp(1.15rem, 1rem + 0.5vw, 1.4rem); margin-bottom: 0.5rem; }
+	.adv-alert__meta { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 0.65rem; }
+	.adv-alert__status {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.35rem;
+		font-size: 0.78rem;
+		font-weight: 700;
+		color: var(--assoc-coral);
+	}
+	.adv-alert__deadline {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.3rem;
+		font-size: 0.78rem;
+		font-weight: 700;
+		color: var(--assoc-navy);
+	}
+	.adv-alert__deadline svg { display: inline; flex-shrink: 0; }
+	.adv-alert__summary { font-size: 0.92rem; line-height: 1.55; max-width: 600px; }
+	.adv-alert__btn-primary {
+		background: var(--assoc-coral) !important;
+		color: var(--assoc-white) !important;
+		border-color: var(--assoc-coral) !important;
+	}
+	.adv-alert__btn-primary:hover { background: color-mix(in srgb, var(--assoc-coral) 85%, var(--assoc-navy)) !important; }
+	@media (max-width: 520px) { .adv-alert__badge { display: none; } }
+</style>
