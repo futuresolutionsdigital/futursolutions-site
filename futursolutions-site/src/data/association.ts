@@ -183,7 +183,7 @@ export const resourcePreview = [
 		title: 'Pharmacology Update: 2026 Guidelines',
 		description: 'Self-paced module covering the latest prescribing updates and clinical decision frameworks.',
 		meta: '3.0 CE credits · Self-paced',
-		href: '/demos/association/events',
+		href: '/demos/association/resources/pharmacology-update-2026',
 	},
 	{
 		category: 'Toolkit',
@@ -1259,6 +1259,208 @@ export const advocacyIssueUpdates = [
 	{ date: 'April 22, 2026', title: 'Member comment period opened', summary: 'MHPA sent action alerts to 4,800+ members with talking points and comment submission tools.' },
 ];
 
+// ── Resources: Hero ──
+
+export const resourcesHero = {
+	eyebrow: 'Resources',
+	headline: 'Practical tools built for working healthcare professionals.',
+	lead: 'Explore CE courses, webinars, toolkits, policy briefs, clinical guides, career resources, and member-exclusive materials designed to help you practice, lead, and stay current.',
+	supportLine: 'CE learning · Practice support · Policy tools · Member-only resources',
+	primaryCta: { text: 'Browse Resource Library', href: '#library' },
+	secondaryCta: { text: 'Explore CE Courses', href: '#library' },
+	tertiaryLink: { text: 'View Member Benefits →', href: '/demos/association/membership' },
+} as const;
+
+// ── Resources: Stats ──
+
+export const resourceStats = [
+	{ value: '80+', label: 'professional resources' },
+	{ value: '32', label: 'CE-eligible activities' },
+	{ value: '18', label: 'member-only toolkits' },
+	{ value: '12', label: 'topic collections' },
+	{ value: 'Monthly', label: 'updated' },
+];
+
+// ── Resources: Featured ──
+
+export const resourcesFeatured = [
+	{
+		title: 'Pharmacology Update: 2026 Guidelines',
+		type: 'CE Course',
+		access: 'Member-only',
+		ce: '3.0 CE credits',
+		summary: 'A self-paced course covering prescribing updates, safety considerations, and clinical decision frameworks.',
+		href: '/demos/association/resources/pharmacology-update-2026',
+		cta: 'View Course',
+	},
+	{
+		title: 'Legislative Update: What Passed in 2025',
+		type: 'Webinar',
+		access: 'Public',
+		ce: '1.0 CE credit',
+		summary: 'A 60-minute overview of the legislative actions that may affect healthcare practice this year.',
+		href: '/demos/association/events',
+		cta: 'Watch Webinar',
+	},
+	{
+		title: 'Salary & Compensation Benchmarks',
+		type: 'Report',
+		access: 'Member-only',
+		ce: '',
+		summary: 'Regional salary data, benefit benchmarks, and negotiation considerations for healthcare professionals.',
+		href: '/demos/association/resources',
+		cta: 'View Report',
+	},
+];
+
+// ── Resources: Filter Definitions ──
+
+export const resourceFilters = {
+	topics: ['Clinical Practice', 'Pharmacology', 'Advocacy', 'Workforce', 'Leadership', 'Preceptorship', 'Career Growth', 'Telehealth', 'Reimbursement', 'Public Health'],
+	types: ['CE Course', 'Webinar', 'Practice Guide', 'Toolkit', 'Policy Brief', 'Template', 'Report', 'Career Resource', 'Chapter Resource'],
+	audiences: ['Students', 'New Professionals', 'Practicing Professionals', 'Clinical Leaders', 'Chapter Leaders', 'Employers'],
+	access: ['Public', 'Member-only'],
+	ce: ['CE eligible', 'No CE'],
+} as const;
+
+// ── Resources: Library Items ──
+
+export const resourceLibraryItems = [
+	{ title: 'Pharmacology Update: 2026 Guidelines', summary: 'Self-paced module covering the latest prescribing updates and clinical decision frameworks.', type: 'CE Course', topic: 'Pharmacology', audience: 'Practicing Professionals', access: 'Member-only', ce: 'CE eligible', duration: '2.5 hours', date: 'May 2026', href: '/demos/association/resources/pharmacology-update-2026', featured: true },
+	{ title: 'Legislative Update: What Passed in 2025', summary: 'A 60-minute overview of the legislative actions that may affect healthcare practice this year.', type: 'Webinar', topic: 'Advocacy', audience: 'Practicing Professionals', access: 'Public', ce: 'CE eligible', duration: '60 min', date: 'January 2026', href: '/demos/association/events', featured: true },
+	{ title: 'Salary & Compensation Benchmarks', summary: 'Regional salary data, benefit benchmarks, and negotiation considerations for healthcare professionals.', type: 'Report', topic: 'Career Growth', audience: 'Practicing Professionals', access: 'Member-only', ce: 'No CE', duration: 'Report', date: 'April 2026', href: '/demos/association/resources', featured: true },
+	{ title: 'Telehealth Documentation Checklist', summary: 'Step-by-step documentation template for telehealth visits, consent, and follow-up.', type: 'Template', topic: 'Telehealth', audience: 'Practicing Professionals', access: 'Public', ce: 'No CE', duration: 'Template', date: 'March 2026', href: '/demos/association/resources', featured: false },
+	{ title: 'Preceptor Onboarding Toolkit', summary: 'Orientation materials, evaluation rubrics, and scheduling templates for new preceptors.', type: 'Toolkit', topic: 'Preceptorship', audience: 'Clinical Leaders', access: 'Member-only', ce: 'No CE', duration: 'Toolkit', date: 'February 2026', href: '/demos/association/resources', featured: false },
+	{ title: 'Chapter Meeting Planning Template', summary: 'Agenda templates, speaker coordination guides, and logistics checklists for local chapter events.', type: 'Template', topic: 'Leadership', audience: 'Chapter Leaders', access: 'Member-only', ce: 'No CE', duration: 'Template', date: 'January 2026', href: '/demos/association/resources', featured: false },
+	{ title: 'Reimbursement Basics for Clinical Services', summary: 'An introductory guide to billing codes, documentation requirements, and payer navigation.', type: 'Practice Guide', topic: 'Reimbursement', audience: 'New Professionals', access: 'Public', ce: 'CE eligible', duration: '45 min', date: 'April 2026', href: '/demos/association/resources', featured: false },
+	{ title: 'Burnout Prevention and Team Resilience', summary: 'Evidence-based strategies for individual resilience and team-level wellness in clinical settings.', type: 'Webinar', topic: 'Workforce', audience: 'Clinical Leaders', access: 'Public', ce: 'CE eligible', duration: '90 min', date: 'March 2026', href: '/demos/association/resources', featured: false },
+	{ title: 'Advocacy Talking Points Template', summary: 'Customizable talking points for legislative meetings, phone calls, and written communications.', type: 'Policy Brief', topic: 'Advocacy', audience: 'Practicing Professionals', access: 'Public', ce: 'No CE', duration: 'Template', date: 'May 2026', href: '/demos/association/advocacy#toolkit', featured: false },
+	{ title: 'Clinical Decision Support Guide', summary: 'A reference framework for integrating clinical evidence, patient preferences, and risk assessment.', type: 'Practice Guide', topic: 'Clinical Practice', audience: 'Practicing Professionals', access: 'Member-only', ce: 'CE eligible', duration: '1.5 hours', date: 'February 2026', href: '/demos/association/resources', featured: false },
+	{ title: 'New Professional Career Roadmap', summary: 'A structured guide to your first five years in healthcare practice — from licensure to leadership.', type: 'Career Resource', topic: 'Career Growth', audience: 'New Professionals', access: 'Public', ce: 'No CE', duration: 'Guide', date: 'January 2026', href: '/demos/association/resources', featured: false },
+	{ title: 'Employer Partnership Guide', summary: 'Resources for employers looking to partner with MHPA on recruitment, retention, and workforce development.', type: 'Report', topic: 'Workforce', audience: 'Employers', access: 'Public', ce: 'No CE', duration: 'Guide', date: 'March 2026', href: '/demos/association/resources', featured: false },
+	{ title: 'Public Health Readiness Brief', summary: 'A preparedness overview covering emergency response protocols, community health roles, and reporting requirements.', type: 'Policy Brief', topic: 'Public Health', audience: 'Practicing Professionals', access: 'Public', ce: 'No CE', duration: 'Brief', date: 'April 2026', href: '/demos/association/resources', featured: false },
+	{ title: 'Mentorship Conversation Guide', summary: 'Structured conversation frameworks for mentors and mentees at different career stages.', type: 'Career Resource', topic: 'Career Growth', audience: 'Students', access: 'Public', ce: 'No CE', duration: 'Guide', date: 'February 2026', href: '/demos/association/resources', featured: false },
+	{ title: 'Conference CE Claiming Instructions', summary: 'Step-by-step instructions for claiming CE credit from MHPA conferences and on-demand sessions.', type: 'Practice Guide', topic: 'Clinical Practice', audience: 'Practicing Professionals', access: 'Public', ce: 'No CE', duration: 'Quick Reference', date: 'May 2026', href: '/demos/association/resources', featured: false },
+	{ title: 'Practice Question Submission Guide', summary: 'How to submit clinical, legal, or practice-related questions to MHPA for expert review and response.', type: 'Practice Guide', topic: 'Clinical Practice', audience: 'Practicing Professionals', access: 'Member-only', ce: 'No CE', duration: 'Quick Reference', date: 'January 2026', href: '/demos/association/resources', featured: false },
+];
+
+// ── Resources: Collections ──
+
+export const resourceCollections = [
+	{ title: 'Clinical Practice', summary: 'Evidence-based guides, decision frameworks, and prescribing resources.', count: 14, href: '#library' },
+	{ title: 'Advocacy & Policy', summary: 'Talking points, legislative briefs, and grassroots action tools.', count: 8, href: '/demos/association/advocacy#toolkit' },
+	{ title: 'Career Growth', summary: 'Career roadmaps, salary data, mentorship guides, and professional branding.', count: 12, href: '#library' },
+	{ title: 'Leadership', summary: 'Team resilience, operations strategy, and leadership development resources.', count: 9, href: '#library' },
+	{ title: 'Preceptorship', summary: 'Onboarding toolkits, evaluation tools, and clinical education templates.', count: 6, href: '#library' },
+	{ title: 'Chapter Tools', summary: 'Meeting templates, event guides, and chapter operations resources.', count: 7, href: '#library' },
+];
+
+// ── Resources: Learning Pathways ──
+
+export const resourceLearningPathways = [
+	{
+		title: 'New Professional Foundations',
+		audience: 'Students & New Graduates',
+		time: '6 hours',
+		modules: ['Career Roadmap', 'Reimbursement Basics', 'Mentorship Conversation Guide', 'Practice Question Submission Guide'],
+		href: '#library',
+	},
+	{
+		title: 'Clinical Leadership Track',
+		audience: 'Practicing Professionals',
+		time: '8 hours',
+		modules: ['Pharmacology Update', 'Clinical Decision Support', 'Burnout Prevention & Resilience', 'Preceptor Onboarding Toolkit'],
+		href: '#library',
+	},
+	{
+		title: 'Advocacy Readiness Track',
+		audience: 'All Members',
+		time: '4 hours',
+		modules: ['Legislative Update Webinar', 'Advocacy Talking Points', 'Public Health Readiness Brief'],
+		href: '/demos/association/advocacy',
+	},
+];
+
+// ── Resources: Member Access Value ──
+
+export const resourceMemberAccess = [
+	{ title: 'Member-only toolkits', description: '18 practice toolkits, chapter templates, and preceptor resources available exclusively to members.' },
+	{ title: 'CE and webinar access', description: 'Unlimited access to on-demand CE courses, recorded webinars, and self-paced learning modules.' },
+	{ title: 'Practice guidance', description: 'Clinical decision frameworks, documentation templates, and expert Q&A through the practice resource center.' },
+	{ title: 'Career and leadership resources', description: 'Salary benchmarks, career roadmaps, leadership development guides, and mentorship tools.' },
+];
+
+// ── Resources: FAQ ──
+
+export const resourceFaqs = [
+	{ question: 'Are all resources free?', answer: 'Many core resources — including policy briefs, advocacy tools, and career guides — are publicly available. Advanced toolkits, CE courses, and practice guides are member-only.' },
+	{ question: 'Which resources are member-only?', answer: 'Member-only resources include CE courses, practice toolkits, salary benchmarks, preceptor materials, and chapter operations guides. Each resource card shows its access level.' },
+	{ question: 'How do I know if a course offers CE?', answer: 'CE-eligible resources are labeled with a CE badge showing the number of credits. Look for the "CE eligible" indicator on resource cards in the library.' },
+	{ question: 'Can I download toolkits and templates?', answer: 'Yes. Most toolkits and templates are available as downloadable PDFs or editable documents. Member-only materials require an active MHPA membership.' },
+	{ question: 'How often are resources updated?', answer: 'The resource library is updated monthly. Clinical resources are reviewed annually, and policy/advocacy tools are updated with each legislative session.' },
+	{ question: 'Can students access resources?', answer: 'Students have access to all public resources plus select student-specific career guides and mentorship materials. Student membership unlocks the full library.' },
+	{ question: 'Are advocacy resources public?', answer: 'Most advocacy resources — talking points, legislative briefs, and action tools — are publicly available to support broad participation in advocacy efforts.' },
+	{ question: 'Can I suggest a new resource?', answer: 'Yes. Members can submit resource suggestions through the contact form or through their chapter representative. The education committee reviews suggestions quarterly.' },
+];
+
+// ── Resources: Pharmacology Detail ──
+
+export const resourceDetailPharmacology = {
+	eyebrow: 'CE Course',
+	headline: 'Pharmacology Update: 2026 Guidelines',
+	lead: 'A self-paced learning module covering key prescribing updates, safety considerations, documentation guidance, and clinical decision frameworks for healthcare professionals.',
+	access: 'Member-only',
+	ce: '3.0 CE credits',
+	format: 'Self-paced module',
+	audience: 'Practicing Professionals',
+	duration: '2.5 hours',
+	updated: 'May 2026',
+	primaryCta: { text: 'Start Course', href: '#course-outline' },
+	secondaryCta: { text: 'Save to My Resources', href: '#access' },
+	tertiaryLink: { text: '← Back to Resources', href: '/demos/association/resources' },
+	disclaimer: 'This is a fictional course detail page for demo purposes.',
+} as const;
+
+export const resourceDetailQuickFacts = [
+	{ label: 'Format', value: 'Self-paced module' },
+	{ label: 'Credit', value: '3.0 CE' },
+	{ label: 'Access', value: 'Member-only' },
+	{ label: 'Audience', value: 'Practicing professionals' },
+	{ label: 'Duration', value: '2.5 hours' },
+	{ label: 'Updated', value: 'May 2026' },
+];
+
+export const resourceDetailObjectives = [
+	{ title: 'Identify key prescribing updates', description: 'Review the most significant pharmacology changes from 2025–2026 affecting primary and specialty care.' },
+	{ title: 'Apply safety and documentation considerations', description: 'Learn updated documentation requirements and safety protocols for high-risk prescribing scenarios.' },
+	{ title: 'Review patient communication scenarios', description: 'Practice discussing medication changes, side effects, and alternatives with patients using structured frameworks.' },
+	{ title: 'Connect updates to clinical decision workflows', description: 'Integrate new guidelines into your existing clinical decision process with practical application tools.' },
+];
+
+export const resourceDetailOutline = [
+	{ module: 1, title: '2026 Prescribing Update Overview', length: '30 min', type: 'Video + Reading', locked: false },
+	{ module: 2, title: 'Safety Considerations and Documentation', length: '35 min', type: 'Interactive Module', locked: false },
+	{ module: 3, title: 'Patient Communication Scenarios', length: '30 min', type: 'Case Studies', locked: true },
+	{ module: 4, title: 'Clinical Decision Frameworks', length: '35 min', type: 'Interactive Module', locked: true },
+	{ module: 5, title: 'Evaluation and Certificate Steps', length: '20 min', type: 'Assessment', locked: true },
+];
+
+export const resourceDetailRelated = [
+	{ title: 'Clinical Decision Support Guide', type: 'Practice Guide', ce: 'CE eligible', access: 'Member-only', href: '/demos/association/resources' },
+	{ title: 'Telehealth Documentation Checklist', type: 'Template', ce: '', access: 'Public', href: '/demos/association/resources' },
+	{ title: 'Practice Question Submission Guide', type: 'Practice Guide', ce: '', access: 'Member-only', href: '/demos/association/resources' },
+	{ title: 'Conference CE Claiming Instructions', type: 'Practice Guide', ce: '', access: 'Public', href: '/demos/association/resources' },
+];
+
+// ── Resources: Guidance Paths ──
+
+export const resourceGuidancePaths = [
+	{ title: 'I need CE credit', description: 'Browse CE-eligible courses and webinars.', href: '#library', icon: 'ce' },
+	{ title: 'I need help with practice questions', description: 'Submit a question or browse clinical guides.', href: '#library', icon: 'practice' },
+	{ title: 'I want advocacy tools', description: 'Find talking points, briefs, and action resources.', href: '/demos/association/advocacy#toolkit', icon: 'advocacy' },
+	{ title: 'I am early in my career', description: 'Start with career roadmaps and mentorship guides.', href: '#library', icon: 'career' },
+];
+
 // ── Future Route Metadata ──
 
 export const routeMetadata: Record<string, { title: string; description: string }> = {
@@ -1301,6 +1503,11 @@ export const routeMetadata: Record<string, { title: string; description: string 
 		title: 'Career Center | MHPA',
 		description:
 			'Search healthcare jobs, compare salary benchmarks, build your CV, and connect with mentors.',
+	},
+	'/demos/association/resources/pharmacology-update-2026': {
+		title: 'Pharmacology Update: 2026 Guidelines | MHPA Resources',
+		description:
+			'A self-paced CE course covering prescribing updates, safety considerations, and clinical decision frameworks.',
 	},
 	'/demos/association/advocacy/scope-of-practice': {
 		title: 'Expanding Scope of Practice Access | MHPA Advocacy',

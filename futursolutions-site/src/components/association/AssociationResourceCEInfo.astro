@@ -1,0 +1,37 @@
+---
+---
+
+<section class="assoc-section assoc-section--warm" aria-labelledby="rdetail-ce-heading">
+	<div class="assoc-container rdetail-ce__inner">
+		<div class="rdetail-ce__content">
+			<p class="assoc-eyebrow">CE & Certificate</p>
+			<h2 id="rdetail-ce-heading">Earn your certificate</h2>
+			<p class="rdetail-ce__desc">Complete all five modules, pass the course evaluation, and download your CE certificate — all within the MHPA learning portal.</p>
+		</div>
+		<div class="rdetail-ce__steps">
+			<div class="rdetail-ce__step"><span class="rdetail-ce__step-num">1</span><div><h3>Complete all modules</h3><p>Work through each module at your own pace.</p></div></div>
+			<div class="rdetail-ce__step"><span class="rdetail-ce__step-num">2</span><div><h3>Pass the evaluation</h3><p>Answer assessment questions to demonstrate learning.</p></div></div>
+			<div class="rdetail-ce__step"><span class="rdetail-ce__step-num">3</span><div><h3>Submit course feedback</h3><p>Complete a brief survey to help improve future courses.</p></div></div>
+			<div class="rdetail-ce__step"><span class="rdetail-ce__step-num">4</span><div><h3>Download certificate</h3><p>Your CE certificate is available within 48 hours.</p></div></div>
+		</div>
+	</div>
+	<div class="assoc-container">
+		<p class="rdetail-ce__disclaimer">Credit language is sample content for this fictional demo and would be reviewed by the appropriate accrediting body for a real association.</p>
+	</div>
+</section>
+
+<style>
+	.rdetail-ce__inner { display: grid; grid-template-columns: 0.45fr 0.55fr; gap: clamp(2rem, 5vw, 4rem); align-items: start; }
+	.rdetail-ce__desc { font-size: 0.92rem; line-height: 1.6; }
+	.rdetail-ce__steps { display: grid; gap: 0.75rem; }
+	.rdetail-ce__step { display: flex; gap: 0.85rem; align-items: flex-start; }
+	.rdetail-ce__step-num {
+		flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+		width: 2rem; height: 2rem; border-radius: 50%; background: var(--assoc-teal-light); color: var(--assoc-teal);
+		font-size: 0.82rem; font-weight: 800;
+	}
+	.rdetail-ce__step h3 { font-size: 0.92rem; margin-bottom: 0.1rem; }
+	.rdetail-ce__step p { font-size: 0.82rem; line-height: 1.45; margin: 0; }
+	.rdetail-ce__disclaimer { font-size: 0.72rem; color: var(--assoc-slate); opacity: 0.55; margin-top: 1rem; }
+	@media (max-width: 768px) { .rdetail-ce__inner { grid-template-columns: 1fr; } }
+</style>

@@ -1,0 +1,50 @@
+---
+---
+
+<section class="rdetail-access" id="access" aria-labelledby="rdetail-access-heading">
+	<div class="assoc-container rdetail-access__inner">
+		<div class="rdetail-access__content">
+			<p class="rdetail-access__eyebrow">Member Access</p>
+			<h2 id="rdetail-access-heading">This course is included with membership.</h2>
+			<p class="rdetail-access__desc">MHPA membership unlocks this course and the full professional resource library — including CE courses, on-demand webinars, practice toolkits, and career development materials.</p>
+			<div class="assoc-btn-row">
+				<a class="assoc-btn rdetail-access__btn-primary" href="/demos/association/membership">Join to Access</a>
+				<a class="assoc-btn rdetail-access__btn-ghost" href="/demos/association/membership">Explore Membership</a>
+			</div>
+		</div>
+		<ul class="rdetail-access__list">
+			<li>
+				<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+				<span>Full CE course library access</span>
+			</li>
+			<li>
+				<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+				<span>On-demand webinar archive</span>
+			</li>
+			<li>
+				<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+				<span>Practice toolkits and templates</span>
+			</li>
+			<li>
+				<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+				<span>Conference registration discounts</span>
+			</li>
+		</ul>
+	</div>
+</section>
+
+<style>
+	.rdetail-access { padding-block: var(--assoc-section-spacing); background: var(--assoc-navy); color: var(--assoc-white); }
+	.rdetail-access__inner { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: clamp(2rem, 5vw, 4rem); align-items: center; }
+	.rdetail-access__eyebrow { font-size: 0.72rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 0.5rem; }
+	.rdetail-access h2 { color: var(--assoc-white); text-wrap: balance; }
+	.rdetail-access__desc { font-size: 0.92rem; line-height: 1.6; color: rgba(255,255,255,0.6); margin-bottom: 1.25rem; }
+	.rdetail-access__btn-primary { background: var(--assoc-teal) !important; color: var(--assoc-white) !important; }
+	.rdetail-access__btn-primary:hover { background: color-mix(in srgb, var(--assoc-teal) 80%, var(--assoc-white)) !important; }
+	.rdetail-access__btn-ghost { border-color: rgba(255,255,255,0.2) !important; background: transparent !important; color: var(--assoc-white) !important; }
+	.rdetail-access__btn-ghost:hover { border-color: rgba(255,255,255,0.4) !important; background: rgba(255,255,255,0.06) !important; }
+	.rdetail-access__list { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.75rem; }
+	.rdetail-access__list li { display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.92rem; font-weight: 600; color: var(--assoc-white); line-height: 1.4; }
+	.rdetail-access__list li svg { display: inline; flex-shrink: 0; margin-top: 0.1rem; color: var(--assoc-teal); }
+	@media (max-width: 768px) { .rdetail-access__inner { grid-template-columns: 1fr; } }
+</style>

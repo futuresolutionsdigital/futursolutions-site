@@ -1,0 +1,46 @@
+---
+import { resourceDetailPharmacology } from '../../data/association';
+const d = resourceDetailPharmacology;
+---
+
+<section class="rdetail-hero" aria-labelledby="rdetail-hero-heading">
+	<div class="assoc-container rdetail-hero__inner">
+		<a class="rdetail-hero__back" href={d.tertiaryLink.href}>{d.tertiaryLink.text}</a>
+		<p class="assoc-eyebrow">{d.eyebrow}</p>
+		<h1 id="rdetail-hero-heading">{d.headline}</h1>
+		<p class="rdetail-hero__lead">{d.lead}</p>
+		<div class="rdetail-hero__badges">
+			<span class="rdetail-hero__badge rdetail-hero__badge--access">{d.access}</span>
+			<span class="rdetail-hero__badge rdetail-hero__badge--ce">{d.ce}</span>
+			<span class="rdetail-hero__badge">{d.format}</span>
+			<span class="rdetail-hero__badge">Updated {d.updated}</span>
+			<span class="rdetail-hero__badge">{d.duration}</span>
+		</div>
+		<div class="assoc-btn-row">
+			<a class="assoc-btn assoc-btn--primary" href={d.primaryCta.href}>{d.primaryCta.text}</a>
+			<a class="assoc-btn assoc-btn--secondary" href={d.secondaryCta.href}>{d.secondaryCta.text}</a>
+		</div>
+		<p class="rdetail-hero__note">{d.disclaimer}</p>
+	</div>
+</section>
+
+<style>
+	.rdetail-hero {
+		padding-block: clamp(2.5rem, 5vw, 4rem);
+		background: linear-gradient(175deg, var(--assoc-bg) 40%, color-mix(in srgb, var(--assoc-sand) 40%, var(--assoc-bg)) 100%);
+		border-bottom: 1px solid var(--assoc-border);
+	}
+	.rdetail-hero__inner { max-width: 720px; }
+	.rdetail-hero__back { display: inline-block; margin-bottom: 1rem; font-size: 0.82rem; font-weight: 700; color: var(--assoc-teal); }
+	.rdetail-hero__back:hover { color: var(--assoc-navy); }
+	.rdetail-hero h1 { text-wrap: balance; }
+	.rdetail-hero__lead { font-size: clamp(1rem, 0.98rem + 0.15vw, 1.1rem); line-height: 1.6; color: var(--assoc-slate); max-width: 620px; }
+	.rdetail-hero__badges { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.75rem; }
+	.rdetail-hero__badge {
+		padding: 0.2rem 0.55rem; border-radius: 999px; font-size: 0.68rem; font-weight: 700;
+		letter-spacing: 0.04em; text-transform: uppercase; background: color-mix(in srgb, var(--assoc-slate) 8%, var(--assoc-white)); color: var(--assoc-slate);
+	}
+	.rdetail-hero__badge--access { background: color-mix(in srgb, var(--assoc-coral) 10%, var(--assoc-white)); color: var(--assoc-coral); }
+	.rdetail-hero__badge--ce { background: color-mix(in srgb, var(--assoc-navy) 10%, var(--assoc-white)); color: var(--assoc-navy); }
+	.rdetail-hero__note { font-size: 0.72rem; color: var(--assoc-slate); opacity: 0.55; margin-top: 0.75rem; }
+</style>

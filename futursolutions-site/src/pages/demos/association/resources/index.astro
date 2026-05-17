@@ -1,0 +1,53 @@
+---
+import AssociationLayout from '../../../../layouts/AssociationLayout.astro';
+import AssociationResourcesHero from '../../../../components/association/AssociationResourcesHero.astro';
+import AssociationResourceStats from '../../../../components/association/AssociationResourceStats.astro';
+import AssociationFeaturedResources from '../../../../components/association/AssociationFeaturedResources.astro';
+import AssociationResourceLibrary from '../../../../components/association/AssociationResourceLibrary.astro';
+import AssociationResourceCollections from '../../../../components/association/AssociationResourceCollections.astro';
+import AssociationLearningPathways from '../../../../components/association/AssociationLearningPathways.astro';
+import AssociationResourceMemberAccess from '../../../../components/association/AssociationResourceMemberAccess.astro';
+import AssociationResourceGuidance from '../../../../components/association/AssociationResourceGuidance.astro';
+import AssociationResourceNewsletter from '../../../../components/association/AssociationResourceNewsletter.astro';
+import AssociationResourceFAQ from '../../../../components/association/AssociationResourceFAQ.astro';
+import { routeMetadata } from '../../../../data/association';
+
+const meta = routeMetadata['/demos/association/resources'];
+---
+
+<AssociationLayout title={meta.title} description={meta.description}>
+	<AssociationResourcesHero />
+	<AssociationResourceStats />
+	<AssociationFeaturedResources />
+	<AssociationResourceLibrary />
+	<AssociationResourceCollections />
+	<AssociationLearningPathways />
+	<AssociationResourceMemberAccess />
+	<AssociationResourceGuidance />
+	<AssociationResourceNewsletter />
+	<AssociationResourceFAQ />
+
+	<!-- Final CTA -->
+	<section class="res-final-cta" aria-labelledby="res-final-heading">
+		<div class="assoc-container res-final-cta__inner">
+			<h2 id="res-final-heading">Build your professional library with MHPA.</h2>
+			<p class="assoc-lead">Join to access member-only toolkits, CE learning, practical guides, and resources built for every stage of your career.</p>
+			<div class="assoc-btn-row">
+				<a class="assoc-btn res-final-cta__primary" href="/demos/association/membership">Join the Association</a>
+				<a class="assoc-btn res-final-cta__ghost" href="/demos/association/membership">Explore Member Benefits</a>
+			</div>
+		</div>
+	</section>
+</AssociationLayout>
+
+<style>
+	.res-final-cta { padding-block: var(--assoc-section-spacing); background: var(--assoc-navy); color: var(--assoc-white); }
+	.res-final-cta__inner { max-width: 680px; text-align: center; margin-inline: auto; }
+	.res-final-cta h2 { color: var(--assoc-white); text-wrap: balance; }
+	.res-final-cta .assoc-lead { color: rgba(255, 255, 255, 0.6); margin-inline: auto; }
+	.res-final-cta .assoc-btn-row { justify-content: center; }
+	.res-final-cta__primary { background: var(--assoc-teal) !important; color: var(--assoc-white) !important; }
+	.res-final-cta__primary:hover { background: color-mix(in srgb, var(--assoc-teal) 80%, var(--assoc-white)) !important; }
+	.res-final-cta__ghost { border-color: rgba(255,255,255,0.2) !important; background: transparent !important; color: var(--assoc-white) !important; }
+	.res-final-cta__ghost:hover { border-color: rgba(255,255,255,0.4) !important; background: rgba(255,255,255,0.06) !important; }
+</style>

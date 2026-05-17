@@ -1,0 +1,47 @@
+---
+import AssociationLayout from '../../../../layouts/AssociationLayout.astro';
+import AssociationResourceDetailHero from '../../../../components/association/AssociationResourceDetailHero.astro';
+import AssociationResourceQuickFacts from '../../../../components/association/AssociationResourceQuickFacts.astro';
+import AssociationResourceLearningObjectives from '../../../../components/association/AssociationResourceLearningObjectives.astro';
+import AssociationResourceOutline from '../../../../components/association/AssociationResourceOutline.astro';
+import AssociationResourceCEInfo from '../../../../components/association/AssociationResourceCEInfo.astro';
+import AssociationResourceAccessPanel from '../../../../components/association/AssociationResourceAccessPanel.astro';
+import AssociationRelatedResources from '../../../../components/association/AssociationRelatedResources.astro';
+import { routeMetadata } from '../../../../data/association';
+
+const meta = routeMetadata['/demos/association/resources/pharmacology-update-2026'];
+---
+
+<AssociationLayout title={meta.title} description={meta.description}>
+	<AssociationResourceDetailHero />
+	<AssociationResourceQuickFacts />
+	<AssociationResourceLearningObjectives />
+	<AssociationResourceOutline />
+	<AssociationResourceCEInfo />
+	<AssociationResourceAccessPanel />
+	<AssociationRelatedResources />
+
+	<!-- Final CTA -->
+	<section class="rdetail-final-cta" aria-labelledby="rdetail-final-heading">
+		<div class="assoc-container rdetail-final-cta__inner">
+			<h2 id="rdetail-final-heading">Stay current with practical learning built for your profession.</h2>
+			<p class="assoc-lead">Explore CE courses, clinical guides, and professional resources designed by and for healthcare professionals.</p>
+			<div class="assoc-btn-row">
+				<a class="assoc-btn rdetail-final-cta__primary" href="#course-outline">Start Course</a>
+				<a class="assoc-btn rdetail-final-cta__ghost" href="/demos/association/resources">Browse All Resources</a>
+			</div>
+		</div>
+	</section>
+</AssociationLayout>
+
+<style>
+	.rdetail-final-cta { padding-block: var(--assoc-section-spacing); background: var(--assoc-navy); color: var(--assoc-white); }
+	.rdetail-final-cta__inner { max-width: 680px; text-align: center; margin-inline: auto; }
+	.rdetail-final-cta h2 { color: var(--assoc-white); text-wrap: balance; }
+	.rdetail-final-cta .assoc-lead { color: rgba(255, 255, 255, 0.6); margin-inline: auto; }
+	.rdetail-final-cta .assoc-btn-row { justify-content: center; }
+	.rdetail-final-cta__primary { background: var(--assoc-teal) !important; color: var(--assoc-white) !important; }
+	.rdetail-final-cta__primary:hover { background: color-mix(in srgb, var(--assoc-teal) 80%, var(--assoc-white)) !important; }
+	.rdetail-final-cta__ghost { border-color: rgba(255,255,255,0.2) !important; background: transparent !important; color: var(--assoc-white) !important; }
+	.rdetail-final-cta__ghost:hover { border-color: rgba(255,255,255,0.4) !important; background: rgba(255,255,255,0.06) !important; }
+</style>

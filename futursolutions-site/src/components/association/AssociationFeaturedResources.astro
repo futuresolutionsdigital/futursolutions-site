@@ -1,0 +1,44 @@
+---
+import { resourcesFeatured } from '../../data/association';
+---
+
+<section class="assoc-section" id="featured" aria-labelledby="res-featured-heading">
+	<div class="assoc-container">
+		<p class="assoc-eyebrow">Popular</p>
+		<h2 id="res-featured-heading">Start with the most-used resources.</h2>
+		<div class="res-featured-grid">
+			{resourcesFeatured.map((r) => (
+				<a href={r.href} class="res-featured-card">
+					<div class="res-featured-card__tags">
+						<span class="res-featured-card__type">{r.type}</span>
+						<span class:list={['res-featured-card__access', { 'res-featured-card__access--member': r.access === 'Member-only' }]}>{r.access}</span>
+						{r.ce && <span class="res-featured-card__ce">{r.ce}</span>}
+					</div>
+					<h3>{r.title}</h3>
+					<p>{r.summary}</p>
+					<span class="res-featured-card__cta">{r.cta} →</span>
+				</a>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+	.res-featured-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2rem; }
+	.res-featured-card {
+		display: flex; flex-direction: column; padding: 1.5rem;
+		border: 1px solid var(--assoc-border); border-radius: var(--assoc-radius);
+		background: var(--assoc-white); box-shadow: 0 2px 12px rgba(16,42,67,0.04);
+		transition: border-color 0.15s ease, transform 0.15s ease;
+	}
+	.res-featured-card:hover { border-color: var(--assoc-teal); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(16,42,67,0.08); }
+	.res-featured-card__tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 0.85rem; }
+	.res-featured-card__type { padding: 0.15rem 0.5rem; border-radius: 4px; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; background: var(--assoc-teal-light); color: var(--assoc-teal); }
+	.res-featured-card__access { padding: 0.15rem 0.5rem; border-radius: 4px; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; background: color-mix(in srgb, var(--assoc-slate) 8%, var(--assoc-white)); color: var(--assoc-slate); }
+	.res-featured-card__access--member { background: color-mix(in srgb, var(--assoc-coral) 8%, var(--assoc-white)); color: var(--assoc-coral); }
+	.res-featured-card__ce { padding: 0.15rem 0.5rem; border-radius: 4px; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; background: color-mix(in srgb, var(--assoc-navy) 8%, var(--assoc-white)); color: var(--assoc-navy); }
+	.res-featured-card h3 { font-size: 1.1rem; margin-bottom: 0.35rem; }
+	.res-featured-card p { font-size: 0.88rem; line-height: 1.5; flex: 1; }
+	.res-featured-card__cta { margin-top: 0.85rem; font-size: 0.82rem; font-weight: 700; color: var(--assoc-teal); }
+	@media (max-width: 768px) { .res-featured-grid { grid-template-columns: 1fr; } }
+</style>

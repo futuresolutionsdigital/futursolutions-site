@@ -1,0 +1,181 @@
+---
+import { resourceLibraryItems, resourceFilters } from '../../data/association';
+---
+
+<section class="assoc-section assoc-section--warm" id="library" aria-labelledby="res-library-heading">
+	<div class="assoc-container">
+		<p class="assoc-eyebrow">Resource Library</p>
+		<h2 id="res-library-heading">Find the right resource faster.</h2>
+
+		<!-- Filters -->
+		<div class="res-filters" role="search" aria-label="Filter resources">
+			<div class="res-filters__row">
+				<div class="res-filters__field res-filters__field--search">
+					<label for="res-search" class="sr-only">Search resources</label>
+					<input type="text" id="res-search" class="res-filters__input" placeholder="Search by title or keyword…" data-res-search />
+				</div>
+				<div class="res-filters__field">
+					<label for="res-topic" class="sr-only">Topic</label>
+					<select id="res-topic" class="res-filters__select" data-res-filter="topic">
+						<option value="">All Topics</option>
+						{resourceFilters.topics.map((t) => <option value={t}>{t}</option>)}
+					</select>
+				</div>
+				<div class="res-filters__field">
+					<label for="res-type" class="sr-only">Type</label>
+					<select id="res-type" class="res-filters__select" data-res-filter="type">
+						<option value="">All Types</option>
+						{resourceFilters.types.map((t) => <option value={t}>{t}</option>)}
+					</select>
+				</div>
+				<div class="res-filters__field">
+					<label for="res-access" class="sr-only">Access</label>
+					<select id="res-access" class="res-filters__select" data-res-filter="access">
+						<option value="">All Access</option>
+						{resourceFilters.access.map((a) => <option value={a}>{a}</option>)}
+					</select>
+				</div>
+				<div class="res-filters__field">
+					<label for="res-ce" class="sr-only">CE Credit</label>
+					<select id="res-ce" class="res-filters__select" data-res-filter="ce">
+						<option value="">CE Status</option>
+						{resourceFilters.ce.map((c) => <option value={c}>{c}</option>)}
+					</select>
+				</div>
+				<button class="res-filters__clear" type="button" data-res-clear>Clear Filters</button>
+			</div>
+		</div>
+
+		<!-- Count -->
+		<p class="res-count" data-res-count>Showing {resourceLibraryItems.length} resources</p>
+
+		<!-- Grid -->
+		<div class="res-grid" data-res-grid>
+			{resourceLibraryItems.map((r) => (
+				<a
+					href={r.href}
+					class="assoc-card res-card"
+					data-res-card
+					data-res-title={r.title.toLowerCase()}
+					data-res-summary={r.summary.toLowerCase()}
+					data-res-topic={r.topic}
+					data-res-type={r.type}
+					data-res-access={r.access}
+					data-res-ce={r.ce}
+				>
+					<div class="res-card__tags">
+						<span class="res-card__type">{r.type}</span>
+						<span class:list={['res-card__access', { 'res-card__access--member': r.access === 'Member-only' }]}>{r.access}</span>
+						{r.ce === 'CE eligible' && <span class="res-card__ce">CE</span>}
+					</div>
+					<h3>{r.title}</h3>
+					<p>{r.summary}</p>
+					<div class="res-card__meta">
+						<span>{r.duration}</span>
+						<span class="res-card__dot" aria-hidden="true">·</span>
+						<span>{r.date}</span>
+						<span class="res-card__dot" aria-hidden="true">·</span>
+						<span>{r.topic}</span>
+					</div>
+				</a>
+			))}
+		</div>
+
+		<!-- Empty state -->
+		<div class="res-empty" data-res-empty hidden>
+			<p>No resources match your filters. Try clearing one filter or browsing all resources.</p>
+			<button class="assoc-btn assoc-btn--secondary" type="button" data-res-clear-empty>Clear Filters</button>
+		</div>
+	</div>
+</section>
+
+<script is:inline>
+(() => {
+	const grid = document.querySelector('[data-res-grid]');
+	const cards = grid ? grid.querySelectorAll('[data-res-card]') : [];
+	const search = document.querySelector('[data-res-search]');
+	const filters = document.querySelectorAll('[data-res-filter]');
+	const countEl = document.querySelector('[data-res-count]');
+	const emptyEl = document.querySelector('[data-res-empty]');
+	const clearBtns = document.querySelectorAll('[data-res-clear], [data-res-clear-empty]');
+	if (!grid || !cards.length) return;
+
+	function apply() {
+		const q = (search ? search.value : '').toLowerCase().trim();
+		const vals = {};
+		filters.forEach(function(f) { vals[f.getAttribute('data-res-filter')] = f.value; });
+		var shown = 0;
+		cards.forEach(function(card) {
+			var match = true;
+			if (q) {
+				var t = card.getAttribute('data-res-title') || '';
+				var s = card.getAttribute('data-res-summary') || '';
+				if (t.indexOf(q) === -1 && s.indexOf(q) === -1) match = false;
+			}
+			if (match && vals.topic && card.getAttribute('data-res-topic') !== vals.topic) match = false;
+			if (match && vals.type && card.getAttribute('data-res-type') !== vals.type) match = false;
+			if (match && vals.access && card.getAttribute('data-res-access') !== vals.access) match = false;
+			if (match && vals.ce && card.getAttribute('data-res-ce') !== vals.ce) match = false;
+			card.hidden = !match;
+			if (match) shown++;
+		});
+		if (countEl) countEl.textContent = 'Showing ' + shown + ' resource' + (shown !== 1 ? 's' : '');
+		if (emptyEl) emptyEl.hidden = shown > 0;
+	}
+
+	if (search) search.addEventListener('input', apply);
+	filters.forEach(function(f) { f.addEventListener('change', apply); });
+	clearBtns.forEach(function(btn) {
+		btn.addEventListener('click', function() {
+			if (search) search.value = '';
+			filters.forEach(function(f) { f.value = ''; });
+			apply();
+		});
+	});
+})();
+</script>
+
+<style>
+	.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
+
+	.res-filters { margin-top: 2rem; }
+	.res-filters__row { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; }
+	.res-filters__field { flex: 1; min-width: 140px; }
+	.res-filters__field--search { flex: 2; min-width: 200px; }
+	.res-filters__input, .res-filters__select {
+		width: 100%; padding: 0.55rem 0.75rem; border: 1px solid var(--assoc-border); border-radius: 8px;
+		font-size: 0.85rem; font-family: inherit; background: var(--assoc-white); color: var(--assoc-navy);
+	}
+	.res-filters__input:focus, .res-filters__select:focus { outline: 2px solid var(--assoc-teal); outline-offset: -1px; border-color: var(--assoc-teal); }
+	.res-filters__clear {
+		padding: 0.55rem 1rem; border: 1px solid var(--assoc-border); border-radius: 8px;
+		background: var(--assoc-white); color: var(--assoc-slate); font-size: 0.82rem; font-weight: 700;
+		cursor: pointer; white-space: nowrap;
+	}
+	.res-filters__clear:hover { border-color: var(--assoc-teal); color: var(--assoc-teal); }
+
+	.res-count { margin-top: 1rem; font-size: 0.82rem; font-weight: 700; color: var(--assoc-slate); }
+
+	.res-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 0.5rem; }
+	.res-card { display: flex; flex-direction: column; padding: 1.25rem; transition: border-color 0.15s ease, transform 0.15s ease; }
+	.res-card:hover { border-color: var(--assoc-teal); transform: translateY(-1px); }
+	.res-card__tags { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-bottom: 0.65rem; }
+	.res-card__type { padding: 0.12rem 0.4rem; border-radius: 4px; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; background: var(--assoc-teal-light); color: var(--assoc-teal); }
+	.res-card__access { padding: 0.12rem 0.4rem; border-radius: 4px; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; background: color-mix(in srgb, var(--assoc-slate) 8%, var(--assoc-white)); color: var(--assoc-slate); }
+	.res-card__access--member { background: color-mix(in srgb, var(--assoc-coral) 8%, var(--assoc-white)); color: var(--assoc-coral); }
+	.res-card__ce { padding: 0.12rem 0.4rem; border-radius: 4px; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; background: color-mix(in srgb, var(--assoc-navy) 8%, var(--assoc-white)); color: var(--assoc-navy); }
+	.res-card h3 { font-size: 0.95rem; margin-bottom: 0.25rem; line-height: 1.3; }
+	.res-card p { font-size: 0.82rem; line-height: 1.5; flex: 1; }
+	.res-card__meta { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.65rem; padding-top: 0.55rem; border-top: 1px solid var(--assoc-border); font-size: 0.72rem; font-weight: 600; color: var(--assoc-slate); }
+	.res-card__dot { opacity: 0.35; }
+
+	.res-empty { text-align: center; padding: 3rem 1rem; }
+	.res-empty p { font-size: 0.95rem; color: var(--assoc-slate); margin-bottom: 1rem; }
+
+	@media (max-width: 960px) { .res-grid { grid-template-columns: 1fr 1fr; } }
+	@media (max-width: 600px) {
+		.res-filters__row { flex-direction: column; }
+		.res-filters__field, .res-filters__field--search { min-width: 100%; flex: auto; }
+		.res-grid { grid-template-columns: 1fr; }
+	}
+</style>

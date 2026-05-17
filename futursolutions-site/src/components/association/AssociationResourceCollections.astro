@@ -1,0 +1,30 @@
+---
+import { resourceCollections } from '../../data/association';
+---
+
+<section class="assoc-section" id="collections" aria-labelledby="res-collections-heading">
+	<div class="assoc-container">
+		<p class="assoc-eyebrow">Collections</p>
+		<h2 id="res-collections-heading">Browse by professional need.</h2>
+		<div class="res-coll-grid">
+			{resourceCollections.map((c) => (
+				<a href={c.href} class="assoc-card res-coll-card">
+					<h3>{c.title}</h3>
+					<p>{c.summary}</p>
+					<span class="res-coll-card__count">{c.count} resources</span>
+				</a>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+	.res-coll-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2rem; }
+	.res-coll-card { display: flex; flex-direction: column; padding: 1.25rem; transition: border-color 0.15s ease, transform 0.15s ease; }
+	.res-coll-card:hover { border-color: var(--assoc-teal); transform: translateY(-1px); }
+	.res-coll-card h3 { font-size: 1.05rem; margin-bottom: 0.3rem; }
+	.res-coll-card p { font-size: 0.85rem; line-height: 1.5; flex: 1; }
+	.res-coll-card__count { margin-top: 0.65rem; padding-top: 0.55rem; border-top: 1px solid var(--assoc-border); font-size: 0.72rem; font-weight: 700; color: var(--assoc-teal); }
+	@media (max-width: 768px) { .res-coll-grid { grid-template-columns: 1fr 1fr; } }
+	@media (max-width: 520px) { .res-coll-grid { grid-template-columns: 1fr; } }
+</style>

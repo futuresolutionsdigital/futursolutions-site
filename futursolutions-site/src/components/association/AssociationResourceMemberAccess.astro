@@ -1,0 +1,43 @@
+---
+import { resourceMemberAccess } from '../../data/association';
+---
+
+<section class="res-member" id="member-access" aria-labelledby="res-member-heading">
+	<div class="assoc-container res-member__inner">
+		<div class="res-member__intro">
+			<p class="res-member__eyebrow">Membership Value</p>
+			<h2 id="res-member-heading">Membership turns resources into a professional advantage.</h2>
+			<p class="res-member__desc">Members unlock deeper resource access, exclusive toolkits, CE course discounts, practical practice guides, and career development support.</p>
+			<div class="assoc-btn-row">
+				<a class="assoc-btn res-member__btn-primary" href="/demos/association/membership">Explore Member Benefits</a>
+				<a class="assoc-btn res-member__btn-ghost" href="/demos/association/membership">Join the Association</a>
+			</div>
+		</div>
+		<div class="res-member__cards">
+			{resourceMemberAccess.map((v) => (
+				<div class="res-member__card">
+					<h3>{v.title}</h3>
+					<p>{v.description}</p>
+				</div>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+	.res-member { padding-block: var(--assoc-section-spacing); background: var(--assoc-navy); color: var(--assoc-white); }
+	.res-member__inner { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 4rem); align-items: center; }
+	.res-member__eyebrow { font-size: 0.72rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 0.5rem; }
+	.res-member h2 { color: var(--assoc-white); text-wrap: balance; }
+	.res-member__desc { font-size: 0.92rem; line-height: 1.6; color: rgba(255,255,255,0.6); margin-bottom: 1.5rem; }
+	.res-member__btn-primary { background: var(--assoc-teal) !important; color: var(--assoc-white) !important; }
+	.res-member__btn-primary:hover { background: color-mix(in srgb, var(--assoc-teal) 80%, var(--assoc-white)) !important; }
+	.res-member__btn-ghost { border-color: rgba(255,255,255,0.2) !important; background: transparent !important; color: var(--assoc-white) !important; }
+	.res-member__btn-ghost:hover { border-color: rgba(255,255,255,0.4) !important; background: rgba(255,255,255,0.06) !important; }
+	.res-member__cards { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+	.res-member__card { padding: 1rem; border-radius: var(--assoc-radius); background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08); }
+	.res-member__card h3 { font-size: 0.92rem; color: var(--assoc-white); margin-bottom: 0.25rem; }
+	.res-member__card p { font-size: 0.82rem; line-height: 1.5; color: rgba(255,255,255,0.55); margin: 0; }
+	@media (max-width: 768px) { .res-member__inner { grid-template-columns: 1fr; } }
+	@media (max-width: 520px) { .res-member__cards { grid-template-columns: 1fr; } }
+</style>

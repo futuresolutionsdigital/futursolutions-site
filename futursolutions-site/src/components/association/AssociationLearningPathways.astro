@@ -1,0 +1,41 @@
+---
+import { resourceLearningPathways } from '../../data/association';
+---
+
+<section class="assoc-section assoc-section--warm" id="pathways" aria-labelledby="res-path-heading">
+	<div class="assoc-container">
+		<p class="assoc-eyebrow">Learning Paths</p>
+		<h2 id="res-path-heading">Follow a focused learning path.</h2>
+		<p class="assoc-lead">Curated sequences of resources designed around common professional goals.</p>
+		<div class="res-path-grid">
+			{resourceLearningPathways.map((p) => (
+				<div class="assoc-card res-path-card">
+					<h3>{p.title}</h3>
+					<div class="res-path-card__meta">
+						<span>{p.audience}</span>
+						<span class="res-path-card__dot" aria-hidden="true">·</span>
+						<span>{p.time}</span>
+					</div>
+					<ol class="res-path-card__modules">
+						{p.modules.map((m) => <li>{m}</li>)}
+					</ol>
+					<a class="res-path-card__cta" href={p.href}>Explore Path →</a>
+				</div>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+	.res-path-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2rem; }
+	.res-path-card { display: flex; flex-direction: column; padding: 1.5rem; }
+	.res-path-card h3 { font-size: 1.05rem; margin-bottom: 0.35rem; }
+	.res-path-card__meta { display: flex; gap: 0.35rem; font-size: 0.78rem; font-weight: 600; color: var(--assoc-slate); margin-bottom: 1rem; }
+	.res-path-card__dot { opacity: 0.35; }
+	.res-path-card__modules { margin: 0; padding: 0 0 0 1.1rem; display: grid; gap: 0.35rem; flex: 1; }
+	.res-path-card__modules li { font-size: 0.85rem; font-weight: 500; color: var(--assoc-navy); line-height: 1.35; }
+	.res-path-card__modules li::marker { color: var(--assoc-teal); font-weight: 800; }
+	.res-path-card__cta { margin-top: 1rem; font-size: 0.82rem; font-weight: 700; color: var(--assoc-teal); }
+	.res-path-card__cta:hover { color: var(--assoc-navy); }
+	@media (max-width: 768px) { .res-path-grid { grid-template-columns: 1fr; } }
+</style>
