@@ -2,7 +2,7 @@
 import AssociationLayout from '../../../../layouts/AssociationLayout.astro';
 import AssociationPageHero from '../../../../components/association/AssociationPageHero.astro';
 import AssociationFinalCTA from '../../../../components/association/AssociationFinalCTA.astro';
-import { routeMetadata } from '../../../../data/association';
+import { routeMetadata, resourcePreview } from '../../../../data/association';
 
 const meta = routeMetadata['/demos/association/events'];
 ---
@@ -15,19 +15,181 @@ const meta = routeMetadata['/demos/association/events'];
 		primaryCta={{ text: 'Register for Conference', href: '/demos/association/events/annual-conference' }}
 		secondaryCta={{ text: 'Browse CE Courses', href: '/demos/association/events' }}
 	/>
-	<section class="assoc-section">
-		<div class="assoc-container placeholder">
-			<div class="placeholder__badge">Coming Soon</div>
-			<h2>CE courses, webinars, and event calendar</h2>
-			<p class="assoc-lead">This page will include filterable CE courses, upcoming webinars, event calendar, and on-demand learning modules — all part of the MHPA demo system.</p>
-			<a class="assoc-btn assoc-btn--secondary" href="/demos/association">← Back to Homepage</a>
+
+	<!-- Featured: Annual Conference -->
+	<section class="assoc-section" aria-labelledby="events-featured-heading">
+		<div class="assoc-container">
+			<p class="assoc-eyebrow">Featured Event</p>
+			<div class="events-featured">
+				<div class="events-featured__content">
+					<h2 id="events-featured-heading">Clinical Leadership Conference 2026</h2>
+					<div class="events-featured__meta">
+						<span>October 15–17, 2026</span>
+						<span class="events-featured__dot" aria-hidden="true">·</span>
+						<span>Sacramento, CA</span>
+						<span class="events-featured__dot" aria-hidden="true">·</span>
+						<span>18 CE hours</span>
+					</div>
+					<p>Three days of keynotes, clinical workshops, advocacy briefings, networking, and career development — designed for healthcare professionals at every level.</p>
+					<div class="assoc-btn-row">
+						<a class="assoc-btn assoc-btn--primary" href="/demos/association/events/annual-conference">View Conference Details</a>
+						<a class="assoc-btn assoc-btn--secondary" href="/demos/association/events/annual-conference#register">Register Now</a>
+					</div>
+				</div>
+				<div class="events-featured__stats" aria-hidden="true">
+					<div class="events-featured__stat"><span>1,200+</span><small>attendees</small></div>
+					<div class="events-featured__stat"><span>42</span><small>sessions</small></div>
+					<div class="events-featured__stat"><span>65</span><small>speakers</small></div>
+					<div class="events-featured__stat"><span>30+</span><small>sponsors</small></div>
+				</div>
+			</div>
 		</div>
 	</section>
+
+	<!-- Education preview -->
+	<section class="assoc-section assoc-section--warm" aria-labelledby="events-edu-heading">
+		<div class="assoc-container">
+			<p class="assoc-eyebrow">CE & On-Demand Learning</p>
+			<h2 id="events-edu-heading">Stay current between events.</h2>
+			<p class="assoc-lead">Access accredited CE courses, recorded webinars, and professional development modules year-round.</p>
+			<div class="events-edu-grid">
+				{resourcePreview.filter((r) => r.category === 'CE Course' || r.category === 'Webinar').map((item) => (
+					<a href={item.href} class="assoc-card events-edu-card">
+						<span class="events-edu-card__cat">{item.category}</span>
+						<h3>{item.title}</h3>
+						<p>{item.description}</p>
+						<span class="events-edu-card__meta">{item.meta}</span>
+					</a>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- Placeholder for future -->
+	<section class="assoc-section">
+		<div class="assoc-container placeholder">
+			<div class="placeholder__badge">More Coming Soon</div>
+			<h2>Full event calendar, webinar archives, and CE catalog</h2>
+			<p class="assoc-lead">This section will expand with a filterable event calendar, on-demand webinar library, and complete CE course catalog as this demo system grows.</p>
+		</div>
+	</section>
+
 	<AssociationFinalCTA />
 </AssociationLayout>
 
 <style>
+	/* Featured conference block */
+	.events-featured {
+		display: grid;
+		grid-template-columns: 1.2fr 0.8fr;
+		gap: clamp(2rem, 5vw, 4rem);
+		align-items: start;
+		margin-top: 0.5rem;
+	}
+	.events-featured__meta {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.4rem;
+		margin-bottom: 0.75rem;
+		font-size: 0.88rem;
+		font-weight: 600;
+		color: var(--assoc-slate);
+	}
+	.events-featured__dot { opacity: 0.35; }
+	.events-featured__content p {
+		font-size: 0.95rem;
+		line-height: 1.6;
+		max-width: 520px;
+	}
+	.events-featured__stats {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 0.75rem;
+	}
+	.events-featured__stat {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+		padding: 1rem;
+		border: 1px solid var(--assoc-border);
+		border-radius: var(--assoc-radius);
+		background: var(--assoc-white);
+		box-shadow: 0 2px 10px rgba(16, 42, 67, 0.04);
+	}
+	.events-featured__stat span {
+		font-size: 1.5rem;
+		font-weight: 800;
+		color: var(--assoc-navy);
+		letter-spacing: -0.02em;
+		line-height: 1;
+	}
+	.events-featured__stat small {
+		font-size: 0.72rem;
+		font-weight: 600;
+		color: var(--assoc-slate);
+		margin-top: 0.2rem;
+	}
+
+	/* Education cards */
+	.events-edu-grid {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 1rem;
+		margin-top: 2rem;
+	}
+	.events-edu-card {
+		display: flex;
+		flex-direction: column;
+		padding: 1.5rem;
+	}
+	.events-edu-card:hover {
+		border-color: var(--assoc-teal);
+		transform: translateY(-1px);
+	}
+	.events-edu-card__cat {
+		display: inline-block;
+		align-self: flex-start;
+		margin-bottom: 0.65rem;
+		padding: 0.18rem 0.5rem;
+		border-radius: 6px;
+		font-size: 0.68rem;
+		font-weight: 700;
+		letter-spacing: 0.05em;
+		text-transform: uppercase;
+		background: var(--assoc-teal-light);
+		color: var(--assoc-teal);
+	}
+	.events-edu-card h3 { font-size: 1.05rem; margin-bottom: 0.35rem; }
+	.events-edu-card p { font-size: 0.88rem; line-height: 1.5; flex: 1; }
+	.events-edu-card__meta {
+		display: block;
+		margin-top: 0.65rem;
+		padding-top: 0.6rem;
+		border-top: 1px solid var(--assoc-border);
+		font-size: 0.75rem;
+		font-weight: 600;
+		color: var(--assoc-teal);
+	}
+
+	/* Placeholder */
 	.placeholder { text-align: center; max-width: 600px; margin-inline: auto; }
-	.placeholder .assoc-lead { margin-inline: auto; margin-bottom: 2rem; }
-	.placeholder__badge { display: inline-block; margin-bottom: 1.5rem; padding: 0.3rem 0.8rem; border-radius: 999px; background: var(--assoc-teal-light); color: var(--assoc-teal); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+	.placeholder .assoc-lead { margin-inline: auto; }
+	.placeholder__badge {
+		display: inline-block;
+		margin-bottom: 1.5rem;
+		padding: 0.3rem 0.8rem;
+		border-radius: 999px;
+		background: var(--assoc-teal-light);
+		color: var(--assoc-teal);
+		font-size: 0.75rem;
+		font-weight: 700;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+	}
+
+	@media (max-width: 768px) {
+		.events-featured { grid-template-columns: 1fr; }
+		.events-edu-grid { grid-template-columns: 1fr; }
+	}
 </style>

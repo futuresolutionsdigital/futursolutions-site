@@ -1,0 +1,56 @@
+---
+import { annualConferenceFirstTimer } from '../../data/association';
+---
+
+<section class="assoc-section" aria-labelledby="first-timer-heading">
+	<div class="assoc-container">
+		<p class="assoc-eyebrow">First-Time Attendees</p>
+		<h2 id="first-timer-heading">New to the conference? Start here.</h2>
+		<p class="assoc-lead">A quick guide to getting the most out of three days in Sacramento.</p>
+		<div class="first-timer-grid">
+			{annualConferenceFirstTimer.map((item, i) => (
+				<div class="first-timer-card">
+					<span class="first-timer-card__step" aria-hidden="true">{i + 1}</span>
+					<div>
+						<h3>{item.title}</h3>
+						<p>{item.description}</p>
+					</div>
+				</div>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+	.first-timer-grid {
+		display: grid;
+		gap: 0;
+		margin-top: 2rem;
+	}
+	.first-timer-card {
+		display: flex;
+		align-items: flex-start;
+		gap: 1.25rem;
+		padding: 1.25rem 0;
+		border-bottom: 1px solid var(--assoc-border);
+	}
+	.first-timer-card:last-child { border-bottom: none; }
+	.first-timer-card__step {
+		flex-shrink: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 2.25rem;
+		height: 2.25rem;
+		border-radius: 50%;
+		background: var(--assoc-teal-light);
+		color: var(--assoc-teal);
+		font-size: 0.88rem;
+		font-weight: 800;
+	}
+	.first-timer-card h3 { font-size: 1rem; margin-bottom: 0.2rem; }
+	.first-timer-card p { font-size: 0.88rem; line-height: 1.5; margin: 0; }
+	@media (max-width: 520px) {
+		.first-timer-card { gap: 0.85rem; }
+	}
+</style>

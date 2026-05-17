@@ -641,6 +641,366 @@ export const membershipFaqs = [
 	},
 ];
 
+// ── Annual Conference: Hero ──
+
+export const annualConferenceHero = {
+	eyebrow: 'Annual Conference',
+	headline: 'Clinical Leadership Conference 2026',
+	lead: 'Three days of clinical education, policy briefings, leadership development, local chapter connection, and career growth for healthcare professionals.',
+	date: 'October 15–17, 2026',
+	location: 'Sacramento, CA',
+	ceHours: '18 CE hours available',
+	attendees: '1,200+ expected attendees',
+	primaryCta: { text: 'Register Now', href: '#register' },
+	secondaryCta: { text: 'View Full Program', href: '#program' },
+	tertiaryLink: { text: 'Sponsor or Exhibit →', href: '#sponsor' },
+} as const;
+
+// ── Annual Conference: Stats ──
+
+export const annualConferenceStats = [
+	{ value: '3', label: 'days' },
+	{ value: '18', label: 'CE hours' },
+	{ value: '42', label: 'sessions' },
+	{ value: '65', label: 'speakers' },
+	{ value: '30+', label: 'sponsors & exhibitors' },
+];
+
+// ── Annual Conference: Why Attend ──
+
+export const annualConferenceReasons = [
+	{
+		title: 'Stay clinically current',
+		description: 'Attend sessions on the latest evidence-based practice, prescribing updates, and emerging clinical technologies — led by experts who understand your day-to-day reality.',
+		linkText: 'View CE Sessions',
+		href: '#program',
+	},
+	{
+		title: 'Understand policy changes',
+		description: 'Get direct legislative briefings, meet advocacy leaders, and leave prepared to navigate the regulatory environment that shapes your scope and your livelihood.',
+		linkText: 'View Advocacy Track',
+		href: '#program',
+	},
+	{
+		title: 'Build your professional network',
+		description: 'Connect with 1,200+ professionals across chapters, specialties, and career stages through receptions, mentorship events, and local chapter meetups.',
+		linkText: 'Explore Networking',
+		href: '#agenda',
+	},
+	{
+		title: 'Bring practical tools back to your team',
+		description: 'Leave with actionable frameworks, practice templates, leadership strategies, and resources you can implement the following Monday.',
+		linkText: 'View All Tracks',
+		href: '#program',
+	},
+];
+
+// ── Annual Conference: Registration Tiers ──
+
+export const annualConferenceRegistration = [
+	{
+		name: 'Member Early Rate',
+		price: '$395',
+		badge: 'Best Value',
+		description: 'Full conference access for current MHPA members who register before August 30.',
+		includes: [
+			'All sessions and keynotes',
+			'18 CE hours',
+			'Networking reception',
+			'Resource library access',
+			'Sponsor showcase access',
+		],
+		cta: { text: 'Register as Member', href: '/demos/association/contact' },
+		featured: true,
+	},
+	{
+		name: 'Non-Member Rate',
+		price: '$545',
+		badge: '',
+		description: 'Full conference access for non-members. Includes all programming and CE.',
+		includes: [
+			'All sessions and keynotes',
+			'18 CE hours',
+			'Networking reception',
+			'Resource library access',
+			'Sponsor showcase access',
+		],
+		cta: { text: 'Register as Non-Member', href: '/demos/association/contact' },
+		featured: false,
+	},
+	{
+		name: 'Student Rate',
+		price: '$145',
+		badge: '',
+		description: 'Designed for students in accredited healthcare programs.',
+		includes: [
+			'Student-track sessions',
+			'Career fair and mentorship reception',
+			'Select CE sessions',
+			'Networking access',
+		],
+		cta: { text: 'Register as Student', href: '/demos/association/contact' },
+		featured: false,
+	},
+	{
+		name: 'Sponsor / Exhibitor',
+		price: 'Custom',
+		badge: '',
+		description: 'Reach 1,200+ healthcare decision-makers through exhibitor and sponsor options.',
+		includes: [
+			'Exhibitor booth options',
+			'Sponsor visibility packages',
+			'Attendee list access',
+			'Recruiting and career exposure',
+		],
+		cta: { text: 'View Sponsor Options', href: '#sponsor' },
+		featured: false,
+	},
+];
+
+// ── Annual Conference: Program Tracks ──
+
+export const annualConferenceTracks = [
+	{
+		title: 'Clinical Practice Updates',
+		description: 'Evidence-based sessions on prescribing, diagnostics, specialty practice, and emerging clinical technologies.',
+		sessions: 12,
+		color: 'teal',
+	},
+	{
+		title: 'Leadership & Operations',
+		description: 'Practical strategies for team leadership, practice management, quality improvement, and organizational resilience.',
+		sessions: 8,
+		color: 'navy',
+	},
+	{
+		title: 'Policy & Advocacy',
+		description: 'Legislative updates, regulatory analysis, scope-of-practice strategy, and grassroots advocacy training.',
+		sessions: 6,
+		color: 'coral',
+	},
+	{
+		title: 'Education & Preceptorship',
+		description: 'Best practices in clinical education, student mentorship, preceptor development, and academic partnerships.',
+		sessions: 5,
+		color: 'slate',
+	},
+	{
+		title: 'Career Growth',
+		description: 'CV workshops, salary negotiation, leadership pipelines, career transitions, and professional branding.',
+		sessions: 6,
+		color: 'teal',
+	},
+	{
+		title: 'Community & Chapter Leadership',
+		description: 'Chapter operations, membership engagement, volunteer leadership, and regional network development.',
+		sessions: 5,
+		color: 'navy',
+	},
+];
+
+// ── Annual Conference: Agenda ──
+
+export const annualConferenceAgenda = [
+	{
+		day: 'Day 1',
+		date: 'Thursday, October 15',
+		items: [
+			{ time: '7:30 AM', title: 'Registration & Chapter Breakfast', type: 'networking' },
+			{ time: '9:00 AM', title: 'Opening Keynote: The Future of Team-Based Care', type: 'keynote' },
+			{ time: '10:30 AM', title: 'Clinical Practice Update Sessions (Tracks 1–3)', type: 'sessions' },
+			{ time: '12:00 PM', title: 'Lunch & Sponsor Showcase', type: 'networking' },
+			{ time: '1:30 PM', title: 'Afternoon Breakout Sessions', type: 'sessions' },
+			{ time: '5:00 PM', title: 'Welcome Reception & Chapter Meetups', type: 'networking' },
+		],
+	},
+	{
+		day: 'Day 2',
+		date: 'Friday, October 16',
+		items: [
+			{ time: '7:30 AM', title: 'Policy Briefing Breakfast', type: 'advocacy' },
+			{ time: '9:00 AM', title: 'Advocacy & Legislative Strategy Panel', type: 'advocacy' },
+			{ time: '10:30 AM', title: 'Morning Breakout Sessions by Track', type: 'sessions' },
+			{ time: '12:00 PM', title: 'Lunch & Career Fair', type: 'networking' },
+			{ time: '1:30 PM', title: 'Afternoon Workshops & Poster Presentations', type: 'sessions' },
+			{ time: '5:30 PM', title: 'Awards & Recognition Reception', type: 'networking' },
+		],
+	},
+	{
+		day: 'Day 3',
+		date: 'Saturday, October 17',
+		items: [
+			{ time: '8:00 AM', title: 'Leadership Roundtables', type: 'sessions' },
+			{ time: '9:30 AM', title: 'Career Development Workshops', type: 'sessions' },
+			{ time: '11:00 AM', title: 'CE Claiming Lab & Evaluations', type: 'ce' },
+			{ time: '12:00 PM', title: 'Closing Keynote: Leading Change from the Inside', type: 'keynote' },
+			{ time: '1:00 PM', title: 'Conference Adjourns', type: 'networking' },
+		],
+	},
+];
+
+// ── Annual Conference: Speakers ──
+
+export const annualConferenceSpeakers = [
+	{
+		name: 'Dr. Elena Marquez',
+		credentials: 'DNP, APRN, FAANP',
+		role: 'Clinical Leadership Keynote',
+		topic: 'The Future of Team-Based Care',
+		track: 'Keynote',
+		initials: 'EM',
+	},
+	{
+		name: 'Jordan Ellis',
+		credentials: 'MPH, JD',
+		role: 'Director, Health Policy Institute',
+		topic: 'Navigating Scope-of-Practice Reform',
+		track: 'Policy & Advocacy',
+		initials: 'JE',
+	},
+	{
+		name: 'Priya Raman',
+		credentials: 'DNP, FNP-C',
+		role: 'Innovation & Practice Lead',
+		topic: 'Integrating AI-Assisted Decision Support',
+		track: 'Clinical Practice',
+		initials: 'PR',
+	},
+	{
+		name: 'Marcus Chen',
+		credentials: 'PhD, RN',
+		role: 'Workforce Research Fellow',
+		topic: 'Retention, Resilience, and the Burnout Crisis',
+		track: 'Leadership',
+		initials: 'MC',
+	},
+	{
+		name: 'Lena Torres',
+		credentials: 'MSN, CNE',
+		role: 'Clinical Education Director',
+		topic: 'Building Preceptor Programs That Work',
+		track: 'Education',
+		initials: 'LT',
+	},
+	{
+		name: 'Devon Walker',
+		credentials: 'MPA',
+		role: 'MHPA Advocacy Director',
+		topic: 'From Grassroots to Governance',
+		track: 'Community',
+		initials: 'DW',
+	},
+];
+
+// ── Annual Conference: CE ──
+
+export const annualConferenceCE = {
+	headline: 'Earn CE while building practical skill.',
+	hours: '18',
+	description: 'The Clinical Leadership Conference offers up to 18 contact hours of accredited continuing education across clinical, policy, leadership, and career development tracks.',
+	details: [
+		'Live session attendance tracking via conference app',
+		'On-demand session access for 90 days post-conference',
+		'Evaluation and certificate available online within 48 hours',
+		'Pharmacology and clinical CE hours included in select tracks',
+		'Student CE hours available in designated sessions',
+	],
+	disclaimer: 'Credit language is sample content for this fictional demo and would be reviewed by the appropriate accrediting body for a real association.',
+	cta: { text: 'View CE Information', href: '/demos/association/events' },
+} as const;
+
+// ── Annual Conference: Sponsors ──
+
+export const annualConferenceSponsors = {
+	headline: 'Connect your organization with healthcare decision-makers.',
+	description: 'Sponsoring the Clinical Leadership Conference puts your organization in front of 1,200+ healthcare professionals, clinical leaders, and employers across the state.',
+	packages: [
+		{
+			name: 'Exhibitor',
+			price: 'From $1,500',
+			includes: ['6×8 booth space', 'Attendee list access', 'Logo on event materials', 'Two exhibitor passes'],
+		},
+		{
+			name: 'Supporting Sponsor',
+			price: 'From $5,000',
+			includes: ['Premium booth location', 'Session sponsorship option', 'Logo on signage and app', 'Four attendee passes', 'Newsletter feature'],
+		},
+		{
+			name: 'Premier Partner',
+			price: 'From $15,000',
+			includes: ['Keynote or reception naming', 'Premier booth placement', 'Full attendee list', 'Six attendee passes', 'Year-round brand visibility', 'Custom activation opportunity'],
+		},
+	],
+	cta: { text: 'Explore Sponsor Options', href: '/demos/association/contact' },
+} as const;
+
+// ── Annual Conference: Venue ──
+
+export const annualConferenceVenue = {
+	name: 'Sacramento Convention Center',
+	address: '1400 J Street, Sacramento, CA 95814',
+	hotelBlock: 'Discounted room blocks available at the Hyatt Regency Sacramento and Sheraton Grand Sacramento through September 15.',
+	travel: 'The convention center is a 15-minute drive from Sacramento International Airport (SMF). On-site parking is available, and the venue is accessible by light rail.',
+	accessibility: 'The venue is fully ADA accessible. Contact the MHPA events team in advance with specific accommodation requests.',
+	cta: { text: 'View Travel Details', href: '/demos/association/contact' },
+} as const;
+
+// ── Annual Conference: First-Timer Guide ──
+
+export const annualConferenceFirstTimer = [
+	{ title: 'Choose your sessions', description: 'Browse the program by track and build a personal schedule that matches your clinical interests and career goals.' },
+	{ title: 'Plan your CE', description: 'Review which sessions offer CE credit and bring your license information for quick certificate processing.' },
+	{ title: 'Meet your chapter', description: 'Look for your chapter meetup at the Thursday welcome reception — it is the easiest way to find peers from your region.' },
+	{ title: 'Prepare for advocacy', description: 'Read the policy briefing summary (emailed pre-conference) so you can engage meaningfully in the Friday legislative sessions.' },
+	{ title: 'What to bring', description: 'Bring business cards, a notebook, comfortable shoes, and a plan to follow up with at least three new connections.' },
+];
+
+// ── Annual Conference: Deadlines ──
+
+export const annualConferenceDeadlines = [
+	{ date: 'August 30', label: 'Early registration deadline' },
+	{ date: 'September 15', label: 'Hotel block cutoff' },
+	{ date: 'September 22', label: 'Session app and schedule release' },
+	{ date: 'October 1', label: 'Final sponsor commitment deadline' },
+];
+
+// ── Annual Conference: FAQ ──
+
+export const annualConferenceFaqs = [
+	{
+		question: 'Who should attend the conference?',
+		answer: 'The conference is designed for practicing healthcare professionals, students, clinical leaders, educators, chapter leaders, employers, and anyone interested in the future of healthcare practice and policy.',
+	},
+	{
+		question: 'Is CE credit available?',
+		answer: 'Yes. Up to 18 contact hours of continuing education credit are available across clinical, policy, leadership, and career development tracks. Credit details are published in the program guide.',
+	},
+	{
+		question: 'Do MHPA members receive a registration discount?',
+		answer: 'Yes. Members receive the early member rate of $395 (compared to $545 for non-members). Student members receive a rate of $145.',
+	},
+	{
+		question: 'Can students attend?',
+		answer: 'Absolutely. Student registration ($145) includes access to student-track sessions, the career fair, mentorship reception, and select CE sessions.',
+	},
+	{
+		question: 'Are sessions recorded for later viewing?',
+		answer: 'Select sessions are available on-demand for 90 days after the conference through the MHPA learning portal. Not all sessions are recorded.',
+	},
+	{
+		question: 'How do I sponsor or exhibit at the conference?',
+		answer: 'Exhibitor and sponsor packages start at $1,500. Contact the MHPA events team or visit the sponsor section of this page for package details and availability.',
+	},
+	{
+		question: 'Will there be networking events?',
+		answer: 'Yes. The conference includes a welcome reception, chapter meetups, a career fair, a sponsor showcase, and a recognition awards reception — plus informal networking throughout.',
+	},
+	{
+		question: 'How do I claim my CE certificate?',
+		answer: 'Complete session evaluations through the conference app or online portal. Certificates are available for download within 48 hours of evaluation submission.',
+	},
+];
+
 // ── Future Route Metadata ──
 
 export const routeMetadata: Record<string, { title: string; description: string }> = {

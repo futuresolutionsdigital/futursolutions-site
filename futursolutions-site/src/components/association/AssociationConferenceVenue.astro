@@ -1,0 +1,80 @@
+---
+import { annualConferenceVenue } from '../../data/association';
+const v = annualConferenceVenue;
+---
+
+<section class="assoc-section assoc-section--warm" id="travel" aria-labelledby="venue-heading">
+	<div class="assoc-container venue__inner">
+		<div class="venue__content">
+			<p class="assoc-eyebrow">Venue & Travel</p>
+			<h2 id="venue-heading">Meet in Sacramento.</h2>
+			<a class="assoc-btn assoc-btn--secondary" href={v.cta.href}>{v.cta.text}</a>
+		</div>
+		<div class="venue__cards">
+			<div class="venue-card">
+				<h3>
+					<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+					Venue
+				</h3>
+				<p><strong>{v.name}</strong></p>
+				<p>{v.address}</p>
+			</div>
+			<div class="venue-card">
+				<h3>
+					<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+					Hotels
+				</h3>
+				<p>{v.hotelBlock}</p>
+			</div>
+			<div class="venue-card">
+				<h3>
+					<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+					Travel & Parking
+				</h3>
+				<p>{v.travel}</p>
+			</div>
+			<div class="venue-card">
+				<h3>
+					<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+					Accessibility
+				</h3>
+				<p>{v.accessibility}</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.venue__inner {
+		display: grid;
+		grid-template-columns: 0.4fr 0.6fr;
+		gap: clamp(2rem, 5vw, 4rem);
+		align-items: start;
+	}
+	.venue__content .assoc-btn { margin-top: 1.5rem; }
+	.venue__cards { display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem; }
+	.venue-card {
+		padding: 1.15rem;
+		border: 1px solid var(--assoc-border);
+		border-radius: var(--assoc-radius);
+		background: var(--assoc-white);
+	}
+	.venue-card h3 {
+		display: flex;
+		align-items: center;
+		gap: 0.4rem;
+		font-size: 0.85rem;
+		margin-bottom: 0.35rem;
+	}
+	.venue-card h3 svg { display: inline; flex-shrink: 0; color: var(--assoc-teal); }
+	.venue-card p { font-size: 0.84rem; line-height: 1.5; margin: 0; }
+	.venue-card p strong { color: var(--assoc-navy); }
+	.venue-card p + p { margin-top: 0.25rem; }
+	@media (max-width: 768px) {
+		.venue__inner { grid-template-columns: 1fr; }
+		.venue__cards { grid-template-columns: 1fr 1fr; }
+	}
+	@media (max-width: 520px) {
+		.venue__cards { grid-template-columns: 1fr; }
+	}
+</style>

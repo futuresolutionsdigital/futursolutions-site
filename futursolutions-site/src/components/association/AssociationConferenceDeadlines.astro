@@ -1,0 +1,76 @@
+---
+import { annualConferenceDeadlines } from '../../data/association';
+---
+
+<section class="deadlines" aria-labelledby="deadlines-heading">
+	<div class="assoc-container deadlines__inner">
+		<div class="deadlines__content">
+			<p class="deadlines__eyebrow">Important Dates</p>
+			<h2 id="deadlines-heading">Registration rates change August 30.</h2>
+			<div class="assoc-btn-row">
+				<a class="assoc-btn assoc-btn--coral" href="#register">Register Before Rates Increase</a>
+			</div>
+		</div>
+		<div class="deadlines__list">
+			{annualConferenceDeadlines.map((d) => (
+				<div class="deadlines__item">
+					<span class="deadlines__date">{d.date}</span>
+					<span class="deadlines__label">{d.label}</span>
+				</div>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+	.deadlines {
+		padding-block: clamp(2rem, 4vw, 3.5rem);
+		background: var(--assoc-coral-light);
+		border-block: 1px solid color-mix(in srgb, var(--assoc-coral) 12%, transparent);
+	}
+	.deadlines__inner {
+		display: flex;
+		align-items: center;
+		gap: clamp(2rem, 5vw, 4rem);
+	}
+	.deadlines__content { flex: 1; }
+	.deadlines__eyebrow {
+		font-size: 0.72rem;
+		font-weight: 800;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		color: var(--assoc-coral);
+		margin-bottom: 0.5rem;
+	}
+	.deadlines h2 { font-size: clamp(1.3rem, 1.15rem + 0.6vw, 1.7rem); text-wrap: balance; margin-bottom: 0; }
+	.deadlines__list {
+		display: grid;
+		gap: 0.5rem;
+		flex-shrink: 0;
+	}
+	.deadlines__item {
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+		padding: 0.55rem 0.85rem;
+		border: 1px solid color-mix(in srgb, var(--assoc-coral) 12%, var(--assoc-border));
+		border-radius: 8px;
+		background: var(--assoc-white);
+	}
+	.deadlines__date {
+		flex-shrink: 0;
+		min-width: 4.5rem;
+		font-size: 0.82rem;
+		font-weight: 800;
+		color: var(--assoc-coral);
+	}
+	.deadlines__label {
+		font-size: 0.82rem;
+		font-weight: 600;
+		color: var(--assoc-navy);
+	}
+	@media (max-width: 768px) {
+		.deadlines__inner { flex-direction: column; align-items: flex-start; }
+		.deadlines__list { width: 100%; }
+	}
+</style>

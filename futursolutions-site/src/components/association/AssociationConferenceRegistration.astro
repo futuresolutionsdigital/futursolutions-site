@@ -1,0 +1,116 @@
+---
+import { annualConferenceRegistration } from '../../data/association';
+---
+
+<section class="assoc-section assoc-section--warm" id="register" aria-labelledby="reg-heading">
+	<div class="assoc-container">
+		<p class="assoc-eyebrow">Registration</p>
+		<h2 id="reg-heading">Choose your registration path.</h2>
+		<p class="assoc-lead">All rates include full conference access, CE credit, and networking events unless otherwise noted.</p>
+		<p class="reg-note">Demo pricing shown for template presentation purposes.</p>
+		<div class="reg-grid">
+			{annualConferenceRegistration.map((tier) => (
+				<div class:list={['reg-card', { 'reg-card--featured': tier.featured }]}>
+					{tier.badge && <div class="reg-card__badge">{tier.badge}</div>}
+					<h3 class="reg-card__name">{tier.name}</h3>
+					<div class="reg-card__price">
+						<span class="reg-card__amount">{tier.price}</span>
+					</div>
+					<p class="reg-card__desc">{tier.description}</p>
+					<ul class="reg-card__includes">
+						{tier.includes.map((item) => (
+							<li>
+								<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+								<span>{item}</span>
+							</li>
+						))}
+					</ul>
+					<a class:list={['assoc-btn', tier.featured ? 'assoc-btn--primary' : 'assoc-btn--secondary', 'reg-card__cta']} href={tier.cta.href}>{tier.cta.text}</a>
+				</div>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+	.reg-note {
+		font-size: 0.76rem;
+		color: var(--assoc-slate);
+		opacity: 0.65;
+		margin-top: -0.5rem;
+	}
+	.reg-grid {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 1rem;
+		margin-top: 2rem;
+		align-items: start;
+	}
+	.reg-card {
+		display: flex;
+		flex-direction: column;
+		padding: 1.5rem 1.25rem;
+		border: 1px solid var(--assoc-border);
+		border-radius: var(--assoc-radius);
+		background: var(--assoc-white);
+		position: relative;
+		box-shadow: 0 2px 12px rgba(16, 42, 67, 0.04);
+	}
+	.reg-card--featured {
+		border-color: var(--assoc-teal);
+		box-shadow: 0 8px 28px rgba(31, 111, 120, 0.1);
+	}
+	.reg-card__badge {
+		position: absolute;
+		top: -0.55rem;
+		left: 50%;
+		transform: translateX(-50%);
+		padding: 0.18rem 0.65rem;
+		border-radius: 999px;
+		background: var(--assoc-teal);
+		color: var(--assoc-white);
+		font-size: 0.65rem;
+		font-weight: 700;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+		white-space: nowrap;
+	}
+	.reg-card__name { font-size: 1rem; margin-bottom: 0.4rem; }
+	.reg-card--featured .reg-card__name { margin-top: 0.4rem; }
+	.reg-card__price { margin-bottom: 0.5rem; }
+	.reg-card__amount {
+		font-size: 1.75rem;
+		font-weight: 800;
+		color: var(--assoc-navy);
+		letter-spacing: -0.02em;
+		line-height: 1;
+	}
+	.reg-card__desc {
+		font-size: 0.82rem;
+		line-height: 1.45;
+		margin-bottom: 1rem;
+		padding-bottom: 0.85rem;
+		border-bottom: 1px solid var(--assoc-border);
+	}
+	.reg-card__includes {
+		margin: 0; padding: 0; list-style: none;
+		display: grid; gap: 0.45rem; flex: 1;
+	}
+	.reg-card__includes li {
+		display: flex;
+		align-items: flex-start;
+		gap: 0.45rem;
+		font-size: 0.82rem;
+		font-weight: 500;
+		color: var(--assoc-navy);
+		line-height: 1.3;
+	}
+	.reg-card__includes li svg { display: inline; flex-shrink: 0; margin-top: 0.1rem; color: var(--assoc-teal); }
+	.reg-card__cta { margin-top: 1.25rem; width: 100%; text-align: center; }
+	@media (max-width: 960px) {
+		.reg-grid { grid-template-columns: 1fr 1fr; }
+	}
+	@media (max-width: 520px) {
+		.reg-grid { grid-template-columns: 1fr; max-width: 380px; }
+	}
+</style>

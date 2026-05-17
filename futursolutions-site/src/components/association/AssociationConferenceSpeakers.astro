@@ -1,0 +1,86 @@
+---
+import { annualConferenceSpeakers } from '../../data/association';
+const bgColors = ['var(--assoc-teal)', 'var(--assoc-navy)', 'var(--assoc-coral)', 'var(--assoc-slate)', 'var(--assoc-teal)', 'var(--assoc-navy)'];
+---
+
+<section class="assoc-section" id="speakers" aria-labelledby="speakers-heading">
+	<div class="assoc-container">
+		<p class="assoc-eyebrow">Speakers</p>
+		<h2 id="speakers-heading">Hear from clinical, policy, and leadership voices.</h2>
+		<p class="assoc-lead">65 speakers, panelists, and facilitators across 42 sessions. Here are a few highlights.</p>
+		<div class="speakers-grid">
+			{annualConferenceSpeakers.map((s, i) => (
+				<div class="assoc-card speaker-card">
+					<div class="speaker-card__avatar" style={`background: ${bgColors[i]}`} aria-hidden="true">
+						<span>{s.initials}</span>
+					</div>
+					<div class="speaker-card__info">
+						<h3>{s.name}</h3>
+						<p class="speaker-card__cred">{s.credentials}</p>
+						<p class="speaker-card__role">{s.role}</p>
+						<p class="speaker-card__topic">&ldquo;{s.topic}&rdquo;</p>
+						<span class="speaker-card__track">{s.track}</span>
+					</div>
+				</div>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+	.speakers-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 1rem;
+		margin-top: 2rem;
+	}
+	.speaker-card {
+		display: flex;
+		gap: 1rem;
+		padding: 1.25rem;
+	}
+	.speaker-card__avatar {
+		flex-shrink: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 3rem;
+		height: 3rem;
+		border-radius: 50%;
+		color: var(--assoc-white);
+	}
+	.speaker-card__avatar span {
+		font-size: 0.82rem;
+		font-weight: 800;
+		letter-spacing: 0.03em;
+	}
+	.speaker-card__info { flex: 1; }
+	.speaker-card h3 { font-size: 1rem; margin-bottom: 0.1rem; }
+	.speaker-card__cred { font-size: 0.75rem; font-weight: 600; color: var(--assoc-teal); margin-bottom: 0.15rem; }
+	.speaker-card__role { font-size: 0.78rem; margin-bottom: 0.4rem; }
+	.speaker-card__topic {
+		font-size: 0.88rem;
+		font-weight: 600;
+		color: var(--assoc-navy);
+		font-style: italic;
+		line-height: 1.35;
+		margin-bottom: 0.5rem;
+	}
+	.speaker-card__track {
+		display: inline-block;
+		padding: 0.15rem 0.45rem;
+		border-radius: 4px;
+		font-size: 0.65rem;
+		font-weight: 700;
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
+		background: var(--assoc-teal-light);
+		color: var(--assoc-teal);
+	}
+	@media (max-width: 768px) {
+		.speakers-grid { grid-template-columns: 1fr 1fr; }
+	}
+	@media (max-width: 520px) {
+		.speakers-grid { grid-template-columns: 1fr; }
+	}
+</style>

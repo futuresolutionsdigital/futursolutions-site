@@ -1,0 +1,50 @@
+---
+import { annualConferenceReasons } from '../../data/association';
+---
+
+<section class="assoc-section" aria-labelledby="reasons-heading">
+	<div class="assoc-container">
+		<p class="assoc-eyebrow">Why Attend</p>
+		<h2 id="reasons-heading">Built for the professionals moving healthcare forward.</h2>
+		<div class="reasons-grid">
+			{annualConferenceReasons.map((r, i) => (
+				<div class="assoc-card reason-card">
+					<span class="reason-card__num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+					<h3>{r.title}</h3>
+					<p>{r.description}</p>
+					<a class="reason-card__link" href={r.href}>{r.linkText} →</a>
+				</div>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+	.reasons-grid {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 1rem;
+		margin-top: 2rem;
+	}
+	.reason-card { padding: 1.5rem; display: flex; flex-direction: column; }
+	.reason-card__num {
+		font-size: 1.3rem;
+		font-weight: 800;
+		color: var(--assoc-teal);
+		opacity: 0.3;
+		margin-bottom: 0.75rem;
+		line-height: 1;
+	}
+	.reason-card h3 { font-size: 1.1rem; }
+	.reason-card p { font-size: 0.9rem; line-height: 1.55; flex: 1; }
+	.reason-card__link {
+		margin-top: 0.75rem;
+		font-size: 0.82rem;
+		font-weight: 700;
+		color: var(--assoc-teal);
+	}
+	.reason-card__link:hover { color: var(--assoc-navy); }
+	@media (max-width: 600px) {
+		.reasons-grid { grid-template-columns: 1fr; }
+	}
+</style>

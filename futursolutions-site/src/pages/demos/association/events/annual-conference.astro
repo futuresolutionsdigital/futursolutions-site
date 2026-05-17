@@ -1,33 +1,85 @@
 ---
 import AssociationLayout from '../../../../layouts/AssociationLayout.astro';
-import AssociationPageHero from '../../../../components/association/AssociationPageHero.astro';
-import AssociationFinalCTA from '../../../../components/association/AssociationFinalCTA.astro';
+import AssociationConferenceHero from '../../../../components/association/AssociationConferenceHero.astro';
+import AssociationConferenceStats from '../../../../components/association/AssociationConferenceStats.astro';
+import AssociationConferenceReasons from '../../../../components/association/AssociationConferenceReasons.astro';
+import AssociationConferenceRegistration from '../../../../components/association/AssociationConferenceRegistration.astro';
+import AssociationConferenceTracks from '../../../../components/association/AssociationConferenceTracks.astro';
+import AssociationConferenceAgenda from '../../../../components/association/AssociationConferenceAgenda.astro';
+import AssociationConferenceSpeakers from '../../../../components/association/AssociationConferenceSpeakers.astro';
+import AssociationConferenceCE from '../../../../components/association/AssociationConferenceCE.astro';
+import AssociationConferenceSponsors from '../../../../components/association/AssociationConferenceSponsors.astro';
+import AssociationConferenceVenue from '../../../../components/association/AssociationConferenceVenue.astro';
+import AssociationConferenceFirstTimer from '../../../../components/association/AssociationConferenceFirstTimer.astro';
+import AssociationConferenceDeadlines from '../../../../components/association/AssociationConferenceDeadlines.astro';
+import AssociationConferenceFAQ from '../../../../components/association/AssociationConferenceFAQ.astro';
 import { routeMetadata } from '../../../../data/association';
 
 const meta = routeMetadata['/demos/association/events/annual-conference'];
 ---
 
 <AssociationLayout title={meta.title} description={meta.description}>
-	<AssociationPageHero
-		eyebrow="Annual Conference"
-		headline="Clinical Leadership Conference 2026"
-		lead="October 15–17 in Sacramento. Three days of keynotes, clinical workshops, advocacy briefings, networking, and career development for 1,200+ healthcare professionals."
-		primaryCta={{ text: 'Register Now', href: '/demos/association/events/annual-conference' }}
-		secondaryCta={{ text: 'View Full Program', href: '/demos/association/events/annual-conference' }}
-	/>
-	<section class="assoc-section">
-		<div class="assoc-container placeholder">
-			<div class="placeholder__badge">Coming Soon</div>
-			<h2>Full conference schedule, speakers, and registration</h2>
-			<p class="assoc-lead">This page will include the full program, speaker lineup, session tracks, registration tiers, hotel information, and exhibitor details — all part of the MHPA demo system.</p>
-			<a class="assoc-btn assoc-btn--secondary" href="/demos/association">← Back to Homepage</a>
+	<AssociationConferenceHero />
+	<AssociationConferenceStats />
+	<AssociationConferenceReasons />
+	<AssociationConferenceRegistration />
+	<AssociationConferenceTracks />
+	<AssociationConferenceAgenda />
+	<AssociationConferenceSpeakers />
+	<AssociationConferenceCE />
+	<AssociationConferenceSponsors />
+	<AssociationConferenceVenue />
+	<AssociationConferenceFirstTimer />
+	<AssociationConferenceDeadlines />
+	<AssociationConferenceFAQ />
+
+	<!-- Final CTA -->
+	<section class="conf-final-cta" aria-labelledby="conf-final-heading">
+		<div class="assoc-container conf-final-cta__inner">
+			<h2 id="conf-final-heading">Join the professionals shaping what comes next.</h2>
+			<p class="assoc-lead">Register for three days of education, advocacy, leadership, and connection with the MHPA community.</p>
+			<div class="assoc-btn-row">
+				<a class="assoc-btn conf-final-cta__primary" href="#register">Register Now</a>
+				<a class="assoc-btn conf-final-cta__ghost" href="/demos/association/membership">Explore Membership</a>
+			</div>
 		</div>
 	</section>
-	<AssociationFinalCTA />
 </AssociationLayout>
 
 <style>
-	.placeholder { text-align: center; max-width: 600px; margin-inline: auto; }
-	.placeholder .assoc-lead { margin-inline: auto; margin-bottom: 2rem; }
-	.placeholder__badge { display: inline-block; margin-bottom: 1.5rem; padding: 0.3rem 0.8rem; border-radius: 999px; background: var(--assoc-teal-light); color: var(--assoc-teal); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+	.conf-final-cta {
+		padding-block: var(--assoc-section-spacing);
+		background: var(--assoc-navy);
+		color: var(--assoc-white);
+	}
+	.conf-final-cta__inner {
+		max-width: 680px;
+		text-align: center;
+		margin-inline: auto;
+	}
+	.conf-final-cta h2 {
+		color: var(--assoc-white);
+		text-wrap: balance;
+	}
+	.conf-final-cta .assoc-lead {
+		color: rgba(255, 255, 255, 0.6);
+		margin-inline: auto;
+	}
+	.conf-final-cta .assoc-btn-row { justify-content: center; }
+	.conf-final-cta__primary {
+		background: var(--assoc-teal) !important;
+		color: var(--assoc-white) !important;
+	}
+	.conf-final-cta__primary:hover {
+		background: color-mix(in srgb, var(--assoc-teal) 80%, var(--assoc-white)) !important;
+	}
+	.conf-final-cta__ghost {
+		border-color: rgba(255, 255, 255, 0.2) !important;
+		background: transparent !important;
+		color: var(--assoc-white) !important;
+	}
+	.conf-final-cta__ghost:hover {
+		border-color: rgba(255, 255, 255, 0.4) !important;
+		background: rgba(255, 255, 255, 0.06) !important;
+	}
 </style>

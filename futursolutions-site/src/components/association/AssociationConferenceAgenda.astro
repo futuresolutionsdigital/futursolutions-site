@@ -1,0 +1,107 @@
+---
+import { annualConferenceAgenda } from '../../data/association';
+const typeColors: Record<string, string> = {
+	keynote: 'var(--assoc-navy)',
+	sessions: 'var(--assoc-teal)',
+	networking: 'var(--assoc-slate)',
+	advocacy: 'var(--assoc-coral)',
+	ce: 'var(--assoc-teal)',
+};
+---
+
+<section class="assoc-section assoc-section--warm" id="agenda" aria-labelledby="agenda-heading">
+	<div class="assoc-container">
+		<p class="assoc-eyebrow">Schedule</p>
+		<h2 id="agenda-heading">Three days of sessions, connection, and practical learning.</h2>
+		<p class="assoc-lead">A preview of the conference schedule. The full program with session details will be available in September.</p>
+		<div class="agenda-days">
+			{annualConferenceAgenda.map((day) => (
+				<div class="agenda-day">
+					<div class="agenda-day__header">
+						<span class="agenda-day__label">{day.day}</span>
+						<span class="agenda-day__date">{day.date}</span>
+					</div>
+					<div class="agenda-day__items">
+						{day.items.map((item) => (
+							<div class="agenda-item" style={`--type-color: ${typeColors[item.type] || typeColors.sessions}`}>
+								<span class="agenda-item__time">{item.time}</span>
+								<span class="agenda-item__dot"></span>
+								<span class="agenda-item__title">{item.title}</span>
+							</div>
+						))}
+					</div>
+				</div>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+	.agenda-days {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 1rem;
+		margin-top: 2rem;
+	}
+	.agenda-day {
+		border: 1px solid var(--assoc-border);
+		border-radius: var(--assoc-radius);
+		background: var(--assoc-white);
+		overflow: hidden;
+	}
+	.agenda-day__header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 0.85rem 1.25rem;
+		background: var(--assoc-navy);
+		color: var(--assoc-white);
+	}
+	.agenda-day__label {
+		font-size: 0.78rem;
+		font-weight: 800;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+	}
+	.agenda-day__date {
+		font-size: 0.72rem;
+		font-weight: 600;
+		opacity: 0.65;
+	}
+	.agenda-day__items {
+		padding: 0.5rem 1.25rem;
+	}
+	.agenda-item {
+		display: flex;
+		align-items: flex-start;
+		gap: 0.6rem;
+		padding: 0.7rem 0;
+		border-bottom: 1px solid var(--assoc-border);
+	}
+	.agenda-item:last-child { border-bottom: none; }
+	.agenda-item__time {
+		flex-shrink: 0;
+		min-width: 4.5rem;
+		font-size: 0.75rem;
+		font-weight: 700;
+		color: var(--assoc-slate);
+		padding-top: 0.1rem;
+	}
+	.agenda-item__dot {
+		flex-shrink: 0;
+		width: 6px;
+		height: 6px;
+		border-radius: 50%;
+		background: var(--type-color);
+		margin-top: 0.35rem;
+	}
+	.agenda-item__title {
+		font-size: 0.88rem;
+		font-weight: 600;
+		color: var(--assoc-navy);
+		line-height: 1.35;
+	}
+	@media (max-width: 900px) {
+		.agenda-days { grid-template-columns: 1fr; max-width: 520px; }
+	}
+</style>

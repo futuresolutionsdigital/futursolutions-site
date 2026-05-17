@@ -1,0 +1,68 @@
+---
+import { annualConferenceTracks } from '../../data/association';
+const colorMap: Record<string, string> = {
+	teal: 'var(--assoc-teal)',
+	navy: 'var(--assoc-navy)',
+	coral: 'var(--assoc-coral)',
+	slate: 'var(--assoc-slate)',
+};
+---
+
+<section class="assoc-section" id="program" aria-labelledby="tracks-heading">
+	<div class="assoc-container">
+		<p class="assoc-eyebrow">Program</p>
+		<h2 id="tracks-heading">Explore conference tracks.</h2>
+		<p class="assoc-lead">Six curated tracks cover the topics that matter most to your practice, career, and professional community.</p>
+		<div class="tracks-grid">
+			{annualConferenceTracks.map((t) => (
+				<div class="assoc-card track-card" style={`--track-color: ${colorMap[t.color] || colorMap.teal}`}>
+					<div class="track-card__accent"></div>
+					<div class="track-card__body">
+						<span class="track-card__tag">{t.sessions} sessions</span>
+						<h3>{t.title}</h3>
+						<p>{t.description}</p>
+					</div>
+				</div>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+	.tracks-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 1rem;
+		margin-top: 2rem;
+	}
+	.track-card {
+		display: flex;
+		overflow: hidden;
+	}
+	.track-card__accent {
+		width: 4px;
+		flex-shrink: 0;
+		background: var(--track-color);
+	}
+	.track-card__body { padding: 1.25rem; flex: 1; }
+	.track-card__tag {
+		display: inline-block;
+		margin-bottom: 0.65rem;
+		padding: 0.15rem 0.5rem;
+		border-radius: 6px;
+		font-size: 0.68rem;
+		font-weight: 700;
+		letter-spacing: 0.05em;
+		text-transform: uppercase;
+		background: color-mix(in srgb, var(--track-color) 10%, var(--assoc-white));
+		color: var(--track-color);
+	}
+	.track-card h3 { font-size: 1.05rem; margin-bottom: 0.3rem; }
+	.track-card p { font-size: 0.85rem; line-height: 1.5; margin: 0; }
+	@media (max-width: 768px) {
+		.tracks-grid { grid-template-columns: 1fr 1fr; }
+	}
+	@media (max-width: 520px) {
+		.tracks-grid { grid-template-columns: 1fr; }
+	}
+</style>
