@@ -2,12 +2,11 @@
 import { resourceLibraryItems, resourceFilters } from '../../data/association';
 ---
 
-<section class="assoc-section assoc-section--warm" id="library" aria-labelledby="res-library-heading">
+<section class="assoc-section assoc-section--warm" id="library" aria-labelledby="res-library-heading" data-resource-library>
 	<div class="assoc-container">
 		<p class="assoc-eyebrow">Resource Library</p>
 		<h2 id="res-library-heading">Find the right resource faster.</h2>
 
-		<!-- Filters -->
 		<div class="res-filters" role="search" aria-label="Filter resources">
 			<div class="res-filters__row">
 				<div class="res-filters__field res-filters__field--search">
@@ -46,10 +45,8 @@ import { resourceLibraryItems, resourceFilters } from '../../data/association';
 			</div>
 		</div>
 
-		<!-- Count -->
-		<p class="res-count" data-res-count>Showing {resourceLibraryItems.length} resources</p>
+		<p class="res-count" data-res-count></p>
 
-		<!-- Grid -->
 		<div class="res-grid" data-res-grid>
 			{resourceLibraryItems.map((r) => (
 				<a
@@ -81,31 +78,39 @@ import { resourceLibraryItems, resourceFilters } from '../../data/association';
 			))}
 		</div>
 
-		<!-- Empty state -->
 		<div class="res-empty" data-res-empty hidden>
 			<p>No resources match your filters. Try clearing one filter or browsing all resources.</p>
 			<button class="assoc-btn assoc-btn--secondary" type="button" data-res-clear-empty>Clear Filters</button>
 		</div>
+
+		<nav class="res-pagination" aria-label="Resource library pagination" data-res-pagination></nav>
 	</div>
 </section>
 
 <script is:inline>
 (() => {
-	const grid = document.querySelector('[data-res-grid]');
-	const cards = grid ? grid.querySelectorAll('[data-res-card]') : [];
-	const search = document.querySelector('[data-res-search]');
-	const filters = document.querySelectorAll('[data-res-filter]');
-	const countEl = document.querySelector('[data-res-count]');
-	const emptyEl = document.querySelector('[data-res-empty]');
-	const clearBtns = document.querySelectorAll('[data-res-clear], [data-res-clear-empty]');
-	if (!grid || !cards.length) return;
+	var root = document.querySelector('[data-resource-library]');
+	if (!root) return;
+	var grid = root.querySelector('[data-res-grid]');
+	var allCards = grid ? Array.prototype.slice.call(grid.querySelectorAll('[data-res-card]')) : [];
+	var search = root.querySelector('[data-res-search]');
+	var filters = root.querySelectorAll('[data-res-filter]');
+	var countEl = root.querySelector('[data-res-count]');
+	var emptyEl = root.querySelector('[data-res-empty]');
+	var clearBtns = root.querySelectorAll('[data-res-clear], [data-res-clear-empty]');
+	var pagNav = root.querySelector('[data-res-pagination]');
+	if (!allCards.length) return;
 
-	function apply() {
-		const q = (search ? search.value : '').toLowerCase().trim();
-		const vals = {};
+	var PAGE_SIZE = 9;
+	var currentPage = 1;
+
+	function getFiltered() {
+		var q = (search ? search.value : '').toLowerCase().trim();
+		var vals = {};
 		filters.forEach(function(f) { vals[f.getAttribute('data-res-filter')] = f.value; });
-		var shown = 0;
-		cards.forEach(function(card) {
+		var result = [];
+		for (var i = 0; i < allCards.length; i++) {
+			var card = allCards[i];
 			var match = true;
 			if (q) {
 				var t = card.getAttribute('data-res-title') || '';
@@ -116,22 +121,78 @@ import { resourceLibraryItems, resourceFilters } from '../../data/association';
 			if (match && vals.type && card.getAttribute('data-res-type') !== vals.type) match = false;
 			if (match && vals.access && card.getAttribute('data-res-access') !== vals.access) match = false;
 			if (match && vals.ce && card.getAttribute('data-res-ce') !== vals.ce) match = false;
-			card.classList.toggle('is-hidden', !match);
-			if (match) shown++;
-		});
-		if (countEl) countEl.textContent = 'Showing ' + shown + ' resource' + (shown !== 1 ? 's' : '');
-		if (emptyEl) emptyEl.hidden = shown > 0;
+			if (match) result.push(card);
+		}
+		return result;
 	}
 
-	if (search) search.addEventListener('input', apply);
-	filters.forEach(function(f) { f.addEventListener('change', apply); });
+	function render() {
+		var filtered = getFiltered();
+		var total = filtered.length;
+		var totalPages = Math.max(1, Math.ceil(total / PAGE_SIZE));
+		if (currentPage > totalPages) currentPage = totalPages;
+		var start = (currentPage - 1) * PAGE_SIZE;
+		var end = start + PAGE_SIZE;
+		var pageItems = filtered.slice(start, end);
+
+		for (var i = 0; i < allCards.length; i++) {
+			allCards[i].classList.add('is-hidden');
+		}
+		for (var j = 0; j < pageItems.length; j++) {
+			pageItems[j].classList.remove('is-hidden');
+		}
+
+		if (countEl) {
+			if (total === 0) {
+				countEl.textContent = 'Showing 0 resources';
+			} else {
+				var showEnd = Math.min(end, total);
+				countEl.textContent = 'Showing ' + (start + 1) + '\u2013' + showEnd + ' of ' + total + ' resource' + (total !== 1 ? 's' : '');
+			}
+		}
+		if (emptyEl) emptyEl.hidden = total > 0;
+		if (pagNav) pagNav.hidden = total <= PAGE_SIZE;
+
+		renderPagination(totalPages, total);
+	}
+
+	function renderPagination(totalPages, total) {
+		if (!pagNav) return;
+		if (total <= PAGE_SIZE) { pagNav.innerHTML = ''; return; }
+		var html = '';
+		html += '<button class="res-pg__btn" data-res-pg="prev"' + (currentPage <= 1 ? ' disabled' : '') + '>← Previous</button>';
+		for (var p = 1; p <= totalPages; p++) {
+			html += '<button class="res-pg__num' + (p === currentPage ? ' res-pg__num--active' : '') + '" data-res-pg="' + p + '"' + (p === currentPage ? ' aria-current="page"' : '') + '>' + p + '</button>';
+		}
+		html += '<button class="res-pg__btn" data-res-pg="next"' + (currentPage >= totalPages ? ' disabled' : '') + '>Next →</button>';
+		pagNav.innerHTML = html;
+	}
+
+	function onFilterChange() { currentPage = 1; render(); }
+
+	if (search) search.addEventListener('input', onFilterChange);
+	filters.forEach(function(f) { f.addEventListener('change', onFilterChange); });
 	clearBtns.forEach(function(btn) {
 		btn.addEventListener('click', function() {
 			if (search) search.value = '';
 			filters.forEach(function(f) { f.value = ''; });
-			apply();
+			currentPage = 1;
+			render();
 		});
 	});
+
+	if (pagNav) pagNav.addEventListener('click', function(e) {
+		var btn = e.target && e.target.closest('[data-res-pg]');
+		if (!btn || btn.disabled) return;
+		var val = btn.getAttribute('data-res-pg');
+		if (val === 'prev') currentPage--;
+		else if (val === 'next') currentPage++;
+		else currentPage = parseInt(val, 10);
+		render();
+		grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+	});
+
+	render();
 })();
 </script>
 
@@ -172,6 +233,13 @@ import { resourceLibraryItems, resourceFilters } from '../../data/association';
 
 	.res-empty { text-align: center; padding: 3rem 1rem; }
 	.res-empty p { font-size: 0.95rem; color: var(--assoc-slate); margin-bottom: 1rem; }
+
+	.res-pagination { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 0.35rem; margin-top: 1.5rem; }
+	.res-pg__btn, .res-pg__num { padding: 0.4rem 0.75rem; border: 1px solid var(--assoc-border); border-radius: 6px; background: var(--assoc-white); color: var(--assoc-navy); font-size: 0.8rem; font-weight: 700; font-family: inherit; cursor: pointer; line-height: 1; }
+	.res-pg__btn:hover:not(:disabled), .res-pg__num:hover:not(.res-pg__num--active) { border-color: var(--assoc-teal); color: var(--assoc-teal); }
+	.res-pg__btn:disabled { opacity: 0.35; cursor: default; }
+	.res-pg__num--active { background: var(--assoc-teal); color: var(--assoc-white); border-color: var(--assoc-teal); }
+	.res-pg__num { min-width: 2rem; text-align: center; }
 
 	@media (max-width: 960px) { .res-grid { grid-template-columns: 1fr 1fr; } }
 	@media (max-width: 600px) {

@@ -2,7 +2,7 @@
 import { careerFeaturedJobs, careerJobFilters } from '../../data/association';
 ---
 
-<section class="assoc-section" id="jobs" aria-labelledby="career-jobs-heading">
+<section class="assoc-section" id="jobs" aria-labelledby="career-jobs-heading" data-career-job-board>
 	<div class="assoc-container">
 		<p class="assoc-eyebrow">Opportunities</p>
 		<h2 id="career-jobs-heading">Featured opportunities</h2>
@@ -38,7 +38,7 @@ import { careerFeaturedJobs, careerJobFilters } from '../../data/association';
 			</div>
 		</div>
 
-		<p class="cj-count" data-cj-count>Showing {careerFeaturedJobs.length} opportunities</p>
+		<p class="cj-count" data-cj-count></p>
 
 		<div class="cj-grid" data-cj-grid>
 			{careerFeaturedJobs.map((j) => (
@@ -77,29 +77,38 @@ import { careerFeaturedJobs, careerJobFilters } from '../../data/association';
 			<p>No opportunities match your search. Try a different keyword or clear your filters.</p>
 			<button class="assoc-btn assoc-btn--secondary" type="button" data-cj-clear-empty>Clear Filters</button>
 		</div>
+
+		<nav class="cj-pagination" aria-label="Career opportunities pagination" data-cj-pagination></nav>
 	</div>
 </section>
 
 <script is:inline>
 (() => {
-	var grid = document.querySelector('[data-cj-grid]');
-	var cards = grid ? grid.querySelectorAll('[data-cj-card]') : [];
-	var search = document.querySelector('[data-cj-search]');
-	var catSel = document.querySelector('[data-cj-filter="category"]');
-	var typeSel = document.querySelector('[data-cj-filter="workType"]');
-	var expSel = document.querySelector('[data-cj-filter="experience"]');
-	var countEl = document.querySelector('[data-cj-count]');
-	var emptyEl = document.querySelector('[data-cj-empty]');
-	var clearBtns = document.querySelectorAll('[data-cj-clear], [data-cj-clear-empty]');
-	if (!grid || !cards.length) return;
+	var root = document.querySelector('[data-career-job-board]');
+	if (!root) return;
+	var grid = root.querySelector('[data-cj-grid]');
+	var allCards = grid ? Array.prototype.slice.call(grid.querySelectorAll('[data-cj-card]')) : [];
+	var search = root.querySelector('[data-cj-search]');
+	var catSel = root.querySelector('[data-cj-filter="category"]');
+	var typeSel = root.querySelector('[data-cj-filter="workType"]');
+	var expSel = root.querySelector('[data-cj-filter="experience"]');
+	var countEl = root.querySelector('[data-cj-count]');
+	var emptyEl = root.querySelector('[data-cj-empty]');
+	var clearBtns = root.querySelectorAll('[data-cj-clear], [data-cj-clear-empty]');
+	var pagNav = root.querySelector('[data-cj-pagination]');
+	if (!allCards.length) return;
 
-	function apply() {
+	var PAGE_SIZE = 8;
+	var currentPage = 1;
+
+	function getFiltered() {
 		var q = (search ? search.value : '').toLowerCase().trim();
 		var cat = catSel ? catSel.value : '';
 		var wt = typeSel ? typeSel.value : '';
 		var exp = expSel ? expSel.value : '';
-		var shown = 0;
-		cards.forEach(function(card) {
+		var result = [];
+		for (var i = 0; i < allCards.length; i++) {
+			var card = allCards[i];
 			var match = true;
 			if (q) {
 				var t = card.getAttribute('data-cj-title') || '';
@@ -111,26 +120,82 @@ import { careerFeaturedJobs, careerJobFilters } from '../../data/association';
 			if (match && cat && card.getAttribute('data-cj-category') !== cat) match = false;
 			if (match && wt && card.getAttribute('data-cj-worktype') !== wt) match = false;
 			if (match && exp && card.getAttribute('data-cj-experience') !== exp) match = false;
-			card.classList.toggle('is-hidden', !match);
-			if (match) shown++;
-		});
-		if (countEl) countEl.textContent = 'Showing ' + shown + ' opportunit' + (shown !== 1 ? 'ies' : 'y');
-		if (emptyEl) emptyEl.hidden = shown > 0;
+			if (match) result.push(card);
+		}
+		return result;
 	}
 
-	if (search) search.addEventListener('input', apply);
-	if (catSel) catSel.addEventListener('change', apply);
-	if (typeSel) typeSel.addEventListener('change', apply);
-	if (expSel) expSel.addEventListener('change', apply);
+	function render() {
+		var filtered = getFiltered();
+		var total = filtered.length;
+		var totalPages = Math.max(1, Math.ceil(total / PAGE_SIZE));
+		if (currentPage > totalPages) currentPage = totalPages;
+		var start = (currentPage - 1) * PAGE_SIZE;
+		var end = start + PAGE_SIZE;
+		var pageItems = filtered.slice(start, end);
+
+		for (var i = 0; i < allCards.length; i++) {
+			allCards[i].classList.add('is-hidden');
+		}
+		for (var j = 0; j < pageItems.length; j++) {
+			pageItems[j].classList.remove('is-hidden');
+		}
+
+		if (countEl) {
+			if (total === 0) {
+				countEl.textContent = 'Showing 0 opportunities';
+			} else {
+				var showEnd = Math.min(end, total);
+				countEl.textContent = 'Showing ' + (start + 1) + '\u2013' + showEnd + ' of ' + total + ' opportunit' + (total !== 1 ? 'ies' : 'y');
+			}
+		}
+		if (emptyEl) emptyEl.hidden = total > 0;
+		if (pagNav) pagNav.hidden = total <= PAGE_SIZE;
+
+		renderPagination(totalPages, total);
+	}
+
+	function renderPagination(totalPages, total) {
+		if (!pagNav) return;
+		if (total <= PAGE_SIZE) { pagNav.innerHTML = ''; return; }
+		var html = '';
+		html += '<button class="cj-pg__btn" data-cj-pg="prev"' + (currentPage <= 1 ? ' disabled' : '') + '>\u2190 Previous</button>';
+		for (var p = 1; p <= totalPages; p++) {
+			html += '<button class="cj-pg__num' + (p === currentPage ? ' cj-pg__num--active' : '') + '" data-cj-pg="' + p + '"' + (p === currentPage ? ' aria-current="page"' : '') + '>' + p + '</button>';
+		}
+		html += '<button class="cj-pg__btn" data-cj-pg="next"' + (currentPage >= totalPages ? ' disabled' : '') + '>Next \u2192</button>';
+		pagNav.innerHTML = html;
+	}
+
+	function onFilterChange() { currentPage = 1; render(); }
+
+	if (search) search.addEventListener('input', onFilterChange);
+	if (catSel) catSel.addEventListener('change', onFilterChange);
+	if (typeSel) typeSel.addEventListener('change', onFilterChange);
+	if (expSel) expSel.addEventListener('change', onFilterChange);
 	clearBtns.forEach(function(btn) {
 		btn.addEventListener('click', function() {
 			if (search) search.value = '';
 			if (catSel) catSel.value = '';
 			if (typeSel) typeSel.value = '';
 			if (expSel) expSel.value = '';
-			apply();
+			currentPage = 1;
+			render();
 		});
 	});
+
+	if (pagNav) pagNav.addEventListener('click', function(e) {
+		var btn = e.target && e.target.closest('[data-cj-pg]');
+		if (!btn || btn.disabled) return;
+		var val = btn.getAttribute('data-cj-pg');
+		if (val === 'prev') currentPage--;
+		else if (val === 'next') currentPage++;
+		else currentPage = parseInt(val, 10);
+		render();
+		grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+	});
+
+	render();
 })();
 </script>
 
@@ -161,6 +226,14 @@ import { careerFeaturedJobs, careerJobFilters } from '../../data/association';
 	.cj-card__cta { font-size: 0.8rem; font-weight: 700; color: var(--assoc-teal); }
 	.cj-empty { text-align: center; padding: 3rem 1rem; }
 	.cj-empty p { font-size: 0.95rem; color: var(--assoc-slate); margin-bottom: 1rem; }
+
+	.cj-pagination { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 0.35rem; margin-top: 1.5rem; }
+	.cj-pg__btn, .cj-pg__num { padding: 0.4rem 0.75rem; border: 1px solid var(--assoc-border); border-radius: 6px; background: var(--assoc-white); color: var(--assoc-navy); font-size: 0.8rem; font-weight: 700; font-family: inherit; cursor: pointer; line-height: 1; }
+	.cj-pg__btn:hover:not(:disabled), .cj-pg__num:hover:not(.cj-pg__num--active) { border-color: var(--assoc-teal); color: var(--assoc-teal); }
+	.cj-pg__btn:disabled { opacity: 0.35; cursor: default; }
+	.cj-pg__num--active { background: var(--assoc-teal); color: var(--assoc-white); border-color: var(--assoc-teal); }
+	.cj-pg__num { min-width: 2rem; text-align: center; }
+
 	@media (max-width: 768px) { .cj-filters__row { flex-direction: column; } .cj-filters__field, .cj-filters__field--search { min-width: 100%; flex: auto; } }
 	@media (max-width: 600px) { .cj-grid { grid-template-columns: 1fr; } }
 </style>
