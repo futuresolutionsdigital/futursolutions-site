@@ -1,0 +1,31 @@
+---
+import { patientFitCards } from '../../data/aster';
+---
+
+<section class="aster-section aster-patient-fit" id="patient-fit" aria-labelledby="patient-fit-heading">
+	<div class="aster-container">
+		<div class="aster-patient-fit__intro">
+			<p class="aster-eyebrow">Is this right for you?</p>
+			<h2 id="patient-fit-heading">Built for patients who feel rushed, dismissed, or stuck without a clear plan.</h2>
+		</div>
+		<div class="aster-patient-fit__grid">
+			{patientFitCards.map((card) => (
+				<div class="aster-patient-fit__card aster-card">
+					<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 22 22" aria-hidden="true"><circle cx="11" cy="11" r="10.5" stroke="currentColor" stroke-opacity=".15"/><path fill="currentColor" d="M9.5 14.75 6 11.25l.95-.95 2.55 2.55 5.55-5.55.95.95-6.5 6.5Z"/></svg>
+					<p>{card.text}</p>
+				</div>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+.aster-patient-fit__intro { max-width: 680px; margin-bottom: clamp(2rem, 4vw, 3rem); }
+.aster-patient-fit__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+.aster-patient-fit__card { display: flex; align-items: flex-start; gap: 0.75rem; padding: 1.15rem 1.25rem; }
+.aster-patient-fit__card svg { flex-shrink: 0; margin-top: 0.15rem; color: var(--aster-sage); }
+.aster-patient-fit__card p { margin: 0; font-weight: 600; font-size: 0.92rem; line-height: 1.5; color: var(--aster-heading); }
+
+@media (max-width: 860px) { .aster-patient-fit__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 520px) { .aster-patient-fit__grid { grid-template-columns: 1fr; } }
+</style>

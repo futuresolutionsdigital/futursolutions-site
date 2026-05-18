@@ -1,0 +1,57 @@
+---
+import { provider } from '../../data/aster';
+---
+
+<section class="aster-section aster-provider" id="provider" aria-labelledby="provider-heading">
+	<div class="aster-container">
+		<div class="aster-provider__grid">
+			<div class="aster-provider__portrait" aria-hidden="true">
+				<div class="aster-provider__avatar">
+					<span>{provider.initials}</span>
+				</div>
+			</div>
+			<div class="aster-provider__content">
+				<p class="aster-eyebrow">Meet your provider</p>
+				<h2 id="provider-heading">{provider.name}</h2>
+				<p class="aster-provider__title">{provider.title}</p>
+				<p class="aster-provider__bio">{provider.bio}</p>
+				<blockquote class="aster-provider__quote">
+					<p>"{provider.quote}"</p>
+				</blockquote>
+				<ul class="aster-provider__creds">
+					{provider.credentials.map((c) => (
+						<li>
+							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7.5" stroke="currentColor" stroke-opacity=".2"/><path fill="currentColor" d="M7 10.5 4.5 8l.7-.7L7 9.08l3.8-3.8.7.72L7 10.5Z"/></svg>
+							{c}
+						</li>
+					))}
+				</ul>
+				<div class="aster-btn-row">
+					<a class="aster-btn aster-btn--secondary" href={provider.cta.href}>{provider.cta.text}</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+.aster-provider__grid { display: grid; grid-template-columns: 0.45fr 1fr; gap: clamp(2rem, 5vw, 4rem); align-items: start; }
+.aster-provider__portrait { display: flex; justify-content: center; padding: clamp(1.5rem, 3vw, 2.5rem); border-radius: var(--aster-radius-lg); background: linear-gradient(145deg, var(--aster-sage-light) 0%, color-mix(in srgb, var(--aster-warm-light) 40%, var(--aster-sage-light)) 100%); border: 1px solid var(--aster-border); }
+.aster-provider__avatar { display: flex; align-items: center; justify-content: center; width: clamp(7rem, 10vw, 10rem); height: clamp(7rem, 10vw, 10rem); border-radius: 50%; background: var(--aster-white); box-shadow: 0 8px 32px rgba(26, 32, 44, 0.06); }
+.aster-provider__avatar span { font-size: clamp(1.6rem, 2vw, 2.2rem); font-weight: 800; color: var(--aster-sage); }
+.aster-provider__title { color: var(--aster-sage); font-weight: 600; font-size: 0.92rem; margin-bottom: 1rem; }
+.aster-provider__bio { max-width: 560px; color: var(--aster-text); font-size: 1rem; line-height: 1.7; }
+.aster-provider__quote { margin: 1.5rem 0; padding-left: 1.25rem; border-left: 3px solid var(--aster-warm); }
+.aster-provider__quote p { margin: 0; color: var(--aster-heading); font-size: 1.05rem; font-style: italic; font-weight: 500; line-height: 1.6; }
+.aster-provider__creds { display: grid; gap: 0.55rem; padding: 0; margin: 1.25rem 0 0; list-style: none; }
+.aster-provider__creds li { display: flex; align-items: center; gap: 0.55rem; font-size: 0.88rem; font-weight: 600; color: var(--aster-heading); }
+.aster-provider__creds svg { flex-shrink: 0; color: var(--aster-sage); }
+
+@media (max-width: 768px) {
+	.aster-provider__grid { grid-template-columns: 1fr; text-align: center; }
+	.aster-provider__bio { margin-inline: auto; }
+	.aster-provider__quote { border-left: none; border-top: 3px solid var(--aster-warm); padding-left: 0; padding-top: 1rem; }
+	.aster-provider__creds { justify-items: center; }
+	.aster-btn-row { justify-content: center; }
+}
+</style>

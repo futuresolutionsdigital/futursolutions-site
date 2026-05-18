@@ -1,0 +1,36 @@
+---
+import { careModelSteps } from '../../data/aster';
+---
+
+<section class="aster-section aster-section--sand aster-care-model" id="care-model" aria-labelledby="care-model-heading">
+	<div class="aster-container">
+		<div class="aster-care-model__intro">
+			<p class="aster-eyebrow">How it works</p>
+			<h2 id="care-model-heading">A simpler, more personal way to receive care.</h2>
+			<p class="aster-lead">From first consultation to ongoing support, every step is designed around clarity and continuity.</p>
+		</div>
+		<div class="aster-care-model__steps">
+			{careModelSteps.map((s) => (
+				<div class="aster-care-model__step">
+					<span class="aster-care-model__num">{s.step}</span>
+					<h3>{s.title}</h3>
+					<p>{s.description}</p>
+				</div>
+			))}
+		</div>
+		<div class="aster-btn-row">
+			<a class="aster-btn aster-btn--primary" href="#pricing">Book a Consultation</a>
+		</div>
+	</div>
+</section>
+
+<style>
+.aster-care-model__intro { max-width: 620px; margin-bottom: clamp(2rem, 4vw, 3rem); }
+.aster-care-model__steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.25rem; counter-reset: step; }
+.aster-care-model__step { padding: 1.5rem; border-radius: var(--aster-radius); background: var(--aster-white); border: 1px solid var(--aster-border); }
+.aster-care-model__num { display: inline-flex; align-items: center; justify-content: center; width: 2.2rem; height: 2.2rem; margin-bottom: 1rem; border-radius: 8px; background: var(--aster-sage-light); color: var(--aster-sage); font-size: 0.72rem; font-weight: 800; }
+.aster-care-model__step p { margin: 0; color: var(--aster-muted); font-size: 0.88rem; line-height: 1.55; }
+
+@media (max-width: 860px) { .aster-care-model__steps { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 520px) { .aster-care-model__steps { grid-template-columns: 1fr; } }
+</style>

@@ -1,0 +1,38 @@
+---
+import { resources } from '../../data/aster';
+---
+
+<section class="aster-section aster-section--sage-light aster-resources" id="resources" aria-labelledby="resources-heading">
+	<div class="aster-container">
+		<div class="aster-resources__intro">
+			<p class="aster-eyebrow">Resources</p>
+			<h2 id="resources-heading">Helpful guidance before and between visits.</h2>
+			<p class="aster-lead">Patient education that builds trust, reduces uncertainty, and supports informed care decisions.</p>
+		</div>
+		<div class="aster-resources__grid">
+			{resources.map((r) => (
+				<article class="aster-card aster-resources__card">
+					<span class="aster-resources__cat">{r.category}</span>
+					<h3>{r.title}</h3>
+					<p class="aster-resources__excerpt">{r.excerpt}</p>
+					<a class="aster-resources__link" href={r.href}>
+						Read Article
+						<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 14 14" aria-hidden="true"><path stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" d="m5.25 3.5 3.5 3.5-3.5 3.5"/></svg>
+					</a>
+				</article>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+.aster-resources__intro { max-width: 620px; margin-bottom: clamp(2rem, 4vw, 3rem); }
+.aster-resources__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; }
+.aster-resources__card { display: flex; flex-direction: column; padding: 1.5rem; }
+.aster-resources__cat { display: inline-block; width: fit-content; margin-bottom: 0.75rem; padding: 0.2rem 0.55rem; border-radius: 6px; background: color-mix(in srgb, var(--aster-sage) 10%, var(--aster-white)); color: var(--aster-sage-dark); font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; }
+.aster-resources__excerpt { flex: 1; color: var(--aster-muted); font-size: 0.88rem; line-height: 1.55; }
+.aster-resources__link { display: inline-flex; align-items: center; gap: 0.3rem; font-size: 0.82rem; font-weight: 700; color: var(--aster-sage); }
+.aster-resources__link:hover { color: var(--aster-sage-dark); }
+
+@media (max-width: 860px) { .aster-resources__grid { grid-template-columns: 1fr; max-width: 520px; } }
+</style>

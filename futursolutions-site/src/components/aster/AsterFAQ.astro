@@ -1,0 +1,39 @@
+---
+import { faqs } from '../../data/aster';
+---
+
+<section class="aster-section aster-faq" id="faq" aria-labelledby="faq-heading">
+	<div class="aster-container">
+		<div class="aster-faq__intro">
+			<p class="aster-eyebrow">FAQ</p>
+			<h2 id="faq-heading">Questions before becoming a patient?</h2>
+		</div>
+		<div class="aster-faq__list">
+			{faqs.map((faq, i) => (
+				<details class="aster-faq__item" data-faq-item>
+					<summary class="aster-faq__question">
+						<span>{faq.question}</span>
+						<svg class="aster-faq__icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 20 20" aria-hidden="true"><path stroke="currentColor" stroke-width="1.5" stroke-linecap="round" d="M5 8l5 5 5-5"/></svg>
+					</summary>
+					<div class="aster-faq__answer">
+						<p>{faq.answer}</p>
+					</div>
+				</details>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+.aster-faq__intro { max-width: 620px; margin-bottom: clamp(2rem, 4vw, 3rem); text-align: center; margin-inline: auto; }
+.aster-faq__list { max-width: 760px; margin-inline: auto; }
+.aster-faq__item { border-bottom: 1px solid var(--aster-border); }
+.aster-faq__item:first-child { border-top: 1px solid var(--aster-border); }
+.aster-faq__question { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.15rem 0; cursor: pointer; list-style: none; font-weight: 700; font-size: 0.95rem; color: var(--aster-heading); }
+.aster-faq__question::-webkit-details-marker { display: none; }
+.aster-faq__question::marker { display: none; content: ''; }
+.aster-faq__icon { flex-shrink: 0; color: var(--aster-muted); transition: transform 0.2s ease; }
+.aster-faq__item[open] .aster-faq__icon { transform: rotate(180deg); }
+.aster-faq__answer { padding-bottom: 1.25rem; }
+.aster-faq__answer p { margin: 0; color: var(--aster-text); font-size: 0.9rem; line-height: 1.65; }
+</style>
