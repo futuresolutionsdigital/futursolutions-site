@@ -1,351 +1,239 @@
 ---
-import DemoLayout from '../../../layouts/DemoLayout.astro';
-import { meridianDemoLayoutDefaults } from '../../../data/demoMeridianLayout';
+import AsterLayout from '../../../layouts/AsterLayout.astro';
+import { brand, provider, faqs } from '../../../data/aster';
 
-const serviceInterest = [
-	'Functional Wellness',
-	'Hormone & Metabolic Support',
-	'Preventive Health Planning',
-	'Lifestyle & Nutrition Support',
-	'Patient Education Visit',
-	'Not sure yet',
+const contactMethods = [
+	{ icon: '📍', title: 'Visit In-Person', detail: 'Aster Private Health\nTemecula, CA', note: 'By appointment only' },
+	{ icon: '💻', title: 'Telehealth', detail: 'Virtual appointments available', note: 'Follow-up and care coordination' },
+	{ icon: '✉️', title: 'Secure Messaging', detail: 'Available to members', note: 'Response within 1 business day' },
 ];
 
-const preferredNext = ['Ask a question', 'Request appointment', 'Learn about services', 'Not sure yet'];
-
-const flowSteps = ['Inquiry received', 'Contact created', 'Service interest noted', 'Follow-up', 'Appointment path'];
+const hours = [
+	{ day: 'Monday – Thursday', time: '9:00 AM – 5:00 PM' },
+	{ day: 'Friday', time: '9:00 AM – 3:00 PM' },
+	{ day: 'Saturday – Sunday', time: 'Closed' },
+];
 ---
 
-<DemoLayout
-	variant="solo-practice"
-	{...meridianDemoLayoutDefaults}
-	title="Contact | Meridian Wellness Practice Demo"
-	description="A solo practice demo contact page showing how independent providers can capture inquiries and guide visitors toward the right next step."
+<AsterLayout
+	title="Contact & Location | Aster Private Health Demo"
+	description="Contact Aster Private Health in Temecula, CA. Schedule a consultation, get directions, or reach us by phone or secure messaging. In-person and telehealth available."
 	canonicalUrl="https://futursolutions.vercel.app/demos/solo-practice/contact/"
 >
-	<section class="mw-page-hero" aria-labelledby="contact-heading">
-		<div class="site-container">
-			<p class="mw-eyebrow">Contact</p>
-			<h1 id="contact-heading">A simple inquiry path for new patients.</h1>
-			<p class="mw-lead">
-				Share what you are looking for and the practice can guide you toward the right next step.
-			</p>
+	<section class="ct-hero" aria-labelledby="ct-heading">
+		<div class="aster-container">
+			<a class="ct-back" href="/demos/solo-practice">← Back to Aster Home</a>
+			<p class="aster-eyebrow">Contact &amp; Location</p>
+			<h1 id="ct-heading">We would love to hear from you.</h1>
+			<p class="aster-lead">Have a question, ready to schedule, or want to learn more about becoming a patient? Reach out and we will guide you to the right next step.</p>
 		</div>
 	</section>
 
-	<section class="mw-section mw-section--muted" aria-labelledby="form-heading">
-		<div class="site-container mw-contact-grid">
-			<div>
-				<p class="mw-eyebrow">Inquiry</p>
-				<h2 id="form-heading">Start an inquiry.</h2>
-				<p class="mw-lead">
-					This form structure keeps the first step simple while collecting enough information to route the inquiry.
-				</p>
+	<section class="aster-section aster-section--sand" aria-labelledby="methods-heading">
+		<div class="aster-container">
+			<div class="ct-intro">
+				<p class="aster-eyebrow">Reach us</p>
+				<h2 id="methods-heading">Ways to connect with Aster Private Health.</h2>
 			</div>
-			<div class="mw-form-card">
-				<form novalidate onsubmit="return false" aria-label="Meridian Wellness Practice demo inquiry form">
-					<label>
-						<span>Name</span>
-						<input type="text" name="name" autocomplete="name" />
-					</label>
-					<label>
-						<span>Email</span>
-						<input type="email" name="email" autocomplete="email" />
-					</label>
-					<label>
-						<span>Service interest</span>
-						<select name="service-interest">
-							<option value="">Select service interest</option>
-							{serviceInterest.map((opt) => (
-								<option value={opt}>{opt}</option>
-							))}
-						</select>
-					</label>
-					<label>
-						<span>Preferred next step</span>
-						<select name="preferred-next-step">
-							<option value="">Select preferred next step</option>
-							{preferredNext.map((opt) => (
-								<option value={opt}>{opt}</option>
-							))}
-						</select>
-					</label>
-					<label>
-						<span>Message</span>
-						<textarea name="message" rows="4"></textarea>
-					</label>
-					<div class="mw-form-card__footer">
-						<button class="mw-button mw-button--primary" type="button">Send Inquiry</button>
-						<p>
-							This is a demo form. In a real build, this could connect to GoHighLevel for lead capture, appointment requests, CRM follow-up, and pipeline tracking.
-						</p>
-					</div>
-				</form>
-			</div>
-		</div>
-	</section>
-
-	<section class="mw-section" aria-labelledby="follow-heading">
-		<div class="site-container">
-			<div class="mw-section__intro">
-				<p class="mw-eyebrow">Operations</p>
-				<h2 id="follow-heading">This is where the system continues after the inquiry.</h2>
-				<p class="mw-lead">
-					In a full Future Solutions build, this inquiry could create a contact, apply service interest tags, trigger follow-up, and organize the lead in a pipeline.
-				</p>
-			</div>
-			<div class="mw-flow" aria-label="Behind-the-scenes inquiry flow">
-				{flowSteps.map((step, index) => (
-					<div class="mw-flow__step">
-						<span>{String(index + 1).padStart(2, '0')}</span>
-						<p>{step}</p>
+			<div class="ct-methods-grid">
+				{contactMethods.map((m) => (
+					<div class="aster-card ct-method-card">
+						<span class="ct-method-icon" aria-hidden="true">{m.icon}</span>
+						<h3>{m.title}</h3>
+						<p class="ct-method-detail">{m.detail}</p>
+						<p class="ct-method-note">{m.note}</p>
 					</div>
 				))}
 			</div>
 		</div>
 	</section>
 
-	<section class="mw-section mw-final" aria-labelledby="final-heading">
-		<div class="site-container mw-final__card">
+	<section class="aster-section" aria-labelledby="form-heading">
+		<div class="aster-container ct-form-grid">
 			<div>
-				<p class="mw-eyebrow mw-eyebrow--invert">Future Solutions template</p>
-				<h2 id="final-heading">Want this inquiry flow customized for your practice?</h2>
+				<p class="aster-eyebrow">Get in touch</p>
+				<h2 id="form-heading">Send us a message.</h2>
+				<p class="aster-lead">Whether you are a new or existing patient, use this form to reach our team. We will respond within 1 business day.</p>
+
+				<div class="ct-info-block">
+					<h3>Office Hours</h3>
+					<dl class="ct-hours">
+						{hours.map((h) => (
+							<div class="ct-hours__row">
+								<dt>{h.day}</dt>
+								<dd>{h.time}</dd>
+							</div>
+						))}
+					</dl>
+				</div>
+
+				<div class="ct-info-block">
+					<h3>Location</h3>
+					<p>{brand.locationLine}</p>
+					<p class="ct-info-note">{brand.availability}</p>
+				</div>
 			</div>
-			<div class="mw-button-row">
-				<a class="mw-button mw-button--primary" href="/audit?template=solo-practice">Get This Template Customized</a>
-				<a class="mw-button mw-button--secondary mw-button--invert" href="/templates">Back to Templates</a>
+			<div class="ct-form-card aster-card">
+				<form novalidate onsubmit="return false" aria-label="Aster Private Health contact form">
+					<label>
+						<span>Full name</span>
+						<input type="text" name="name" autocomplete="name" placeholder="Your full name" />
+					</label>
+					<label>
+						<span>Email</span>
+						<input type="email" name="email" autocomplete="email" placeholder="you@email.com" />
+					</label>
+					<label>
+						<span>Phone (optional)</span>
+						<input type="tel" name="phone" autocomplete="tel" placeholder="(555) 555-5555" />
+					</label>
+					<label>
+						<span>I am a…</span>
+						<select name="patient-status">
+							<option value="">Select one</option>
+							<option value="new">New patient</option>
+							<option value="existing">Existing patient</option>
+							<option value="other">Other inquiry</option>
+						</select>
+					</label>
+					<label>
+						<span>Subject</span>
+						<select name="subject">
+							<option value="">Select a subject</option>
+							<option value="schedule">Schedule an appointment</option>
+							<option value="question">General question</option>
+							<option value="records">Records request</option>
+							<option value="billing">Billing or pricing question</option>
+							<option value="other">Something else</option>
+						</select>
+					</label>
+					<label>
+						<span>Message</span>
+						<textarea name="message" rows="4" placeholder="How can we help?"></textarea>
+					</label>
+					<input type="hidden" name="source" value="Contact Page" />
+					<input type="hidden" name="leadType" value="Contact Inquiry" />
+					<div class="ct-form-footer">
+						<button class="aster-btn aster-btn--primary" type="button" style="width:100%;">Send Message</button>
+						<p>This is a demo form — no data is submitted. In a live build, this connects to scheduling, CRM, and follow-up systems.</p>
+					</div>
+				</form>
 			</div>
 		</div>
 	</section>
-</DemoLayout>
+
+	<section class="aster-section aster-section--sand" aria-labelledby="map-heading">
+		<div class="aster-container">
+			<div class="ct-intro" style="text-align:center; margin-inline:auto;">
+				<p class="aster-eyebrow">Location</p>
+				<h2 id="map-heading">Conveniently located in Temecula, CA.</h2>
+				<p class="aster-lead" style="margin-inline:auto;">Serving patients in Temecula, Murrieta, Fallbrook, and surrounding communities. Telehealth appointments available statewide.</p>
+			</div>
+			<div class="ct-map-placeholder" aria-label="Map placeholder">
+				<div class="ct-map-inner">
+					<span class="ct-map-pin" aria-hidden="true">📍</span>
+					<p><strong>{brand.name}</strong></p>
+					<p>Temecula, CA</p>
+					<p class="ct-map-note">Map integration available in live builds</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="aster-section" aria-labelledby="ct-faq-heading">
+		<div class="aster-container">
+			<div class="ct-intro" style="text-align:center; margin-inline:auto;">
+				<p class="aster-eyebrow">FAQ</p>
+				<h2 id="ct-faq-heading">Common questions about contacting us.</h2>
+			</div>
+			<div class="ct-faq-list">
+				{[faqs[3], faqs[2], faqs[7], faqs[6]].map((faq) => (
+					<details class="ct-faq-item">
+						<summary class="ct-faq-question">
+							<span>{faq.question}</span>
+							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 20 20" aria-hidden="true"><path stroke="currentColor" stroke-width="1.5" stroke-linecap="round" d="M5 8l5 5 5-5"/></svg>
+						</summary>
+						<div class="ct-faq-answer"><p>{faq.answer}</p></div>
+					</details>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<section class="aster-section ct-final-section" aria-labelledby="final-heading">
+		<div class="aster-container">
+			<div class="ct-final-card">
+				<p class="aster-eyebrow ct-final-eyebrow">New patients</p>
+				<h2 id="final-heading">Ready to become a patient?</h2>
+				<p class="ct-final-lead">Start with a New Patient Consultation — 60–75 minutes of dedicated time with your provider to review your health, your goals, and your care plan.</p>
+				<div class="aster-btn-row" style="justify-content:center;">
+					<a class="aster-btn ct-final-btn-primary" href="/demos/solo-practice/new-patients">Book a Consultation</a>
+					<a class="aster-btn ct-final-btn-secondary" href="/demos/solo-practice/services">Explore Services</a>
+				</div>
+			</div>
+		</div>
+	</section>
+</AsterLayout>
 
 <style>
-	.mw-page-hero,
-	.mw-section {
-		padding-block: clamp(4.5rem, 8vw, 7rem);
-	}
+.ct-hero { padding-block: clamp(4rem, 7vw, 6rem) clamp(3rem, 5vw, 4rem); background: linear-gradient(180deg, var(--aster-bg) 0%, color-mix(in srgb, var(--aster-sand) 25%, var(--aster-bg)) 100%); }
+.ct-back { display: inline-flex; align-items: center; margin-bottom: 1.5rem; font-size: 0.82rem; font-weight: 600; color: var(--aster-sage); }
+.ct-back:hover { color: var(--aster-sage-dark); }
+.ct-intro { max-width: 660px; margin-bottom: clamp(2rem, 4vw, 3rem); }
 
-	.mw-page-hero {
-		background:
-			radial-gradient(circle at 78% 8%, rgba(77, 122, 113, 0.12), transparent 32%),
-			linear-gradient(180deg, #ffffff 0%, #f9faf8 80%);
-	}
+.ct-methods-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; }
+.ct-method-card { padding: 1.5rem; text-align: center; }
+.ct-method-icon { display: block; font-size: 1.6rem; margin-bottom: 0.75rem; }
+.ct-method-detail { color: var(--aster-heading); font-weight: 600; font-size: 0.92rem; white-space: pre-line; }
+.ct-method-note { color: var(--aster-muted); font-size: 0.78rem; }
 
-	.mw-eyebrow {
-		margin-bottom: 1rem;
-		color: #4d7a71;
-		font-size: 0.8125rem;
-		font-weight: 800;
-		letter-spacing: 0.1em;
-		text-transform: uppercase;
-	}
+.ct-form-grid { display: grid; grid-template-columns: 0.85fr 1fr; gap: clamp(2rem, 5vw, 4rem); align-items: start; }
+.ct-info-block { margin-top: 1.75rem; padding-top: 1.25rem; border-top: 1px solid var(--aster-border); }
+.ct-info-block h3 { font-size: 0.82rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--aster-sage); margin-bottom: 0.6rem; }
+.ct-hours { margin: 0; display: grid; gap: 0.35rem; }
+.ct-hours__row { display: flex; justify-content: space-between; gap: 1rem; }
+.ct-hours dt { font-weight: 600; font-size: 0.88rem; color: var(--aster-heading); }
+.ct-hours dd { margin: 0; font-size: 0.88rem; color: var(--aster-muted); }
+.ct-info-note { color: var(--aster-muted); font-size: 0.82rem; margin-top: 0.25rem; }
 
-	.mw-eyebrow--invert {
-		color: #b8d4cc;
-	}
+.ct-form-card { padding: clamp(1.35rem, 3vw, 2rem); }
+.ct-form-card form, .ct-form-card label { display: grid; gap: 1rem; }
+.ct-form-card label { gap: 0.4rem; }
+.ct-form-card label span { color: var(--aster-heading); font-size: 0.85rem; font-weight: 700; }
+.ct-form-card input, .ct-form-card select, .ct-form-card textarea { width: 100%; border: 1px solid var(--aster-border); border-radius: 10px; background: var(--aster-bg); color: var(--aster-heading); font-size: 0.92rem; }
+.ct-form-card input, .ct-form-card select { min-height: 2.75rem; padding: 0.65rem 0.8rem; }
+.ct-form-card textarea { resize: vertical; min-height: 5.5rem; padding: 0.75rem 0.8rem; }
+.ct-form-card input:focus, .ct-form-card select:focus, .ct-form-card textarea:focus { border-color: var(--aster-sage); outline: none; background: var(--aster-white); }
+.ct-form-card input::placeholder, .ct-form-card textarea::placeholder { color: var(--aster-muted); }
+.ct-form-footer { display: grid; gap: 0.75rem; }
+.ct-form-footer p { margin: 0; color: var(--aster-muted); font-size: 0.78rem; line-height: 1.55; text-align: center; }
 
-	.mw-page-hero h1,
-	.mw-section h2 {
-		max-width: 900px;
-		color: #1a2330;
-	}
+.ct-map-placeholder { padding: clamp(2rem, 4vw, 3rem); border-radius: var(--aster-radius-lg); background: var(--aster-white); border: 1px solid var(--aster-border); text-align: center; }
+.ct-map-inner { max-width: 360px; margin-inline: auto; }
+.ct-map-pin { font-size: 2rem; display: block; margin-bottom: 0.75rem; }
+.ct-map-inner strong { color: var(--aster-heading); }
+.ct-map-note { margin-top: 0.5rem; color: var(--aster-muted); font-size: 0.75rem; font-style: italic; }
 
-	.mw-section__intro {
-		max-width: 760px;
-	}
+.ct-faq-list { max-width: 760px; margin-inline: auto; }
+.ct-faq-item { border-bottom: 1px solid var(--aster-border); }
+.ct-faq-item:first-child { border-top: 1px solid var(--aster-border); }
+.ct-faq-question { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.15rem 0; cursor: pointer; list-style: none; font-weight: 700; font-size: 0.95rem; color: var(--aster-heading); }
+.ct-faq-question::-webkit-details-marker { display: none; }
+.ct-faq-question::marker { display: none; content: ''; }
+.ct-faq-question svg { flex-shrink: 0; color: var(--aster-muted); transition: transform 0.2s ease; }
+.ct-faq-item[open] .ct-faq-question svg { transform: rotate(180deg); }
+.ct-faq-answer { padding-bottom: 1.25rem; }
+.ct-faq-answer p { margin: 0; color: var(--aster-text); font-size: 0.9rem; line-height: 1.65; }
 
-	.mw-lead {
-		max-width: 720px;
-		color: #5c6b6a;
-		font-size: clamp(1.05rem, 1rem + 0.28vw, 1.22rem);
-		line-height: 1.66;
-	}
+.ct-final-section { padding-block: clamp(2.5rem, 5vw, 4rem); background: var(--aster-sand); }
+.ct-final-card { max-width: 760px; margin-inline: auto; padding: clamp(2rem, 4vw, 3.5rem); border-radius: var(--aster-radius-lg); background: var(--aster-heading); text-align: center; }
+.ct-final-eyebrow { color: var(--aster-warm) !important; }
+.ct-final-card h2 { color: var(--aster-white); max-width: 560px; margin-inline: auto; }
+.ct-final-lead { max-width: 520px; margin-inline: auto; color: rgba(255,255,255,0.6); font-size: 0.95rem; line-height: 1.6; }
+.ct-final-btn-primary { background: var(--aster-sage); color: var(--aster-white); }
+.ct-final-btn-primary:hover { background: var(--aster-sage-dark); color: var(--aster-white); }
+.ct-final-btn-secondary { border-color: rgba(255,255,255,0.15); background: transparent; color: rgba(255,255,255,0.8); }
+.ct-final-btn-secondary:hover { background: rgba(255,255,255,0.08); color: var(--aster-white); }
 
-	.mw-section--muted {
-		border-block: 1px solid rgba(26, 35, 48, 0.07);
-		background: #eef2f1;
-	}
-
-	.mw-contact-grid {
-		display: grid;
-		grid-template-columns: minmax(0, 0.85fr) minmax(360px, 0.75fr);
-		gap: clamp(2rem, 5vw, 4rem);
-		align-items: start;
-	}
-
-	.mw-form-card {
-		padding: clamp(1.35rem, 3vw, 2rem);
-		border: 1px solid rgba(26, 35, 48, 0.09);
-		border-radius: 22px;
-		background: #ffffff;
-		box-shadow: 0 18px 48px rgba(26, 35, 48, 0.06);
-	}
-
-	.mw-form-card form,
-	.mw-form-card label {
-		display: grid;
-		gap: 1rem;
-	}
-
-	.mw-form-card label {
-		gap: 0.45rem;
-	}
-
-	.mw-form-card label span {
-		color: #1a2330;
-		font-size: 0.875rem;
-		font-weight: 800;
-	}
-
-	.mw-form-card input,
-	.mw-form-card select,
-	.mw-form-card textarea {
-		width: 100%;
-		border: 1px solid rgba(26, 35, 48, 0.14);
-		border-radius: 12px;
-		background: #f9faf8;
-		color: #1a2330;
-		font-size: 0.95rem;
-	}
-
-	.mw-form-card input,
-	.mw-form-card select {
-		min-height: 2.85rem;
-		padding: 0.7rem 0.8rem;
-	}
-
-	.mw-form-card textarea {
-		resize: vertical;
-		min-height: 7rem;
-		padding: 0.8rem;
-	}
-
-	.mw-form-card input:focus,
-	.mw-form-card select:focus,
-	.mw-form-card textarea:focus {
-		border-color: rgba(77, 122, 113, 0.55);
-		outline: none;
-		background: #ffffff;
-	}
-
-	.mw-form-card__footer {
-		display: grid;
-		gap: 0.85rem;
-	}
-
-	.mw-form-card__footer p {
-		margin: 0;
-		color: #5c6b6a;
-		font-size: 0.85rem;
-		line-height: 1.55;
-	}
-
-	.mw-button-row {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 0.875rem;
-		margin-top: 2rem;
-	}
-
-	.mw-button {
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		min-height: 2.875rem;
-		padding: 0.8rem 1.1rem;
-		border-radius: 999px;
-		font-size: 0.9375rem;
-		font-weight: 800;
-		line-height: 1;
-	}
-
-	.mw-button--primary {
-		border: 1px solid transparent;
-		background: #4d7a71;
-		color: #ffffff;
-	}
-
-	.mw-button--primary:hover {
-		background: #3d615a;
-		color: #ffffff;
-	}
-
-	.mw-button--invert {
-		border: 1px solid rgba(255, 255, 255, 0.35);
-		background: transparent;
-		color: #ffffff;
-	}
-
-	.mw-button--invert:hover {
-		background: rgba(255, 255, 255, 0.12);
-		color: #ffffff;
-	}
-
-	.mw-flow {
-		display: grid;
-		grid-template-columns: repeat(5, minmax(0, 1fr));
-		gap: 1rem;
-		margin-top: 2rem;
-	}
-
-	.mw-flow__step {
-		padding: 1.05rem;
-		border: 1px solid rgba(26, 35, 48, 0.09);
-		border-radius: 16px;
-		background: #ffffff;
-	}
-
-	.mw-flow__step span {
-		display: inline-flex;
-		margin-bottom: 0.6rem;
-		color: #4d7a71;
-		font-size: 0.75rem;
-		font-weight: 800;
-	}
-
-	.mw-flow__step p {
-		margin: 0;
-		color: #1a2330;
-		font-weight: 800;
-		font-size: 0.9rem;
-		line-height: 1.4;
-	}
-
-	.mw-final {
-		background: #dfe8e6;
-	}
-
-	.mw-final__card {
-		display: grid;
-		grid-template-columns: minmax(0, 1fr) auto;
-		gap: 2rem;
-		align-items: end;
-		padding: clamp(1.5rem, 4vw, 3rem);
-		border-radius: 22px;
-		background: #1a2733;
-		box-shadow: 0 24px 60px rgba(26, 35, 48, 0.12);
-	}
-
-	.mw-final h2 {
-		color: #ffffff;
-	}
-
-	@media (max-width: 1040px) {
-		.mw-flow {
-			grid-template-columns: repeat(2, minmax(0, 1fr));
-		}
-	}
-
-	@media (max-width: 820px) {
-		.mw-contact-grid,
-		.mw-final__card {
-			grid-template-columns: 1fr;
-		}
-	}
-
-	@media (max-width: 620px) {
-		.mw-flow {
-			grid-template-columns: 1fr;
-		}
-	}
+@media (max-width: 860px) { .ct-form-grid { grid-template-columns: 1fr; } .ct-methods-grid { grid-template-columns: 1fr; max-width: 420px; } }
 </style>

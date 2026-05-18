@@ -1,300 +1,273 @@
 ---
-import DemoLayout from '../../../layouts/DemoLayout.astro';
-import { meridianDemoLayoutDefaults } from '../../../data/demoMeridianLayout';
+import AsterLayout from '../../../layouts/AsterLayout.astro';
+import { brand, provider, careModelSteps, pricingCards, pricingNote, faqs } from '../../../data/aster';
 
-const whoFitCards = [
-	'People looking for more time and education',
-	'People with wellness questions they want to discuss clearly',
-	'People seeking a provider-led care path',
-	'People who want practical next steps',
-];
-
-const pathwaySteps = [
-	{ step: '01 — Share what you are looking for', detail: '' },
-	{ step: '02 — The practice reviews your inquiry', detail: '' },
-	{ step: '03 — You receive a recommended next step', detail: '' },
-	{ step: '04 — Follow-up or appointment path is organized', detail: '' },
-];
-
-const prepareChecklist = [
-	'Main health or wellness questions',
-	'Current goals',
-	'Relevant care history',
-	'Current medications or supplements if applicable',
-	'Preferred next step',
+const prepareItems = [
+	'A list of your main health questions or concerns',
+	'Current medications and supplements',
+	'Relevant health history or recent lab results',
+	'Your goals — what would better care look like for you?',
+	'Insurance or HSA/FSA card (if using for eligible expenses)',
 ];
 ---
 
-<DemoLayout
-	variant="solo-practice"
-	{...meridianDemoLayoutDefaults}
-	title="New Patients | Meridian Wellness Practice Demo"
-	description="A solo practice demo new patient page showing how providers can explain the first step with clarity and reassurance."
+<AsterLayout
+	title="New Patients — Book a Consultation | Aster Private Health Demo"
+	description="Learn what to expect as a new patient at Aster Private Health. Understand the consultation process, prepare for your first visit, and book your appointment."
 	canonicalUrl="https://futursolutions.vercel.app/demos/solo-practice/new-patients/"
 >
-	<section class="mw-page-hero" aria-labelledby="np-heading">
-		<div class="site-container">
-			<p class="mw-eyebrow">New Patients</p>
-			<h1 id="np-heading">A calmer first step for new patients.</h1>
-			<p class="mw-lead">
-				This page shows how a solo practice can explain what to expect, who the practice is for, and how to start without overwhelming visitors.
-			</p>
-			<div class="mw-button-row">
-				<a class="mw-button mw-button--primary" href="/demos/solo-practice/contact">Start an Inquiry</a>
+	<section class="np-hero" aria-labelledby="np-heading">
+		<div class="aster-container">
+			<a class="np-back" href="/demos/solo-practice">← Back to Aster Home</a>
+			<p class="aster-eyebrow">New Patients</p>
+			<h1 id="np-heading">Your first step toward healthcare that listens.</h1>
+			<p class="aster-lead">Whether you are exploring a new provider or ready to book, this page will help you understand what to expect and how to prepare.</p>
+			<div class="aster-btn-row">
+				<a class="aster-btn aster-btn--primary" href="#book">Book a Consultation</a>
+				<a class="aster-btn aster-btn--secondary" href="/demos/solo-practice/#pricing">View Pricing</a>
 			</div>
 		</div>
 	</section>
 
-	<section class="mw-section mw-section--muted" aria-labelledby="who-heading">
-		<div class="site-container">
-			<div class="mw-section__intro">
-				<p class="mw-eyebrow">Fit</p>
-				<h2 id="who-heading">Who this practice may fit</h2>
+	<section class="aster-section aster-section--sand" aria-labelledby="expect-heading">
+		<div class="aster-container">
+			<div class="np-intro">
+				<p class="aster-eyebrow">What to expect</p>
+				<h2 id="expect-heading">A calmer, more thorough first visit.</h2>
+				<p class="aster-lead">Your New Patient Consultation is 60–75 minutes — enough time to review your full health picture, answer your questions, and build a care plan that fits your life.</p>
 			</div>
-			<div class="mw-grid mw-grid--2">
-				{whoFitCards.map((card) => (
-					<article class="mw-card">
-						<h3>{card}</h3>
-					</article>
+			<div class="np-steps-grid">
+				{careModelSteps.map((s) => (
+					<div class="np-step">
+						<span class="np-step__num">{s.step}</span>
+						<h3>{s.title}</h3>
+						<p>{s.description}</p>
+					</div>
 				))}
 			</div>
 		</div>
 	</section>
 
-	<section class="mw-section" aria-labelledby="expect-heading">
-		<div class="site-container">
-			<div class="mw-section__intro">
-				<p class="mw-eyebrow">Experience</p>
-				<h2 id="expect-heading">What to expect</h2>
-			</div>
-			<ol class="mw-step-list">
-				{pathwaySteps.map((item) => (
-					<li>
-						<span class="mw-step-list__title">{item.step}</span>
-					</li>
-				))}
-			</ol>
-		</div>
-	</section>
-
-	<section class="mw-section mw-section--muted" aria-labelledby="prep-heading">
-		<div class="site-container">
-			<div class="mw-section__intro">
-				<p class="mw-eyebrow">Prep</p>
-				<h2 id="prep-heading">What to prepare</h2>
-				<p class="mw-lead">Having a short list ready can make your first inquiry or visit feel more grounded.</p>
-			</div>
-			<ul class="mw-checklist">
-				{prepareChecklist.map((item) => (
-					<li>{item}</li>
-				))}
-			</ul>
-		</div>
-	</section>
-
-	<section class="mw-section mw-reassure" aria-labelledby="re-heading">
-		<div class="site-container mw-reassure__inner">
-			<p class="mw-eyebrow">Comfort</p>
-			<h2 id="re-heading">Clear information before commitment.</h2>
-			<p class="mw-lead">
-				A strong new patient page helps visitors understand the process before they book or submit an inquiry. It reduces uncertainty and makes the next step feel less intimidating.
-			</p>
-		</div>
-	</section>
-
-	<section class="mw-section mw-final" aria-labelledby="final-heading">
-		<div class="site-container mw-final__card">
+	<section class="aster-section" aria-labelledby="prep-heading">
+		<div class="aster-container np-prep-grid">
 			<div>
-				<p class="mw-eyebrow mw-eyebrow--invert">Future Solutions template</p>
-				<h2 id="final-heading">Want this new patient flow customized?</h2>
+				<p class="aster-eyebrow">Prepare</p>
+				<h2 id="prep-heading">What to bring to your first visit.</h2>
+				<p class="aster-lead">Having these items ready helps us make the most of your consultation time.</p>
 			</div>
-			<div class="mw-button-row">
-				<a class="mw-button mw-button--primary" href="/audit?template=solo-practice">Get This Template Customized</a>
-				<a class="mw-button mw-button--secondary mw-button--invert" href="/demos/solo-practice/contact">Contact Demo Practice</a>
+			<div class="np-prep-card aster-card">
+				<ul class="np-checklist">
+					{prepareItems.map((item) => (
+						<li>
+							<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="8.5" stroke="currentColor" stroke-opacity=".2"/><path fill="currentColor" d="M8 12.2 5.3 9.5l.7-.7L8 10.78l4-4 .7.72L8 12.2Z"/></svg>
+							<span>{item}</span>
+						</li>
+					))}
+				</ul>
 			</div>
 		</div>
 	</section>
-</DemoLayout>
+
+	<section class="aster-section aster-section--sand" aria-labelledby="provider-heading">
+		<div class="aster-container np-provider-grid">
+			<div class="np-provider-avatar" aria-hidden="true">
+				<div class="np-avatar-circle"><span>{provider.initials}</span></div>
+			</div>
+			<div>
+				<p class="aster-eyebrow">Your provider</p>
+				<h2 id="provider-heading">{provider.name}</h2>
+				<p class="np-provider-title">{provider.title}</p>
+				<p>{provider.bio}</p>
+				<blockquote class="np-quote"><p>"{provider.quote}"</p></blockquote>
+				<a class="aster-btn aster-btn--secondary" href="/demos/solo-practice/#provider">Read Full Provider Story</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="aster-section" aria-labelledby="pricing-heading">
+		<div class="aster-container">
+			<div class="np-intro" style="text-align:center; margin-inline:auto;">
+				<p class="aster-eyebrow">Pricing</p>
+				<h2 id="pricing-heading">Transparent pricing — no surprises.</h2>
+				<p class="aster-lead" style="margin-inline:auto;">Know what your visit costs before you book.</p>
+			</div>
+			<div class="np-pricing-grid">
+				{pricingCards.map((card) => (
+					<div class:list={['aster-card', 'np-pricing-card', { 'np-pricing-card--featured': card.featured }]}>
+						{card.featured && <span class="np-pricing-badge">Most popular</span>}
+						<h3>{card.name}</h3>
+						<p class="np-pricing-duration">{card.duration}</p>
+						<p class="np-pricing-price">
+							<span class="np-pricing-note">{card.priceNote}</span>
+							<span class="np-pricing-amount">{card.price}{card.priceSuffix && <small>{card.priceSuffix}</small>}</span>
+						</p>
+						<p class="np-pricing-desc">{card.description}</p>
+					</div>
+				))}
+			</div>
+			<p class="np-pricing-disclaimer">{pricingNote}</p>
+		</div>
+	</section>
+
+	<section class="aster-section aster-section--sand" id="book" aria-labelledby="book-heading">
+		<div class="aster-container np-book-grid">
+			<div>
+				<p class="aster-eyebrow">Book your consultation</p>
+				<h2 id="book-heading">Start with a conversation.</h2>
+				<p class="aster-lead">Share a few details and we will follow up to schedule your New Patient Consultation.</p>
+			</div>
+			<div class="np-form-card aster-card">
+				<form novalidate onsubmit="return false" aria-label="Aster Private Health new patient inquiry form">
+					<label>
+						<span>Full name</span>
+						<input type="text" name="name" autocomplete="name" placeholder="Your full name" />
+					</label>
+					<label>
+						<span>Email</span>
+						<input type="email" name="email" autocomplete="email" placeholder="you@email.com" />
+					</label>
+					<label>
+						<span>Phone (optional)</span>
+						<input type="tel" name="phone" autocomplete="tel" placeholder="(555) 555-5555" />
+					</label>
+					<label>
+						<span>What brings you in?</span>
+						<select name="reason">
+							<option value="">Select a reason</option>
+							<option value="primary-care">Looking for a primary care provider</option>
+							<option value="specific-concern">I have a specific health concern</option>
+							<option value="second-opinion">Looking for a second opinion</option>
+							<option value="preventive">Preventive health / wellness check</option>
+							<option value="hormones">Hormone or metabolic questions</option>
+							<option value="not-sure">Not sure yet — I want to learn more</option>
+						</select>
+					</label>
+					<label>
+						<span>Anything else you'd like us to know?</span>
+						<textarea name="message" rows="3" placeholder="Health goals, concerns, or questions..."></textarea>
+					</label>
+					<input type="hidden" name="source" value="New Patient Page" />
+					<input type="hidden" name="leadType" value="New Patient Consultation Request" />
+					<div class="np-form-footer">
+						<button class="aster-btn aster-btn--primary" type="button" style="width:100%;">Book a Consultation</button>
+						<p>This is a demo form — no data is submitted. In a live build, this connects to scheduling, CRM, and follow-up systems.</p>
+					</div>
+				</form>
+			</div>
+		</div>
+	</section>
+
+	<section class="aster-section" aria-labelledby="np-faq-heading">
+		<div class="aster-container">
+			<div class="np-intro" style="text-align:center; margin-inline:auto;">
+				<p class="aster-eyebrow">FAQ</p>
+				<h2 id="np-faq-heading">Questions before your first visit?</h2>
+			</div>
+			<div class="np-faq-list">
+				{faqs.map((faq) => (
+					<details class="np-faq-item">
+						<summary class="np-faq-question">
+							<span>{faq.question}</span>
+							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 20 20" aria-hidden="true"><path stroke="currentColor" stroke-width="1.5" stroke-linecap="round" d="M5 8l5 5 5-5"/></svg>
+						</summary>
+						<div class="np-faq-answer"><p>{faq.answer}</p></div>
+					</details>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<section class="aster-section np-final-section" aria-labelledby="final-heading">
+		<div class="aster-container">
+			<div class="np-final-card">
+				<p class="aster-eyebrow np-final-eyebrow">Get started</p>
+				<h2 id="final-heading">Ready for healthcare that feels more personal?</h2>
+				<p class="np-final-lead">Start with a consultation and find out whether Aster Private Health is the right fit for your goals, concerns, and care preferences.</p>
+				<div class="aster-btn-row" style="justify-content:center;">
+					<a class="aster-btn np-final-btn-primary" href="#book">Book a Consultation</a>
+					<a class="aster-btn np-final-btn-secondary" href="/demos/solo-practice/services">Explore Services</a>
+				</div>
+			</div>
+		</div>
+	</section>
+</AsterLayout>
 
 <style>
-	.mw-page-hero,
-	.mw-section {
-		padding-block: clamp(4.5rem, 8vw, 7rem);
-	}
+.np-hero { padding-block: clamp(4rem, 7vw, 6rem) clamp(3rem, 5vw, 4rem); background: linear-gradient(180deg, var(--aster-bg) 0%, color-mix(in srgb, var(--aster-sand) 25%, var(--aster-bg)) 100%); }
+.np-back { display: inline-flex; align-items: center; margin-bottom: 1.5rem; font-size: 0.82rem; font-weight: 600; color: var(--aster-sage); }
+.np-back:hover { color: var(--aster-sage-dark); }
+.np-intro { max-width: 660px; margin-bottom: clamp(2rem, 4vw, 3rem); }
 
-	.mw-page-hero {
-		background:
-			radial-gradient(circle at 78% 8%, rgba(77, 122, 113, 0.12), transparent 32%),
-			linear-gradient(180deg, #ffffff 0%, #f9faf8 80%);
-	}
+.np-steps-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.25rem; }
+.np-step { padding: 1.5rem; border-radius: var(--aster-radius); background: var(--aster-white); border: 1px solid var(--aster-border); }
+.np-step__num { display: inline-flex; align-items: center; justify-content: center; width: 2.2rem; height: 2.2rem; margin-bottom: 1rem; border-radius: 8px; background: var(--aster-sage-light); color: var(--aster-sage); font-size: 0.72rem; font-weight: 800; }
+.np-step p { margin: 0; color: var(--aster-muted); font-size: 0.88rem; line-height: 1.55; }
 
-	.mw-eyebrow {
-		margin-bottom: 1rem;
-		color: #4d7a71;
-		font-size: 0.8125rem;
-		font-weight: 800;
-		letter-spacing: 0.1em;
-		text-transform: uppercase;
-	}
+.np-prep-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 4rem); align-items: start; }
+.np-prep-card { padding: 1.75rem; }
+.np-checklist { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.85rem; }
+.np-checklist li { display: flex; align-items: flex-start; gap: 0.65rem; font-size: 0.92rem; font-weight: 600; color: var(--aster-heading); }
+.np-checklist svg { flex-shrink: 0; margin-top: 0.1rem; color: var(--aster-sage); }
 
-	.mw-eyebrow--invert {
-		color: #b8d4cc;
-	}
+.np-provider-grid { display: grid; grid-template-columns: 0.35fr 1fr; gap: clamp(2rem, 5vw, 4rem); align-items: start; }
+.np-provider-avatar { display: flex; justify-content: center; padding: 2rem; border-radius: var(--aster-radius-lg); background: linear-gradient(145deg, var(--aster-sage-light) 0%, color-mix(in srgb, var(--aster-warm-light) 40%, var(--aster-sage-light)) 100%); border: 1px solid var(--aster-border); }
+.np-avatar-circle { display: flex; align-items: center; justify-content: center; width: 7rem; height: 7rem; border-radius: 50%; background: var(--aster-white); box-shadow: 0 8px 32px rgba(26, 32, 44, 0.06); }
+.np-avatar-circle span { font-size: 1.6rem; font-weight: 800; color: var(--aster-sage); }
+.np-provider-title { color: var(--aster-sage); font-weight: 600; font-size: 0.92rem; margin-bottom: 0.5rem; }
+.np-quote { margin: 1.25rem 0; padding-left: 1.25rem; border-left: 3px solid var(--aster-warm); }
+.np-quote p { margin: 0; color: var(--aster-heading); font-size: 1rem; font-style: italic; font-weight: 500; line-height: 1.6; }
 
-	.mw-page-hero h1,
-	.mw-section h2 {
-		max-width: 900px;
-		color: #1a2330;
-	}
+.np-pricing-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; }
+.np-pricing-card { position: relative; display: flex; flex-direction: column; padding: 1.75rem; text-align: center; }
+.np-pricing-card--featured { border-color: var(--aster-sage); background: linear-gradient(180deg, var(--aster-white) 0%, var(--aster-sage-light) 100%); box-shadow: 0 8px 32px rgba(107, 143, 113, 0.1); }
+.np-pricing-badge { position: absolute; top: -0.6rem; left: 50%; transform: translateX(-50%); padding: 0.25rem 0.7rem; border-radius: 6px; background: var(--aster-sage); color: var(--aster-white); font-size: 0.68rem; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; white-space: nowrap; }
+.np-pricing-duration { color: var(--aster-muted); font-size: 0.82rem; margin-bottom: 1rem; }
+.np-pricing-price { margin-bottom: 1rem; }
+.np-pricing-note { display: block; font-size: 0.72rem; font-weight: 600; color: var(--aster-muted); text-transform: uppercase; letter-spacing: 0.06em; }
+.np-pricing-amount { font-size: 2.4rem; font-weight: 800; color: var(--aster-heading); letter-spacing: -0.03em; }
+.np-pricing-amount small { font-size: 0.85rem; font-weight: 600; color: var(--aster-muted); }
+.np-pricing-desc { flex: 1; color: var(--aster-text); font-size: 0.88rem; line-height: 1.55; }
+.np-pricing-disclaimer { max-width: 620px; margin: 1.75rem auto 0; padding: 1rem 1.25rem; border-radius: 10px; background: var(--aster-sand); border: 1px solid var(--aster-border); text-align: center; color: var(--aster-muted); font-size: 0.82rem; line-height: 1.55; }
 
-	.mw-section__intro {
-		max-width: 720px;
-	}
+.np-book-grid { display: grid; grid-template-columns: 0.85fr 1fr; gap: clamp(2rem, 5vw, 4rem); align-items: start; }
+.np-form-card { padding: clamp(1.35rem, 3vw, 2rem); }
+.np-form-card form, .np-form-card label { display: grid; gap: 1rem; }
+.np-form-card label { gap: 0.4rem; }
+.np-form-card label span { color: var(--aster-heading); font-size: 0.85rem; font-weight: 700; }
+.np-form-card input, .np-form-card select, .np-form-card textarea { width: 100%; border: 1px solid var(--aster-border); border-radius: 10px; background: var(--aster-bg); color: var(--aster-heading); font-size: 0.92rem; }
+.np-form-card input, .np-form-card select { min-height: 2.75rem; padding: 0.65rem 0.8rem; }
+.np-form-card textarea { resize: vertical; min-height: 5rem; padding: 0.75rem 0.8rem; }
+.np-form-card input:focus, .np-form-card select:focus, .np-form-card textarea:focus { border-color: var(--aster-sage); outline: none; background: var(--aster-white); }
+.np-form-card input::placeholder, .np-form-card textarea::placeholder { color: var(--aster-muted); }
+.np-form-footer { display: grid; gap: 0.75rem; }
+.np-form-footer p { margin: 0; color: var(--aster-muted); font-size: 0.78rem; line-height: 1.55; text-align: center; }
 
-	.mw-lead {
-		max-width: 720px;
-		color: #5c6b6a;
-		font-size: clamp(1.05rem, 1rem + 0.28vw, 1.22rem);
-		line-height: 1.66;
-	}
+.np-faq-list { max-width: 760px; margin-inline: auto; }
+.np-faq-item { border-bottom: 1px solid var(--aster-border); }
+.np-faq-item:first-child { border-top: 1px solid var(--aster-border); }
+.np-faq-question { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.15rem 0; cursor: pointer; list-style: none; font-weight: 700; font-size: 0.95rem; color: var(--aster-heading); }
+.np-faq-question::-webkit-details-marker { display: none; }
+.np-faq-question::marker { display: none; content: ''; }
+.np-faq-question svg { flex-shrink: 0; color: var(--aster-muted); transition: transform 0.2s ease; }
+.np-faq-item[open] .np-faq-question svg { transform: rotate(180deg); }
+.np-faq-answer { padding-bottom: 1.25rem; }
+.np-faq-answer p { margin: 0; color: var(--aster-text); font-size: 0.9rem; line-height: 1.65; }
 
-	.mw-button-row {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 0.875rem;
-		margin-top: 2rem;
-	}
+.np-final-section { padding-block: clamp(2.5rem, 5vw, 4rem); background: var(--aster-sand); }
+.np-final-card { max-width: 760px; margin-inline: auto; padding: clamp(2rem, 4vw, 3.5rem); border-radius: var(--aster-radius-lg); background: var(--aster-heading); text-align: center; }
+.np-final-eyebrow { color: var(--aster-warm) !important; }
+.np-final-card h2 { color: var(--aster-white); max-width: 560px; margin-inline: auto; }
+.np-final-lead { max-width: 520px; margin-inline: auto; color: rgba(255,255,255,0.6); font-size: 0.95rem; line-height: 1.6; }
+.np-final-btn-primary { background: var(--aster-sage); color: var(--aster-white); }
+.np-final-btn-primary:hover { background: var(--aster-sage-dark); color: var(--aster-white); }
+.np-final-btn-secondary { border-color: rgba(255,255,255,0.15); background: transparent; color: rgba(255,255,255,0.8); }
+.np-final-btn-secondary:hover { background: rgba(255,255,255,0.08); color: var(--aster-white); }
 
-	.mw-button {
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		min-height: 2.875rem;
-		padding: 0.8rem 1.1rem;
-		border-radius: 999px;
-		font-size: 0.9375rem;
-		font-weight: 800;
-		line-height: 1;
-	}
-
-	.mw-button--primary {
-		border: 1px solid transparent;
-		background: #4d7a71;
-		color: #ffffff;
-	}
-
-	.mw-button--primary:hover {
-		background: #3d615a;
-		color: #ffffff;
-	}
-
-	.mw-button--invert {
-		border: 1px solid rgba(255, 255, 255, 0.35);
-		background: transparent;
-		color: #ffffff;
-	}
-
-	.mw-button--invert:hover {
-		background: rgba(255, 255, 255, 0.12);
-		color: #ffffff;
-	}
-
-	.mw-section--muted {
-		border-block: 1px solid rgba(26, 35, 48, 0.07);
-		background: #eef2f1;
-	}
-
-	.mw-grid {
-		display: grid;
-		gap: 1rem;
-		margin-top: clamp(2rem, 4vw, 3rem);
-	}
-
-	.mw-grid--2 {
-		grid-template-columns: repeat(2, minmax(0, 1fr));
-	}
-
-	.mw-card {
-		padding: 1.25rem;
-		border: 1px solid rgba(26, 35, 48, 0.09);
-		border-radius: 18px;
-		background: #ffffff;
-	}
-
-	.mw-card h3 {
-		margin: 0;
-		color: #1a2330;
-		font-size: 1rem;
-		font-weight: 800;
-		line-height: 1.45;
-	}
-
-	.mw-step-list {
-		margin: 2rem 0 0;
-		padding: 0;
-		list-style: none;
-	}
-
-	.mw-step-list li {
-		padding: 1.05rem 1.2rem;
-		border: 1px solid rgba(26, 35, 48, 0.09);
-		border-radius: 14px;
-		background: #ffffff;
-	}
-
-	.mw-step-list li + li {
-		margin-top: 0.75rem;
-	}
-
-	.mw-step-list__title {
-		color: #1a2330;
-		font-weight: 800;
-		font-size: 0.975rem;
-	}
-
-	.mw-checklist {
-		margin-top: 1.5rem;
-		padding-left: 1.2rem;
-		color: #5c6b6a;
-		line-height: 1.7;
-	}
-
-	.mw-checklist li + li {
-		margin-top: 0.4rem;
-	}
-
-	.mw-reassure__inner {
-		max-width: 760px;
-		padding: clamp(1.5rem, 4vw, 3rem);
-		border: 1px solid rgba(26, 35, 48, 0.09);
-		border-radius: 22px;
-		background: #ffffff;
-	}
-
-	.mw-final {
-		background: #dfe8e6;
-		padding-block: clamp(3rem, 6vw, 5rem);
-	}
-
-	.mw-final__card {
-		display: grid;
-		grid-template-columns: minmax(0, 1fr) auto;
-		gap: 2rem;
-		align-items: end;
-		padding: clamp(1.5rem, 4vw, 3rem);
-		border-radius: 22px;
-		background: #1a2733;
-		box-shadow: 0 24px 60px rgba(26, 35, 48, 0.12);
-	}
-
-	.mw-final h2 {
-		color: #ffffff;
-	}
-
-	@media (max-width: 700px) {
-		.mw-grid--2,
-		.mw-final__card {
-			grid-template-columns: 1fr;
-		}
-	}
+@media (max-width: 860px) {
+	.np-steps-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+	.np-prep-grid, .np-provider-grid, .np-book-grid { grid-template-columns: 1fr; }
+	.np-provider-avatar { max-width: 220px; }
+}
+@media (max-width: 768px) { .np-pricing-grid { grid-template-columns: 1fr; max-width: 420px; margin-inline: auto; } }
+@media (max-width: 520px) { .np-steps-grid { grid-template-columns: 1fr; } }
 </style>

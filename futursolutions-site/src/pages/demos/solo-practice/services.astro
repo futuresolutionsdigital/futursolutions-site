@@ -1,361 +1,147 @@
 ---
-import DemoLayout from '../../../layouts/DemoLayout.astro';
-import { meridianDemoLayoutDefaults } from '../../../data/demoMeridianLayout';
-
-const services = [
-	{
-		title: 'Functional Wellness',
-		description:
-			'Consultation-based visits designed to support a broader view of lifestyle habits, recurring symptoms, and practical next steps you can discuss with the provider.',
-		bestFor: 'Clients looking for a broader view of lifestyle, symptoms, and wellness patterns.',
-	},
-	{
-		title: 'Hormone & Metabolic Support',
-		description:
-			'Education-led conversations for people exploring energy changes, metabolic questions, mood concerns, or related wellness topics—focused on clarity, not hype.',
-		bestFor: 'Clients who want to discuss energy, weight, mood, or metabolic health questions.',
-	},
-	{
-		title: 'Preventive Health Planning',
-		description:
-			'Structured visits for clients who prefer proactive guidance, goal-setting discussions, and a practical plan shaped around their priorities.',
-		bestFor: 'Clients who want proactive care planning and clearer health direction.',
-	},
-	{
-		title: 'Lifestyle & Nutrition Support',
-		description:
-			'Collaborative coaching-style support that emphasizes sustainable habits, realistic routines, and steady progress over quick fixes.',
-		bestFor: 'Clients who want practical guidance around habits, routines, and sustainable changes.',
-	},
-	{
-		title: 'Patient Education Visits',
-		description:
-			'Appointment time reserved for explanation, diagrams or handouts where helpful, and space to ask follow-up questions at a comfortable pace.',
-		bestFor: 'Clients who want time to ask questions and understand options.',
-	},
-	{
-		title: 'Follow-Up Planning',
-		description:
-			'Continuing care conversations for monitoring, adjusting plans, accountability, or mapping the next milestone with your provider.',
-		bestFor: 'Clients who need ongoing support, accountability, or next-step guidance.',
-	},
-];
-
-const faqs = [
-	{
-		question: 'How do I know which service is right for me?',
-		answer:
-			'Many patients begin with an inquiry so the practice can hear your goals, suggest a sensible first appointment type, and help you prepare questions ahead of time.',
-	},
-	{
-		question: 'Why should each service have its own page?',
-		answer:
-			'Separate pages keep expectations readable, separate education from marketing noise, and help visitors compare options before they schedule or submit a request.',
-	},
-	{
-		question: 'Can this structure support local SEO?',
-		answer:
-			'Yes—clear headings, distinctive service descriptions, internal links between related topics, and location-appropriate wording can reinforce how people search for care nearby.',
-	},
-	{
-		question: 'Can inquiries connect to booking or follow-up?',
-		answer:
-			'Practice teams often route messages through scheduling software, encrypted email, or a CRM so every inquiry receives a tracked and consistent reply.',
-	},
-];
+import AsterLayout from '../../../layouts/AsterLayout.astro';
+import { services, conditions, faqs } from '../../../data/aster';
 ---
 
-<DemoLayout
-	variant="solo-practice"
-	{...meridianDemoLayoutDefaults}
-	title="Services | Meridian Wellness Practice Demo"
-	description="A solo practice demo services page showing how independent providers can organize services for trust, clarity, and patient inquiries."
+<AsterLayout
+	title="Services & Care Areas | Aster Private Health Demo"
+	description="Explore care areas offered at Aster Private Health — private primary care, preventive health, women's wellness, hormone support, metabolic health, functional wellness, and telehealth."
 	canonicalUrl="https://futursolutions.vercel.app/demos/solo-practice/services/"
 >
-	<section class="mw-page-hero" aria-labelledby="svc-heading">
-		<div class="site-container">
-			<p class="mw-eyebrow">Services</p>
-			<h1 id="svc-heading">Services organized around how patients make decisions.</h1>
-			<p class="mw-lead">
-				Explore care categories with clear explanations, practical expectations, and simple next steps for new patients.
-			</p>
-			<div class="mw-button-row">
-				<a class="mw-button mw-button--primary" href="/demos/solo-practice/contact">Request Appointment</a>
+	<section class="ap-page-hero" aria-labelledby="svc-heading">
+		<div class="aster-container">
+			<a class="ap-back" href="/demos/solo-practice">← Back to Aster Home</a>
+			<p class="aster-eyebrow">Services &amp; Care Areas</p>
+			<h1 id="svc-heading">Care designed around the whole person.</h1>
+			<p class="aster-lead">Each area of care is supported by thorough evaluation, personalized planning, and ongoing follow-up — not a rushed checklist.</p>
+			<div class="aster-btn-row">
+				<a class="aster-btn aster-btn--primary" href="/demos/solo-practice/new-patients">Book a Consultation</a>
+				<a class="aster-btn aster-btn--secondary" href="/demos/solo-practice/#pricing">View Pricing</a>
 			</div>
 		</div>
 	</section>
 
-	<section class="mw-section mw-section--muted" aria-labelledby="grid-heading">
-		<div class="site-container">
-			<div class="mw-section__intro">
-				<p class="mw-eyebrow">Overview</p>
-				<h2 id="grid-heading">Care options with clear context.</h2>
+	<section class="aster-section aster-section--sand" aria-labelledby="grid-heading">
+		<div class="aster-container">
+			<div class="ap-intro">
+				<p class="aster-eyebrow">Overview</p>
+				<h2 id="grid-heading">What we help patients with.</h2>
+				<p class="aster-lead">Every service begins with a conversation — your goals, your concerns, and a plan that fits your life.</p>
 			</div>
-			<div class="mw-services-grid">
+			<div class="ap-services-grid">
 				{services.map((svc) => (
-					<article class="mw-svc-card">
+					<article class="aster-card ap-svc-card">
 						<h3>{svc.title}</h3>
-						<p>{svc.description}</p>
-						<div class="mw-svc-card__meta">
-							<strong>Best for</strong>
+						<p class="ap-svc-card__desc">{svc.description}</p>
+						<div class="ap-svc-card__meta">
+							<strong>Best for:</strong>
 							<span>{svc.bestFor}</span>
 						</div>
-						<a href="/demos/solo-practice/contact">Ask About This Service</a>
+						<a class="ap-svc-card__link" href="/demos/solo-practice/new-patients">
+							Book This Service
+							<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 14 14" aria-hidden="true"><path stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" d="m5.25 3.5 3.5 3.5-3.5 3.5"/></svg>
+						</a>
 					</article>
 				))}
 			</div>
 		</div>
 	</section>
 
-	<section class="mw-section" aria-labelledby="edu-heading">
-		<div class="site-container mw-callout">
-			<p class="mw-eyebrow">Content depth</p>
-			<h2 id="edu-heading">Each service can become a clear education page.</h2>
-			<p class="mw-lead">
-				For a real solo practice website, each service can have its own page with patient education, FAQs, trust signals, local SEO structure, and inquiry prompts.
-			</p>
-		</div>
-	</section>
-
-	<section class="mw-section mw-section--muted" aria-labelledby="faq-heading">
-		<div class="site-container">
-			<div class="mw-section__intro">
-				<p class="mw-eyebrow">FAQ</p>
-				<h2 id="faq-heading">Questions patients often ask first.</h2>
+	<section class="aster-section" aria-labelledby="conditions-heading">
+		<div class="aster-container">
+			<div class="ap-intro">
+				<p class="aster-eyebrow">Areas of focus</p>
+				<h2 id="conditions-heading">Common concerns we help patients navigate.</h2>
+				<p class="aster-lead">Whether you are seeking answers, symptom relief, or a clearer path forward, these are the concerns our patients most often bring to us.</p>
 			</div>
-			<div class="mw-faq-grid">
-				{faqs.map((faq) => (
-					<article class="mw-faq-card">
-						<h3>{faq.question}</h3>
-						<p>{faq.answer}</p>
-					</article>
+			<div class="ap-conditions-grid">
+				{conditions.map((cond) => (
+					<div class="ap-condition-item">
+						<span class="ap-condition-dot" aria-hidden="true"></span>
+						<span>{cond}</span>
+					</div>
 				))}
 			</div>
 		</div>
 	</section>
 
-	<section class="mw-section mw-final" aria-labelledby="final-heading">
-		<div class="site-container mw-final__card">
-			<div>
-				<p class="mw-eyebrow mw-eyebrow--invert">Future Solutions template</p>
-				<h2 id="final-heading">Ready to adapt this service structure?</h2>
+	<section class="aster-section aster-section--sand" aria-labelledby="svc-faq-heading">
+		<div class="aster-container">
+			<div class="ap-intro" style="text-align:center; margin-inline:auto;">
+				<p class="aster-eyebrow">FAQ</p>
+				<h2 id="svc-faq-heading">Questions about our services?</h2>
 			</div>
-			<div class="mw-button-row">
-				<a class="mw-button mw-button--primary" href="/audit?template=solo-practice">Get This Template Customized</a>
-				<a class="mw-button mw-button--secondary mw-button--invert" href="/demos/solo-practice">Back to Demo Home</a>
+			<div class="ap-faq-list">
+				{faqs.slice(0, 4).map((faq) => (
+					<details class="ap-faq-item">
+						<summary class="ap-faq-question">
+							<span>{faq.question}</span>
+							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 20 20" aria-hidden="true"><path stroke="currentColor" stroke-width="1.5" stroke-linecap="round" d="M5 8l5 5 5-5"/></svg>
+						</summary>
+						<div class="ap-faq-answer"><p>{faq.answer}</p></div>
+					</details>
+				))}
 			</div>
 		</div>
 	</section>
-</DemoLayout>
+
+	<section class="aster-section ap-final-section" aria-labelledby="final-heading">
+		<div class="aster-container">
+			<div class="ap-final-card">
+				<p class="aster-eyebrow ap-final-eyebrow">Get started</p>
+				<h2 id="final-heading">Ready to explore which services fit your goals?</h2>
+				<p class="ap-final-lead">Start with a New Patient Consultation and your provider will help you determine the best care pathway.</p>
+				<div class="aster-btn-row" style="justify-content:center;">
+					<a class="aster-btn ap-final-btn-primary" href="/demos/solo-practice/new-patients">Book a Consultation</a>
+					<a class="aster-btn ap-final-btn-secondary" href="/demos/solo-practice">Back to Aster Home</a>
+				</div>
+			</div>
+		</div>
+	</section>
+</AsterLayout>
 
 <style>
-	.mw-page-hero,
-	.mw-section {
-		padding-block: clamp(4.5rem, 8vw, 7rem);
-	}
+.ap-page-hero { padding-block: clamp(4rem, 7vw, 6rem) clamp(3rem, 5vw, 4rem); background: linear-gradient(180deg, var(--aster-bg) 0%, color-mix(in srgb, var(--aster-sand) 25%, var(--aster-bg)) 100%); }
+.ap-back { display: inline-flex; align-items: center; margin-bottom: 1.5rem; font-size: 0.82rem; font-weight: 600; color: var(--aster-sage); }
+.ap-back:hover { color: var(--aster-sage-dark); }
+.ap-intro { max-width: 660px; margin-bottom: clamp(2rem, 4vw, 3rem); }
 
-	.mw-page-hero {
-		background:
-			radial-gradient(circle at 78% 8%, rgba(77, 122, 113, 0.12), transparent 32%),
-			linear-gradient(180deg, #ffffff 0%, #f9faf8 80%);
-	}
+.ap-services-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; }
+.ap-svc-card { display: flex; flex-direction: column; padding: 1.35rem; }
+.ap-svc-card__desc { flex: 1; color: var(--aster-muted); font-size: 0.88rem; line-height: 1.55; }
+.ap-svc-card__meta { margin-bottom: 0.75rem; padding-top: 0.75rem; border-top: 1px solid var(--aster-border); font-size: 0.78rem; color: var(--aster-text); }
+.ap-svc-card__meta strong { color: var(--aster-heading); }
+.ap-svc-card__link { display: inline-flex; align-items: center; gap: 0.3rem; font-size: 0.82rem; font-weight: 700; color: var(--aster-sage); }
+.ap-svc-card__link:hover { color: var(--aster-sage-dark); }
 
-	.mw-eyebrow {
-		margin-bottom: 1rem;
-		color: #4d7a71;
-		font-size: 0.8125rem;
-		font-weight: 800;
-		letter-spacing: 0.1em;
-		text-transform: uppercase;
-	}
+.ap-conditions-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.75rem; }
+.ap-condition-item { display: flex; align-items: center; gap: 0.65rem; padding: 0.85rem 1rem; border-radius: 10px; background: var(--aster-sand); border: 1px solid var(--aster-border); font-size: 0.9rem; font-weight: 600; color: var(--aster-heading); transition: background 0.18s ease; }
+.ap-condition-item:hover { background: color-mix(in srgb, var(--aster-sage-light) 70%, var(--aster-sand)); }
+.ap-condition-dot { flex-shrink: 0; width: 0.4rem; height: 0.4rem; border-radius: 50%; background: var(--aster-sage); }
 
-	.mw-eyebrow--invert {
-		color: #b8d4cc;
-	}
+.ap-faq-list { max-width: 760px; margin-inline: auto; }
+.ap-faq-item { border-bottom: 1px solid var(--aster-border); }
+.ap-faq-item:first-child { border-top: 1px solid var(--aster-border); }
+.ap-faq-question { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.15rem 0; cursor: pointer; list-style: none; font-weight: 700; font-size: 0.95rem; color: var(--aster-heading); }
+.ap-faq-question::-webkit-details-marker { display: none; }
+.ap-faq-question::marker { display: none; content: ''; }
+.ap-faq-question svg { flex-shrink: 0; color: var(--aster-muted); transition: transform 0.2s ease; }
+.ap-faq-item[open] .ap-faq-question svg { transform: rotate(180deg); }
+.ap-faq-answer { padding-bottom: 1.25rem; }
+.ap-faq-answer p { margin: 0; color: var(--aster-text); font-size: 0.9rem; line-height: 1.65; }
 
-	.mw-page-hero h1,
-	.mw-section h2 {
-		max-width: 900px;
-		color: #1a2330;
-	}
+.ap-final-section { padding-block: clamp(2.5rem, 5vw, 4rem); background: var(--aster-sand); }
+.ap-final-card { max-width: 760px; margin-inline: auto; padding: clamp(2rem, 4vw, 3.5rem); border-radius: var(--aster-radius-lg); background: var(--aster-heading); text-align: center; }
+.ap-final-eyebrow { color: var(--aster-warm) !important; }
+.ap-final-card h2 { color: var(--aster-white); max-width: 560px; margin-inline: auto; }
+.ap-final-lead { max-width: 520px; margin-inline: auto; color: rgba(255,255,255,0.6); font-size: 0.95rem; line-height: 1.6; }
+.ap-final-btn-primary { background: var(--aster-sage); color: var(--aster-white); }
+.ap-final-btn-primary:hover { background: var(--aster-sage-dark); color: var(--aster-white); }
+.ap-final-btn-secondary { border-color: rgba(255,255,255,0.15); background: transparent; color: rgba(255,255,255,0.8); }
+.ap-final-btn-secondary:hover { background: rgba(255,255,255,0.08); color: var(--aster-white); }
 
-	.mw-lead {
-		max-width: 720px;
-		color: #5c6b6a;
-		font-size: clamp(1.05rem, 1rem + 0.28vw, 1.22rem);
-		line-height: 1.66;
-	}
-
-	.mw-section__intro {
-		max-width: 760px;
-	}
-
-	.mw-button-row {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 0.875rem;
-		margin-top: 2rem;
-	}
-
-	.mw-button {
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		min-height: 2.875rem;
-		padding: 0.8rem 1.1rem;
-		border-radius: 999px;
-		font-size: 0.9375rem;
-		font-weight: 800;
-		line-height: 1;
-	}
-
-	.mw-button--primary {
-		border: 1px solid transparent;
-		background: #4d7a71;
-		color: #ffffff;
-	}
-
-	.mw-button--primary:hover {
-		background: #3d615a;
-		color: #ffffff;
-	}
-
-	.mw-button--secondary {
-		border-color: rgba(42, 54, 65, 0.12);
-		background: #ffffff;
-		color: #1a2330;
-	}
-
-	.mw-button--secondary:hover {
-		background: #e8f0ee;
-		color: #3d5f57;
-	}
-
-	.mw-button--invert {
-		border-color: rgba(255, 255, 255, 0.35);
-		background: transparent;
-		color: #ffffff;
-	}
-
-	.mw-button--invert:hover {
-		background: rgba(255, 255, 255, 0.12);
-		color: #ffffff;
-	}
-
-	.mw-section--muted {
-		border-block: 1px solid rgba(26, 35, 48, 0.07);
-		background: #eef2f1;
-	}
-
-	.mw-services-grid,
-	.mw-faq-grid {
-		display: grid;
-		gap: 1rem;
-		margin-top: clamp(2rem, 4vw, 3rem);
-	}
-
-	.mw-services-grid {
-		grid-template-columns: repeat(3, minmax(0, 1fr));
-	}
-
-	.mw-faq-grid {
-		grid-template-columns: repeat(2, minmax(0, 1fr));
-	}
-
-	.mw-svc-card,
-	.mw-faq-card,
-	.mw-callout {
-		border: 1px solid rgba(26, 35, 48, 0.09);
-		border-radius: 18px;
-		background: #ffffff;
-		box-shadow: 0 14px 40px rgba(26, 35, 48, 0.045);
-	}
-
-	.mw-svc-card,
-	.mw-faq-card {
-		padding: 1.25rem;
-	}
-
-	.mw-svc-card h3,
-	.mw-faq-card h3 {
-		margin-top: 0;
-		color: #1a2330;
-		font-size: 1.05rem;
-		letter-spacing: -0.02em;
-	}
-
-	.mw-svc-card p,
-	.mw-faq-card p {
-		color: #5c6b6a;
-		font-size: 0.92rem;
-		line-height: 1.62;
-	}
-
-	.mw-svc-card__meta {
-		display: grid;
-		gap: 0.35rem;
-		margin-top: 1rem;
-		padding-top: 1rem;
-		border-top: 1px solid rgba(26, 35, 48, 0.08);
-	}
-
-	.mw-svc-card__meta strong {
-		color: #4d7a71;
-		font-size: 0.75rem;
-		font-weight: 800;
-		letter-spacing: 0.08em;
-		text-transform: uppercase;
-	}
-
-	.mw-svc-card a {
-		display: inline-flex;
-		margin-top: 1rem;
-		color: #1a2330;
-		font-size: 0.92rem;
-		font-weight: 800;
-	}
-
-	.mw-svc-card a:hover {
-		color: #3d615a;
-	}
-
-	.mw-callout {
-		padding: clamp(1.5rem, 4vw, 3rem);
-	}
-
-	.mw-final {
-		background: #dfe8e6;
-	}
-
-	.mw-final__card {
-		display: grid;
-		grid-template-columns: minmax(0, 1fr) auto;
-		gap: 2rem;
-		align-items: end;
-		padding: clamp(1.5rem, 4vw, 3rem);
-		border-radius: 22px;
-		background: #1a2733;
-		box-shadow: 0 24px 60px rgba(26, 35, 48, 0.12);
-	}
-
-	.mw-final h2 {
-		color: #ffffff;
-	}
-
-	@media (max-width: 980px) {
-		.mw-services-grid {
-			grid-template-columns: repeat(2, minmax(0, 1fr));
-		}
-
-		.mw-final__card {
-			grid-template-columns: 1fr;
-		}
-	}
-
-	@media (max-width: 700px) {
-		.mw-services-grid,
-		.mw-faq-grid {
-			grid-template-columns: 1fr;
-		}
-	}
+@media (max-width: 960px) { .ap-services-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 860px) { .ap-conditions-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 620px) { .ap-conditions-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 520px) { .ap-services-grid, .ap-conditions-grid { grid-template-columns: 1fr; } }
 </style>
