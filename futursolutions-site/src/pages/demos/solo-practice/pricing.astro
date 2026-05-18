@@ -130,7 +130,9 @@ const rightForYou = [
 	</section>
 
 	<section class="aster-section" aria-labelledby="px-scope-heading">
-		<div class="aster-container px-scope-grid">
+		<div class="aster-container">
+			<h2 id="px-scope-heading" class="px-scope-heading">What your visit fee covers — and what it does not.</h2>
+			<div class="px-scope-grid">
 			<div class="px-scope-card">
 				<h3 class="px-scope-label">What is included</h3>
 				<ul>
@@ -143,6 +145,7 @@ const rightForYou = [
 					{notIncluded.map((item) => <li>{item}</li>)}
 				</ul>
 				<p class="px-scope-note">If you are experiencing a medical emergency, please call 911 or visit your nearest emergency room.</p>
+			</div>
 			</div>
 		</div>
 	</section>
@@ -223,6 +226,7 @@ const rightForYou = [
 .px-how-panel li::before { content: ''; position: absolute; left: 0; top: 0.5rem; width: 4px; height: 4px; border-radius: 50%; background: var(--aster-clay); }
 .px-how-panel strong { color: var(--aster-heading); }
 
+.px-scope-heading { max-width: 760px; margin-inline: auto; margin-bottom: 1.5rem; }
 .px-scope-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; max-width: 760px; margin-inline: auto; }
 .px-scope-card { padding: 1.5rem 1.65rem; border: 1px solid var(--aster-border); border-radius: var(--aster-radius); background: var(--aster-white); }
 .px-scope-card--muted { background: var(--aster-ivory); }

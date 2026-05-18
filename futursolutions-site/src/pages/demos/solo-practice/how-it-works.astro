@@ -110,7 +110,9 @@ const visitOptions = [
 	</section>
 
 	<section class="aster-section" aria-labelledby="hw-scope-heading">
-		<div class="aster-container hw-scope-grid">
+		<div class="aster-container">
+			<h2 id="hw-scope-heading" class="hw-scope-heading">What private care includes — and what it does not.</h2>
+			<div class="hw-scope-grid">
 			<div class="hw-scope-card">
 				<h3 class="hw-scope-label">What is included</h3>
 				<ul>
@@ -132,6 +134,7 @@ const visitOptions = [
 					<li>Specialist referral fees</li>
 				</ul>
 				<p class="hw-scope-note">If you are experiencing a medical emergency, please call 911 or visit your nearest emergency room.</p>
+			</div>
 			</div>
 		</div>
 	</section>
@@ -231,6 +234,7 @@ const visitOptions = [
 .hw-visit-link { font-size: 0.8rem; font-weight: 600; color: var(--aster-clay); }
 .hw-visit-link:hover { color: var(--aster-clay-dark); }
 
+.hw-scope-heading { max-width: 760px; margin-inline: auto; margin-bottom: 1.5rem; }
 .hw-scope-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; max-width: 760px; margin-inline: auto; }
 .hw-scope-card { padding: 1.5rem 1.65rem; border: 1px solid var(--aster-border); border-radius: var(--aster-radius); background: var(--aster-white); }
 .hw-scope-card--muted { background: var(--aster-paper); }
