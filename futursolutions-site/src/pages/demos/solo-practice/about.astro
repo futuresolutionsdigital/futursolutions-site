@@ -43,11 +43,8 @@ const expectations = [
 
 	<section class="aster-section aster-section--paper" aria-labelledby="ab-provider-heading">
 		<div class="aster-container ab-profile">
-			<div class="ab-portrait" aria-hidden="true">
-				<div class="ab-portrait__img">
-					<div class="ab-avatar"><span>{provider.initials}</span></div>
-					<span class="ab-portrait__label">Provider portrait</span>
-				</div>
+			<div class="ab-portrait">
+				<img src="/images/aster/provider-portrait.svg" alt="Portrait-style illustration of Dr. Elena Marrow" width="400" height="520" loading="lazy" decoding="async" class="ab-portrait__img" />
 			</div>
 			<div class="ab-profile__body">
 				<p class="aster-eyebrow">Your provider</p>
@@ -63,11 +60,8 @@ const expectations = [
 
 	<section class="aster-section" aria-labelledby="ab-snap-heading">
 		<div class="aster-container ab-snap-layout">
-			<div class="ab-snap-img" aria-hidden="true">
-				<div class="ab-snap-img__inner">
-					<div class="ab-avatar ab-avatar--lg"><span>{provider.initials}</span></div>
-					<span class="ab-snap-img__label">Provider portrait</span>
-				</div>
+			<div class="ab-snap-img">
+				<img src="/images/aster/provider-portrait-sm.svg" alt="" width="280" height="280" loading="lazy" decoding="async" class="ab-snap-img__portrait" />
 			</div>
 			<div class="ab-snap-body">
 				<p class="aster-eyebrow">Provider Snapshot</p>
@@ -172,10 +166,8 @@ const expectations = [
 .ab-intro { max-width: 560px; margin-bottom: clamp(2rem, 4vw, 3rem); }
 
 .ab-profile { display: grid; grid-template-columns: 0.38fr 1fr; gap: clamp(2rem, 4vw, 3.5rem); align-items: start; }
-.ab-portrait__img { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: clamp(2.5rem, 5vw, 4rem) 1.5rem; background: linear-gradient(170deg, var(--aster-eucalyptus-light) 0%, var(--aster-paper) 60%); border: 1px solid var(--aster-border); border-radius: var(--aster-radius-lg); min-height: 220px; }
-.ab-avatar { display: flex; align-items: center; justify-content: center; width: clamp(5rem, 7vw, 6.5rem); height: clamp(5rem, 7vw, 6.5rem); border-radius: 50%; background: var(--aster-white); border: 2px solid var(--aster-border); }
-.ab-avatar span { font-family: var(--aster-serif); font-size: clamp(1.3rem, 1.8vw, 1.6rem); font-weight: 600; color: var(--aster-clay); }
-.ab-portrait__label { margin-top: 0.75rem; font-size: 0.62rem; font-weight: 600; color: var(--aster-muted); letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.5; }
+.ab-portrait { border-radius: var(--aster-radius-lg); overflow: hidden; }
+.ab-portrait__img { display: block; width: 100%; height: auto; border-radius: var(--aster-radius-lg); }
 .ab-profile__title { color: var(--aster-clay); font-weight: 600; font-size: 0.88rem; margin-bottom: 1rem; }
 .ab-profile__bio { max-width: 520px; font-size: 1rem; line-height: 1.75; }
 .ab-creds { display: grid; gap: 0.4rem; padding: 0; margin: 1.25rem 0 0; list-style: none; }
@@ -217,9 +209,8 @@ const expectations = [
 .ab-cta-s:hover { background: rgba(255,255,255,0.07); color: var(--aster-white); }
 
 .ab-snap-layout { display: grid; grid-template-columns: 0.4fr 1fr; gap: clamp(2rem, 4vw, 3.5rem); align-items: start; }
-.ab-snap-img__inner { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: clamp(3rem, 6vw, 5rem) 2rem; background: linear-gradient(170deg, var(--aster-clay-light) 0%, var(--aster-paper) 70%); border: 1px solid var(--aster-border); border-radius: var(--aster-radius-lg); min-height: 280px; }
-.ab-avatar--lg { width: clamp(5.5rem, 8vw, 7rem); height: clamp(5.5rem, 8vw, 7rem); }
-.ab-snap-img__label { margin-top: 0.75rem; font-size: 0.62rem; font-weight: 600; color: var(--aster-muted); letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.5; }
+.ab-snap-img { display: flex; align-items: start; justify-content: center; }
+.ab-snap-img__portrait { display: block; width: 100%; max-width: 240px; height: auto; border-radius: 50%; border: 1px solid var(--aster-border); }
 .ab-snap-stats { display: grid; gap: 0; margin: 1.25rem 0 0; }
 .ab-snap-stats > div { display: flex; gap: 1rem; padding-block: 0.7rem; border-bottom: 1px solid var(--aster-border); }
 .ab-snap-stats > div:first-child { border-top: 1px solid var(--aster-border); }
@@ -231,6 +222,6 @@ const expectations = [
 	.ab-interest-layout { grid-template-columns: 1fr; }
 	.ab-expect-grid { grid-template-columns: 1fr; }
 	.ab-snap-layout { grid-template-columns: 1fr; }
-	.ab-snap-img__inner { min-height: 200px; }
+	.ab-snap-img__portrait { max-width: 180px; }
 }
 </style>

@@ -105,8 +105,8 @@ const checklist = [
 
 	<section class="aster-section" aria-labelledby="provider-heading">
 		<div class="aster-container np-prov-grid">
-			<div class="np-prov-avatar" aria-hidden="true">
-				<div class="np-avatar-circle"><span>{provider.initials}</span></div>
+			<div class="np-prov-avatar">
+				<img src="/images/aster/provider-portrait-sm.svg" alt="Portrait-style illustration of Dr. Elena Marrow" width="280" height="280" loading="lazy" decoding="async" class="np-prov-img" />
 			</div>
 			<div>
 				<p class="aster-eyebrow">Your provider</p>
@@ -243,8 +243,7 @@ const checklist = [
 
 .np-prov-grid { display: grid; grid-template-columns: 0.32fr 1fr; gap: clamp(2rem, 5vw, 4rem); align-items: start; }
 .np-prov-avatar { display: flex; justify-content: center; }
-.np-avatar-circle { display: flex; align-items: center; justify-content: center; width: 7rem; height: 7rem; border-radius: 50%; background: var(--aster-white); border: 1px solid var(--aster-border); }
-.np-avatar-circle span { font-family: var(--aster-serif); font-size: 1.6rem; font-weight: 600; color: var(--aster-clay); }
+.np-prov-img { display: block; width: 100%; max-width: 180px; height: auto; border-radius: 50%; border: 1px solid var(--aster-border); }
 .np-prov-title { color: var(--aster-clay); font-weight: 600; font-size: 0.88rem; margin-bottom: 0.5rem; }
 .np-quote { margin: 1.25rem 0; padding: 1rem 1.25rem; background: var(--aster-white); border-radius: var(--aster-radius); border-left: 3px solid var(--aster-clay); }
 .np-quote p { margin: 0; font-family: var(--aster-serif); font-size: 1rem; font-style: italic; font-weight: 400; line-height: 1.6; color: var(--aster-heading); }

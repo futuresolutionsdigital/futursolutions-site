@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="520" viewBox="0 0 400 520" fill="none">
+  <rect width="400" height="520" rx="16" fill="#f4ecdf"/>
+  <rect x="12" y="12" width="376" height="496" rx="12" fill="#fbf7ef" stroke="#ded3c4" stroke-width="1"/>
+  <!-- Warm gradient backdrop -->
+  <ellipse cx="200" cy="210" rx="160" ry="180" fill="#879782" opacity="0.08"/>
+  <ellipse cx="190" cy="230" rx="120" ry="140" fill="#a7684d" opacity="0.06"/>
+  <!-- Abstract figure silhouette -->
+  <path d="M200 130 C160 130 130 165 130 210 C130 260 155 290 200 290 C245 290 270 260 270 210 C270 165 240 130 200 130Z" fill="#4b3346" opacity="0.12"/>
+  <!-- Head -->
+  <circle cx="200" cy="175" r="48" fill="#4b3346" opacity="0.15"/>
+  <circle cx="200" cy="175" r="44" fill="#fbf7ef"/>
+  <circle cx="200" cy="175" r="40" fill="#4b3346" opacity="0.08"/>
+  <!-- Shoulders -->
+  <path d="M130 290 Q130 265 155 250 Q175 240 200 238 Q225 240 245 250 Q270 265 270 290 L270 330 Q200 340 130 330Z" fill="#4b3346" opacity="0.10"/>
+  <!-- Stethoscope hint - subtle curved line -->
+  <path d="M185 260 Q175 280 180 300 Q185 315 195 310" stroke="#a7684d" stroke-width="1.5" fill="none" opacity="0.3"/>
+  <!-- Editorial decorative elements -->
+  <line x1="60" y1="380" x2="340" y2="380" stroke="#ded3c4" stroke-width="1"/>
+  <text x="200" y="410" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#4b3346" opacity="0.6" font-style="italic">Dr. Elena Marrow, FNP-C</text>
+  <text x="200" y="432" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#746f66" letter-spacing="2" opacity="0.5">BOARD-CERTIFIED FAMILY NURSE PRACTITIONER</text>
+  <!-- Aster brand mark -->
+  <rect x="175" y="456" width="50" height="24" rx="5" fill="#a7684d" opacity="0.85"/>
+  <text x="200" y="473" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#fbf7ef" font-weight="700">A</text>
+  <!-- Subtle botanical accent -->
+  <path d="M310 70 Q320 50 330 70 Q340 90 320 100 Q300 90 310 70Z" fill="#879782" opacity="0.15"/>
+  <path d="M325 60 Q330 40 340 55" stroke="#879782" stroke-width="1" fill="none" opacity="0.2"/>
+  <path d="M70 440 Q80 420 90 440 Q100 460 80 470 Q60 460 70 440Z" fill="#879782" opacity="0.12"/>
+</svg>

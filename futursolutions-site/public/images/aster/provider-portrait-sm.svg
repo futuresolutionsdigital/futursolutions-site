@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="280" height="280" viewBox="0 0 280 280" fill="none">
+  <rect width="280" height="280" rx="140" fill="#f4ecdf"/>
+  <rect x="6" y="6" width="268" height="268" rx="134" fill="#fbf7ef" stroke="#ded3c4" stroke-width="1"/>
+  <!-- Warm gradient -->
+  <ellipse cx="140" cy="130" rx="90" ry="100" fill="#879782" opacity="0.07"/>
+  <ellipse cx="140" cy="140" rx="70" ry="80" fill="#a7684d" opacity="0.05"/>
+  <!-- Abstract figure -->
+  <circle cx="140" cy="110" r="36" fill="#4b3346" opacity="0.13"/>
+  <circle cx="140" cy="110" r="32" fill="#fbf7ef"/>
+  <circle cx="140" cy="110" r="28" fill="#4b3346" opacity="0.08"/>
+  <!-- Shoulders -->
+  <path d="M85 195 Q85 172 108 160 Q125 152 140 150 Q155 152 172 160 Q195 172 195 195 L195 220 Q140 230 85 220Z" fill="#4b3346" opacity="0.09"/>
+  <!-- Stethoscope hint -->
+  <path d="M130 168 Q122 185 126 200" stroke="#a7684d" stroke-width="1.2" fill="none" opacity="0.25"/>
+  <!-- Brand mark -->
+  <rect x="118" y="238" width="44" height="20" rx="4" fill="#a7684d" opacity="0.75"/>
+  <text x="140" y="252" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#fbf7ef" font-weight="700">A</text>
+</svg>

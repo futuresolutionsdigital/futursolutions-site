@@ -3,9 +3,9 @@ import AsterLayout from '../../../layouts/AsterLayout.astro';
 import { brand, provider, faqs } from '../../../data/aster';
 
 const contactMethods = [
-	{ icon: '📍', title: 'Visit In-Person', detail: 'Aster Private Health\nTemecula, CA', note: 'By appointment only' },
-	{ icon: '💻', title: 'Telehealth', detail: 'Virtual appointments available', note: 'Follow-up and care coordination' },
-	{ icon: '✉️', title: 'Secure Messaging', detail: 'Available to members', note: 'Response within 1 business day' },
+	{ iconId: 'location', title: 'Visit In-Person', detail: 'Aster Private Health\nTemecula, CA', note: 'By appointment only' },
+	{ iconId: 'telehealth', title: 'Telehealth', detail: 'Virtual appointments available', note: 'Follow-up and care coordination' },
+	{ iconId: 'message', title: 'Secure Messaging', detail: 'Available to members', note: 'Response within 1 business day' },
 ];
 
 const hours = [
@@ -38,7 +38,11 @@ const hours = [
 			<div class="ct-methods-list">
 				{contactMethods.map((m) => (
 					<div class="ct-method">
-						<span class="ct-method-icon" aria-hidden="true">{m.icon}</span>
+						<span class="ct-method-icon" aria-hidden="true">
+							{m.iconId === 'location' && <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 20 20"><path d="M10 2C6.69 2 4 4.69 4 8c0 4.5 6 10 6 10s6-5.5 6-10c0-3.31-2.69-6-6-6Zm0 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4Z" fill="currentColor"/></svg>}
+							{m.iconId === 'telehealth' && <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 20 20"><rect x="2" y="4" width="16" height="11" rx="2" stroke="currentColor" stroke-width="1.4"/><path d="M6 18h8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M10 15v3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>}
+							{m.iconId === 'message' && <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 20 20"><rect x="2" y="3" width="16" height="12" rx="2" stroke="currentColor" stroke-width="1.4"/><path d="M2 5l8 5 8-5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>}
+						</span>
 						<div>
 							<h3>{m.title}</h3>
 							<p class="ct-method-detail">{m.detail}</p>
@@ -127,13 +131,9 @@ const hours = [
 				<h2 id="map-heading">Conveniently located in Temecula, CA.</h2>
 				<p class="aster-lead" style="margin-inline:auto;">Serving patients in Temecula, Murrieta, Fallbrook, and surrounding communities. Telehealth appointments available statewide.</p>
 			</div>
-			<div class="ct-map-placeholder" aria-label="Map placeholder">
-				<div class="ct-map-inner">
-					<span class="ct-map-pin" aria-hidden="true">📍</span>
-					<p><strong>{brand.name}</strong></p>
-					<p>Temecula, CA</p>
-					<p class="ct-map-note">Map integration available in live builds</p>
-				</div>
+			<div class="ct-map-placeholder" aria-label="Practice location">
+				<img src="/images/aster/location-card.svg" alt="" width="600" height="300" loading="lazy" decoding="async" class="ct-map-img" />
+				<p class="ct-map-note">Map integration available in live builds</p>
 			</div>
 		</div>
 	</section>
@@ -179,7 +179,7 @@ const hours = [
 .ct-methods-list { display: grid; gap: 0; max-width: 600px; }
 .ct-method { display: flex; align-items: flex-start; gap: 1rem; padding-block: 1.25rem; border-bottom: 1px solid var(--aster-border); }
 .ct-method:first-child { border-top: 1px solid var(--aster-border); }
-.ct-method-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 0.1rem; }
+.ct-method-icon { flex-shrink: 0; display: flex; align-items: center; justify-content: center; width: 2.25rem; height: 2.25rem; border-radius: 8px; background: var(--aster-clay-light); color: var(--aster-clay); margin-top: 0.1rem; }
 .ct-method h3 { margin-bottom: 0.15rem; }
 .ct-method-detail { color: var(--aster-heading); font-weight: 500; font-size: 0.88rem; white-space: pre-line; margin-bottom: 0.15rem; }
 .ct-method-note { color: var(--aster-muted); font-size: 0.78rem; }
@@ -211,11 +211,9 @@ const hours = [
 .ct-form-footer { display: grid; gap: 0.75rem; }
 .ct-form-footer p { margin: 0; color: var(--aster-muted); font-size: 0.78rem; line-height: 1.55; text-align: center; }
 
-.ct-map-placeholder { padding: clamp(2rem, 4vw, 3rem); border-radius: var(--aster-radius-lg); background: var(--aster-white); border: 1px solid var(--aster-border); text-align: center; }
-.ct-map-inner { max-width: 360px; margin-inline: auto; }
-.ct-map-pin { font-size: 2rem; display: block; margin-bottom: 0.75rem; }
-.ct-map-inner strong { color: var(--aster-heading); }
-.ct-map-note { margin-top: 0.5rem; color: var(--aster-muted); font-size: 0.75rem; font-style: italic; }
+.ct-map-placeholder { border-radius: var(--aster-radius-lg); overflow: hidden; border: 1px solid var(--aster-border); background: var(--aster-white); text-align: center; }
+.ct-map-img { display: block; width: 100%; height: auto; }
+.ct-map-note { padding: 0.75rem; margin: 0; color: var(--aster-muted); font-size: 0.72rem; font-style: italic; border-top: 1px solid var(--aster-border); }
 
 .ct-faq-list { max-width: 680px; margin-inline: auto; }
 .ct-faq-item { border-bottom: 1px solid var(--aster-border); }

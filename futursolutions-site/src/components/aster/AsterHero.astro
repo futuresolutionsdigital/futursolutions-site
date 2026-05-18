@@ -15,9 +15,8 @@ import { hero, provider } from '../../data/aster';
 		</div>
 		<aside class="ah-hero__aside" aria-label="Provider introduction">
 			<div class="ah-hero__card">
-				<div class="ah-hero__img-placeholder" aria-hidden="true">
-					<div class="ah-hero__avatar"><span>{provider.initials}</span></div>
-					<span class="ah-hero__img-label">Provider photo</span>
+				<div class="ah-hero__img-area">
+					<img src="/images/aster/provider-portrait-sm.svg" alt="" width="280" height="280" loading="eager" decoding="async" class="ah-hero__portrait" />
 				</div>
 				<div class="ah-hero__card-body">
 					<blockquote class="ah-hero__quote">
@@ -65,10 +64,8 @@ import { hero, provider } from '../../data/aster';
 .ah-hero__btn-primary { min-height: 3.1rem; padding: 0.8rem 1.6rem; font-size: 0.95rem; }
 .ah-hero__aside { display: flex; flex-direction: column; gap: 1rem; }
 .ah-hero__card { background: var(--aster-paper); border: 1px solid var(--aster-border); border-radius: var(--aster-radius-lg); overflow: hidden; }
-.ah-hero__img-placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: clamp(2rem, 4vw, 3rem) 2rem; background: linear-gradient(170deg, var(--aster-eucalyptus-light) 0%, var(--aster-paper) 100%); border-bottom: 1px solid var(--aster-border); min-height: 160px; }
-.ah-hero__avatar { display: flex; align-items: center; justify-content: center; width: 4.5rem; height: 4.5rem; border-radius: 50%; background: var(--aster-white); border: 2px solid var(--aster-border); box-shadow: 0 4px 20px rgba(32,32,29,0.06); }
-.ah-hero__avatar span { font-family: var(--aster-serif); font-size: 1.1rem; font-weight: 600; color: var(--aster-clay); }
-.ah-hero__img-label { margin-top: 0.6rem; font-size: 0.65rem; font-weight: 600; color: var(--aster-muted); letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.6; }
+.ah-hero__img-area { display: flex; align-items: center; justify-content: center; padding: clamp(1rem, 2vw, 1.5rem); background: linear-gradient(170deg, var(--aster-eucalyptus-light) 0%, var(--aster-paper) 100%); border-bottom: 1px solid var(--aster-border); }
+.ah-hero__portrait { display: block; width: 100%; max-width: 160px; height: auto; border-radius: 50%; }
 .ah-hero__card-body { padding: clamp(1.25rem, 2.5vw, 1.75rem); }
 .ah-hero__quote { margin: 0; }
 .ah-hero__quote p { margin: 0 0 1rem; font-family: var(--aster-serif); font-size: clamp(0.95rem, 0.9rem + 0.2vw, 1.05rem); font-style: italic; font-weight: 400; line-height: 1.6; color: var(--aster-heading); }
