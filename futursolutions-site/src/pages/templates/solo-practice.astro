@@ -1,0 +1,595 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import TemplateFinalCTA from '../../components/TemplateFinalCTA.astro';
+import { getTemplateBySlug } from '../../data/templates';
+
+const template = getTemplateBySlug('solo-practice')!;
+const pageTitle = 'Aster Private Health — Solo Practice Website Template | Future Solutions';
+const pageDescription =
+	'A warm editorial website system for solo NPs, private primary care, concierge-style care, and cash-pay healthcare providers. View the live demo or customize this template.';
+const canonicalUrl = 'https://futursolutions.vercel.app/templates/solo-practice';
+
+const trustTags = [
+	'10-page demo',
+	'Mobile responsive',
+	'Pricing page included',
+	'New patient flow',
+	'Patient portal placeholder',
+	'Resource hub',
+];
+
+const audienceList = [
+	{ label: 'Solo NPs', desc: 'Nurse practitioners building or scaling a private practice.' },
+	{ label: 'Private primary care', desc: 'Physicians offering relationship-driven, non-insurance care.' },
+	{ label: 'Concierge medicine', desc: 'Membership-based practices that need to explain the model clearly.' },
+	{ label: 'Direct primary care (DPC)', desc: 'Flat-fee primary care practices communicating value and pricing.' },
+	{ label: 'Cash-pay providers', desc: 'Providers who need transparent pricing and HSA/FSA language.' },
+	{ label: 'Women\u2019s health providers', desc: 'Specialists building trust around sensitive, ongoing care.' },
+	{ label: 'Holistic / integrative NPs', desc: 'Providers combining conventional and integrative approaches.' },
+	{ label: 'Practices replacing an outdated site', desc: 'Small practices that need a modern, conversion-ready upgrade.' },
+];
+
+const problems = [
+	'The provider feels generic or hidden behind a corporate template.',
+	'Services are listed without explaining the care model or approach.',
+	'Cash-pay pricing is unclear, creating hesitation before the first visit.',
+	'Patients do not know what to book or what the first visit looks like.',
+	'The site feels outdated, overly clinical, or disconnected from the provider.',
+	'The new patient process is vague, with no preparation guidance.',
+	'There is no content strategy for building trust or organic search visibility.',
+	'Contact and booking paths are scattered across the site.',
+];
+
+const pages = [
+	{ name: 'Homepage', purpose: 'Builds trust quickly and guides patients toward booking a consultation.' },
+	{ name: 'About the Provider', purpose: 'Shares the provider\u2019s background, philosophy, and credentials in an editorial layout.' },
+	{ name: 'Services Overview', purpose: 'Organizes care areas as a clear, navigable system rather than a treatment menu.' },
+	{ name: 'Private Primary Care (detail)', purpose: 'Deep-dive into a single service with scope, included items, and who it\u2019s for.' },
+	{ name: 'How It Works', purpose: 'Walks patients through the care model from first visit to ongoing support.' },
+	{ name: 'Pricing & Membership', purpose: 'Explains private-pay care, HSA/FSA language, superbills, and what is or isn\u2019t included.' },
+	{ name: 'Resources', purpose: 'Houses patient education articles and guides for organic search and credibility.' },
+	{ name: 'New Patients', purpose: 'Reduces booking hesitation with a first-visit walkthrough, checklist, and intake form.' },
+	{ name: 'Contact / Location', purpose: 'Provides clear contact methods, office hours, response expectations, and location presence.' },
+	{ name: 'Patient Portal', purpose: 'Placeholder dashboard showing what a connected patient portal experience looks like.' },
+];
+
+const strategicFeatures = [
+	{ title: 'Provider-led homepage', desc: 'The homepage centers the provider\u2019s story and credentials, not a generic hero banner.' },
+	{ title: 'Consultation-first conversion', desc: 'Every page routes toward booking a consultation, not a hard sell.' },
+	{ title: 'Transparent pricing explanation', desc: 'Pricing cards, HSA/FSA language, and superbill guidance reduce cost confusion.' },
+	{ title: 'Care model walkthrough', desc: 'A dedicated page explains how care works from first visit to ongoing support.' },
+	{ title: 'Patient-fit self-identification', desc: 'Homepage cards help visitors recognize themselves before scrolling further.' },
+	{ title: 'New patient onboarding flow', desc: 'Preparation checklist, booking form, and first-visit expectations reduce no-shows.' },
+	{ title: 'Service detail depth', desc: 'Individual service pages include scope, included items, conditions, and who it\u2019s for.' },
+	{ title: 'Resource / blog hub', desc: 'Article previews and guides support organic search and patient education.' },
+	{ title: 'Patient portal placeholder', desc: 'Shows clients what a connected portal experience looks like without real patient data.' },
+	{ title: 'Local SEO-ready structure', desc: 'Location presence, service keyword targeting, and metadata patterns for organic visibility.' },
+	{ title: 'FAQ objection handling', desc: 'Accordion FAQs address insurance, telehealth, emergencies, and scope-of-practice concerns.' },
+	{ title: 'Form placeholders for CRM integration', desc: 'Contact and booking forms are structured for GoHighLevel or scheduling system connection.' },
+];
+
+const designPoints = [
+	'Serif editorial headings that feel warm and professional, not corporate.',
+	'Warm ivory and parchment backgrounds instead of clinical white.',
+	'Aubergine and clay accent palette, distinct from med spa or hospital aesthetics.',
+	'Abstract provider portrait illustration system (no stock photos).',
+	'Generous spacing and calm visual rhythm throughout every page.',
+	'Trust-first copy that explains rather than hypes.',
+	'Consistent icon system using monoline SVG icons, not emojis.',
+	'Visually distinct from med spa, wellness clinic, TRT, and weight loss templates.',
+];
+
+const customizationOptions = [
+	'Replace fictional provider name, bio, credentials, and branding.',
+	'Add real photography to replace abstract editorial illustrations.',
+	'Customize services, care areas, and condition lists.',
+	'Add real booking or scheduling integration (Jane App, Calendly, etc.).',
+	'Connect forms to GoHighLevel, CRM, or email follow-up sequences.',
+	'Add location-specific SEO pages for additional service areas.',
+	'Add blog and resource content for ongoing organic search growth.',
+	'Add additional service detail pages for each care area.',
+	'Adjust pricing tiers, membership options, and payment language.',
+	'Add real patient portal links (Elation, Cerbo, Hint Health, etc.).',
+	'Add HIPAA-conscious form routing and privacy disclaimers.',
+];
+
+const salesFaqs = [
+	{
+		q: 'Can this be customized for my practice?',
+		a: 'Yes. Everything — the provider name, services, pricing, branding, photography, and copy — can be adapted to match your real practice. The demo is a starting point, not a finished product.',
+	},
+	{
+		q: 'Can this work for a solo NP or solo physician?',
+		a: 'Absolutely. The template was designed specifically for single-provider practices. The provider-led homepage, about page, and care model explainer all center one person\u2019s story and expertise.',
+	},
+	{
+		q: 'Can you connect real booking and forms?',
+		a: 'Yes. The demo includes placeholder forms that are structured for easy connection to scheduling platforms (Jane App, Calendly, Acuity) or CRM systems like GoHighLevel.',
+	},
+	{
+		q: 'Can the services and pricing be changed?',
+		a: 'Completely. You can add, remove, or rename services. Pricing tiers, visit types, HSA/FSA language, and superbill information are all customizable.',
+	},
+	{
+		q: 'Can this support SEO and blog content?',
+		a: 'Yes. The resource hub, service pages, and condition grid are all structured for organic search visibility. Blog content can be added for ongoing traffic growth.',
+	},
+	{
+		q: 'Is this a real clinic?',
+		a: 'No. Aster Private Health is a fictional demo created for portfolio presentation. All provider names, testimonials, pricing, and patient data are entirely fictional.',
+	},
+];
+
+const conversionPoints = [
+	{ title: 'Primary CTA: Book a Consultation', desc: 'Every major page routes toward a single, clear booking action.' },
+	{ title: 'Secondary CTAs', desc: 'View Pricing, Learn How It Works, and Explore Services guide undecided visitors deeper.' },
+	{ title: 'Patient-fit section', desc: 'Homepage cards help visitors self-identify before they scroll further.' },
+	{ title: 'Care model clarity', desc: 'A dedicated page answers "how does this work?" before patients need to ask.' },
+	{ title: 'Pricing transparency', desc: 'Clear pricing cards reduce the most common source of booking hesitation.' },
+	{ title: 'FAQ objection handling', desc: 'Accordion FAQs address insurance, telehealth, emergencies, and scope questions.' },
+	{ title: 'New patient checklist', desc: 'Preparation guidance reduces no-shows and pre-visit anxiety.' },
+	{ title: 'Contact expectations', desc: 'Response times, hours, and method preferences set realistic expectations.' },
+];
+---
+
+<BaseLayout
+	title={pageTitle}
+	description={pageDescription}
+	canonicalUrl={canonicalUrl}
+	ogTitle={pageTitle}
+	ogDescription={pageDescription}
+	ogUrl={canonicalUrl}
+>
+	<!-- 1. Hero -->
+	<section class="section sp-hero" aria-labelledby="sp-hero-heading">
+		<div class="site-container sp-hero__inner">
+			<div class="sp-hero__content">
+				<p class="eyebrow">Solo Practice / NP Practice Website</p>
+				<h1 id="sp-hero-heading">A premium website template for solo healthcare providers who need to build trust before patients book.</h1>
+				<p class="lead">Aster Private Health is a complete private-practice website demo designed for solo NPs, concierge-style providers, direct primary care practices, and cash-pay healthcare brands that need to explain their care model clearly and convert visitors into consultation requests.</p>
+				<div class="button-row">
+					<a class="button button-primary" href="/demos/solo-practice">View Live Demo</a>
+					<a class="button button-secondary" href="/audit?template=solo-practice">Customize This Template</a>
+				</div>
+			</div>
+			<div class="sp-hero__preview card" aria-hidden="true">
+				<div class="sp-hero__chrome">
+					<span></span><span></span><span></span>
+				</div>
+				<div class="sp-hero__screen">
+					<div class="sp-hero__screen-header">
+						<span class="sp-hero__screen-logo">A</span>
+						<span class="sp-hero__screen-brand">Aster Private Health</span>
+					</div>
+					<div class="sp-hero__screen-hero-block">
+						<div class="sp-hero__screen-lines">
+							<span></span><span></span><span></span>
+						</div>
+						<div class="sp-hero__screen-card">
+							<div class="sp-hero__screen-avatar"></div>
+							<span></span><span></span>
+						</div>
+					</div>
+					<div class="sp-hero__screen-tiles">
+						<span></span><span></span><span></span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="site-container">
+			<div class="sp-tags">
+				{trustTags.map((tag) => (
+					<span class="sp-tag">
+						<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 14 14" aria-hidden="true"><path stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M3.5 7.5 6 10l4.5-5"/></svg>
+						{tag}
+					</span>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- 2. Preview showcase -->
+	<section class="section section-muted sp-preview" aria-labelledby="sp-preview-heading">
+		<div class="site-container">
+			<div class="sp-section-intro">
+				<p class="eyebrow">Live demo</p>
+				<h2 id="sp-preview-heading">See the full 10-page demo.</h2>
+				<p class="lead">Every page is live and clickable. Browse the homepage, services, pricing, new patient flow, and more.</p>
+			</div>
+			<a href="/demos/solo-practice" class="sp-browser-frame card">
+				<div class="sp-browser-frame__chrome">
+					<span></span><span></span><span></span>
+					<span class="sp-browser-frame__url">futursolutions.vercel.app/demos/solo-practice</span>
+				</div>
+				<div class="sp-browser-frame__body">
+					<div class="sp-browser-frame__mockup">
+						<div class="sp-mockup-header">
+							<span class="sp-mockup-logo">A</span>
+							<span class="sp-mockup-nav"></span>
+							<span class="sp-mockup-nav"></span>
+							<span class="sp-mockup-nav"></span>
+						</div>
+						<div class="sp-mockup-hero">
+							<div class="sp-mockup-hero-text">
+								<span class="sp-mockup-line sp-mockup-line--sm"></span>
+								<span class="sp-mockup-line sp-mockup-line--lg"></span>
+								<span class="sp-mockup-line sp-mockup-line--md"></span>
+								<span class="sp-mockup-line sp-mockup-line--md"></span>
+								<div class="sp-mockup-btns"><span></span><span></span></div>
+							</div>
+							<div class="sp-mockup-hero-card">
+								<div class="sp-mockup-portrait"></div>
+								<span class="sp-mockup-line sp-mockup-line--md"></span>
+								<span class="sp-mockup-line sp-mockup-line--sm"></span>
+							</div>
+						</div>
+						<div class="sp-mockup-strip">
+							<span></span><span></span><span></span><span></span>
+						</div>
+					</div>
+				</div>
+			</a>
+			<div class="sp-preview-cta">
+				<a class="button button-primary" href="/demos/solo-practice">View Live Demo</a>
+				<a class="button button-secondary" href="/templates">View All Templates</a>
+			</div>
+		</div>
+	</section>
+
+	<!-- 3. Who this is for -->
+	<section class="section sp-audience" aria-labelledby="sp-audience-heading">
+		<div class="site-container">
+			<div class="sp-section-intro">
+				<p class="eyebrow">Audience</p>
+				<h2 id="sp-audience-heading">Built for providers whose website needs to earn personal trust.</h2>
+				<p class="lead">This template is for providers whose website needs to build personal trust, explain a non-traditional care model, and make the first consultation feel simple.</p>
+			</div>
+			<div class="sp-audience__grid">
+				{audienceList.map((item) => (
+					<article class="card sp-audience__card">
+						<h3>{item.label}</h3>
+						<p>{item.desc}</p>
+					</article>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- 4. The business problem -->
+	<section class="section section-muted sp-problem" aria-labelledby="sp-problem-heading">
+		<div class="site-container">
+			<div class="sp-section-intro">
+				<p class="eyebrow">The problem</p>
+				<h2 id="sp-problem-heading">Most solo healthcare websites do not explain why a patient should trust the provider.</h2>
+				<p class="lead">Patients visit a solo provider's website looking for answers. Most sites give them a generic bio and a phone number.</p>
+			</div>
+			<div class="sp-problem__grid">
+				{problems.map((p, i) => (
+					<div class="sp-problem__item">
+						<span class="sp-problem__num">{String(i + 1).padStart(2, '0')}</span>
+						<p>{p}</p>
+					</div>
+				))}
+			</div>
+			<div class="sp-problem__solution">
+				<p class="eyebrow">The solution</p>
+				<p>Aster is structured to answer <strong>who the provider is</strong>, <strong>how care works</strong>, <strong>what services are offered</strong>, <strong>what it costs</strong>, and <strong>how to book</strong> — in the right order, on dedicated pages, with clear navigation and consistent calls to action.</p>
+			</div>
+		</div>
+	</section>
+
+	<!-- 5. Pages included -->
+	<section class="section sp-pages" aria-labelledby="sp-pages-heading">
+		<div class="site-container">
+			<div class="sp-section-intro">
+				<p class="eyebrow">Included pages</p>
+				<h2 id="sp-pages-heading">A complete 10-page mini-site, ready to customize.</h2>
+				<p class="lead">Each page is planned as part of a practical website system — not a disconnected design mockup.</p>
+			</div>
+			<div class="sp-pages__list">
+				{pages.map((page, i) => (
+					<div class="sp-pages__item">
+						<span class="sp-pages__num">{String(i + 1).padStart(2, '0')}</span>
+						<div>
+							<h3>{page.name}</h3>
+							<p>{page.purpose}</p>
+						</div>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- 6. Strategic features -->
+	<section class="section section-muted sp-features" aria-labelledby="sp-features-heading">
+		<div class="site-container">
+			<div class="sp-section-intro">
+				<p class="eyebrow">Strategic features</p>
+				<h2 id="sp-features-heading">More than visual design. A conversion system.</h2>
+				<p class="lead">Every structural decision in this template exists to move a visitor from curiosity to consultation.</p>
+			</div>
+			<div class="sp-features__grid">
+				{strategicFeatures.map((f) => (
+					<article class="card sp-features__card">
+						<h3>{f.title}</h3>
+						<p>{f.desc}</p>
+					</article>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- 7. Design direction -->
+	<section class="section sp-design" aria-labelledby="sp-design-heading">
+		<div class="site-container">
+			<div class="sp-section-intro">
+				<p class="eyebrow">Design direction</p>
+				<h2 id="sp-design-heading">Warm editorial healthcare, not corporate clinic design.</h2>
+				<p class="lead">Aster's visual system is intentionally different from the clinical, sterile, or overly corporate aesthetics common in healthcare websites.</p>
+			</div>
+			<div class="sp-design__grid">
+				{designPoints.map((point) => (
+					<div class="sp-design__item">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="3.5" fill="currentColor"/></svg>
+						<p>{point}</p>
+					</div>
+				))}
+			</div>
+			<div class="sp-design__palette" aria-label="Aster color palette preview">
+				<span class="sp-swatch" style="background:#fbf7ef;" title="Ivory/Paper"></span>
+				<span class="sp-swatch" style="background:#f4ecdf;" title="Parchment"></span>
+				<span class="sp-swatch" style="background:#a7684d;" title="Clay"></span>
+				<span class="sp-swatch" style="background:#4b3346;" title="Aubergine"></span>
+				<span class="sp-swatch" style="background:#879782;" title="Eucalyptus"></span>
+			</div>
+		</div>
+	</section>
+
+	<!-- 8. Conversion strategy -->
+	<section class="section section-muted sp-conversion" aria-labelledby="sp-conversion-heading">
+		<div class="site-container">
+			<div class="sp-section-intro">
+				<p class="eyebrow">Conversion strategy</p>
+				<h2 id="sp-conversion-heading">The site does not pressure visitors. It reduces uncertainty.</h2>
+				<p class="lead">Every conversion decision in Aster is designed to answer a patient's question before they need to ask it.</p>
+			</div>
+			<div class="sp-conversion__grid">
+				{conversionPoints.map((c) => (
+					<article class="card sp-conversion__card">
+						<h3>{c.title}</h3>
+						<p>{c.desc}</p>
+					</article>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- 9. Customization options -->
+	<section class="section sp-customize" aria-labelledby="sp-customize-heading">
+		<div class="site-container">
+			<div class="sp-section-intro">
+				<p class="eyebrow">Customization</p>
+				<h2 id="sp-customize-heading">Adapt this to your practice without starting from scratch.</h2>
+				<p class="lead">Everything in this demo is designed to be replaced with your real practice details, photography, services, and booking workflow.</p>
+			</div>
+			<div class="sp-customize__list">
+				{customizationOptions.map((opt) => (
+					<div class="sp-customize__item">
+						<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 14 14" aria-hidden="true"><path stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M3.5 7.5 6 10l4.5-5"/></svg>
+						<span>{opt}</span>
+					</div>
+				))}
+			</div>
+			<div class="button-row">
+				<a class="button button-primary" href="/audit?template=solo-practice">Customize This Template</a>
+				<a class="button button-secondary" href="/demos/solo-practice">View Live Demo</a>
+			</div>
+		</div>
+	</section>
+
+	<!-- 10. FAQ -->
+	<section class="section section-muted sp-faq" aria-labelledby="sp-faq-heading">
+		<div class="site-container">
+			<div class="sp-section-intro" style="text-align:center; margin-inline:auto;">
+				<p class="eyebrow">Frequently asked questions</p>
+				<h2 id="sp-faq-heading">Common questions about this template.</h2>
+			</div>
+			<div class="sp-faq__list">
+				{salesFaqs.map((faq) => (
+					<details class="sp-faq__item">
+						<summary class="sp-faq__q">
+							{faq.q}
+							<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 18 18" aria-hidden="true"><path d="M4.5 7 9 11.5 13.5 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+						</summary>
+						<div class="sp-faq__a"><p>{faq.a}</p></div>
+					</details>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- 11. CTA -->
+	<TemplateFinalCTA
+		heading="Want this customized for your practice?"
+		description="I can adapt this template to your services, pricing model, location, provider story, and booking workflow so your site feels custom without starting from scratch."
+		primaryText="Customize This Template"
+		primaryHref="/audit?template=solo-practice"
+		secondaryText="View Live Demo"
+		secondaryHref="/demos/solo-practice"
+	/>
+</BaseLayout>
+
+<style>
+	/* Hero */
+	.sp-hero {
+		position: relative;
+		overflow: hidden;
+		padding-block: clamp(5rem, 8vw, 8rem) clamp(3rem, 5vw, 4rem);
+	}
+
+	.sp-hero::before {
+		position: absolute;
+		inset: 0;
+		z-index: -1;
+		background:
+			radial-gradient(circle at 78% 18%, rgba(95, 143, 139, 0.12), transparent 30%),
+			linear-gradient(180deg, var(--color-white) 0%, var(--color-bg) 72%);
+		content: '';
+	}
+
+	.sp-hero__inner {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) minmax(340px, 0.72fr);
+		gap: clamp(3rem, 6vw, 5rem);
+		align-items: center;
+	}
+
+	.sp-hero__content { max-width: 760px; }
+	.sp-hero__content h1 { max-width: 760px; }
+
+	/* Browser mockup in hero */
+	.sp-hero__preview { overflow: hidden; border-radius: 22px; box-shadow: 0 24px 70px rgba(15, 23, 42, 0.08); }
+	.sp-hero__chrome { display: flex; gap: 0.45rem; padding: 0.9rem 1rem; border-bottom: 1px solid var(--color-border); background: var(--color-bg-secondary); }
+	.sp-hero__chrome span { width: 0.55rem; height: 0.55rem; border-radius: 999px; background: var(--color-white); border: 1px solid color-mix(in srgb, var(--color-muted) 26%, transparent); }
+	.sp-hero__screen { padding: 1rem; background: linear-gradient(90deg, rgba(226,232,240,0.3) 1px, transparent 1px), linear-gradient(180deg, rgba(226,232,240,0.3) 1px, transparent 1px), #fbf7ef; background-size: 40px 40px; display: grid; gap: 0.75rem; }
+
+	.sp-hero__screen-header { display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 0.75rem; background: #fbf7ef; border: 1px solid #ded3c4; border-radius: 8px; }
+	.sp-hero__screen-logo { display: inline-flex; align-items: center; justify-content: center; width: 1.4rem; height: 1.4rem; border-radius: 4px; background: #a7684d; color: #fbf7ef; font-size: 0.6rem; font-weight: 800; font-family: Georgia, serif; }
+	.sp-hero__screen-brand { font-size: 0.65rem; font-weight: 700; color: #4b3346; }
+
+	.sp-hero__screen-hero-block { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 0.65rem; }
+	.sp-hero__screen-lines { display: grid; gap: 0.4rem; padding: 0.75rem; background: #fbf7ef; border: 1px solid #ded3c4; border-radius: 8px; }
+	.sp-hero__screen-lines span { height: 0.5rem; border-radius: 999px; }
+	.sp-hero__screen-lines span:first-child { width: 40%; background: #a7684d; opacity: 0.4; }
+	.sp-hero__screen-lines span:nth-child(2) { width: 85%; height: 0.65rem; background: #4b3346; opacity: 0.15; }
+	.sp-hero__screen-lines span:last-child { width: 60%; background: #ded3c4; }
+
+	.sp-hero__screen-card { display: flex; flex-direction: column; align-items: center; gap: 0.35rem; padding: 0.75rem; background: #fbf7ef; border: 1px solid #ded3c4; border-radius: 8px; }
+	.sp-hero__screen-avatar { width: 2.2rem; height: 2.2rem; border-radius: 50%; background: linear-gradient(135deg, #879782 0%, #f4ecdf 100%); border: 2px solid #ded3c4; }
+	.sp-hero__screen-card span { height: 0.35rem; width: 70%; border-radius: 999px; background: #ded3c4; }
+	.sp-hero__screen-card span:last-child { width: 50%; }
+
+	.sp-hero__screen-tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.45rem; }
+	.sp-hero__screen-tiles span { height: 1.5rem; border-radius: 6px; background: #fbf7ef; border: 1px solid #ded3c4; }
+
+	/* Trust tags */
+	.sp-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: clamp(2rem, 4vw, 3rem); }
+	.sp-tag { display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.4rem 0.65rem; border: 1px solid var(--color-border); border-radius: 999px; background: var(--color-white); font-size: 0.8125rem; font-weight: 600; color: var(--color-muted); }
+	.sp-tag svg { color: var(--color-accent); flex-shrink: 0; }
+
+	/* Shared intro */
+	.sp-section-intro { max-width: 780px; margin-bottom: clamp(2rem, 4vw, 3rem); }
+
+	/* Preview section */
+	.sp-browser-frame { display: block; overflow: hidden; border-radius: 16px; text-decoration: none; transition: box-shadow 0.2s ease, transform 0.2s ease; }
+	.sp-browser-frame:hover { transform: translateY(-2px); box-shadow: 0 32px 80px rgba(15,23,42,0.10); }
+	.sp-browser-frame__chrome { display: flex; gap: 0.45rem; align-items: center; padding: 0.75rem 1rem; border-bottom: 1px solid var(--color-border); background: var(--color-bg-secondary); }
+	.sp-browser-frame__chrome > span:nth-child(-n+3) { width: 0.5rem; height: 0.5rem; border-radius: 999px; background: var(--color-white); border: 1px solid color-mix(in srgb, var(--color-muted) 26%, transparent); }
+	.sp-browser-frame__url { margin-left: 0.75rem; padding: 0.3rem 0.65rem; border-radius: 6px; background: var(--color-white); border: 1px solid var(--color-border); font-size: 0.68rem; font-weight: 600; color: var(--color-muted); }
+	.sp-browser-frame__body { padding: 1.5rem; background: linear-gradient(90deg, rgba(226,232,240,0.25) 1px, transparent 1px), linear-gradient(180deg, rgba(226,232,240,0.25) 1px, transparent 1px), #fbf7ef; background-size: 48px 48px; }
+
+	.sp-browser-frame__mockup { max-width: 640px; margin-inline: auto; }
+	.sp-mockup-header { display: flex; align-items: center; gap: 0.65rem; padding: 0.65rem 1rem; background: #fbf7ef; border: 1px solid #ded3c4; border-radius: 8px; margin-bottom: 0.75rem; }
+	.sp-mockup-logo { display: inline-flex; align-items: center; justify-content: center; width: 1.6rem; height: 1.6rem; border-radius: 5px; background: #a7684d; color: #fbf7ef; font-size: 0.65rem; font-weight: 800; font-family: Georgia, serif; }
+	.sp-mockup-nav { width: 2.5rem; height: 0.35rem; border-radius: 999px; background: #ded3c4; }
+	.sp-mockup-hero { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 0.75rem; margin-bottom: 0.75rem; }
+	.sp-mockup-hero-text { display: flex; flex-direction: column; gap: 0.4rem; padding: 1rem; background: #fbf7ef; border: 1px solid #ded3c4; border-radius: 8px; }
+	.sp-mockup-line { height: 0.45rem; border-radius: 999px; }
+	.sp-mockup-line--sm { width: 30%; background: #a7684d; opacity: 0.35; }
+	.sp-mockup-line--lg { width: 90%; height: 0.6rem; background: #4b3346; opacity: 0.14; }
+	.sp-mockup-line--md { width: 65%; background: #ded3c4; }
+	.sp-mockup-btns { display: flex; gap: 0.4rem; margin-top: 0.25rem; }
+	.sp-mockup-btns span { width: 3rem; height: 1rem; border-radius: 4px; }
+	.sp-mockup-btns span:first-child { background: #a7684d; }
+	.sp-mockup-btns span:last-child { background: #fbf7ef; border: 1px solid #ded3c4; }
+	.sp-mockup-hero-card { display: flex; flex-direction: column; align-items: center; gap: 0.4rem; padding: 1rem; background: #fbf7ef; border: 1px solid #ded3c4; border-radius: 8px; }
+	.sp-mockup-portrait { width: 3rem; height: 3rem; border-radius: 50%; background: linear-gradient(135deg, #879782 0%, #f4ecdf 100%); border: 2px solid #ded3c4; }
+	.sp-mockup-hero-card .sp-mockup-line { width: 70%; }
+	.sp-mockup-hero-card .sp-mockup-line--sm { width: 50%; }
+	.sp-mockup-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5rem; }
+	.sp-mockup-strip span { height: 1.2rem; border-radius: 5px; background: #fbf7ef; border: 1px solid #ded3c4; }
+
+	.sp-preview-cta { display: flex; flex-wrap: wrap; gap: 0.875rem; margin-top: 2rem; }
+
+	/* Audience grid */
+	.sp-audience__grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; }
+	.sp-audience__card { padding: 1.25rem; }
+	.sp-audience__card h3 { font-size: 1.05rem; margin-bottom: 0.35rem; }
+	.sp-audience__card p { font-size: 0.9rem; line-height: 1.55; }
+
+	/* Problem section */
+	.sp-problem__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem; margin-bottom: clamp(2rem, 4vw, 3rem); }
+	.sp-problem__item { display: flex; gap: 0.75rem; align-items: flex-start; padding: 1rem 1.25rem; background: var(--color-white); border: 1px solid var(--color-border); border-radius: var(--radius-md); }
+	.sp-problem__num { flex-shrink: 0; display: inline-flex; align-items: center; justify-content: center; width: 1.6rem; height: 1.6rem; border-radius: 999px; background: var(--color-accent-light); color: var(--color-accent-dark); font-size: 0.68rem; font-weight: 800; }
+	.sp-problem__item p { margin: 0; color: var(--color-text); font-size: 0.92rem; line-height: 1.55; }
+	.sp-problem__solution { max-width: 680px; padding: clamp(1.5rem, 3vw, 2rem); background: var(--color-white); border: 1px solid color-mix(in srgb, var(--color-accent) 35%, var(--color-border)); border-radius: var(--radius-md); }
+	.sp-problem__solution p { font-size: 1rem; line-height: 1.7; }
+	.sp-problem__solution strong { color: var(--color-text); }
+
+	/* Pages list */
+	.sp-pages__list { display: grid; gap: 0; max-width: 780px; }
+	.sp-pages__item { display: flex; gap: 1rem; align-items: flex-start; padding-block: clamp(1rem, 2vw, 1.35rem); border-bottom: 1px solid var(--color-border); }
+	.sp-pages__item:first-child { border-top: 1px solid var(--color-border); }
+	.sp-pages__num { flex-shrink: 0; display: inline-flex; align-items: center; justify-content: center; min-width: 1.8rem; padding: 0.3rem 0.45rem; border-radius: 999px; background: var(--color-accent-light); color: var(--color-accent-dark); font-size: 0.68rem; font-weight: 800; line-height: 1; margin-top: 0.15rem; }
+	.sp-pages__item h3 { font-size: 1.05rem; margin-bottom: 0.15rem; }
+	.sp-pages__item p { margin: 0; color: var(--color-muted); font-size: 0.9rem; line-height: 1.55; }
+
+	/* Features grid */
+	.sp-features__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+	.sp-features__card { padding: 1.25rem; }
+	.sp-features__card h3 { font-size: 1rem; margin-bottom: 0.3rem; }
+	.sp-features__card p { font-size: 0.9rem; line-height: 1.55; }
+
+	/* Design direction */
+	.sp-design__grid { display: grid; gap: 0; max-width: 680px; }
+	.sp-design__item { display: flex; gap: 0.75rem; align-items: flex-start; padding-block: 0.85rem; border-bottom: 1px solid var(--color-border); }
+	.sp-design__item:first-child { border-top: 1px solid var(--color-border); }
+	.sp-design__item svg { flex-shrink: 0; color: var(--color-accent); margin-top: 0.25rem; }
+	.sp-design__item p { margin: 0; color: var(--color-text); font-size: 0.95rem; line-height: 1.6; }
+	.sp-design__palette { display: flex; gap: 0.5rem; margin-top: 1.5rem; }
+	.sp-swatch { width: 2.5rem; height: 2.5rem; border-radius: 8px; border: 1px solid var(--color-border); }
+
+	/* Conversion grid */
+	.sp-conversion__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+	.sp-conversion__card { padding: 1.25rem; }
+	.sp-conversion__card h3 { font-size: 1rem; margin-bottom: 0.3rem; }
+	.sp-conversion__card p { font-size: 0.9rem; line-height: 1.55; }
+
+	/* Customization */
+	.sp-customize__list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.5rem 2rem; max-width: 780px; margin-bottom: 1rem; }
+	.sp-customize__item { display: flex; align-items: flex-start; gap: 0.5rem; padding-block: 0.55rem; }
+	.sp-customize__item svg { flex-shrink: 0; color: var(--color-accent); margin-top: 0.2rem; }
+	.sp-customize__item span { font-size: 0.92rem; font-weight: 500; color: var(--color-text); line-height: 1.5; }
+
+	/* FAQ */
+	.sp-faq__list { max-width: 680px; margin-inline: auto; }
+	.sp-faq__item { border-bottom: 1px solid var(--color-border); }
+	.sp-faq__item:first-child { border-top: 1px solid var(--color-border); }
+	.sp-faq__q { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.1rem 0; cursor: pointer; list-style: none; font-weight: 600; font-size: 1rem; color: var(--color-text); }
+	.sp-faq__q::-webkit-details-marker { display: none; }
+	.sp-faq__q::marker { display: none; content: ''; }
+	.sp-faq__q svg { flex-shrink: 0; color: var(--color-muted); transition: transform 0.2s ease; }
+	.sp-faq__item[open] .sp-faq__q svg { transform: rotate(180deg); }
+	.sp-faq__a { padding-bottom: 1.25rem; }
+	.sp-faq__a p { margin: 0; color: var(--color-muted); font-size: 0.95rem; line-height: 1.7; }
+
+	/* Responsive */
+	@media (max-width: 1060px) {
+		.sp-audience__grid,
+		.sp-features__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+	}
+
+	@media (max-width: 900px) {
+		.sp-hero__inner { grid-template-columns: 1fr; }
+		.sp-mockup-hero { grid-template-columns: 1fr; }
+	}
+
+	@media (max-width: 720px) {
+		.sp-audience__grid,
+		.sp-features__grid,
+		.sp-conversion__grid,
+		.sp-problem__grid,
+		.sp-customize__list { grid-template-columns: 1fr; }
+		.sp-hero__screen-hero-block { grid-template-columns: 1fr; }
+	}
+</style>

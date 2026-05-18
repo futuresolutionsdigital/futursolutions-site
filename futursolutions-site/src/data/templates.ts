@@ -54,7 +54,7 @@ export function getTemplateMatchFilterIds(template: TemplateSystem): string[] {
 	if (template.slug === 'med-spa' || template.category.toLowerCase() === 'med spa') {
 		ids.add('med-spa');
 	}
-	if (template.slug === 'solo-practice' || template.category.toLowerCase() === 'solo practice') {
+	if (template.slug === 'solo-practice' || template.category.toLowerCase().includes('solo practice')) {
 		ids.add('solo-practice');
 	}
 	if (template.slug === 'association' || template.category.toLowerCase() === 'association') {
@@ -126,9 +126,9 @@ export const templateSystems: TemplateSystem[] = [
 	{
 		slug: 'solo-practice',
 		name: 'Aster Private Health — Solo Practice Website',
-		category: 'Solo Practice',
+		category: 'Solo Practice / NP Practice',
 		shortDescription:
-			'A warm editorial website demo for solo NPs, private primary care providers, concierge-style practices, and cash-pay healthcare providers.',
+			'A warm editorial website system for solo NPs, private primary care, concierge-style care, and cash-pay healthcare providers.',
 		longDescription:
 			'A premium, provider-led website system for solo healthcare practices. Features a warm editorial design, transparent pricing, care model explainer, patient onboarding flow, resource hub, patient portal placeholder, and service detail pages — all designed to build trust and drive consultation bookings.',
 		audience:
