@@ -6,8 +6,8 @@ import { pricingCards, pricingNote } from '../../data/aster';
 	<div class="aster-container">
 		<div class="aprx__intro">
 			<p class="aster-eyebrow">Pricing</p>
-			<h2 id="pricing-heading">Transparent pricing so you can make confident decisions about your care.</h2>
-			<p class="aster-lead">No hidden fees. No surprise billing. No insurance complexity. Know exactly what your visit costs before you book.</p>
+			<h2 id="pricing-heading">You should know what your visit costs before you book it.</h2>
+			<p class="aster-lead">Aster is a direct-pay practice. That means no insurance billing, no surprise fees, and no copay confusion. Here is what each visit costs.</p>
 		</div>
 		<div class="aprx__list">
 			{pricingCards.map((card) => (
@@ -32,10 +32,10 @@ import { pricingCards, pricingNote } from '../../data/aster';
 			<div class="aprx__detail-card">
 				<h3 class="aprx__detail-heading">How payment works</h3>
 				<ul class="aprx__detail-list">
-					<li>We are a direct-pay practice — no insurance billing complexity</li>
-					<li>HSA and FSA funds are accepted and typically eligible</li>
-					<li>Superbills provided for possible insurance reimbursement</li>
-					<li>Labs, imaging, and prescriptions go through insurance as usual</li>
+					<li>Aster does not bill insurance directly for office visits</li>
+					<li>HSA/FSA funds may be used when eligible — check with your account provider</li>
+					<li>Superbills may be available for possible reimbursement depending on your plan</li>
+					<li>Labs, imaging, and prescriptions are ordered through outside facilities where your insurance typically applies</li>
 				</ul>
 			</div>
 			<p class="aprx__note">{pricingNote}</p>

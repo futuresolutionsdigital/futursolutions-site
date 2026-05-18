@@ -17,8 +17,8 @@ const categories = [
 		<div class="aster-container">
 			<a class="rs-back" href="/demos/solo-practice">← Back to Aster Home</a>
 			<p class="aster-eyebrow">Patient Resources</p>
-			<h1 id="rs-heading">Clear guidance for more confident healthcare decisions.</h1>
-			<p class="aster-lead">Educational articles and patient guides that help you understand private care, preventive health, and the first-visit process.</p>
+			<h1 id="rs-heading">Straightforward answers to common patient questions.</h1>
+			<p class="aster-lead">Short guides covering how private care works, what your first visit looks like, and how to make the most of your appointments.</p>
 		</div>
 	</section>
 
@@ -26,7 +26,7 @@ const categories = [
 		<div class="aster-container">
 			<div class="rs-intro">
 				<p class="aster-eyebrow">Featured Resources</p>
-				<h2 id="rs-feat-heading">Start here if you are new to private care.</h2>
+				<h2 id="rs-feat-heading">Start here if you are considering a private practice.</h2>
 			</div>
 			<div class="rs-feat-grid">
 				{resources.map((r) => (
@@ -54,17 +54,17 @@ const categories = [
 				<article class="rs-article-row">
 					<span class="rs-article-cat">Private Care</span>
 					<h3>Questions to Ask Before Joining a Cash-Pay Practice</h3>
-					<p>A practical guide to evaluating whether a direct-pay model fits your healthcare needs, budget, and expectations.</p>
+					<p>Seven practical questions to help you compare direct-pay practices — including what to ask about pricing, cancellations, lab costs, and provider availability.</p>
 				</article>
 				<article class="rs-article-row">
 					<span class="rs-article-cat">Labs &amp; Follow-Up</span>
 					<h3>How to Prepare for a Lab Review Visit</h3>
-					<p>What to bring, what to ask, and how to make the most of your time reviewing lab results with your provider.</p>
+					<p>Bring your results, write down your questions, and know what to ask about reference ranges. Here is how to get more from a 30-minute lab review.</p>
 				</article>
 				<article class="rs-article-row">
 					<span class="rs-article-cat">Telehealth</span>
 					<h3>When Telehealth Works Best for Follow-Up Care</h3>
-					<p>Not every visit needs to be in-person. Learn when virtual visits are most effective for ongoing care and follow-up.</p>
+					<p>Lab reviews, medication check-ins, and care plan updates often work well virtually. Here is when telehealth makes sense and when an in-person visit is better.</p>
 				</article>
 			</div>
 		</div>
@@ -89,11 +89,11 @@ const categories = [
 				<div class="rs-guide-content">
 					<p class="aster-eyebrow">Featured Guide</p>
 					<h2 id="rs-guide-heading">Get the New Patient Preparation Guide</h2>
-					<p class="rs-guide-desc">A clear, downloadable guide to help you prepare for your first visit — what to bring, what to expect, and how to make the most of your consultation time.</p>
+					<p class="rs-guide-desc">A short guide covering what to bring, what forms to complete, questions worth asking, and how to get the most from your 60–75 minute consultation.</p>
 					<form novalidate onsubmit="return false" aria-label="Patient guide download form" class="rs-guide-form">
 						<label><span>Email</span><input type="email" name="email" placeholder="you@email.com" /></label>
 						<button class="aster-btn aster-btn--primary" type="button" style="width:100%;">Download Guide</button>
-						<p class="rs-guide-disclaimer">Demo form — no data is submitted or downloaded.</p>
+						<p class="rs-guide-disclaimer">This is a demo form — no data is submitted. In a live build, this connects to your email and CRM system.</p>
 					</form>
 				</div>
 			</div>
@@ -111,7 +111,7 @@ const categories = [
 					<div class="rs-cat-tag">{cat}</div>
 				))}
 			</div>
-			<p class="rs-cat-note">Additional articles and patient guides are published regularly in a live site build.</p>
+			<p class="rs-cat-note">In a live build, each category links to a filtered article archive. Additional articles are published on a regular schedule.</p>
 		</div>
 	</section>
 
@@ -119,11 +119,11 @@ const categories = [
 		<div class="aster-container">
 			<div class="rs-final-card">
 				<p class="aster-eyebrow rs-final-ey">Ready to take the next step?</p>
-				<h2 id="rs-final-heading">Start with a consultation, not a commitment.</h2>
-				<p class="rs-final-lead">Book a New Patient Consultation and experience healthcare designed around clarity, continuity, and your goals.</p>
+				<h2 id="rs-final-heading">Have more questions? Start with a conversation.</h2>
+				<p class="rs-final-lead">Book a New Patient Consultation. Your first visit is 60–75 minutes — plenty of time to get your questions answered.</p>
 				<div class="aster-btn-row" style="justify-content:center;">
 					<a class="aster-btn rs-cta-p" href="/demos/solo-practice/new-patients">Book a Consultation</a>
-					<a class="aster-btn rs-cta-s" href="/demos/solo-practice/services">View Services</a>
+					<a class="aster-btn rs-cta-s" href="/demos/solo-practice/services">Explore Services</a>
 				</div>
 			</div>
 		</div>

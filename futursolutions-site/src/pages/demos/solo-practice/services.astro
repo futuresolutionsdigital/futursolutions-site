@@ -5,15 +5,15 @@ import { services, conditions, faqs } from '../../../data/aster';
 
 <AsterLayout
 	title="Services | Aster Private Health Demo"
-	description="Explore private primary care, preventive health, women's wellness, hormone support, functional wellness, and telehealth care pathways."
+	description="Explore private primary care, preventive health, women's wellness, hormone support, integrative wellness, and telehealth care at Aster Private Health."
 	canonicalUrl="https://futursolutions.vercel.app/demos/solo-practice/services/"
 >
 	<section class="sp-hero" aria-labelledby="svc-heading">
 		<div class="aster-container">
 			<a class="sp-back" href="/demos/solo-practice">← Back to Aster Home</a>
 			<p class="aster-eyebrow">Services &amp; Care Areas</p>
-			<h1 id="svc-heading">Care designed around the whole person.</h1>
-			<p class="aster-lead">Each area of care is supported by thorough evaluation, personalized planning, and ongoing follow-up — not a rushed checklist.</p>
+			<h1 id="svc-heading">Clinical care areas, not a treatment menu.</h1>
+			<p class="aster-lead">Every patient starts with a consultation. From there, your provider recommends the care areas most relevant to your situation. You do not need to choose a service before your first visit.</p>
 			<div class="aster-btn-row">
 				<a class="aster-btn aster-btn--primary" href="/demos/solo-practice/new-patients">Book a Consultation</a>
 				<a class="aster-btn aster-btn--secondary" href="/demos/solo-practice/pricing">View Pricing</a>
@@ -25,8 +25,8 @@ import { services, conditions, faqs } from '../../../data/aster';
 		<div class="aster-container">
 			<div class="sp-intro">
 				<p class="aster-eyebrow">Overview</p>
-				<h2 id="grid-heading">What we help patients with.</h2>
-				<p class="aster-lead">Every service begins with a conversation — your goals, your concerns, and a plan that fits your life.</p>
+				<h2 id="grid-heading">Areas where patients most commonly need support.</h2>
+				<p class="aster-lead">These are the clinical focus areas at Aster. Most patients overlap across several — your provider coordinates everything.</p>
 			</div>
 			<div class="sp-svc-list">
 				{services.map((svc) => (
@@ -38,7 +38,7 @@ import { services, conditions, faqs } from '../../../data/aster';
 						<div class="sp-svc-body">
 							<p>{svc.description}</p>
 							<a class="sp-svc-link" href="/demos/solo-practice/new-patients">
-								Book this service
+								Book a Consultation
 								<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 14 14" aria-hidden="true"><path stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" d="m5.25 3.5 3.5 3.5-3.5 3.5"/></svg>
 							</a>
 						</div>
@@ -52,7 +52,7 @@ import { services, conditions, faqs } from '../../../data/aster';
 		<div class="aster-container">
 			<div class="sp-intro" style="text-align:center; margin-inline:auto;">
 				<p class="aster-eyebrow">Areas of focus</p>
-				<h2 id="conditions-heading">Common concerns we help patients navigate.</h2>
+				<h2 id="conditions-heading">Concerns patients commonly bring to Aster.</h2>
 			</div>
 			<div class="sp-tags">
 				{conditions.map((cond) => <span class="sp-tag">{cond}</span>)}
@@ -94,7 +94,7 @@ import { services, conditions, faqs } from '../../../data/aster';
 		<div class="aster-container">
 			<div class="sp-intro" style="text-align:center; margin-inline:auto;">
 				<p class="aster-eyebrow">FAQ</p>
-				<h2 id="svc-faq-heading">Questions about our services?</h2>
+				<h2 id="svc-faq-heading">Questions before your first visit?</h2>
 			</div>
 			<div class="sp-faq-list">
 				{faqs.slice(0, 4).map((faq) => (
@@ -114,8 +114,8 @@ import { services, conditions, faqs } from '../../../data/aster';
 		<div class="aster-container">
 			<div class="sp-final-card">
 				<p class="aster-eyebrow sp-final-ey">Get started</p>
-				<h2 id="final-heading">Ready to explore which services fit your goals?</h2>
-				<p class="sp-final-lead">Start with a New Patient Consultation and your provider will help you determine the best care pathway.</p>
+				<h2 id="final-heading">You do not need to pick a service. Just start.</h2>
+				<p class="sp-final-lead">Book a New Patient Consultation. Your provider will recommend the care areas that are most relevant to your situation.</p>
 				<div class="aster-btn-row" style="justify-content:center;">
 					<a class="aster-btn sp-cta-p" href="/demos/solo-practice/new-patients">Book a Consultation</a>
 					<a class="aster-btn sp-cta-s" href="/demos/solo-practice">Back to Aster Home</a>

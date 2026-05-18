@@ -2,7 +2,7 @@
 
 export const brand = {
 	name: 'Aster Private Health',
-	tagline: 'Personalized healthcare for patients who want more time, clarity, and continuity.',
+	tagline: 'Private primary care with longer visits and a provider who knows your name.',
 	homeHref: '/demos/solo-practice',
 	provider: 'Dr. Elena Marrow, FNP-C',
 	location: 'Temecula, CA',
@@ -11,7 +11,7 @@ export const brand = {
 	disclaimer: 'This is a fictional demo website created by FutureSolutions for portfolio presentation. Aster Private Health is not a real practice.',
 } as const;
 
-export const announcement = 'Now accepting new patients for private primary care and wellness consultations.';
+export const announcement = 'Now accepting new patients — book a 60–75 minute consultation.';
 
 export const navItems = [
 	{ label: 'About', href: '/demos/solo-practice/about' },
@@ -24,7 +24,7 @@ export const navItems = [
 
 export const hero = {
 	headline: 'Healthcare that gives you time to be heard.',
-	lead: 'Personalized private care for patients who want longer visits, clearer answers, and a provider who understands the full picture of their health.',
+	lead: 'Longer appointments. A provider who reviews your history, labs, and concerns before recommending a plan. Direct-pay pricing you understand before you book.',
 	primaryCta: { text: 'Book a Consultation', href: '/demos/solo-practice/new-patients' },
 	secondaryCta: { text: 'Learn How It Works', href: '/demos/solo-practice/how-it-works' },
 	trustStrip: [
@@ -36,45 +36,45 @@ export const hero = {
 } as const;
 
 export const patientFitCards = [
-	{ text: 'You want longer visits and thoughtful follow-up' },
-	{ text: 'You want a provider who knows your story' },
-	{ text: 'You want help connecting symptoms, labs, and lifestyle' },
-	{ text: 'You prefer transparent pricing over surprise billing' },
-	{ text: 'You want prevention, not just reaction' },
-	{ text: 'You want a care plan you can actually follow' },
+	{ text: 'You leave appointments feeling rushed and unheard' },
+	{ text: 'You see a different provider every time and have to re-explain your history' },
+	{ text: 'You have questions about your labs, medications, or symptoms that never get fully answered' },
+	{ text: 'You are tired of surprise bills and insurance-driven time limits' },
+	{ text: 'You want a provider who helps you stay well, not just treats you when something is wrong' },
+	{ text: 'You want a realistic plan with clear next steps, not a generic handout' },
 ];
 
 export const careModelSteps = [
-	{ step: '01', title: 'Start with a consultation', description: 'Share your health goals, history, concerns, and priorities.' },
-	{ step: '02', title: 'Review the full picture', description: 'Your provider reviews symptoms, labs, lifestyle, medications, and care history.' },
-	{ step: '03', title: 'Build your care plan', description: 'Receive a personalized plan with practical next steps and follow-up recommendations.' },
-	{ step: '04', title: 'Stay supported', description: 'Continue with membership care, follow-up visits, secure messaging, and ongoing guidance.' },
+	{ step: '01', title: 'Book a consultation', description: 'Schedule a 60–75 minute New Patient Consultation. Come with your questions, concerns, and any recent labs or records you have.' },
+	{ step: '02', title: 'Get a thorough review', description: 'Your provider looks at symptoms, medications, lab history, lifestyle factors, and prior care — not just the reason for today\'s visit.' },
+	{ step: '03', title: 'Leave with a plan', description: 'You receive a written care plan with prioritized recommendations, any lab orders, and a clear follow-up timeline.' },
+	{ step: '04', title: 'Follow up on your terms', description: 'Return for follow-up visits, lab reviews, or ongoing membership care. Members can message their provider between visits.' },
 ];
 
 export const provider = {
 	name: 'Dr. Elena Marrow, FNP-C',
 	title: 'Board-Certified Family Nurse Practitioner',
 	initials: 'EM',
-	bio: 'She founded Aster Private Health to give patients a calmer, more personal alternative to rushed appointments. Her approach combines clinical primary care, preventive health, lifestyle support, and thoughtful follow-up.',
-	quote: 'My goal is to give patients the time, clarity, and partnership they often wish traditional healthcare had room for.',
+	bio: 'After more than a decade in traditional healthcare settings, she started Aster to offer the kind of visits she wished her patients could have had — unhurried, thorough, and focused on what actually matters to each person.',
+	quote: 'Most of my patients do not need more specialists. They need one provider who has time to listen, review the full picture, and explain things clearly.',
 	credentials: [
 		'Board-Certified Family Nurse Practitioner',
-		'12+ years in primary and preventive care',
-		'Experience in women\'s health, metabolic health, and lifestyle medicine',
-		'In-person and telehealth care',
+		'12+ years in primary care, preventive health, and women\'s wellness',
+		'Clinical focus: thyroid, metabolic health, hormone evaluation, and lifestyle medicine',
+		'In-person and telehealth appointments · Temecula, CA',
 	],
 	cta: { text: 'Meet Your Provider', href: '/demos/solo-practice/about' },
 } as const;
 
 export const services = [
-	{ title: 'Private Primary Care', description: 'Comprehensive primary care with longer visits, continuity, and a provider who knows your history.', bestFor: 'Patients who want a dedicated provider relationship', href: '/demos/solo-practice/services/private-primary-care' },
-	{ title: 'Preventive Health', description: 'Proactive screenings, wellness assessments, and health planning tailored to your age, risk factors, and goals.', bestFor: 'Patients focused on long-term health', href: '/demos/solo-practice/new-patients' },
-	{ title: 'Women\'s Wellness', description: 'Support for hormonal changes, reproductive health, perimenopause, and whole-person women\'s health.', bestFor: 'Women navigating health transitions', href: '/demos/solo-practice/new-patients' },
-	{ title: 'Hormone Support', description: 'Evaluation and management of hormonal concerns including thyroid, adrenal, and sex hormone imbalances.', bestFor: 'Patients with fatigue, mood, or metabolic changes', href: '/demos/solo-practice/new-patients' },
-	{ title: 'Weight & Metabolic Health', description: 'A clinical approach to sustainable weight management, metabolic testing, and lifestyle integration.', bestFor: 'Patients with weight resistance or metabolic concerns', href: '/demos/solo-practice/new-patients' },
-	{ title: 'Functional Wellness', description: 'Root-cause investigation of chronic symptoms using advanced labs, nutrition, and lifestyle interventions.', bestFor: 'Patients seeking deeper answers', href: '/demos/solo-practice/new-patients' },
-	{ title: 'Mental Wellness Support', description: 'Screening, support, and collaborative management for anxiety, mood, stress, and burnout.', bestFor: 'Patients who want mental health integrated into their care', href: '/demos/solo-practice/new-patients' },
-	{ title: 'Telehealth Visits', description: 'Convenient virtual appointments for follow-ups, lab reviews, care coordination, and ongoing guidance.', bestFor: 'Patients who prefer remote access', href: '/demos/solo-practice/new-patients' },
+	{ title: 'Private Primary Care', description: 'Annual exams, sick visits, medication management, lab interpretation, and ongoing health monitoring — with visits long enough to actually address your questions.', bestFor: 'Patients who want one provider for their day-to-day health', href: '/demos/solo-practice/services/private-primary-care' },
+	{ title: 'Preventive Health', description: 'Age-appropriate screenings, cardiovascular risk assessment, metabolic panels, and health planning based on your personal and family history.', bestFor: 'Patients who want to catch problems early', href: '/demos/solo-practice/new-patients' },
+	{ title: 'Women\'s Wellness', description: 'Clinical support for perimenopause symptoms, hormonal shifts, menstrual concerns, and health planning for women in their 30s through 60s.', bestFor: 'Women experiencing hormonal or life-stage changes', href: '/demos/solo-practice/new-patients' },
+	{ title: 'Hormone Support', description: 'Thyroid evaluation, adrenal assessment, and hormone panel review with clinical interpretation — not cookie-cutter protocols.', bestFor: 'Patients with unexplained fatigue, mood changes, or weight shifts', href: '/demos/solo-practice/new-patients' },
+	{ title: 'Weight & Metabolic Health', description: 'Lab-based metabolic evaluation, nutrition guidance, and realistic lifestyle planning. No fads, no guaranteed outcomes — just clinical support.', bestFor: 'Patients who want a medical perspective on weight management', href: '/demos/solo-practice/new-patients' },
+	{ title: 'Integrative Wellness', description: 'Thorough lab work and clinical evaluation for persistent symptoms like fatigue, digestive issues, or brain fog — looking at contributing factors that may have been overlooked.', bestFor: 'Patients with ongoing symptoms that have not been fully evaluated', href: '/demos/solo-practice/new-patients' },
+	{ title: 'Mental Wellness Support', description: 'Screening for anxiety, depression, and stress-related symptoms. Coordination with therapists or psychiatrists when appropriate. This is not a standalone mental health practice.', bestFor: 'Patients who want mental health considered as part of their primary care', href: '/demos/solo-practice/new-patients' },
+	{ title: 'Telehealth Visits', description: 'Virtual follow-ups for lab review, care plan check-ins, medication questions, and ongoing guidance — available for established patients.', bestFor: 'Established patients who prefer a virtual visit for follow-up', href: '/demos/solo-practice/new-patients' },
 ];
 
 export const conditions = [
@@ -87,21 +87,21 @@ export const pricingCards = [
 	{
 		name: 'New Patient Consultation',
 		duration: '60–75 minutes',
-		description: 'Comprehensive review, health goals, history, and first-step plan',
+		description: 'Full health review, medical history, current concerns, and initial care plan',
 		price: '$225',
 		priceNote: 'Starting at',
 	},
 	{
 		name: 'Follow-Up Visit',
 		duration: '30–45 minutes',
-		description: 'Plan updates, lab review, medication support, and ongoing guidance',
+		description: 'Lab results review, care plan updates, medication adjustments, and check-ins',
 		price: '$125',
 		priceNote: 'Starting at',
 	},
 	{
 		name: 'Private Care Membership',
 		duration: 'Ongoing relationship-based care',
-		description: 'Longer visits, secure messaging, care coordination, and continuity',
+		description: 'Dedicated provider relationship with longer visits, between-visit messaging, and coordinated follow-up',
 		price: '$149',
 		priceNote: 'Starting at',
 		priceSuffix: '/month',
@@ -109,29 +109,29 @@ export const pricingCards = [
 	},
 ];
 
-export const pricingNote = 'Insurance is not billed directly. Patients may use HSA/FSA funds when eligible and can request superbills for possible reimbursement.';
+export const pricingNote = 'Aster does not bill insurance directly. HSA/FSA funds may be used when eligible. Superbills may be available for possible reimbursement — coverage depends on your plan.';
 
 export const testimonials = [
-	{ quote: 'I finally felt heard. The visit wasn\'t rushed, and the care plan made sense for my actual life — not just a textbook.', attribution: 'Private care patient' },
-	{ quote: 'I understood my labs and my options for the first time. No one had ever taken the time to explain things this clearly.', attribution: 'New patient consultation' },
-	{ quote: 'The care plan felt realistic. It wasn\'t a list of 20 supplements — it was practical, prioritized, and easy to follow.', attribution: 'Membership patient' },
+	{ quote: 'My first visit was over an hour. She asked about my sleep, my stress, my medications — things no one had asked about in years. I left with three clear next steps instead of a vague "let\'s keep an eye on it."', attribution: 'Private care patient' },
+	{ quote: 'I had been to three different providers in two years and no one could explain why my thyroid labs kept changing. Dr. Marrow sat down, walked me through every number, and actually made a plan.', attribution: 'New patient consultation' },
+	{ quote: 'I was nervous about paying out of pocket, but the visit was more thorough than anything I\'d gotten through insurance. The plan was four things I could actually do — not a list of 15 supplements.', attribution: 'Membership patient' },
 ];
 
 export const resources = [
-	{ title: 'What to Expect at Your First Private Practice Visit', category: 'New Patients', excerpt: 'A clear guide to what happens during your initial consultation, what to bring, and how to prepare.', href: '/demos/solo-practice/new-patients' },
-	{ title: 'Cash-Pay Healthcare, Explained Simply', category: 'Pricing', excerpt: 'How direct-pay and membership-based care works, what it costs, and how it compares to insurance-based visits.', href: '/demos/solo-practice/pricing' },
-	{ title: 'How Longer Visits Change the Care Experience', category: 'Care Model', excerpt: 'Why 60-minute appointments lead to better outcomes, stronger provider relationships, and more personalized care.', href: '/demos/solo-practice/how-it-works' },
+	{ title: 'What to Expect at Your First Private Practice Visit', category: 'New Patients', excerpt: 'A step-by-step walkthrough of your first 60–75 minute consultation — from intake forms to leaving with a care plan.', href: '/demos/solo-practice/new-patients' },
+	{ title: 'Cash-Pay Healthcare, Explained Simply', category: 'Pricing', excerpt: 'What "direct-pay" actually means, how it compares to insurance-based visits, and when HSA/FSA funds may apply.', href: '/demos/solo-practice/pricing' },
+	{ title: 'How Longer Visits Change the Care Experience', category: 'Care Model', excerpt: 'What your provider can cover in 60 minutes that rarely fits into a 12-minute appointment — and why it matters for ongoing care.', href: '/demos/solo-practice/how-it-works' },
 ];
 
 export const faqs = [
-	{ question: 'Do you take insurance?', answer: 'Aster Private Health is a direct-pay practice. Insurance is not billed directly, which allows us to offer longer visits and more personalized care. Patients may use HSA/FSA funds when eligible and can request superbills for possible reimbursement through their insurance.' },
-	{ question: 'Can I use insurance for labs, imaging, or prescriptions?', answer: 'Yes. While office visits are direct-pay, labs and imaging are typically ordered through facilities that accept insurance. Prescriptions are sent to your pharmacy of choice where your insurance benefits apply as usual.' },
-	{ question: 'Do you offer telehealth?', answer: 'Yes. Telehealth appointments are available for follow-up visits, lab reviews, care coordination, and ongoing guidance. Initial consultations are typically recommended in-person when possible.' },
-	{ question: 'What happens during the first visit?', answer: 'Your initial consultation is 60–75 minutes. We review your health history, current concerns, medications, labs, lifestyle, and goals. You leave with a clear understanding of next steps and a care plan tailored to your situation.' },
-	{ question: 'Is this a replacement for my primary care doctor?', answer: 'It can be. Many patients choose Aster Private Health as their primary care provider. Others use our services alongside their existing care team for specialized support in areas like hormones, weight, or functional wellness.' },
-	{ question: 'How do I know which service to book?', answer: 'If you are a new patient, start with a New Patient Consultation. During that visit, we will determine which services and care pathways are the best fit for your goals and health needs.' },
-	{ question: 'Can I use HSA or FSA funds?', answer: 'Yes. Our services are typically eligible for HSA and FSA payment. We provide detailed receipts that include the information needed for reimbursement or account processing.' },
-	{ question: 'What if I need urgent or emergency care?', answer: 'Aster Private Health is not an urgent care or emergency facility. If you are experiencing a medical emergency, please call 911 or visit your nearest emergency room. For urgent non-emergency concerns, members can reach us through secure messaging during business hours.' },
+	{ question: 'Do you take insurance?', answer: 'No. Aster is a direct-pay practice — we do not bill insurance for office visits. This is what allows us to spend 60–75 minutes with new patients instead of 10–15. You may use HSA/FSA funds when eligible, and we can provide superbills you may submit to your insurer for possible reimbursement. Reimbursement is not guaranteed and depends on your plan.' },
+	{ question: 'Can I use insurance for labs, imaging, or prescriptions?', answer: 'In most cases, yes. Labs and imaging are ordered through outside facilities that typically accept insurance. Prescriptions go to your pharmacy of choice, where your insurance applies as usual. Coverage for those services depends on your specific plan.' },
+	{ question: 'Do you offer telehealth?', answer: 'Yes, for established patients. Telehealth is available for follow-up visits, lab reviews, and care plan check-ins. First visits are recommended in-person when possible so your provider can do a more thorough evaluation.' },
+	{ question: 'What happens during the first visit?', answer: 'Your New Patient Consultation is 60–75 minutes. Your provider reviews your medical history, current medications, symptoms, relevant lab work, and lifestyle factors. You leave with a written care plan that includes prioritized next steps and a follow-up timeline.' },
+	{ question: 'Is this a replacement for my primary care doctor?', answer: 'It can be. Many patients use Aster as their primary care provider. Others keep their existing PCP and come to Aster for more time, a second perspective, or focused support in a specific area. Either arrangement works.' },
+	{ question: 'How do I know which service to book?', answer: 'Start with a New Patient Consultation. Your provider will help you determine which care areas are relevant during that visit. You do not need to pick the right service before your first appointment.' },
+	{ question: 'Can I use HSA or FSA funds?', answer: 'Our services are generally eligible for HSA and FSA payment, but eligibility depends on your specific account and plan rules. We provide itemized receipts with the information typically needed for account processing.' },
+	{ question: 'What if I need urgent or emergency care?', answer: 'Aster is not an urgent care or emergency facility. If you are experiencing a medical emergency, call 911 or go to your nearest emergency room. For non-emergency concerns between visits, membership patients can use secure messaging during business hours.' },
 ];
 
 export const footerNav = [
@@ -148,6 +148,6 @@ export const footerServices = [
 	'Preventive Health',
 	'Women\'s Wellness',
 	'Hormone Support',
-	'Weight & Metabolic Health',
+	'Integrative Wellness',
 	'Telehealth Visits',
 ];

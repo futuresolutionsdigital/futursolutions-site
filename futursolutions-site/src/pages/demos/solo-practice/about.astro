@@ -3,27 +3,27 @@ import AsterLayout from '../../../layouts/AsterLayout.astro';
 import { provider, brand } from '../../../data/aster';
 
 const philosophy = [
-	{ title: 'Time to listen', description: 'Every visit starts with enough time to hear the full story — not a 7-minute window before the next patient.' },
-	{ title: 'Evidence-informed care', description: 'Clinical decisions grounded in current research, thorough evaluation, and your individual health context.' },
-	{ title: 'Prevention and continuity', description: 'A proactive approach that addresses concerns before they escalate and maintains a long-term care relationship.' },
-	{ title: 'Practical plans for real life', description: 'Recommendations you can actually follow — not a 20-item supplement list or a plan that ignores your schedule and budget.' },
+	{ title: 'Enough time to actually listen', description: 'New patient visits are 60–75 minutes. Follow-ups are 30–45 minutes. That is not a luxury — it is the minimum needed to do a thorough job.' },
+	{ title: 'Decisions based on your situation', description: 'Lab work, history, symptoms, medications, and lifestyle all get reviewed. Recommendations are specific to you, not pulled from a generic protocol.' },
+	{ title: 'Follow-up that does not disappear', description: 'Care plans include a timeline. You come back, review progress, and adjust. This is not a one-visit relationship.' },
+	{ title: 'Plans you can actually do', description: 'Three realistic next steps are more useful than a 15-item list. Recommendations account for your schedule, preferences, and budget.' },
 ];
 
 const clinicalInterests = [
-	'Primary and preventive care',
-	'Women\'s health and perimenopause',
-	'Metabolic health and weight management',
-	'Thyroid and hormonal concerns',
-	'Lifestyle medicine and stress management',
-	'Functional wellness and root-cause investigation',
-	'Telehealth and virtual care',
+	'Primary care and annual wellness exams',
+	'Women\'s health, perimenopause, and hormonal shifts',
+	'Metabolic health, insulin resistance, and weight management',
+	'Thyroid evaluation and management',
+	'Fatigue, stress, and sleep-related concerns',
+	'Lab interpretation and medication review',
+	'Telehealth follow-up and virtual care',
 ];
 
 const expectations = [
-	{ title: 'Longer visits', description: 'Your initial consultation is 60–75 minutes. Follow-ups are 30–45 minutes. Every visit is designed to be thorough, not rushed.' },
-	{ title: 'A provider who knows your story', description: 'You see the same provider every time. No rotating doors, no re-explaining your history at every visit.' },
-	{ title: 'Clear communication', description: 'Labs, plans, and recommendations are explained in plain language. You leave every visit understanding what comes next.' },
-	{ title: 'Accessible support', description: 'Members have access to secure messaging between visits for questions, care coordination, and follow-up guidance.' },
+	{ title: 'Visits that are not rushed', description: 'New patient consultations are 60–75 minutes. Follow-ups are 30–45 minutes. You will not be cut off mid-sentence because the next patient is waiting.' },
+	{ title: 'The same provider every time', description: 'You do not re-explain your history at every visit. Your provider already knows your medications, your concerns, and what you discussed last time.' },
+	{ title: 'Plain-language explanations', description: 'Lab results, care plans, and recommendations are explained clearly. If something is uncertain, your provider will say so.' },
+	{ title: 'Support between visits', description: 'Membership patients can use secure messaging for non-urgent questions, follow-up notes, and care coordination between appointments.' },
 ];
 ---
 
@@ -36,8 +36,8 @@ const expectations = [
 		<div class="aster-container">
 			<a class="ab-back" href="/demos/solo-practice">← Back to Aster Home</a>
 			<p class="aster-eyebrow">About the Provider</p>
-			<h1 id="ab-heading">A more personal approach to modern healthcare.</h1>
-			<p class="aster-lead">Meet the provider behind Aster Private Health and learn why this practice was built around time, clarity, and continuity.</p>
+			<h1 id="ab-heading">One provider. Longer visits. A practice built around listening.</h1>
+			<p class="aster-lead">Dr. Elena Marrow started Aster Private Health because she wanted to give patients the time and attention that traditional healthcare settings rarely allow.</p>
 		</div>
 	</section>
 
@@ -87,9 +87,9 @@ const expectations = [
 		<div class="aster-container ab-letter-wrap">
 			<div class="ab-letter">
 				<p class="ab-letter__label">Why I started Aster Private Health</p>
-				<p>I spent years working in traditional healthcare systems — places where the care was good, but the time was never enough. I watched patients leave appointments still confused about their labs, unsure of their plan, and feeling like they had been processed rather than heard.</p>
-				<p>I started Aster Private Health because I wanted to build the kind of practice I would want to visit as a patient. One where the first visit is 60 minutes, not 12. Where the provider actually knows your name, your history, and your goals. Where you leave with a plan that makes sense for your actual life.</p>
-				<p>This is not a concierge luxury brand. It is simply healthcare the way it should work — with enough time to do it well.</p>
+				<p>For twelve years, I worked in settings where I genuinely liked my patients but never had enough time with them. I would finish a visit knowing there were questions left unanswered, lab results that deserved a longer conversation, and symptoms that needed more context than a 12-minute slot could offer.</p>
+				<p>I did not start Aster because I think traditional medicine is broken. I started it because I wanted a practice where I could do the job the way it should be done — with enough time to listen, review the full picture, and explain things in plain language. The first visit here is 60–75 minutes. Follow-ups are 30–45 minutes. That is not extravagant. It is just enough.</p>
+				<p>This is not a concierge brand or an alternative medicine practice. It is primary care with more time, fewer patients, and a provider who actually knows your name.</p>
 				<p class="ab-letter__sig">— Dr. Elena Marrow, FNP-C</p>
 			</div>
 		</div>
@@ -99,7 +99,7 @@ const expectations = [
 		<div class="aster-container">
 			<div class="ab-intro">
 				<p class="aster-eyebrow">Care Philosophy</p>
-				<h2 id="ab-phil-heading">What guides every decision at Aster Private Health.</h2>
+				<h2 id="ab-phil-heading">How this practice actually works.</h2>
 			</div>
 			<div class="ab-phil-list">
 				{philosophy.map((p, i) => (
@@ -119,8 +119,8 @@ const expectations = [
 		<div class="aster-container ab-interest-layout">
 			<div>
 				<p class="aster-eyebrow">Clinical Interests</p>
-				<h2 id="ab-interest-heading">Areas of clinical focus and expertise.</h2>
-				<p class="aster-lead">Dr. Marrow brings over a decade of clinical experience across multiple care areas, with a particular focus on whole-person primary care and preventive health.</p>
+				<h2 id="ab-interest-heading">Areas of clinical focus.</h2>
+				<p class="aster-lead">Dr. Marrow has over twelve years of experience across primary care, preventive health, and women's wellness. These are the areas patients most commonly seek support in.</p>
 			</div>
 			<div class="ab-interest-list">
 				{clinicalInterests.map((item) => (
@@ -137,7 +137,7 @@ const expectations = [
 		<div class="aster-container">
 			<div class="ab-intro" style="text-align:center; margin-inline:auto;">
 				<p class="aster-eyebrow">The Patient Experience</p>
-				<h2 id="ab-expect-heading">What patients can expect at Aster Private Health.</h2>
+				<h2 id="ab-expect-heading">What visits actually look like here.</h2>
 			</div>
 			<div class="ab-expect-grid">
 				{expectations.map((e) => (
@@ -155,10 +155,10 @@ const expectations = [
 			<div class="ab-final-card">
 				<p class="aster-eyebrow ab-final-ey">Get started</p>
 				<h2 id="ab-final-heading">Ready to meet your provider?</h2>
-				<p class="ab-final-lead">Book a New Patient Consultation and experience healthcare designed around you.</p>
+				<p class="ab-final-lead">Your first visit is 60–75 minutes. Come with your questions — leave with a plan.</p>
 				<div class="aster-btn-row" style="justify-content:center;">
 					<a class="aster-btn ab-cta-p" href="/demos/solo-practice/new-patients">Book a Consultation</a>
-					<a class="aster-btn ab-cta-s" href="/demos/solo-practice/services">View Services</a>
+					<a class="aster-btn ab-cta-s" href="/demos/solo-practice/services">Explore Services</a>
 				</div>
 			</div>
 		</div>

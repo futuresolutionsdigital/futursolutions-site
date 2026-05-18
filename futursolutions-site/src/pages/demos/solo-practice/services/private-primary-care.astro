@@ -3,21 +3,21 @@ import AsterLayout from '../../../../layouts/AsterLayout.astro';
 import { provider, faqs } from '../../../../data/aster';
 
 const whoFor = [
-	'Patients looking for a dedicated primary care provider',
-	'Patients frustrated with rushed 10-minute visits',
-	'Patients who want continuity — the same provider who knows their history',
-	'Patients who want preventive care, not just reactive appointments',
-	'Patients who prefer transparent pricing over insurance complexity',
+	'You want one provider who manages your day-to-day health',
+	'You are tired of 10-minute visits that barely cover one concern',
+	'You want to see the same provider every time instead of re-explaining your history',
+	'You want annual exams, lab review, and medication management in one place',
+	'You prefer knowing exactly what your visit costs before you book',
 ];
 
 const whatsIncluded = [
-	'Comprehensive health evaluation and history review',
-	'Personalized care plan with prioritized next steps',
-	'Lab ordering, review, and clinical interpretation',
-	'Medication review and management',
-	'Preventive screenings and wellness assessments',
-	'Secure messaging between visits (for members)',
-	'Care coordination with specialists when needed',
+	'Thorough health evaluation covering history, symptoms, medications, and lifestyle',
+	'Written care plan with prioritized recommendations and follow-up timeline',
+	'Lab ordering, review, and plain-language interpretation of results',
+	'Medication review — including interactions, side effects, and optimization',
+	'Age-appropriate preventive screenings and wellness assessments',
+	'Secure messaging between visits for non-urgent questions (membership patients)',
+	'Coordination with specialists, labs, and imaging when clinically appropriate',
 ];
 
 const concerns = [
@@ -41,8 +41,8 @@ const concerns = [
 		<div class="aster-container">
 			<a class="sd-back" href="/demos/solo-practice/services">← Back to All Services</a>
 			<p class="aster-eyebrow">Private Primary Care</p>
-			<h1 id="sd-heading">Primary care with more time, context, and continuity.</h1>
-			<p class="aster-lead">Longer visits and a more personal care relationship for patients who want thoughtful, preventive, and ongoing support.</p>
+			<h1 id="sd-heading">Primary care with visits long enough to actually address your questions.</h1>
+			<p class="aster-lead">Annual exams, sick visits, lab interpretation, medication management, and ongoing health monitoring — with a provider who knows your history.</p>
 			<div class="aster-btn-row">
 				<a class="aster-btn aster-btn--primary" href="/demos/solo-practice/new-patients">Book a Consultation</a>
 				<a class="aster-btn aster-btn--secondary" href="/demos/solo-practice/pricing">View Pricing</a>
@@ -54,8 +54,8 @@ const concerns = [
 		<div class="aster-container sd-two-col">
 			<div>
 				<p class="aster-eyebrow">Who This Is For</p>
-				<h2 id="sd-who-heading">Designed for patients who want a real primary care relationship.</h2>
-				<p class="aster-lead">Private primary care at Aster is built for patients who want more from their provider — more time, more context, and a relationship that does not reset at every visit.</p>
+				<h2 id="sd-who-heading">This may be a good fit if any of these sound familiar.</h2>
+				<p class="aster-lead">Private primary care at Aster is for patients who want one provider, longer visits, and a care relationship that builds over time.</p>
 			</div>
 			<div class="sd-list-card aster-card">
 				<ul class="sd-check-list">
@@ -74,7 +74,7 @@ const concerns = [
 		<div class="aster-container">
 			<div class="sd-intro">
 				<p class="aster-eyebrow">What Is Included</p>
-				<h2 id="sd-inc-heading">Everything you need for thorough, ongoing primary care.</h2>
+				<h2 id="sd-inc-heading">What your visit covers.</h2>
 			</div>
 			<div class="sd-inc-list">
 				{whatsIncluded.map((item) => (
@@ -91,7 +91,7 @@ const concerns = [
 		<div class="aster-container">
 			<div class="sd-intro" style="text-align:center; margin-inline:auto;">
 				<p class="aster-eyebrow">Common Concerns Addressed</p>
-				<h2 id="sd-concerns-heading">What patients most often bring to private primary care.</h2>
+				<h2 id="sd-concerns-heading">Concerns patients commonly bring to primary care visits.</h2>
 			</div>
 			<div class="sd-tag-grid">
 				{concerns.map((c) => <span class="sd-tag">{c}</span>)}
@@ -103,7 +103,7 @@ const concerns = [
 		<div class="aster-container sd-two-col">
 			<div>
 				<p class="aster-eyebrow">How Visits Work</p>
-				<h2 id="sd-how-heading">Your visit, from start to finish.</h2>
+				<h2 id="sd-how-heading">How a primary care visit works.</h2>
 			</div>
 			<div>
 				<div class="sd-step-list">
@@ -120,8 +120,8 @@ const concerns = [
 		<div class="aster-container">
 			<div class="sd-intro" style="text-align:center; margin-inline:auto;">
 				<p class="aster-eyebrow">Example Visit Flow</p>
-				<h2 id="sd-flow-heading">What a primary care plan may include.</h2>
-				<p class="aster-lead" style="margin-inline:auto;">Every care plan is different, but here is a realistic example of what a primary care patient might receive.</p>
+				<h2 id="sd-flow-heading">A sample care plan — what you might leave with.</h2>
+				<p class="aster-lead" style="margin-inline:auto;">Every plan is different. This is a fictional example of what a primary care patient might receive after their first visit.</p>
 			</div>
 			<div class="sd-flow-doc" aria-label="Sample primary care plan preview">
 				<div class="sd-flow-header">
@@ -159,7 +159,7 @@ const concerns = [
 		<div class="aster-container">
 			<div class="sd-intro">
 				<p class="aster-eyebrow">Related Services</p>
-				<h2 id="sd-related-heading">Other care pathways at Aster Private Health.</h2>
+				<h2 id="sd-related-heading">Other care areas at Aster.</h2>
 			</div>
 			<div class="sd-related-list">
 				<a class="sd-related-item" href="/demos/solo-practice/services">Preventive Health</a>
@@ -174,7 +174,7 @@ const concerns = [
 		<div class="aster-container">
 			<div class="sd-intro" style="text-align:center; margin-inline:auto;">
 				<p class="aster-eyebrow">FAQ</p>
-				<h2 id="sd-faq-heading">Questions about private primary care?</h2>
+				<h2 id="sd-faq-heading">Common questions about primary care at Aster.</h2>
 			</div>
 			<div class="sd-faq-list">
 				{[faqs[4], faqs[3], faqs[0], faqs[5]].map((faq) => (
@@ -191,8 +191,8 @@ const concerns = [
 		<div class="aster-container">
 			<div class="sd-final-card">
 				<p class="aster-eyebrow sd-final-ey">Your next step</p>
-				<h2 id="sd-final-heading">Ready for primary care that feels personal?</h2>
-				<p class="sd-final-lead">Book a New Patient Consultation and experience primary care with more time, clarity, and continuity.</p>
+				<h2 id="sd-final-heading">Primary care should not feel rushed.</h2>
+				<p class="sd-final-lead">Book a New Patient Consultation — 60–75 minutes to review your health, answer your questions, and make a plan.</p>
 				<div class="aster-btn-row" style="justify-content:center;">
 					<a class="aster-btn sd-cta-p" href="/demos/solo-practice/new-patients">Book a Consultation</a>
 					<a class="aster-btn sd-cta-s" href="/demos/solo-practice/services">All Services</a>

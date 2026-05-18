@@ -3,12 +3,12 @@ import AsterLayout from '../../../layouts/AsterLayout.astro';
 import { pricingCards, pricingNote, faqs } from '../../../data/aster';
 
 const included = [
-	'Longer visits with dedicated provider time',
-	'Personalized care plans with clear next steps',
-	'Lab review and clinical interpretation',
-	'Secure messaging for members',
-	'Follow-up recommendations and care coordination',
-	'Superbills for possible insurance reimbursement',
+	'60–75 min new patient visits, 30–45 min follow-ups',
+	'Written care plan with prioritized recommendations',
+	'Lab ordering, review, and clinical interpretation',
+	'Medication review and management',
+	'Secure messaging between visits (membership patients)',
+	'Superbills may be provided for possible reimbursement',
 ];
 
 const notIncluded = [
@@ -20,9 +20,9 @@ const notIncluded = [
 ];
 
 const rightForYou = [
-	{ name: 'New Patient Consultation', who: 'You are a new patient looking to establish care, discuss a specific concern, or get a second opinion.', action: 'Book a Consultation' },
-	{ name: 'Follow-Up Visit', who: 'You are an existing patient returning for plan updates, lab review, or ongoing support.', action: 'Schedule Follow-Up' },
-	{ name: 'Private Care Membership', who: 'You want an ongoing care relationship with longer visits, secure messaging, and continuity.', action: 'Learn About Membership' },
+	{ name: 'New Patient Consultation', who: 'You have not been seen at Aster before. You want a thorough first visit to review your health, discuss concerns, or get a second perspective.', action: 'Book a Consultation' },
+	{ name: 'Follow-Up Visit', who: 'You are an existing patient coming back to review lab results, update your care plan, or check in on progress.', action: 'Schedule Follow-Up' },
+	{ name: 'Private Care Membership', who: 'You want a dedicated ongoing relationship — longer visits, between-visit messaging, and a provider who tracks your progress over time.', action: 'Learn About Membership' },
 ];
 ---
 
@@ -36,7 +36,7 @@ const rightForYou = [
 			<a class="px-back" href="/demos/solo-practice">← Back to Aster Home</a>
 			<p class="aster-eyebrow">Pricing &amp; Membership</p>
 			<h1 id="px-heading">Transparent pricing before you book.</h1>
-			<p class="aster-lead">Know what your care costs before your visit, with simple private-pay options and clear membership support.</p>
+			<p class="aster-lead">Aster is a direct-pay practice. Every visit has a clear price, listed here, before you book.</p>
 			<div class="aster-btn-row">
 				<a class="aster-btn aster-btn--primary" href="/demos/solo-practice/new-patients">Book a Consultation</a>
 				<a class="aster-btn aster-btn--secondary" href="/demos/solo-practice/how-it-works">How It Works</a>
@@ -48,7 +48,7 @@ const rightForYou = [
 		<div class="aster-container">
 			<div class="px-intro" style="text-align:center; margin-inline:auto;">
 				<p class="aster-eyebrow">Visit Options</p>
-				<h2 id="px-cards-heading">Simple, upfront pricing for every visit type.</h2>
+				<h2 id="px-cards-heading">What each visit costs.</h2>
 			</div>
 			<div class="px-list">
 				{pricingCards.map((card) => (
@@ -62,7 +62,7 @@ const rightForYou = [
 							<span class="px-pnote">{card.priceNote}</span>
 							<span class="px-amt">{card.price}{card.priceSuffix && <small>{card.priceSuffix}</small>}</span>
 							<a class:list={['aster-btn', card.featured ? 'aster-btn--primary' : 'aster-btn--secondary']} href="/demos/solo-practice/new-patients" style="margin-top:0.75rem;">
-								{card.featured ? 'Learn About Membership' : 'Book This Visit'}
+								{card.featured ? 'Learn About Membership' : 'Book a Consultation'}
 							</a>
 						</div>
 					</div>
@@ -78,12 +78,12 @@ const rightForYou = [
 				<h2 id="px-how-heading">Private-pay care without insurance complexity.</h2>
 			</div>
 			<div class="px-how-panel">
-				<p>Aster Private Health is a direct-pay practice. We do not bill insurance directly, which allows us to offer longer visits and more personalized care without the constraints of insurance-driven time limits.</p>
+				<p>Aster does not bill insurance directly for office visits. This is what allows longer appointments, fewer patients per day, and more time with your provider. Here is how the financial side works.</p>
 				<ul>
-					<li><strong>HSA/FSA funds</strong> are accepted and typically eligible for our services</li>
-					<li><strong>Superbills</strong> are provided so you can submit for possible reimbursement through your insurance</li>
-					<li><strong>Labs, imaging, and prescriptions</strong> are ordered through outside facilities where your insurance benefits apply as usual</li>
-					<li><strong>No surprise billing</strong> — you know exactly what each visit costs before you book</li>
+					<li><strong>HSA/FSA funds</strong> may be used when eligible — check with your account provider for specific rules</li>
+					<li><strong>Superbills</strong> may be available so you can submit to your insurer for possible reimbursement. Coverage is not guaranteed and depends on your plan</li>
+					<li><strong>Labs, imaging, and prescriptions</strong> are ordered through outside facilities where your insurance typically applies. Coverage depends on your specific plan</li>
+					<li><strong>No surprise billing</strong> — every visit price is listed on this page before you book</li>
 				</ul>
 			</div>
 		</div>
@@ -93,8 +93,8 @@ const rightForYou = [
 		<div class="aster-container">
 			<div class="px-intro" style="text-align:center; margin-inline:auto;">
 				<p class="aster-eyebrow">Cost Clarity</p>
-				<h2 id="px-clarity-heading">Understanding where your money goes.</h2>
-				<p class="aster-lead" style="margin-inline:auto;">Private care means you pay Aster directly for visits and membership. Labs, imaging, and emergencies remain separate.</p>
+				<h2 id="px-clarity-heading">What Aster covers and what it does not.</h2>
+				<p class="aster-lead" style="margin-inline:auto;">Your practice fee covers your visits and provider time. Labs, imaging, medications, and emergency care are separate.</p>
 			</div>
 			<div class="px-clarity-grid">
 				<div class="px-clarity-col">
@@ -151,7 +151,7 @@ const rightForYou = [
 		<div class="aster-container">
 			<div class="px-intro" style="text-align:center; margin-inline:auto;">
 				<p class="aster-eyebrow">Which option is right for me?</p>
-				<h2 id="px-right-heading">Find the visit type that fits your needs.</h2>
+				<h2 id="px-right-heading">Not sure which visit to book?</h2>
 			</div>
 			<div class="px-right-list">
 				{rightForYou.map((r) => (
@@ -186,13 +186,13 @@ const rightForYou = [
 		<div class="aster-container">
 			<div class="px-final-card">
 				<p class="aster-eyebrow px-final-ey">Your next step</p>
-				<h2 id="px-final-heading">Transparent care starts with a conversation.</h2>
-				<p class="px-final-lead">Book a New Patient Consultation and experience healthcare with no hidden fees and no surprises.</p>
+				<h2 id="px-final-heading">Pricing should not be the hard part of healthcare.</h2>
+				<p class="px-final-lead">Book a New Patient Consultation. You already know what it costs.</p>
 				<div class="aster-btn-row" style="justify-content:center;">
 					<a class="aster-btn px-cta-p" href="/demos/solo-practice/new-patients">Book a Consultation</a>
 					<a class="aster-btn px-cta-s" href="/demos/solo-practice/services">Explore Services</a>
 				</div>
-				<p class="px-final-note">No commitment required. HSA/FSA accepted.</p>
+				<p class="px-final-note">No commitment required. HSA/FSA may be used when eligible.</p>
 			</div>
 		</div>
 	</section>

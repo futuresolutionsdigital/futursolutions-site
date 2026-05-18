@@ -3,11 +3,11 @@ import AsterLayout from '../../../layouts/AsterLayout.astro';
 import { brand, provider, careModelSteps, pricingCards, pricingNote, faqs } from '../../../data/aster';
 
 const prepareItems = [
-	'A list of your main health questions or concerns',
-	'Current medications and supplements',
-	'Relevant health history or recent lab results',
-	'Your goals — what would better care look like for you?',
-	'Insurance or HSA/FSA card (if using for eligible expenses)',
+	'Your top health questions or concerns — even if they seem unrelated',
+	'Current medications and supplements, including dosages',
+	'Recent lab results or records from other providers, if available',
+	'Any notes about symptoms, patterns, or things you have tried',
+	'HSA/FSA card if you plan to use it for payment',
 ];
 
 const checklist = [
@@ -29,8 +29,8 @@ const checklist = [
 		<div class="aster-container">
 			<a class="np-back" href="/demos/solo-practice">← Back to Aster Home</a>
 			<p class="aster-eyebrow">New Patients</p>
-			<h1 id="np-heading">Your first step toward healthcare that listens.</h1>
-			<p class="aster-lead">Whether you are exploring a new provider or ready to book, this page will help you understand what to expect and how to prepare.</p>
+			<h1 id="np-heading">You do not need to know exactly what to book. Start here.</h1>
+			<p class="aster-lead">Whether you have a specific concern or just want a more thorough provider, a New Patient Consultation is where everyone begins.</p>
 			<div class="aster-btn-row">
 				<a class="aster-btn aster-btn--primary" href="#book">Book a Consultation</a>
 				<a class="aster-btn aster-btn--secondary" href="/demos/solo-practice/pricing">View Pricing</a>
@@ -42,8 +42,8 @@ const checklist = [
 		<div class="aster-container">
 			<div class="np-intro" style="text-align:center; margin-inline:auto;">
 				<p class="aster-eyebrow">What to expect</p>
-				<h2 id="expect-heading">A calmer, more thorough first visit.</h2>
-				<p class="aster-lead" style="margin-inline:auto;">Your New Patient Consultation is 60–75 minutes — enough time to review your full health picture, answer your questions, and build a care plan that fits your life.</p>
+				<h2 id="expect-heading">Your first visit is 60–75 minutes. Here is what happens.</h2>
+				<p class="aster-lead" style="margin-inline:auto;">Your provider reviews your health history, current symptoms, medications, labs, and lifestyle — then builds a care plan with clear next steps.</p>
 			</div>
 			<div class="np-timeline">
 				{careModelSteps.map((s) => (
@@ -65,7 +65,7 @@ const checklist = [
 			<div>
 				<p class="aster-eyebrow">Prepare</p>
 				<h2 id="prep-heading">What to bring to your first visit.</h2>
-				<p class="aster-lead">Having these items ready helps us make the most of your consultation time.</p>
+				<p class="aster-lead">None of these are required, but they help your provider give you a more thorough evaluation.</p>
 			</div>
 			<div class="np-prep-card aster-card">
 				<ul class="np-checklist">
@@ -84,8 +84,8 @@ const checklist = [
 		<div class="aster-container">
 			<div class="np-intro" style="text-align:center; margin-inline:auto;">
 				<p class="aster-eyebrow">New Patient Checklist</p>
-				<h2 id="np-checklist-heading">Before your visit.</h2>
-				<p class="aster-lead" style="margin-inline:auto;">Complete these items before your first appointment to make the most of your consultation time.</p>
+				<h2 id="np-checklist-heading">Before your appointment.</h2>
+				<p class="aster-lead" style="margin-inline:auto;">These steps help your visit run smoothly. Most take a few minutes.</p>
 			</div>
 			<div class="np-cl-panel">
 				{checklist.map((c, i) => (
@@ -123,8 +123,8 @@ const checklist = [
 		<div class="aster-container">
 			<div class="np-intro" style="text-align:center; margin-inline:auto;">
 				<p class="aster-eyebrow">Pricing</p>
-				<h2 id="pricing-heading">Transparent pricing — no surprises.</h2>
-				<p class="aster-lead" style="margin-inline:auto;">Know what your visit costs before you book.</p>
+				<h2 id="pricing-heading">What your first visit costs.</h2>
+				<p class="aster-lead" style="margin-inline:auto;">All visit prices are listed before you book. No surprise fees.</p>
 			</div>
 			<div class="np-pricing-list">
 				{pricingCards.map((card) => (
@@ -149,8 +149,8 @@ const checklist = [
 		<div class="aster-container np-book-grid">
 			<div>
 				<p class="aster-eyebrow">Book your consultation</p>
-				<h2 id="book-heading">Start with a conversation.</h2>
-				<p class="aster-lead">Share a few details and we will follow up to schedule your New Patient Consultation.</p>
+				<h2 id="book-heading">Request a consultation.</h2>
+				<p class="aster-lead">Share a few details and we will reach out to schedule your first visit. You do not need to know which service to pick — your provider will help with that.</p>
 			</div>
 			<div class="np-form-card aster-card">
 				<form novalidate onsubmit="return false" aria-label="Aster Private Health new patient inquiry form">
@@ -201,8 +201,8 @@ const checklist = [
 		<div class="aster-container">
 			<div class="np-final-card">
 				<p class="aster-eyebrow np-final-ey">Get started</p>
-				<h2 id="final-heading">Ready for healthcare that feels more personal?</h2>
-				<p class="np-final-lead">Start with a consultation and find out whether Aster Private Health is the right fit for your goals, concerns, and care preferences.</p>
+				<h2 id="final-heading">Your first visit is a conversation, not a commitment.</h2>
+				<p class="np-final-lead">Come with your questions. Your provider will review your health, explain your options, and help you decide if Aster is the right fit.</p>
 				<div class="aster-btn-row" style="justify-content:center;">
 					<a class="aster-btn np-cta-p" href="#book">Book a Consultation</a>
 					<a class="aster-btn np-cta-s" href="/demos/solo-practice/services">Explore Services</a>

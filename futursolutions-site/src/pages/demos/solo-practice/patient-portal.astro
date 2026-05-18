@@ -3,11 +3,11 @@ import AsterLayout from '../../../layouts/AsterLayout.astro';
 import { brand } from '../../../data/aster';
 
 const portalFeatures = [
-	{ title: 'Secure messaging', description: 'Send questions, updates, and follow-up notes to your provider between visits.' },
-	{ title: 'Intake and consent forms', description: 'Complete or update paperwork before your appointments.' },
-	{ title: 'Appointment details', description: 'View upcoming visit information, times, and preparation instructions.' },
-	{ title: 'Follow-up instructions', description: 'Review your care plan, next steps, and provider recommendations.' },
-	{ title: 'Care documents', description: 'Access visit summaries, lab orders, and care-plan documents.' },
+	{ title: 'Secure messaging', description: 'Send non-urgent questions or follow-up notes to your provider between visits. Messages are typically responded to within 1 business day.' },
+	{ title: 'Intake and consent forms', description: 'Complete or update your medical history, medication list, and consent forms before your appointment.' },
+	{ title: 'Appointment details', description: 'View your upcoming visit date, time, format (in-person or telehealth), and any preparation instructions.' },
+	{ title: 'Follow-up instructions', description: 'Review your care plan, recommended next steps, and follow-up timeline after each visit.' },
+	{ title: 'Care documents', description: 'Access visit summaries, lab orders, and care-plan documents shared by your provider.' },
 ];
 ---
 
@@ -20,8 +20,8 @@ const portalFeatures = [
 		<div class="aster-container">
 			<a class="pp-back" href="/demos/solo-practice">← Back to Aster Home</a>
 			<p class="aster-eyebrow">Patient Portal</p>
-			<h1 id="pp-heading">Your care, accessible anytime.</h1>
-			<p class="aster-lead">Existing patients can use the portal for secure messages, forms, appointment details, and care-plan follow-up.</p>
+			<h1 id="pp-heading">Manage your care between visits.</h1>
+			<p class="aster-lead">The patient portal is where existing patients access forms, view care plans, message their provider, and check appointment details.</p>
 		</div>
 	</section>
 
@@ -29,9 +29,9 @@ const portalFeatures = [
 		<div class="aster-container">
 			<div class="pp-access-card">
 				<h2 id="pp-access-heading">Portal Login</h2>
-				<p class="pp-access-desc">Access your patient portal to review care documents, message your provider, and manage your appointments.</p>
+				<p class="pp-access-desc">Log in to view your care plan, complete forms, message your provider, or check upcoming appointment details.</p>
 				<button class="aster-btn aster-btn--primary" type="button" style="width:100%; max-width:320px;">Portal Login</button>
-				<p class="pp-access-note">This is a demo placeholder — no real patient portal is connected. In a live build, this links to your HIPAA-compliant patient portal system.</p>
+				<p class="pp-access-note">This is a demo preview — no real portal or patient data is connected. In a live build, this button links to your HIPAA-compliant patient portal system.</p>
 			</div>
 		</div>
 	</section>
@@ -40,7 +40,7 @@ const portalFeatures = [
 		<div class="aster-container">
 			<div class="pp-intro">
 				<p class="aster-eyebrow">Portal Preview</p>
-				<h2 id="pp-dash-heading">A look inside the patient experience.</h2>
+				<h2 id="pp-dash-heading">What the portal looks like for patients.</h2>
 			</div>
 			<div class="pp-dash" aria-label="Demo portal dashboard preview">
 				<div class="pp-dash-header">
@@ -86,7 +86,7 @@ const portalFeatures = [
 		<div class="aster-container">
 			<div class="pp-intro">
 				<p class="aster-eyebrow">What You Can Manage</p>
-				<h2 id="pp-manage-heading">Tools available through your patient portal.</h2>
+				<h2 id="pp-manage-heading">What you can do through the portal.</h2>
 			</div>
 			<div class="pp-feature-list">
 				{portalFeatures.map((f) => (
@@ -104,7 +104,7 @@ const portalFeatures = [
 			<div class="pp-final-card">
 				<p class="aster-eyebrow pp-final-ey">Not a patient yet?</p>
 				<h2 id="pp-final-heading">Start with a consultation.</h2>
-				<p class="pp-final-lead">Book a New Patient Consultation to establish care and gain access to your patient portal.</p>
+				<p class="pp-final-lead">Portal access is available to established patients. Your first step is a New Patient Consultation.</p>
 				<div class="aster-btn-row" style="justify-content:center;">
 					<a class="aster-btn pp-cta-p" href="/demos/solo-practice/new-patients">Book a Consultation</a>
 					<a class="aster-btn pp-cta-s" href="/demos/solo-practice/about">Meet Your Provider</a>

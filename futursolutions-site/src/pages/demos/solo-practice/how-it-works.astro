@@ -3,25 +3,25 @@ import AsterLayout from '../../../layouts/AsterLayout.astro';
 import { careModelSteps, pricingCards, faqs } from '../../../data/aster';
 
 const journey = [
-	{ step: '01', title: 'Start with a consultation', description: 'Book a New Patient Consultation online or by phone. Share your health goals, history, and concerns in a 60–75 minute visit.' },
-	{ step: '02', title: 'Complete intake forms', description: 'Before your visit, you will receive intake paperwork covering your medical history, medications, lifestyle, and care preferences.' },
-	{ step: '03', title: 'Review your full health picture', description: 'Your provider reviews symptoms, labs, lifestyle, medications, and prior care to understand the whole picture — not just one complaint.' },
-	{ step: '04', title: 'Build a personalized care plan', description: 'You receive a clear, practical plan with prioritized next steps, recommended labs, lifestyle changes, and follow-up timing.' },
-	{ step: '05', title: 'Continue with follow-up or membership care', description: 'Return for follow-up visits, lab reviews, and ongoing support. Members get secure messaging, care coordination, and continuity.' },
+	{ step: '01', title: 'Book your consultation', description: 'Schedule a New Patient Consultation online or by phone. Your first visit is 60–75 minutes — bring your questions and any recent labs or records.' },
+	{ step: '02', title: 'Complete intake paperwork', description: 'Before your visit, you receive forms covering your medical history, current medications, supplements, and what you want to focus on.' },
+	{ step: '03', title: 'Get a thorough evaluation', description: 'Your provider reviews your symptoms, lab history, medications, lifestyle factors, and prior care. This is not a complaint-specific visit — the whole picture matters.' },
+	{ step: '04', title: 'Leave with a written care plan', description: 'You receive a plan with prioritized recommendations, any lab orders, follow-up timing, and clear next steps you can act on.' },
+	{ step: '05', title: 'Follow up and adjust', description: 'Return for follow-up visits to review results, update your plan, and address new concerns. Membership patients can message between visits.' },
 ];
 
 const comparisons = [
-	{ traditional: 'Rushed 10–15 minute visits', aster: 'Longer 60–75 minute first visits, 30–45 minute follow-ups' },
-	{ traditional: 'Reactive — address symptoms after they escalate', aster: 'Preventive — proactive planning and early intervention' },
-	{ traditional: 'Fragmented — different provider each visit', aster: 'Continuity — same provider who knows your history' },
-	{ traditional: 'Surprise billing and insurance complexity', aster: 'Transparent pricing before you book' },
+	{ traditional: '10–15 minute visits with limited time for questions', aster: '60–75 minute first visits and 30–45 minute follow-ups' },
+	{ traditional: 'Often focused on one complaint per visit', aster: 'Reviews symptoms, medications, labs, and lifestyle together' },
+	{ traditional: 'May see a different provider each time', aster: 'Same provider at every visit who knows your history' },
+	{ traditional: 'Billing determined after the visit', aster: 'You know exactly what the visit costs before you book' },
 ];
 
 const visitOptions = [
-	{ name: 'New Patient Consultation', duration: '60–75 min', desc: 'Comprehensive first visit with full health review and care plan', href: '/demos/solo-practice/pricing' },
-	{ name: 'Follow-Up Visit', duration: '30–45 min', desc: 'Plan updates, lab review, medication adjustments, and ongoing guidance', href: '/demos/solo-practice/pricing' },
-	{ name: 'Private Care Membership', duration: 'Ongoing', desc: 'Longer visits, secure messaging, care coordination, and relationship-based care', href: '/demos/solo-practice/pricing' },
-	{ name: 'Telehealth Visit', duration: '30–45 min', desc: 'Virtual appointments for follow-ups, lab reviews, and care coordination', href: '/demos/solo-practice/pricing' },
+	{ name: 'New Patient Consultation', duration: '60–75 min', desc: 'Full health review, current concerns, medication and lab review, and an initial care plan', href: '/demos/solo-practice/pricing' },
+	{ name: 'Follow-Up Visit', duration: '30–45 min', desc: 'Lab results review, care plan updates, medication adjustments, and check-ins on progress', href: '/demos/solo-practice/pricing' },
+	{ name: 'Private Care Membership', duration: 'Ongoing', desc: 'A dedicated provider relationship with longer visits, between-visit messaging, and coordinated follow-up', href: '/demos/solo-practice/pricing' },
+	{ name: 'Telehealth Visit', duration: '30–45 min', desc: 'Virtual follow-up for lab review, care plan check-ins, and medication questions — for established patients', href: '/demos/solo-practice/pricing' },
 ];
 ---
 
@@ -35,7 +35,7 @@ const visitOptions = [
 			<a class="hw-back" href="/demos/solo-practice">← Back to Aster Home</a>
 			<p class="aster-eyebrow">How It Works</p>
 			<h1 id="hw-heading">Private healthcare, explained simply.</h1>
-			<p class="aster-lead">Aster is designed for patients who want longer visits, transparent pricing, and a provider relationship that does not feel rushed.</p>
+			<p class="aster-lead">Aster is a direct-pay primary care practice. Longer visits, transparent pricing, and a provider who actually knows your name.</p>
 			<div class="aster-btn-row">
 				<a class="aster-btn aster-btn--primary" href="/demos/solo-practice/new-patients">Book a Consultation</a>
 				<a class="aster-btn aster-btn--secondary" href="/demos/solo-practice/pricing">View Pricing</a>
@@ -47,8 +47,8 @@ const visitOptions = [
 		<div class="aster-container">
 			<div class="hw-intro" style="text-align:center; margin-inline:auto;">
 				<p class="aster-eyebrow">Your Care Journey</p>
-				<h2 id="hw-journey-heading">From first visit to ongoing support.</h2>
-				<p class="aster-lead" style="margin-inline:auto;">Every step is designed around clarity, continuity, and respect for your time.</p>
+				<h2 id="hw-journey-heading">From first visit to ongoing follow-up.</h2>
+				<p class="aster-lead" style="margin-inline:auto;">Here is what the process looks like from the day you book to your ongoing care.</p>
 			</div>
 			<div class="hw-timeline">
 				{journey.map((s) => (
@@ -69,7 +69,7 @@ const visitOptions = [
 		<div class="aster-container">
 			<div class="hw-intro">
 				<p class="aster-eyebrow">What Makes This Different</p>
-				<h2 id="hw-compare-heading">Traditional healthcare vs. private care.</h2>
+				<h2 id="hw-compare-heading">A different model, not a criticism of traditional care.</h2>
 			</div>
 			<div class="hw-compare">
 				<div class="hw-compare-header">
@@ -90,7 +90,7 @@ const visitOptions = [
 		<div class="aster-container">
 			<div class="hw-intro">
 				<p class="aster-eyebrow">Visit Options</p>
-				<h2 id="hw-visits-heading">Choose the right visit for where you are.</h2>
+				<h2 id="hw-visits-heading">Visit types and what they cover.</h2>
 			</div>
 			<div class="hw-visit-list">
 				{visitOptions.map((v) => (
@@ -114,12 +114,12 @@ const visitOptions = [
 			<div class="hw-scope-card">
 				<h3 class="hw-scope-label">What is included</h3>
 				<ul>
-					<li>Longer visits with dedicated time</li>
-					<li>Personalized care plans</li>
-					<li>Lab review and clinical interpretation</li>
-					<li>Secure messaging for members</li>
-					<li>Follow-up recommendations</li>
-					<li>Care coordination support</li>
+					<li>60–75 min new patient visits, 30–45 min follow-ups</li>
+					<li>Written care plan with prioritized next steps</li>
+					<li>Lab ordering, review, and clinical interpretation</li>
+					<li>Medication review and management</li>
+					<li>Secure messaging between visits (for members)</li>
+					<li>Coordination with specialists when appropriate</li>
 				</ul>
 			</div>
 			<div class="hw-scope-card hw-scope-card--muted">
@@ -140,8 +140,8 @@ const visitOptions = [
 		<div class="aster-container">
 			<div class="hw-intro" style="text-align:center; margin-inline:auto;">
 				<p class="aster-eyebrow">What You Leave With</p>
-				<h2 id="hw-plan-heading">Your care plan may include</h2>
-				<p class="aster-lead" style="margin-inline:auto;">After your consultation, you receive a clear, written plan — not a vague set of instructions.</p>
+				<h2 id="hw-plan-heading">You leave with a written plan, not a vague handout.</h2>
+				<p class="aster-lead" style="margin-inline:auto;">After your consultation, your provider writes a care plan with specific recommendations and a follow-up timeline.</p>
 			</div>
 			<div class="hw-plan-doc" aria-label="Sample care plan preview">
 				<div class="hw-plan-header">
@@ -168,7 +168,7 @@ const visitOptions = [
 		<div class="aster-container">
 			<div class="hw-intro" style="text-align:center; margin-inline:auto;">
 				<p class="aster-eyebrow">FAQ</p>
-				<h2 id="hw-faq-heading">Common questions about how it works.</h2>
+				<h2 id="hw-faq-heading">Questions patients ask before their first visit.</h2>
 			</div>
 			<div class="hw-faq-list">
 				{[faqs[3], faqs[0], faqs[5], faqs[2]].map((faq) => (
@@ -185,8 +185,8 @@ const visitOptions = [
 		<div class="aster-container">
 			<div class="hw-final-card">
 				<p class="aster-eyebrow hw-final-ey">Your next step</p>
-				<h2 id="hw-final-heading">Healthcare built around you is one conversation away.</h2>
-				<p class="hw-final-lead">Book a New Patient Consultation — 60 to 75 minutes of dedicated time with your provider.</p>
+				<h2 id="hw-final-heading">Your first visit starts with a conversation.</h2>
+				<p class="hw-final-lead">Book a New Patient Consultation — 60–75 minutes to review your health, answer your questions, and build a care plan.</p>
 				<div class="aster-btn-row" style="justify-content:center;">
 					<a class="aster-btn hw-cta-p" href="/demos/solo-practice/new-patients">Book a Consultation</a>
 					<a class="aster-btn hw-cta-s" href="/demos/solo-practice/pricing">View Pricing</a>
