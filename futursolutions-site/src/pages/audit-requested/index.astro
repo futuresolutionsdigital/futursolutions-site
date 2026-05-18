@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { auditTemplateSlugToName } from '../../data/templates';
 
 const pageTitle = 'Audit Request Received | Future Solutions';
 const pageDescription =
@@ -36,12 +37,12 @@ const templates = [
 		href: '/templates/med-spa',
 	},
 	{
-		name: 'Solo Practice Website System',
-		description: 'A calm, professional website system for independent providers and boutique practices.',
+		name: 'Aster Private Health \u2014 Solo Practice Website',
+		description: 'A warm editorial website system for solo NPs, private primary care, concierge-style care, and cash-pay healthcare providers.',
 		href: '/templates/solo-practice',
 	},
 	{
-		name: 'Medical Association Website System',
+		name: 'Professional Association Website System',
 		description: 'A structured website system for healthcare associations and member organizations.',
 		href: '/templates/association',
 	},
@@ -76,17 +77,17 @@ const usefulLinks = [
 >
 	<section class="section audit-requested-hero" aria-labelledby="audit-requested-heading">
 		<div class="site-container audit-requested-hero__inner">
-			<p class="eyebrow">Audit Request Received</p>
+			<p class="eyebrow" id="audit-requested-eyebrow">Audit Request Received</p>
 			<h1 id="audit-requested-heading">Your audit request is in.</h1>
-			<p class="lead">
-				We’ll review your website and look for opportunities to improve trust, service clarity, local visibility, conversion flow, and backend follow-up.
+			<p class="lead" id="audit-requested-lead">
+				We will review your website and look for opportunities to improve trust, service clarity, local visibility, conversion flow, and backend follow-up.
 			</p>
 			<div class="button-row">
 				<a class="button button-primary" href="/templates">View Templates</a>
 				<a class="button button-secondary" href="/audit">Back to Audit Page</a>
 			</div>
 			<p class="audit-requested-hero__note">
-				This page is ready for the future GoHighLevel form redirect. The audit form itself is not connected yet.
+				This page is prepared for CRM form redirect integration. In a live build, the audit form routes submissions to email, GoHighLevel, or your preferred lead pipeline.
 			</p>
 		</div>
 	</section>
@@ -155,7 +156,7 @@ const usefulLinks = [
 					<p class="eyebrow">Keep exploring</p>
 					<h2 id="audit-requested-final-heading">Want to keep exploring your options?</h2>
 					<p class="lead">
-						Review the template systems or service paths while the audit flow is being finalized.
+						Review the template systems or service paths while we prepare your recommendation.
 					</p>
 				</div>
 				<div class="button-row">
@@ -166,6 +167,23 @@ const usefulLinks = [
 		</div>
 	</section>
 </BaseLayout>
+
+<script define:vars={{ templateLabels: auditTemplateSlugToName }}>
+	(() => {
+		var params = new URLSearchParams(window.location.search);
+		var slug = params.get('template');
+		if (!slug || !templateLabels[slug]) return;
+
+		var label = templateLabels[slug];
+		var eyebrow = document.getElementById('audit-requested-eyebrow');
+		var heading = document.getElementById('audit-requested-heading');
+		var lead = document.getElementById('audit-requested-lead');
+
+		if (eyebrow) eyebrow.textContent = 'Template Customization Request Received';
+		if (heading) heading.textContent = 'Thanks \u2014 we received your template customization request.';
+		if (lead) lead.textContent = 'We will review your practice details and recommend how to adapt the ' + label + ' template around your provider story, services, and goals.';
+	})();
+</script>
 
 <style>
 	.audit-requested-hero {

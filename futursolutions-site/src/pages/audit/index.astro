@@ -4,7 +4,7 @@ import AuditFormShell from '../../components/AuditFormShell.astro';
 
 const pageTitle = 'Website Audit | Future Solutions';
 const pageDescription =
-	'Request a Future Solutions website audit and get a clear breakdown of how your healthcare website could improve trust, visibility, and conversions.';
+	'Request a website audit or template customization recommendation for your healthcare or wellness business.';
 const canonicalUrl = 'https://futursolutions.vercel.app/audit/';
 
 const expectations = [
@@ -47,23 +47,23 @@ const audiences = ['Med Spas', 'Solo Practices', 'Wellness Clinics', 'Functional
 const processSteps = [
 	{
 		step: '01',
-		title: 'Submit your site',
-		text: 'Share your current website, business type, and main goal.',
+		title: 'Submit your practice details',
+		text: 'Share your current website, business type, services, and main goal.',
 	},
 	{
 		step: '02',
-		title: 'Review',
-		text: 'We look for trust, visibility, conversion, and follow-up gaps.',
+		title: 'We review your site and template fit',
+		text: 'We look at trust, service clarity, local visibility, conversion paths, and follow-up.',
 	},
 	{
 		step: '03',
-		title: 'Recommendation',
-		text: 'You get a clear next-step recommendation: template, custom build, SEO foundation, backend system, or ongoing optimization.',
+		title: 'You receive audit notes or a Loom walkthrough',
+		text: 'A practical next-step recommendation: template setup, custom build, SEO foundation, backend system, or ongoing optimization.',
 	},
 	{
 		step: '04',
-		title: 'Next step',
-		text: 'If there is a fit, we can map a launch path around your business.',
+		title: 'If it is a fit, we map the build scope',
+		text: 'We outline scope, timeline, and launch path around your business.',
 	},
 ];
 ---
@@ -166,6 +166,32 @@ const processSteps = [
 		</div>
 	</section>
 </BaseLayout>
+
+<script>
+	(() => {
+		const params = new URLSearchParams(window.location.search);
+		const slug = params.get('template');
+		if (!slug) return;
+
+		const categoryMap: Record<string, string> = {
+			'med-spa': 'med spa',
+			'solo-practice': 'solo practice',
+			'association': 'professional association',
+		};
+		const category = categoryMap[slug];
+		if (!category) return;
+
+		const heading = document.getElementById('audit-heading');
+		const lead = heading?.nextElementSibling;
+		const eyebrow = heading?.previousElementSibling;
+
+		if (heading) heading.textContent = `Customize this ${category} website template.`;
+		if (eyebrow && eyebrow.classList.contains('eyebrow')) eyebrow.textContent = 'Template Customization';
+		if (lead && lead.classList.contains('lead')) {
+			lead.textContent = 'Tell us about your practice, services, current website, and goals. We\u2019ll recommend how to adapt this template around your provider story, services, pricing model, and patient onboarding process.';
+		}
+	})();
+</script>
 
 <style>
 	.audit-hero {

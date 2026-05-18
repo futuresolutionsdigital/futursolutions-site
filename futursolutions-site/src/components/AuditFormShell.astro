@@ -1,5 +1,11 @@
 ---
-import { auditTemplateSlugToName } from '../data/templates';
+import { auditTemplateSlugToName, getTemplateBySlug } from '../data/templates';
+
+const templateMeta: Record<string, { category: string; defaultBizType: string }> = {
+	'med-spa': { category: 'Med Spa', defaultBizType: 'Med Spa' },
+	'solo-practice': { category: 'Solo Practice / NP Practice', defaultBizType: 'Solo Practice' },
+	'association': { category: 'Association', defaultBizType: 'Healthcare Association' },
+};
 
 const businessTypes = ['Med Spa', 'Solo Practice', 'Wellness Clinic', 'Functional Medicine', 'Healthcare Association', 'Treatment-Based Clinic', 'Other'];
 const primaryGoals = [
@@ -7,6 +13,8 @@ const primaryGoals = [
 	'Better website design',
 	'Better local visibility',
 	'Clearer service pages',
+	'Better patient onboarding',
+	'Pricing/care model clarity',
 	'Better follow-up system',
 	'Template setup',
 	'Custom website',
@@ -18,6 +26,7 @@ const biggestIssues = [
 	'Not showing up locally',
 	'Services are unclear',
 	'Booking/contact flow is confusing',
+	'Pricing or care model is hard to explain',
 	'No follow-up system',
 	'Need a more professional image',
 	'Other',
@@ -28,6 +37,13 @@ const servicesOfInterest = [
 	'SEO/local visibility',
 	'Backend lead system',
 	'Ongoing support',
+	'Not sure yet',
+];
+const paymentModels = [
+	'Insurance-based',
+	'Cash-pay / Direct-pay',
+	'Membership / Concierge',
+	'Mix of insurance and cash-pay',
 	'Not sure yet',
 ];
 const preferredNextSteps = [
@@ -53,15 +69,18 @@ const preferredNextSteps = [
 	</div>
 
 	<div class="audit-form-shell__intro">
-		<p class="eyebrow">Audit request</p>
-		<h2>Tell us what you are working with.</h2>
-		<p>Share your current site and goals so we can recommend the right website path for your business.</p>
+		<p class="eyebrow" id="audit-form-eyebrow">Audit request</p>
+		<h2 id="audit-form-heading">Tell us what you are working with.</h2>
+		<p id="audit-form-desc">Share your current site and goals so we can recommend the right website path for your business.</p>
 	</div>
 
 	<form class="audit-form-shell__form" aria-label="Website audit request form" onsubmit="return false">
 		<input type="hidden" name="templateInterest" id="field-template-interest" value="" autocomplete="off" />
+		<input type="hidden" name="templateName" id="field-template-name" value="" autocomplete="off" />
+		<input type="hidden" name="templateCategory" id="field-template-category" value="" autocomplete="off" />
 		<input type="hidden" name="source" id="field-source" value="Website Audit Page" autocomplete="off" />
 		<input type="hidden" name="leadType" id="field-lead-type" value="Website Audit Request" autocomplete="off" />
+		<input type="hidden" name="inquiryType" id="field-inquiry-type" value="website_audit" autocomplete="off" />
 
 		<div class="audit-form-shell__grid">
 			<label>
@@ -75,21 +94,26 @@ const preferredNextSteps = [
 			</label>
 
 			<label>
-				<span>Business name</span>
+				<span>Practice or business name</span>
 				<input type="text" name="business-name" autocomplete="organization" />
 			</label>
 
 			<label>
-				<span>Website URL</span>
-				<input type="url" name="website-url" inputmode="url" />
+				<span>Current website URL</span>
+				<input type="url" name="website-url" inputmode="url" placeholder="https://" />
 			</label>
 
 			<label>
 				<span>Business type</span>
-				<select name="business-type">
+				<select name="business-type" id="field-business-type">
 					<option value="">Select business type</option>
 					{businessTypes.map((type) => <option value={type}>{type}</option>)}
 				</select>
+			</label>
+
+			<label>
+				<span>Location / service area</span>
+				<input type="text" name="location" placeholder="City, State" />
 			</label>
 
 			<label>
@@ -97,6 +121,14 @@ const preferredNextSteps = [
 				<select name="primary-goal">
 					<option value="">Select primary goal</option>
 					{primaryGoals.map((goal) => <option value={goal}>{goal}</option>)}
+				</select>
+			</label>
+
+			<label>
+				<span>Payment model</span>
+				<select name="payment-model">
+					<option value="">Select payment model</option>
+					{paymentModels.map((model) => <option value={model}>{model}</option>)}
 				</select>
 			</label>
 		</div>
@@ -107,6 +139,11 @@ const preferredNextSteps = [
 				<option value="">Select biggest issue</option>
 				{biggestIssues.map((issue) => <option value={issue}>{issue}</option>)}
 			</select>
+		</label>
+
+		<label>
+			<span>Booking or scheduling system (if any)</span>
+			<input type="text" name="scheduling-system" placeholder="e.g. Jane App, Calendly, none yet" />
 		</label>
 
 		<fieldset class="audit-form-shell__checkboxes">
@@ -130,30 +167,64 @@ const preferredNextSteps = [
 		</label>
 
 		<div class="audit-form-shell__footer">
-			<button class="button button-primary" type="button">Request My Website Audit</button>
+			<button class="button button-primary" type="button" id="audit-submit-btn">Request My Website Audit</button>
 			<p>
-				This form is currently a preview while the backend is being finalized. Once connected, requests will route into the Future Solutions lead pipeline.
+				This form is prepared for CRM and scheduling integration. In a live build, submissions route to email, GoHighLevel, or your preferred lead pipeline.
 			</p>
 		</div>
 	</form>
 </div>
 
-<script define:vars={{ templateInterestLabels: auditTemplateSlugToName }}>
+<script define:vars={{ templateInterestLabels: auditTemplateSlugToName, templateMetaMap: templateMeta }}>
 	(() => {
 		const allowed = ['med-spa', 'solo-practice', 'association'];
 		const params = typeof window !== 'undefined' ? new URLSearchParams(window.location.search) : null;
 		const raw = params && params.get('template');
 		const slug = raw && allowed.includes(raw) ? raw : null;
 
+		if (!slug) return;
+
 		const banner = document.getElementById('audit-template-interest-banner');
 		const nameEl = document.getElementById('audit-template-interest-name');
 		const interestField = document.getElementById('field-template-interest');
+		const nameField = document.getElementById('field-template-name');
+		const categoryField = document.getElementById('field-template-category');
+		const sourceField = document.getElementById('field-source');
+		const leadTypeField = document.getElementById('field-lead-type');
+		const inquiryField = document.getElementById('field-inquiry-type');
+		const headingEl = document.getElementById('audit-form-heading');
+		const descEl = document.getElementById('audit-form-desc');
+		const eyebrowEl = document.getElementById('audit-form-eyebrow');
+		const submitBtn = document.getElementById('audit-submit-btn');
+		const bizTypeField = document.getElementById('field-business-type');
 
-		if (slug && banner && nameEl) {
-			const label = templateInterestLabels[slug] || slug;
+		const label = templateInterestLabels[slug] || slug;
+		const meta = templateMetaMap[slug];
+
+		if (banner && nameEl) {
 			nameEl.textContent = label;
 			banner.hidden = false;
-			if (interestField instanceof HTMLInputElement) interestField.value = slug;
+		}
+
+		if (interestField instanceof HTMLInputElement) interestField.value = slug;
+		if (nameField instanceof HTMLInputElement) nameField.value = label;
+		if (categoryField instanceof HTMLInputElement && meta) categoryField.value = meta.category;
+		if (sourceField instanceof HTMLInputElement) sourceField.value = '/templates/' + slug;
+		if (leadTypeField instanceof HTMLInputElement) leadTypeField.value = 'Template Customization Request';
+		if (inquiryField instanceof HTMLInputElement) inquiryField.value = 'template_customization';
+
+		if (eyebrowEl) eyebrowEl.textContent = 'Template customization';
+		if (headingEl) headingEl.textContent = 'Customize this template for your practice.';
+		if (descEl) descEl.textContent = 'Tell us about your practice, services, and goals. We\u2019ll recommend how to adapt this template around your provider story, pricing model, and patient onboarding process.';
+		if (submitBtn) submitBtn.textContent = 'Request Template Customization';
+
+		if (bizTypeField instanceof HTMLSelectElement && meta) {
+			for (var i = 0; i < bizTypeField.options.length; i++) {
+				if (bizTypeField.options[i].value === meta.defaultBizType) {
+					bizTypeField.selectedIndex = i;
+					break;
+				}
+			}
 		}
 	})();
 </script>
