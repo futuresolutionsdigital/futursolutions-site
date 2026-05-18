@@ -5,6 +5,13 @@ import '../styles/global.css';
 
 interface Props { title: string; description: string; canonicalUrl?: string; }
 const { title, description, canonicalUrl } = Astro.props;
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+function isActive(href: string) {
+	const clean = href.replace(/\/$/, '');
+	if (clean === currentPath) return true;
+	if (currentPath.startsWith(clean + '/')) return true;
+	return false;
+}
 ---
 
 <!doctype html>
@@ -41,12 +48,12 @@ const { title, description, canonicalUrl } = Astro.props;
 				<span class="aster-header__wordmark">Aster</span>
 				<span class="aster-header__sub">Private Health</span>
 			</a>
-			<nav class="aster-header__nav" aria-label="Main navigation">
-				{navItems.map((item) => <a href={item.href}>{item.label}</a>)}
-			</nav>
+		<nav class="aster-header__nav" aria-label="Main navigation">
+			{navItems.map((item) => <a href={item.href} class:list={[{ 'is-active': isActive(item.href) }]} aria-current={isActive(item.href) ? 'page' : undefined}>{item.label}</a>)}
+		</nav>
 			<div class="aster-header__actions">
 				<a class="aster-header__util" href="/demos/solo-practice/patient-portal">Patient Portal</a>
-				<a class="aster-header__cta" href="/demos/solo-practice/new-patients">Book Consultation</a>
+				<a class="aster-header__cta" href="/demos/solo-practice/new-patients">Book a Consultation</a>
 			</div>
 			<button class="aster-header__menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="aster-mobile-menu">
 				<span></span><span></span><span></span>
@@ -54,8 +61,8 @@ const { title, description, canonicalUrl } = Astro.props;
 		</div>
 		<nav class="aster-mobile-menu" id="aster-mobile-menu" aria-label="Mobile navigation" hidden>
 			<div class="aster-container aster-mobile-menu__inner">
-				{navItems.map((item) => <a href={item.href}>{item.label}</a>)}
-				<a class="aster-mobile-menu__cta" href="/demos/solo-practice/new-patients">Book Consultation</a>
+			{navItems.map((item) => <a href={item.href} class:list={[{ 'is-active': isActive(item.href) }]} aria-current={isActive(item.href) ? 'page' : undefined}>{item.label}</a>)}
+			<a class="aster-mobile-menu__cta" href="/demos/solo-practice/new-patients">Book a Consultation</a>
 			</div>
 		</nav>
 	</header>
@@ -85,9 +92,9 @@ const { title, description, canonicalUrl } = Astro.props;
 					<li>{brand.location}</li>
 				</ul>
 				<div class="aster-footer__legal">
-					<a href="#">Privacy Policy</a>
-					<a href="#">Terms</a>
-					<a href="#">Accessibility</a>
+					<span>Privacy Policy</span>
+					<span>Terms</span>
+					<span>Accessibility</span>
 				</div>
 			</div>
 		</div>
@@ -200,6 +207,7 @@ const { title, description, canonicalUrl } = Astro.props;
 .aster-header__sub { font-size: 0.68rem; font-weight: 600; color: var(--aster-muted); letter-spacing: 0.06em; text-transform: uppercase; }
 .aster-header__nav { display: flex; align-items: center; gap: 1.25rem; font-size: 0.82rem; font-weight: 500; color: var(--aster-muted); }
 .aster-header__nav a:hover { color: var(--aster-heading); }
+.aster-header__nav a.is-active { color: var(--aster-heading); border-bottom: 2px solid var(--aster-clay); padding-bottom: 2px; }
 .aster-header__actions { display: flex; align-items: center; gap: 0.75rem; }
 .aster-header__util { font-size: 0.78rem; font-weight: 600; color: var(--aster-muted); }
 .aster-header__util:hover { color: var(--aster-heading); }
@@ -214,6 +222,7 @@ const { title, description, canonicalUrl } = Astro.props;
 .aster-mobile-menu { border-top: 1px solid var(--aster-border); background: var(--aster-white); }
 .aster-mobile-menu__inner { display: grid; gap: 0; padding-block: 0.5rem; }
 .aster-mobile-menu__inner a { display: block; padding: 0.75rem 0; font-size: 0.95rem; font-weight: 600; color: var(--aster-heading); border-bottom: 1px solid var(--aster-border); }
+.aster-mobile-menu__inner a.is-active { color: var(--aster-clay); }
 .aster-mobile-menu__cta { margin-top: 0.75rem; text-align: center; padding: 0.8rem !important; border: none !important; border-radius: 8px; background: var(--aster-clay); color: var(--aster-white) !important; }
 
 .aster-footer { border-top: 1px solid var(--aster-border); background: var(--aster-aubergine); color: rgba(255,255,255,0.55); }
@@ -226,8 +235,7 @@ const { title, description, canonicalUrl } = Astro.props;
 .aster-footer__col a, .aster-footer__col li { font-size: 0.82rem; font-weight: 500; color: rgba(255,255,255,0.5); }
 .aster-footer__col a:hover { color: var(--aster-white); }
 .aster-footer__legal { display: flex; gap: 0.75rem; margin-top: 0.75rem; }
-.aster-footer__legal a { font-size: 0.72rem; color: rgba(255,255,255,0.3); }
-.aster-footer__legal a:hover { color: rgba(255,255,255,0.55); }
+.aster-footer__legal a, .aster-footer__legal span { font-size: 0.72rem; color: rgba(255,255,255,0.3); }
 .aster-footer__bottom { padding-block: 1.15rem; border-top: 1px solid rgba(255,255,255,0.06); }
 .aster-footer__bottom p { margin-bottom: 0.35rem; font-size: 0.72rem; color: rgba(255,255,255,0.25); }
 .aster-footer__disclaimer { max-width: 640px; font-size: 0.68rem !important; line-height: 1.55; }

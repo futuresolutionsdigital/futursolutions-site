@@ -20,9 +20,9 @@ import { pricingCards, pricingNote } from '../../data/aster';
 					<div class="aprx__item-right">
 						<span class="aprx__price-note">{card.priceNote}</span>
 						<span class="aprx__amount">{card.price}{card.priceSuffix && <small>{card.priceSuffix}</small>}</span>
-						<a class:list={['aster-btn', card.featured ? 'aster-btn--primary' : 'aster-btn--secondary']} href="#faq" style="margin-top: 0.75rem;">
-							{card.featured ? 'Learn About Membership' : 'Book This Visit'}
-						</a>
+					<a class:list={['aster-btn', card.featured ? 'aster-btn--primary' : 'aster-btn--secondary']} href="/demos/solo-practice/new-patients" style="margin-top: 0.75rem;">
+						{card.featured ? 'Learn About Membership' : 'Book a Consultation'}
+					</a>
 					</div>
 				</div>
 			))}
@@ -42,8 +42,8 @@ import { pricingCards, pricingNote } from '../../data/aster';
 		</div>
 
 		<div class="aprx__cta-row">
-			<a class="aster-btn aster-btn--primary" href="#faq">Book a Consultation</a>
-			<a class="aster-btn aster-btn--secondary" href="#faq">Have Pricing Questions?</a>
+			<a class="aster-btn aster-btn--primary" href="/demos/solo-practice/new-patients">Book a Consultation</a>
+			<a class="aster-btn aster-btn--secondary" href="/demos/solo-practice/contact">Have Pricing Questions?</a>
 		</div>
 	</div>
 </section>

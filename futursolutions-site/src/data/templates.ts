@@ -125,12 +125,12 @@ export const templateSystems: TemplateSystem[] = [
 	},
 	{
 		slug: 'solo-practice',
-		name: 'Solo Practice / NP Practice Website System',
+		name: 'Aster Private Health — Solo Practice Website',
 		category: 'Solo Practice',
 		shortDescription:
-			'A premium solo healthcare website system for private practices, nurse practitioners, concierge care, and cash-pay providers — built around provider trust, transparent pricing, care model clarity, and relationship-driven booking.',
+			'A warm editorial website demo for solo NPs, private primary care providers, concierge-style practices, and cash-pay healthcare providers.',
 		longDescription:
-			'A premium, conversion-focused website system for solo healthcare providers and private practices. Designed to establish provider credibility, explain a direct-pay or membership care model, present transparent pricing, support patient self-identification, and guide visitors toward consultation booking — all with a warm, personal, clinically credible design.',
+			'A premium, provider-led website system for solo healthcare practices. Features a warm editorial design, transparent pricing, care model explainer, patient onboarding flow, resource hub, patient portal placeholder, and service detail pages — all designed to build trust and drive consultation bookings.',
 		audience:
 			'Solo nurse practitioners, private physicians, concierge care practices, direct primary care providers, holistic NP practices, and small cash-pay healthcare practices.',
 		businessTypes: [
@@ -143,8 +143,8 @@ export const templateSystems: TemplateSystem[] = [
 			'Relationship-driven private practices',
 		],
 		goals: ['Build provider trust', 'Explain care model', 'Show transparent pricing', 'Support patient self-identification', 'Drive consultation bookings', 'Educate patients'],
-		features: ['Provider Trust', 'Care Model Clarity', 'Transparent Pricing', 'Service Grid', 'Patient Fit Section', 'FAQ Accordion', 'Testimonials', 'Resources', 'Booking Path', 'Local SEO'],
-		includedPages: ['Homepage (Long-Form)', 'About Provider', 'Services', 'How It Works', 'Pricing / Membership', 'New Patients', 'Resources', 'Contact / Book'],
+		features: ['Provider-Led Homepage', 'Care Model Clarity', 'Transparent Pricing', 'Service Pathways', 'Patient Fit Section', 'FAQ Accordion', 'Testimonials', 'Patient Resources Hub', 'Consultation Booking Path', 'Patient Portal Placeholder', 'Service Detail Page', 'Editorial Design', 'Local SEO'],
+		includedPages: ['Homepage (Long-Form)', 'About Provider', 'Services Overview', 'Service Detail (Private Primary Care)', 'How It Works', 'Pricing / Membership', 'New Patients / Book', 'Patient Resources', 'Contact / Location', 'Patient Portal'],
 		problemsSolved: [
 			'Visitors do not understand the provider’s approach',
 			'Services feel vague or disconnected',
@@ -159,7 +159,7 @@ export const templateSystems: TemplateSystem[] = [
 		demoUrl: '/demos/solo-practice',
 		auditUrl: '/audit?template=solo-practice',
 		quickViewSummary:
-			'Provider-centered trust, care model walkthrough, transparent pricing cards, patient self-identification, condition/concern grid, testimonials, resources, FAQ, and consultation-focused conversion — all in a warm, premium, clinically credible design.',
+			'A warm editorial mini-site with 10 pages: provider-led homepage, about, services, service detail, how it works, transparent pricing, new patient onboarding, patient resources, contact, and patient portal — all in a calm, premium, clinically credible design.',
 		featured: true,
 	},
 	{

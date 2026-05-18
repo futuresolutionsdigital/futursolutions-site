@@ -25,8 +25,8 @@ export const navItems = [
 export const hero = {
 	headline: 'Healthcare that gives you time to be heard.',
 	lead: 'Personalized private care for patients who want longer visits, clearer answers, and a provider who understands the full picture of their health.',
-	primaryCta: { text: 'Book a Consultation', href: '#pricing' },
-	secondaryCta: { text: 'Learn How It Works', href: '#care-model' },
+	primaryCta: { text: 'Book a Consultation', href: '/demos/solo-practice/new-patients' },
+	secondaryCta: { text: 'Learn How It Works', href: '/demos/solo-practice/how-it-works' },
 	trustStrip: [
 		'Board-certified provider',
 		'Longer appointment times',
@@ -63,18 +63,18 @@ export const provider = {
 		'Experience in women\'s health, metabolic health, and lifestyle medicine',
 		'In-person and telehealth care',
 	],
-	cta: { text: 'Read Provider Story', href: '#care-model' },
+	cta: { text: 'Meet Your Provider', href: '/demos/solo-practice/about' },
 } as const;
 
 export const services = [
-	{ title: 'Private Primary Care', description: 'Comprehensive primary care with longer visits, continuity, and a provider who knows your history.', bestFor: 'Patients who want a dedicated provider relationship', href: '#pricing' },
-	{ title: 'Preventive Health', description: 'Proactive screenings, wellness assessments, and health planning tailored to your age, risk factors, and goals.', bestFor: 'Patients focused on long-term health', href: '#pricing' },
-	{ title: 'Women\'s Wellness', description: 'Support for hormonal changes, reproductive health, perimenopause, and whole-person women\'s health.', bestFor: 'Women navigating health transitions', href: '#pricing' },
-	{ title: 'Hormone Support', description: 'Evaluation and management of hormonal concerns including thyroid, adrenal, and sex hormone imbalances.', bestFor: 'Patients with fatigue, mood, or metabolic changes', href: '#pricing' },
-	{ title: 'Weight & Metabolic Health', description: 'A clinical approach to sustainable weight management, metabolic testing, and lifestyle integration.', bestFor: 'Patients with weight resistance or metabolic concerns', href: '#pricing' },
-	{ title: 'Functional Wellness', description: 'Root-cause investigation of chronic symptoms using advanced labs, nutrition, and lifestyle interventions.', bestFor: 'Patients seeking deeper answers', href: '#pricing' },
-	{ title: 'Mental Wellness Support', description: 'Screening, support, and collaborative management for anxiety, mood, stress, and burnout.', bestFor: 'Patients who want mental health integrated into their care', href: '#pricing' },
-	{ title: 'Telehealth Visits', description: 'Convenient virtual appointments for follow-ups, lab reviews, care coordination, and ongoing guidance.', bestFor: 'Patients who prefer remote access', href: '#pricing' },
+	{ title: 'Private Primary Care', description: 'Comprehensive primary care with longer visits, continuity, and a provider who knows your history.', bestFor: 'Patients who want a dedicated provider relationship', href: '/demos/solo-practice/services/private-primary-care' },
+	{ title: 'Preventive Health', description: 'Proactive screenings, wellness assessments, and health planning tailored to your age, risk factors, and goals.', bestFor: 'Patients focused on long-term health', href: '/demos/solo-practice/new-patients' },
+	{ title: 'Women\'s Wellness', description: 'Support for hormonal changes, reproductive health, perimenopause, and whole-person women\'s health.', bestFor: 'Women navigating health transitions', href: '/demos/solo-practice/new-patients' },
+	{ title: 'Hormone Support', description: 'Evaluation and management of hormonal concerns including thyroid, adrenal, and sex hormone imbalances.', bestFor: 'Patients with fatigue, mood, or metabolic changes', href: '/demos/solo-practice/new-patients' },
+	{ title: 'Weight & Metabolic Health', description: 'A clinical approach to sustainable weight management, metabolic testing, and lifestyle integration.', bestFor: 'Patients with weight resistance or metabolic concerns', href: '/demos/solo-practice/new-patients' },
+	{ title: 'Functional Wellness', description: 'Root-cause investigation of chronic symptoms using advanced labs, nutrition, and lifestyle interventions.', bestFor: 'Patients seeking deeper answers', href: '/demos/solo-practice/new-patients' },
+	{ title: 'Mental Wellness Support', description: 'Screening, support, and collaborative management for anxiety, mood, stress, and burnout.', bestFor: 'Patients who want mental health integrated into their care', href: '/demos/solo-practice/new-patients' },
+	{ title: 'Telehealth Visits', description: 'Convenient virtual appointments for follow-ups, lab reviews, care coordination, and ongoing guidance.', bestFor: 'Patients who prefer remote access', href: '/demos/solo-practice/new-patients' },
 ];
 
 export const conditions = [
@@ -118,9 +118,9 @@ export const testimonials = [
 ];
 
 export const resources = [
-	{ title: 'What to Expect at Your First Private Practice Visit', category: 'New Patients', excerpt: 'A clear guide to what happens during your initial consultation, what to bring, and how to prepare.', href: '#' },
-	{ title: 'Cash-Pay Healthcare, Explained Simply', category: 'Pricing', excerpt: 'How direct-pay and membership-based care works, what it costs, and how it compares to insurance-based visits.', href: '#' },
-	{ title: 'How Longer Visits Change the Care Experience', category: 'Care Model', excerpt: 'Why 60-minute appointments lead to better outcomes, stronger provider relationships, and more personalized care.', href: '#' },
+	{ title: 'What to Expect at Your First Private Practice Visit', category: 'New Patients', excerpt: 'A clear guide to what happens during your initial consultation, what to bring, and how to prepare.', href: '/demos/solo-practice/new-patients' },
+	{ title: 'Cash-Pay Healthcare, Explained Simply', category: 'Pricing', excerpt: 'How direct-pay and membership-based care works, what it costs, and how it compares to insurance-based visits.', href: '/demos/solo-practice/pricing' },
+	{ title: 'How Longer Visits Change the Care Experience', category: 'Care Model', excerpt: 'Why 60-minute appointments lead to better outcomes, stronger provider relationships, and more personalized care.', href: '/demos/solo-practice/how-it-works' },
 ];
 
 export const faqs = [
