@@ -25,6 +25,7 @@ export interface TemplateSystem {
 export const templateBrowseFilterDefs = [
 	{ id: 'med-spa', label: 'Med Spa' },
 	{ id: 'solo-practice', label: 'Solo Practice' },
+	{ id: 'wellness-clinic', label: 'Wellness Clinic' },
 	{ id: 'association', label: 'Association' },
 	{ id: 'booking', label: 'Booking' },
 	{ id: 'local-seo', label: 'Local SEO' },
@@ -59,6 +60,9 @@ export function getTemplateMatchFilterIds(template: TemplateSystem): string[] {
 	}
 	if (template.slug === 'association' || template.category.toLowerCase().includes('association')) {
 		ids.add('association');
+	}
+	if (template.slug === 'premium-wellness-clinic' || template.category.toLowerCase().includes('wellness clinic')) {
+		ids.add('wellness-clinic');
 	}
 
 	const blob = combinedTemplateTextBlob(template);
@@ -205,6 +209,48 @@ export const templateSystems: TemplateSystem[] = [
 		auditUrl: '/audit?template=association',
 		quickViewSummary:
 			'A complete fictional association website system built around member conversion, policy engagement, CE/event promotion, chapter community, resource discovery, and career advancement — with filterable libraries, detail pages, and institutional credibility sections.',
+		featured: true,
+	},
+	{
+		slug: 'premium-wellness-clinic',
+		name: 'Lumen Health House — Premium Wellness Clinic Website',
+		category: 'Wellness Clinic',
+		shortDescription:
+			'A premium wellness clinic website system for cash-pay clinics offering IV therapy, recovery, medical weight loss, hormone optimization, body scans, memberships, and provider-guided care.',
+		longDescription:
+			'A complete wellness clinic website system built around service discovery, goal-based navigation, provider trust, medical safety language, membership and package promotion, and a consultation-first booking flow. Designed for modern cash-pay wellness, longevity, IV therapy, recovery, hormone, and metabolic health clinics.',
+		audience:
+			'Cash-pay wellness clinics, IV therapy clinics, longevity clinics, recovery and performance centers, hormone optimization clinics, medical weight loss practices, and functional health practices.',
+		businessTypes: [
+			'Cash-pay wellness clinics',
+			'IV therapy clinics',
+			'Longevity and anti-aging clinics',
+			'Recovery and performance centers',
+			'Hormone optimization clinics',
+			'Medical weight loss practices',
+			'Functional health practices',
+			'Integrative wellness centers',
+		],
+		goals: ['Organize many services clearly', 'Build provider trust', 'Guide uncertain visitors toward consultation', 'Allow confident visitors to book directly', 'Support memberships', 'Support local SEO'],
+		features: ['Goal-Based Navigation', 'Service Category Grid', 'Quick Facts Strips', 'Provider Cards', 'Membership Tiers', 'Comparison Table', 'Signature Programs', 'Booking Flow', 'Safety Language System', 'Testimonials', 'FAQ Accordion', 'Local SEO', 'Sticky Mobile CTA', 'Resource Hub'],
+		includedPages: ['Homepage', 'Services Hub', 'IV Therapy', 'Contrast Therapy', 'Medical Weight Loss', 'Hormone Optimization', 'Body Composition Scan', 'Memberships & Packages', 'New Clients / Start Here', 'Providers', 'Reviews', 'Resources', 'Location / Contact'],
+		problemsSolved: [
+			'Too many services with no clear organization',
+			'Visitors unsure which service to book first',
+			'Provider credentials hidden or underdeveloped',
+			'Memberships feel confusing instead of valuable',
+			'Medical safety language missing or inconsistent',
+			'Booking paths scattered or unclear',
+		],
+		conversionFeatures: ['Goal-based service routing', 'Consultation-first CTA flow', 'Quick facts on every service page', 'Provider trust cards', 'Membership comparison table', 'Package bundles for common goals', 'FAQ objection handling', 'Dual-path CTAs (book session vs. consultation)'],
+		seoFeatures: ['Service page structure', 'Local keyword targeting', 'Goal-based content architecture', 'FAQ-rich service pages', 'Resource hub for educational content', 'Metadata patterns'],
+		backendFeatures: ['Consultation booking readiness', 'Contact form with service interest fields', 'CRM-ready intake path', 'GoHighLevel-compatible form fields', 'Membership inquiry routing'],
+		complexity: 'Growth',
+		detailUrl: '/templates/premium-wellness-clinic',
+		demoUrl: '/demos/premium-wellness-clinic',
+		auditUrl: '/audit?template=premium-wellness-clinic',
+		quickViewSummary:
+			'A premium 13-page wellness clinic demo with goal-based navigation, six service categories, five detailed service pages, membership tiers with comparison table, provider cards, signature programs, booking flow, and full supporting pages — all in a warm, calm, medically credible design.',
 		featured: true,
 	},
 ];

@@ -1,0 +1,319 @@
+---
+import WellnessLayout from '../../../layouts/WellnessLayout.astro';
+import { memberships, packages, brand } from '../../../data/wellness';
+---
+
+<WellnessLayout title="Memberships — Lumen Health House" description="Monthly wellness memberships with credits, priority booking, and discounted services. Choose the tier that fits your goals — or visit without a membership.">
+
+<!-- ─── Hero ─── -->
+<section class="wh-section wh-section--dark mb-hero">
+	<div class="wh-container">
+		<p class="wh-eyebrow">Memberships</p>
+		<h1>Make Wellness a Rhythm, Not a One-Time Reset.</h1>
+		<p class="wh-lead">The best outcomes come from consistency. Our memberships give you the structure, savings, and provider access to stay on track — month after month.</p>
+		<div class="wh-btn-row">
+			<a class="wh-btn wh-btn--primary" href="/demos/premium-wellness-clinic/new-clients">Book a Membership Consultation</a>
+			<a class="wh-btn wh-btn--secondary" href="#tiers">Compare Tiers</a>
+		</div>
+	</div>
+</section>
+
+<!-- ─── Philosophy ─── -->
+<section class="wh-section mb-philosophy">
+	<div class="wh-container">
+		<div class="mb-philosophy__split">
+			<div class="mb-philosophy__left">
+				<p class="wh-eyebrow">Our Approach</p>
+				<h2>Membership is about continuity of care — not a hard sell.</h2>
+			</div>
+			<div class="mb-philosophy__right">
+				<p>We built our memberships around a simple idea: wellness works better when it is ongoing. Monthly credits, regular check-ins, and priority access make it easier to stay consistent — and consistency is what drives real results.</p>
+				<p>That said, <strong>you do not need to be a member to visit.</strong> Every service at Lumen can be booked individually at full price. Memberships simply make it more affordable and more structured for clients who plan to return regularly.</p>
+				<p>Not sure which tier fits? Your provider can help you choose during a <a class="wh-text-link" href="/demos/premium-wellness-clinic/new-clients">wellness consultation</a>.</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- ─── Membership Tiers ─── -->
+<section class="wh-section mb-tiers" id="tiers">
+	<div class="wh-container">
+		<div class="wh-section-header">
+			<p class="wh-eyebrow">Choose Your Tier</p>
+			<h2>Three tiers. One standard of care.</h2>
+			<p class="wh-lead">Every membership includes priority scheduling, member pricing, and access to the same high-quality services and providers.</p>
+		</div>
+		<div class="mb-tiers__grid">
+			{memberships.map((mem, i) => (
+				<div class:list={['mb-tiers__card wh-card', { 'mb-tiers__card--featured': i === 1 }]}>
+					{i === 1 && <span class="mb-tiers__badge">Most Popular</span>}
+					<h3>{mem.name}</h3>
+					<p class="mb-tiers__price">{mem.price}</p>
+					<p class="mb-tiers__for">{mem.bestFor}</p>
+					<ul class="mb-tiers__includes" role="list">
+						{mem.includes.map((inc) => <li>{inc}</li>)}
+					</ul>
+					<a class="wh-btn wh-btn--primary mb-tiers__cta" href="/demos/premium-wellness-clinic/new-clients">Get Started</a>
+				</div>
+			))}
+		</div>
+	</div>
+</section>
+
+<!-- ─── Comparison Table ─── -->
+<section class="wh-section wh-section--surface mb-compare" id="compare">
+	<div class="wh-container">
+		<div class="wh-section-header">
+			<p class="wh-eyebrow">Side-by-Side</p>
+			<h2>Compare membership tiers at a glance.</h2>
+		</div>
+		<div class="mb-compare__wrapper">
+			<table class="mb-compare__table">
+				<thead>
+					<tr>
+						<th>Feature</th>
+						<th>Recover<br/><span class="mb-compare__price">$149/mo</span></th>
+						<th>Optimize<br/><span class="mb-compare__price">$279/mo</span></th>
+						<th>Longevity<br/><span class="mb-compare__price">$495/mo</span></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Monthly credits</td>
+						<td>8 recovery sessions</td>
+						<td>2 IV + 4 recovery</td>
+						<td>2 IV + unlimited recovery</td>
+					</tr>
+					<tr>
+						<td>Included consults</td>
+						<td>&mdash;</td>
+						<td>1 wellness check-in / quarter</td>
+						<td>Monthly provider consultation</td>
+					</tr>
+					<tr>
+						<td>Included scans</td>
+						<td>1 / quarter</td>
+						<td>1 / month</td>
+						<td>1 / month</td>
+					</tr>
+					<tr>
+						<td>Discounts</td>
+						<td>10% off IV &amp; vitamins</td>
+						<td>15% off additional services</td>
+						<td>20% off additional services</td>
+					</tr>
+					<tr>
+						<td>Priority booking</td>
+						<td>Yes</td>
+						<td>Yes</td>
+						<td>Yes</td>
+					</tr>
+					<tr>
+						<td>Guest pass</td>
+						<td>&mdash;</td>
+						<td>1 / quarter</td>
+						<td>Included quarterly</td>
+					</tr>
+					<tr>
+						<td>Add-on pricing</td>
+						<td>Member rates</td>
+						<td>Member rates</td>
+						<td>Member rates + quarterly labs</td>
+					</tr>
+					<tr>
+						<td>Best for</td>
+						<td>Recovery-focused wellness</td>
+						<td>Balanced health + performance</td>
+						<td>Comprehensive, provider-guided care</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</section>
+
+<!-- ─── Packages ─── -->
+<section class="wh-section mb-packages" id="packages">
+	<div class="wh-container">
+		<div class="wh-section-header">
+			<p class="wh-eyebrow">Packages for Common Goals</p>
+			<h2>Bundled starting points — no membership required.</h2>
+			<p class="wh-lead">These packages combine services around a specific goal. Available to any client, member or not.</p>
+		</div>
+		<div class="mb-packages__list">
+			{packages.map((pkg) => (
+				<div class="mb-packages__row">
+					<div class="mb-packages__info">
+						<h3>{pkg.title}</h3>
+						<p>{pkg.includes}</p>
+					</div>
+					<div class="mb-packages__meta">
+						<span class="mb-packages__price">{pkg.price}</span>
+						<a class="wh-text-link" href="/demos/premium-wellness-clinic/new-clients">Book This Package &rarr;</a>
+					</div>
+				</div>
+			))}
+		</div>
+		<div class="mb-packages__note">
+			<p>You do not need to be a member to visit. All services at Lumen Health House can be booked individually at standard pricing. Memberships offer savings and structure for those who plan to return regularly — but they are never required.</p>
+			<a class="wh-btn wh-btn--secondary" href="/demos/premium-wellness-clinic/services">Browse All Services</a>
+		</div>
+	</div>
+</section>
+
+<!-- ─── Policy Details ─── -->
+<section class="wh-section wh-section--sage mb-policies">
+	<div class="wh-container">
+		<div class="wh-section-header">
+			<p class="wh-eyebrow">Membership Policies</p>
+			<h2>Transparent terms, no fine print.</h2>
+		</div>
+		<div class="mb-policies__grid">
+			<div class="mb-policies__item">
+				<h3>Credit Expiration</h3>
+				<p>Unused monthly credits expire after 90 days. We encourage consistent use, but this window gives you flexibility for travel or schedule changes.</p>
+			</div>
+			<div class="mb-policies__item">
+				<h3>Cancellation</h3>
+				<p>Memberships can be cancelled with 30 days written notice. There are no cancellation fees or long-term contracts.</p>
+			</div>
+			<div class="mb-policies__item">
+				<h3>Transferability</h3>
+				<p>Monthly credits are non-transferable and tied to the individual member. Guest passes may be shared.</p>
+			</div>
+			<div class="mb-policies__item">
+				<h3>Medical Eligibility</h3>
+				<p>Services involving prescriptions, hormones, or medical protocols still require eligibility review, labs, and provider approval — regardless of membership tier.</p>
+			</div>
+			<div class="mb-policies__item">
+				<h3>Membership Consultation</h3>
+				<p>A membership consultation is optional but recommended. Your provider can help match a tier to your goals and build an ongoing wellness plan.</p>
+			</div>
+			<div class="mb-policies__item">
+				<h3>Billing</h3>
+				<p>Memberships are billed monthly to the payment method on file. Your first month is prorated based on your start date.</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- ─── FAQ ─── -->
+<section class="wh-section mb-faq" id="faq">
+	<div class="wh-container mb-faq__split">
+		<div class="mb-faq__left">
+			<p class="wh-eyebrow">Membership Questions</p>
+			<h2>Frequently asked questions</h2>
+		</div>
+		<div class="wh-faq__list">
+			<details class="wh-faq__item">
+				<summary><span>Can I change my membership tier later?</span></summary>
+				<p>Yes. You can upgrade or downgrade your membership at any time. Changes take effect at the start of your next billing cycle. Your provider can help you decide if a different tier better matches your evolving goals.</p>
+			</details>
+			<details class="wh-faq__item">
+				<summary><span>What happens to unused credits?</span></summary>
+				<p>Unused monthly credits expire after 90 days. We designed this window to give flexibility for travel or busy months while still encouraging regular use. Credits do not accumulate indefinitely.</p>
+			</details>
+			<details class="wh-faq__item">
+				<summary><span>Do I need a membership to access medical services?</span></summary>
+				<p>No. All services — including hormone optimization, medical weight loss, and GLP-1 support — are available to non-members at standard pricing. Memberships provide savings, structure, and priority access, but are never required.</p>
+			</details>
+			<details class="wh-faq__item">
+				<summary><span>Can I share my membership with a partner or family member?</span></summary>
+				<p>Monthly credits are tied to the individual member and are non-transferable. However, guest passes (included with Optimize and Longevity tiers) allow you to bring someone for a recovery session.</p>
+			</details>
+			<details class="wh-faq__item">
+				<summary><span>Is there a contract or commitment period?</span></summary>
+				<p>No. Memberships are month-to-month with no long-term contract. You can cancel anytime with 30 days written notice. There are no cancellation fees or penalties.</p>
+			</details>
+			<details class="wh-faq__item">
+				<summary><span>How do I know which tier is right for me?</span></summary>
+				<p>If you are primarily interested in recovery therapies, Recover is a great fit. If you want IV therapy, scans, and broader wellness support, consider Optimize. If you are pursuing comprehensive care including hormones, labs, and regular provider visits, Longevity offers the most value. A wellness consultation can help you decide.</p>
+			</details>
+		</div>
+	</div>
+</section>
+
+<!-- ─── Final CTA ─── -->
+<section class="wh-section wh-section--dark mb-final">
+	<div class="wh-container">
+		<p class="wh-eyebrow">Ready to Get Started?</p>
+		<h2>Book a consultation to find the right membership for your goals.</h2>
+		<p class="wh-lead">Whether you already know your tier or want guidance choosing one, a brief consultation helps us build the right plan around your needs.</p>
+		<div class="wh-btn-row">
+			<a class="wh-btn wh-btn--primary" href="/demos/premium-wellness-clinic/new-clients">Book a Consultation</a>
+			<a class="wh-btn wh-btn--secondary" href="/demos/premium-wellness-clinic/services">Explore Services</a>
+		</div>
+	</div>
+</section>
+
+</WellnessLayout>
+
+<style>
+/* ═══════════════════════════════════════════════════════
+   MEMBERSHIPS — Restrained Clinical Premium
+   ═══════════════════════════════════════════════════════ */
+
+/* ─── Hero ─── */
+.mb-hero { padding-top: clamp(5rem, 10vw, 9rem); padding-bottom: clamp(3rem, 6vw, 5rem); }
+.mb-hero h1 { max-width: 620px; }
+.mb-hero .wh-lead { max-width: 520px; }
+
+/* ─── Philosophy: split layout ─── */
+.mb-philosophy__split { display: grid; grid-template-columns: 1fr 1.3fr; gap: clamp(3rem, 5vw, 5rem); align-items: start; }
+.mb-philosophy__left h2 { max-width: 360px; }
+.mb-philosophy__right p { font-size: 0.95rem; color: var(--wh-text); line-height: 1.75; margin-bottom: 1rem; }
+@media (max-width: 700px) { .mb-philosophy__split { grid-template-columns: 1fr; } }
+
+/* ─── Membership Tiers: bordered cards ─── */
+.mb-tiers__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+.mb-tiers__card { padding: 2rem; display: flex; flex-direction: column; position: relative; }
+.mb-tiers__card--featured { border-color: var(--wh-sage); }
+.mb-tiers__badge { position: absolute; top: -0.6rem; left: 1.5rem; padding: 0.2rem 0.6rem; font-size: 0.58rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--wh-white); background: var(--wh-sage); border-radius: 3px; }
+.mb-tiers__card h3 { font-size: 1.15rem; margin-bottom: 0.25rem; }
+.mb-tiers__price { font-size: 1.75rem; font-weight: 700; color: var(--wh-ink); margin-bottom: 0.5rem; letter-spacing: -0.02em; }
+.mb-tiers__for { font-size: 0.82rem; color: var(--wh-muted); margin-bottom: 1.25rem; line-height: 1.55; padding-bottom: 1.25rem; border-bottom: 1px solid var(--wh-border); }
+.mb-tiers__includes { padding: 0; margin: 0 0 1.5rem; list-style: none; flex: 1; }
+.mb-tiers__includes li { padding: 0.4rem 0 0.4rem 1rem; position: relative; font-size: 0.82rem; color: var(--wh-text); }
+.mb-tiers__includes li::before { content: ''; position: absolute; left: 0; top: 0.7rem; width: 4px; height: 4px; border-radius: 50%; background: var(--wh-sage); }
+.mb-tiers__cta { text-align: center; margin-top: auto; }
+@media (max-width: 800px) { .mb-tiers__grid { grid-template-columns: 1fr; } }
+
+/* ─── Comparison Table ─── */
+.mb-compare__wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.mb-compare__table { width: 100%; border-collapse: collapse; min-width: 640px; }
+.mb-compare__table th,
+.mb-compare__table td { padding: 0.85rem 1rem; text-align: left; font-size: 0.82rem; border-bottom: 1px solid var(--wh-border); }
+.mb-compare__table th { font-weight: 700; color: var(--wh-ink); background: rgba(26,31,29,0.03); }
+.mb-compare__table th:first-child { border-radius: var(--wh-radius) 0 0 0; }
+.mb-compare__table th:last-child { border-radius: 0 var(--wh-radius) 0 0; }
+.mb-compare__price { display: block; font-size: 0.75rem; font-weight: 600; color: var(--wh-sage); margin-top: 0.2rem; }
+.mb-compare__table td { color: var(--wh-text); }
+.mb-compare__table td:first-child { font-weight: 600; color: var(--wh-ink); }
+.mb-compare__table tbody tr:hover { background: rgba(26,31,29,0.02); }
+
+/* ─── Packages: clean row list ─── */
+.mb-packages__list { display: flex; flex-direction: column; }
+.mb-packages__row { display: flex; align-items: center; justify-content: space-between; gap: 2rem; padding: 1.25rem 0; border-bottom: 1px solid var(--wh-border); }
+.mb-packages__row:first-child { border-top: 1px solid var(--wh-border); }
+.mb-packages__info h3 { font-size: 0.95rem; margin-bottom: 0.2rem; }
+.mb-packages__info p { font-size: 0.82rem; color: var(--wh-muted); line-height: 1.55; }
+.mb-packages__meta { display: flex; align-items: center; gap: 1.5rem; flex-shrink: 0; }
+.mb-packages__price { font-size: 1.1rem; font-weight: 700; color: var(--wh-ink); letter-spacing: -0.02em; }
+.mb-packages__note { margin-top: 2.5rem; max-width: 640px; }
+.mb-packages__note p { font-size: 0.88rem; color: var(--wh-muted); line-height: 1.65; margin-bottom: 1rem; }
+@media (max-width: 600px) { .mb-packages__row { flex-direction: column; align-items: flex-start; gap: 0.75rem; } .mb-packages__meta { width: 100%; justify-content: space-between; } }
+
+/* ─── Policies: sage bg ─── */
+.mb-policies__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem 2.5rem; }
+.mb-policies__item h3 { font-size: 0.92rem; margin-bottom: 0.4rem; }
+.mb-policies__item p { font-size: 0.82rem; color: var(--wh-text); line-height: 1.6; }
+@media (max-width: 700px) { .mb-policies__grid { grid-template-columns: 1fr; } }
+
+/* ─── FAQ: split layout ─── */
+.mb-faq__split { display: grid; grid-template-columns: 1fr 1.6fr; gap: clamp(3rem, 5vw, 5rem); align-items: start; }
+.mb-faq__left { position: sticky; top: 10rem; }
+@media (max-width: 700px) { .mb-faq__split { grid-template-columns: 1fr; } .mb-faq__left { position: static; } }
+
+/* ─── Final CTA ─── */
+.mb-final h2 { max-width: 560px; }
+</style>

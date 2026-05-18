@@ -1,0 +1,112 @@
+---
+import WellnessLayout from '../../../layouts/WellnessLayout.astro';
+import { providers, brand } from '../../../data/wellness';
+---
+
+<WellnessLayout title="Providers — Lumen Health House" description="Meet the experienced wellness providers who guide every plan at Lumen Health House. Board-certified, patient-centered, and focused on your goals.">
+
+<!-- ─── Hero ─── -->
+<section class="wh-section wh-section--dark pv-hero">
+	<div class="wh-container">
+		<p class="wh-eyebrow">Your Care Team</p>
+		<h1>Guided by Experienced Wellness Providers.</h1>
+		<p class="wh-lead">Every plan at Lumen starts with a provider who listens. Our team combines clinical expertise with a genuine focus on your goals, comfort, and long-term health.</p>
+	</div>
+</section>
+
+<!-- ─── Provider Profiles ─── -->
+<section class="wh-section pv-team">
+	<div class="wh-container">
+		<div class="pv-team__list">
+			{providers.map((prov) => (
+				<div class="pv-team__profile">
+					<div class="pv-team__initials">{prov.initials}</div>
+					<div class="pv-team__details">
+						<h2>{prov.name}</h2>
+						<span class="pv-team__role">{prov.role}</span>
+						<p class="pv-team__specialties"><strong>Specialties:</strong> {prov.specialties}</p>
+						<p class="pv-team__bio">{prov.bio}</p>
+					</div>
+				</div>
+			))}
+		</div>
+		<p class="pv-team__note">Certain treatments require consultation, eligibility review, labs, or provider approval.</p>
+	</div>
+</section>
+
+<!-- ─── Clinical Oversight ─── -->
+<section class="wh-section wh-section--sage pv-oversight">
+	<div class="wh-container">
+		<div class="pv-oversight__split">
+			<div class="pv-oversight__left">
+				<p class="wh-eyebrow">Clinical Standards</p>
+				<h2>Clinical Oversight at Every Step</h2>
+			</div>
+			<div class="pv-oversight__right">
+				<p>Services involving prescriptions, hormones, injections, or medical protocols are always supervised by a licensed provider. Your safety and comfort guide every recommendation we make.</p>
+				<p>Whether you are here for recovery therapies, metabolic support, or a comprehensive wellness plan, your care team works together to ensure clinical rigor, transparency, and personalized attention.</p>
+				<p>If you are unsure whether a service requires a consultation, our team is happy to help you understand the next step.</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- ─── CTA ─── -->
+<section class="wh-section wh-section--dark pv-final">
+	<div class="wh-container">
+		<p class="wh-eyebrow">Ready to Get Started?</p>
+		<h2>Book a consultation and meet your provider.</h2>
+		<p class="wh-lead">Your first visit is about understanding your goals, reviewing your health history, and building a plan that makes sense for you.</p>
+		<div class="wh-btn-row">
+			<a class="wh-btn wh-btn--primary" href="/demos/premium-wellness-clinic/new-clients">Book a Consultation</a>
+			<a class="wh-btn wh-btn--secondary" href="/demos/premium-wellness-clinic/services">Explore Services</a>
+		</div>
+	</div>
+</section>
+
+<!-- ─── Demo Disclaimer ─── -->
+<section class="wh-section pv-disclaimer-section">
+	<div class="wh-container">
+		<p class="pv-disclaimer">{brand.disclaimer}</p>
+	</div>
+</section>
+
+</WellnessLayout>
+
+<style>
+/* ═══════════════════════════════════════════════════════
+   PROVIDERS — Restrained Clinical Premium
+   ═══════════════════════════════════════════════════════ */
+
+/* ─── Hero ─── */
+.pv-hero { padding-top: clamp(5rem, 10vw, 9rem); padding-bottom: clamp(3rem, 6vw, 5rem); }
+.pv-hero h1 { max-width: 620px; }
+.pv-hero .wh-lead { max-width: 520px; }
+
+/* ─── Provider Profiles: initials + text, no cards ─── */
+.pv-team__list { display: flex; flex-direction: column; gap: 0; }
+.pv-team__profile { display: flex; gap: 1.5rem; align-items: start; padding: 2rem 0; border-bottom: 1px solid var(--wh-border); }
+.pv-team__profile:first-child { padding-top: 0; }
+.pv-team__profile:last-child { border-bottom: none; }
+.pv-team__initials { display: flex; align-items: center; justify-content: center; width: 3.5rem; height: 3.5rem; flex-shrink: 0; border-radius: var(--wh-radius); background: var(--wh-sage-light); color: var(--wh-sage); font-size: 1rem; font-weight: 700; border: 1px solid var(--wh-border); }
+.pv-team__details h2 { font-size: 1.1rem; margin-bottom: 0.2rem; }
+.pv-team__role { display: block; font-size: 0.65rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--wh-sage); margin-bottom: 0.75rem; }
+.pv-team__specialties { font-size: 0.82rem; color: var(--wh-muted); margin-bottom: 0.5rem; }
+.pv-team__specialties strong { color: var(--wh-ink); }
+.pv-team__bio { font-size: 0.88rem; color: var(--wh-muted); line-height: 1.7; }
+.pv-team__note { margin-top: 1.5rem; font-size: 0.72rem; color: var(--wh-muted); font-style: italic; }
+@media (max-width: 600px) { .pv-team__profile { flex-direction: column; gap: 0.75rem; } }
+
+/* ─── Clinical Oversight: sage bg, split layout ─── */
+.pv-oversight__split { display: grid; grid-template-columns: 1fr 1.3fr; gap: clamp(3rem, 5vw, 5rem); align-items: start; }
+.pv-oversight__left h2 { max-width: 320px; }
+.pv-oversight__right p { font-size: 0.92rem; color: var(--wh-text); line-height: 1.7; margin-bottom: 0.75rem; }
+@media (max-width: 700px) { .pv-oversight__split { grid-template-columns: 1fr; } }
+
+/* ─── Final CTA ─── */
+.pv-final h2 { max-width: 560px; }
+
+/* ─── Demo Disclaimer ─── */
+.pv-disclaimer-section { padding-top: 0; }
+.pv-disclaimer { font-size: 0.72rem; color: var(--wh-muted); font-style: italic; max-width: 640px; }
+</style>

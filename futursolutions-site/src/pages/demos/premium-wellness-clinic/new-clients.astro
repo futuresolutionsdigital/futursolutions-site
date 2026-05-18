@@ -1,0 +1,457 @@
+---
+import WellnessLayout from '../../../layouts/WellnessLayout.astro';
+import { brand } from '../../../data/wellness';
+---
+
+<WellnessLayout title="New Clients — Start Here — Lumen Health House" description="Your guide to getting started at Lumen Health House. Learn what to expect, what to bring, and book your first visit.">
+
+<!-- ─── Hero ─── -->
+<section class="wh-section wh-section--dark nc-hero">
+	<div class="wh-container">
+		<p class="wh-eyebrow">New Clients</p>
+		<h1>New Here? Start With the Right First Step.</h1>
+		<p class="wh-lead">Whether you have a specific goal or just know something needs to change, we will help you find the right starting point — no pressure, no guesswork.</p>
+		<div class="wh-btn-row">
+			<a class="wh-btn wh-btn--primary" href="#booking">Book Your First Visit</a>
+			<a class="wh-btn wh-btn--secondary" href="/demos/premium-wellness-clinic/services">Browse Services</a>
+		</div>
+	</div>
+</section>
+
+<!-- ─── Choose Your Path ─── -->
+<section class="wh-section nc-paths">
+	<div class="wh-container">
+		<div class="wh-section-header">
+			<p class="wh-eyebrow">Choose Your Path</p>
+			<h2>How can we help you today?</h2>
+			<p class="wh-lead">Pick the option that best describes where you are, and we will point you in the right direction.</p>
+		</div>
+		<div class="nc-paths__grid">
+			<a class="nc-paths__card wh-card" href="/demos/premium-wellness-clinic/new-clients#booking">
+				<span class="nc-paths__icon" aria-hidden="true">
+					<svg width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="15" stroke="currentColor" stroke-width="1.5"/><path d="M12 16h8M16 12v8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+				</span>
+				<h3>I need guidance</h3>
+				<p>Not sure where to start? Book a wellness consultation. Your provider will review your goals, history, and recommend the right path.</p>
+				<span class="nc-paths__action">Book Consultation &rarr;</span>
+			</a>
+			<a class="nc-paths__card wh-card" href="/demos/premium-wellness-clinic/new-clients#booking">
+				<span class="nc-paths__icon" aria-hidden="true">
+					<svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="4" y="8" width="24" height="16" rx="3" stroke="currentColor" stroke-width="1.5"/><path d="M4 14h24" stroke="currentColor" stroke-width="1.5"/></svg>
+				</span>
+				<h3>I know what I want</h3>
+				<p>Ready to book IV therapy, a recovery session, body scan, or another direct-book service? Schedule your session now.</p>
+				<span class="nc-paths__action">Book a Session &rarr;</span>
+			</a>
+			<a class="nc-paths__card wh-card" href="/demos/premium-wellness-clinic/contact">
+				<span class="nc-paths__icon" aria-hidden="true">
+					<svg width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M8 12l8 6 8-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><rect x="4" y="8" width="24" height="16" rx="3" stroke="currentColor" stroke-width="1.5"/></svg>
+				</span>
+				<h3>I am a returning client</h3>
+				<p>Welcome back. If you need a follow-up visit, plan adjustment, or have questions about your care, reach out to our team.</p>
+				<span class="nc-paths__action">Contact for Follow-Up &rarr;</span>
+			</a>
+		</div>
+	</div>
+</section>
+
+<!-- ─── What Happens at Your First Visit ─── -->
+<section class="wh-section wh-section--surface nc-first-visit">
+	<div class="wh-container">
+		<div class="wh-section-header">
+			<p class="wh-eyebrow">Your First Visit</p>
+			<h2>What happens when you walk through the door.</h2>
+			<p class="wh-lead">Your initial visit is designed to be thorough, unhurried, and focused entirely on understanding your goals.</p>
+		</div>
+		<div class="nc-first-visit__timeline">
+			<div class="nc-first-visit__step">
+				<div class="nc-first-visit__marker" aria-hidden="true">
+					<span class="nc-first-visit__dot"></span>
+					<span class="nc-first-visit__line"></span>
+				</div>
+				<div class="nc-first-visit__content">
+					<span class="nc-first-visit__num">01</span>
+					<h3>Health history review</h3>
+					<p>We review your medical history, current medications, supplements, and any recent lab work you bring.</p>
+				</div>
+			</div>
+			<div class="nc-first-visit__step">
+				<div class="nc-first-visit__marker" aria-hidden="true">
+					<span class="nc-first-visit__dot"></span>
+					<span class="nc-first-visit__line"></span>
+				</div>
+				<div class="nc-first-visit__content">
+					<span class="nc-first-visit__num">02</span>
+					<h3>Goal discussion</h3>
+					<p>Your provider listens to what you want to improve — energy, weight, recovery, hormones, sleep, or general wellness.</p>
+				</div>
+			</div>
+			<div class="nc-first-visit__step">
+				<div class="nc-first-visit__marker" aria-hidden="true">
+					<span class="nc-first-visit__dot"></span>
+					<span class="nc-first-visit__line"></span>
+				</div>
+				<div class="nc-first-visit__content">
+					<span class="nc-first-visit__num">03</span>
+					<h3>Optional scan or labs</h3>
+					<p>Depending on your goals, your provider may recommend a body composition scan, baseline labs, or both.</p>
+				</div>
+			</div>
+			<div class="nc-first-visit__step">
+				<div class="nc-first-visit__marker" aria-hidden="true">
+					<span class="nc-first-visit__dot"></span>
+					<span class="nc-first-visit__line"></span>
+				</div>
+				<div class="nc-first-visit__content">
+					<span class="nc-first-visit__num">04</span>
+					<h3>Provider-guided recommendation</h3>
+					<p>Based on your history and goals, your provider recommends specific services, frequency, and next steps.</p>
+				</div>
+			</div>
+			<div class="nc-first-visit__step">
+				<div class="nc-first-visit__marker" aria-hidden="true">
+					<span class="nc-first-visit__dot"></span>
+				</div>
+				<div class="nc-first-visit__content">
+					<span class="nc-first-visit__num">05</span>
+					<h3>Personalized plan</h3>
+					<p>You leave with a clear plan — what to do, when to return, and what to expect as you progress.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- ─── What to Bring ─── -->
+<section class="wh-section wh-section--sage nc-bring">
+	<div class="wh-container">
+		<div class="wh-section-header">
+			<p class="wh-eyebrow">Be Prepared</p>
+			<h2>What to bring to your first visit.</h2>
+		</div>
+		<ul class="nc-bring__list">
+			<li class="nc-bring__item">
+				<h3>Valid photo ID</h3>
+				<p>Government-issued identification for your intake and records.</p>
+			</li>
+			<li class="nc-bring__item">
+				<h3>Medication &amp; supplement list</h3>
+				<p>A current list of all prescriptions, over-the-counter medications, and supplements you take.</p>
+			</li>
+			<li class="nc-bring__item">
+				<h3>Recent lab results</h3>
+				<p>If you have recent bloodwork or lab results from another provider, bring them along. This helps avoid duplicate testing.</p>
+			</li>
+			<li class="nc-bring__item">
+				<h3>Your health goals</h3>
+				<p>Even a rough idea helps. Think about what you want to improve — energy, body composition, recovery, hormones, or overall wellness.</p>
+			</li>
+			<li class="nc-bring__item">
+				<h3>Comfortable clothing</h3>
+				<p>If your visit includes a body scan or recovery therapy, wear or bring comfortable, form-fitting clothing.</p>
+			</li>
+		</ul>
+	</div>
+</section>
+
+<!-- ─── Consultation Requirements ─── -->
+<section class="wh-section nc-consult-req">
+	<div class="wh-container">
+		<div class="nc-consult-req__split">
+			<div class="nc-consult-req__left">
+				<p class="wh-eyebrow">Before You Book</p>
+				<h2>Which services require a consultation first?</h2>
+				<p class="wh-lead">Some services involve medical protocols and require a provider review before you begin. Others can be booked directly.</p>
+			</div>
+			<div class="nc-consult-req__right">
+				<div class="nc-consult-req__col nc-consult-req__col--required">
+					<h3>Consultation required</h3>
+					<p>These services involve prescriptions, medical protocols, or eligibility screening. A provider must review your history and goals before treatment can begin.</p>
+					<ul role="list">
+						<li>Hormone optimization</li>
+						<li>Testosterone therapy</li>
+						<li>Medical weight loss</li>
+						<li>GLP-1 support</li>
+						<li>Peptide therapy</li>
+						<li>Some injection and IV protocols</li>
+					</ul>
+				</div>
+				<div class="nc-consult-req__col nc-consult-req__col--direct">
+					<h3>Book directly</h3>
+					<p>These services can be scheduled without a prior consultation. A brief intake is completed at your first session.</p>
+					<ul role="list">
+						<li>Recovery therapies (sauna, cold plunge, contrast, compression, red light)</li>
+						<li>Standard IV therapy</li>
+						<li>Vitamin injections</li>
+						<li>Body composition scan</li>
+						<li>Wellness baseline assessment</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<p class="nc-consult-req__note">Not sure which category your service falls into? <a class="wh-text-link" href="/demos/premium-wellness-clinic/contact">Contact us</a> or book a general wellness consultation and your provider will guide you.</p>
+	</div>
+</section>
+
+<!-- ─── Pricing / Self-Pay ─── -->
+<section class="wh-section nc-pricing">
+	<div class="wh-container">
+		<div class="nc-pricing__split">
+			<div class="nc-pricing__left">
+				<p class="wh-eyebrow">Pricing &amp; Payment</p>
+				<h2>Transparent pricing. No insurance billing. No surprises.</h2>
+			</div>
+			<div class="nc-pricing__right">
+				<p>Lumen Health House is a cash-pay wellness clinic. We do not bill insurance. This allows us to spend more time with each client, offer a wider range of services, and keep pricing straightforward.</p>
+				<p>Every service page lists starting prices so you know what to expect before you book. Your provider will discuss all costs and options during your consultation — there are no hidden fees.</p>
+				<p><a class="wh-text-link" href="/demos/premium-wellness-clinic/memberships">Memberships</a> can reduce the cost of regular visits through monthly credits, priority booking, and member discounts. But membership is never required to access care.</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- ─── Booking Section ─── -->
+<section class="wh-section wh-section--surface nc-booking" id="booking">
+	<div class="wh-container">
+		<div class="wh-section-header">
+			<p class="wh-eyebrow">Book Your Visit</p>
+			<h2>Schedule your first appointment.</h2>
+			<p class="wh-lead">Fill out the form below and our team will reach out within one business day to confirm your appointment.</p>
+		</div>
+		<div class="nc-booking__card">
+			<form class="nc-booking__form" onsubmit="event.preventDefault();">
+				<div class="nc-booking__row">
+					<div class="nc-booking__field">
+						<label for="nc-name">Full name</label>
+						<input type="text" id="nc-name" name="name" placeholder="Jane Smith" autocomplete="name" />
+					</div>
+					<div class="nc-booking__field">
+						<label for="nc-email">Email address</label>
+						<input type="email" id="nc-email" name="email" placeholder="jane@example.com" autocomplete="email" />
+					</div>
+				</div>
+				<div class="nc-booking__row">
+					<div class="nc-booking__field">
+						<label for="nc-phone">Phone number</label>
+						<input type="tel" id="nc-phone" name="phone" placeholder="(555) 000-0000" autocomplete="tel" />
+					</div>
+					<div class="nc-booking__field">
+						<label for="nc-service">Service interest</label>
+						<select id="nc-service" name="service">
+							<option value="">Select a service or goal</option>
+							<option value="consultation">Wellness Consultation</option>
+							<option value="iv-therapy">IV Therapy</option>
+							<option value="recovery">Recovery Therapy (Sauna, Cold Plunge, Contrast)</option>
+							<option value="body-scan">Body Composition Scan</option>
+							<option value="weight-loss">Medical Weight Loss</option>
+							<option value="hormones">Hormone Optimization</option>
+							<option value="membership">Membership Consultation</option>
+							<option value="other">Other / Not Sure</option>
+						</select>
+					</div>
+				</div>
+				<div class="nc-booking__row">
+					<div class="nc-booking__field">
+						<label for="nc-date">Preferred date</label>
+						<input type="date" id="nc-date" name="date" />
+					</div>
+					<div class="nc-booking__field">
+						<label for="nc-message">Message <span class="nc-booking__optional">(optional)</span></label>
+						<textarea id="nc-message" name="message" rows="3" placeholder="Tell us about your goals or any questions you have."></textarea>
+					</div>
+				</div>
+				<p class="nc-booking__disclaimer">This is a demo form and does not transmit data. In a live implementation, submissions would be encrypted and handled in compliance with applicable privacy regulations.</p>
+				<button type="submit" class="wh-btn wh-btn--primary nc-booking__submit">Request Appointment</button>
+			</form>
+		</div>
+	</div>
+</section>
+
+<!-- ─── Location / Logistics ─── -->
+<section class="wh-section nc-location">
+	<div class="wh-container">
+		<div class="nc-location__grid">
+			<div class="nc-location__info">
+				<p class="wh-eyebrow">Visit Us</p>
+				<h2>Lumen Health House</h2>
+				<address>
+					<p>1248 Meridian Avenue<br/>Temecula, CA 92591</p>
+				</address>
+				<div class="nc-location__details">
+					<div class="nc-location__detail">
+						<h3>Hours</h3>
+						<p>Monday &ndash; Friday: 8:00 AM &ndash; 6:00 PM</p>
+						<p>Saturday: 9:00 AM &ndash; 2:00 PM</p>
+						<p>Sunday: Closed</p>
+					</div>
+					<div class="nc-location__detail">
+						<h3>Phone</h3>
+						<p>(951) 555-0192</p>
+					</div>
+					<div class="nc-location__detail">
+						<h3>Parking</h3>
+						<p>Free parking on-site with reserved spaces near the main entrance. The clinic is ADA accessible.</p>
+					</div>
+				</div>
+			</div>
+			<div class="nc-location__map" aria-label="Map placeholder">
+				<svg viewBox="0 0 480 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<rect width="480" height="360" rx="6" fill="#2C3330"/>
+					<circle cx="240" cy="160" r="6" fill="#6B8F7B" opacity="0.8"/>
+					<circle cx="240" cy="160" r="24" stroke="#6B8F7B" stroke-width="0.5" opacity="0.25" fill="none"/>
+					<text x="240" y="330" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" fill="#6B8F7B" opacity="0.4" letter-spacing="0.1em">1248 MERIDIAN AVE · TEMECULA, CA</text>
+				</svg>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- ─── First-Time FAQ ─── -->
+<section class="wh-section nc-faq" id="faq">
+	<div class="wh-container nc-faq__split">
+		<div class="nc-faq__left">
+			<p class="wh-eyebrow">New Client Questions</p>
+			<h2>Frequently asked questions</h2>
+		</div>
+		<div class="wh-faq__list">
+			<details class="wh-faq__item">
+				<summary><span>Do I need to know exactly what I want before booking?</span></summary>
+				<p>Not at all. Many of our clients start with a general wellness consultation. Your provider will listen to your concerns, review your history, and recommend the right services. You do not need to be an expert on treatments before walking in.</p>
+			</details>
+			<details class="wh-faq__item">
+				<summary><span>How long does the first visit take?</span></summary>
+				<p>A wellness consultation typically lasts 45 to 60 minutes. If your visit includes a body scan or labs, plan for up to 90 minutes total. We build in extra time so your first visit never feels rushed.</p>
+			</details>
+			<details class="wh-faq__item">
+				<summary><span>Will I receive treatment on my first visit?</span></summary>
+				<p>It depends on your goals. For direct-book services like IV therapy, recovery, or body scans, treatment happens at your first session. For medical services like hormone optimization or weight loss, your first visit focuses on assessment and eligibility — treatment begins once your provider has reviewed labs and your health profile.</p>
+			</details>
+			<details class="wh-faq__item">
+				<summary><span>What does a consultation cost?</span></summary>
+				<p>A new client wellness consultation starts at $195. This includes a thorough health history review, goal discussion, and provider-built recommendations. If a body scan or labs are added, those are priced separately and discussed before proceeding.</p>
+			</details>
+			<details class="wh-faq__item">
+				<summary><span>Do you accept insurance?</span></summary>
+				<p>No. Lumen Health House is a cash-pay wellness clinic. We do not bill insurance. This model allows us to spend more time with each client, keep pricing transparent, and offer a broader range of wellness services. We can provide documentation if you wish to submit to your insurer for potential reimbursement.</p>
+			</details>
+			<details class="wh-faq__item">
+				<summary><span>Can I bring a friend or partner to my visit?</span></summary>
+				<p>Yes. You are welcome to bring someone to your consultation or recovery session. For services that involve sensitive health discussions or exams, your provider will confirm your preference at the start of the visit.</p>
+			</details>
+		</div>
+	</div>
+</section>
+
+<!-- ─── Final CTA ─── -->
+<section class="wh-section wh-section--dark nc-final">
+	<div class="wh-container">
+		<p class="wh-eyebrow">Ready to Begin?</p>
+		<h2>Your wellness journey starts with a single conversation.</h2>
+		<p class="wh-lead">Book a consultation and let your provider help you find the right first step — no commitment, no pressure.</p>
+		<div class="wh-btn-row">
+			<a class="wh-btn wh-btn--primary" href="#booking">Book Your First Visit</a>
+			<a class="wh-btn wh-btn--secondary" href="/demos/premium-wellness-clinic/memberships">Explore Memberships</a>
+		</div>
+	</div>
+</section>
+
+</WellnessLayout>
+
+<style>
+/* ═══════════════════════════════════════════════════════
+   NEW CLIENTS — Restrained Clinical Premium
+   ═══════════════════════════════════════════════════════ */
+
+/* ─── Hero ─── */
+.nc-hero { padding-top: clamp(5rem, 10vw, 9rem); padding-bottom: clamp(3rem, 6vw, 5rem); }
+.nc-hero h1 { max-width: 620px; }
+.nc-hero .wh-lead { max-width: 520px; }
+
+/* ─── Choose Your Path: bordered cards on default bg ─── */
+.nc-paths__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+.nc-paths__card { display: flex; flex-direction: column; padding: 2rem; transition: border-color var(--wh-transition); }
+.nc-paths__card:hover { border-color: var(--wh-border-strong); }
+.nc-paths__icon { display: flex; margin-bottom: 1.25rem; color: var(--wh-sage); }
+.nc-paths__card h3 { font-size: 1rem; margin-bottom: 0.5rem; }
+.nc-paths__card p { font-size: 0.82rem; color: var(--wh-muted); line-height: 1.6; flex: 1; }
+.nc-paths__action { display: inline-block; margin-top: 1rem; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.04em; color: var(--wh-sage); }
+@media (max-width: 700px) { .nc-paths__grid { grid-template-columns: 1fr; } }
+
+/* ─── First Visit: vertical timeline on surface bg ─── */
+.nc-first-visit__timeline { display: flex; flex-direction: column; gap: 0; max-width: 640px; }
+.nc-first-visit__step { display: grid; grid-template-columns: 2rem 1fr; gap: 0 1.25rem; }
+.nc-first-visit__marker { display: flex; flex-direction: column; align-items: center; }
+.nc-first-visit__dot { width: 10px; height: 10px; border-radius: 50%; border: 2px solid var(--wh-sage); background: var(--wh-surface); flex-shrink: 0; margin-top: 0.25rem; }
+.nc-first-visit__line { width: 1px; flex: 1; background: var(--wh-border-strong); margin-top: 0.35rem; }
+.nc-first-visit__step:last-child .nc-first-visit__line { display: none; }
+.nc-first-visit__content { padding-bottom: 2rem; }
+.nc-first-visit__num { display: block; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.12em; color: var(--wh-sage); margin-bottom: 0.4rem; }
+.nc-first-visit__content h3 { font-size: 0.92rem; margin-bottom: 0.3rem; }
+.nc-first-visit__content p { font-size: 0.82rem; color: var(--wh-muted); line-height: 1.6; }
+
+/* ─── What to Bring: sage bg, simple list ─── */
+.nc-bring__list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+.nc-bring__item { padding: 1.15rem 0; border-bottom: 1px solid rgba(26,31,29,0.08); }
+.nc-bring__item:first-child { border-top: 1px solid rgba(26,31,29,0.08); }
+.nc-bring__item h3 { font-size: 0.88rem; margin-bottom: 0.25rem; }
+.nc-bring__item p { font-size: 0.82rem; color: var(--wh-text); line-height: 1.55; }
+
+/* ─── Consultation Requirements: split layout ─── */
+.nc-consult-req__split { display: grid; grid-template-columns: 1fr 1.3fr; gap: clamp(3rem, 5vw, 5rem); align-items: start; }
+.nc-consult-req__left h2 { max-width: 360px; }
+.nc-consult-req__right { display: flex; flex-direction: column; gap: 2rem; }
+.nc-consult-req__col h3 { font-size: 0.95rem; margin-bottom: 0.5rem; }
+.nc-consult-req__col > p { font-size: 0.82rem; color: var(--wh-muted); line-height: 1.6; margin-bottom: 1rem; }
+.nc-consult-req__col ul { padding: 0; margin: 0; list-style: none; }
+.nc-consult-req__col li { padding: 0.4rem 0 0.4rem 1rem; position: relative; font-size: 0.82rem; color: var(--wh-text); border-bottom: 1px solid var(--wh-border); }
+.nc-consult-req__col li:last-child { border: none; }
+.nc-consult-req__col li::before { content: ''; position: absolute; left: 0; top: 0.7rem; width: 4px; height: 4px; border-radius: 50%; }
+.nc-consult-req__col--required li::before { background: var(--wh-stone); }
+.nc-consult-req__col--direct li::before { background: var(--wh-sage); }
+.nc-consult-req__note { margin-top: 1.5rem; font-size: 0.82rem; color: var(--wh-muted); }
+@media (max-width: 700px) { .nc-consult-req__split { grid-template-columns: 1fr; } }
+
+/* ─── Pricing: split layout ─── */
+.nc-pricing__split { display: grid; grid-template-columns: 1fr 1.3fr; gap: clamp(3rem, 5vw, 5rem); align-items: start; }
+.nc-pricing__left h2 { max-width: 360px; }
+.nc-pricing__right p { font-size: 0.95rem; color: var(--wh-text); line-height: 1.75; margin-bottom: 1rem; }
+@media (max-width: 700px) { .nc-pricing__split { grid-template-columns: 1fr; } }
+
+/* ─── Booking Form: surface bg, white inputs ─── */
+.nc-booking__card { max-width: 720px; padding: 2.5rem; border: 1px solid var(--wh-border); border-radius: var(--wh-radius); background: var(--wh-white); }
+.nc-booking__row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-bottom: 1.25rem; }
+.nc-booking__field { display: flex; flex-direction: column; }
+.nc-booking__field label { font-size: 0.75rem; font-weight: 600; color: var(--wh-muted); margin-bottom: 0.35rem; letter-spacing: 0.04em; text-transform: uppercase; }
+.nc-booking__optional { font-weight: 400; color: var(--wh-muted); text-transform: none; letter-spacing: 0; }
+.nc-booking__field input,
+.nc-booking__field select,
+.nc-booking__field textarea { font-family: inherit; font-size: 0.88rem; padding: 0.65rem 0.85rem; border: 1px solid var(--wh-border-strong); border-radius: var(--wh-radius); background: var(--wh-white); color: var(--wh-ink); transition: border-color var(--wh-transition); }
+.nc-booking__field input::placeholder,
+.nc-booking__field textarea::placeholder { color: var(--wh-muted); }
+.nc-booking__field input:focus,
+.nc-booking__field select:focus,
+.nc-booking__field textarea:focus { outline: none; border-color: var(--wh-sage); box-shadow: 0 0 0 3px rgba(107,143,123,0.1); }
+.nc-booking__field textarea { resize: vertical; min-height: 80px; }
+.nc-booking__field select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1.5l5 5 5-5' stroke='%236B8F7B' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 0.85rem center; padding-right: 2.5rem; }
+.nc-booking__disclaimer { font-size: 0.72rem; color: var(--wh-muted); font-style: italic; margin-bottom: 1.25rem; line-height: 1.5; }
+.nc-booking__submit { width: 100%; text-align: center; font-size: 0.95rem; padding: 0.85rem 1.5rem; }
+@media (max-width: 600px) { .nc-booking__row { grid-template-columns: 1fr; } .nc-booking__card { padding: 1.5rem; } }
+
+/* ─── Location: default bg ─── */
+.nc-location__grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 4vw, 4rem); align-items: start; }
+.nc-location__info address { font-style: normal; }
+.nc-location__info address p { font-size: 0.92rem; color: var(--wh-text); margin-bottom: 0.5rem; }
+.nc-location__details { margin-top: 1.5rem; display: flex; flex-direction: column; gap: 1rem; }
+.nc-location__detail h3 { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--wh-sage); margin-bottom: 0.25rem; }
+.nc-location__detail p { font-size: 0.88rem; color: var(--wh-muted); margin-bottom: 0.15rem; }
+.nc-location__map { border-radius: var(--wh-radius); overflow: hidden; border: 1px solid var(--wh-border); }
+@media (max-width: 700px) { .nc-location__grid { grid-template-columns: 1fr; } }
+
+/* ─── FAQ: split layout ─── */
+.nc-faq__split { display: grid; grid-template-columns: 1fr 1.6fr; gap: clamp(3rem, 5vw, 5rem); align-items: start; }
+.nc-faq__left { position: sticky; top: 10rem; }
+@media (max-width: 700px) { .nc-faq__split { grid-template-columns: 1fr; } .nc-faq__left { position: static; } }
+
+/* ─── Final CTA ─── */
+.nc-final h2 { max-width: 560px; }
+</style>

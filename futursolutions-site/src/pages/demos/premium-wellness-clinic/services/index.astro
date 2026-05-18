@@ -1,0 +1,201 @@
+---
+import WellnessLayout from '../../../../layouts/WellnessLayout.astro';
+import { serviceCategories, goalCards } from '../../../../data/wellness';
+---
+
+<WellnessLayout title="Services — Lumen Health House" description="Browse modern wellness services by goal or category. IV therapy, recovery, medical weight loss, hormone optimization, body scans, and more.">
+
+<!-- ─── Hero ─── -->
+<section class="wh-section wh-section--dark sv-hero">
+	<div class="wh-container">
+		<p class="wh-eyebrow">Our Services</p>
+		<h1>Explore Modern<br/>Wellness Services</h1>
+		<p class="wh-lead">Browse by goal, category, or treatment. If you are unsure where to begin, start with a wellness consultation.</p>
+		<div class="wh-btn-row">
+			<a class="wh-btn wh-btn--primary" href="/demos/premium-wellness-clinic/new-clients">Book a Consultation &rarr;</a>
+			<a class="wh-btn wh-btn--secondary" href="#categories">Browse by Category</a>
+		</div>
+	</div>
+</section>
+
+<!-- ─── Goal Selector ─── -->
+<section class="wh-section sv-goals">
+	<div class="wh-container">
+		<div class="wh-section-header">
+			<p class="wh-eyebrow">Start with Your Goals</p>
+			<h2>What would you like to improve?</h2>
+		</div>
+		<div class="sv-goals__list">
+			{goalCards.map((card) => (
+				<a class="sv-goals__row" href={card.href}>
+					<strong>{card.title}</strong>
+					<span>{card.desc}</span>
+					<span class="sv-goals__arrow" aria-hidden="true">&rarr;</span>
+				</a>
+			))}
+		</div>
+	</div>
+</section>
+
+<!-- ─── Service Categories ─── -->
+<section class="wh-section wh-section--surface sv-categories" id="categories">
+	<div class="wh-container">
+		{serviceCategories.map((cat) => (
+			<div class="sv-cat" id={cat.id}>
+				<div class="sv-cat__header">
+					<h2>{cat.title}</h2>
+					<p>{cat.description}</p>
+				</div>
+				<div class="sv-cat__services">
+					{cat.services.map((service) => (
+						<div class="sv-cat__service">
+							<div class="sv-cat__service-info">
+								<h3>{service.title}</h3>
+								<p>{service.description}</p>
+							</div>
+							<div class="sv-cat__service-facts">
+								<span><strong>Duration</strong> {service.quickFacts.duration}</span>
+								<span><strong>Best for</strong> {service.quickFacts.bestFor}</span>
+								<span><strong>Consult</strong> {service.quickFacts.consultRequired}</span>
+								<span><strong>From</strong> {service.quickFacts.priceFrom}</span>
+							</div>
+							<div class="sv-cat__service-action">
+								{service.hasPage ? (
+									<a class="wh-text-link" href={service.href}>Learn More &rarr;</a>
+								) : (
+									<a class="wh-text-link" href="/demos/premium-wellness-clinic/new-clients">Book or Inquire &rarr;</a>
+								)}
+							</div>
+						</div>
+					))}
+				</div>
+			</div>
+		))}
+	</div>
+</section>
+
+<!-- ─── Consultation Explanation ─── -->
+<section class="wh-section sv-consult">
+	<div class="wh-container sv-consult__split">
+		<div class="sv-consult__left">
+			<p class="wh-eyebrow">Before You Book</p>
+			<h2>Some services can be booked directly. Others require a consultation first.</h2>
+		</div>
+		<div class="sv-consult__right">
+			<p>Services involving prescriptions, hormones, medical weight loss, GLP-1 medications, peptides, and certain injection protocols require a consultation, health history review, and potentially lab work before starting.</p>
+			<p>Recovery therapies, IV hydration, vitamin injections, body scans, and sauna sessions can typically be booked directly — no consultation required.</p>
+			<a class="wh-btn wh-btn--primary" href="/demos/premium-wellness-clinic/new-clients" style="margin-top:0.75rem;">Book a Consultation &rarr;</a>
+		</div>
+	</div>
+</section>
+
+<!-- ─── Safety ─── -->
+<section class="wh-section wh-section--sage sv-safety">
+	<div class="wh-container" style="max-width:720px;">
+		<div class="wh-section-header">
+			<p class="wh-eyebrow">Safety & Medical Oversight</p>
+			<h2>Your safety guides every recommendation.</h2>
+		</div>
+		<p>All services at Lumen Health House are offered under the guidance of licensed providers. Medical protocols are supervised by our medical director.</p>
+		<ul class="sv-safety__list">
+			<li>Prescription-based services require medical eligibility review.</li>
+			<li>Your provider will help determine whether a treatment is appropriate for your goals and health history.</li>
+			<li>Eligibility may depend on your health history, medications, lab results, and provider review.</li>
+			<li>Lumen Health House offers wellness-focused services and does not guarantee specific outcomes.</li>
+		</ul>
+	</div>
+</section>
+
+<!-- ─── Membership CTA ─── -->
+<section class="wh-section sv-mem-cta">
+	<div class="wh-container sv-mem-cta__split">
+		<div>
+			<p class="wh-eyebrow">Memberships</p>
+			<h2>Wellness works best when it becomes a rhythm.</h2>
+			<p class="wh-lead">Monthly credits, priority booking, discounted add-ons, and provider access.</p>
+		</div>
+		<a class="wh-btn wh-btn--primary" href="/demos/premium-wellness-clinic/memberships">Compare Memberships &rarr;</a>
+	</div>
+</section>
+
+<!-- ─── FAQ ─── -->
+<section class="wh-section sv-faq">
+	<div class="wh-container sv-faq__split">
+		<div class="sv-faq__left">
+			<p class="wh-eyebrow">Questions</p>
+			<h2>Services FAQ</h2>
+		</div>
+		<div class="wh-faq__list">
+			<details class="wh-faq__item"><summary><span>How do I know which service to start with?</span></summary><p>If you are unsure, book a wellness consultation. Your provider will review your goals, health history, and any relevant labs, then recommend the right path forward.</p></details>
+			<details class="wh-faq__item"><summary><span>Can I combine services in one visit?</span></summary><p>Many services can be combined. For example, you can pair a body scan with an IV session, or add vitamin injections to a recovery visit. Ask when booking.</p></details>
+			<details class="wh-faq__item"><summary><span>Do you accept insurance?</span></summary><p>Lumen Health House is a cash-pay wellness clinic. We provide transparent pricing for all services. Memberships and packages can reduce your per-visit cost.</p></details>
+			<details class="wh-faq__item"><summary><span>Are services safe?</span></summary><p>All services are offered under the guidance of licensed providers. Medical protocols are supervised by our medical director. Eligibility for certain treatments depends on your health history, medications, and provider review.</p></details>
+			<details class="wh-faq__item"><summary><span>What if I just want recovery therapies?</span></summary><p>Recovery services like sauna, cold plunge, contrast therapy, red light, and compression can be booked directly with no consultation required. Walk-ins may be available depending on scheduling.</p></details>
+		</div>
+	</div>
+</section>
+
+<!-- ─── Final CTA ─── -->
+<section class="wh-section wh-section--dark">
+	<div class="wh-container" style="max-width:600px; text-align:center;">
+		<h2>Ready to get started?</h2>
+		<p class="wh-lead" style="margin-inline:auto;">Whether you know exactly what you want or need guidance choosing, we will help you find the right first step.</p>
+		<div class="wh-btn-row" style="justify-content:center;">
+			<a class="wh-btn wh-btn--primary" href="/demos/premium-wellness-clinic/new-clients">Book a Consultation &rarr;</a>
+			<a class="wh-btn wh-btn--secondary" href="/demos/premium-wellness-clinic/contact">Contact Us</a>
+		</div>
+	</div>
+</section>
+
+</WellnessLayout>
+
+<style>
+/* ─── Hero ─── */
+.sv-hero { padding-top: clamp(5rem, 10vw, 9rem); padding-bottom: clamp(3rem, 6vw, 5rem); }
+.sv-hero h1 { max-width: 14ch; }
+
+/* ─── Goals ─── */
+.sv-goals__list { display: flex; flex-direction: column; }
+.sv-goals__row { display: flex; align-items: center; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid var(--wh-border); transition: padding-left var(--wh-transition); }
+.sv-goals__row:first-child { border-top: 1px solid var(--wh-border); }
+.sv-goals__row:hover { padding-left: 0.4rem; }
+.sv-goals__row strong { font-size: 0.9rem; color: var(--wh-ink); min-width: 150px; flex-shrink: 0; }
+.sv-goals__row > span:not(.sv-goals__arrow) { font-size: 0.82rem; color: var(--wh-muted); flex: 1; }
+.sv-goals__arrow { color: var(--wh-sage); font-size: 0.85rem; flex-shrink: 0; }
+@media (max-width: 600px) { .sv-goals__row { flex-wrap: wrap; } .sv-goals__row strong { min-width: auto; } }
+
+/* ─── Categories ─── */
+.sv-cat { margin-bottom: clamp(3rem, 6vw, 5rem); scroll-margin-top: 8rem; }
+.sv-cat:last-child { margin-bottom: 0; }
+.sv-cat__header { margin-bottom: 1.25rem; }
+.sv-cat__header h2 { margin-bottom: 0.35rem; }
+.sv-cat__header p { color: var(--wh-muted); max-width: 520px; }
+.sv-cat__services { display: flex; flex-direction: column; }
+.sv-cat__service { display: grid; grid-template-columns: 1fr auto auto; gap: 2rem; align-items: start; padding: 1.25rem 0; border-bottom: 1px solid var(--wh-border); }
+.sv-cat__service:first-child { border-top: 1px solid var(--wh-border); }
+.sv-cat__service-info h3 { font-size: 0.92rem; margin-bottom: 0.25rem; }
+.sv-cat__service-info p { font-size: 0.82rem; color: var(--wh-muted); max-width: 400px; }
+.sv-cat__service-facts { display: grid; grid-template-columns: 1fr 1fr; gap: 0.3rem 1rem; }
+.sv-cat__service-facts span { font-size: 0.72rem; color: var(--wh-muted); }
+.sv-cat__service-facts strong { display: block; font-size: 0.6rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--wh-sage); }
+.sv-cat__service-action { display: flex; align-items: center; }
+@media (max-width: 700px) { .sv-cat__service { grid-template-columns: 1fr; gap: 0.75rem; } }
+
+/* ─── Consultation ─── */
+.sv-consult__split { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(3rem, 5vw, 5rem); align-items: start; }
+.sv-consult__right p { font-size: 0.9rem; color: var(--wh-muted); line-height: 1.7; }
+@media (max-width: 700px) { .sv-consult__split { grid-template-columns: 1fr; } }
+
+/* ─── Safety ─── */
+.sv-safety__list { padding-left: 1.25rem; margin: 1rem 0 0; }
+.sv-safety__list li { font-size: 0.85rem; color: var(--wh-muted); margin-bottom: 0.5rem; line-height: 1.6; }
+
+/* ─── Membership CTA ─── */
+.sv-mem-cta__split { display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
+@media (max-width: 700px) { .sv-mem-cta__split { flex-direction: column; align-items: flex-start; } }
+
+/* ─── FAQ ─── */
+.sv-faq__split { display: grid; grid-template-columns: 1fr 1.5fr; gap: clamp(3rem, 5vw, 5rem); align-items: start; }
+.sv-faq__left { position: sticky; top: 10rem; }
+@media (max-width: 700px) { .sv-faq__split { grid-template-columns: 1fr; } .sv-faq__left { position: static; } }
+</style>

@@ -1,0 +1,189 @@
+---
+import WellnessLayout from '../../../layouts/WellnessLayout.astro';
+import { brand } from '../../../data/wellness';
+---
+
+<WellnessLayout title="Contact & Location — Lumen Health House" description="Visit Lumen Health House in Temecula, CA. Find our address, hours, parking details, and contact information — or reach out using our contact form.">
+
+<!-- ─── Hero ─── -->
+<section class="wh-section wh-section--dark ct-hero">
+	<div class="wh-container">
+		<p class="wh-eyebrow">Visit Us</p>
+		<h1>Visit Lumen Health House</h1>
+		<p class="wh-lead">We are located in Temecula, California — designed with your comfort in mind from the moment you arrive.</p>
+	</div>
+</section>
+
+<!-- ─── Location Details: split layout, default bg ─── -->
+<section class="wh-section ct-location">
+	<div class="wh-container">
+		<div class="ct-location__split">
+			<div class="ct-location__info">
+				<h2>Lumen Health House</h2>
+				<address>
+					<div class="ct-location__row">
+						<h3>Address</h3>
+						<p>1248 Meridian Avenue<br/>Temecula, CA 92591</p>
+					</div>
+					<div class="ct-location__row">
+						<h3>Hours</h3>
+						<p>Monday – Friday: 8:00am – 6:00pm<br/>Saturday: 9:00am – 2:00pm<br/>Sunday: Closed</p>
+					</div>
+					<div class="ct-location__row">
+						<h3>Phone</h3>
+						<p>(951) 555-0192</p>
+					</div>
+					<div class="ct-location__row">
+						<h3>Email</h3>
+						<p>hello@lumenhealthhouse.com</p>
+					</div>
+				</address>
+				<div class="ct-location__actions">
+					<a class="wh-btn wh-btn--primary" href="/demos/premium-wellness-clinic/new-clients">Book Your Visit</a>
+				</div>
+				<div class="ct-location__notes">
+					<p><strong>Parking:</strong> Free parking on-site with reserved spaces near the main entrance.</p>
+					<p><strong>Serving:</strong> Temecula, Murrieta, Fallbrook, and the surrounding Inland Empire communities.</p>
+				</div>
+			</div>
+			<div class="ct-location__map" aria-label="Map placeholder">
+				<svg viewBox="0 0 480 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<rect width="480" height="400" rx="6" fill="#2C3330"/>
+					<circle cx="240" cy="180" r="6" fill="#6B8F7B" opacity="0.8"/>
+					<circle cx="240" cy="180" r="24" stroke="#6B8F7B" stroke-width="0.5" opacity="0.25" fill="none"/>
+					<text x="240" y="370" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" fill="#6B8F7B" opacity="0.4" letter-spacing="0.1em">1248 MERIDIAN AVE · TEMECULA, CA 92591</text>
+				</svg>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- ─── Contact Form: surface bg, white inputs ─── -->
+<section class="wh-section wh-section--surface ct-form-section">
+	<div class="wh-container">
+		<div class="ct-form-wrapper">
+			<div class="wh-section-header">
+				<p class="wh-eyebrow">Get in Touch</p>
+				<h2>Send Us a Message</h2>
+				<p class="wh-lead">Have a question about services, scheduling, or anything else? Fill out the form below and our team will get back to you.</p>
+			</div>
+			<div class="ct-form__card">
+				<form class="ct-form" onsubmit="return false;">
+					<div class="ct-form__row">
+						<div class="ct-form__field">
+							<label for="ct-name">Full Name</label>
+							<input type="text" id="ct-name" name="name" placeholder="Your name" autocomplete="name" />
+						</div>
+						<div class="ct-form__field">
+							<label for="ct-email">Email</label>
+							<input type="email" id="ct-email" name="email" placeholder="you@email.com" autocomplete="email" />
+						</div>
+					</div>
+					<div class="ct-form__row">
+						<div class="ct-form__field">
+							<label for="ct-phone">Phone <span class="ct-form__optional">(optional)</span></label>
+							<input type="tel" id="ct-phone" name="phone" placeholder="(555) 555-0100" autocomplete="tel" />
+						</div>
+						<div class="ct-form__field">
+							<label for="ct-subject">Subject</label>
+							<select id="ct-subject" name="subject">
+								<option value="" disabled selected>Choose a topic</option>
+								<option value="general">General Question</option>
+								<option value="services">Services & Pricing</option>
+								<option value="scheduling">Scheduling & Availability</option>
+								<option value="memberships">Memberships</option>
+								<option value="new-client">New Client Inquiry</option>
+								<option value="other">Other</option>
+							</select>
+						</div>
+					</div>
+					<div class="ct-form__field ct-form__field--full">
+						<label for="ct-message">Message</label>
+						<textarea id="ct-message" name="message" rows="5" placeholder="Tell us how we can help..."></textarea>
+					</div>
+					<div class="ct-form__actions">
+						<button type="submit" class="wh-btn wh-btn--primary">Send Message</button>
+						<p class="ct-form__note">This is a demo form and does not submit data.</p>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- ─── Booking CTA: sage bg (variety) ─── -->
+<section class="wh-section wh-section--sage ct-final">
+	<div class="wh-container">
+		<p class="wh-eyebrow">Prefer to Book Directly?</p>
+		<h2>Schedule a consultation and get started with personalized care.</h2>
+		<p class="wh-lead">New clients can book a wellness consultation online. Your provider will guide you from there.</p>
+		<div class="wh-btn-row">
+			<a class="wh-btn wh-btn--primary" href="/demos/premium-wellness-clinic/new-clients">Book a Consultation</a>
+			<a class="wh-btn wh-btn--secondary" href="/demos/premium-wellness-clinic/services">Explore Services</a>
+		</div>
+	</div>
+</section>
+
+<!-- ─── Demo Disclaimer ─── -->
+<section class="wh-section ct-disclaimer-section">
+	<div class="wh-container">
+		<p class="ct-disclaimer">{brand.disclaimer}</p>
+	</div>
+</section>
+
+</WellnessLayout>
+
+<style>
+/* ═══════════════════════════════════════════════════════
+   CONTACT — Restrained Clinical Premium
+   ═══════════════════════════════════════════════════════ */
+
+/* ─── Hero ─── */
+.ct-hero { padding-top: clamp(5rem, 10vw, 9rem); padding-bottom: clamp(3rem, 6vw, 5rem); }
+.ct-hero h1 { max-width: 520px; }
+.ct-hero .wh-lead { max-width: 480px; }
+
+/* ─── Location: split layout, default bg ─── */
+.ct-location__split { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 4vw, 4rem); align-items: start; }
+.ct-location__info h2 { font-size: 1.25rem; margin-bottom: 1.5rem; }
+.ct-location__info address { font-style: normal; }
+.ct-location__row { margin-bottom: 1.25rem; }
+.ct-location__row h3 { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--wh-sage); margin-bottom: 0.3rem; }
+.ct-location__row p { font-size: 0.92rem; color: var(--wh-text); line-height: 1.6; }
+.ct-location__actions { margin-top: 0.5rem; margin-bottom: 1.5rem; }
+.ct-location__notes { border-top: 1px solid var(--wh-border); padding-top: 1.25rem; }
+.ct-location__notes p { font-size: 0.82rem; color: var(--wh-muted); line-height: 1.6; margin-bottom: 0.5rem; }
+.ct-location__notes strong { color: var(--wh-ink); }
+.ct-location__map { border-radius: var(--wh-radius); overflow: hidden; border: 1px solid var(--wh-border); }
+@media (max-width: 700px) { .ct-location__split { grid-template-columns: 1fr; } }
+
+/* ─── Contact Form: surface bg, white inputs ─── */
+.ct-form-wrapper { max-width: 720px; }
+.ct-form__card { padding: 2.5rem; border: 1px solid var(--wh-border); border-radius: var(--wh-radius); background: var(--wh-white); }
+.ct-form { display: flex; flex-direction: column; gap: 1.25rem; }
+.ct-form__row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+.ct-form__field { display: flex; flex-direction: column; gap: 0.4rem; }
+.ct-form__field--full { grid-column: 1 / -1; }
+.ct-form__field label { font-size: 0.72rem; font-weight: 600; color: var(--wh-muted); letter-spacing: 0.06em; text-transform: uppercase; }
+.ct-form__optional { font-weight: 400; color: var(--wh-muted); text-transform: none; letter-spacing: 0; }
+.ct-form__field input,
+.ct-form__field select,
+.ct-form__field textarea { padding: 0.7rem 0.9rem; font-size: 0.88rem; font-family: inherit; color: var(--wh-ink); background: var(--wh-white); border: 1px solid var(--wh-border-strong); border-radius: var(--wh-radius); transition: border-color var(--wh-transition); }
+.ct-form__field input::placeholder,
+.ct-form__field textarea::placeholder { color: var(--wh-muted); }
+.ct-form__field input:focus,
+.ct-form__field select:focus,
+.ct-form__field textarea:focus { outline: none; border-color: var(--wh-sage); box-shadow: 0 0 0 3px rgba(107,143,123,0.1); }
+.ct-form__field textarea { resize: vertical; min-height: 120px; }
+.ct-form__field select { cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1.5l5 5 5-5' stroke='%236B8F7B' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 0.85rem center; padding-right: 2.5rem; }
+.ct-form__actions { display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap; }
+.ct-form__note { font-size: 0.72rem; color: var(--wh-muted); font-style: italic; }
+@media (max-width: 520px) { .ct-form__row { grid-template-columns: 1fr; } .ct-form__card { padding: 1.5rem; } }
+
+/* ─── Final CTA: sage bg ─── */
+.ct-final h2 { max-width: 560px; }
+
+/* ─── Disclaimer ─── */
+.ct-disclaimer-section { padding-top: 0; }
+.ct-disclaimer { font-size: 0.72rem; color: var(--wh-muted); font-style: italic; max-width: 640px; }
+</style>

@@ -1,0 +1,461 @@
+---
+import WellnessLayout from '../../../layouts/WellnessLayout.astro';
+import { hero, trustBar, goalCards, serviceCategories, signaturePrograms, providers, memberships, testimonials, resources, homepageFaqs, brand } from '../../../data/wellness';
+---
+
+<WellnessLayout title="Lumen Health House — Premium Wellness & Recovery Clinic" description="A premium wellness and recovery clinic for energy, metabolism, hormones, recovery, and long-term health — guided by real providers and personalized around your goals.">
+
+<!-- ═══ HERO — dark full-bleed, left-aligned ═══ -->
+<section class="wh-section wh-section--dark hp-hero">
+	<div class="wh-container hp-hero__layout">
+		<div class="hp-hero__text">
+			<p class="wh-eyebrow">Premium Wellness & Recovery</p>
+			<h1>{hero.headline}</h1>
+			<p class="wh-lead">{hero.lead}</p>
+			<div class="wh-btn-row">
+				<a class="wh-btn wh-btn--primary" href={hero.primaryCta.href}>{hero.primaryCta.text} &rarr;</a>
+				<a class="wh-btn wh-btn--secondary" href={hero.secondaryCta.href}>{hero.secondaryCta.text}</a>
+			</div>
+		</div>
+		<div class="hp-hero__visual" aria-hidden="true">
+			<div class="hp-hero__stat"><span class="hp-hero__stat-num">275+</span><span class="hp-hero__stat-label">Biomarkers tracked</span></div>
+			<div class="hp-hero__stat"><span class="hp-hero__stat-num">6</span><span class="hp-hero__stat-label">Service categories</span></div>
+			<div class="hp-hero__stat"><span class="hp-hero__stat-num">3</span><span class="hp-hero__stat-label">Membership tiers</span></div>
+		</div>
+	</div>
+</section>
+
+<!-- ═══ TRUST BAR — horizontal inline strip, no cards ═══ -->
+<section class="hp-trust">
+	<div class="wh-container">
+		<div class="hp-trust__strip">
+			{trustBar.map((item) => (
+				<div class="hp-trust__item">
+					<strong>{item.title}</strong>
+					<span>{item.desc}</span>
+				</div>
+			))}
+		</div>
+	</div>
+</section>
+
+<!-- ═══ GOALS — horizontal pill selectors ═══ -->
+<section class="wh-section hp-goals" id="goals">
+	<div class="wh-container">
+		<div class="wh-section-header">
+			<p class="wh-eyebrow">Start with Your Goals</p>
+			<h2>What would you like to improve?</h2>
+			<p class="wh-lead">Not sure which service to book? Choose a goal and we will guide you to the right starting point.</p>
+		</div>
+		<div class="hp-goals__list">
+			{goalCards.map((card) => (
+				<a class="hp-goals__pill" href={card.href}>
+					<strong>{card.title}</strong>
+					<span>{card.desc}</span>
+					<span class="hp-goals__arrow" aria-hidden="true">&rarr;</span>
+				</a>
+			))}
+		</div>
+	</div>
+</section>
+
+<!-- ═══ CATEGORIES — stacked blocks with service lists, NOT card grids ═══ -->
+<section class="wh-section wh-section--surface hp-cats" id="categories">
+	<div class="wh-container">
+		<div class="wh-section-header">
+			<p class="wh-eyebrow">Service Categories</p>
+			<h2>One clinic. One care team. Many ways to feel better.</h2>
+		</div>
+		<div class="hp-cats__list">
+			{serviceCategories.map((cat) => (
+				<div class="hp-cats__block">
+					<div class="hp-cats__header">
+						<h3>{cat.title}</h3>
+						<p>{cat.description}</p>
+					</div>
+					<ul class="hp-cats__services">
+						{cat.services.slice(0, 3).map((s) => <li><span class="hp-cats__svc-name">{s.title}</span><span class="hp-cats__svc-meta">{s.quickFacts.priceFrom} · {s.quickFacts.duration}</span></li>)}
+					</ul>
+					<a class="wh-text-link" href={`/demos/premium-wellness-clinic/services#${cat.id}`}>Explore category &rarr;</a>
+				</div>
+			))}
+		</div>
+	</div>
+</section>
+
+<!-- ═══ DIFFERENTIATORS — split: large text left, numbered list right ═══ -->
+<section class="wh-section hp-diff">
+	<div class="wh-container hp-diff__split">
+		<div class="hp-diff__left">
+			<p class="wh-eyebrow">Why Lumen</p>
+			<h2>Wellness care should feel clear, guided, and personal.</h2>
+			<p class="wh-lead">Every decision starts with understanding you — your goals, your history, and what matters most.</p>
+			<a class="wh-btn wh-btn--primary" href="/demos/premium-wellness-clinic/new-clients" style="margin-top:1rem;">Start With a Consultation &rarr;</a>
+		</div>
+		<div class="hp-diff__right">
+			<div class="hp-diff__item"><span class="hp-diff__num">01</span><div><h3>Guidance before treatment</h3><p>Every plan starts with understanding your goals, health history, and what matters most to you.</p></div></div>
+			<div class="hp-diff__item"><span class="hp-diff__num">02</span><div><h3>Testing when it matters</h3><p>Body scans, labs, and diagnostics inform your plan — not guesswork or trend-chasing.</p></div></div>
+			<div class="hp-diff__item"><span class="hp-diff__num">03</span><div><h3>Medical oversight</h3><p>Services involving prescriptions, hormones, or injections are supervised by licensed providers.</p></div></div>
+			<div class="hp-diff__item"><span class="hp-diff__num">04</span><div><h3>Hospitality-level experience</h3><p>A clean, calm, well-designed space with warm staff and easy scheduling.</p></div></div>
+			<div class="hp-diff__item"><span class="hp-diff__num">05</span><div><h3>Ongoing support</h3><p>Follow-up visits, progress tracking, memberships, and provider access.</p></div></div>
+		</div>
+	</div>
+</section>
+
+<!-- ═══ HOW IT WORKS — numbered vertical timeline, dark bg ═══ -->
+<section class="wh-section wh-section--dark hp-how">
+	<div class="wh-container">
+		<div class="wh-section-header">
+			<p class="wh-eyebrow">Your Path</p>
+			<h2>How it works</h2>
+		</div>
+		<ol class="hp-how__steps">
+			<li class="hp-how__step">
+				<div class="hp-how__dot" aria-hidden="true"></div>
+				<div class="hp-how__body"><h3>Start with your goals</h3><p>Tell us what you want to improve — energy, weight, recovery, hormones, or overall health.</p></div>
+			</li>
+			<li class="hp-how__step">
+				<div class="hp-how__dot" aria-hidden="true"></div>
+				<div class="hp-how__body"><h3>Get a baseline</h3><p>Your provider may recommend a body scan, labs, or health review to understand where you are.</p></div>
+			</li>
+			<li class="hp-how__step">
+				<div class="hp-how__dot" aria-hidden="true"></div>
+				<div class="hp-how__body"><h3>Build your plan</h3><p>Together with your provider, build a plan combining services, scheduling, and measurable goals.</p></div>
+			</li>
+			<li class="hp-how__step">
+				<div class="hp-how__dot" aria-hidden="true"></div>
+				<div class="hp-how__body"><h3>Track and optimize</h3><p>Follow-up scans, labs, and visits help adjust your plan as your body responds.</p></div>
+			</li>
+		</ol>
+	</div>
+</section>
+
+<!-- ═══ PROGRAMS — editorial cards with image placeholders ═══ -->
+<section class="wh-section hp-programs">
+	<div class="wh-container">
+		<div class="wh-section-header">
+			<p class="wh-eyebrow">Signature Programs</p>
+			<h2>Designed around real wellness goals.</h2>
+			<p class="wh-lead">Pre-built pathways for common goals. Your provider can customize any program.</p>
+		</div>
+		<div class="hp-programs__grid">
+			{signaturePrograms.map((prog) => (
+				<a class="hp-programs__card" href={prog.href}>
+					<div class="hp-programs__img" aria-hidden="true"></div>
+					<div class="hp-programs__text">
+						<h3>{prog.title}</h3>
+						<p class="hp-programs__for">{prog.forWho}</p>
+						<span class="hp-programs__includes">{prog.includes}</span>
+					</div>
+				</a>
+			))}
+		</div>
+	</div>
+</section>
+
+<!-- ═══ PROVIDERS — minimal profile blocks, sage-light bg ═══ -->
+<section class="wh-section wh-section--sage hp-providers">
+	<div class="wh-container">
+		<div class="hp-providers__header">
+			<div>
+				<p class="wh-eyebrow">Your Care Team</p>
+				<h2>Guided by experienced wellness providers.</h2>
+			</div>
+			<a class="wh-btn wh-btn--primary" href="/demos/premium-wellness-clinic/providers">Meet the Team &rarr;</a>
+		</div>
+		<div class="hp-providers__list">
+			{providers.map((prov) => (
+				<div class="hp-providers__profile">
+					<div class="hp-providers__initials">{prov.initials}</div>
+					<div>
+						<h3>{prov.name}</h3>
+						<span class="hp-providers__role">{prov.role}</span>
+						<p>{prov.specialties}</p>
+					</div>
+				</div>
+			))}
+		</div>
+		<p class="hp-providers__note">Certain treatments require consultation, eligibility review, labs, or provider approval.</p>
+	</div>
+</section>
+
+<!-- ═══ MEMBERSHIPS — 3-column comparison, clean white bg ═══ -->
+<section class="wh-section hp-memberships">
+	<div class="wh-container">
+		<div class="wh-section-header wh-section-header--center">
+			<p class="wh-eyebrow">Memberships</p>
+			<h2>Make wellness easier to return to.</h2>
+			<p class="wh-lead" style="margin-inline:auto;">Monthly credits, priority booking, and discounted services — no membership required to visit.</p>
+		</div>
+		<div class="hp-memberships__grid">
+			{memberships.map((mem, i) => (
+				<div class:list={['hp-memberships__tier', { 'hp-memberships__tier--featured': i === 2 }]}>
+					{i === 2 && <span class="hp-memberships__badge">Most comprehensive</span>}
+					<h3>{mem.name}</h3>
+					<span class="hp-memberships__price">{mem.price}</span>
+					<p class="hp-memberships__for">{mem.bestFor}</p>
+					<ul>
+						{mem.includes.map((inc) => <li>{inc}</li>)}
+					</ul>
+				</div>
+			))}
+		</div>
+		<div style="text-align:center; margin-top:2rem;">
+			<a class="wh-btn wh-btn--primary" href="/demos/premium-wellness-clinic/memberships">Compare All Memberships &rarr;</a>
+		</div>
+	</div>
+</section>
+
+<!-- ═══ TESTIMONIALS — large pull quote + supporting quotes, surface bg ═══ -->
+<section class="wh-section wh-section--surface hp-testimonials">
+	<div class="wh-container">
+		<div class="wh-section-header">
+			<p class="wh-eyebrow">Client Experiences</p>
+			<h2>A calmer, clearer way to care for your health.</h2>
+		</div>
+		<div class="hp-testimonials__layout">
+			<blockquote class="hp-testimonials__featured">
+				<p>&ldquo;{testimonials[0].text}&rdquo;</p>
+				<footer><strong>{testimonials[0].author}</strong> <span>{testimonials[0].context}</span></footer>
+			</blockquote>
+			<div class="hp-testimonials__supporting">
+				{testimonials.slice(1, 4).map((t) => (
+					<blockquote class="hp-testimonials__quote">
+						<p>&ldquo;{t.text}&rdquo;</p>
+						<footer><strong>{t.author}</strong> <span>{t.context}</span></footer>
+					</blockquote>
+				))}
+			</div>
+		</div>
+		<p class="hp-testimonials__disclaimer">Fictional testimonials for demo purposes. Individual experiences vary. No specific outcomes guaranteed.</p>
+	</div>
+</section>
+
+<!-- ═══ RESOURCES — clean list, no cards ═══ -->
+<section class="wh-section hp-resources">
+	<div class="wh-container">
+		<div class="hp-resources__header">
+			<div>
+				<p class="wh-eyebrow">Resources</p>
+				<h2>Learn before you book.</h2>
+			</div>
+			<a class="wh-btn wh-btn--secondary" href="/demos/premium-wellness-clinic/resources">Browse All &rarr;</a>
+		</div>
+		<div class="hp-resources__list">
+			{resources.slice(0, 6).map((r) => (
+				<a class="hp-resources__row" href={r.href}>
+					<span class="hp-resources__cat">{r.category}</span>
+					<span class="hp-resources__title">{r.title}</span>
+					<span class="hp-resources__arrow" aria-hidden="true">&rarr;</span>
+				</a>
+			))}
+		</div>
+	</div>
+</section>
+
+<!-- ═══ FAQ — split: heading left, accordion right ═══ -->
+<section class="wh-section hp-faq" id="faq">
+	<div class="wh-container hp-faq__split">
+		<div class="hp-faq__left">
+			<p class="wh-eyebrow">Common Questions</p>
+			<h2>Frequently asked questions</h2>
+		</div>
+		<div class="wh-faq__list">
+			{homepageFaqs.map((faq) => (
+				<details class="wh-faq__item">
+					<summary><span>{faq.q}</span></summary>
+					<p>{faq.a}</p>
+				</details>
+			))}
+		</div>
+	</div>
+</section>
+
+<!-- ═══ LOCATION — split: text left, map right, dark bg ═══ -->
+<section class="wh-section wh-section--dark hp-location" id="location">
+	<div class="wh-container hp-location__split">
+		<div class="hp-location__text">
+			<p class="wh-eyebrow">Visit Us</p>
+			<h2>Lumen Health House</h2>
+			<address>
+				<p>1248 Meridian Avenue<br/>Temecula, CA 92591</p>
+				<p>{brand.hours}</p>
+				<p>{brand.phone}</p>
+			</address>
+			<p class="hp-location__parking">{brand.parking}</p>
+			<a class="wh-btn wh-btn--primary" href="/demos/premium-wellness-clinic/contact" style="margin-top:1.25rem;">Get Directions &rarr;</a>
+		</div>
+		<div class="hp-location__map" aria-label="Map placeholder">
+			<svg viewBox="0 0 480 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<rect width="480" height="320" rx="6" fill="#2C3330"/>
+				<circle cx="240" cy="160" r="6" fill="#6B8F7B" opacity="0.8"/>
+				<circle cx="240" cy="160" r="24" stroke="#6B8F7B" stroke-width="0.5" opacity="0.25" fill="none"/>
+				<text x="240" y="290" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" fill="#6B8F7B" opacity="0.4" letter-spacing="0.1em">TEMECULA, CA 92591</text>
+			</svg>
+		</div>
+	</div>
+</section>
+
+<!-- ═══ FINAL CTA — dark, centered ═══ -->
+<section class="wh-section wh-section--dark hp-final">
+	<div class="wh-container" style="text-align:center; max-width:640px;">
+		<p class="wh-eyebrow">Not Sure Where to Start?</p>
+		<h2>Tell us your goals. We will help you choose the right first step.</h2>
+		<p class="wh-lead" style="margin-inline:auto;">Whether you are here for recovery, weight management, hormones, energy, or general wellness, a consultation helps us build the right plan around you.</p>
+		<div class="wh-btn-row" style="justify-content:center;">
+			<a class="wh-btn wh-btn--primary" href="/demos/premium-wellness-clinic/new-clients">Find the Right Starting Point &rarr;</a>
+			<a class="wh-btn wh-btn--secondary" href="/demos/premium-wellness-clinic/services">Explore Services</a>
+		</div>
+	</div>
+</section>
+
+</WellnessLayout>
+
+<style>
+/* ═══════════════════════════════════════════════════════
+   HOMEPAGE — Restrained Clinical Premium
+   Each section uses a DISTINCT layout pattern.
+   ═══════════════════════════════════════════════════════ */
+
+/* ─── Hero: dark, split layout ─── */
+.hp-hero { padding-top: clamp(6rem, 12vw, 10rem); padding-bottom: clamp(4rem, 8vw, 7rem); }
+.hp-hero__layout { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: clamp(3rem, 5vw, 6rem); align-items: center; }
+.hp-hero__text { max-width: 540px; }
+.hp-hero__visual { display: flex; flex-direction: column; gap: 1rem; }
+.hp-hero__stat { display: flex; align-items: baseline; gap: 0.75rem; padding: 1rem 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
+.hp-hero__stat-num { font-size: 2rem; font-weight: 700; color: var(--wh-white); letter-spacing: -0.03em; line-height: 1; }
+.hp-hero__stat-label { font-size: 0.75rem; color: rgba(255,255,255,0.45); font-weight: 500; }
+@media (max-width: 768px) { .hp-hero__layout { grid-template-columns: 1fr; } .hp-hero__visual { display: none; } }
+
+/* ─── Trust Bar: horizontal inline strip ─── */
+.hp-trust { padding-block: 1.75rem; border-bottom: 1px solid var(--wh-border); }
+.hp-trust__strip { display: grid; grid-template-columns: repeat(5, 1fr); gap: 2rem; }
+.hp-trust__item { display: flex; flex-direction: column; gap: 0.2rem; }
+.hp-trust__item strong { font-size: 0.78rem; font-weight: 600; color: var(--wh-ink); }
+.hp-trust__item span { font-size: 0.72rem; color: var(--wh-muted); line-height: 1.45; }
+@media (max-width: 800px) { .hp-trust__strip { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 480px) { .hp-trust__strip { grid-template-columns: 1fr 1fr; } }
+
+/* ─── Goals: horizontal pill list ─── */
+.hp-goals__list { display: flex; flex-direction: column; gap: 0; }
+.hp-goals__pill { display: flex; align-items: center; gap: 1rem; padding: 1.15rem 0; border-bottom: 1px solid var(--wh-border); transition: padding-left var(--wh-transition); }
+.hp-goals__pill:first-child { border-top: 1px solid var(--wh-border); }
+.hp-goals__pill:hover { padding-left: 0.5rem; }
+.hp-goals__pill strong { font-size: 0.95rem; color: var(--wh-ink); white-space: nowrap; min-width: 160px; }
+.hp-goals__pill > span:not(.hp-goals__arrow) { font-size: 0.82rem; color: var(--wh-muted); flex: 1; }
+.hp-goals__arrow { color: var(--wh-sage); font-size: 0.9rem; flex-shrink: 0; }
+@media (max-width: 600px) { .hp-goals__pill { flex-wrap: wrap; } .hp-goals__pill strong { min-width: auto; } }
+
+/* ─── Categories: stacked blocks with service lists ─── */
+.hp-cats__list { display: grid; gap: 0; }
+.hp-cats__block { display: grid; grid-template-columns: 1fr 1.5fr auto; gap: 2rem; align-items: start; padding: 2rem 0; border-bottom: 1px solid var(--wh-border); }
+.hp-cats__block:first-child { padding-top: 0; }
+.hp-cats__block:last-child { border-bottom: none; }
+.hp-cats__header h3 { font-size: 1.05rem; margin-bottom: 0.3rem; }
+.hp-cats__header p { font-size: 0.82rem; color: var(--wh-muted); }
+.hp-cats__services { list-style: none; margin: 0; padding: 0; }
+.hp-cats__services li { display: flex; justify-content: space-between; align-items: baseline; padding: 0.4rem 0; font-size: 0.85rem; }
+.hp-cats__svc-name { color: var(--wh-ink); font-weight: 500; }
+.hp-cats__svc-meta { color: var(--wh-muted); font-size: 0.75rem; }
+.hp-cats__block .wh-text-link { align-self: start; margin-top: 0.5rem; }
+@media (max-width: 700px) { .hp-cats__block { grid-template-columns: 1fr; gap: 0.75rem; } }
+
+/* ─── Differentiators: split layout ─── */
+.hp-diff__split { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(3rem, 6vw, 6rem); align-items: start; }
+.hp-diff__left h2 { max-width: 380px; }
+.hp-diff__right { display: flex; flex-direction: column; gap: 0; }
+.hp-diff__item { display: flex; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid var(--wh-border); }
+.hp-diff__item:first-child { padding-top: 0; }
+.hp-diff__num { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; color: var(--wh-sage); padding-top: 0.15rem; flex-shrink: 0; }
+.hp-diff__item h3 { font-size: 0.9rem; margin-bottom: 0.2rem; }
+.hp-diff__item p { font-size: 0.82rem; color: var(--wh-muted); }
+@media (max-width: 700px) { .hp-diff__split { grid-template-columns: 1fr; } }
+
+/* ─── How it Works: vertical numbered timeline ─── */
+.hp-how__steps { list-style: none; margin: 0; padding: 0; max-width: 560px; }
+.hp-how__step { display: flex; gap: 1.5rem; position: relative; padding-bottom: 2.5rem; }
+.hp-how__step:last-child { padding-bottom: 0; }
+.hp-how__dot { position: relative; width: 10px; flex-shrink: 0; padding-top: 0.35rem; }
+.hp-how__dot::before { content: ''; display: block; width: 10px; height: 10px; border-radius: 50%; border: 2px solid var(--wh-sage); background: var(--wh-ink); }
+.hp-how__step:not(:last-child) .hp-how__dot::after { content: ''; position: absolute; top: 14px; left: 4.5px; width: 1px; height: calc(100% + 2.5rem - 14px); background: rgba(255,255,255,0.1); }
+.hp-how__body h3 { font-size: 0.95rem; color: var(--wh-white); margin-bottom: 0.3rem; }
+.hp-how__body p { font-size: 0.85rem; color: rgba(255,255,255,0.5); }
+
+/* ─── Programs: editorial card grid ─── */
+.hp-programs__grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.25rem; }
+.hp-programs__card { display: flex; flex-direction: column; border: 1px solid var(--wh-border); border-radius: var(--wh-radius); overflow: hidden; transition: border-color var(--wh-transition); }
+.hp-programs__card:hover { border-color: var(--wh-border-strong); }
+.hp-programs__img { height: 140px; background: var(--wh-surface); }
+.hp-programs__text { padding: 1.25rem; flex: 1; display: flex; flex-direction: column; }
+.hp-programs__card h3 { font-size: 0.95rem; margin-bottom: 0.35rem; }
+.hp-programs__for { font-size: 0.82rem; color: var(--wh-muted); margin-bottom: 0.5rem; flex: 1; }
+.hp-programs__includes { font-size: 0.72rem; color: var(--wh-sage); font-weight: 500; }
+
+/* ─── Providers: minimal profiles, no card containment ─── */
+.hp-providers__header { display: flex; align-items: flex-end; justify-content: space-between; gap: 2rem; margin-bottom: clamp(2rem, 4vw, 3rem); }
+.hp-providers__list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; margin-bottom: 1.5rem; }
+.hp-providers__profile { display: flex; gap: 1rem; align-items: start; }
+.hp-providers__initials { display: flex; align-items: center; justify-content: center; width: 3rem; height: 3rem; flex-shrink: 0; border-radius: var(--wh-radius); background: var(--wh-white); color: var(--wh-sage); font-size: 0.85rem; font-weight: 700; border: 1px solid var(--wh-border); }
+.hp-providers__profile h3 { font-size: 0.88rem; margin-bottom: 0.1rem; }
+.hp-providers__role { display: block; font-size: 0.65rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--wh-sage); margin-bottom: 0.4rem; }
+.hp-providers__profile p { font-size: 0.78rem; color: var(--wh-muted); }
+.hp-providers__note { font-size: 0.72rem; color: var(--wh-muted); font-style: italic; }
+@media (max-width: 768px) { .hp-providers__list { grid-template-columns: 1fr; } .hp-providers__header { flex-direction: column; align-items: flex-start; } }
+
+/* ─── Memberships: 3-column comparison ─── */
+.hp-memberships__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+.hp-memberships__tier { padding: 2rem; border: 1px solid var(--wh-border); border-radius: var(--wh-radius); background: var(--wh-white); position: relative; }
+.hp-memberships__tier--featured { border-color: var(--wh-sage); }
+.hp-memberships__badge { position: absolute; top: -0.6rem; left: 1.5rem; padding: 0.2rem 0.6rem; font-size: 0.58rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--wh-white); background: var(--wh-sage); border-radius: 3px; }
+.hp-memberships__tier h3 { font-size: 1.05rem; margin-bottom: 0.25rem; }
+.hp-memberships__price { display: block; font-size: 1.75rem; font-weight: 700; color: var(--wh-ink); letter-spacing: -0.02em; margin-bottom: 0.5rem; }
+.hp-memberships__for { font-size: 0.82rem; color: var(--wh-muted); margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--wh-border); }
+.hp-memberships__tier ul { padding: 0; margin: 0; list-style: none; }
+.hp-memberships__tier li { padding: 0.3rem 0 0.3rem 1rem; position: relative; font-size: 0.82rem; color: var(--wh-text); }
+.hp-memberships__tier li::before { content: ''; position: absolute; left: 0; top: 0.6rem; width: 4px; height: 4px; border-radius: 50%; background: var(--wh-sage); }
+@media (max-width: 700px) { .hp-memberships__grid { grid-template-columns: 1fr; } }
+
+/* ─── Testimonials: featured quote + supporting ─── */
+.hp-testimonials__layout { display: grid; grid-template-columns: 1.3fr 1fr; gap: clamp(2rem, 4vw, 4rem); align-items: start; }
+.hp-testimonials__featured { margin: 0; padding: 0; border: none; }
+.hp-testimonials__featured p { font-size: clamp(1.15rem, 1rem + 0.5vw, 1.35rem); line-height: 1.55; color: var(--wh-ink); font-style: italic; font-weight: 400; margin-bottom: 1.25rem; }
+.hp-testimonials__featured footer { display: flex; flex-direction: column; gap: 0.1rem; }
+.hp-testimonials__featured strong { font-size: 0.85rem; font-style: normal; color: var(--wh-ink); }
+.hp-testimonials__featured span { font-size: 0.72rem; font-style: normal; color: var(--wh-sage); font-weight: 500; }
+.hp-testimonials__supporting { display: flex; flex-direction: column; gap: 1.5rem; }
+.hp-testimonials__quote { margin: 0; padding: 1.25rem 0; border-top: 1px solid var(--wh-border); }
+.hp-testimonials__quote:first-child { border-top: none; padding-top: 0; }
+.hp-testimonials__quote p { font-size: 0.88rem; color: var(--wh-text); font-style: italic; margin-bottom: 0.75rem; line-height: 1.6; }
+.hp-testimonials__quote footer { display: flex; flex-direction: column; gap: 0.1rem; }
+.hp-testimonials__quote strong { font-size: 0.78rem; font-style: normal; color: var(--wh-ink); }
+.hp-testimonials__quote span { font-size: 0.65rem; font-style: normal; color: var(--wh-sage); font-weight: 500; }
+.hp-testimonials__disclaimer { margin-top: 1.5rem; font-size: 0.68rem; color: var(--wh-muted); font-style: italic; }
+@media (max-width: 600px) { .hp-testimonials__layout { grid-template-columns: 1fr; } }
+
+/* ─── Resources: clean row list ─── */
+.hp-resources__header { display: flex; align-items: flex-end; justify-content: space-between; gap: 2rem; margin-bottom: clamp(1.5rem, 3vw, 2.5rem); }
+.hp-resources__list { display: flex; flex-direction: column; }
+.hp-resources__row { display: flex; align-items: center; gap: 1rem; padding: 0.9rem 0; border-bottom: 1px solid var(--wh-border); transition: padding-left var(--wh-transition); }
+.hp-resources__row:first-child { border-top: 1px solid var(--wh-border); }
+.hp-resources__row:hover { padding-left: 0.35rem; }
+.hp-resources__cat { font-size: 0.6rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--wh-sage); min-width: 140px; flex-shrink: 0; }
+.hp-resources__title { font-size: 0.88rem; font-weight: 500; color: var(--wh-ink); flex: 1; }
+.hp-resources__arrow { color: var(--wh-muted); font-size: 0.85rem; }
+@media (max-width: 600px) { .hp-resources__row { flex-wrap: wrap; } .hp-resources__cat { min-width: auto; width: 100%; } .hp-resources__header { flex-direction: column; align-items: flex-start; } }
+
+/* ─── FAQ: split layout ─── */
+.hp-faq__split { display: grid; grid-template-columns: 1fr 1.6fr; gap: clamp(3rem, 5vw, 5rem); align-items: start; }
+.hp-faq__left { position: sticky; top: 10rem; }
+@media (max-width: 700px) { .hp-faq__split { grid-template-columns: 1fr; } .hp-faq__left { position: static; } }
+
+/* ─── Location: split, dark ─── */
+.hp-location__split { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(3rem, 5vw, 5rem); align-items: center; }
+.hp-location__text address { font-style: normal; }
+.hp-location__text p { font-size: 0.9rem; color: rgba(255,255,255,0.6); margin-bottom: 0.5rem; }
+.hp-location__parking { font-size: 0.78rem; color: rgba(255,255,255,0.35); margin-top: 0.75rem; }
+.hp-location__map { border-radius: var(--wh-radius); overflow: hidden; }
+@media (max-width: 700px) { .hp-location__split { grid-template-columns: 1fr; } }
+
+/* ─── Final CTA ─── */
+.hp-final { border-top: 1px solid rgba(255,255,255,0.06); }
+</style>

@@ -1,0 +1,99 @@
+---
+import WellnessLayout from '../../../layouts/WellnessLayout.astro';
+import { testimonials, brand } from '../../../data/wellness';
+---
+
+<WellnessLayout title="Client Reviews — Lumen Health House" description="Read what clients are saying about their experience at Lumen Health House — from first consultations to ongoing recovery and wellness care.">
+
+<!-- ─── Hero ─── -->
+<section class="wh-section wh-section--dark rv-hero">
+	<div class="wh-container">
+		<p class="wh-eyebrow">Client Experiences</p>
+		<h1>What Our Clients Say</h1>
+		<p class="wh-lead">Honest feedback from people who chose to invest in their health. Every experience is personal — here is what our clients have shared about their time at Lumen.</p>
+	</div>
+</section>
+
+<!-- ─── Testimonials: featured quote + supporting ─── -->
+<section class="wh-section wh-section--surface rv-reviews">
+	<div class="wh-container">
+		<div class="rv-reviews__layout">
+			<blockquote class="rv-reviews__featured">
+				<p>&ldquo;{testimonials[0].text}&rdquo;</p>
+				<footer>
+					<strong>{testimonials[0].author}</strong>
+					<span>{testimonials[0].context}</span>
+				</footer>
+			</blockquote>
+			<div class="rv-reviews__supporting">
+				{testimonials.slice(1).map((t) => (
+					<blockquote class="rv-reviews__quote">
+						<p>&ldquo;{t.text}&rdquo;</p>
+						<footer>
+							<strong>{t.author}</strong>
+							<span>{t.context}</span>
+						</footer>
+					</blockquote>
+				))}
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- ─── Disclaimer ─── -->
+<section class="rv-disclaimer-section">
+	<div class="wh-container">
+		<p class="rv-disclaimer">These are fictional testimonials created for demo purposes. Individual experiences vary. Lumen Health House does not guarantee specific outcomes.</p>
+		<p class="rv-brand-disclaimer">{brand.disclaimer}</p>
+	</div>
+</section>
+
+<!-- ─── CTA: default bg (variety) ─── -->
+<section class="wh-section rv-final">
+	<div class="wh-container">
+		<p class="wh-eyebrow">Experience It Yourself</p>
+		<h2>Your wellness journey starts with a conversation.</h2>
+		<p class="wh-lead">Book a consultation to discuss your goals, explore your options, and see what personalized wellness care feels like.</p>
+		<div class="wh-btn-row">
+			<a class="wh-btn wh-btn--primary" href="/demos/premium-wellness-clinic/new-clients">Book a Consultation</a>
+			<a class="wh-btn wh-btn--secondary" href="/demos/premium-wellness-clinic/services">Explore Services</a>
+		</div>
+	</div>
+</section>
+
+</WellnessLayout>
+
+<style>
+/* ═══════════════════════════════════════════════════════
+   REVIEWS — Restrained Clinical Premium
+   ═══════════════════════════════════════════════════════ */
+
+/* ─── Hero ─── */
+.rv-hero { padding-top: clamp(5rem, 10vw, 9rem); padding-bottom: clamp(3rem, 6vw, 5rem); }
+.rv-hero h1 { max-width: 520px; }
+.rv-hero .wh-lead { max-width: 520px; }
+
+/* ─── Testimonials: featured + supporting (like homepage) ─── */
+.rv-reviews__layout { display: grid; grid-template-columns: 1.3fr 1fr; gap: clamp(2rem, 4vw, 4rem); align-items: start; }
+.rv-reviews__featured { margin: 0; padding: 0; border: none; }
+.rv-reviews__featured p { font-size: clamp(1.15rem, 1rem + 0.5vw, 1.35rem); line-height: 1.55; color: var(--wh-ink); font-style: italic; font-weight: 400; margin-bottom: 1.25rem; }
+.rv-reviews__featured footer { display: flex; flex-direction: column; gap: 0.1rem; }
+.rv-reviews__featured strong { font-size: 0.85rem; font-style: normal; color: var(--wh-ink); }
+.rv-reviews__featured span { font-size: 0.72rem; font-style: normal; color: var(--wh-sage); font-weight: 500; }
+.rv-reviews__supporting { display: flex; flex-direction: column; gap: 1.5rem; }
+.rv-reviews__quote { margin: 0; padding: 1.25rem 0; border-top: 1px solid var(--wh-border); }
+.rv-reviews__quote:first-child { border-top: none; padding-top: 0; }
+.rv-reviews__quote p { font-size: 0.88rem; color: var(--wh-text); font-style: italic; margin-bottom: 0.75rem; line-height: 1.6; }
+.rv-reviews__quote footer { display: flex; flex-direction: column; gap: 0.1rem; }
+.rv-reviews__quote strong { font-size: 0.78rem; font-style: normal; color: var(--wh-ink); }
+.rv-reviews__quote span { font-size: 0.65rem; font-style: normal; color: var(--wh-sage); font-weight: 500; }
+@media (max-width: 600px) { .rv-reviews__layout { grid-template-columns: 1fr; } }
+
+/* ─── Disclaimer ─── */
+.rv-disclaimer-section { padding: clamp(1.5rem, 3vw, 2.5rem) 0; }
+.rv-disclaimer { font-size: 0.72rem; color: var(--wh-muted); font-style: italic; max-width: 560px; line-height: 1.6; margin-bottom: 0.5rem; }
+.rv-brand-disclaimer { font-size: 0.72rem; color: var(--wh-muted); font-style: italic; max-width: 640px; }
+
+/* ─── CTA: default bg ─── */
+.rv-final h2 { max-width: 560px; }
+</style>
