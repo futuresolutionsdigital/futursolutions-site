@@ -1,0 +1,699 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import TemplateFinalCTA from '../../components/TemplateFinalCTA.astro';
+import { getTemplateBySlug } from '../../data/templates';
+
+const template = getTemplateBySlug('med-spa')!;
+const pageTitle = 'Med Spa Website Template | Future Solutions';
+const pageDescription =
+	'A premium med spa website template for aesthetic clinics, injectables practices, laser providers, and skin clinics that need treatment education, provider trust, results galleries, memberships, and consultation-focused booking.';
+const canonicalUrl = 'https://futursolutions.vercel.app/templates/med-spa';
+
+const trustTags = [
+	'9-page demo',
+	'Treatment menu',
+	'Botox detail page',
+	'Concern guide',
+	'Results gallery',
+	'Provider profiles',
+	'Membership-ready',
+	'Booking-focused',
+	'Mobile responsive',
+];
+
+const audienceList = [
+	{ label: 'Med spas', desc: 'Full-service aesthetic practices offering injectables, lasers, skin treatments, and wellness.' },
+	{ label: 'Injectables studios', desc: 'Built to explain Botox, fillers, and facial balancing with trust-first service pages.' },
+	{ label: 'Aesthetic nurse practitioners / PAs', desc: 'Provider-led clinics that need to build personal credibility alongside treatment education.' },
+	{ label: 'Skin clinics', desc: 'Practices focused on acne, rosacea, texture, and medical-grade skincare treatments.' },
+	{ label: 'Laser treatment providers', desc: 'Structured to present device-based treatments, downtime, expectations, and candidacy clearly.' },
+	{ label: 'Body contouring clinics', desc: 'Practices offering sculpting, tightening, and body treatments that need realistic expectation framing.' },
+	{ label: 'Cosmetic dermatology practices', desc: 'Dermatology offices expanding into aesthetic services alongside medical care.' },
+	{ label: 'Wellness-forward aesthetic clinics', desc: 'Clinics blending IV therapy, hormone optimization, weight management, and aesthetics.' },
+	{ label: 'New med spa launches', desc: 'Gives a new brand a polished, credible web presence from day one.' },
+	{ label: 'Outdated med spa website replacements', desc: 'Modern, conversion-ready upgrade for clinics that have outgrown their current site.' },
+];
+
+const problems = [
+	'Treatments are listed without context, leaving visitors unsure what each service actually does.',
+	'Service pages are thin or generic, with no quick facts, timelines, candidacy guidance, or FAQs.',
+	'Before/after galleries lack responsible framing, disclaimers, or category organization.',
+	'Provider credentials are hidden or underdeveloped, making trust hard to build.',
+	'CTAs are scattered or too aggressive, creating a high-pressure feel instead of a premium one.',
+	'Memberships and packages feel discount-driven instead of value-driven.',
+	'Visitors do not know whether to call, book online, or keep browsing.',
+	'Mobile booking paths are weak, even though most aesthetic visitors browse on their phones.',
+];
+
+const solutionPillars = [
+	{ title: 'Guide uncertain visitors', desc: 'Concern paths help visitors start with what they want to improve instead of forcing them to know treatment names.' },
+	{ title: 'Explain treatments clearly', desc: 'Treatment cards, quick facts, FAQs, timelines, and candidacy sections make services easier to understand.' },
+	{ title: 'Build medical trust', desc: 'Provider sections, safety language, responsible results, and consultation-first copy reinforce credibility.' },
+	{ title: 'Convert without pressure', desc: 'The site repeatedly points visitors toward booking a consultation while staying calm, premium, and non-salesy.' },
+];
+
+const pages = [
+	{ name: 'Homepage', purpose: 'Full-funnel brand, service, trust, results, and booking overview that guides visitors deeper.' },
+	{ name: 'Treatments', purpose: 'Organized treatment menu grouped by injectables, lasers, skin, wellness, and more.' },
+	{ name: 'Botox / Wrinkle Relaxers (detail)', purpose: 'Flagship treatment detail page with quick facts, candidacy, process, pricing language, safety, FAQs, and related treatments.' },
+	{ name: 'Concerns', purpose: 'Guided visitor path for patients who know what they want to improve but do not know which treatment to choose.' },
+	{ name: 'Results', purpose: 'Before/after-ready gallery with responsible disclaimers and category filters.' },
+	{ name: 'Providers', purpose: 'Builds trust with provider profiles, specialties, credentials, and medical standards.' },
+	{ name: 'Membership', purpose: 'Presents packages, plans, and payment flexibility without making the brand feel discount-driven.' },
+	{ name: 'Contact / Consultation', purpose: 'Conversion endpoint with booking form, clinic details, what-happens-next section, and reassurance FAQ.' },
+	{ name: 'About', purpose: 'Brand philosophy, trust positioning, and differentiators that make the clinic feel intentional.' },
+];
+
+const strategicFeatures = [
+	{ title: 'Concern-based treatment routing', desc: 'Visitors can start with "smooth lines," "restore volume," "improve texture," or "I am not sure yet" instead of guessing treatment names.' },
+	{ title: 'Treatment menu architecture', desc: 'Services are grouped into clear categories so visitors can browse without feeling overwhelmed by a flat list.' },
+	{ title: 'Flagship treatment detail page', desc: 'The Botox page demonstrates a reusable structure for fillers, Morpheus8, IPL, Hydrafacial, laser hair removal, weight loss, and more.' },
+	{ title: 'Before/after-ready results gallery', desc: 'Filterable gallery structure designed for real result photos with responsible disclaimers and expectation framing.' },
+	{ title: 'Provider trust system', desc: 'Provider cards and profile pages make the team visible, credible, and approachable.' },
+	{ title: 'Consultation-first conversion flow', desc: 'The site emphasizes booking a consultation without pressuring visitors into a specific treatment decision.' },
+	{ title: 'Membership and package presentation', desc: 'Plans and packages are presented as premium maintenance options, not cheap discounts.' },
+	{ title: 'Local SEO-ready structure', desc: 'Location, services, FAQs, treatment categories, and content depth support local search expansion.' },
+	{ title: 'Mobile booking path', desc: 'Sticky mobile actions and clear CTAs make calling, booking, and getting directions easy on any device.' },
+	{ title: 'CRM and form integration-ready', desc: 'Contact forms can be connected to GoHighLevel, CRM, booking tools, email, or automation workflows.' },
+	{ title: 'Medical credibility language', desc: 'Copy avoids unrealistic promises and uses careful language around candidacy, expectations, and results.' },
+	{ title: 'Reusable service-page system', desc: 'Quick facts, FAQs, timelines, candidacy, safety, and related treatment sections can be replicated across every service.' },
+];
+
+const designPoints = [
+	'Playfair-style editorial serif headings that feel warm and refined, not clinical.',
+	'Soft ivory and warm stone backgrounds instead of sterile white.',
+	'Champagne and muted gold accents for highlights and premium details.',
+	'Deep charcoal typography for authority and contrast without harshness.',
+	'Rounded premium cards with subtle shadows for a polished, modern feel.',
+	'Generous spacing and calm visual rhythm that lets content breathe.',
+	'Responsible placeholder system for results imagery (no stock photos).',
+	'Provider monogram system ready to be replaced with real headshots.',
+	'Medical credibility maintained through tone and visual restraint.',
+	'Visually distinct from generic beauty salon, hospital, or SaaS aesthetics.',
+];
+
+const designComparison = {
+	is: ['Premium', 'Calm', 'Editorial', 'Trustworthy', 'Warm', 'Medical', 'Modern', 'Natural-results focused'],
+	isNot: ['Cheap spa template', 'Overly pink/blush/gold', 'Generic beauty salon', 'Hospital sterile', 'Trend-chasing', 'Aggressive direct response'],
+};
+
+const conversionPoints = [
+	{ title: 'Primary CTA: Book a Consultation', desc: 'Every major page routes toward a consultation request, keeping the conversion action clear and consistent.' },
+	{ title: 'Explore Treatments', desc: 'Treatment menu and category pages guide visitors who are browsing but not ready to book.' },
+	{ title: 'Find My Treatment Path', desc: 'Concern-based guidance helps visitors who know the problem but not the treatment name.' },
+	{ title: 'View Results', desc: 'Before/after gallery builds confidence through visual proof with responsible framing.' },
+	{ title: 'Meet Providers', desc: 'Provider profiles and credentials turn anonymous clinics into trusted teams.' },
+	{ title: 'Membership options', desc: 'Package and membership sections turn one-time interest into ongoing client relationships.' },
+	{ title: 'Quick facts and candidacy', desc: 'Treatment detail pages answer "is this right for me?" before visitors need to call.' },
+	{ title: 'FAQ objection handling', desc: 'Safety, downtime, results timeline, and pricing FAQs reduce the most common booking hesitations.' },
+];
+
+const objections = [
+	'I do not know what treatment I need.',
+	'Will I still look natural?',
+	'Who performs the treatment?',
+	'Is this safe?',
+	'What is the downtime?',
+	'How long do results last?',
+	'What will it cost?',
+	'Can I just talk to someone first?',
+];
+
+const customizationOptions = [
+	'Replace the fictional clinic name, colors, logo, and branding.',
+	'Add real provider headshots and team bios.',
+	'Add real treatment photography and clinical imagery.',
+	'Add real before/after galleries with responsible disclaimers.',
+	'Customize treatment categories and service pages.',
+	'Add detail pages for fillers, Morpheus8, IPL, Hydrafacial, laser hair removal, weight loss, and more.',
+	'Connect forms to GoHighLevel, CRM, email, or online booking.',
+	'Add location-specific SEO pages for additional service areas.',
+	'Add memberships, packages, financing, and specials.',
+	'Add blog and resource content for SEO and patient education.',
+	'Add patient portal or booking widget links.',
+	'Add compliance-conscious disclaimers and form routing.',
+];
+
+const salesFaqs = [
+	{
+		q: 'Is this a real med spa?',
+		a: 'No. The demo uses a fictional med spa concept created by Future Solutions to show how this template can look and function for a real aesthetic clinic. All names, treatments, providers, and results are entirely fictional.',
+	},
+	{
+		q: 'Can this be customized for my med spa?',
+		a: 'Yes. Branding, services, colors, photography, provider bios, treatment pages, booking flow, and content can all be customized to match your real clinic.',
+	},
+	{
+		q: 'Can you add more treatment pages?',
+		a: 'Yes. The Botox page is the flagship example, and the same structure can be expanded for fillers, Morpheus8, IPL, Hydrafacial, laser hair removal, body contouring, medical weight loss, and more.',
+	},
+	{
+		q: 'Can this connect to online booking or GoHighLevel?',
+		a: 'Yes. The consultation form and CTAs can be connected to GoHighLevel, CRM tools, booking software, email notifications, or automation workflows.',
+	},
+	{
+		q: 'Can this support SEO?',
+		a: 'Yes. The page structure supports treatment pages, service categories, FAQs, local content, location pages, and blog/resource expansion for organic search visibility.',
+	},
+	{
+		q: 'Do I need professional photos?',
+		a: 'The demo uses designed placeholders, but real provider photography, treatment-room photos, and before/after images will make the finished site much stronger.',
+	},
+	{
+		q: 'Is this only for luxury med spas?',
+		a: 'No. The visual direction is premium, but it can be adapted for boutique clinics, injectables studios, wellness-focused med spas, laser clinics, or cosmetic dermatology practices.',
+	},
+	{
+		q: 'Can pricing, memberships, or specials be changed?',
+		a: 'Yes. Memberships, packages, financing, specials, and pricing language can be customized to match the clinic\'s actual offerings.',
+	},
+];
+---
+
+<BaseLayout
+	title={pageTitle}
+	description={pageDescription}
+	canonicalUrl={canonicalUrl}
+	ogTitle={pageTitle}
+	ogDescription={pageDescription}
+	ogUrl={canonicalUrl}
+>
+	<!-- 1. Hero -->
+	<section class="section ms-hero" aria-labelledby="ms-hero-heading">
+		<div class="site-container ms-hero__inner">
+			<div class="ms-hero__content">
+				<p class="eyebrow">Med Spa Website Template</p>
+				<h1 id="ms-hero-heading">A premium website template for med spas that need to turn treatment interest into booked consultations.</h1>
+				<p class="lead">A complete website system for aesthetic clinics, injectables studios, skin clinics, laser providers, and modern med spas &mdash; built to guide visitors from curiosity to confident consultation requests.</p>
+				<div class="button-row">
+					<a class="button button-primary" href="/demos/med-spa">View Live Demo</a>
+					<a class="button button-secondary" href="/audit?template=med-spa">Customize This Template</a>
+				</div>
+			</div>
+			<div class="ms-hero__preview card" aria-hidden="true">
+				<div class="ms-hero__chrome">
+					<span></span><span></span><span></span>
+				</div>
+				<div class="ms-hero__screen">
+					<div class="ms-hero__screen-header">
+						<span class="ms-hero__screen-logo">A</span>
+						<span class="ms-hero__screen-brand">Aur&eacute;a Skin &amp; Aesthetics</span>
+					</div>
+					<div class="ms-hero__screen-hero-block">
+						<div class="ms-hero__screen-lines">
+							<span></span><span></span><span></span>
+						</div>
+						<div class="ms-hero__screen-card">
+							<span class="ms-hero__screen-pill">Treatments</span>
+							<span class="ms-hero__screen-pill">Results</span>
+							<span class="ms-hero__screen-pill ms-hero__screen-pill--accent">Book</span>
+						</div>
+					</div>
+					<div class="ms-hero__screen-tiles">
+						<span></span><span></span><span></span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="site-container">
+			<div class="ms-tags">
+				{trustTags.map((tag) => (
+					<span class="ms-tag">
+						<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 14 14" aria-hidden="true"><path stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M3.5 7.5 6 10l4.5-5"/></svg>
+						{tag}
+					</span>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- 2. Preview showcase -->
+	<section class="section section-muted ms-preview" aria-labelledby="ms-preview-heading">
+		<div class="site-container">
+			<div class="ms-section-intro">
+				<p class="eyebrow">Live demo</p>
+				<h2 id="ms-preview-heading">See the full med spa demo.</h2>
+				<p class="lead">Preview the homepage, treatment menu, Botox detail page, concern guide, results gallery, provider profiles, membership page, and consultation flow.</p>
+			</div>
+			<a href="/demos/med-spa" class="ms-browser-frame card">
+				<div class="ms-browser-frame__chrome">
+					<span></span><span></span><span></span>
+					<span class="ms-browser-frame__url">futursolutions.vercel.app/demos/med-spa</span>
+				</div>
+				<div class="ms-browser-frame__body">
+					<div class="ms-browser-frame__mockup">
+						<div class="ms-mockup-header">
+							<span class="ms-mockup-logo">A</span>
+							<span class="ms-mockup-nav"></span>
+							<span class="ms-mockup-nav"></span>
+							<span class="ms-mockup-nav"></span>
+							<span class="ms-mockup-nav"></span>
+						</div>
+						<div class="ms-mockup-hero">
+							<div class="ms-mockup-hero-text">
+								<span class="ms-mockup-line ms-mockup-line--sm"></span>
+								<span class="ms-mockup-line ms-mockup-line--lg"></span>
+								<span class="ms-mockup-line ms-mockup-line--md"></span>
+								<div class="ms-mockup-btns"><span></span><span></span></div>
+							</div>
+							<div class="ms-mockup-hero-sidebar">
+								<div class="ms-mockup-result-placeholder"></div>
+								<span class="ms-mockup-line ms-mockup-line--md"></span>
+							</div>
+						</div>
+						<div class="ms-mockup-strip">
+							<span></span><span></span><span></span><span></span>
+						</div>
+					</div>
+				</div>
+			</a>
+			<p class="ms-preview-note">Aur&eacute;a Skin &amp; Aesthetics is a fictional premium med spa concept created to showcase the template system. All names, treatments, providers, and results are entirely fictional.</p>
+			<div class="ms-preview-cta">
+				<a class="button button-primary" href="/demos/med-spa">View Live Demo</a>
+				<a class="button button-secondary" href="/templates">View All Templates</a>
+			</div>
+		</div>
+	</section>
+
+	<!-- 3. Who this is for -->
+	<section class="section ms-audience" aria-labelledby="ms-audience-heading">
+		<div class="site-container">
+			<div class="ms-section-intro">
+				<p class="eyebrow">Audience</p>
+				<h2 id="ms-audience-heading">Built for modern aesthetic practices that need more than a pretty homepage.</h2>
+				<p class="lead">This template is for treatment-based clinics that need to educate visitors, build trust around providers and results, and make consultation booking feel like the natural next step.</p>
+			</div>
+			<div class="ms-audience__grid">
+				{audienceList.map((item) => (
+					<article class="card ms-audience__card">
+						<h3>{item.label}</h3>
+						<p>{item.desc}</p>
+					</article>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- 4. The business problem -->
+	<section class="section section-muted ms-problem" aria-labelledby="ms-problem-heading">
+		<div class="site-container">
+			<div class="ms-section-intro">
+				<p class="eyebrow">The problem</p>
+				<h2 id="ms-problem-heading">Most med spa websites show treatments, but do not help visitors choose.</h2>
+				<p class="lead">Visitors arrive with uncertainty: they know the concern, but not the treatment. They worry about looking overdone. They want to know who performs treatments, what results are realistic, and what the next step should be.</p>
+			</div>
+			<div class="ms-problem__grid">
+				{problems.map((p, i) => (
+					<div class="ms-problem__item">
+						<span class="ms-problem__num">{String(i + 1).padStart(2, '0')}</span>
+						<p>{p}</p>
+					</div>
+				))}
+			</div>
+			<div class="ms-problem__solution">
+				<p class="eyebrow">The solution</p>
+				<p>This template is built to <strong>reduce uncertainty</strong> and make <strong>consultation booking feel like the natural next step</strong> &mdash; through concern-based guidance, treatment education, provider trust, responsible results presentation, and a calm, premium conversion flow.</p>
+			</div>
+		</div>
+	</section>
+
+	<!-- 5. Conversion journey -->
+	<section class="section ms-journey" aria-labelledby="ms-journey-heading">
+		<div class="site-container">
+			<div class="ms-section-intro">
+				<p class="eyebrow">Strategy</p>
+				<h2 id="ms-journey-heading">A guided med spa website system, not just a design.</h2>
+				<p class="lead">The site is designed around a clear conversion journey: Interest &rarr; Education &rarr; Trust &rarr; Treatment fit &rarr; Consultation request.</p>
+			</div>
+			<div class="ms-journey__grid">
+				{solutionPillars.map((pillar) => (
+					<article class="card ms-journey__card">
+						<h3>{pillar.title}</h3>
+						<p>{pillar.desc}</p>
+					</article>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- 6. Pages included -->
+	<section class="section section-muted ms-pages" aria-labelledby="ms-pages-heading">
+		<div class="site-container">
+			<div class="ms-section-intro">
+				<p class="eyebrow">Included pages</p>
+				<h2 id="ms-pages-heading">A complete med spa site structure, already mapped out.</h2>
+				<p class="lead">9 pages, each planned as part of a practical website system &mdash; not a disconnected design mockup.</p>
+			</div>
+			<div class="ms-pages__list">
+				{pages.map((page, i) => (
+					<div class="ms-pages__item">
+						<span class="ms-pages__num">{String(i + 1).padStart(2, '0')}</span>
+						<div>
+							<h3>{page.name}</h3>
+							<p>{page.purpose}</p>
+						</div>
+					</div>
+				))}
+			</div>
+			<div class="ms-pages-cta">
+				<a class="button button-primary" href="/demos/med-spa">View Live Demo</a>
+				<a class="button button-secondary" href="/audit?template=med-spa">Customize This Template</a>
+			</div>
+		</div>
+	</section>
+
+	<!-- 7. Strategic features -->
+	<section class="section ms-features" aria-labelledby="ms-features-heading">
+		<div class="site-container">
+			<div class="ms-section-intro">
+				<p class="eyebrow">Strategic features</p>
+				<h2 id="ms-features-heading">Built for the way med spa visitors actually make decisions.</h2>
+				<p class="lead">Every structural decision in this template exists to move a visitor from treatment curiosity to consultation confidence.</p>
+			</div>
+			<div class="ms-features__grid">
+				{strategicFeatures.map((f) => (
+					<article class="card ms-features__card">
+						<h3>{f.title}</h3>
+						<p>{f.desc}</p>
+					</article>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- 8. Design direction -->
+	<section class="section section-muted ms-design" aria-labelledby="ms-design-heading">
+		<div class="site-container">
+			<div class="ms-section-intro">
+				<p class="eyebrow">Design direction</p>
+				<h2 id="ms-design-heading">Polished aesthetic luxury without losing medical credibility.</h2>
+				<p class="lead">A warm clinical-luxury style: soft ivory backgrounds, refined serif typography, muted champagne accents, structured cards, calm spacing, and minimal visual noise.</p>
+			</div>
+			<div class="ms-design__grid">
+				{designPoints.map((point) => (
+					<div class="ms-design__item">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="3.5" fill="currentColor"/></svg>
+						<p>{point}</p>
+					</div>
+				))}
+			</div>
+			<div class="ms-design__palette" aria-label="Med spa palette preview">
+				<span class="ms-swatch" style="background:#faf8f4;" title="Ivory"></span>
+				<span class="ms-swatch" style="background:#f0ebe3;" title="Warm Stone"></span>
+				<span class="ms-swatch" style="background:#c9b99a;" title="Champagne"></span>
+				<span class="ms-swatch" style="background:#2c2c2c;" title="Charcoal"></span>
+				<span class="ms-swatch" style="background:#e8ddd0;" title="Blush Sand"></span>
+			</div>
+			<div class="ms-design__comparison">
+				<div class="ms-design__col">
+					<h3>What it feels like</h3>
+					<ul>
+						{designComparison.is.map((item) => <li>{item}</li>)}
+					</ul>
+				</div>
+				<div class="ms-design__col ms-design__col--not">
+					<h3>What it avoids</h3>
+					<ul>
+						{designComparison.isNot.map((item) => <li>{item}</li>)}
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- 9. Conversion strategy -->
+	<section class="section ms-conversion" aria-labelledby="ms-conversion-heading">
+		<div class="site-container">
+			<div class="ms-section-intro">
+				<p class="eyebrow">Conversion strategy</p>
+				<h2 id="ms-conversion-heading">Designed to reduce hesitation before asking for the booking.</h2>
+				<p class="lead">The site does not rely on hype. It makes the next step feel clear, safe, and low-pressure by answering real visitor questions throughout every page.</p>
+			</div>
+			<div class="ms-conversion__grid">
+				{conversionPoints.map((c) => (
+					<article class="card ms-conversion__card">
+						<h3>{c.title}</h3>
+						<p>{c.desc}</p>
+					</article>
+				))}
+			</div>
+			<div class="ms-conversion__objections">
+				<h3>Visitor objections the site addresses</h3>
+				<ul>
+					{objections.map((obj) => <li>{obj}</li>)}
+				</ul>
+			</div>
+		</div>
+	</section>
+
+	<!-- 10. Customization options -->
+	<section class="section section-muted ms-customize" aria-labelledby="ms-customize-heading">
+		<div class="site-container">
+			<div class="ms-section-intro">
+				<p class="eyebrow">Customization</p>
+				<h2 id="ms-customize-heading">Make the template fit a real med spa brand.</h2>
+				<p class="lead">Everything in this demo is designed to be replaced with your real clinic details, photography, treatments, and booking workflow.</p>
+			</div>
+			<div class="ms-customize__list">
+				{customizationOptions.map((opt) => (
+					<div class="ms-customize__item">
+						<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 14 14" aria-hidden="true"><path stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M3.5 7.5 6 10l4.5-5"/></svg>
+						<span>{opt}</span>
+					</div>
+				))}
+			</div>
+			<div class="button-row">
+				<a class="button button-primary" href="/audit?template=med-spa">Customize This Template</a>
+				<a class="button button-secondary" href="/demos/med-spa">View Live Demo</a>
+			</div>
+		</div>
+	</section>
+
+	<!-- 11. FAQ -->
+	<section class="section ms-faq" aria-labelledby="ms-faq-heading">
+		<div class="site-container">
+			<div class="ms-section-intro" style="text-align:center; margin-inline:auto;">
+				<p class="eyebrow">Frequently asked questions</p>
+				<h2 id="ms-faq-heading">Common questions about this template.</h2>
+			</div>
+			<div class="ms-faq__list">
+				{salesFaqs.map((faq) => (
+					<details class="ms-faq__item">
+						<summary class="ms-faq__q">
+							{faq.q}
+							<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 18 18" aria-hidden="true"><path d="M4.5 7 9 11.5 13.5 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+						</summary>
+						<div class="ms-faq__a"><p>{faq.a}</p></div>
+					</details>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- 12. Final CTA -->
+	<TemplateFinalCTA
+		heading="Want this customized for your med spa?"
+		description="Use the demo as a starting point for a premium med spa website built around treatment education, provider trust, and consultation bookings."
+		primaryText="Customize This Template"
+		primaryHref="/audit?template=med-spa"
+		secondaryText="View Live Demo"
+		secondaryHref="/demos/med-spa"
+	/>
+</BaseLayout>
+
+<style>
+	/* Hero */
+	.ms-hero {
+		position: relative;
+		overflow: hidden;
+		padding-block: clamp(5rem, 8vw, 8rem) clamp(3rem, 5vw, 4rem);
+	}
+
+	.ms-hero::before {
+		position: absolute;
+		inset: 0;
+		z-index: -1;
+		background:
+			radial-gradient(circle at 78% 18%, rgba(201, 185, 154, 0.12), transparent 30%),
+			linear-gradient(180deg, var(--color-white) 0%, var(--color-bg) 72%);
+		content: '';
+	}
+
+	.ms-hero__inner {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) minmax(340px, 0.72fr);
+		gap: clamp(3rem, 6vw, 5rem);
+		align-items: center;
+	}
+
+	.ms-hero__content { max-width: 760px; }
+	.ms-hero__content h1 { max-width: 760px; }
+
+	/* Browser mockup in hero */
+	.ms-hero__preview { overflow: hidden; border-radius: 22px; box-shadow: 0 24px 70px rgba(15, 23, 42, 0.08); }
+	.ms-hero__chrome { display: flex; gap: 0.45rem; padding: 0.9rem 1rem; border-bottom: 1px solid var(--color-border); background: var(--color-bg-secondary); }
+	.ms-hero__chrome span { width: 0.55rem; height: 0.55rem; border-radius: 999px; background: var(--color-white); border: 1px solid color-mix(in srgb, var(--color-muted) 26%, transparent); }
+	.ms-hero__screen { padding: 1rem; background: linear-gradient(90deg, rgba(226,232,240,0.3) 1px, transparent 1px), linear-gradient(180deg, rgba(226,232,240,0.3) 1px, transparent 1px), #faf8f4; background-size: 40px 40px; display: grid; gap: 0.75rem; }
+
+	.ms-hero__screen-header { display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 0.75rem; background: #faf8f4; border: 1px solid #e8ddd0; border-radius: 8px; }
+	.ms-hero__screen-logo { display: inline-flex; align-items: center; justify-content: center; width: 1.4rem; height: 1.4rem; border-radius: 4px; background: #c9b99a; color: #2c2c2c; font-size: 0.6rem; font-weight: 800; font-family: Georgia, serif; }
+	.ms-hero__screen-brand { font-size: 0.6rem; font-weight: 700; color: #2c2c2c; }
+
+	.ms-hero__screen-hero-block { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 0.65rem; }
+	.ms-hero__screen-lines { display: grid; gap: 0.4rem; padding: 0.75rem; background: #faf8f4; border: 1px solid #e8ddd0; border-radius: 8px; }
+	.ms-hero__screen-lines span { height: 0.5rem; border-radius: 999px; }
+	.ms-hero__screen-lines span:first-child { width: 40%; background: #c9b99a; opacity: 0.5; }
+	.ms-hero__screen-lines span:nth-child(2) { width: 85%; height: 0.65rem; background: #2c2c2c; opacity: 0.12; }
+	.ms-hero__screen-lines span:last-child { width: 60%; background: #e8ddd0; }
+
+	.ms-hero__screen-card { display: flex; flex-direction: column; gap: 0.35rem; padding: 0.75rem; background: #faf8f4; border: 1px solid #e8ddd0; border-radius: 8px; }
+	.ms-hero__screen-pill { display: block; padding: 0.3rem 0.5rem; border-radius: 5px; background: rgba(201,185,154,0.2); color: #2c2c2c; font-size: 0.55rem; font-weight: 700; text-align: center; }
+	.ms-hero__screen-pill--accent { background: rgba(201,185,154,0.45); }
+
+	.ms-hero__screen-tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.45rem; }
+	.ms-hero__screen-tiles span { height: 1.5rem; border-radius: 6px; background: #faf8f4; border: 1px solid #e8ddd0; }
+
+	/* Trust tags */
+	.ms-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: clamp(2rem, 4vw, 3rem); }
+	.ms-tag { display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.4rem 0.65rem; border: 1px solid var(--color-border); border-radius: 999px; background: var(--color-white); font-size: 0.8125rem; font-weight: 600; color: var(--color-muted); }
+	.ms-tag svg { color: var(--color-accent); flex-shrink: 0; }
+
+	/* Shared intro */
+	.ms-section-intro { max-width: 780px; margin-bottom: clamp(2rem, 4vw, 3rem); }
+
+	/* Preview section */
+	.ms-browser-frame { display: block; overflow: hidden; border-radius: 16px; text-decoration: none; transition: box-shadow 0.2s ease, transform 0.2s ease; }
+	.ms-browser-frame:hover { transform: translateY(-2px); box-shadow: 0 32px 80px rgba(15,23,42,0.10); }
+	.ms-browser-frame__chrome { display: flex; gap: 0.45rem; align-items: center; padding: 0.75rem 1rem; border-bottom: 1px solid var(--color-border); background: var(--color-bg-secondary); }
+	.ms-browser-frame__chrome > span:nth-child(-n+3) { width: 0.5rem; height: 0.5rem; border-radius: 999px; background: var(--color-white); border: 1px solid color-mix(in srgb, var(--color-muted) 26%, transparent); }
+	.ms-browser-frame__url { margin-left: 0.75rem; padding: 0.3rem 0.65rem; border-radius: 6px; background: var(--color-white); border: 1px solid var(--color-border); font-size: 0.68rem; font-weight: 600; color: var(--color-muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
+	.ms-browser-frame__body { padding: 1.5rem; background: linear-gradient(90deg, rgba(226,232,240,0.25) 1px, transparent 1px), linear-gradient(180deg, rgba(226,232,240,0.25) 1px, transparent 1px), #faf8f4; background-size: 48px 48px; }
+
+	.ms-browser-frame__mockup { max-width: 640px; margin-inline: auto; }
+	.ms-mockup-header { display: flex; align-items: center; gap: 0.65rem; padding: 0.65rem 1rem; background: #faf8f4; border: 1px solid #e8ddd0; border-radius: 8px; margin-bottom: 0.75rem; }
+	.ms-mockup-logo { display: inline-flex; align-items: center; justify-content: center; width: 1.6rem; height: 1.6rem; border-radius: 5px; background: #c9b99a; color: #2c2c2c; font-size: 0.65rem; font-weight: 800; font-family: Georgia, serif; }
+	.ms-mockup-nav { width: 2.5rem; height: 0.35rem; border-radius: 999px; background: #e8ddd0; }
+	.ms-mockup-hero { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 0.75rem; margin-bottom: 0.75rem; }
+	.ms-mockup-hero-text { display: flex; flex-direction: column; gap: 0.4rem; padding: 1rem; background: #faf8f4; border: 1px solid #e8ddd0; border-radius: 8px; }
+	.ms-mockup-line { height: 0.45rem; border-radius: 999px; }
+	.ms-mockup-line--sm { width: 30%; background: #c9b99a; opacity: 0.45; }
+	.ms-mockup-line--lg { width: 90%; height: 0.6rem; background: #2c2c2c; opacity: 0.12; }
+	.ms-mockup-line--md { width: 65%; background: #e8ddd0; }
+	.ms-mockup-btns { display: flex; gap: 0.4rem; margin-top: 0.25rem; }
+	.ms-mockup-btns span { width: 3rem; height: 1rem; border-radius: 4px; }
+	.ms-mockup-btns span:first-child { background: #c9b99a; }
+	.ms-mockup-btns span:last-child { background: #faf8f4; border: 1px solid #e8ddd0; }
+
+	.ms-mockup-hero-sidebar { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; padding: 1rem; background: #faf8f4; border: 1px solid #e8ddd0; border-radius: 8px; }
+	.ms-mockup-result-placeholder { width: 100%; height: 3rem; border-radius: 6px; background: linear-gradient(135deg, #f0ebe3 0%, #e8ddd0 100%); border: 1px solid #e8ddd0; }
+
+	.ms-mockup-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5rem; }
+	.ms-mockup-strip span { height: 1.2rem; border-radius: 5px; background: #faf8f4; border: 1px solid #e8ddd0; }
+
+	.ms-preview-note { margin-top: 1.25rem; font-size: 0.85rem; line-height: 1.55; color: var(--color-muted); max-width: 640px; }
+	.ms-preview-cta { display: flex; flex-wrap: wrap; gap: 0.875rem; margin-top: 1.25rem; }
+
+	/* Audience grid */
+	.ms-audience__grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1rem; }
+	.ms-audience__card { padding: 1.25rem; }
+	.ms-audience__card h3 { font-size: 1.05rem; margin-bottom: 0.35rem; }
+	.ms-audience__card p { font-size: 0.9rem; line-height: 1.55; }
+
+	/* Problem section */
+	.ms-problem__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem; margin-bottom: clamp(2rem, 4vw, 3rem); }
+	.ms-problem__item { display: flex; gap: 0.75rem; align-items: flex-start; padding: 1rem 1.25rem; background: var(--color-white); border: 1px solid var(--color-border); border-radius: var(--radius-md); }
+	.ms-problem__num { flex-shrink: 0; display: inline-flex; align-items: center; justify-content: center; width: 1.6rem; height: 1.6rem; border-radius: 999px; background: var(--color-accent-light); color: var(--color-accent-dark); font-size: 0.68rem; font-weight: 800; }
+	.ms-problem__item p { margin: 0; color: var(--color-text); font-size: 0.92rem; line-height: 1.55; }
+	.ms-problem__solution { max-width: 680px; padding: clamp(1.5rem, 3vw, 2rem); background: var(--color-white); border: 1px solid color-mix(in srgb, var(--color-accent) 35%, var(--color-border)); border-radius: var(--radius-md); }
+	.ms-problem__solution p { font-size: 1rem; line-height: 1.7; }
+	.ms-problem__solution strong { color: var(--color-text); }
+
+	/* Journey/pillars */
+	.ms-journey__grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; }
+	.ms-journey__card { padding: 1.25rem; }
+	.ms-journey__card h3 { font-size: 1.05rem; margin-bottom: 0.35rem; }
+	.ms-journey__card p { font-size: 0.9rem; line-height: 1.55; }
+
+	/* Pages list */
+	.ms-pages__list { display: grid; gap: 0; max-width: 780px; }
+	.ms-pages__item { display: flex; gap: 1rem; align-items: flex-start; padding-block: clamp(1rem, 2vw, 1.35rem); border-bottom: 1px solid var(--color-border); }
+	.ms-pages__item:first-child { border-top: 1px solid var(--color-border); }
+	.ms-pages__num { flex-shrink: 0; display: inline-flex; align-items: center; justify-content: center; min-width: 1.8rem; padding: 0.3rem 0.45rem; border-radius: 999px; background: var(--color-accent-light); color: var(--color-accent-dark); font-size: 0.68rem; font-weight: 800; line-height: 1; margin-top: 0.15rem; }
+	.ms-pages__item h3 { font-size: 1.05rem; margin-bottom: 0.15rem; }
+	.ms-pages__item p { margin: 0; color: var(--color-muted); font-size: 0.9rem; line-height: 1.55; }
+	.ms-pages-cta { display: flex; flex-wrap: wrap; gap: 0.875rem; margin-top: 2rem; }
+
+	/* Features grid */
+	.ms-features__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+	.ms-features__card { padding: 1.25rem; }
+	.ms-features__card h3 { font-size: 1rem; margin-bottom: 0.3rem; }
+	.ms-features__card p { font-size: 0.9rem; line-height: 1.55; }
+
+	/* Design direction */
+	.ms-design__grid { display: grid; gap: 0; max-width: 680px; }
+	.ms-design__item { display: flex; gap: 0.75rem; align-items: flex-start; padding-block: 0.85rem; border-bottom: 1px solid var(--color-border); }
+	.ms-design__item:first-child { border-top: 1px solid var(--color-border); }
+	.ms-design__item svg { flex-shrink: 0; color: var(--color-accent); margin-top: 0.25rem; }
+	.ms-design__item p { margin: 0; color: var(--color-text); font-size: 0.95rem; line-height: 1.6; }
+	.ms-design__palette { display: flex; gap: 0.5rem; margin-top: 1.5rem; }
+	.ms-swatch { width: 2.5rem; height: 2.5rem; border-radius: 8px; border: 1px solid var(--color-border); }
+
+	.ms-design__comparison { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem; max-width: 580px; }
+	.ms-design__col { padding: 1.25rem; background: var(--color-white); border: 1px solid var(--color-border); border-radius: var(--radius-md); }
+	.ms-design__col h3 { font-size: 0.78rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent-dark); margin-bottom: 0.75rem; }
+	.ms-design__col ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.35rem; }
+	.ms-design__col li { font-size: 0.9rem; font-weight: 600; color: var(--color-text); line-height: 1.4; }
+	.ms-design__col--not li { color: var(--color-muted); text-decoration: line-through; text-decoration-color: color-mix(in srgb, var(--color-muted) 35%, transparent); }
+
+	/* Conversion grid */
+	.ms-conversion__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+	.ms-conversion__card { padding: 1.25rem; }
+	.ms-conversion__card h3 { font-size: 1rem; margin-bottom: 0.3rem; }
+	.ms-conversion__card p { font-size: 0.9rem; line-height: 1.55; }
+
+	.ms-conversion__objections { margin-top: clamp(2rem, 4vw, 3rem); padding: 1.25rem; background: var(--color-white); border: 1px solid var(--color-border); border-radius: var(--radius-md); max-width: 580px; }
+	.ms-conversion__objections h3 { font-size: 0.78rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent-dark); margin-bottom: 0.75rem; }
+	.ms-conversion__objections ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.4rem; }
+	.ms-conversion__objections li { font-size: 0.88rem; line-height: 1.5; color: var(--color-muted); font-style: italic; }
+
+	/* Customization */
+	.ms-customize__list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.5rem 2rem; max-width: 780px; margin-bottom: 1rem; }
+	.ms-customize__item { display: flex; align-items: flex-start; gap: 0.5rem; padding-block: 0.55rem; }
+	.ms-customize__item svg { flex-shrink: 0; color: var(--color-accent); margin-top: 0.2rem; }
+	.ms-customize__item span { font-size: 0.92rem; font-weight: 500; color: var(--color-text); line-height: 1.5; }
+
+	/* FAQ */
+	.ms-faq__list { max-width: 680px; margin-inline: auto; }
+	.ms-faq__item { border-bottom: 1px solid var(--color-border); }
+	.ms-faq__item:first-child { border-top: 1px solid var(--color-border); }
+	.ms-faq__q { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.1rem 0; cursor: pointer; list-style: none; font-weight: 600; font-size: 1rem; color: var(--color-text); }
+	.ms-faq__q::-webkit-details-marker { display: none; }
+	.ms-faq__q::marker { display: none; content: ''; }
+	.ms-faq__q svg { flex-shrink: 0; color: var(--color-muted); transition: transform 0.2s ease; }
+	.ms-faq__item[open] .ms-faq__q svg { transform: rotate(180deg); }
+	.ms-faq__a { padding-bottom: 1.25rem; }
+	.ms-faq__a p { margin: 0; color: var(--color-muted); font-size: 0.95rem; line-height: 1.7; }
+
+	/* Responsive */
+	@media (max-width: 1060px) {
+		.ms-audience__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+		.ms-features__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+		.ms-journey__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+	}
+
+	@media (max-width: 900px) {
+		.ms-hero__inner { grid-template-columns: 1fr; }
+		.ms-mockup-hero { grid-template-columns: 1fr; }
+	}
+
+	@media (max-width: 720px) {
+		.ms-audience__grid,
+		.ms-features__grid,
+		.ms-conversion__grid,
+		.ms-problem__grid,
+		.ms-customize__list,
+		.ms-journey__grid,
+		.ms-design__comparison { grid-template-columns: 1fr; }
+		.ms-hero__screen-hero-block { grid-template-columns: 1fr; }
+	}
+</style>

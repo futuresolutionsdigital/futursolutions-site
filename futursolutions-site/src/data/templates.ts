@@ -51,7 +51,7 @@ const combinedTemplateTextBlob = (template: TemplateSystem) =>
 export function getTemplateMatchFilterIds(template: TemplateSystem): string[] {
 	const ids = new Set<string>(['all']);
 
-	if (template.slug === 'med-spa' || template.category.toLowerCase() === 'med spa') {
+	if (template.slug === 'med-spa' || template.category.toLowerCase().includes('med spa') || template.category.toLowerCase().includes('aesthetics')) {
 		ids.add('med-spa');
 	}
 	if (template.slug === 'solo-practice' || template.category.toLowerCase().includes('solo practice')) {
@@ -88,39 +88,43 @@ export const templateSystems: TemplateSystem[] = [
 	{
 		slug: 'med-spa',
 		name: 'Med Spa Website System',
-		category: 'Med Spa',
+		category: 'Medical Aesthetics',
 		shortDescription:
-			'A premium website system for treatment-based health and wellness businesses that need clear services, trust-building sections, local visibility, and a direct booking path.',
+			'A premium med spa website system for aesthetic clinics that need treatment education, provider trust, results galleries, memberships, and consultation-focused booking.',
 		longDescription:
-			'A premium website system for treatment-based health and wellness businesses that need clear treatment education, trust-building sections, local visibility, lead capture, and a direct path toward consultation or booking.',
+			'A complete med spa website system built around treatment discovery, concern-based guidance, provider trust, responsible results presentation, membership and package promotion, and a consultation-first booking flow. Designed for med spas, injectables studios, laser clinics, skin clinics, and modern aesthetic practices.',
 		audience:
-			'Treatment-based health and wellness practices that need to explain services clearly and convert qualified visitors into inquiries.',
+			'Med spas, aesthetic clinics, injectables studios, laser providers, skin clinics, cosmetic dermatology practices, and wellness-forward aesthetic businesses.',
 		businessTypes: [
 			'Med spas',
 			'Aesthetic clinics',
-			'Weight loss clinics',
-			'Hormone therapy clinics',
-			'IV therapy clinics',
-			'Wellness clinics',
+			'Injectables studios',
+			'Laser treatment providers',
+			'Skin clinics',
+			'Cosmetic dermatology practices',
+			'Body contouring clinics',
+			'Wellness-forward aesthetic clinics',
 		],
-		goals: ['Clarify services', 'Build treatment trust', 'Capture leads', 'Support local visibility'],
-		features: ['Treatment Pages', 'Booking Flow', 'Local SEO', 'Lead Capture', 'GoHighLevel Ready'],
-		includedPages: ['Homepage', 'Treatments Overview', 'Individual Treatment Page', 'About', 'Contact / Book', 'FAQ', 'Resources'],
+		goals: ['Educate on treatments', 'Build provider trust', 'Present results responsibly', 'Drive consultation bookings', 'Promote memberships', 'Support local visibility'],
+		features: ['Treatment Menu', 'Concern Guide', 'Results Gallery', 'Provider Profiles', 'Botox Detail Page', 'Membership-Ready', 'Booking Flow', 'Local SEO', 'Lead Capture', 'GoHighLevel Ready'],
+		includedPages: ['Homepage', 'Treatments', 'Botox / Wrinkle Relaxers (Detail)', 'Concerns', 'Results', 'Providers', 'Membership', 'Contact / Consultation', 'About'],
 		problemsSolved: [
-			'Service menus that are hard to understand',
-			'Treatment pages that do not build enough trust',
-			'Weak booking paths from service pages',
-			'Local search pages without enough structure',
+			'Treatments listed without context or education',
+			'Visitors unsure which treatment fits their concern',
+			'Provider credentials hidden or underdeveloped',
+			'Before/after galleries lacking responsible framing',
+			'Booking paths scattered or too aggressive',
+			'Memberships feel discount-driven instead of value-driven',
 		],
-		conversionFeatures: ['Clear treatment pathways', 'Consultation-focused CTA areas', 'Trust and proof sections', 'Lead capture-ready forms'],
-		seoFeatures: ['Treatment page structure', 'Local keyword targeting', 'Metadata patterns', 'Internal links between related services'],
-		backendFeatures: ['Inquiry capture', 'Booking request routing', 'CRM-ready contact fields', 'Follow-up sequence readiness'],
+		conversionFeatures: ['Concern-based treatment routing', 'Consultation-first CTA flow', 'Treatment quick facts and candidacy sections', 'Provider trust system', 'Before/after-ready gallery', 'Membership and package presentation', 'FAQ objection handling'],
+		seoFeatures: ['Treatment page structure', 'Local keyword targeting', 'Concern-based content architecture', 'FAQ-rich service pages', 'Metadata patterns'],
+		backendFeatures: ['Inquiry capture', 'Booking request routing', 'CRM-ready contact fields', 'GoHighLevel-compatible form fields', 'Follow-up sequence readiness'],
 		complexity: 'Growth',
 		detailUrl: '/templates/med-spa',
 		demoUrl: '/demos/med-spa',
 		auditUrl: '/audit?template=med-spa',
 		quickViewSummary:
-			'Treatment-centered pages, calm trust framing, consultation prompts, local visibility structure, and paths ready for a future CRM or booking backend.',
+			'A premium 9-page med spa demo with treatment menu, Botox detail page, concern guide, results gallery, provider profiles, membership page, and consultation booking flow — all in a warm clinical-luxury design.',
 		featured: true,
 	},
 	{
