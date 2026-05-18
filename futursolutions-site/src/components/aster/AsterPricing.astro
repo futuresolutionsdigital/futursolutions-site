@@ -2,51 +2,52 @@
 import { pricingCards, pricingNote } from '../../data/aster';
 ---
 
-<section class="aster-section aster-section--sand aster-pricing" id="pricing" aria-labelledby="pricing-heading">
+<section class="aster-section aster-section--paper aprx" id="pricing" aria-labelledby="pricing-heading">
 	<div class="aster-container">
-		<div class="aster-pricing__intro">
+		<div class="aprx__intro">
 			<p class="aster-eyebrow">Pricing</p>
 			<h2 id="pricing-heading">Transparent care options without surprise billing.</h2>
-			<p class="aster-lead">Clear pricing from the start so you can make confident decisions about your care.</p>
+			<p class="aster-lead">Know what your visit costs before you book. No hidden fees, no surprise billing, no insurance complexity.</p>
 		</div>
-		<div class="aster-pricing__grid">
+		<div class="aprx__list">
 			{pricingCards.map((card) => (
-				<div class:list={['aster-card', 'aster-pricing__card', { 'aster-pricing__card--featured': card.featured }]}>
-					{card.featured && <span class="aster-pricing__badge">Most popular</span>}
-					<h3>{card.name}</h3>
-					<p class="aster-pricing__duration">{card.duration}</p>
-					<p class="aster-pricing__price">
-						<span class="aster-pricing__price-note">{card.priceNote}</span>
-						<span class="aster-pricing__amount">{card.price}{card.priceSuffix && <small>{card.priceSuffix}</small>}</span>
-					</p>
-					<p class="aster-pricing__desc">{card.description}</p>
-					<a class:list={['aster-btn', 'aster-pricing__cta', card.featured ? 'aster-btn--primary' : 'aster-btn--secondary']} href="#faq">
-						{card.featured ? 'Learn About Membership' : 'Book This Visit'}
-					</a>
+				<div class:list={['aprx__item', { 'aprx__item--featured': card.featured }]}>
+					<div class="aprx__item-left">
+						<h3>{card.name}</h3>
+						<p class="aprx__duration">{card.duration}</p>
+						<p class="aprx__desc">{card.description}</p>
+					</div>
+					<div class="aprx__item-right">
+						<span class="aprx__price-note">{card.priceNote}</span>
+						<span class="aprx__amount">{card.price}{card.priceSuffix && <small>{card.priceSuffix}</small>}</span>
+						<a class:list={['aster-btn', card.featured ? 'aster-btn--primary' : 'aster-btn--secondary']} href="#faq" style="margin-top: 0.75rem;">
+							{card.featured ? 'Learn About Membership' : 'Book This Visit'}
+						</a>
+					</div>
 				</div>
 			))}
 		</div>
-		<p class="aster-pricing__note">{pricingNote}</p>
-		<div class="aster-btn-row" style="justify-content: center;">
-			<a class="aster-btn aster-btn--secondary" href="#faq">View Pricing &amp; Membership</a>
-		</div>
+		<p class="aprx__note">{pricingNote}</p>
 	</div>
 </section>
 
 <style>
-.aster-pricing__intro { max-width: 620px; margin-bottom: clamp(2rem, 4vw, 3rem); text-align: center; margin-inline: auto; }
-.aster-pricing__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; }
-.aster-pricing__card { position: relative; display: flex; flex-direction: column; padding: 1.75rem; text-align: center; }
-.aster-pricing__card--featured { border-color: var(--aster-sage); background: linear-gradient(180deg, var(--aster-white) 0%, var(--aster-sage-light) 100%); box-shadow: 0 8px 32px rgba(107, 143, 113, 0.1); }
-.aster-pricing__badge { position: absolute; top: -0.6rem; left: 50%; transform: translateX(-50%); padding: 0.25rem 0.7rem; border-radius: 6px; background: var(--aster-sage); color: var(--aster-white); font-size: 0.68rem; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; white-space: nowrap; }
-.aster-pricing__duration { color: var(--aster-muted); font-size: 0.82rem; margin-bottom: 1rem; }
-.aster-pricing__price { margin-bottom: 1rem; }
-.aster-pricing__price-note { display: block; font-size: 0.72rem; font-weight: 600; color: var(--aster-muted); text-transform: uppercase; letter-spacing: 0.06em; }
-.aster-pricing__amount { font-size: 2.4rem; font-weight: 800; color: var(--aster-heading); letter-spacing: -0.03em; }
-.aster-pricing__amount small { font-size: 0.85rem; font-weight: 600; color: var(--aster-muted); }
-.aster-pricing__desc { flex: 1; color: var(--aster-text); font-size: 0.88rem; line-height: 1.55; margin-bottom: 1.25rem; }
-.aster-pricing__cta { width: 100%; }
-.aster-pricing__note { max-width: 620px; margin: 1.75rem auto 0; padding: 1rem 1.25rem; border-radius: 10px; background: var(--aster-white); border: 1px solid var(--aster-border); text-align: center; color: var(--aster-muted); font-size: 0.82rem; line-height: 1.55; }
+.aprx__intro { max-width: 560px; margin-bottom: clamp(2rem, 4vw, 3rem); text-align: center; margin-inline: auto; }
+.aprx__list { display: grid; gap: 1rem; max-width: 720px; margin-inline: auto; }
+.aprx__item { display: flex; justify-content: space-between; align-items: center; gap: 2rem; padding: 1.5rem 1.75rem; border: 1px solid var(--aster-border); border-radius: var(--aster-radius); background: var(--aster-white); }
+.aprx__item--featured { border-color: var(--aster-clay); background: var(--aster-clay-light); }
+.aprx__item-left { flex: 1; }
+.aprx__item-left h3 { margin-bottom: 0.2rem; }
+.aprx__duration { margin-bottom: 0.5rem; color: var(--aster-muted); font-size: 0.78rem; }
+.aprx__desc { margin: 0; color: var(--aster-text); font-size: 0.85rem; line-height: 1.55; }
+.aprx__item-right { display: flex; flex-direction: column; align-items: center; text-align: center; flex-shrink: 0; }
+.aprx__price-note { font-size: 0.65rem; font-weight: 600; color: var(--aster-muted); text-transform: uppercase; letter-spacing: 0.06em; }
+.aprx__amount { font-family: var(--aster-serif); font-size: 1.8rem; font-weight: 600; color: var(--aster-heading); line-height: 1.2; }
+.aprx__amount small { font-size: 0.75rem; font-weight: 500; color: var(--aster-muted); font-family: var(--aster-sans); }
+.aprx__note { max-width: 580px; margin: 1.5rem auto 0; text-align: center; color: var(--aster-muted); font-size: 0.78rem; line-height: 1.55; font-style: italic; }
 
-@media (max-width: 860px) { .aster-pricing__grid { grid-template-columns: 1fr; max-width: 420px; margin-inline: auto; } }
+@media (max-width: 620px) {
+	.aprx__item { flex-direction: column; text-align: center; gap: 1rem; }
+	.aprx__item-left { text-align: center; }
+}
 </style>

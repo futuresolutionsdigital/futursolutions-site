@@ -1,17 +1,20 @@
 ---
 import { patientFitCards } from '../../data/aster';
+const left = patientFitCards.slice(0, 3);
+const right = patientFitCards.slice(3);
 ---
 
-<section class="aster-section aster-patient-fit" id="patient-fit" aria-labelledby="patient-fit-heading">
-	<div class="aster-container">
-		<div class="aster-patient-fit__intro">
+<section class="aster-section apf" id="patient-fit" aria-labelledby="patient-fit-heading">
+	<div class="aster-container apf__inner">
+		<div class="apf__text">
 			<p class="aster-eyebrow">Is this right for you?</p>
 			<h2 id="patient-fit-heading">Built for patients who feel rushed, dismissed, or stuck without a clear plan.</h2>
+			<p class="aster-lead">Aster Private Health was designed for people who want something different from traditional healthcare — more time, more clarity, and a real relationship with their provider.</p>
 		</div>
-		<div class="aster-patient-fit__grid">
+		<div class="apf__list" role="list">
 			{patientFitCards.map((card) => (
-				<div class="aster-patient-fit__card aster-card">
-					<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 22 22" aria-hidden="true"><circle cx="11" cy="11" r="10.5" stroke="currentColor" stroke-opacity=".15"/><path fill="currentColor" d="M9.5 14.75 6 11.25l.95-.95 2.55 2.55 5.55-5.55.95.95-6.5 6.5Z"/></svg>
+				<div class="apf__item" role="listitem">
+					<span class="apf__dash" aria-hidden="true">—</span>
 					<p>{card.text}</p>
 				</div>
 			))}
@@ -20,12 +23,13 @@ import { patientFitCards } from '../../data/aster';
 </section>
 
 <style>
-.aster-patient-fit__intro { max-width: 680px; margin-bottom: clamp(2rem, 4vw, 3rem); }
-.aster-patient-fit__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
-.aster-patient-fit__card { display: flex; align-items: flex-start; gap: 0.75rem; padding: 1.15rem 1.25rem; }
-.aster-patient-fit__card svg { flex-shrink: 0; margin-top: 0.15rem; color: var(--aster-sage); }
-.aster-patient-fit__card p { margin: 0; font-weight: 600; font-size: 0.92rem; line-height: 1.5; color: var(--aster-heading); }
+.apf__inner { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(3rem, 6vw, 5rem); align-items: start; }
+.apf__text { max-width: 480px; }
+.apf__list { display: grid; gap: 0; }
+.apf__item { display: flex; align-items: baseline; gap: 0.75rem; padding-block: 1rem; border-bottom: 1px solid var(--aster-border); }
+.apf__item:first-child { border-top: 1px solid var(--aster-border); }
+.apf__dash { flex-shrink: 0; color: var(--aster-clay); font-weight: 600; font-size: 0.85rem; }
+.apf__item p { margin: 0; font-size: 0.92rem; font-weight: 500; line-height: 1.5; color: var(--aster-heading); }
 
-@media (max-width: 860px) { .aster-patient-fit__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 520px) { .aster-patient-fit__grid { grid-template-columns: 1fr; } }
+@media (max-width: 768px) { .apf__inner { grid-template-columns: 1fr; } }
 </style>

@@ -2,35 +2,31 @@
 import { testimonials } from '../../data/aster';
 ---
 
-<section class="aster-section aster-testimonials" id="testimonials" aria-labelledby="testimonials-heading">
+<section class="aster-section atest" id="testimonials" aria-labelledby="testimonials-heading">
 	<div class="aster-container">
-		<div class="aster-testimonials__intro">
+		<div class="atest__intro">
 			<p class="aster-eyebrow">Patient experience</p>
 			<h2 id="testimonials-heading">Care that feels personal, clear, and unrushed.</h2>
 		</div>
-		<div class="aster-testimonials__grid">
-			{testimonials.map((t) => (
-				<blockquote class="aster-card aster-testimonials__card">
-					<div class="aster-testimonials__stars" aria-label="5 stars">
-						{'★★★★★'.split('').map(() => <span aria-hidden="true">★</span>)}
-					</div>
-					<p class="aster-testimonials__text">"{t.quote}"</p>
-					<footer class="aster-testimonials__attr">— {t.attribution}</footer>
+		<div class="atest__list">
+			{testimonials.map((t, i) => (
+				<blockquote class:list={['atest__quote', { 'atest__quote--highlight': i === 0 }]}>
+					<p class="atest__text">"{t.quote}"</p>
+					<footer class="atest__attr">— {t.attribution}</footer>
 				</blockquote>
 			))}
 		</div>
-		<p class="aster-testimonials__disclaimer">Demo testimonials shown for template presentation only.</p>
+		<p class="atest__disclaimer">Demo testimonials shown for template presentation only.</p>
 	</div>
 </section>
 
 <style>
-.aster-testimonials__intro { max-width: 620px; margin-bottom: clamp(2rem, 4vw, 3rem); text-align: center; margin-inline: auto; }
-.aster-testimonials__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; }
-.aster-testimonials__card { margin: 0; padding: 1.75rem; display: flex; flex-direction: column; }
-.aster-testimonials__stars { display: flex; gap: 0.15rem; margin-bottom: 0.75rem; color: var(--aster-warm); font-size: 0.85rem; }
-.aster-testimonials__text { flex: 1; margin-bottom: 1rem; color: var(--aster-heading); font-size: 1rem; font-weight: 500; font-style: italic; line-height: 1.6; }
-.aster-testimonials__attr { color: var(--aster-muted); font-size: 0.8rem; font-weight: 600; font-style: normal; }
-.aster-testimonials__disclaimer { margin-top: 1.5rem; text-align: center; color: var(--aster-muted); font-size: 0.72rem; font-style: italic; }
-
-@media (max-width: 860px) { .aster-testimonials__grid { grid-template-columns: 1fr; max-width: 520px; margin-inline: auto; } }
+.atest__intro { max-width: 520px; margin-bottom: clamp(2rem, 4vw, 3rem); }
+.atest__list { display: grid; gap: 0; max-width: 640px; }
+.atest__quote { margin: 0; padding: 1.5rem 0; border-bottom: 1px solid var(--aster-border); }
+.atest__quote:first-child { border-top: 1px solid var(--aster-border); }
+.atest__quote--highlight .atest__text { font-size: clamp(1.15rem, 1rem + 0.4vw, 1.35rem); }
+.atest__text { margin-bottom: 0.5rem; font-family: var(--aster-serif); font-size: clamp(1rem, 0.95rem + 0.25vw, 1.12rem); font-style: italic; font-weight: 400; line-height: 1.6; color: var(--aster-heading); }
+.atest__attr { color: var(--aster-muted); font-family: var(--aster-sans); font-size: 0.78rem; font-weight: 600; font-style: normal; }
+.atest__disclaimer { margin-top: 1.25rem; color: var(--aster-muted); font-size: 0.68rem; font-style: italic; }
 </style>

@@ -8,9 +8,9 @@ import { services, conditions, faqs } from '../../../data/aster';
 	description="Explore care areas offered at Aster Private Health — private primary care, preventive health, women's wellness, hormone support, metabolic health, functional wellness, and telehealth."
 	canonicalUrl="https://futursolutions.vercel.app/demos/solo-practice/services/"
 >
-	<section class="ap-page-hero" aria-labelledby="svc-heading">
+	<section class="sp-hero" aria-labelledby="svc-heading">
 		<div class="aster-container">
-			<a class="ap-back" href="/demos/solo-practice">← Back to Aster Home</a>
+			<a class="sp-back" href="/demos/solo-practice">← Back to Aster Home</a>
 			<p class="aster-eyebrow">Services &amp; Care Areas</p>
 			<h1 id="svc-heading">Care designed around the whole person.</h1>
 			<p class="aster-lead">Each area of care is supported by thorough evaluation, personalized planning, and ongoing follow-up — not a rushed checklist.</p>
@@ -21,26 +21,27 @@ import { services, conditions, faqs } from '../../../data/aster';
 		</div>
 	</section>
 
-	<section class="aster-section aster-section--sand" aria-labelledby="grid-heading">
+	<section class="aster-section aster-section--paper" aria-labelledby="grid-heading">
 		<div class="aster-container">
-			<div class="ap-intro">
+			<div class="sp-intro">
 				<p class="aster-eyebrow">Overview</p>
 				<h2 id="grid-heading">What we help patients with.</h2>
 				<p class="aster-lead">Every service begins with a conversation — your goals, your concerns, and a plan that fits your life.</p>
 			</div>
-			<div class="ap-services-grid">
+			<div class="sp-svc-list">
 				{services.map((svc) => (
-					<article class="aster-card ap-svc-card">
-						<h3>{svc.title}</h3>
-						<p class="ap-svc-card__desc">{svc.description}</p>
-						<div class="ap-svc-card__meta">
-							<strong>Best for:</strong>
-							<span>{svc.bestFor}</span>
+					<article class="sp-svc-row">
+						<div class="sp-svc-head">
+							<h3>{svc.title}</h3>
+							<p class="sp-svc-best">{svc.bestFor}</p>
 						</div>
-						<a class="ap-svc-card__link" href="/demos/solo-practice/new-patients">
-							Book This Service
-							<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 14 14" aria-hidden="true"><path stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" d="m5.25 3.5 3.5 3.5-3.5 3.5"/></svg>
-						</a>
+						<div class="sp-svc-body">
+							<p>{svc.description}</p>
+							<a class="sp-svc-link" href="/demos/solo-practice/new-patients">
+								Book this service
+								<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 14 14" aria-hidden="true"><path stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" d="m5.25 3.5 3.5 3.5-3.5 3.5"/></svg>
+							</a>
+						</div>
 					</article>
 				))}
 			</div>
@@ -49,51 +50,45 @@ import { services, conditions, faqs } from '../../../data/aster';
 
 	<section class="aster-section" aria-labelledby="conditions-heading">
 		<div class="aster-container">
-			<div class="ap-intro">
+			<div class="sp-intro" style="text-align:center; margin-inline:auto;">
 				<p class="aster-eyebrow">Areas of focus</p>
 				<h2 id="conditions-heading">Common concerns we help patients navigate.</h2>
-				<p class="aster-lead">Whether you are seeking answers, symptom relief, or a clearer path forward, these are the concerns our patients most often bring to us.</p>
 			</div>
-			<div class="ap-conditions-grid">
-				{conditions.map((cond) => (
-					<div class="ap-condition-item">
-						<span class="ap-condition-dot" aria-hidden="true"></span>
-						<span>{cond}</span>
-					</div>
-				))}
+			<div class="sp-tags">
+				{conditions.map((cond) => <span class="sp-tag">{cond}</span>)}
 			</div>
 		</div>
 	</section>
 
-	<section class="aster-section aster-section--sand" aria-labelledby="svc-faq-heading">
+	<section class="aster-section aster-section--paper" aria-labelledby="svc-faq-heading">
 		<div class="aster-container">
-			<div class="ap-intro" style="text-align:center; margin-inline:auto;">
+			<div class="sp-intro" style="text-align:center; margin-inline:auto;">
 				<p class="aster-eyebrow">FAQ</p>
 				<h2 id="svc-faq-heading">Questions about our services?</h2>
 			</div>
-			<div class="ap-faq-list">
+			<div class="sp-faq-list">
 				{faqs.slice(0, 4).map((faq) => (
-					<details class="ap-faq-item">
-						<summary class="ap-faq-question">
+					<details class="sp-faq-item">
+						<summary class="sp-faq-q">
 							<span>{faq.question}</span>
-							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 20 20" aria-hidden="true"><path stroke="currentColor" stroke-width="1.5" stroke-linecap="round" d="M5 8l5 5 5-5"/></svg>
+							<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 18 18" aria-hidden="true"><path stroke="currentColor" stroke-width="1.3" stroke-linecap="round" d="M4.5 7l4.5 4.5L13.5 7"/></svg>
 						</summary>
-						<div class="ap-faq-answer"><p>{faq.answer}</p></div>
+						<div class="sp-faq-a"><p>{faq.answer}</p></div>
 					</details>
 				))}
 			</div>
 		</div>
 	</section>
 
-	<section class="aster-section ap-final-section" aria-labelledby="final-heading">
+	<section class="aster-section sp-final" aria-labelledby="final-heading">
 		<div class="aster-container">
-			<div class="ap-final-card">
-				<p class="aster-eyebrow ap-final-eyebrow">Get started</p>
+			<div class="sp-final-card">
+				<p class="aster-eyebrow sp-final-ey">Get started</p>
 				<h2 id="final-heading">Ready to explore which services fit your goals?</h2>
-				<p class="ap-final-lead">Start with a New Patient Consultation and your provider will help you determine the best care pathway.</p>
+				<p class="sp-final-lead">Start with a New Patient Consultation and your provider will help you determine the best care pathway.</p>
 				<div class="aster-btn-row" style="justify-content:center;">
-					<a class="aster-btn ap-final-btn-primary" href="/demos/solo-practice/new-patients">Book a Consultation</a>
-					<a class="aster-btn ap-final-btn-secondary" href="/demos/solo-practice">Back to Aster Home</a>
+					<a class="aster-btn sp-cta-p" href="/demos/solo-practice/new-patients">Book a Consultation</a>
+					<a class="aster-btn sp-cta-s" href="/demos/solo-practice">Back to Aster Home</a>
 				</div>
 			</div>
 		</div>
@@ -101,47 +96,44 @@ import { services, conditions, faqs } from '../../../data/aster';
 </AsterLayout>
 
 <style>
-.ap-page-hero { padding-block: clamp(4rem, 7vw, 6rem) clamp(3rem, 5vw, 4rem); background: linear-gradient(180deg, var(--aster-bg) 0%, color-mix(in srgb, var(--aster-sand) 25%, var(--aster-bg)) 100%); }
-.ap-back { display: inline-flex; align-items: center; margin-bottom: 1.5rem; font-size: 0.82rem; font-weight: 600; color: var(--aster-sage); }
-.ap-back:hover { color: var(--aster-sage-dark); }
-.ap-intro { max-width: 660px; margin-bottom: clamp(2rem, 4vw, 3rem); }
+.sp-hero { padding-block: clamp(4.5rem, 8vw, 7rem) clamp(3rem, 5vw, 4rem); }
+.sp-back { display: inline-flex; margin-bottom: 1.5rem; font-size: 0.82rem; font-weight: 600; color: var(--aster-clay); }
+.sp-back:hover { color: var(--aster-clay-dark); }
+.sp-intro { max-width: 560px; margin-bottom: clamp(2rem, 4vw, 3rem); }
 
-.ap-services-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; }
-.ap-svc-card { display: flex; flex-direction: column; padding: 1.35rem; }
-.ap-svc-card__desc { flex: 1; color: var(--aster-muted); font-size: 0.88rem; line-height: 1.55; }
-.ap-svc-card__meta { margin-bottom: 0.75rem; padding-top: 0.75rem; border-top: 1px solid var(--aster-border); font-size: 0.78rem; color: var(--aster-text); }
-.ap-svc-card__meta strong { color: var(--aster-heading); }
-.ap-svc-card__link { display: inline-flex; align-items: center; gap: 0.3rem; font-size: 0.82rem; font-weight: 700; color: var(--aster-sage); }
-.ap-svc-card__link:hover { color: var(--aster-sage-dark); }
+.sp-svc-list { display: grid; gap: 0; }
+.sp-svc-row { display: grid; grid-template-columns: 0.4fr 1fr; gap: clamp(1.5rem, 3vw, 2.5rem); padding-block: clamp(1.25rem, 2.5vw, 1.75rem); border-bottom: 1px solid var(--aster-border); }
+.sp-svc-row:first-child { border-top: 1px solid var(--aster-border); }
+.sp-svc-head h3 { margin-bottom: 0.25rem; }
+.sp-svc-best { margin: 0; color: var(--aster-muted); font-size: 0.78rem; font-style: italic; }
+.sp-svc-body p { color: var(--aster-text); font-size: 0.9rem; line-height: 1.65; }
+.sp-svc-link { display: inline-flex; align-items: center; gap: 0.25rem; font-size: 0.8rem; font-weight: 600; color: var(--aster-clay); }
+.sp-svc-link:hover { color: var(--aster-clay-dark); }
 
-.ap-conditions-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.75rem; }
-.ap-condition-item { display: flex; align-items: center; gap: 0.65rem; padding: 0.85rem 1rem; border-radius: 10px; background: var(--aster-sand); border: 1px solid var(--aster-border); font-size: 0.9rem; font-weight: 600; color: var(--aster-heading); transition: background 0.18s ease; }
-.ap-condition-item:hover { background: color-mix(in srgb, var(--aster-sage-light) 70%, var(--aster-sand)); }
-.ap-condition-dot { flex-shrink: 0; width: 0.4rem; height: 0.4rem; border-radius: 50%; background: var(--aster-sage); }
+.sp-tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; max-width: 680px; margin-inline: auto; }
+.sp-tag { padding: 0.5rem 1rem; border: 1px solid var(--aster-border); border-radius: 999px; font-size: 0.82rem; font-weight: 500; color: var(--aster-heading); background: var(--aster-white); transition: border-color 0.18s ease, background 0.18s ease; }
+.sp-tag:hover { border-color: var(--aster-clay); background: var(--aster-clay-light); }
 
-.ap-faq-list { max-width: 760px; margin-inline: auto; }
-.ap-faq-item { border-bottom: 1px solid var(--aster-border); }
-.ap-faq-item:first-child { border-top: 1px solid var(--aster-border); }
-.ap-faq-question { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.15rem 0; cursor: pointer; list-style: none; font-weight: 700; font-size: 0.95rem; color: var(--aster-heading); }
-.ap-faq-question::-webkit-details-marker { display: none; }
-.ap-faq-question::marker { display: none; content: ''; }
-.ap-faq-question svg { flex-shrink: 0; color: var(--aster-muted); transition: transform 0.2s ease; }
-.ap-faq-item[open] .ap-faq-question svg { transform: rotate(180deg); }
-.ap-faq-answer { padding-bottom: 1.25rem; }
-.ap-faq-answer p { margin: 0; color: var(--aster-text); font-size: 0.9rem; line-height: 1.65; }
+.sp-faq-list { max-width: 680px; margin-inline: auto; }
+.sp-faq-item { border-bottom: 1px solid var(--aster-border); }
+.sp-faq-item:first-child { border-top: 1px solid var(--aster-border); }
+.sp-faq-q { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.1rem 0; cursor: pointer; list-style: none; font-weight: 600; font-size: 0.92rem; color: var(--aster-heading); }
+.sp-faq-q::-webkit-details-marker { display: none; }
+.sp-faq-q::marker { display: none; content: ''; }
+.sp-faq-q svg { flex-shrink: 0; color: var(--aster-muted); transition: transform 0.2s ease; }
+.sp-faq-item[open] .sp-faq-q svg { transform: rotate(180deg); }
+.sp-faq-a { padding-bottom: 1.25rem; }
+.sp-faq-a p { margin: 0; color: var(--aster-text); font-size: 0.88rem; line-height: 1.7; }
 
-.ap-final-section { padding-block: clamp(2.5rem, 5vw, 4rem); background: var(--aster-sand); }
-.ap-final-card { max-width: 760px; margin-inline: auto; padding: clamp(2rem, 4vw, 3.5rem); border-radius: var(--aster-radius-lg); background: var(--aster-heading); text-align: center; }
-.ap-final-eyebrow { color: var(--aster-warm) !important; }
-.ap-final-card h2 { color: var(--aster-white); max-width: 560px; margin-inline: auto; }
-.ap-final-lead { max-width: 520px; margin-inline: auto; color: rgba(255,255,255,0.6); font-size: 0.95rem; line-height: 1.6; }
-.ap-final-btn-primary { background: var(--aster-sage); color: var(--aster-white); }
-.ap-final-btn-primary:hover { background: var(--aster-sage-dark); color: var(--aster-white); }
-.ap-final-btn-secondary { border-color: rgba(255,255,255,0.15); background: transparent; color: rgba(255,255,255,0.8); }
-.ap-final-btn-secondary:hover { background: rgba(255,255,255,0.08); color: var(--aster-white); }
+.sp-final { padding-block: clamp(2.5rem, 5vw, 4rem); }
+.sp-final-card { max-width: 680px; margin-inline: auto; padding: clamp(2.5rem, 5vw, 4rem); border-radius: var(--aster-radius-lg); background: var(--aster-aubergine); text-align: center; }
+.sp-final-ey { color: var(--aster-clay) !important; opacity: 0.9; }
+.sp-final-card h2 { color: var(--aster-white); font-family: var(--aster-serif); font-weight: 500; max-width: 500px; margin-inline: auto; }
+.sp-final-lead { max-width: 460px; margin-inline: auto; color: rgba(255,255,255,0.55); font-size: 0.92rem; line-height: 1.65; }
+.sp-cta-p { background: var(--aster-clay); color: var(--aster-white); }
+.sp-cta-p:hover { background: var(--aster-clay-dark); color: var(--aster-white); }
+.sp-cta-s { border-color: rgba(255,255,255,0.15); background: transparent; color: rgba(255,255,255,0.75); }
+.sp-cta-s:hover { background: rgba(255,255,255,0.07); color: var(--aster-white); }
 
-@media (max-width: 960px) { .ap-services-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 860px) { .ap-conditions-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-@media (max-width: 620px) { .ap-conditions-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 520px) { .ap-services-grid, .ap-conditions-grid { grid-template-columns: 1fr; } }
+@media (max-width: 620px) { .sp-svc-row { grid-template-columns: 1fr; gap: 0.5rem; } }
 </style>

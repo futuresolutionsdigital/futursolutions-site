@@ -2,22 +2,20 @@
 import { faqs } from '../../data/aster';
 ---
 
-<section class="aster-section aster-faq" id="faq" aria-labelledby="faq-heading">
+<section class="aster-section afaq" id="faq" aria-labelledby="faq-heading">
 	<div class="aster-container">
-		<div class="aster-faq__intro">
+		<div class="afaq__intro">
 			<p class="aster-eyebrow">FAQ</p>
 			<h2 id="faq-heading">Questions before becoming a patient?</h2>
 		</div>
-		<div class="aster-faq__list">
-			{faqs.map((faq, i) => (
-				<details class="aster-faq__item" data-faq-item>
-					<summary class="aster-faq__question">
+		<div class="afaq__list">
+			{faqs.map((faq) => (
+				<details class="afaq__item">
+					<summary class="afaq__question">
 						<span>{faq.question}</span>
-						<svg class="aster-faq__icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 20 20" aria-hidden="true"><path stroke="currentColor" stroke-width="1.5" stroke-linecap="round" d="M5 8l5 5 5-5"/></svg>
+						<svg class="afaq__icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 18 18" aria-hidden="true"><path stroke="currentColor" stroke-width="1.3" stroke-linecap="round" d="M4.5 7l4.5 4.5L13.5 7"/></svg>
 					</summary>
-					<div class="aster-faq__answer">
-						<p>{faq.answer}</p>
-					</div>
+					<div class="afaq__answer"><p>{faq.answer}</p></div>
 				</details>
 			))}
 		</div>
@@ -25,15 +23,15 @@ import { faqs } from '../../data/aster';
 </section>
 
 <style>
-.aster-faq__intro { max-width: 620px; margin-bottom: clamp(2rem, 4vw, 3rem); text-align: center; margin-inline: auto; }
-.aster-faq__list { max-width: 760px; margin-inline: auto; }
-.aster-faq__item { border-bottom: 1px solid var(--aster-border); }
-.aster-faq__item:first-child { border-top: 1px solid var(--aster-border); }
-.aster-faq__question { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.15rem 0; cursor: pointer; list-style: none; font-weight: 700; font-size: 0.95rem; color: var(--aster-heading); }
-.aster-faq__question::-webkit-details-marker { display: none; }
-.aster-faq__question::marker { display: none; content: ''; }
-.aster-faq__icon { flex-shrink: 0; color: var(--aster-muted); transition: transform 0.2s ease; }
-.aster-faq__item[open] .aster-faq__icon { transform: rotate(180deg); }
-.aster-faq__answer { padding-bottom: 1.25rem; }
-.aster-faq__answer p { margin: 0; color: var(--aster-text); font-size: 0.9rem; line-height: 1.65; }
+.afaq__intro { max-width: 520px; margin-bottom: clamp(2rem, 4vw, 3rem); text-align: center; margin-inline: auto; }
+.afaq__list { max-width: 680px; margin-inline: auto; }
+.afaq__item { border-bottom: 1px solid var(--aster-border); }
+.afaq__item:first-child { border-top: 1px solid var(--aster-border); }
+.afaq__question { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.1rem 0; cursor: pointer; list-style: none; font-weight: 600; font-size: 0.92rem; color: var(--aster-heading); }
+.afaq__question::-webkit-details-marker { display: none; }
+.afaq__question::marker { display: none; content: ''; }
+.afaq__icon { flex-shrink: 0; color: var(--aster-muted); transition: transform 0.2s ease; }
+.afaq__item[open] .afaq__icon { transform: rotate(180deg); }
+.afaq__answer { padding-bottom: 1.25rem; }
+.afaq__answer p { margin: 0; color: var(--aster-text); font-size: 0.88rem; line-height: 1.7; }
 </style>

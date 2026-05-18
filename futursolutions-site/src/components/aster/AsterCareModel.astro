@@ -2,35 +2,44 @@
 import { careModelSteps } from '../../data/aster';
 ---
 
-<section class="aster-section aster-section--sand aster-care-model" id="care-model" aria-labelledby="care-model-heading">
+<section class="aster-section aster-section--paper acm" id="care-model" aria-labelledby="care-model-heading">
 	<div class="aster-container">
-		<div class="aster-care-model__intro">
+		<div class="acm__intro">
 			<p class="aster-eyebrow">How it works</p>
 			<h2 id="care-model-heading">A simpler, more personal way to receive care.</h2>
 			<p class="aster-lead">From first consultation to ongoing support, every step is designed around clarity and continuity.</p>
 		</div>
-		<div class="aster-care-model__steps">
-			{careModelSteps.map((s) => (
-				<div class="aster-care-model__step">
-					<span class="aster-care-model__num">{s.step}</span>
-					<h3>{s.title}</h3>
-					<p>{s.description}</p>
+		<div class="acm__timeline">
+			{careModelSteps.map((s, i) => (
+				<div class:list={['acm__step', { 'acm__step--alt': i % 2 !== 0 }]}>
+					<div class="acm__line" aria-hidden="true">
+						<span class="acm__dot"></span>
+					</div>
+					<div class="acm__content">
+						<span class="acm__num">{s.step}</span>
+						<h3>{s.title}</h3>
+						<p>{s.description}</p>
+					</div>
 				</div>
 			))}
 		</div>
-		<div class="aster-btn-row">
+		<div class="aster-btn-row" style="justify-content:center; margin-top: 2.5rem;">
 			<a class="aster-btn aster-btn--primary" href="#pricing">Book a Consultation</a>
 		</div>
 	</div>
 </section>
 
 <style>
-.aster-care-model__intro { max-width: 620px; margin-bottom: clamp(2rem, 4vw, 3rem); }
-.aster-care-model__steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.25rem; counter-reset: step; }
-.aster-care-model__step { padding: 1.5rem; border-radius: var(--aster-radius); background: var(--aster-white); border: 1px solid var(--aster-border); }
-.aster-care-model__num { display: inline-flex; align-items: center; justify-content: center; width: 2.2rem; height: 2.2rem; margin-bottom: 1rem; border-radius: 8px; background: var(--aster-sage-light); color: var(--aster-sage); font-size: 0.72rem; font-weight: 800; }
-.aster-care-model__step p { margin: 0; color: var(--aster-muted); font-size: 0.88rem; line-height: 1.55; }
+.acm__intro { max-width: 560px; margin-bottom: clamp(2.5rem, 5vw, 3.5rem); text-align: center; margin-inline: auto; }
+.acm__timeline { position: relative; max-width: 560px; margin-inline: auto; padding-left: 2.5rem; }
+.acm__timeline::before { content: ''; position: absolute; left: 0.45rem; top: 0.6rem; bottom: 0.6rem; width: 1px; background: var(--aster-border); }
+.acm__step { position: relative; padding-bottom: clamp(2rem, 3.5vw, 2.5rem); }
+.acm__step:last-child { padding-bottom: 0; }
+.acm__line { position: absolute; left: -2.5rem; top: 0.25rem; }
+.acm__dot { display: block; width: 0.6rem; height: 0.6rem; border-radius: 50%; background: var(--aster-clay); border: 2px solid var(--aster-paper); }
+.acm__num { display: inline-block; margin-bottom: 0.35rem; font-size: 0.68rem; font-weight: 700; color: var(--aster-clay); letter-spacing: 0.08em; text-transform: uppercase; }
+.acm__content h3 { font-size: 1.05rem; }
+.acm__content p { margin: 0; color: var(--aster-muted); font-size: 0.9rem; line-height: 1.6; }
 
-@media (max-width: 860px) { .aster-care-model__steps { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 520px) { .aster-care-model__steps { grid-template-columns: 1fr; } }
+@media (max-width: 520px) { .acm__timeline { padding-left: 2rem; } .acm__line { left: -2rem; } }
 </style>

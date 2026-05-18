@@ -1,66 +1,56 @@
 ---
-import { hero } from '../../data/aster';
+import { hero, provider } from '../../data/aster';
 ---
 
-<section class="aster-hero" aria-labelledby="aster-hero-heading">
-	<div class="aster-container aster-hero__inner">
-		<div class="aster-hero__content">
+<section class="ah-hero" aria-labelledby="aster-hero-heading">
+	<div class="aster-container ah-hero__inner">
+		<div class="ah-hero__content">
+			<p class="aster-eyebrow">Aster Private Health · Temecula, CA</p>
 			<h1 id="aster-hero-heading">{hero.headline}</h1>
-			<p class="aster-hero__lead">{hero.lead}</p>
+			<p class="ah-hero__lead">{hero.lead}</p>
 			<div class="aster-btn-row">
 				<a class="aster-btn aster-btn--primary" href={hero.primaryCta.href}>{hero.primaryCta.text}</a>
 				<a class="aster-btn aster-btn--secondary" href={hero.secondaryCta.href}>{hero.secondaryCta.text}</a>
 			</div>
 		</div>
-		<div class="aster-hero__visual" aria-hidden="true">
-			<div class="aster-hero__portrait">
-				<div class="aster-hero__avatar">
-					<span>EM</span>
-				</div>
-				<p class="aster-hero__caption">Dr. Elena Marrow, FNP-C</p>
-				<p class="aster-hero__subcaption">Board-Certified Family Nurse Practitioner</p>
+		<aside class="ah-hero__aside" aria-label="Provider introduction">
+			<div class="ah-hero__provider-note">
+				<div class="ah-hero__avatar" aria-hidden="true"><span>{provider.initials}</span></div>
+				<p class="ah-hero__note-text"><em>"{provider.quote}"</em></p>
+				<p class="ah-hero__note-sig">— {provider.name}</p>
+				<p class="ah-hero__note-title">{provider.title}</p>
 			</div>
-			<div class="aster-hero__stat-card">
-				<span class="aster-hero__stat-icon">✦</span>
-				<span class="aster-hero__stat-text">60–75 min<br/>first visits</span>
-			</div>
-		</div>
+		</aside>
 	</div>
 	<div class="aster-container">
-		<div class="aster-trust-strip">
+		<div class="ah-trust">
 			{hero.trustStrip.map((item) => (
-				<div class="aster-trust-strip__item">
-					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7.5" stroke="currentColor" stroke-opacity=".3"/><path fill="currentColor" d="M7 10.5 4.5 8l.7-.7L7 9.08l3.8-3.8.7.72L7 10.5Z"/></svg>
-					<span>{item}</span>
-				</div>
+				<span class="ah-trust__item">{item}</span>
 			))}
 		</div>
 	</div>
 </section>
 
 <style>
-.aster-hero { padding-block: clamp(4rem, 7vw, 6.5rem) clamp(3rem, 5vw, 4rem); background: linear-gradient(180deg, var(--aster-bg) 0%, color-mix(in srgb, var(--aster-sand) 25%, var(--aster-bg)) 100%); }
-.aster-hero__inner { display: grid; grid-template-columns: 1.25fr 0.75fr; gap: clamp(2.5rem, 5vw, 5rem); align-items: center; }
-.aster-hero__lead { max-width: 560px; color: var(--aster-muted); font-size: clamp(1.05rem, 1rem + 0.25vw, 1.18rem); line-height: 1.65; }
-.aster-hero__visual { display: flex; flex-direction: column; align-items: center; gap: 1rem; }
-.aster-hero__portrait { padding: clamp(1.5rem, 3vw, 2.25rem); border-radius: var(--aster-radius-lg); background: var(--aster-white); border: 1px solid var(--aster-border); box-shadow: 0 16px 48px rgba(26, 32, 44, 0.06); text-align: center; }
-.aster-hero__avatar { display: inline-flex; align-items: center; justify-content: center; width: 6rem; height: 6rem; margin-bottom: 1rem; border-radius: 50%; background: linear-gradient(145deg, var(--aster-sage-light), color-mix(in srgb, var(--aster-sage) 18%, var(--aster-white))); }
-.aster-hero__avatar span { font-size: 1.3rem; font-weight: 800; color: var(--aster-sage); }
-.aster-hero__caption { margin-bottom: 0.2rem; color: var(--aster-heading); font-size: 0.95rem; font-weight: 700; }
-.aster-hero__subcaption { color: var(--aster-muted); font-size: 0.78rem; }
-.aster-hero__stat-card { display: flex; align-items: center; gap: 0.6rem; padding: 0.65rem 1rem; border: 1px solid var(--aster-border); border-radius: 10px; background: var(--aster-white); box-shadow: 0 4px 16px rgba(26, 32, 44, 0.04); }
-.aster-hero__stat-icon { color: var(--aster-warm); font-size: 1rem; }
-.aster-hero__stat-text { font-size: 0.75rem; font-weight: 700; line-height: 1.35; color: var(--aster-heading); }
-.aster-trust-strip { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.25rem; margin-top: clamp(2rem, 4vw, 3rem); padding: 1rem 1.25rem; border-radius: var(--aster-radius); background: var(--aster-white); border: 1px solid var(--aster-border); }
-.aster-trust-strip__item { display: flex; align-items: center; gap: 0.45rem; color: var(--aster-sage); font-size: 0.82rem; font-weight: 600; }
-.aster-trust-strip__item span { color: var(--aster-heading); }
+.ah-hero { padding-block: clamp(4.5rem, 8vw, 7rem) clamp(2.5rem, 4vw, 3.5rem); }
+.ah-hero__inner { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: clamp(3rem, 6vw, 6rem); align-items: start; }
+.ah-hero__lead { max-width: 520px; color: var(--aster-muted); font-size: clamp(1.02rem, 1rem + 0.2vw, 1.12rem); line-height: 1.7; }
+.ah-hero__aside { display: flex; align-items: flex-start; }
+.ah-hero__provider-note { padding: clamp(1.5rem, 3vw, 2.25rem); border-left: 3px solid var(--aster-clay); background: var(--aster-paper); border-radius: 0 var(--aster-radius) var(--aster-radius) 0; }
+.ah-hero__avatar { display: inline-flex; align-items: center; justify-content: center; width: 3rem; height: 3rem; margin-bottom: 1rem; border-radius: 50%; background: var(--aster-white); border: 1px solid var(--aster-border); }
+.ah-hero__avatar span { font-size: 0.75rem; font-weight: 700; color: var(--aster-clay); font-family: var(--aster-serif); }
+.ah-hero__note-text { font-family: var(--aster-serif); font-size: clamp(1rem, 0.95rem + 0.25vw, 1.12rem); font-weight: 400; line-height: 1.6; color: var(--aster-heading); margin-bottom: 1rem; }
+.ah-hero__note-text em { font-style: italic; }
+.ah-hero__note-sig { margin-bottom: 0.15rem; font-size: 0.82rem; font-weight: 700; color: var(--aster-heading); }
+.ah-hero__note-title { font-size: 0.72rem; color: var(--aster-muted); }
+.ah-trust { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; margin-top: clamp(2.5rem, 5vw, 3.5rem); }
+.ah-trust__item { padding: 0.45rem 0.85rem; border: 1px solid var(--aster-border); border-radius: 999px; font-size: 0.75rem; font-weight: 600; color: var(--aster-muted); background: var(--aster-white); }
 
 @media (max-width: 860px) {
-	.aster-hero__inner { grid-template-columns: 1fr; text-align: center; }
-	.aster-hero__lead { margin-inline: auto; }
+	.ah-hero__inner { grid-template-columns: 1fr; }
+	.ah-hero__content { text-align: center; }
+	.ah-hero__lead { margin-inline: auto; }
 	.aster-btn-row { justify-content: center; }
-}
-@media (max-width: 520px) {
-	.aster-trust-strip { flex-direction: column; align-items: flex-start; }
+	.ah-hero__provider-note { border-left: none; border-top: 3px solid var(--aster-clay); border-radius: 0 0 var(--aster-radius) var(--aster-radius); }
 }
 </style>

@@ -29,19 +29,22 @@ const prepareItems = [
 		</div>
 	</section>
 
-	<section class="aster-section aster-section--sand" aria-labelledby="expect-heading">
+	<section class="aster-section aster-section--paper" aria-labelledby="expect-heading">
 		<div class="aster-container">
-			<div class="np-intro">
+			<div class="np-intro" style="text-align:center; margin-inline:auto;">
 				<p class="aster-eyebrow">What to expect</p>
 				<h2 id="expect-heading">A calmer, more thorough first visit.</h2>
-				<p class="aster-lead">Your New Patient Consultation is 60–75 minutes — enough time to review your full health picture, answer your questions, and build a care plan that fits your life.</p>
+				<p class="aster-lead" style="margin-inline:auto;">Your New Patient Consultation is 60–75 minutes — enough time to review your full health picture, answer your questions, and build a care plan that fits your life.</p>
 			</div>
-			<div class="np-steps-grid">
+			<div class="np-timeline">
 				{careModelSteps.map((s) => (
-					<div class="np-step">
-						<span class="np-step__num">{s.step}</span>
-						<h3>{s.title}</h3>
-						<p>{s.description}</p>
+					<div class="np-tl-step">
+						<div class="np-tl-line" aria-hidden="true"><span class="np-tl-dot"></span></div>
+						<div class="np-tl-content">
+							<span class="np-tl-num">{s.step}</span>
+							<h3>{s.title}</h3>
+							<p>{s.description}</p>
+						</div>
 					</div>
 				))}
 			</div>
@@ -59,7 +62,7 @@ const prepareItems = [
 				<ul class="np-checklist">
 					{prepareItems.map((item) => (
 						<li>
-							<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="8.5" stroke="currentColor" stroke-opacity=".2"/><path fill="currentColor" d="M8 12.2 5.3 9.5l.7-.7L8 10.78l4-4 .7.72L8 12.2Z"/></svg>
+							<span class="np-check-dash" aria-hidden="true">—</span>
 							<span>{item}</span>
 						</li>
 					))}
@@ -68,15 +71,15 @@ const prepareItems = [
 		</div>
 	</section>
 
-	<section class="aster-section aster-section--sand" aria-labelledby="provider-heading">
-		<div class="aster-container np-provider-grid">
-			<div class="np-provider-avatar" aria-hidden="true">
+	<section class="aster-section aster-section--paper" aria-labelledby="provider-heading">
+		<div class="aster-container np-prov-grid">
+			<div class="np-prov-avatar" aria-hidden="true">
 				<div class="np-avatar-circle"><span>{provider.initials}</span></div>
 			</div>
 			<div>
 				<p class="aster-eyebrow">Your provider</p>
 				<h2 id="provider-heading">{provider.name}</h2>
-				<p class="np-provider-title">{provider.title}</p>
+				<p class="np-prov-title">{provider.title}</p>
 				<p>{provider.bio}</p>
 				<blockquote class="np-quote"><p>"{provider.quote}"</p></blockquote>
 				<a class="aster-btn aster-btn--secondary" href="/demos/solo-practice/#provider">Read Full Provider Story</a>
@@ -91,25 +94,26 @@ const prepareItems = [
 				<h2 id="pricing-heading">Transparent pricing — no surprises.</h2>
 				<p class="aster-lead" style="margin-inline:auto;">Know what your visit costs before you book.</p>
 			</div>
-			<div class="np-pricing-grid">
+			<div class="np-pricing-list">
 				{pricingCards.map((card) => (
-					<div class:list={['aster-card', 'np-pricing-card', { 'np-pricing-card--featured': card.featured }]}>
-						{card.featured && <span class="np-pricing-badge">Most popular</span>}
-						<h3>{card.name}</h3>
-						<p class="np-pricing-duration">{card.duration}</p>
-						<p class="np-pricing-price">
-							<span class="np-pricing-note">{card.priceNote}</span>
-							<span class="np-pricing-amount">{card.price}{card.priceSuffix && <small>{card.priceSuffix}</small>}</span>
-						</p>
-						<p class="np-pricing-desc">{card.description}</p>
+					<div class:list={['np-px-item', { 'np-px-item--feat': card.featured }]}>
+						<div class="np-px-left">
+							<h3>{card.name}</h3>
+							<p class="np-px-dur">{card.duration}</p>
+							<p class="np-px-desc">{card.description}</p>
+						</div>
+						<div class="np-px-right">
+							<span class="np-px-note">{card.priceNote}</span>
+							<span class="np-px-amt">{card.price}{card.priceSuffix && <small>{card.priceSuffix}</small>}</span>
+						</div>
 					</div>
 				))}
 			</div>
-			<p class="np-pricing-disclaimer">{pricingNote}</p>
+			<p class="np-px-disc">{pricingNote}</p>
 		</div>
 	</section>
 
-	<section class="aster-section aster-section--sand" id="book" aria-labelledby="book-heading">
+	<section class="aster-section aster-section--paper" id="book" aria-labelledby="book-heading">
 		<div class="aster-container np-book-grid">
 			<div>
 				<p class="aster-eyebrow">Book your consultation</p>
@@ -118,20 +122,10 @@ const prepareItems = [
 			</div>
 			<div class="np-form-card aster-card">
 				<form novalidate onsubmit="return false" aria-label="Aster Private Health new patient inquiry form">
-					<label>
-						<span>Full name</span>
-						<input type="text" name="name" autocomplete="name" placeholder="Your full name" />
-					</label>
-					<label>
-						<span>Email</span>
-						<input type="email" name="email" autocomplete="email" placeholder="you@email.com" />
-					</label>
-					<label>
-						<span>Phone (optional)</span>
-						<input type="tel" name="phone" autocomplete="tel" placeholder="(555) 555-5555" />
-					</label>
-					<label>
-						<span>What brings you in?</span>
+					<label><span>Full name</span><input type="text" name="name" autocomplete="name" placeholder="Your full name" /></label>
+					<label><span>Email</span><input type="email" name="email" autocomplete="email" placeholder="you@email.com" /></label>
+					<label><span>Phone (optional)</span><input type="tel" name="phone" autocomplete="tel" placeholder="(555) 555-5555" /></label>
+					<label><span>What brings you in?</span>
 						<select name="reason">
 							<option value="">Select a reason</option>
 							<option value="primary-care">Looking for a primary care provider</option>
@@ -142,10 +136,7 @@ const prepareItems = [
 							<option value="not-sure">Not sure yet — I want to learn more</option>
 						</select>
 					</label>
-					<label>
-						<span>Anything else you'd like us to know?</span>
-						<textarea name="message" rows="3" placeholder="Health goals, concerns, or questions..."></textarea>
-					</label>
+					<label><span>Anything else you'd like us to know?</span><textarea name="message" rows="3" placeholder="Health goals, concerns, or questions..."></textarea></label>
 					<input type="hidden" name="source" value="New Patient Page" />
 					<input type="hidden" name="leadType" value="New Patient Consultation Request" />
 					<div class="np-form-footer">
@@ -166,26 +157,23 @@ const prepareItems = [
 			<div class="np-faq-list">
 				{faqs.map((faq) => (
 					<details class="np-faq-item">
-						<summary class="np-faq-question">
-							<span>{faq.question}</span>
-							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 20 20" aria-hidden="true"><path stroke="currentColor" stroke-width="1.5" stroke-linecap="round" d="M5 8l5 5 5-5"/></svg>
-						</summary>
-						<div class="np-faq-answer"><p>{faq.answer}</p></div>
+						<summary class="np-faq-q"><span>{faq.question}</span><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 18 18" aria-hidden="true"><path stroke="currentColor" stroke-width="1.3" stroke-linecap="round" d="M4.5 7l4.5 4.5L13.5 7"/></svg></summary>
+						<div class="np-faq-a"><p>{faq.answer}</p></div>
 					</details>
 				))}
 			</div>
 		</div>
 	</section>
 
-	<section class="aster-section np-final-section" aria-labelledby="final-heading">
+	<section class="aster-section np-final" aria-labelledby="final-heading">
 		<div class="aster-container">
 			<div class="np-final-card">
-				<p class="aster-eyebrow np-final-eyebrow">Get started</p>
+				<p class="aster-eyebrow np-final-ey">Get started</p>
 				<h2 id="final-heading">Ready for healthcare that feels more personal?</h2>
 				<p class="np-final-lead">Start with a consultation and find out whether Aster Private Health is the right fit for your goals, concerns, and care preferences.</p>
 				<div class="aster-btn-row" style="justify-content:center;">
-					<a class="aster-btn np-final-btn-primary" href="#book">Book a Consultation</a>
-					<a class="aster-btn np-final-btn-secondary" href="/demos/solo-practice/services">Explore Services</a>
+					<a class="aster-btn np-cta-p" href="#book">Book a Consultation</a>
+					<a class="aster-btn np-cta-s" href="/demos/solo-practice/services">Explore Services</a>
 				</div>
 			</div>
 		</div>
@@ -193,81 +181,83 @@ const prepareItems = [
 </AsterLayout>
 
 <style>
-.np-hero { padding-block: clamp(4rem, 7vw, 6rem) clamp(3rem, 5vw, 4rem); background: linear-gradient(180deg, var(--aster-bg) 0%, color-mix(in srgb, var(--aster-sand) 25%, var(--aster-bg)) 100%); }
-.np-back { display: inline-flex; align-items: center; margin-bottom: 1.5rem; font-size: 0.82rem; font-weight: 600; color: var(--aster-sage); }
-.np-back:hover { color: var(--aster-sage-dark); }
-.np-intro { max-width: 660px; margin-bottom: clamp(2rem, 4vw, 3rem); }
+.np-hero { padding-block: clamp(4.5rem, 8vw, 7rem) clamp(3rem, 5vw, 4rem); }
+.np-back { display: inline-flex; margin-bottom: 1.5rem; font-size: 0.82rem; font-weight: 600; color: var(--aster-clay); }
+.np-back:hover { color: var(--aster-clay-dark); }
+.np-intro { max-width: 560px; margin-bottom: clamp(2rem, 4vw, 3rem); }
 
-.np-steps-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.25rem; }
-.np-step { padding: 1.5rem; border-radius: var(--aster-radius); background: var(--aster-white); border: 1px solid var(--aster-border); }
-.np-step__num { display: inline-flex; align-items: center; justify-content: center; width: 2.2rem; height: 2.2rem; margin-bottom: 1rem; border-radius: 8px; background: var(--aster-sage-light); color: var(--aster-sage); font-size: 0.72rem; font-weight: 800; }
-.np-step p { margin: 0; color: var(--aster-muted); font-size: 0.88rem; line-height: 1.55; }
+.np-timeline { position: relative; max-width: 560px; margin-inline: auto; padding-left: 2.5rem; }
+.np-timeline::before { content: ''; position: absolute; left: 0.45rem; top: 0.6rem; bottom: 0.6rem; width: 1px; background: var(--aster-border); }
+.np-tl-step { position: relative; padding-bottom: clamp(2rem, 3.5vw, 2.5rem); }
+.np-tl-step:last-child { padding-bottom: 0; }
+.np-tl-line { position: absolute; left: -2.5rem; top: 0.25rem; }
+.np-tl-dot { display: block; width: 0.6rem; height: 0.6rem; border-radius: 50%; background: var(--aster-clay); border: 2px solid var(--aster-paper); }
+.np-tl-num { display: inline-block; margin-bottom: 0.35rem; font-size: 0.68rem; font-weight: 700; color: var(--aster-clay); letter-spacing: 0.08em; text-transform: uppercase; }
+.np-tl-content h3 { font-size: 1.05rem; }
+.np-tl-content p { margin: 0; color: var(--aster-muted); font-size: 0.9rem; line-height: 1.6; }
 
 .np-prep-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 4rem); align-items: start; }
 .np-prep-card { padding: 1.75rem; }
 .np-checklist { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.85rem; }
-.np-checklist li { display: flex; align-items: flex-start; gap: 0.65rem; font-size: 0.92rem; font-weight: 600; color: var(--aster-heading); }
-.np-checklist svg { flex-shrink: 0; margin-top: 0.1rem; color: var(--aster-sage); }
+.np-checklist li { display: flex; align-items: baseline; gap: 0.65rem; font-size: 0.92rem; font-weight: 500; color: var(--aster-heading); }
+.np-check-dash { flex-shrink: 0; color: var(--aster-clay); font-weight: 600; }
 
-.np-provider-grid { display: grid; grid-template-columns: 0.35fr 1fr; gap: clamp(2rem, 5vw, 4rem); align-items: start; }
-.np-provider-avatar { display: flex; justify-content: center; padding: 2rem; border-radius: var(--aster-radius-lg); background: linear-gradient(145deg, var(--aster-sage-light) 0%, color-mix(in srgb, var(--aster-warm-light) 40%, var(--aster-sage-light)) 100%); border: 1px solid var(--aster-border); }
-.np-avatar-circle { display: flex; align-items: center; justify-content: center; width: 7rem; height: 7rem; border-radius: 50%; background: var(--aster-white); box-shadow: 0 8px 32px rgba(26, 32, 44, 0.06); }
-.np-avatar-circle span { font-size: 1.6rem; font-weight: 800; color: var(--aster-sage); }
-.np-provider-title { color: var(--aster-sage); font-weight: 600; font-size: 0.92rem; margin-bottom: 0.5rem; }
-.np-quote { margin: 1.25rem 0; padding-left: 1.25rem; border-left: 3px solid var(--aster-warm); }
-.np-quote p { margin: 0; color: var(--aster-heading); font-size: 1rem; font-style: italic; font-weight: 500; line-height: 1.6; }
+.np-prov-grid { display: grid; grid-template-columns: 0.32fr 1fr; gap: clamp(2rem, 5vw, 4rem); align-items: start; }
+.np-prov-avatar { display: flex; justify-content: center; }
+.np-avatar-circle { display: flex; align-items: center; justify-content: center; width: 7rem; height: 7rem; border-radius: 50%; background: var(--aster-white); border: 1px solid var(--aster-border); }
+.np-avatar-circle span { font-family: var(--aster-serif); font-size: 1.6rem; font-weight: 600; color: var(--aster-clay); }
+.np-prov-title { color: var(--aster-clay); font-weight: 600; font-size: 0.88rem; margin-bottom: 0.5rem; }
+.np-quote { margin: 1.25rem 0; padding: 1rem 1.25rem; background: var(--aster-white); border-radius: var(--aster-radius); border-left: 3px solid var(--aster-clay); }
+.np-quote p { margin: 0; font-family: var(--aster-serif); font-size: 1rem; font-style: italic; font-weight: 400; line-height: 1.6; color: var(--aster-heading); }
 
-.np-pricing-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; }
-.np-pricing-card { position: relative; display: flex; flex-direction: column; padding: 1.75rem; text-align: center; }
-.np-pricing-card--featured { border-color: var(--aster-sage); background: linear-gradient(180deg, var(--aster-white) 0%, var(--aster-sage-light) 100%); box-shadow: 0 8px 32px rgba(107, 143, 113, 0.1); }
-.np-pricing-badge { position: absolute; top: -0.6rem; left: 50%; transform: translateX(-50%); padding: 0.25rem 0.7rem; border-radius: 6px; background: var(--aster-sage); color: var(--aster-white); font-size: 0.68rem; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; white-space: nowrap; }
-.np-pricing-duration { color: var(--aster-muted); font-size: 0.82rem; margin-bottom: 1rem; }
-.np-pricing-price { margin-bottom: 1rem; }
-.np-pricing-note { display: block; font-size: 0.72rem; font-weight: 600; color: var(--aster-muted); text-transform: uppercase; letter-spacing: 0.06em; }
-.np-pricing-amount { font-size: 2.4rem; font-weight: 800; color: var(--aster-heading); letter-spacing: -0.03em; }
-.np-pricing-amount small { font-size: 0.85rem; font-weight: 600; color: var(--aster-muted); }
-.np-pricing-desc { flex: 1; color: var(--aster-text); font-size: 0.88rem; line-height: 1.55; }
-.np-pricing-disclaimer { max-width: 620px; margin: 1.75rem auto 0; padding: 1rem 1.25rem; border-radius: 10px; background: var(--aster-sand); border: 1px solid var(--aster-border); text-align: center; color: var(--aster-muted); font-size: 0.82rem; line-height: 1.55; }
+.np-pricing-list { display: grid; gap: 1rem; max-width: 720px; margin-inline: auto; }
+.np-px-item { display: flex; justify-content: space-between; align-items: center; gap: 2rem; padding: 1.5rem 1.75rem; border: 1px solid var(--aster-border); border-radius: var(--aster-radius); background: var(--aster-white); }
+.np-px-item--feat { border-color: var(--aster-clay); background: var(--aster-clay-light); }
+.np-px-left { flex: 1; }
+.np-px-left h3 { margin-bottom: 0.2rem; }
+.np-px-dur { margin-bottom: 0.5rem; color: var(--aster-muted); font-size: 0.78rem; }
+.np-px-desc { margin: 0; color: var(--aster-text); font-size: 0.85rem; line-height: 1.55; }
+.np-px-right { display: flex; flex-direction: column; align-items: center; text-align: center; flex-shrink: 0; }
+.np-px-note { font-size: 0.65rem; font-weight: 600; color: var(--aster-muted); text-transform: uppercase; letter-spacing: 0.06em; }
+.np-px-amt { font-family: var(--aster-serif); font-size: 1.8rem; font-weight: 600; color: var(--aster-heading); line-height: 1.2; }
+.np-px-amt small { font-size: 0.75rem; font-weight: 500; color: var(--aster-muted); font-family: var(--aster-sans); }
+.np-px-disc { max-width: 580px; margin: 1.5rem auto 0; text-align: center; color: var(--aster-muted); font-size: 0.78rem; line-height: 1.55; font-style: italic; }
 
 .np-book-grid { display: grid; grid-template-columns: 0.85fr 1fr; gap: clamp(2rem, 5vw, 4rem); align-items: start; }
 .np-form-card { padding: clamp(1.35rem, 3vw, 2rem); }
 .np-form-card form, .np-form-card label { display: grid; gap: 1rem; }
 .np-form-card label { gap: 0.4rem; }
-.np-form-card label span { color: var(--aster-heading); font-size: 0.85rem; font-weight: 700; }
-.np-form-card input, .np-form-card select, .np-form-card textarea { width: 100%; border: 1px solid var(--aster-border); border-radius: 10px; background: var(--aster-bg); color: var(--aster-heading); font-size: 0.92rem; }
+.np-form-card label span { color: var(--aster-heading); font-size: 0.85rem; font-weight: 600; }
+.np-form-card input, .np-form-card select, .np-form-card textarea { width: 100%; border: 1px solid var(--aster-border); border-radius: 8px; background: var(--aster-ivory); color: var(--aster-heading); font-size: 0.92rem; }
 .np-form-card input, .np-form-card select { min-height: 2.75rem; padding: 0.65rem 0.8rem; }
 .np-form-card textarea { resize: vertical; min-height: 5rem; padding: 0.75rem 0.8rem; }
-.np-form-card input:focus, .np-form-card select:focus, .np-form-card textarea:focus { border-color: var(--aster-sage); outline: none; background: var(--aster-white); }
+.np-form-card input:focus, .np-form-card select:focus, .np-form-card textarea:focus { border-color: var(--aster-clay); outline: none; background: var(--aster-white); }
 .np-form-card input::placeholder, .np-form-card textarea::placeholder { color: var(--aster-muted); }
 .np-form-footer { display: grid; gap: 0.75rem; }
 .np-form-footer p { margin: 0; color: var(--aster-muted); font-size: 0.78rem; line-height: 1.55; text-align: center; }
 
-.np-faq-list { max-width: 760px; margin-inline: auto; }
+.np-faq-list { max-width: 680px; margin-inline: auto; }
 .np-faq-item { border-bottom: 1px solid var(--aster-border); }
 .np-faq-item:first-child { border-top: 1px solid var(--aster-border); }
-.np-faq-question { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.15rem 0; cursor: pointer; list-style: none; font-weight: 700; font-size: 0.95rem; color: var(--aster-heading); }
-.np-faq-question::-webkit-details-marker { display: none; }
-.np-faq-question::marker { display: none; content: ''; }
-.np-faq-question svg { flex-shrink: 0; color: var(--aster-muted); transition: transform 0.2s ease; }
-.np-faq-item[open] .np-faq-question svg { transform: rotate(180deg); }
-.np-faq-answer { padding-bottom: 1.25rem; }
-.np-faq-answer p { margin: 0; color: var(--aster-text); font-size: 0.9rem; line-height: 1.65; }
+.np-faq-q { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.1rem 0; cursor: pointer; list-style: none; font-weight: 600; font-size: 0.92rem; color: var(--aster-heading); }
+.np-faq-q::-webkit-details-marker { display: none; }
+.np-faq-q::marker { display: none; content: ''; }
+.np-faq-q svg { flex-shrink: 0; color: var(--aster-muted); transition: transform 0.2s ease; }
+.np-faq-item[open] .np-faq-q svg { transform: rotate(180deg); }
+.np-faq-a { padding-bottom: 1.25rem; }
+.np-faq-a p { margin: 0; color: var(--aster-text); font-size: 0.88rem; line-height: 1.7; }
 
-.np-final-section { padding-block: clamp(2.5rem, 5vw, 4rem); background: var(--aster-sand); }
-.np-final-card { max-width: 760px; margin-inline: auto; padding: clamp(2rem, 4vw, 3.5rem); border-radius: var(--aster-radius-lg); background: var(--aster-heading); text-align: center; }
-.np-final-eyebrow { color: var(--aster-warm) !important; }
-.np-final-card h2 { color: var(--aster-white); max-width: 560px; margin-inline: auto; }
-.np-final-lead { max-width: 520px; margin-inline: auto; color: rgba(255,255,255,0.6); font-size: 0.95rem; line-height: 1.6; }
-.np-final-btn-primary { background: var(--aster-sage); color: var(--aster-white); }
-.np-final-btn-primary:hover { background: var(--aster-sage-dark); color: var(--aster-white); }
-.np-final-btn-secondary { border-color: rgba(255,255,255,0.15); background: transparent; color: rgba(255,255,255,0.8); }
-.np-final-btn-secondary:hover { background: rgba(255,255,255,0.08); color: var(--aster-white); }
+.np-final { padding-block: clamp(2.5rem, 5vw, 4rem); }
+.np-final-card { max-width: 680px; margin-inline: auto; padding: clamp(2.5rem, 5vw, 4rem); border-radius: var(--aster-radius-lg); background: var(--aster-aubergine); text-align: center; }
+.np-final-ey { color: var(--aster-clay) !important; opacity: 0.9; }
+.np-final-card h2 { color: var(--aster-white); font-family: var(--aster-serif); font-weight: 500; max-width: 500px; margin-inline: auto; }
+.np-final-lead { max-width: 460px; margin-inline: auto; color: rgba(255,255,255,0.55); font-size: 0.92rem; line-height: 1.65; }
+.np-cta-p { background: var(--aster-clay); color: var(--aster-white); }
+.np-cta-p:hover { background: var(--aster-clay-dark); color: var(--aster-white); }
+.np-cta-s { border-color: rgba(255,255,255,0.15); background: transparent; color: rgba(255,255,255,0.75); }
+.np-cta-s:hover { background: rgba(255,255,255,0.07); color: var(--aster-white); }
 
-@media (max-width: 860px) {
-	.np-steps-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-	.np-prep-grid, .np-provider-grid, .np-book-grid { grid-template-columns: 1fr; }
-	.np-provider-avatar { max-width: 220px; }
-}
-@media (max-width: 768px) { .np-pricing-grid { grid-template-columns: 1fr; max-width: 420px; margin-inline: auto; } }
-@media (max-width: 520px) { .np-steps-grid { grid-template-columns: 1fr; } }
+@media (max-width: 860px) { .np-prep-grid, .np-prov-grid, .np-book-grid { grid-template-columns: 1fr; } .np-prov-avatar { max-width: 180px; } }
+@media (max-width: 620px) { .np-px-item { flex-direction: column; text-align: center; gap: 1rem; } .np-px-left { text-align: center; } }
+@media (max-width: 520px) { .np-timeline { padding-left: 2rem; } .np-tl-line { left: -2rem; } }
 </style>

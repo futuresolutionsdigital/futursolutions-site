@@ -2,32 +2,25 @@
 import { conditions } from '../../data/aster';
 ---
 
-<section class="aster-section aster-conditions" id="conditions" aria-labelledby="conditions-heading">
+<section class="aster-section acond" id="conditions" aria-labelledby="conditions-heading">
 	<div class="aster-container">
-		<div class="aster-conditions__intro">
+		<div class="acond__intro">
 			<p class="aster-eyebrow">Areas of focus</p>
 			<h2 id="conditions-heading">Common concerns we help patients navigate.</h2>
-			<p class="aster-lead">Whether you are seeking answers, symptom relief, or a clearer path forward, these are the concerns our patients most often bring to us.</p>
 		</div>
-		<div class="aster-conditions__grid">
+		<div class="acond__grid">
 			{conditions.map((cond) => (
-				<div class="aster-conditions__item">
-					<span class="aster-conditions__dot" aria-hidden="true"></span>
-					<span>{cond}</span>
-				</div>
+				<span class="acond__tag">{cond}</span>
 			))}
 		</div>
+		<p class="acond__note">If your concern is not listed, it does not mean we cannot help. Start with a consultation and we will explore your needs together.</p>
 	</div>
 </section>
 
 <style>
-.aster-conditions__intro { max-width: 660px; margin-bottom: clamp(2rem, 4vw, 3rem); }
-.aster-conditions__grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.75rem; }
-.aster-conditions__item { display: flex; align-items: center; gap: 0.65rem; padding: 0.85rem 1rem; border-radius: 10px; background: var(--aster-sand); border: 1px solid var(--aster-border); font-size: 0.9rem; font-weight: 600; color: var(--aster-heading); transition: background 0.18s ease; }
-.aster-conditions__item:hover { background: color-mix(in srgb, var(--aster-sage-light) 70%, var(--aster-sand)); }
-.aster-conditions__dot { flex-shrink: 0; width: 0.4rem; height: 0.4rem; border-radius: 50%; background: var(--aster-sage); }
-
-@media (max-width: 860px) { .aster-conditions__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-@media (max-width: 620px) { .aster-conditions__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 400px) { .aster-conditions__grid { grid-template-columns: 1fr; } }
+.acond__intro { max-width: 520px; margin-bottom: clamp(1.5rem, 3vw, 2.5rem); text-align: center; margin-inline: auto; }
+.acond__grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; max-width: 680px; margin-inline: auto; }
+.acond__tag { padding: 0.5rem 1rem; border: 1px solid var(--aster-border); border-radius: 999px; font-size: 0.82rem; font-weight: 500; color: var(--aster-heading); background: var(--aster-white); transition: border-color 0.18s ease, background 0.18s ease; }
+.acond__tag:hover { border-color: var(--aster-clay); background: var(--aster-clay-light); }
+.acond__note { margin-top: 1.75rem; text-align: center; color: var(--aster-muted); font-size: 0.82rem; font-style: italic; }
 </style>
