@@ -97,9 +97,9 @@ function isActive(href: string) {
 			<p>&copy; {new Date().getFullYear()} {brand.name}. All rights reserved.</p>
 			<p class="wh-footer__disclaimer">{brand.disclaimer} Built by <a href="/">Future Solutions</a>.</p>
 			<div class="wh-footer__legal">
-				<span>Privacy Policy</span>
-				<span>Terms</span>
-				<span>Accessibility</span>
+				<a href="/demos/premium-wellness-clinic/contact">Privacy Policy</a>
+				<a href="/demos/premium-wellness-clinic/contact">Terms</a>
+				<a href="/demos/premium-wellness-clinic/contact">Accessibility</a>
 			</div>
 		</div>
 	</footer>
@@ -108,6 +108,13 @@ function isActive(href: string) {
 
 	<script is:inline>
 	(function(){
+		var banner=document.querySelector('.demo-banner');
+		function syncBannerHeight(){
+			var h=banner?banner.offsetHeight:0;
+			document.documentElement.style.setProperty('--wh-banner-h',h+'px');
+		}
+		if(banner){syncBannerHeight();window.addEventListener('resize',syncBannerHeight);}
+
 		var btn=document.querySelector('.wh-header__menu-btn');
 		var menu=document.getElementById('wh-mobile-menu');
 		if(!btn||!menu)return;
@@ -258,7 +265,7 @@ function isActive(href: string) {
 .wh-announce p { margin: 0; color: rgba(255,255,255,0.65); }
 
 /* ─── Header ─── */
-.wh-header { position: sticky; top: 3.6rem; z-index: 12; border-bottom: 1px solid var(--wh-border); background: color-mix(in srgb, var(--wh-bg) 90%, transparent); backdrop-filter: blur(16px); }
+.wh-header { position: sticky; top: var(--wh-banner-h, 3.55rem); z-index: 12; border-bottom: 1px solid var(--wh-border); background: color-mix(in srgb, var(--wh-bg) 90%, transparent); backdrop-filter: blur(16px); }
 .wh-header__inner { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; min-height: 4rem; }
 .wh-header__brand { display: flex; align-items: baseline; gap: 0.35rem; flex-shrink: 0; }
 .wh-header__wordmark { font-size: 1.15rem; font-weight: 700; color: var(--wh-ink); letter-spacing: -0.02em; }
@@ -298,7 +305,8 @@ function isActive(href: string) {
 .wh-footer__disclaimer a { color: var(--wh-sage); text-decoration: underline; text-underline-offset: 2px; }
 .wh-footer__disclaimer a:hover { color: var(--wh-ink); }
 .wh-footer__legal { display: flex; gap: 0.75rem; margin-left: auto; }
-.wh-footer__legal span { font-size: 0.65rem; color: var(--wh-muted); }
+.wh-footer__legal a { font-size: 0.65rem; color: var(--wh-muted); }
+.wh-footer__legal a:hover { color: var(--wh-sage); }
 
 /* ─── Sticky Mobile CTA ─── */
 .wh-sticky-cta { display: none; }

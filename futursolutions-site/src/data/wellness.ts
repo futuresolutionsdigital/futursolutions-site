@@ -250,14 +250,14 @@ export const testimonials = [
 ];
 
 export const resources = [
-	{ title: 'What to Expect at Your First IV Therapy Visit', category: 'IV Therapy', href: '/demos/premium-wellness-clinic/resources' },
-	{ title: 'Sauna vs Cold Plunge vs Contrast Therapy', category: 'Recovery & Performance', href: '/demos/premium-wellness-clinic/resources' },
-	{ title: 'How Body Composition Scans Support Weight Loss', category: 'Body Composition', href: '/demos/premium-wellness-clinic/resources' },
-	{ title: 'Is Medical Weight Loss Right for Me?', category: 'Weight & Metabolism', href: '/demos/premium-wellness-clinic/resources' },
-	{ title: 'Which Wellness Services Require a Consultation?', category: 'New Client Guides', href: '/demos/premium-wellness-clinic/resources' },
-	{ title: 'How Often Should You Use Recovery Therapies?', category: 'Recovery & Performance', href: '/demos/premium-wellness-clinic/resources' },
-	{ title: 'What to Know Before Hormone Optimization', category: 'Hormones & Vitality', href: '/demos/premium-wellness-clinic/resources' },
-	{ title: 'How Wellness Memberships Work', category: 'New Client Guides', href: '/demos/premium-wellness-clinic/resources' },
+	{ title: 'What to Expect at Your First IV Therapy Visit', category: 'IV Therapy', slug: 'first-iv-therapy-visit', href: '/demos/premium-wellness-clinic/resources/first-iv-therapy-visit' },
+	{ title: 'Sauna vs Cold Plunge vs Contrast Therapy', category: 'Recovery & Performance', slug: 'sauna-vs-cold-plunge-vs-contrast', href: '/demos/premium-wellness-clinic/resources/sauna-vs-cold-plunge-vs-contrast' },
+	{ title: 'How Body Composition Scans Support Weight Loss', category: 'Body Composition', slug: 'body-composition-scans-weight-loss', href: '/demos/premium-wellness-clinic/resources/body-composition-scans-weight-loss' },
+	{ title: 'Is Medical Weight Loss Right for Me?', category: 'Weight & Metabolism', slug: 'is-medical-weight-loss-right', href: '/demos/premium-wellness-clinic/resources/is-medical-weight-loss-right' },
+	{ title: 'Which Wellness Services Require a Consultation?', category: 'New Client Guides', slug: 'services-requiring-consultation', href: '/demos/premium-wellness-clinic/resources/services-requiring-consultation' },
+	{ title: 'How Often Should You Use Recovery Therapies?', category: 'Recovery & Performance', slug: 'recovery-therapy-frequency', href: '/demos/premium-wellness-clinic/resources/recovery-therapy-frequency' },
+	{ title: 'What to Know Before Hormone Optimization', category: 'Hormones & Vitality', slug: 'before-hormone-optimization', href: '/demos/premium-wellness-clinic/resources/before-hormone-optimization' },
+	{ title: 'How Wellness Memberships Work', category: 'New Client Guides', slug: 'how-memberships-work', href: '/demos/premium-wellness-clinic/resources/how-memberships-work' },
 ];
 
 export const homepageFaqs = [

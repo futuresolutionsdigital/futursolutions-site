@@ -218,8 +218,8 @@ import { brand } from '../../../data/wellness';
 			<h2>Schedule your first appointment.</h2>
 			<p class="wh-lead">Fill out the form below and our team will reach out within one business day to confirm your appointment.</p>
 		</div>
-		<div class="nc-booking__card">
-			<form class="nc-booking__form" onsubmit="event.preventDefault();">
+			<div class="nc-booking__card">
+			<form class="nc-booking__form" onsubmit="event.preventDefault(); this.querySelector('.nc-booking__submit').textContent='Request Sent'; this.querySelector('.nc-booking__submit').disabled=true;">
 				<div class="nc-booking__row">
 					<div class="nc-booking__field">
 						<label for="nc-name">Full name</label>
@@ -255,13 +255,16 @@ import { brand } from '../../../data/wellness';
 						<label for="nc-date">Preferred date</label>
 						<input type="date" id="nc-date" name="date" />
 					</div>
-					<div class="nc-booking__field">
-						<label for="nc-message">Message <span class="nc-booking__optional">(optional)</span></label>
-						<textarea id="nc-message" name="message" rows="3" placeholder="Tell us about your goals or any questions you have."></textarea>
-					</div>
+				</div>
+				<div class="nc-booking__field">
+					<label for="nc-message">Message <span class="nc-booking__optional">(optional)</span></label>
+					<textarea id="nc-message" name="message" rows="3" placeholder="Tell us about your goals or any questions you have."></textarea>
 				</div>
 				<p class="nc-booking__disclaimer">This is a demo form and does not transmit data. In a live implementation, submissions would be encrypted and handled in compliance with applicable privacy regulations.</p>
-				<button type="submit" class="wh-btn wh-btn--primary nc-booking__submit">Request Appointment</button>
+				<div class="nc-booking__actions">
+					<button type="submit" class="wh-btn wh-btn--primary nc-booking__submit">Request Appointment</button>
+					<span class="nc-booking__demo-note">Demo form — no data is submitted</span>
+				</div>
 			</form>
 		</div>
 	</div>
@@ -434,7 +437,10 @@ import { brand } from '../../../data/wellness';
 .nc-booking__field textarea { resize: vertical; min-height: 80px; }
 .nc-booking__field select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1.5l5 5 5-5' stroke='%236B8F7B' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 0.85rem center; padding-right: 2.5rem; }
 .nc-booking__disclaimer { font-size: 0.72rem; color: var(--wh-muted); font-style: italic; margin-bottom: 1.25rem; line-height: 1.5; }
-.nc-booking__submit { width: 100%; text-align: center; font-size: 0.95rem; padding: 0.85rem 1.5rem; }
+.nc-booking__actions { display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap; }
+.nc-booking__submit { text-align: center; font-size: 0.95rem; padding: 0.85rem 2rem; }
+.nc-booking__submit:disabled { opacity: 0.6; cursor: default; }
+.nc-booking__demo-note { font-size: 0.72rem; color: var(--wh-muted); font-style: italic; }
 @media (max-width: 600px) { .nc-booking__row { grid-template-columns: 1fr; } .nc-booking__card { padding: 1.5rem; } }
 
 /* ─── Location: default bg ─── */

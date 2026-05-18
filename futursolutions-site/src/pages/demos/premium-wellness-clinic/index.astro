@@ -139,13 +139,17 @@ import { hero, trustBar, goalCards, serviceCategories, signaturePrograms, provid
 			<p class="wh-lead">Pre-built pathways for common goals. Your provider can customize any program.</p>
 		</div>
 		<div class="hp-programs__grid">
-			{signaturePrograms.map((prog) => (
+			{signaturePrograms.map((prog, i) => (
 				<a class="hp-programs__card" href={prog.href}>
-					<div class="hp-programs__img" aria-hidden="true"></div>
-					<div class="hp-programs__text">
+					<div class="hp-programs__top">
+						<span class="hp-programs__num">0{i + 1}</span>
 						<h3>{prog.title}</h3>
-						<p class="hp-programs__for">{prog.forWho}</p>
-						<span class="hp-programs__includes">{prog.includes}</span>
+					</div>
+					<p class="hp-programs__for">{prog.forWho}</p>
+					<div class="hp-programs__includes">
+						{prog.includes.split(', ').map((item) => (
+							<span class="hp-programs__tag">{item}</span>
+						))}
 					</div>
 				</a>
 			))}
@@ -189,8 +193,9 @@ import { hero, trustBar, goalCards, serviceCategories, signaturePrograms, provid
 		</div>
 		<div class="hp-memberships__grid">
 			{memberships.map((mem, i) => (
-				<div class:list={['hp-memberships__tier', { 'hp-memberships__tier--featured': i === 2 }]}>
-					{i === 2 && <span class="hp-memberships__badge">Most comprehensive</span>}
+				<div class:list={['hp-memberships__tier', { 'hp-memberships__tier--featured': i === 1 }]}>
+					{i === 1 && <span class="hp-memberships__badge">Most popular</span>}
+					{i === 2 && <span class="hp-memberships__badge hp-memberships__badge--alt">Most comprehensive</span>}
 					<h3>{mem.name}</h3>
 					<span class="hp-memberships__price">{mem.price}</span>
 					<p class="hp-memberships__for">{mem.bestFor}</p>
@@ -271,8 +276,8 @@ import { hero, trustBar, goalCards, serviceCategories, signaturePrograms, provid
 	</div>
 </section>
 
-<!-- ═══ LOCATION — split: text left, map right, dark bg ═══ -->
-<section class="wh-section wh-section--dark hp-location" id="location">
+<!-- ═══ LOCATION — split: text left, map right, surface bg ═══ -->
+<section class="wh-section wh-section--surface hp-location" id="location">
 	<div class="wh-container hp-location__split">
 		<div class="hp-location__text">
 			<p class="wh-eyebrow">Visit Us</p>
@@ -381,15 +386,16 @@ import { hero, trustBar, goalCards, serviceCategories, signaturePrograms, provid
 .hp-how__body h3 { font-size: 0.95rem; color: var(--wh-white); margin-bottom: 0.3rem; }
 .hp-how__body p { font-size: 0.85rem; color: rgba(255,255,255,0.5); }
 
-/* ─── Programs: editorial card grid ─── */
+/* ─── Programs: editorial numbered cards ─── */
 .hp-programs__grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.25rem; }
-.hp-programs__card { display: flex; flex-direction: column; border: 1px solid var(--wh-border); border-radius: var(--wh-radius); overflow: hidden; transition: border-color var(--wh-transition); }
+.hp-programs__card { display: flex; flex-direction: column; padding: 1.5rem; border: 1px solid var(--wh-border); border-radius: var(--wh-radius); transition: border-color var(--wh-transition); }
 .hp-programs__card:hover { border-color: var(--wh-border-strong); }
-.hp-programs__img { height: 140px; background: var(--wh-surface); }
-.hp-programs__text { padding: 1.25rem; flex: 1; display: flex; flex-direction: column; }
-.hp-programs__card h3 { font-size: 0.95rem; margin-bottom: 0.35rem; }
-.hp-programs__for { font-size: 0.82rem; color: var(--wh-muted); margin-bottom: 0.5rem; flex: 1; }
-.hp-programs__includes { font-size: 0.72rem; color: var(--wh-sage); font-weight: 500; }
+.hp-programs__top { display: flex; align-items: baseline; gap: 0.75rem; margin-bottom: 0.75rem; }
+.hp-programs__num { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.1em; color: var(--wh-sage); flex-shrink: 0; }
+.hp-programs__card h3 { font-size: 1rem; margin-bottom: 0; }
+.hp-programs__for { font-size: 0.82rem; color: var(--wh-muted); margin-bottom: 1rem; flex: 1; line-height: 1.55; }
+.hp-programs__includes { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+.hp-programs__tag { display: inline-block; padding: 0.2rem 0.55rem; font-size: 0.65rem; font-weight: 500; color: var(--wh-sage); background: var(--wh-sage-light); border-radius: 3px; line-height: 1.4; }
 
 /* ─── Providers: minimal profiles, no card containment ─── */
 .hp-providers__header { display: flex; align-items: flex-end; justify-content: space-between; gap: 2rem; margin-bottom: clamp(2rem, 4vw, 3rem); }
@@ -407,6 +413,7 @@ import { hero, trustBar, goalCards, serviceCategories, signaturePrograms, provid
 .hp-memberships__tier { padding: 2rem; border: 1px solid var(--wh-border); border-radius: var(--wh-radius); background: var(--wh-white); position: relative; }
 .hp-memberships__tier--featured { border-color: var(--wh-sage); }
 .hp-memberships__badge { position: absolute; top: -0.6rem; left: 1.5rem; padding: 0.2rem 0.6rem; font-size: 0.58rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--wh-white); background: var(--wh-sage); border-radius: 3px; }
+.hp-memberships__badge--alt { background: var(--wh-stone); }
 .hp-memberships__tier h3 { font-size: 1.05rem; margin-bottom: 0.25rem; }
 .hp-memberships__price { display: block; font-size: 1.75rem; font-weight: 700; color: var(--wh-ink); letter-spacing: -0.02em; margin-bottom: 0.5rem; }
 .hp-memberships__for { font-size: 0.82rem; color: var(--wh-muted); margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--wh-border); }
@@ -448,12 +455,12 @@ import { hero, trustBar, goalCards, serviceCategories, signaturePrograms, provid
 .hp-faq__left { position: sticky; top: 10rem; }
 @media (max-width: 700px) { .hp-faq__split { grid-template-columns: 1fr; } .hp-faq__left { position: static; } }
 
-/* ─── Location: split, dark ─── */
+/* ─── Location: split, surface bg ─── */
 .hp-location__split { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(3rem, 5vw, 5rem); align-items: center; }
 .hp-location__text address { font-style: normal; }
-.hp-location__text p { font-size: 0.9rem; color: rgba(255,255,255,0.6); margin-bottom: 0.5rem; }
-.hp-location__parking { font-size: 0.78rem; color: rgba(255,255,255,0.35); margin-top: 0.75rem; }
-.hp-location__map { border-radius: var(--wh-radius); overflow: hidden; }
+.hp-location__text p { font-size: 0.9rem; color: var(--wh-text); margin-bottom: 0.5rem; }
+.hp-location__parking { font-size: 0.78rem; color: var(--wh-muted); margin-top: 0.75rem; }
+.hp-location__map { border-radius: var(--wh-radius); overflow: hidden; border: 1px solid var(--wh-border); }
 @media (max-width: 700px) { .hp-location__split { grid-template-columns: 1fr; } }
 
 /* ─── Final CTA ─── */

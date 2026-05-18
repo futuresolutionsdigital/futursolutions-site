@@ -47,6 +47,7 @@ import { memberships, packages, brand } from '../../../data/wellness';
 			{memberships.map((mem, i) => (
 				<div class:list={['mb-tiers__card wh-card', { 'mb-tiers__card--featured': i === 1 }]}>
 					{i === 1 && <span class="mb-tiers__badge">Most Popular</span>}
+					{i === 2 && <span class="mb-tiers__badge mb-tiers__badge--alt">Most Comprehensive</span>}
 					<h3>{mem.name}</h3>
 					<p class="mb-tiers__price">{mem.price}</p>
 					<p class="mb-tiers__for">{mem.bestFor}</p>
@@ -269,6 +270,7 @@ import { memberships, packages, brand } from '../../../data/wellness';
 .mb-tiers__card { padding: 2rem; display: flex; flex-direction: column; position: relative; }
 .mb-tiers__card--featured { border-color: var(--wh-sage); }
 .mb-tiers__badge { position: absolute; top: -0.6rem; left: 1.5rem; padding: 0.2rem 0.6rem; font-size: 0.58rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--wh-white); background: var(--wh-sage); border-radius: 3px; }
+.mb-tiers__badge--alt { background: var(--wh-stone); }
 .mb-tiers__card h3 { font-size: 1.15rem; margin-bottom: 0.25rem; }
 .mb-tiers__price { font-size: 1.75rem; font-weight: 700; color: var(--wh-ink); margin-bottom: 0.5rem; letter-spacing: -0.02em; }
 .mb-tiers__for { font-size: 0.82rem; color: var(--wh-muted); margin-bottom: 1.25rem; line-height: 1.55; padding-bottom: 1.25rem; border-bottom: 1px solid var(--wh-border); }

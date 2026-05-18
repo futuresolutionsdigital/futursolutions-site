@@ -167,6 +167,23 @@ import WellnessLayout from '../../../../layouts/WellnessLayout.astro';
 	</div>
 </section>
 
+<!-- ═══ Scan Guidance — sage bg ═══ -->
+<section class="wh-section wh-section--sage sp-safety">
+	<div class="wh-container">
+		<div class="sp-safety__split">
+			<div class="sp-safety__left">
+				<p class="wh-eyebrow">Scan Guidance</p>
+				<h2>Understanding Your Results</h2>
+			</div>
+			<div class="sp-safety__right">
+				<p>Body composition scan results are educational and designed to give you a clearer picture of where you are today. They are not a medical diagnosis and should be interpreted alongside your goals, health history, and overall context.</p>
+				<p>For the most useful interpretation, we recommend pairing your scan with a provider review. Your provider can explain what the numbers mean for you specifically and help you set realistic, measurable goals.</p>
+				<p>Body composition data can change based on hydration, time of day, recent exercise, and other factors. Consistent scan conditions improve comparability over time. No specific outcomes are guaranteed.</p>
+			</div>
+		</div>
+	</div>
+</section>
+
 <!-- ═══ Packages — default bg, bordered cards ═══ -->
 <section class="wh-section sp-packages">
 	<div class="wh-container">
@@ -324,6 +341,12 @@ import WellnessLayout from '../../../../layouts/WellnessLayout.astro';
 .sp-expect__phase h3 { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em; color: var(--wh-sage); margin-bottom: 0.75rem; }
 .sp-expect__phase p { font-size: 0.88rem; color: var(--wh-muted); line-height: 1.65; }
 @media (max-width: 600px) { .sp-expect__phases { grid-template-columns: 1fr; gap: 1.5rem; } }
+
+/* ─── Safety / Scan Guidance: sage bg, split layout ─── */
+.sp-safety__split { display: grid; grid-template-columns: 1fr 1.3fr; gap: clamp(3rem, 5vw, 5rem); align-items: start; }
+.sp-safety__left h2 { max-width: 320px; }
+.sp-safety__right p { font-size: 0.92rem; color: var(--wh-text); line-height: 1.7; margin-bottom: 0.75rem; }
+@media (max-width: 700px) { .sp-safety__split { grid-template-columns: 1fr; } }
 
 /* ─── Packages: bordered cards ─── */
 .sp-packages__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }

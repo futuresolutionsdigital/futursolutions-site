@@ -2,16 +2,20 @@
 import WellnessLayout from '../../../layouts/WellnessLayout.astro';
 import { resources, brand } from '../../../data/wellness';
 
-const categories = [
-	'Energy & Fatigue',
-	'Weight & Metabolism',
-	'Recovery & Performance',
-	'Hormones & Vitality',
-	'IV Therapy',
-	'Body Composition',
-	'New Client Guides',
-	'Safety & FAQs',
-];
+const featured = resources[0];
+const remaining = resources.slice(1);
+
+const grouped = remaining.reduce<Record<string, typeof resources>>((acc, r) => {
+	if (!acc[r.category]) acc[r.category] = [];
+	acc[r.category].push(r);
+	return acc;
+}, {});
+
+const categoryOrder = Object.keys(grouped);
+
+function categoryId(cat: string) {
+	return cat.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+}
 ---
 
 <WellnessLayout title="Wellness Resources — Lumen Health House" description="Explore articles and guides on IV therapy, recovery, weight loss, hormones, body composition, and more — written to help you make informed wellness decisions.">
@@ -21,41 +25,57 @@ const categories = [
 	<div class="wh-container">
 		<p class="wh-eyebrow">Learn Before You Book</p>
 		<h1>Wellness Resources</h1>
-		<p class="wh-lead">Understand your options, what to expect from each service, and which treatments may be right for your goals — before you schedule your first visit.</p>
+		<p class="wh-lead">Practical guides to help you understand your options, prepare for your visit, and make confident decisions about your care.</p>
 	</div>
 </section>
 
-<!-- ─── Category Filter: inline links on default bg ─── -->
-<section class="rs-categories">
+<!-- ─── Featured Article ─── -->
+<section class="wh-section wh-section--surface rs-featured">
 	<div class="wh-container">
-		<div class="rs-categories__strip">
-			<span class="rs-categories__label">Browse by topic:</span>
-			{categories.map((cat) => (
-				<span class="rs-categories__link">{cat}</span>
+		<div class="rs-featured__block">
+			<p class="wh-eyebrow">{featured.category}</p>
+			<h2 class="rs-featured__title">{featured.title}</h2>
+			<p class="rs-featured__desc">Your first IV therapy visit can feel unfamiliar. This guide walks through what to expect from arrival to aftercare — so you can feel confident and prepared.</p>
+			<a class="wh-text-link" href={featured.href}>Read guide &rarr;</a>
+		</div>
+	</div>
+</section>
+
+<!-- ─── Topic Navigation Strip ─── -->
+<section class="rs-topics">
+	<div class="wh-container">
+		<div class="rs-topics__strip">
+			<span class="rs-topics__label">Topics covered</span>
+			{categoryOrder.map((cat) => (
+				<a class="rs-topics__link" href={`#${categoryId(cat)}`}>{cat}</a>
 			))}
 		</div>
 	</div>
 </section>
 
-<!-- ─── Article List: clean row list (like homepage) ─── -->
+<!-- ─── Articles Grouped by Category ─── -->
 <section class="wh-section rs-articles">
 	<div class="wh-container">
-		<div class="rs-articles__list">
-			{resources.map((r) => (
-				<a class="rs-articles__row" href={r.href}>
-					<span class="rs-articles__cat">{r.category}</span>
-					<span class="rs-articles__title">{r.title}</span>
-					<span class="rs-articles__arrow" aria-hidden="true">&rarr;</span>
-				</a>
-			))}
-		</div>
+		{categoryOrder.map((cat) => (
+			<div class="rs-group" id={categoryId(cat)}>
+				<h3 class="rs-group__heading">{cat}</h3>
+				<div class="rs-group__list">
+					{grouped[cat].map((r) => (
+						<a class="rs-articles__row" href={r.href}>
+							<span class="rs-articles__title">{r.title}</span>
+							<span class="rs-articles__arrow" aria-hidden="true">&rarr;</span>
+						</a>
+					))}
+				</div>
+			</div>
+		))}
 	</div>
 </section>
 
 <!-- ─── CTA ─── -->
 <section class="wh-section wh-section--dark rs-final">
 	<div class="wh-container">
-		<p class="wh-eyebrow">Have Questions?</p>
+		<p class="wh-eyebrow">Have Questions After Reading?</p>
 		<h2>Our team is here to help you find the right starting point.</h2>
 		<p class="wh-lead">Whether you have read every article or are just beginning to explore, a consultation is the best way to get personalized guidance.</p>
 		<div class="wh-btn-row">
@@ -76,30 +96,82 @@ const categories = [
 
 <style>
 /* ═══════════════════════════════════════════════════════
-   RESOURCES — Restrained Clinical Premium
+   RESOURCES INDEX — Restrained Clinical Premium
    ═══════════════════════════════════════════════════════ */
 
 /* ─── Hero ─── */
 .rs-hero { padding-top: clamp(5rem, 10vw, 9rem); padding-bottom: clamp(3rem, 6vw, 5rem); }
 .rs-hero h1 { max-width: 520px; }
-.rs-hero .wh-lead { max-width: 520px; }
+.rs-hero .wh-lead { max-width: 540px; }
 
-/* ─── Category Filter: inline links ─── */
-.rs-categories { padding-block: 1.5rem; border-bottom: 1px solid var(--wh-border); }
-.rs-categories__strip { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 1rem; }
-.rs-categories__label { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--wh-muted); margin-right: 0.5rem; }
-.rs-categories__link { font-size: 0.78rem; font-weight: 500; color: var(--wh-sage); cursor: default; transition: color var(--wh-transition); }
-.rs-categories__link:hover { color: var(--wh-ink); }
+/* ─── Featured Article ─── */
+.rs-featured__block { max-width: 620px; }
+.rs-featured__title {
+	font-size: clamp(1.3rem, 2.4vw, 1.75rem);
+	font-weight: 600;
+	line-height: 1.3;
+	margin-top: 0.5rem;
+	margin-bottom: 0.75rem;
+	color: var(--wh-ink);
+}
+.rs-featured__desc {
+	font-size: 0.92rem;
+	line-height: 1.65;
+	color: var(--wh-text);
+	margin-bottom: 1.25rem;
+}
 
-/* ─── Article List: clean row list ─── */
-.rs-articles__list { display: flex; flex-direction: column; }
-.rs-articles__row { display: flex; align-items: center; gap: 1rem; padding: 0.9rem 0; border-bottom: 1px solid var(--wh-border); transition: padding-left var(--wh-transition); }
-.rs-articles__row:first-child { border-top: 1px solid var(--wh-border); }
+/* ─── Topic Navigation Strip ─── */
+.rs-topics { padding-block: 1.25rem; border-bottom: 1px solid var(--wh-border); }
+.rs-topics__strip { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 1.25rem; }
+.rs-topics__label {
+	font-size: 0.65rem;
+	font-weight: 600;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	color: var(--wh-muted);
+	margin-right: 0.25rem;
+}
+.rs-topics__link {
+	font-size: 0.78rem;
+	font-weight: 500;
+	color: var(--wh-sage);
+	text-decoration: none;
+	transition: color var(--wh-transition);
+}
+.rs-topics__link:hover { color: var(--wh-ink); }
+
+/* ─── Articles Grouped by Category ─── */
+.rs-group { margin-bottom: 2.5rem; }
+.rs-group:last-child { margin-bottom: 0; }
+.rs-group__heading {
+	font-size: 0.68rem;
+	font-weight: 600;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	color: var(--wh-sage);
+	margin-bottom: 0.75rem;
+	padding-top: 1rem;
+}
+.rs-group__list { display: flex; flex-direction: column; }
+.rs-articles__row {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	padding: 0.85rem 0;
+	border-bottom: 1px solid var(--wh-border);
+	text-decoration: none;
+	transition: padding-left var(--wh-transition);
+}
+.rs-group__list .rs-articles__row:first-child { border-top: 1px solid var(--wh-border); }
 .rs-articles__row:hover { padding-left: 0.35rem; }
-.rs-articles__cat { font-size: 0.6rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--wh-sage); min-width: 140px; flex-shrink: 0; }
-.rs-articles__title { font-size: 0.88rem; font-weight: 500; color: var(--wh-ink); flex: 1; }
-.rs-articles__arrow { color: var(--wh-muted); font-size: 0.85rem; }
-@media (max-width: 600px) { .rs-articles__row { flex-wrap: wrap; } .rs-articles__cat { min-width: auto; width: 100%; } }
+.rs-articles__title {
+	font-size: 0.88rem;
+	font-weight: 500;
+	color: var(--wh-ink);
+	flex: 1;
+}
+.rs-articles__arrow { color: var(--wh-muted); font-size: 0.85rem; flex-shrink: 0; }
 
 /* ─── Final CTA ─── */
 .rs-final h2 { max-width: 560px; }
@@ -107,4 +179,14 @@ const categories = [
 /* ─── Disclaimer ─── */
 .rs-disclaimer-section { padding-top: 0; }
 .rs-disclaimer { font-size: 0.72rem; color: var(--wh-muted); font-style: italic; max-width: 640px; }
+
+/* ─── Responsive ─── */
+@media (max-width: 700px) {
+	.rs-topics__strip { gap: 0.4rem 0.75rem; }
+	.rs-featured__title { font-size: 1.25rem; }
+}
+@media (max-width: 600px) {
+	.rs-topics__strip { flex-direction: column; align-items: flex-start; gap: 0.4rem; }
+	.rs-topics__label { margin-bottom: 0.25rem; }
+}
 </style>

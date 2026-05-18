@@ -1,0 +1,223 @@
+---
+import WellnessLayout from '../../../../layouts/WellnessLayout.astro';
+import { resources, brand } from '../../../../data/wellness';
+
+export function getStaticPaths() {
+	return resources.map((r, i) => ({
+		params: { slug: r.slug },
+		props: { article: r, index: i },
+	}));
+}
+
+const { article, index } = Astro.props;
+
+const related = Array.from({ length: 3 }, (_, i) => {
+	const idx = (index + 1 + i) % resources.length;
+	return resources[idx];
+});
+
+const articleContent: Record<string, { intro: string; body: string; closing: string }> = {
+	'first-iv-therapy-visit': {
+		intro: 'Your first IV therapy session at Lumen Health House is designed to be straightforward and comfortable. From check-in to aftercare, our team walks you through every step so there are no surprises.',
+		body: 'When you arrive, a wellness team member will review your intake form and confirm your hydration goals. Your provider selects a customized drip based on your needs — whether that is energy, recovery, immune support, or general hydration. Most sessions take 30 to 60 minutes, and you can relax in a private treatment room during the infusion.',
+		closing: 'Aftercare is simple: stay hydrated, avoid intense exercise for a few hours, and note how you feel over the next day or two. Many clients report feeling a difference within hours of their first session.',
+	},
+	'sauna-vs-cold-plunge-vs-contrast': {
+		intro: 'Infrared sauna, cold plunge, and contrast therapy are three of the most popular recovery modalities — but they serve different purposes. Understanding when to use each can help you get better results.',
+		body: 'Infrared sauna is ideal for deep relaxation, detoxification, and muscle recovery through gentle heat. Cold plunge targets inflammation, mood, and mental focus through brief cold water immersion. Contrast therapy alternates between the two, combining the circulatory benefits of both for maximum recovery impact.',
+		closing: 'Your choice depends on your goals. Athletes often prefer contrast therapy for faster recovery, while clients seeking stress relief may gravitate toward sauna sessions. Your provider can help you build a rotation that fits your routine.',
+	},
+	'body-composition-scans-weight-loss': {
+		intro: 'A body composition scan gives you data that a standard scale cannot — including muscle mass, body fat percentage, water balance, and visceral fat levels. This information changes how you and your provider approach weight loss.',
+		body: 'Unlike stepping on a scale, a body scan shows where your body is changing. You might be losing fat while gaining muscle, which the scale alone would miss. Providers use this data to adjust your nutrition plan, evaluate the effectiveness of your protocol, and set realistic milestones.',
+		closing: 'Most clients scan monthly or quarterly. Tracking these numbers over time creates a clear picture of progress and keeps your wellness plan grounded in real data rather than guesswork.',
+	},
+	'is-medical-weight-loss-right': {
+		intro: 'Medical weight loss is designed for people who want provider-guided support beyond diet and exercise alone. It is not a quick fix — it is a structured, evidence-based approach to sustainable weight management.',
+		body: 'Good candidates often include people who have tried traditional approaches without lasting results, those with metabolic or hormonal factors affecting weight, or anyone who wants clinical accountability and lab-based tracking. Your provider evaluates your health history, labs, and body composition before recommending a plan.',
+		closing: 'If you are unsure whether medical weight loss is right for you, a wellness consultation is the best starting point. Your provider will help you understand your options without pressure or commitment.',
+	},
+	'services-requiring-consultation': {
+		intro: 'Some wellness services at Lumen Health House can be booked directly, while others require a provider consultation first. Knowing which is which helps you plan your first visit.',
+		body: 'Services like medical weight loss, hormone optimization, GLP-1 support, testosterone therapy, and peptide therapy require a consultation because they involve medical evaluation, lab work, or prescriptions. Recovery therapies, IV therapy, vitamin injections, and body composition scans can typically be booked without a prior consultation.',
+		closing: 'If you are not sure where to start, a wellness consultation covers everything. Your provider will review your goals, recommend the right services, and let you know which ones you can begin right away.',
+	},
+	'recovery-therapy-frequency': {
+		intro: 'How often you use recovery therapies depends on your goals, activity level, and how your body responds. There is no single answer, but there are general guidelines that work well for most clients.',
+		body: 'For contrast therapy, most active clients benefit from one to three sessions per week. Infrared sauna can be used two to four times per week safely. Cold plunge sessions are typically two to four times per week for short durations. Red light therapy and compression can be used more frequently as low-impact modalities.',
+		closing: 'Consistency matters more than intensity. Start with one to two sessions per week and adjust based on how you feel. Your provider or wellness team can help you build a sustainable recovery schedule.',
+	},
+	'before-hormone-optimization': {
+		intro: 'Hormone optimization is a clinical process that starts with lab work, a provider consultation, and a clear understanding of your symptoms and goals. Knowing what to expect helps you prepare.',
+		body: 'Before your first visit, your provider will order a comprehensive hormone panel. This typically includes testosterone, estrogen, thyroid markers, cortisol, and other relevant biomarkers. Results are reviewed during a detailed consultation where your provider explains what the numbers mean and whether optimization is appropriate.',
+		closing: 'Not everyone needs hormone therapy. Your provider will only recommend a protocol if your labs, symptoms, and health history support it. The goal is to restore balance — not to push numbers beyond what is clinically appropriate.',
+	},
+	'how-memberships-work': {
+		intro: 'Lumen Health House memberships give you monthly credits, priority scheduling, and discounts on services. They are designed for clients who visit regularly and want to simplify their wellness routine.',
+		body: 'There are three tiers — Recover, Optimize, and Longevity — each with a different mix of recovery credits, IV sessions, body scans, and provider access. Credits refresh monthly, and unused credits do not roll over. Members also receive percentage discounts on additional services and priority booking windows.',
+		closing: 'Memberships are optional. You do not need to be a member to book any service. But if you plan to visit weekly or use multiple service types, a membership often provides better value and a more consistent experience.',
+	},
+};
+
+const content = articleContent[article.slug];
+---
+
+<WellnessLayout title={`${article.title} — Lumen Health House`} description={`${content.intro.slice(0, 155)}…`}>
+
+<!-- ─── Hero ─── -->
+<section class="wh-section wh-section--dark ra-hero">
+	<div class="wh-container">
+		<p class="wh-eyebrow">{article.category}</p>
+		<h1>{article.title}</h1>
+	</div>
+</section>
+
+<!-- ─── Article Content ─── -->
+<section class="wh-section ra-content">
+	<div class="wh-container">
+		<div class="ra-content__body">
+			<p>{content.intro}</p>
+			<p>{content.body}</p>
+			<p>{content.closing}</p>
+			<p class="ra-content__note">This is a preview. Full article content would appear here.</p>
+		</div>
+		<div class="ra-content__back">
+			<a class="wh-text-link" href="/demos/premium-wellness-clinic/resources">&larr; Back to all resources</a>
+		</div>
+	</div>
+</section>
+
+<!-- ─── Related Resources ─── -->
+<section class="wh-section wh-section--surface ra-related">
+	<div class="wh-container">
+		<h2 class="ra-related__heading">Related Resources</h2>
+		<div class="ra-related__list">
+			{related.map((r) => (
+				<a class="ra-related__card" href={r.href}>
+					<span class="ra-related__cat">{r.category}</span>
+					<span class="ra-related__title">{r.title}</span>
+					<span class="ra-related__arrow">Read guide &rarr;</span>
+				</a>
+			))}
+		</div>
+	</div>
+</section>
+
+<!-- ─── CTA ─── -->
+<section class="wh-section wh-section--dark ra-cta">
+	<div class="wh-container">
+		<p class="wh-eyebrow">Ready to Get Started?</p>
+		<h2>Book a consultation and build a plan around your goals.</h2>
+		<div class="wh-btn-row">
+			<a class="wh-btn wh-btn--primary" href="/demos/premium-wellness-clinic/new-clients">Book a Consultation</a>
+			<a class="wh-btn wh-btn--secondary" href="/demos/premium-wellness-clinic/services">Explore Services</a>
+		</div>
+	</div>
+</section>
+
+<!-- ─── Demo Disclaimer ─── -->
+<section class="wh-section ra-disclaimer-section">
+	<div class="wh-container">
+		<p class="ra-disclaimer">{brand.disclaimer}</p>
+	</div>
+</section>
+
+</WellnessLayout>
+
+<style>
+/* ═══════════════════════════════════════════════════════
+   RESOURCE ARTICLE — Restrained Clinical Premium
+   ═══════════════════════════════════════════════════════ */
+
+/* ─── Hero (compact) ─── */
+.ra-hero { padding-top: clamp(4rem, 8vw, 7rem); padding-bottom: clamp(2rem, 4vw, 3.5rem); }
+.ra-hero h1 { max-width: 600px; font-size: clamp(1.5rem, 3vw, 2.25rem); }
+
+/* ─── Article Content ─── */
+.ra-content__body {
+	max-width: 640px;
+}
+.ra-content__body p {
+	font-size: 0.95rem;
+	line-height: 1.75;
+	color: var(--wh-text);
+	margin-bottom: 1.25rem;
+}
+.ra-content__note {
+	font-size: 0.8rem;
+	font-style: italic;
+	color: var(--wh-muted);
+	border-left: 2px solid var(--wh-border);
+	padding-left: 1rem;
+	margin-top: 1.5rem;
+}
+.ra-content__back {
+	margin-top: 2.5rem;
+	padding-top: 1.5rem;
+	border-top: 1px solid var(--wh-border);
+}
+
+/* ─── Related Resources ─── */
+.ra-related__heading {
+	font-size: 0.68rem;
+	font-weight: 600;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	color: var(--wh-muted);
+	margin-bottom: 1.25rem;
+}
+.ra-related__list {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 1.25rem;
+}
+.ra-related__card {
+	display: flex;
+	flex-direction: column;
+	gap: 0.4rem;
+	padding: 1.25rem;
+	background: var(--wh-bg);
+	border: 1px solid var(--wh-border);
+	border-radius: var(--wh-radius);
+	text-decoration: none;
+	transition: border-color var(--wh-transition), box-shadow var(--wh-transition);
+}
+.ra-related__card:hover {
+	border-color: var(--wh-sage);
+	box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.ra-related__cat {
+	font-size: 0.6rem;
+	font-weight: 600;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	color: var(--wh-sage);
+}
+.ra-related__title {
+	font-size: 0.85rem;
+	font-weight: 500;
+	color: var(--wh-ink);
+	line-height: 1.4;
+}
+.ra-related__arrow {
+	font-size: 0.78rem;
+	color: var(--wh-sage);
+	margin-top: auto;
+}
+
+/* ─── CTA ─── */
+.ra-cta h2 { max-width: 520px; }
+
+/* ─── Disclaimer ─── */
+.ra-disclaimer-section { padding-top: 0; }
+.ra-disclaimer { font-size: 0.72rem; color: var(--wh-muted); font-style: italic; max-width: 640px; }
+
+/* ─── Responsive ─── */
+@media (max-width: 700px) {
+	.ra-related__list { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+	.ra-related__list { grid-template-columns: 1fr; }
+	.ra-hero h1 { font-size: 1.4rem; }
+}
+</style>
