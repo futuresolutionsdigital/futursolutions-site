@@ -5,16 +5,22 @@ import { services } from '../../data/aster';
 <section class="aster-section aster-section--sage-light asvc" id="services" aria-labelledby="services-heading">
 	<div class="aster-container">
 		<div class="asvc__intro">
-			<p class="aster-eyebrow">Services</p>
-			<h2 id="services-heading">Care designed around the whole person.</h2>
-			<p class="aster-lead">Each area of care is supported by thorough evaluation, personalized planning, and ongoing follow-up.</p>
+			<p class="aster-eyebrow">Services &amp; Care Pathways</p>
+			<h2 id="services-heading">Care designed around the whole person, not just a single symptom.</h2>
+			<p class="aster-lead">Every care pathway begins with understanding your full health picture — your history, your concerns, and your goals. These are the areas where our patients most often find support.</p>
 		</div>
 		<div class="asvc__list">
 			{services.map((svc, i) => (
-				<article class:list={['asvc__item', { 'asvc__item--alt': i % 2 !== 0 }]}>
+				<article class="asvc__item">
 					<div class="asvc__item-head">
-						<h3>{svc.title}</h3>
-						<p class="asvc__best">{svc.bestFor}</p>
+						<span class="asvc__num">{String(i + 1).padStart(2, '0')}</span>
+						<div>
+							<h3>{svc.title}</h3>
+							<p class="asvc__best">
+								<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 12 12" aria-hidden="true"><path stroke="currentColor" stroke-width="1.2" stroke-linecap="round" d="M6 1v10M1 6h10"/></svg>
+								{svc.bestFor}
+							</p>
+						</div>
 					</div>
 					<div class="asvc__item-body">
 						<p>{svc.description}</p>
@@ -26,19 +32,35 @@ import { services } from '../../data/aster';
 				</article>
 			))}
 		</div>
+		<div class="asvc__footer">
+			<div class="asvc__footer-card">
+				<p class="asvc__footer-text">Not sure where to start? Most new patients begin with a <strong>New Patient Consultation</strong> — your provider will help identify the right care pathway.</p>
+				<a class="aster-btn aster-btn--primary" href="#pricing">Book a Consultation</a>
+			</div>
+		</div>
 	</div>
 </section>
 
 <style>
-.asvc__intro { max-width: 560px; margin-bottom: clamp(2rem, 4vw, 3rem); }
+.asvc__intro { max-width: 600px; margin-bottom: clamp(2.5rem, 5vw, 3.5rem); }
 .asvc__list { display: grid; gap: 0; }
-.asvc__item { display: grid; grid-template-columns: 0.4fr 1fr; gap: clamp(1.5rem, 3vw, 2.5rem); padding-block: clamp(1.25rem, 2.5vw, 1.75rem); border-bottom: 1px solid color-mix(in srgb, var(--aster-eucalyptus) 20%, var(--aster-border)); }
+.asvc__item { display: grid; grid-template-columns: 0.42fr 1fr; gap: clamp(1.5rem, 3vw, 2.5rem); padding-block: clamp(1.35rem, 2.5vw, 1.85rem); border-bottom: 1px solid color-mix(in srgb, var(--aster-eucalyptus) 20%, var(--aster-border)); }
 .asvc__item:first-child { border-top: 1px solid color-mix(in srgb, var(--aster-eucalyptus) 20%, var(--aster-border)); }
-.asvc__item-head h3 { margin-bottom: 0.25rem; }
-.asvc__best { margin: 0; color: var(--aster-muted); font-size: 0.78rem; font-style: italic; }
+.asvc__item-head { display: flex; align-items: flex-start; gap: 0.85rem; }
+.asvc__num { flex-shrink: 0; font-family: var(--aster-serif); font-size: 0.82rem; font-weight: 500; color: var(--aster-clay); opacity: 0.7; line-height: 1.65; }
+.asvc__item-head h3 { margin-bottom: 0.3rem; }
+.asvc__best { display: flex; align-items: center; gap: 0.35rem; margin: 0; color: var(--aster-eucalyptus); font-size: 0.76rem; font-weight: 600; }
+.asvc__best svg { flex-shrink: 0; opacity: 0.7; }
 .asvc__item-body p { color: var(--aster-text); font-size: 0.9rem; line-height: 1.65; }
 .asvc__link { display: inline-flex; align-items: center; gap: 0.25rem; font-size: 0.8rem; font-weight: 600; color: var(--aster-clay); }
 .asvc__link:hover { color: var(--aster-clay-dark); }
+.asvc__footer { margin-top: clamp(2rem, 4vw, 3rem); }
+.asvc__footer-card { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; padding: 1.25rem 1.5rem; background: var(--aster-white); border: 1px solid var(--aster-border); border-radius: var(--aster-radius); }
+.asvc__footer-text { margin: 0; font-size: 0.88rem; color: var(--aster-text); line-height: 1.55; max-width: 520px; }
+.asvc__footer-text strong { color: var(--aster-heading); }
 
-@media (max-width: 620px) { .asvc__item { grid-template-columns: 1fr; gap: 0.5rem; } }
+@media (max-width: 620px) {
+	.asvc__item { grid-template-columns: 1fr; gap: 0.5rem; }
+	.asvc__footer-card { flex-direction: column; text-align: center; }
+}
 </style>

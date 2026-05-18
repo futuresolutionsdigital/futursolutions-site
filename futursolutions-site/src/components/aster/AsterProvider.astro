@@ -4,9 +4,20 @@ import { provider } from '../../data/aster';
 
 <section class="aster-section apr" id="provider" aria-labelledby="provider-heading">
 	<div class="aster-container">
-		<div class="apr__card">
-			<div class="apr__portrait" aria-hidden="true">
-				<div class="apr__avatar"><span>{provider.initials}</span></div>
+		<div class="apr__layout">
+			<div class="apr__portrait-col">
+				<div class="apr__portrait" aria-hidden="true">
+					<div class="apr__img-area">
+						<div class="apr__avatar"><span>{provider.initials}</span></div>
+						<span class="apr__img-label">Provider portrait</span>
+					</div>
+				</div>
+				<div class="apr__cred-card">
+					<h3 class="apr__cred-heading">Credentials</h3>
+					<ul class="apr__creds">
+						{provider.credentials.map((c) => <li>{c}</li>)}
+					</ul>
+				</div>
 			</div>
 			<div class="apr__body">
 				<p class="aster-eyebrow">Meet your provider</p>
@@ -14,16 +25,17 @@ import { provider } from '../../data/aster';
 				<p class="apr__title">{provider.title}</p>
 				<p class="apr__bio">{provider.bio}</p>
 
-				<blockquote class="apr__quote">
-					<p>"{provider.quote}"</p>
-				</blockquote>
-
-				<ul class="apr__creds">
-					{provider.credentials.map((c) => <li>{c}</li>)}
-				</ul>
+				<div class="apr__letter">
+					<p class="apr__letter-label">A note from Dr. Marrow</p>
+					<blockquote class="apr__quote">
+						<p>"{provider.quote}"</p>
+					</blockquote>
+					<p class="apr__signature">— Dr. Elena Marrow, FNP-C</p>
+				</div>
 
 				<div class="aster-btn-row">
-					<a class="aster-btn aster-btn--secondary" href={provider.cta.href}>{provider.cta.text}</a>
+					<a class="aster-btn aster-btn--primary" href={provider.cta.href}>{provider.cta.text}</a>
+					<a class="aster-btn aster-btn--secondary" href="#pricing">Book a Consultation</a>
 				</div>
 			</div>
 		</div>
@@ -31,25 +43,35 @@ import { provider } from '../../data/aster';
 </section>
 
 <style>
-.apr__card { display: grid; grid-template-columns: 0.38fr 1fr; gap: clamp(2rem, 5vw, 4rem); align-items: start; padding: clamp(2rem, 4vw, 3rem); background: var(--aster-paper); border: 1px solid var(--aster-border); border-radius: var(--aster-radius-lg); }
-.apr__portrait { display: flex; justify-content: center; }
-.apr__avatar { display: flex; align-items: center; justify-content: center; width: clamp(6rem, 9vw, 9rem); height: clamp(6rem, 9vw, 9rem); border-radius: 50%; background: var(--aster-white); border: 1px solid var(--aster-border); }
-.apr__avatar span { font-family: var(--aster-serif); font-size: clamp(1.4rem, 2vw, 2rem); font-weight: 600; color: var(--aster-clay); }
-.apr__title { color: var(--aster-clay); font-weight: 600; font-size: 0.88rem; margin-bottom: 0.75rem; }
-.apr__bio { max-width: 520px; color: var(--aster-text); font-size: 0.95rem; line-height: 1.7; }
-.apr__quote { margin: 1.5rem 0; padding: 1.25rem 1.5rem; background: var(--aster-white); border-radius: var(--aster-radius); border-left: 3px solid var(--aster-clay); }
-.apr__quote p { margin: 0; font-family: var(--aster-serif); font-size: 1.05rem; font-style: italic; font-weight: 400; line-height: 1.6; color: var(--aster-heading); }
-.apr__creds { display: grid; gap: 0.4rem; padding: 0; margin: 1rem 0 0; list-style: none; }
-.apr__creds li { position: relative; padding-left: 1rem; font-size: 0.85rem; font-weight: 500; color: var(--aster-muted); }
-.apr__creds li::before { content: '·'; position: absolute; left: 0; color: var(--aster-clay); font-weight: 700; }
+.apr__layout { display: grid; grid-template-columns: 0.42fr 1fr; gap: clamp(2rem, 4vw, 3.5rem); align-items: start; }
+.apr__portrait-col { display: flex; flex-direction: column; gap: 1rem; position: sticky; top: 8rem; }
+.apr__portrait { border-radius: var(--aster-radius-lg); overflow: hidden; border: 1px solid var(--aster-border); background: var(--aster-paper); }
+.apr__img-area { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: clamp(2.5rem, 5vw, 4rem) 1.5rem; background: linear-gradient(170deg, var(--aster-eucalyptus-light) 0%, var(--aster-paper) 60%); min-height: 240px; }
+.apr__avatar { display: flex; align-items: center; justify-content: center; width: clamp(5.5rem, 8vw, 7rem); height: clamp(5.5rem, 8vw, 7rem); border-radius: 50%; background: var(--aster-white); border: 2px solid var(--aster-border); box-shadow: 0 6px 24px rgba(32,32,29,0.06); }
+.apr__avatar span { font-family: var(--aster-serif); font-size: clamp(1.3rem, 1.8vw, 1.8rem); font-weight: 600; color: var(--aster-clay); }
+.apr__img-label { margin-top: 0.75rem; font-size: 0.62rem; font-weight: 600; color: var(--aster-muted); letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.5; }
+.apr__cred-card { padding: 1.25rem 1.35rem; border: 1px solid var(--aster-border); border-radius: var(--aster-radius); background: var(--aster-white); }
+.apr__cred-heading { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--aster-clay); margin-bottom: 0.65rem; }
+.apr__creds { display: grid; gap: 0.45rem; padding: 0; margin: 0; list-style: none; }
+.apr__creds li { position: relative; padding-left: 0.85rem; font-size: 0.8rem; font-weight: 500; color: var(--aster-muted); line-height: 1.45; }
+.apr__creds li::before { content: ''; position: absolute; left: 0; top: 0.45rem; width: 4px; height: 4px; border-radius: 50%; background: var(--aster-clay); }
+
+.apr__title { color: var(--aster-clay); font-weight: 600; font-size: 0.88rem; margin-bottom: 1rem; }
+.apr__bio { max-width: 520px; color: var(--aster-text); font-size: 1rem; line-height: 1.75; }
+.apr__letter { margin: 2rem 0; padding: clamp(1.5rem, 3vw, 2rem); background: var(--aster-paper); border: 1px solid var(--aster-border); border-radius: var(--aster-radius); }
+.apr__letter-label { margin-bottom: 0.75rem; font-size: 0.68rem; font-weight: 700; color: var(--aster-clay); letter-spacing: 0.1em; text-transform: uppercase; }
+.apr__quote { margin: 0; }
+.apr__quote p { margin: 0; font-family: var(--aster-serif); font-size: clamp(1.05rem, 1rem + 0.25vw, 1.18rem); font-style: italic; font-weight: 400; line-height: 1.65; color: var(--aster-heading); }
+.apr__signature { margin-top: 1rem; font-family: var(--aster-serif); font-size: 0.88rem; font-weight: 500; color: var(--aster-heading); font-style: italic; }
 
 @media (max-width: 768px) {
-	.apr__card { grid-template-columns: 1fr; text-align: center; }
-	.apr__bio { margin-inline: auto; }
-	.apr__quote { border-left: none; border-top: 3px solid var(--aster-clay); text-align: left; }
-	.apr__creds { justify-items: center; }
-	.apr__creds li { padding-left: 0; }
-	.apr__creds li::before { display: none; }
-	.aster-btn-row { justify-content: center; }
+	.apr__layout { grid-template-columns: 1fr; }
+	.apr__portrait-col { position: static; flex-direction: row; gap: 1rem; }
+	.apr__portrait { flex: 1; }
+	.apr__cred-card { flex: 1; }
+	.apr__body { text-align: left; }
+}
+@media (max-width: 520px) {
+	.apr__portrait-col { flex-direction: column; }
 }
 </style>

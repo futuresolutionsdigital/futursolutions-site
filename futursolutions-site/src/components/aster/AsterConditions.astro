@@ -4,23 +4,26 @@ import { conditions } from '../../data/aster';
 
 <section class="aster-section acond" id="conditions" aria-labelledby="conditions-heading">
 	<div class="aster-container">
-		<div class="acond__intro">
-			<p class="aster-eyebrow">Areas of focus</p>
-			<h2 id="conditions-heading">Common concerns we help patients navigate.</h2>
+		<div class="acond__panel">
+			<div class="acond__intro">
+				<p class="aster-eyebrow">Areas of focus</p>
+				<h2 id="conditions-heading">Common concerns we help patients navigate.</h2>
+			</div>
+			<div class="acond__grid">
+				{conditions.map((cond) => (
+					<span class="acond__tag">{cond}</span>
+				))}
+			</div>
+			<p class="acond__note">If your concern is not listed, it does not mean we cannot help. Start with a consultation and we will explore your needs together.</p>
 		</div>
-		<div class="acond__grid">
-			{conditions.map((cond) => (
-				<span class="acond__tag">{cond}</span>
-			))}
-		</div>
-		<p class="acond__note">If your concern is not listed, it does not mean we cannot help. Start with a consultation and we will explore your needs together.</p>
 	</div>
 </section>
 
 <style>
-.acond__intro { max-width: 520px; margin-bottom: clamp(1.5rem, 3vw, 2.5rem); text-align: center; margin-inline: auto; }
-.acond__grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; max-width: 680px; margin-inline: auto; }
+.acond__panel { padding: clamp(2.5rem, 5vw, 4rem); background: var(--aster-paper); border: 1px solid var(--aster-border); border-radius: var(--aster-radius-lg); text-align: center; }
+.acond__intro { max-width: 520px; margin: 0 auto clamp(1.5rem, 3vw, 2.5rem); }
+.acond__grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; max-width: 640px; margin-inline: auto; }
 .acond__tag { padding: 0.5rem 1rem; border: 1px solid var(--aster-border); border-radius: 999px; font-size: 0.82rem; font-weight: 500; color: var(--aster-heading); background: var(--aster-white); transition: border-color 0.18s ease, background 0.18s ease; }
 .acond__tag:hover { border-color: var(--aster-clay); background: var(--aster-clay-light); }
-.acond__note { margin-top: 1.75rem; text-align: center; color: var(--aster-muted); font-size: 0.82rem; font-style: italic; }
+.acond__note { margin-top: 1.5rem; color: var(--aster-muted); font-size: 0.78rem; font-style: italic; }
 </style>

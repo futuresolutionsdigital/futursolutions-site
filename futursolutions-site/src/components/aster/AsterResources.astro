@@ -9,9 +9,9 @@ import { resources } from '../../data/aster';
 			<h2 id="resources-heading">Helpful guidance before and between visits.</h2>
 			<p class="aster-lead">Patient education that builds trust, reduces uncertainty, and supports informed care decisions.</p>
 		</div>
-		<div class="ares__list">
+		<div class="ares__grid">
 			{resources.map((r) => (
-				<article class="ares__item">
+				<article class="ares__card">
 					<span class="ares__cat">{r.category}</span>
 					<h3><a href={r.href}>{r.title}</a></h3>
 					<p class="ares__excerpt">{r.excerpt}</p>
@@ -27,14 +27,15 @@ import { resources } from '../../data/aster';
 
 <style>
 .ares__intro { max-width: 560px; margin-bottom: clamp(2rem, 4vw, 3rem); }
-.ares__list { display: grid; gap: 0; max-width: 720px; }
-.ares__item { padding-block: clamp(1.25rem, 2.5vw, 1.75rem); border-bottom: 1px solid var(--aster-border); }
-.ares__item:first-child { border-top: 1px solid var(--aster-border); }
-.ares__cat { display: inline-block; margin-bottom: 0.5rem; font-size: 0.65rem; font-weight: 700; color: var(--aster-clay); letter-spacing: 0.1em; text-transform: uppercase; }
-.ares__item h3 { margin-bottom: 0.35rem; }
-.ares__item h3 a { color: var(--aster-heading); }
-.ares__item h3 a:hover { color: var(--aster-clay); }
-.ares__excerpt { color: var(--aster-muted); font-size: 0.88rem; line-height: 1.6; }
+.ares__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+.ares__card { padding: 1.5rem; background: var(--aster-white); border: 1px solid var(--aster-border); border-radius: var(--aster-radius); display: flex; flex-direction: column; }
+.ares__cat { display: inline-block; width: fit-content; margin-bottom: 0.65rem; font-size: 0.62rem; font-weight: 700; color: var(--aster-clay); letter-spacing: 0.1em; text-transform: uppercase; }
+.ares__card h3 { margin-bottom: 0.4rem; }
+.ares__card h3 a { color: var(--aster-heading); }
+.ares__card h3 a:hover { color: var(--aster-clay); }
+.ares__excerpt { flex: 1; color: var(--aster-muted); font-size: 0.85rem; line-height: 1.6; }
 .ares__link { display: inline-flex; align-items: center; gap: 0.25rem; font-size: 0.78rem; font-weight: 600; color: var(--aster-clay); }
 .ares__link:hover { color: var(--aster-clay-dark); }
+
+@media (max-width: 768px) { .ares__grid { grid-template-columns: 1fr; max-width: 480px; } }
 </style>

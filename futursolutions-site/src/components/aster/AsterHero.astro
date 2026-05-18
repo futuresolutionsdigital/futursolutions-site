@@ -8,49 +8,75 @@ import { hero, provider } from '../../data/aster';
 			<p class="aster-eyebrow">Aster Private Health · Temecula, CA</p>
 			<h1 id="aster-hero-heading">{hero.headline}</h1>
 			<p class="ah-hero__lead">{hero.lead}</p>
-			<div class="aster-btn-row">
-				<a class="aster-btn aster-btn--primary" href={hero.primaryCta.href}>{hero.primaryCta.text}</a>
+			<div class="aster-btn-row ah-hero__actions">
+				<a class="aster-btn aster-btn--primary ah-hero__btn-primary" href={hero.primaryCta.href}>{hero.primaryCta.text}</a>
 				<a class="aster-btn aster-btn--secondary" href={hero.secondaryCta.href}>{hero.secondaryCta.text}</a>
 			</div>
 		</div>
 		<aside class="ah-hero__aside" aria-label="Provider introduction">
-			<div class="ah-hero__provider-note">
-				<div class="ah-hero__avatar" aria-hidden="true"><span>{provider.initials}</span></div>
-				<p class="ah-hero__note-text"><em>"{provider.quote}"</em></p>
-				<p class="ah-hero__note-sig">— {provider.name}</p>
-				<p class="ah-hero__note-title">{provider.title}</p>
+			<div class="ah-hero__card">
+				<div class="ah-hero__img-placeholder" aria-hidden="true">
+					<div class="ah-hero__avatar"><span>{provider.initials}</span></div>
+					<span class="ah-hero__img-label">Provider photo</span>
+				</div>
+				<div class="ah-hero__card-body">
+					<blockquote class="ah-hero__quote">
+						<p>"{provider.quote}"</p>
+					</blockquote>
+					<div class="ah-hero__sig">
+						<span class="ah-hero__sig-name">— {provider.name}</span>
+						<span class="ah-hero__sig-title">{provider.title}</span>
+					</div>
+				</div>
+			</div>
+			<div class="ah-hero__stat">
+				<span class="ah-hero__stat-num">60–75</span>
+				<span class="ah-hero__stat-label">minutes per<br/>first visit</span>
 			</div>
 		</aside>
 	</div>
 	<div class="aster-container">
 		<div class="ah-trust">
 			{hero.trustStrip.map((item) => (
-				<span class="ah-trust__item">{item}</span>
+				<span class="ah-trust__item">
+					<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 14 14" aria-hidden="true"><path stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" d="M3.5 7.5 6 10l4.5-5"/></svg>
+					{item}
+				</span>
 			))}
 		</div>
 	</div>
 </section>
 
 <style>
-.ah-hero { padding-block: clamp(4.5rem, 8vw, 7rem) clamp(2.5rem, 4vw, 3.5rem); }
-.ah-hero__inner { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: clamp(3rem, 6vw, 6rem); align-items: start; }
-.ah-hero__lead { max-width: 520px; color: var(--aster-muted); font-size: clamp(1.02rem, 1rem + 0.2vw, 1.12rem); line-height: 1.7; }
-.ah-hero__aside { display: flex; align-items: flex-start; }
-.ah-hero__provider-note { padding: clamp(1.5rem, 3vw, 2.25rem); border-left: 3px solid var(--aster-clay); background: var(--aster-paper); border-radius: 0 var(--aster-radius) var(--aster-radius) 0; }
-.ah-hero__avatar { display: inline-flex; align-items: center; justify-content: center; width: 3rem; height: 3rem; margin-bottom: 1rem; border-radius: 50%; background: var(--aster-white); border: 1px solid var(--aster-border); }
-.ah-hero__avatar span { font-size: 0.75rem; font-weight: 700; color: var(--aster-clay); font-family: var(--aster-serif); }
-.ah-hero__note-text { font-family: var(--aster-serif); font-size: clamp(1rem, 0.95rem + 0.25vw, 1.12rem); font-weight: 400; line-height: 1.6; color: var(--aster-heading); margin-bottom: 1rem; }
-.ah-hero__note-text em { font-style: italic; }
-.ah-hero__note-sig { margin-bottom: 0.15rem; font-size: 0.82rem; font-weight: 700; color: var(--aster-heading); }
-.ah-hero__note-title { font-size: 0.72rem; color: var(--aster-muted); }
-.ah-trust { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; margin-top: clamp(2.5rem, 5vw, 3.5rem); }
-.ah-trust__item { padding: 0.45rem 0.85rem; border: 1px solid var(--aster-border); border-radius: 999px; font-size: 0.75rem; font-weight: 600; color: var(--aster-muted); background: var(--aster-white); }
+.ah-hero { padding-block: clamp(5rem, 9vw, 8rem) clamp(3rem, 5vw, 4rem); }
+.ah-hero__inner { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: clamp(3rem, 5vw, 5rem); align-items: start; }
+.ah-hero__lead { max-width: 500px; color: var(--aster-muted); font-size: clamp(1.02rem, 1rem + 0.2vw, 1.12rem); line-height: 1.7; }
+.ah-hero__actions { margin-top: 2rem; }
+.ah-hero__btn-primary { min-height: 3.1rem; padding: 0.8rem 1.6rem; font-size: 0.95rem; }
+.ah-hero__aside { display: flex; flex-direction: column; gap: 1rem; }
+.ah-hero__card { background: var(--aster-paper); border: 1px solid var(--aster-border); border-radius: var(--aster-radius-lg); overflow: hidden; }
+.ah-hero__img-placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: clamp(2rem, 4vw, 3rem) 2rem; background: linear-gradient(170deg, var(--aster-eucalyptus-light) 0%, var(--aster-paper) 100%); border-bottom: 1px solid var(--aster-border); min-height: 160px; }
+.ah-hero__avatar { display: flex; align-items: center; justify-content: center; width: 4.5rem; height: 4.5rem; border-radius: 50%; background: var(--aster-white); border: 2px solid var(--aster-border); box-shadow: 0 4px 20px rgba(32,32,29,0.06); }
+.ah-hero__avatar span { font-family: var(--aster-serif); font-size: 1.1rem; font-weight: 600; color: var(--aster-clay); }
+.ah-hero__img-label { margin-top: 0.6rem; font-size: 0.65rem; font-weight: 600; color: var(--aster-muted); letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.6; }
+.ah-hero__card-body { padding: clamp(1.25rem, 2.5vw, 1.75rem); }
+.ah-hero__quote { margin: 0; }
+.ah-hero__quote p { margin: 0 0 1rem; font-family: var(--aster-serif); font-size: clamp(0.95rem, 0.9rem + 0.2vw, 1.05rem); font-style: italic; font-weight: 400; line-height: 1.6; color: var(--aster-heading); }
+.ah-hero__sig { border-top: 1px solid var(--aster-border); padding-top: 0.75rem; }
+.ah-hero__sig-name { display: block; font-size: 0.82rem; font-weight: 700; color: var(--aster-heading); }
+.ah-hero__sig-title { display: block; font-size: 0.7rem; color: var(--aster-muted); margin-top: 0.1rem; }
+.ah-hero__stat { display: flex; align-items: center; gap: 0.75rem; padding: 0.85rem 1.15rem; background: var(--aster-white); border: 1px solid var(--aster-border); border-radius: var(--aster-radius); }
+.ah-hero__stat-num { font-family: var(--aster-serif); font-size: 1.4rem; font-weight: 600; color: var(--aster-clay); line-height: 1; }
+.ah-hero__stat-label { font-size: 0.72rem; font-weight: 600; color: var(--aster-muted); line-height: 1.3; }
+.ah-trust { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem 0.65rem; margin-top: clamp(3rem, 6vw, 4.5rem); padding: 1.15rem 1.5rem; background: var(--aster-white); border: 1px solid var(--aster-border); border-radius: var(--aster-radius); }
+.ah-trust__item { display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.78rem; font-weight: 600; color: var(--aster-heading); }
+.ah-trust__item svg { color: var(--aster-clay); flex-shrink: 0; }
 
 @media (max-width: 860px) {
 	.ah-hero__inner { grid-template-columns: 1fr; }
 	.ah-hero__content { text-align: center; }
 	.ah-hero__lead { margin-inline: auto; }
-	.aster-btn-row { justify-content: center; }
-	.ah-hero__provider-note { border-left: none; border-top: 3px solid var(--aster-clay); border-radius: 0 0 var(--aster-radius) var(--aster-radius); }
+	.ah-hero__actions { justify-content: center; }
+	.ah-hero__aside { max-width: 420px; margin-inline: auto; }
 }
 </style>
