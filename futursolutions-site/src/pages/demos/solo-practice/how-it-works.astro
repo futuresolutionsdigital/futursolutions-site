@@ -136,7 +136,35 @@ const visitOptions = [
 		</div>
 	</section>
 
-	<section class="aster-section aster-section--paper" aria-labelledby="hw-faq-heading">
+	<section class="aster-section aster-section--paper" aria-labelledby="hw-plan-heading">
+		<div class="aster-container">
+			<div class="hw-intro" style="text-align:center; margin-inline:auto;">
+				<p class="aster-eyebrow">What You Leave With</p>
+				<h2 id="hw-plan-heading">Your care plan may include</h2>
+				<p class="aster-lead" style="margin-inline:auto;">After your consultation, you receive a clear, written plan — not a vague set of instructions.</p>
+			</div>
+			<div class="hw-plan-doc" aria-label="Sample care plan preview">
+				<div class="hw-plan-header">
+					<span class="hw-plan-logo">A</span>
+					<div>
+						<strong>Aster Private Health</strong>
+						<span>Care Plan — Sample Preview</span>
+					</div>
+				</div>
+				<div class="hw-plan-body">
+					<div class="hw-plan-row"><span class="hw-plan-label">Health priorities</span><span class="hw-plan-value">Fatigue investigation · thyroid follow-up · preventive screening</span></div>
+					<div class="hw-plan-row"><span class="hw-plan-label">Lab review notes</span><span class="hw-plan-value">TSH, free T4, CBC, metabolic panel — results reviewed with patient</span></div>
+					<div class="hw-plan-row"><span class="hw-plan-label">Lifestyle recommendations</span><span class="hw-plan-value">Sleep hygiene adjustments · stress management · nutrition guidance</span></div>
+					<div class="hw-plan-row"><span class="hw-plan-label">Follow-up timeline</span><span class="hw-plan-value">Lab recheck in 6 weeks · follow-up visit in 8 weeks</span></div>
+					<div class="hw-plan-row"><span class="hw-plan-label">Referrals</span><span class="hw-plan-value">Endocrinology referral if thyroid values remain elevated</span></div>
+					<div class="hw-plan-row"><span class="hw-plan-label">Secure messaging</span><span class="hw-plan-value">Available for questions between visits (membership patients)</span></div>
+				</div>
+				<p class="hw-plan-disclaimer">This is a fictional sample for demo purposes only. No real patient data is shown.</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="aster-section" aria-labelledby="hw-faq-heading">
 		<div class="aster-container">
 			<div class="hw-intro" style="text-align:center; margin-inline:auto;">
 				<p class="aster-eyebrow">FAQ</p>
@@ -234,6 +262,18 @@ const visitOptions = [
 .hw-cta-s { border-color: rgba(255,255,255,0.15); background: transparent; color: rgba(255,255,255,0.75); }
 .hw-cta-s:hover { background: rgba(255,255,255,0.07); color: var(--aster-white); }
 
+.hw-plan-doc { max-width: 620px; margin-inline: auto; border: 1px solid var(--aster-border); border-radius: var(--aster-radius-lg); background: var(--aster-white); overflow: hidden; }
+.hw-plan-header { display: flex; align-items: center; gap: 0.65rem; padding: 1rem 1.5rem; background: var(--aster-ivory); border-bottom: 1px solid var(--aster-border); }
+.hw-plan-logo { display: inline-flex; align-items: center; justify-content: center; width: 1.8rem; height: 1.8rem; border-radius: 6px; background: var(--aster-clay); color: var(--aster-white); font-family: var(--aster-serif); font-size: 0.65rem; font-weight: 700; }
+.hw-plan-header strong { display: block; font-size: 0.82rem; color: var(--aster-heading); }
+.hw-plan-header span { font-size: 0.68rem; color: var(--aster-muted); }
+.hw-plan-body { padding: 0.5rem 1.5rem; }
+.hw-plan-row { display: flex; gap: 1rem; padding-block: 0.75rem; border-bottom: 1px solid var(--aster-border); }
+.hw-plan-row:last-child { border-bottom: none; }
+.hw-plan-label { flex-shrink: 0; width: 140px; font-size: 0.72rem; font-weight: 700; color: var(--aster-clay); letter-spacing: 0.06em; text-transform: uppercase; padding-top: 0.1rem; }
+.hw-plan-value { font-size: 0.85rem; color: var(--aster-text); line-height: 1.5; }
+.hw-plan-disclaimer { margin: 0; padding: 0.75rem 1.5rem; background: var(--aster-ivory); border-top: 1px solid var(--aster-border); font-size: 0.68rem; color: var(--aster-muted); font-style: italic; text-align: center; }
+
 @media (max-width: 620px) {
 	.hw-visit-item { grid-template-columns: 1fr; gap: 0.5rem; }
 	.hw-scope-grid { grid-template-columns: 1fr; }
@@ -242,5 +282,7 @@ const visitOptions = [
 	.hw-compare-cell--aster { border-top: 1px dashed var(--aster-border); }
 	.hw-timeline { padding-left: 2rem; }
 	.hw-tl-line { left: -2rem; }
+	.hw-plan-row { flex-direction: column; gap: 0.25rem; }
+	.hw-plan-label { width: auto; }
 }
 </style>

@@ -89,7 +89,47 @@ const rightForYou = [
 		</div>
 	</section>
 
-	<section class="aster-section aster-section--paper" aria-labelledby="px-scope-heading">
+	<section class="aster-section aster-section--paper" aria-labelledby="px-clarity-heading">
+		<div class="aster-container">
+			<div class="px-intro" style="text-align:center; margin-inline:auto;">
+				<p class="aster-eyebrow">Cost Clarity</p>
+				<h2 id="px-clarity-heading">Understanding where your money goes.</h2>
+				<p class="aster-lead" style="margin-inline:auto;">Private care means you pay Aster directly for visits and membership. Labs, imaging, and emergencies remain separate.</p>
+			</div>
+			<div class="px-clarity-grid">
+				<div class="px-clarity-col">
+					<h3 class="px-clarity-label px-clarity-label--clay">What you pay Aster for</h3>
+					<ul>
+						<li>Consultation and follow-up visits</li>
+						<li>Private Care Membership</li>
+						<li>Care plan creation and review</li>
+						<li>Secure messaging (members)</li>
+						<li>Lab interpretation and coordination</li>
+					</ul>
+				</div>
+				<div class="px-clarity-col px-clarity-col--mid">
+					<h3 class="px-clarity-label px-clarity-label--euc">May still go through insurance</h3>
+					<ul>
+						<li>Lab draws and blood work</li>
+						<li>Imaging (X-ray, ultrasound, MRI)</li>
+						<li>Prescription medications</li>
+						<li>Specialist visits (if referred)</li>
+					</ul>
+				</div>
+				<div class="px-clarity-col px-clarity-col--muted">
+					<h3 class="px-clarity-label">Outside the practice fee</h3>
+					<ul>
+						<li>Emergency or urgent care</li>
+						<li>Hospital or surgical care</li>
+						<li>Specialist procedures</li>
+						<li>Outside facility fees</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="aster-section" aria-labelledby="px-scope-heading">
 		<div class="aster-container px-scope-grid">
 			<div class="px-scope-card">
 				<h3 class="px-scope-label">What is included</h3>
@@ -223,9 +263,23 @@ const rightForYou = [
 .px-cta-s:hover { background: rgba(255,255,255,0.07); color: var(--aster-white); }
 .px-final-note { margin-top: 1.25rem; color: rgba(255,255,255,0.3); font-size: 0.72rem; }
 
+.px-clarity-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; max-width: 840px; margin-inline: auto; }
+.px-clarity-col { padding: 1.5rem; border: 1px solid var(--aster-border); border-radius: var(--aster-radius); background: var(--aster-white); }
+.px-clarity-col--mid { background: var(--aster-clay-light); border-color: rgba(167,104,77,0.2); }
+.px-clarity-col--muted { background: var(--aster-ivory); }
+.px-clarity-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--aster-muted); margin-bottom: 0.85rem; }
+.px-clarity-label--clay { color: var(--aster-clay); }
+.px-clarity-label--euc { color: var(--aster-eucalyptus); }
+.px-clarity-col ul { padding: 0; margin: 0; list-style: none; display: grid; gap: 0.45rem; }
+.px-clarity-col li { position: relative; padding-left: 0.85rem; font-size: 0.85rem; font-weight: 500; color: var(--aster-text); line-height: 1.5; }
+.px-clarity-col li::before { content: ''; position: absolute; left: 0; top: 0.5rem; width: 4px; height: 4px; border-radius: 50%; background: var(--aster-clay); }
+.px-clarity-col--muted li::before { background: var(--aster-muted); }
+.px-clarity-col--mid li::before { background: var(--aster-eucalyptus); }
+
 @media (max-width: 620px) {
 	.px-item { flex-direction: column; text-align: center; gap: 1rem; }
 	.px-item-left { text-align: center; }
 	.px-scope-grid { grid-template-columns: 1fr; }
+	.px-clarity-grid { grid-template-columns: 1fr; }
 }
 </style>

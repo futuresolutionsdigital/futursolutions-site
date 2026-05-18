@@ -36,7 +36,53 @@ const portalFeatures = [
 		</div>
 	</section>
 
-	<section class="aster-section" aria-labelledby="pp-manage-heading">
+	<section class="aster-section" aria-labelledby="pp-dash-heading">
+		<div class="aster-container">
+			<div class="pp-intro">
+				<p class="aster-eyebrow">Portal Preview</p>
+				<h2 id="pp-dash-heading">A look inside the patient experience.</h2>
+			</div>
+			<div class="pp-dash" aria-label="Demo portal dashboard preview">
+				<div class="pp-dash-header">
+					<span class="pp-dash-logo">A</span>
+					<div>
+						<strong>Aster Private Health — Patient Portal</strong>
+						<span>Welcome back, Sarah</span>
+					</div>
+				</div>
+				<div class="pp-dash-grid">
+					<div class="pp-dash-card">
+						<span class="pp-dash-icon" aria-hidden="true">📅</span>
+						<strong>Upcoming Appointment</strong>
+						<span>Follow-Up Visit · Jun 12, 2026 · 10:00 AM</span>
+					</div>
+					<div class="pp-dash-card">
+						<span class="pp-dash-icon" aria-hidden="true">📋</span>
+						<strong>Intake Forms</strong>
+						<span>Pre-visit questionnaire · Due by Jun 10</span>
+					</div>
+					<div class="pp-dash-card">
+						<span class="pp-dash-icon" aria-hidden="true">📄</span>
+						<strong>Recent Care Plan</strong>
+						<span>Updated May 1, 2026 · Thyroid follow-up</span>
+					</div>
+					<div class="pp-dash-card">
+						<span class="pp-dash-icon" aria-hidden="true">💬</span>
+						<strong>Secure Message</strong>
+						<span>1 new message from Dr. Marrow</span>
+					</div>
+					<div class="pp-dash-card">
+						<span class="pp-dash-icon" aria-hidden="true">🔬</span>
+						<strong>Lab Review</strong>
+						<span>TSH, CBC results ready for review</span>
+					</div>
+				</div>
+				<p class="pp-dash-disclaimer">This is a fictional demo preview. No real patient data is shown or stored.</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="aster-section aster-section--paper" aria-labelledby="pp-manage-heading">
 		<div class="aster-container">
 			<div class="pp-intro">
 				<p class="aster-eyebrow">What You Can Manage</p>
@@ -80,6 +126,21 @@ const portalFeatures = [
 .pp-access-card .aster-btn { margin-inline: auto; }
 .pp-access-note { margin-top: 1.25rem; color: var(--aster-muted); font-size: 0.72rem; line-height: 1.55; font-style: italic; }
 
+.pp-dash { max-width: 680px; border: 1px solid var(--aster-border); border-radius: var(--aster-radius-lg); background: var(--aster-white); overflow: hidden; }
+.pp-dash-header { display: flex; align-items: center; gap: 0.65rem; padding: 1rem 1.5rem; background: var(--aster-ivory); border-bottom: 1px solid var(--aster-border); }
+.pp-dash-logo { display: inline-flex; align-items: center; justify-content: center; width: 1.8rem; height: 1.8rem; border-radius: 6px; background: var(--aster-clay); color: var(--aster-white); font-family: var(--aster-serif); font-size: 0.65rem; font-weight: 700; }
+.pp-dash-header strong { display: block; font-size: 0.82rem; color: var(--aster-heading); }
+.pp-dash-header span { font-size: 0.72rem; color: var(--aster-muted); }
+.pp-dash-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+.pp-dash-card { display: flex; flex-direction: column; gap: 0.15rem; padding: 1rem 1.5rem; border-bottom: 1px solid var(--aster-border); border-right: 1px solid var(--aster-border); }
+.pp-dash-card:nth-child(even) { border-right: none; }
+.pp-dash-card:nth-last-child(-n+2) { border-bottom: none; }
+.pp-dash-card:last-child:nth-child(odd) { grid-column: span 2; border-right: none; }
+.pp-dash-icon { font-size: 1.1rem; }
+.pp-dash-card strong { font-size: 0.82rem; color: var(--aster-heading); }
+.pp-dash-card > span { font-size: 0.75rem; color: var(--aster-muted); line-height: 1.4; }
+.pp-dash-disclaimer { margin: 0; padding: 0.75rem 1.5rem; background: var(--aster-ivory); border-top: 1px solid var(--aster-border); font-size: 0.68rem; color: var(--aster-muted); font-style: italic; text-align: center; }
+
 .pp-feature-list { display: grid; gap: 0; max-width: 600px; }
 .pp-feature-item { padding-block: clamp(1.15rem, 2vw, 1.5rem); border-bottom: 1px solid var(--aster-border); }
 .pp-feature-item:first-child { border-top: 1px solid var(--aster-border); }
@@ -95,4 +156,10 @@ const portalFeatures = [
 .pp-cta-p:hover { background: var(--aster-clay-dark); color: var(--aster-white); }
 .pp-cta-s { border-color: rgba(255,255,255,0.15); background: transparent; color: rgba(255,255,255,0.75); }
 .pp-cta-s:hover { background: rgba(255,255,255,0.07); color: var(--aster-white); }
+
+@media (max-width: 520px) {
+	.pp-dash-grid { grid-template-columns: 1fr; }
+	.pp-dash-card { border-right: none !important; }
+	.pp-dash-card:last-child:nth-child(odd) { grid-column: span 1; }
+}
 </style>

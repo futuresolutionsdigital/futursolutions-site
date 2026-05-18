@@ -50,7 +50,34 @@ const hours = [
 		</div>
 	</section>
 
-	<section class="aster-section" aria-labelledby="form-heading">
+	<section class="aster-section" aria-labelledby="ct-resp-heading">
+		<div class="aster-container">
+			<div class="ct-intro">
+				<p class="aster-eyebrow">Response Expectations</p>
+				<h2 id="ct-resp-heading">When and how we respond.</h2>
+			</div>
+			<div class="ct-resp-panel">
+				<div class="ct-resp-row">
+					<div class="ct-resp-type">New patient inquiries</div>
+					<div class="ct-resp-detail">Within 1 business day via email or phone</div>
+				</div>
+				<div class="ct-resp-row">
+					<div class="ct-resp-type">Existing patient messages</div>
+					<div class="ct-resp-detail">Through the secure patient portal</div>
+				</div>
+				<div class="ct-resp-row">
+					<div class="ct-resp-type">Urgent concerns</div>
+					<div class="ct-resp-detail">Call urgent care or 911 as appropriate</div>
+				</div>
+				<div class="ct-resp-row">
+					<div class="ct-resp-type">Appointment changes</div>
+					<div class="ct-resp-detail">Use the patient portal or contact form</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="aster-section aster-section--paper" aria-labelledby="form-heading">
 		<div class="aster-container ct-form-grid">
 			<div>
 				<p class="aster-eyebrow">Get in touch</p>
@@ -157,6 +184,12 @@ const hours = [
 .ct-method-detail { color: var(--aster-heading); font-weight: 500; font-size: 0.88rem; white-space: pre-line; margin-bottom: 0.15rem; }
 .ct-method-note { color: var(--aster-muted); font-size: 0.78rem; }
 
+.ct-resp-panel { max-width: 560px; border: 1px solid var(--aster-border); border-radius: var(--aster-radius-lg); background: var(--aster-paper); overflow: hidden; }
+.ct-resp-row { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding: 0.85rem 1.5rem; border-bottom: 1px solid var(--aster-border); }
+.ct-resp-row:last-child { border-bottom: none; }
+.ct-resp-type { font-size: 0.88rem; font-weight: 600; color: var(--aster-heading); }
+.ct-resp-detail { font-size: 0.85rem; color: var(--aster-muted); text-align: right; }
+
 .ct-form-grid { display: grid; grid-template-columns: 0.85fr 1fr; gap: clamp(2rem, 5vw, 4rem); align-items: start; }
 .ct-info-block { margin-top: 1.75rem; padding-top: 1.25rem; border-top: 1px solid var(--aster-border); }
 .ct-info-block h3 { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--aster-clay); margin-bottom: 0.6rem; }
@@ -206,4 +239,5 @@ const hours = [
 .ct-cta-s:hover { background: rgba(255,255,255,0.07); color: var(--aster-white); }
 
 @media (max-width: 860px) { .ct-form-grid { grid-template-columns: 1fr; } }
+@media (max-width: 520px) { .ct-resp-row { flex-direction: column; gap: 0.2rem; } .ct-resp-detail { text-align: left; } }
 </style>

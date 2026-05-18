@@ -61,6 +61,28 @@ const expectations = [
 		</div>
 	</section>
 
+	<section class="aster-section" aria-labelledby="ab-snap-heading">
+		<div class="aster-container ab-snap-layout">
+			<div class="ab-snap-img" aria-hidden="true">
+				<div class="ab-snap-img__inner">
+					<div class="ab-avatar ab-avatar--lg"><span>{provider.initials}</span></div>
+					<span class="ab-snap-img__label">Provider portrait</span>
+				</div>
+			</div>
+			<div class="ab-snap-body">
+				<p class="aster-eyebrow">Provider Snapshot</p>
+				<h2 id="ab-snap-heading">Dr. Elena Marrow, FNP-C</h2>
+				<dl class="ab-snap-stats">
+					<div><dt>Certification</dt><dd>Board-Certified FNP-C</dd></div>
+					<div><dt>Experience</dt><dd>12+ years in primary &amp; preventive care</dd></div>
+					<div><dt>Focus areas</dt><dd>Women's health · metabolic health · lifestyle medicine</dd></div>
+					<div><dt>Visit format</dt><dd>In-person &amp; telehealth · Temecula, CA</dd></div>
+					<div><dt>First visits</dt><dd>60–75 minutes · direct-pay</dd></div>
+				</dl>
+			</div>
+		</div>
+	</section>
+
 	<section class="aster-section" aria-labelledby="ab-why-heading">
 		<div class="aster-container ab-letter-wrap">
 			<div class="ab-letter">
@@ -194,9 +216,21 @@ const expectations = [
 .ab-cta-s { border-color: rgba(255,255,255,0.15); background: transparent; color: rgba(255,255,255,0.75); }
 .ab-cta-s:hover { background: rgba(255,255,255,0.07); color: var(--aster-white); }
 
+.ab-snap-layout { display: grid; grid-template-columns: 0.4fr 1fr; gap: clamp(2rem, 4vw, 3.5rem); align-items: start; }
+.ab-snap-img__inner { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: clamp(3rem, 6vw, 5rem) 2rem; background: linear-gradient(170deg, var(--aster-clay-light) 0%, var(--aster-paper) 70%); border: 1px solid var(--aster-border); border-radius: var(--aster-radius-lg); min-height: 280px; }
+.ab-avatar--lg { width: clamp(5.5rem, 8vw, 7rem); height: clamp(5.5rem, 8vw, 7rem); }
+.ab-snap-img__label { margin-top: 0.75rem; font-size: 0.62rem; font-weight: 600; color: var(--aster-muted); letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.5; }
+.ab-snap-stats { display: grid; gap: 0; margin: 1.25rem 0 0; }
+.ab-snap-stats > div { display: flex; gap: 1rem; padding-block: 0.7rem; border-bottom: 1px solid var(--aster-border); }
+.ab-snap-stats > div:first-child { border-top: 1px solid var(--aster-border); }
+.ab-snap-stats dt { flex-shrink: 0; width: 100px; font-size: 0.72rem; font-weight: 700; color: var(--aster-clay); letter-spacing: 0.06em; text-transform: uppercase; padding-top: 0.1rem; }
+.ab-snap-stats dd { margin: 0; font-size: 0.88rem; font-weight: 500; color: var(--aster-heading); }
+
 @media (max-width: 768px) {
 	.ab-profile { grid-template-columns: 1fr; }
 	.ab-interest-layout { grid-template-columns: 1fr; }
 	.ab-expect-grid { grid-template-columns: 1fr; }
+	.ab-snap-layout { grid-template-columns: 1fr; }
+	.ab-snap-img__inner { min-height: 200px; }
 }
 </style>

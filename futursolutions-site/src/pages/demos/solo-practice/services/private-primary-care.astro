@@ -116,7 +116,35 @@ const concerns = [
 		</div>
 	</section>
 
-	<section class="aster-section aster-section--paper" aria-labelledby="sd-price-heading">
+	<section class="aster-section aster-section--paper" aria-labelledby="sd-flow-heading">
+		<div class="aster-container">
+			<div class="sd-intro" style="text-align:center; margin-inline:auto;">
+				<p class="aster-eyebrow">Example Visit Flow</p>
+				<h2 id="sd-flow-heading">What a primary care plan may include.</h2>
+				<p class="aster-lead" style="margin-inline:auto;">Every care plan is different, but here is a realistic example of what a primary care patient might receive.</p>
+			</div>
+			<div class="sd-flow-doc" aria-label="Sample primary care plan preview">
+				<div class="sd-flow-header">
+					<span class="sd-flow-logo">A</span>
+					<div>
+						<strong>Primary Care Plan — Sample</strong>
+						<span>Aster Private Health</span>
+					</div>
+				</div>
+				<div class="sd-flow-body">
+					<div class="sd-flow-row"><span class="sd-flow-label">Preventive screening</span><span class="sd-flow-value">Annual wellness assessment, cardiovascular risk screening, age-appropriate cancer screening</span></div>
+					<div class="sd-flow-row"><span class="sd-flow-label">Medication review</span><span class="sd-flow-value">Current medications evaluated for interactions, efficacy, and optimization</span></div>
+					<div class="sd-flow-row"><span class="sd-flow-label">Lab orders</span><span class="sd-flow-value">CBC, metabolic panel, lipid panel, HbA1c, thyroid panel</span></div>
+					<div class="sd-flow-row"><span class="sd-flow-label">Lifestyle priorities</span><span class="sd-flow-value">Nutrition adjustments, movement plan, stress management, sleep optimization</span></div>
+					<div class="sd-flow-row"><span class="sd-flow-label">Follow-up timeline</span><span class="sd-flow-value">Lab results review in 2 weeks · follow-up visit in 6 weeks</span></div>
+					<div class="sd-flow-row"><span class="sd-flow-label">Coordination</span><span class="sd-flow-value">Specialist referral if clinically indicated · records shared with patient consent</span></div>
+				</div>
+				<p class="sd-flow-disclaimer">This is a fictional sample for demo purposes only. No real patient data is shown.</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="aster-section" aria-labelledby="sd-price-heading">
 		<div class="aster-container">
 			<div class="sd-price-note">
 				<p class="aster-eyebrow">Pricing</p>
@@ -201,6 +229,18 @@ const concerns = [
 .sd-step h3 { margin-bottom: 0.15rem; }
 .sd-step p { margin: 0; color: var(--aster-muted); font-size: 0.85rem; line-height: 1.55; }
 
+.sd-flow-doc { max-width: 620px; margin-inline: auto; border: 1px solid var(--aster-border); border-radius: var(--aster-radius-lg); background: var(--aster-white); overflow: hidden; }
+.sd-flow-header { display: flex; align-items: center; gap: 0.65rem; padding: 1rem 1.5rem; background: var(--aster-ivory); border-bottom: 1px solid var(--aster-border); }
+.sd-flow-logo { display: inline-flex; align-items: center; justify-content: center; width: 1.8rem; height: 1.8rem; border-radius: 6px; background: var(--aster-clay); color: var(--aster-white); font-family: var(--aster-serif); font-size: 0.65rem; font-weight: 700; }
+.sd-flow-header strong { display: block; font-size: 0.82rem; color: var(--aster-heading); }
+.sd-flow-header span { font-size: 0.68rem; color: var(--aster-muted); }
+.sd-flow-body { padding: 0.5rem 1.5rem; }
+.sd-flow-row { display: flex; gap: 1rem; padding-block: 0.75rem; border-bottom: 1px solid var(--aster-border); }
+.sd-flow-row:last-child { border-bottom: none; }
+.sd-flow-label { flex-shrink: 0; width: 130px; font-size: 0.72rem; font-weight: 700; color: var(--aster-clay); letter-spacing: 0.06em; text-transform: uppercase; padding-top: 0.1rem; }
+.sd-flow-value { font-size: 0.85rem; color: var(--aster-text); line-height: 1.5; }
+.sd-flow-disclaimer { margin: 0; padding: 0.75rem 1.5rem; background: var(--aster-ivory); border-top: 1px solid var(--aster-border); font-size: 0.68rem; color: var(--aster-muted); font-style: italic; text-align: center; }
+
 .sd-price-note { max-width: 600px; }
 .sd-price-note p { font-size: 0.95rem; line-height: 1.7; }
 .sd-price-note strong { color: var(--aster-heading); }
@@ -231,4 +271,5 @@ const concerns = [
 .sd-cta-s:hover { background: rgba(255,255,255,0.07); color: var(--aster-white); }
 
 @media (max-width: 768px) { .sd-two-col { grid-template-columns: 1fr; } }
+@media (max-width: 520px) { .sd-flow-row { flex-direction: column; gap: 0.25rem; } .sd-flow-label { width: auto; } }
 </style>

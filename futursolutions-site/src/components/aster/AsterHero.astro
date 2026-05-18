@@ -44,6 +44,16 @@ import { hero, provider } from '../../data/aster';
 				</span>
 			))}
 		</div>
+		<div class="ah-glance">
+			<span class="ah-glance__label">Private care at a glance</span>
+			<span class="ah-glance__item">60–75 min first visits</span>
+			<span class="ah-glance__sep" aria-hidden="true">·</span>
+			<span class="ah-glance__item">Direct-pay model</span>
+			<span class="ah-glance__sep" aria-hidden="true">·</span>
+			<span class="ah-glance__item">Telehealth available</span>
+			<span class="ah-glance__sep" aria-hidden="true">·</span>
+			<span class="ah-glance__item">Temecula, CA</span>
+		</div>
 	</div>
 </section>
 
@@ -71,6 +81,10 @@ import { hero, provider } from '../../data/aster';
 .ah-trust { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem 0.65rem; margin-top: clamp(3rem, 6vw, 4.5rem); padding: 1.15rem 1.5rem; background: var(--aster-white); border: 1px solid var(--aster-border); border-radius: var(--aster-radius); }
 .ah-trust__item { display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.78rem; font-weight: 600; color: var(--aster-heading); }
 .ah-trust__item svg { color: var(--aster-clay); flex-shrink: 0; }
+.ah-glance { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 0.25rem 0.5rem; margin-top: 0.75rem; }
+.ah-glance__label { font-size: 0.62rem; font-weight: 700; color: var(--aster-clay); letter-spacing: 0.1em; text-transform: uppercase; margin-right: 0.35rem; }
+.ah-glance__item { font-size: 0.75rem; font-weight: 500; color: var(--aster-muted); }
+.ah-glance__sep { font-size: 0.75rem; color: var(--aster-border); }
 
 @media (max-width: 860px) {
 	.ah-hero__inner { grid-template-columns: 1fr; }

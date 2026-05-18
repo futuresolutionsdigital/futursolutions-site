@@ -44,6 +44,62 @@ const categories = [
 		</div>
 	</section>
 
+	<section class="aster-section" aria-labelledby="rs-more-heading">
+		<div class="aster-container">
+			<div class="rs-intro">
+				<p class="aster-eyebrow">More Articles</p>
+				<h2 id="rs-more-heading">Continue reading.</h2>
+			</div>
+			<div class="rs-article-list">
+				<article class="rs-article-row">
+					<span class="rs-article-cat">Private Care</span>
+					<h3>Questions to Ask Before Joining a Cash-Pay Practice</h3>
+					<p>A practical guide to evaluating whether a direct-pay model fits your healthcare needs, budget, and expectations.</p>
+				</article>
+				<article class="rs-article-row">
+					<span class="rs-article-cat">Labs &amp; Follow-Up</span>
+					<h3>How to Prepare for a Lab Review Visit</h3>
+					<p>What to bring, what to ask, and how to make the most of your time reviewing lab results with your provider.</p>
+				</article>
+				<article class="rs-article-row">
+					<span class="rs-article-cat">Telehealth</span>
+					<h3>When Telehealth Works Best for Follow-Up Care</h3>
+					<p>Not every visit needs to be in-person. Learn when virtual visits are most effective for ongoing care and follow-up.</p>
+				</article>
+			</div>
+		</div>
+	</section>
+
+	<section class="aster-section aster-section--paper" aria-labelledby="rs-guide-heading">
+		<div class="aster-container">
+			<div class="rs-guide-panel">
+				<div class="rs-guide-preview" aria-hidden="true">
+					<div class="rs-guide-doc">
+						<span class="rs-guide-logo">A</span>
+						<strong>New Patient Preparation Guide</strong>
+						<ul>
+							<li>What to bring to your first visit</li>
+							<li>How to prepare your health history</li>
+							<li>Questions to ask your provider</li>
+							<li>Understanding the care plan process</li>
+						</ul>
+						<span class="rs-guide-badge">PDF Guide</span>
+					</div>
+				</div>
+				<div class="rs-guide-content">
+					<p class="aster-eyebrow">Featured Guide</p>
+					<h2 id="rs-guide-heading">Get the New Patient Preparation Guide</h2>
+					<p class="rs-guide-desc">A clear, downloadable guide to help you prepare for your first visit — what to bring, what to expect, and how to make the most of your consultation time.</p>
+					<form novalidate onsubmit="return false" aria-label="Patient guide download form" class="rs-guide-form">
+						<label><span>Email</span><input type="email" name="email" placeholder="you@email.com" /></label>
+						<button class="aster-btn aster-btn--primary" type="button" style="width:100%;">Download Guide</button>
+						<p class="rs-guide-disclaimer">Demo form — no data is submitted or downloaded.</p>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+
 	<section class="aster-section" aria-labelledby="rs-cat-heading">
 		<div class="aster-container">
 			<div class="rs-intro" style="text-align:center; margin-inline:auto;">
@@ -56,25 +112,6 @@ const categories = [
 				))}
 			</div>
 			<p class="rs-cat-note">Additional articles and patient guides are published regularly in a live site build.</p>
-		</div>
-	</section>
-
-	<section class="aster-section aster-section--paper" aria-labelledby="rs-lead-heading">
-		<div class="aster-container">
-			<div class="rs-lead-panel">
-				<div class="rs-lead-content">
-					<p class="aster-eyebrow">Patient Guide</p>
-					<h2 id="rs-lead-heading">Get the New Patient Preparation Guide</h2>
-					<p class="rs-lead-desc">A clear, downloadable guide to help you prepare for your first visit — what to bring, what to expect, and how to make the most of your consultation time.</p>
-				</div>
-				<div class="rs-lead-form">
-					<form novalidate onsubmit="return false" aria-label="Patient guide download form">
-						<label><span>Email</span><input type="email" name="email" placeholder="you@email.com" /></label>
-						<button class="aster-btn aster-btn--primary" type="button" style="width:100%;">Download Guide</button>
-						<p class="rs-lead-disclaimer">This is a demo form — no data is submitted or downloaded.</p>
-					</form>
-				</div>
-			</div>
 		</div>
 	</section>
 
@@ -114,15 +151,29 @@ const categories = [
 .rs-cat-tag:hover { border-color: var(--aster-clay); background: var(--aster-clay-light); }
 .rs-cat-note { margin-top: 1.5rem; text-align: center; color: var(--aster-muted); font-size: 0.78rem; font-style: italic; }
 
-.rs-lead-panel { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: clamp(2rem, 4vw, 3.5rem); align-items: center; padding: clamp(2rem, 4vw, 3rem); background: var(--aster-white); border: 1px solid var(--aster-border); border-radius: var(--aster-radius-lg); }
-.rs-lead-desc { color: var(--aster-text); font-size: 0.92rem; line-height: 1.7; }
-.rs-lead-form form { display: grid; gap: 0.85rem; }
-.rs-lead-form label { display: grid; gap: 0.35rem; }
-.rs-lead-form label span { font-size: 0.82rem; font-weight: 600; color: var(--aster-heading); }
-.rs-lead-form input { width: 100%; border: 1px solid var(--aster-border); border-radius: 8px; background: var(--aster-ivory); color: var(--aster-heading); font-size: 0.92rem; min-height: 2.75rem; padding: 0.65rem 0.8rem; }
-.rs-lead-form input:focus { border-color: var(--aster-clay); outline: none; background: var(--aster-white); }
-.rs-lead-form input::placeholder { color: var(--aster-muted); }
-.rs-lead-disclaimer { margin: 0; color: var(--aster-muted); font-size: 0.72rem; text-align: center; font-style: italic; }
+.rs-article-list { display: grid; gap: 0; max-width: 680px; }
+.rs-article-row { padding-block: clamp(1.25rem, 2.5vw, 1.75rem); border-bottom: 1px solid var(--aster-border); }
+.rs-article-row:first-child { border-top: 1px solid var(--aster-border); }
+.rs-article-cat { display: inline-block; margin-bottom: 0.5rem; font-size: 0.62rem; font-weight: 700; color: var(--aster-clay); letter-spacing: 0.1em; text-transform: uppercase; }
+.rs-article-row h3 { margin-bottom: 0.35rem; }
+.rs-article-row p { margin: 0; color: var(--aster-muted); font-size: 0.88rem; line-height: 1.6; }
+
+.rs-guide-panel { display: grid; grid-template-columns: 0.45fr 1fr; gap: clamp(2rem, 4vw, 3.5rem); align-items: center; }
+.rs-guide-doc { padding: clamp(1.25rem, 3vw, 1.75rem); background: var(--aster-white); border: 1px solid var(--aster-border); border-radius: var(--aster-radius); }
+.rs-guide-logo { display: inline-flex; align-items: center; justify-content: center; width: 1.6rem; height: 1.6rem; border-radius: 5px; background: var(--aster-clay); color: var(--aster-white); font-family: var(--aster-serif); font-size: 0.6rem; font-weight: 700; margin-bottom: 0.65rem; }
+.rs-guide-doc strong { display: block; font-size: 0.88rem; color: var(--aster-heading); margin-bottom: 0.65rem; }
+.rs-guide-doc ul { padding: 0; margin: 0 0 0.75rem; list-style: none; display: grid; gap: 0.35rem; }
+.rs-guide-doc li { position: relative; padding-left: 0.75rem; font-size: 0.78rem; color: var(--aster-muted); }
+.rs-guide-doc li::before { content: ''; position: absolute; left: 0; top: 0.45rem; width: 3px; height: 3px; border-radius: 50%; background: var(--aster-clay); }
+.rs-guide-badge { display: inline-block; padding: 0.25rem 0.6rem; background: var(--aster-clay-light); border-radius: 4px; font-size: 0.62rem; font-weight: 700; color: var(--aster-clay); letter-spacing: 0.05em; text-transform: uppercase; }
+.rs-guide-desc { color: var(--aster-text); font-size: 0.92rem; line-height: 1.7; }
+.rs-guide-form { display: grid; gap: 0.85rem; max-width: 340px; }
+.rs-guide-form label { display: grid; gap: 0.35rem; }
+.rs-guide-form label span { font-size: 0.82rem; font-weight: 600; color: var(--aster-heading); }
+.rs-guide-form input { width: 100%; border: 1px solid var(--aster-border); border-radius: 8px; background: var(--aster-ivory); color: var(--aster-heading); font-size: 0.92rem; min-height: 2.75rem; padding: 0.65rem 0.8rem; }
+.rs-guide-form input:focus { border-color: var(--aster-clay); outline: none; background: var(--aster-white); }
+.rs-guide-form input::placeholder { color: var(--aster-muted); }
+.rs-guide-disclaimer { margin: 0; color: var(--aster-muted); font-size: 0.72rem; text-align: center; font-style: italic; }
 
 .rs-final { padding-block: clamp(2.5rem, 5vw, 4rem); }
 .rs-final-card { max-width: 680px; margin-inline: auto; padding: clamp(2.5rem, 5vw, 4rem); border-radius: var(--aster-radius-lg); background: var(--aster-aubergine); text-align: center; }
@@ -134,5 +185,5 @@ const categories = [
 .rs-cta-s { border-color: rgba(255,255,255,0.15); background: transparent; color: rgba(255,255,255,0.75); }
 .rs-cta-s:hover { background: rgba(255,255,255,0.07); color: var(--aster-white); }
 
-@media (max-width: 768px) { .rs-feat-grid { grid-template-columns: 1fr; max-width: 480px; } .rs-lead-panel { grid-template-columns: 1fr; } }
+@media (max-width: 768px) { .rs-feat-grid { grid-template-columns: 1fr; max-width: 480px; } .rs-guide-panel { grid-template-columns: 1fr; } }
 </style>

@@ -60,7 +60,37 @@ import { services, conditions, faqs } from '../../../data/aster';
 		</div>
 	</section>
 
-	<section class="aster-section aster-section--paper" aria-labelledby="svc-faq-heading">
+	<section class="aster-section aster-section--paper" aria-labelledby="sp-choose-heading">
+		<div class="aster-container">
+			<div class="sp-choose-layout">
+				<div>
+					<p class="aster-eyebrow">Not sure where to start?</p>
+					<h2 id="sp-choose-heading">How to choose a care path.</h2>
+					<p class="aster-lead">You do not need to know which service you need before your first visit. Your provider will help you find the right approach.</p>
+				</div>
+				<div class="sp-choose-steps">
+					<div class="sp-choose-step">
+						<span class="sp-choose-num">1</span>
+						<div><strong>Start with a consultation</strong><p>Share your concerns, goals, and health history.</p></div>
+					</div>
+					<div class="sp-choose-step">
+						<span class="sp-choose-num">2</span>
+						<div><strong>Provider recommends the right care path</strong><p>Based on your evaluation, your provider suggests the most relevant services.</p></div>
+					</div>
+					<div class="sp-choose-step">
+						<span class="sp-choose-num">3</span>
+						<div><strong>Services can overlap</strong><p>Primary care, preventive health, and other areas work together as needed.</p></div>
+					</div>
+					<div class="sp-choose-step">
+						<span class="sp-choose-num">4</span>
+						<div><strong>Follow-up adapts over time</strong><p>Your care plan evolves with your health — it is not a rigid track.</p></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="aster-section" aria-labelledby="svc-faq-heading">
 		<div class="aster-container">
 			<div class="sp-intro" style="text-align:center; margin-inline:auto;">
 				<p class="aster-eyebrow">FAQ</p>
@@ -114,6 +144,14 @@ import { services, conditions, faqs } from '../../../data/aster';
 .sp-tag { padding: 0.5rem 1rem; border: 1px solid var(--aster-border); border-radius: 999px; font-size: 0.82rem; font-weight: 500; color: var(--aster-heading); background: var(--aster-white); transition: border-color 0.18s ease, background 0.18s ease; }
 .sp-tag:hover { border-color: var(--aster-clay); background: var(--aster-clay-light); }
 
+.sp-choose-layout { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 4vw, 3.5rem); align-items: start; }
+.sp-choose-steps { display: grid; gap: 0; }
+.sp-choose-step { display: flex; align-items: flex-start; gap: 0.85rem; padding-block: clamp(0.85rem, 2vw, 1.15rem); border-bottom: 1px solid var(--aster-border); }
+.sp-choose-step:first-child { border-top: 1px solid var(--aster-border); }
+.sp-choose-num { flex-shrink: 0; display: inline-flex; align-items: center; justify-content: center; width: 1.5rem; height: 1.5rem; border-radius: 50%; background: var(--aster-clay-light); font-family: var(--aster-serif); font-size: 0.72rem; font-weight: 600; color: var(--aster-clay); margin-top: 0.1rem; }
+.sp-choose-step strong { display: block; font-size: 0.88rem; color: var(--aster-heading); margin-bottom: 0.15rem; }
+.sp-choose-step p { margin: 0; font-size: 0.82rem; color: var(--aster-muted); line-height: 1.5; }
+
 .sp-faq-list { max-width: 680px; margin-inline: auto; }
 .sp-faq-item { border-bottom: 1px solid var(--aster-border); }
 .sp-faq-item:first-child { border-top: 1px solid var(--aster-border); }
@@ -135,5 +173,5 @@ import { services, conditions, faqs } from '../../../data/aster';
 .sp-cta-s { border-color: rgba(255,255,255,0.15); background: transparent; color: rgba(255,255,255,0.75); }
 .sp-cta-s:hover { background: rgba(255,255,255,0.07); color: var(--aster-white); }
 
-@media (max-width: 620px) { .sp-svc-row { grid-template-columns: 1fr; gap: 0.5rem; } }
+@media (max-width: 620px) { .sp-svc-row { grid-template-columns: 1fr; gap: 0.5rem; } .sp-choose-layout { grid-template-columns: 1fr; } }
 </style>
