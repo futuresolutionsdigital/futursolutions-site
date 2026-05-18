@@ -57,7 +57,7 @@ export function getTemplateMatchFilterIds(template: TemplateSystem): string[] {
 	if (template.slug === 'solo-practice' || template.category.toLowerCase().includes('solo practice')) {
 		ids.add('solo-practice');
 	}
-	if (template.slug === 'association' || template.category.toLowerCase() === 'association') {
+	if (template.slug === 'association' || template.category.toLowerCase().includes('association')) {
 		ids.add('association');
 	}
 
@@ -165,9 +165,9 @@ export const templateSystems: TemplateSystem[] = [
 	{
 		slug: 'association',
 		name: 'Professional Association Website System',
-		category: 'Association',
+		category: 'Healthcare / Association',
 		shortDescription:
-			'A premium professional association website system for membership growth, advocacy, continuing education, flagship events, resources, chapters, and career support.',
+			'A premium association website system for organizations that need to grow membership, promote events, activate advocacy, organize resources, and centralize member value.',
 		longDescription:
 			'A complete fictional association website system built around member conversion, policy engagement, CE/event promotion, chapter community, resource discovery, career advancement, institutional credibility, and support routing.',
 		audience:

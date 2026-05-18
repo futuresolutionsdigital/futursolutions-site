@@ -1,0 +1,736 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import TemplateFinalCTA from '../../components/TemplateFinalCTA.astro';
+import { getTemplateBySlug } from '../../data/templates';
+
+const template = getTemplateBySlug('association')!;
+const pageTitle = 'Professional Association Website System | Future Solutions';
+const pageDescription =
+	'A premium association website system for organizations that need to grow membership, promote events, activate advocacy, organize resources, and centralize member value. View the live demo or customize this template.';
+const canonicalUrl = 'https://futursolutions.vercel.app/templates/association';
+
+const trustTags = [
+	'14-page demo system',
+	'Membership conversion',
+	'Events & conference pages',
+	'Advocacy-ready',
+	'CE/resource library',
+	'Chapter structure',
+	'Career center-ready',
+	'Mobile responsive',
+];
+
+const audienceList = [
+	{ label: 'Nursing associations', desc: 'State or national organizations representing nurses, NPs, and advanced practice providers.' },
+	{ label: 'Medical associations', desc: 'Physician-led organizations coordinating advocacy, education, and professional standards.' },
+	{ label: 'Healthcare professional societies', desc: 'Specialty societies that organize research, credentials, and member networking.' },
+	{ label: 'State-level professional associations', desc: 'Statewide organizations with chapters, advocacy, CE requirements, and legislative priorities.' },
+	{ label: 'Nonprofit advocacy organizations', desc: 'Mission-driven organizations that need to mobilize members around policy and action.' },
+	{ label: 'Continuing education providers', desc: 'Organizations that offer CE/CME programming and need to promote courses alongside membership.' },
+	{ label: 'Trade associations', desc: 'Industry organizations that serve employers, sponsors, and professional members.' },
+	{ label: 'Membership-based professional communities', desc: 'Any organization where membership is the product and engagement is the metric.' },
+];
+
+const problems = [
+	'Member benefits are scattered across disconnected pages with no clear value story.',
+	'Join/renew CTAs exist but are not persuasive \u2014 they ask without explaining why.',
+	'Events are treated like calendar announcements instead of flagship products worth attending.',
+	'Advocacy content feels static or buried behind layers of navigation.',
+	'Resource libraries become PDF dumping grounds with no filtering, tagging, or discovery.',
+	'Chapters and local communities are hard to find or feel disconnected from the parent organization.',
+	'Career centers feel like afterthoughts instead of a core membership benefit.',
+	'Navigation reflects internal departments instead of what members actually need to do.',
+];
+
+const pages = [
+	{ name: 'Homepage', purpose: 'A control-tower homepage that routes visitors to membership, events, advocacy, resources, chapters, and career support.' },
+	{ name: 'Membership', purpose: 'Converts prospective members by explaining benefits, tiers, career-stage paths, and member value.' },
+	{ name: 'Education & Events', purpose: 'Positions continuing education, webinars, and flagship events as an active learning ecosystem.' },
+	{ name: 'Annual Conference', purpose: 'A flagship event landing page with registration tiers, agenda, speakers, CE info, sponsors, venue, deadlines, and FAQ.' },
+	{ name: 'Advocacy', purpose: 'A policy and action command center with current alerts, priorities, legislative tracking, toolkits, and event promotion.' },
+	{ name: 'Policy Issue Detail', purpose: 'A reusable issue page for explaining one advocacy priority, current status, member action, resources, and updates.' },
+	{ name: 'Resources / CE Hub', purpose: 'A filterable content library for CE courses, webinars, toolkits, practice guides, policy briefs, and member-only materials.' },
+	{ name: 'Resource Detail', purpose: 'A reusable CE/course/resource detail page with quick facts, learning objectives, course outline, CE info, and related resources.' },
+	{ name: 'Chapters & Community', purpose: 'Makes local chapters, events, mentorship, leadership, and volunteer opportunities visible.' },
+	{ name: 'Chapter Detail', purpose: 'A reusable local chapter page with events, leaders, priorities, resources, and announcements.' },
+	{ name: 'Career Center', purpose: 'A career hub with job filtering, salary insights, mentorship, employer CTAs, and career resources.' },
+	{ name: 'Job Detail', purpose: 'A reusable job detail page with role overview, requirements, benefits, process, and related jobs/resources.' },
+	{ name: 'About', purpose: 'Builds institutional trust through mission, impact, governance, leadership, councils, partners, timeline, and recognition.' },
+	{ name: 'Contact', purpose: 'Routes membership, events, advocacy, chapters, career, sponsor, and media inquiries to the right next step.' },
+];
+
+const strategicFeatures = [
+	{ title: 'Membership conversion architecture', desc: 'Tiered comparison, career-stage paths, and repeated value reminders turn prospects into members.' },
+	{ title: 'Annual conference marketing system', desc: 'A flagship event page with registration tiers, agenda preview, speaker highlights, sponsors, and CE information.' },
+	{ title: 'Advocacy action center', desc: 'Policy alerts, issue pages, legislative tracking, and toolkits make advocacy visible and actionable.' },
+	{ title: 'Filterable resource and CE library', desc: 'Tag-based filtering across CE courses, webinars, toolkits, and guides so members find what they need.' },
+	{ title: 'Chapter and community directory', desc: 'Local chapters with their own events, leadership, and resources feel connected to the parent organization.' },
+	{ title: 'Career center and job board', desc: 'Job filtering, employer partnerships, salary context, and mentorship make career support a membership benefit.' },
+	{ title: 'Search overlay and command palette', desc: 'A site-wide search overlay helps visitors find resources, events, chapters, jobs, and pages quickly.' },
+	{ title: 'Mobile sticky action bar', desc: 'Key actions (join, register, take action) stay accessible on mobile without cluttering the interface.' },
+	{ title: 'Institutional about and authority modules', desc: 'Mission, governance, leadership, councils, partners, and timeline modules build organizational credibility.' },
+	{ title: 'Contact and support routing', desc: 'Inquiry-type routing sends membership, event, advocacy, career, and sponsor questions to the right path.' },
+	{ title: 'Sponsor and employer-ready sections', desc: 'Conference sponsors, career center employers, and partnership opportunities are visible without feeling sales-driven.' },
+	{ title: 'CMS-ready content modeling', desc: 'Pages, resources, events, chapters, and jobs follow repeatable structures ready for Sanity or another CMS.' },
+];
+
+const designPoints = [
+	'Deep navy palette for institutional authority and professionalism.',
+	'Coastal teal accents for action states, links, and healthcare relevance.',
+	'Warm sand backgrounds for editorial pacing and readability between dense content.',
+	'Coral and amber used sparingly for advocacy urgency, deadlines, and event registration CTAs.',
+	'Clean sans-serif typography for clarity across long-form content and data-rich pages.',
+	'Card-based layouts for scanability across resources, events, chapters, and job listings.',
+	'Large spacing and structured hierarchy to prevent the cluttered-portal feel.',
+	'Dashboard and product-system feel \u2014 each page functions like a tool, not just a brochure.',
+	'Minimal decoration and strong utility \u2014 designed to feel serious without feeling bureaucratic.',
+	'Responsive and mobile-first \u2014 members access advocacy alerts, events, and resources on any device.',
+];
+
+const designComparison = {
+	is: ['Structured', 'Member-focused', 'Civic', 'Professional', 'Resource-rich', 'Conversion-aware'],
+	isNot: ['A PDF archive', 'A committee website', 'A generic nonprofit template', 'A cluttered portal', 'A SaaS landing page', 'A hospital brochure'],
+};
+
+const conversionPoints = [
+	{ title: 'Primary CTA: Join / Become a Member', desc: 'The membership value proposition is reinforced across events, advocacy, resources, chapters, and career pages.' },
+	{ title: 'Register for Conference', desc: 'The flagship event page sells attendance through agenda, speakers, CE credits, sponsors, and registration tiers.' },
+	{ title: 'Take Action (Advocacy)', desc: 'Policy alerts with clear calls to action make it easy for members to engage on legislative priorities.' },
+	{ title: 'Browse Resources', desc: 'Filterable libraries reduce friction and surface CE courses, toolkits, and guides members actually need.' },
+	{ title: 'Find Your Chapter', desc: 'Local chapter pages make the organization feel accessible and community-driven.' },
+	{ title: 'Explore Career Center', desc: 'Job board, mentorship, and career resources turn career advancement into a tangible membership benefit.' },
+	{ title: 'Contact Support', desc: 'Inquiry routing sends questions to the right team without making members guess where to go.' },
+	{ title: 'FAQ objection handling', desc: 'Membership, event, and conference FAQs answer "why should I join?" before members need to ask.' },
+];
+
+const objections = [
+	'What do I get as a member?',
+	'Is this association actually active?',
+	'Are there resources I can use right now?',
+	'Does advocacy matter to my work?',
+	'Are there local chapters or people near me?',
+	'Does membership help my career?',
+	'Is this organization credible enough to trust?',
+	'How do I find the right information quickly?',
+];
+
+const conversionMechanisms = [
+	'Top-task homepage routing',
+	'Role/stage-based membership paths',
+	'Event registration modules',
+	'Advocacy action alerts',
+	'Filterable resources',
+	'Chapter finder',
+	'Job board / career support',
+	'Search overlay',
+	'FAQ objection handling',
+	'Demo-safe support routing',
+];
+
+const customizationOptions = [
+	'Replace the fictional association brand with your real identity, mission, and history.',
+	'Customize color palette and typography to match your organization.',
+	'Add real leadership, board, staff, and committee data.',
+	'Add real membership tiers, dues, and career-stage paths.',
+	'Add real event and conference content with registration links.',
+	'Add CE/CME course catalog structure and learning management links.',
+	'Add real advocacy priorities, legislative tracking, and issue pages.',
+	'Connect forms to CRM, AMS, or helpdesk workflows.',
+	'Connect event CTAs to registration platforms (Cvent, Eventbrite, etc.).',
+	'Integrate job board or employer posting flow.',
+	'Add sponsor and exhibitor pages with partnership opportunities.',
+	'Add member login and dashboard links.',
+	'Add real photography, logos, partner badges, and annual reports.',
+	'Adapt content model for Sanity or another CMS.',
+	'Build SEO-focused resource, news, and advocacy content.',
+];
+
+const integrationItems = [
+	{ title: 'AMS/CRM integration readiness', desc: 'Membership forms and contact routing are structured for association management system connection.' },
+	{ title: 'Email marketing and segmentation', desc: 'Form fields capture role, chapter, and interest data for targeted email campaigns.' },
+	{ title: 'Event registration platform links', desc: 'Conference and event CTAs are structured to connect to Cvent, Eventbrite, or custom registration.' },
+	{ title: 'Learning/CE catalog structure', desc: 'Resource and CE pages follow repeatable patterns ready for LMS integration.' },
+	{ title: 'Job board integration path', desc: 'Career center and job detail pages are structured for employer posting and applicant tracking.' },
+	{ title: 'Sponsor inquiry routing', desc: 'Sponsor and exhibitor interest forms can route to partnership or sales workflows.' },
+	{ title: 'Member login links', desc: 'Navigation includes member portal/dashboard link placement for SSO or AMS portals.' },
+	{ title: 'Search and resource architecture', desc: 'Filterable libraries and search overlay patterns are ready for headless CMS or API-driven content.' },
+	{ title: 'CMS-ready content types', desc: 'Resources, events, chapters, jobs, and issues follow structured schemas for Sanity, Contentful, or similar.' },
+	{ title: 'Analytics and conversion tracking', desc: 'CTAs, forms, and key actions are structured for event-based analytics and funnel reporting.' },
+];
+
+const salesFaqs = [
+	{
+		q: 'Is this a real association?',
+		a: 'No. The demo uses a fictional association created by Future Solutions to show how a modern professional association website system could work. All names, events, policies, and data are entirely fictional.',
+	},
+	{
+		q: 'Can this be customized for my association?',
+		a: 'Yes. The demo brand, page structure, navigation, content, membership tiers, events, resources, chapters, and CTAs can all be adapted to your real organization.',
+	},
+	{
+		q: 'Is this only for healthcare or nursing associations?',
+		a: 'No. It is especially relevant to healthcare and professional associations, but the structure also works for trade associations, advocacy organizations, CE providers, and membership-based nonprofits.',
+	},
+	{
+		q: 'Can this connect to our AMS, CRM, event registration, or learning platform?',
+		a: 'Yes. The demo is structured to support those integrations. The exact setup would depend on your current systems and technical requirements.',
+	},
+	{
+		q: 'Can pages be removed or simplified?',
+		a: 'Yes. The full demo shows a robust 14-page association system, but a real project can be scaled down or phased based on budget, content readiness, and organizational priorities.',
+	},
+	{
+		q: 'Can this support SEO and resource content?',
+		a: 'Yes. The Resources, Advocacy, Events, Career, and Chapter structures are all designed to support ongoing content publishing and search visibility.',
+	},
+	{
+		q: 'Can this replace our existing outdated association site?',
+		a: 'Yes. The template can serve as a starting framework for redesigning an older association site with clearer navigation, stronger conversion paths, and better content architecture.',
+	},
+	{
+		q: 'How do we start?',
+		a: 'Use the customization request form. Future Solutions can review your current site, goals, content, and systems to recommend the right website path for your association.',
+	},
+];
+---
+
+<BaseLayout
+	title={pageTitle}
+	description={pageDescription}
+	canonicalUrl={canonicalUrl}
+	ogTitle={pageTitle}
+	ogDescription={pageDescription}
+	ogUrl={canonicalUrl}
+>
+	<!-- 1. Hero -->
+	<section class="section ap-hero" aria-labelledby="ap-hero-heading">
+		<div class="site-container ap-hero__inner">
+			<div class="ap-hero__content">
+				<p class="eyebrow">Healthcare / Association Website</p>
+				<h1 id="ap-hero-heading">A premium website system for professional associations that need to grow membership, promote events, and centralize member value.</h1>
+				<p class="lead">Designed for healthcare, nursing, medical, nonprofit, advocacy, continuing education, and professional membership organizations that need a modern digital home &mdash; not another cluttered legacy portal.</p>
+				<div class="button-row">
+					<a class="button button-primary" href="/demos/association">View Live Demo</a>
+					<a class="button button-secondary" href="/audit?template=association">Customize This Template</a>
+				</div>
+			</div>
+			<div class="ap-hero__preview card" aria-hidden="true">
+				<div class="ap-hero__chrome">
+					<span></span><span></span><span></span>
+				</div>
+				<div class="ap-hero__screen">
+					<div class="ap-hero__screen-header">
+						<span class="ap-hero__screen-logo">M</span>
+						<span class="ap-hero__screen-brand">Association Demo</span>
+					</div>
+					<div class="ap-hero__screen-hero-block">
+						<div class="ap-hero__screen-lines">
+							<span></span><span></span><span></span>
+						</div>
+						<div class="ap-hero__screen-sidebar">
+							<span class="ap-hero__screen-pill">Membership</span>
+							<span class="ap-hero__screen-pill">Conference</span>
+							<span class="ap-hero__screen-pill ap-hero__screen-pill--alt">Advocacy</span>
+						</div>
+					</div>
+					<div class="ap-hero__screen-tiles">
+						<span>Resources</span><span>Chapters</span><span>Careers</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="site-container">
+			<div class="ap-tags">
+				{trustTags.map((tag) => (
+					<span class="ap-tag">
+						<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 14 14" aria-hidden="true"><path stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M3.5 7.5 6 10l4.5-5"/></svg>
+						{tag}
+					</span>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- 2. Preview showcase -->
+	<section class="section section-muted ap-preview" aria-labelledby="ap-preview-heading">
+		<div class="site-container">
+			<div class="ap-section-intro">
+				<p class="eyebrow">Live demo</p>
+				<h2 id="ap-preview-heading">See the full association demo system.</h2>
+				<p class="lead">Preview a complete fictional association site with membership, events, advocacy, resources, chapters, career support, institutional credibility, and contact routing already mapped out.</p>
+			</div>
+			<a href="/demos/association" class="ap-browser-frame card">
+				<div class="ap-browser-frame__chrome">
+					<span></span><span></span><span></span>
+					<span class="ap-browser-frame__url">futursolutions.vercel.app/demos/association</span>
+				</div>
+				<div class="ap-browser-frame__body">
+					<div class="ap-browser-frame__mockup">
+						<div class="ap-mockup-header">
+							<span class="ap-mockup-logo">M</span>
+							<span class="ap-mockup-nav"></span>
+							<span class="ap-mockup-nav"></span>
+							<span class="ap-mockup-nav"></span>
+							<span class="ap-mockup-nav"></span>
+						</div>
+						<div class="ap-mockup-hero">
+							<div class="ap-mockup-hero-text">
+								<span class="ap-mockup-line ap-mockup-line--sm"></span>
+								<span class="ap-mockup-line ap-mockup-line--lg"></span>
+								<span class="ap-mockup-line ap-mockup-line--md"></span>
+								<div class="ap-mockup-btns"><span></span><span></span></div>
+							</div>
+							<div class="ap-mockup-hero-sidebar">
+								<span class="ap-mockup-pill"></span>
+								<span class="ap-mockup-pill"></span>
+								<span class="ap-mockup-pill ap-mockup-pill--accent"></span>
+							</div>
+						</div>
+						<div class="ap-mockup-grid">
+							<div class="ap-mockup-card"><span></span><span></span></div>
+							<div class="ap-mockup-card"><span></span><span></span></div>
+							<div class="ap-mockup-card"><span></span><span></span></div>
+							<div class="ap-mockup-card"><span></span><span></span></div>
+						</div>
+					</div>
+				</div>
+			</a>
+			<div class="ap-preview-cta">
+				<a class="button button-primary" href="/demos/association">View Live Demo</a>
+				<a class="button button-secondary" href="/templates">View All Templates</a>
+			</div>
+		</div>
+	</section>
+
+	<!-- 3. Who this is for -->
+	<section class="section ap-audience" aria-labelledby="ap-audience-heading">
+		<div class="site-container">
+			<div class="ap-section-intro">
+				<p class="eyebrow">Audience</p>
+				<h2 id="ap-audience-heading">Built for associations with real member value to organize.</h2>
+				<p class="lead">This template is for organizations where membership is the product, engagement is the metric, and the website needs to work as hard as the team behind it.</p>
+			</div>
+			<div class="ap-audience__grid">
+				{audienceList.map((item) => (
+					<article class="card ap-audience__card">
+						<h3>{item.label}</h3>
+						<p>{item.desc}</p>
+					</article>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- 4. The business problem -->
+	<section class="section section-muted ap-problem" aria-labelledby="ap-problem-heading">
+		<div class="site-container">
+			<div class="ap-section-intro">
+				<p class="eyebrow">The problem</p>
+				<h2 id="ap-problem-heading">Most association websites contain value &mdash; but bury it.</h2>
+				<p class="lead">Many association websites have valuable resources, events, advocacy updates, member benefits, chapters, and career tools. But the site structure makes those benefits hard to find. The result is lower membership conversion, weaker event promotion, buried advocacy work, and a site that feels more like an archive than an active professional home.</p>
+			</div>
+			<div class="ap-problem__grid">
+				{problems.map((p, i) => (
+					<div class="ap-problem__item">
+						<span class="ap-problem__num">{String(i + 1).padStart(2, '0')}</span>
+						<p>{p}</p>
+					</div>
+				))}
+			</div>
+			<div class="ap-problem__solution">
+				<p class="eyebrow">The solution</p>
+				<p>This template reframes the association site as a <strong>member-value platform</strong>: join, learn, attend, advocate, connect locally, access resources, and advance your career &mdash; all organized around what members actually need to do, not how the organization is internally structured.</p>
+			</div>
+		</div>
+	</section>
+
+	<!-- 5. Pages included -->
+	<section class="section ap-pages" aria-labelledby="ap-pages-heading">
+		<div class="site-container">
+			<div class="ap-section-intro">
+				<p class="eyebrow">Included pages</p>
+				<h2 id="ap-pages-heading">A complete association website framework, not just a homepage.</h2>
+				<p class="lead">14 pages, each planned as part of a functional association website system with reusable detail templates for issues, resources, chapters, and jobs.</p>
+			</div>
+			<div class="ap-pages__list">
+				{pages.map((page, i) => (
+					<div class="ap-pages__item">
+						<span class="ap-pages__num">{String(i + 1).padStart(2, '0')}</span>
+						<div>
+							<h3>{page.name}</h3>
+							<p>{page.purpose}</p>
+						</div>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- 6. Strategic features -->
+	<section class="section section-muted ap-features" aria-labelledby="ap-features-heading">
+		<div class="site-container">
+			<div class="ap-section-intro">
+				<p class="eyebrow">Strategic features</p>
+				<h2 id="ap-features-heading">Built like an association operating system.</h2>
+				<p class="lead">Every structural decision exists to help members find value, take action, and stay engaged with the organization.</p>
+			</div>
+			<div class="ap-features__grid">
+				{strategicFeatures.map((f) => (
+					<article class="card ap-features__card">
+						<h3>{f.title}</h3>
+						<p>{f.desc}</p>
+					</article>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- 7. Design direction -->
+	<section class="section ap-design" aria-labelledby="ap-design-heading">
+		<div class="site-container">
+			<div class="ap-section-intro">
+				<p class="eyebrow">Design direction</p>
+				<h2 id="ap-design-heading">Institutional clarity without the legacy portal feel.</h2>
+				<p class="lead">Designed to feel credible, calm, civic, and modern &mdash; more like a professional healthcare platform than a cluttered membership portal.</p>
+			</div>
+			<div class="ap-design__grid">
+				{designPoints.map((point) => (
+					<div class="ap-design__item">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="3.5" fill="currentColor"/></svg>
+						<p>{point}</p>
+					</div>
+				))}
+			</div>
+			<div class="ap-design__palette" aria-label="Association palette preview">
+				<span class="ap-swatch" style="background:#0f1d2e;" title="Navy"></span>
+				<span class="ap-swatch" style="background:#1a5c6b;" title="Teal"></span>
+				<span class="ap-swatch" style="background:#f5f0e8;" title="Warm Sand"></span>
+				<span class="ap-swatch" style="background:#d1603d;" title="Coral"></span>
+				<span class="ap-swatch" style="background:#d4a24e;" title="Amber"></span>
+			</div>
+			<div class="ap-design__comparison">
+				<div class="ap-design__col">
+					<h3>What it is</h3>
+					<ul>
+						{designComparison.is.map((item) => <li>{item}</li>)}
+					</ul>
+				</div>
+				<div class="ap-design__col ap-design__col--not">
+					<h3>What it is not</h3>
+					<ul>
+						{designComparison.isNot.map((item) => <li>{item}</li>)}
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- 8. Conversion strategy -->
+	<section class="section section-muted ap-conversion" aria-labelledby="ap-conversion-heading">
+		<div class="site-container">
+			<div class="ap-section-intro">
+				<p class="eyebrow">Conversion strategy</p>
+				<h2 id="ap-conversion-heading">Designed to turn passive visitors into active members.</h2>
+				<p class="lead">The site does not rely on a single "Join" button. It repeatedly shows why membership matters through events, advocacy, resources, chapters, careers, and professional credibility.</p>
+			</div>
+			<div class="ap-conversion__grid">
+				{conversionPoints.map((c) => (
+					<article class="card ap-conversion__card">
+						<h3>{c.title}</h3>
+						<p>{c.desc}</p>
+					</article>
+				))}
+			</div>
+			<div class="ap-conversion__extra">
+				<div class="ap-conversion__objections">
+					<h3>Objections the site addresses</h3>
+					<ul>
+						{objections.map((obj) => <li>{obj}</li>)}
+					</ul>
+				</div>
+				<div class="ap-conversion__mechanisms">
+					<h3>Conversion mechanisms</h3>
+					<div class="ap-conversion__pills">
+						{conversionMechanisms.map((m) => <span>{m}</span>)}
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- 9. Customization options -->
+	<section class="section ap-customize" aria-labelledby="ap-customize-heading">
+		<div class="site-container">
+			<div class="ap-section-intro">
+				<p class="eyebrow">Customization</p>
+				<h2 id="ap-customize-heading">Designed to become your association's real digital home.</h2>
+				<p class="lead">Everything in this demo is designed to be replaced with your real membership, events, advocacy, resources, and organizational identity.</p>
+			</div>
+			<div class="ap-customize__list">
+				{customizationOptions.map((opt) => (
+					<div class="ap-customize__item">
+						<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 14 14" aria-hidden="true"><path stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M3.5 7.5 6 10l4.5-5"/></svg>
+						<span>{opt}</span>
+					</div>
+				))}
+			</div>
+			<div class="button-row">
+				<a class="button button-primary" href="/audit?template=association">Customize This Template</a>
+				<a class="button button-secondary" href="/demos/association">View Live Demo</a>
+			</div>
+		</div>
+	</section>
+
+	<!-- 10. Backend / integration readiness -->
+	<section class="section section-muted ap-integrations" aria-labelledby="ap-integrations-heading">
+		<div class="site-container">
+			<div class="ap-section-intro">
+				<p class="eyebrow">Integration readiness</p>
+				<h2 id="ap-integrations-heading">Ready for the systems associations actually use.</h2>
+				<p class="lead">The demo does not include live integrations, but the structure is designed to support the platforms associations depend on.</p>
+			</div>
+			<div class="ap-integrations__grid">
+				{integrationItems.map((item) => (
+					<article class="card ap-integrations__card">
+						<h3>{item.title}</h3>
+						<p>{item.desc}</p>
+					</article>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- 11. FAQ -->
+	<section class="section ap-faq" aria-labelledby="ap-faq-heading">
+		<div class="site-container">
+			<div class="ap-section-intro" style="text-align:center; margin-inline:auto;">
+				<p class="eyebrow">Frequently asked questions</p>
+				<h2 id="ap-faq-heading">Template questions, answered.</h2>
+			</div>
+			<div class="ap-faq__list">
+				{salesFaqs.map((faq) => (
+					<details class="ap-faq__item">
+						<summary class="ap-faq__q">
+							{faq.q}
+							<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 18 18" aria-hidden="true"><path d="M4.5 7 9 11.5 13.5 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+						</summary>
+						<div class="ap-faq__a"><p>{faq.a}</p></div>
+					</details>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- 12. Final CTA -->
+	<TemplateFinalCTA
+		heading="Want this association system customized for your organization?"
+		description="Turn your membership, events, advocacy, resources, chapters, and career support into a modern website experience that members can actually use."
+		primaryText="Customize This Template"
+		primaryHref="/audit?template=association"
+		secondaryText="View Live Demo"
+		secondaryHref="/demos/association"
+	/>
+</BaseLayout>
+
+<style>
+	/* Hero */
+	.ap-hero {
+		position: relative;
+		overflow: hidden;
+		padding-block: clamp(5rem, 8vw, 8rem) clamp(3rem, 5vw, 4rem);
+	}
+
+	.ap-hero::before {
+		position: absolute;
+		inset: 0;
+		z-index: -1;
+		background:
+			radial-gradient(circle at 78% 18%, rgba(26, 92, 107, 0.10), transparent 30%),
+			linear-gradient(180deg, var(--color-white) 0%, var(--color-bg) 72%);
+		content: '';
+	}
+
+	.ap-hero__inner {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) minmax(340px, 0.72fr);
+		gap: clamp(3rem, 6vw, 5rem);
+		align-items: center;
+	}
+
+	.ap-hero__content { max-width: 760px; }
+	.ap-hero__content h1 { max-width: 760px; }
+
+	/* Browser mockup in hero */
+	.ap-hero__preview { overflow: hidden; border-radius: 22px; box-shadow: 0 24px 70px rgba(15, 23, 42, 0.08); }
+	.ap-hero__chrome { display: flex; gap: 0.45rem; padding: 0.9rem 1rem; border-bottom: 1px solid var(--color-border); background: var(--color-bg-secondary); }
+	.ap-hero__chrome span { width: 0.55rem; height: 0.55rem; border-radius: 999px; background: var(--color-white); border: 1px solid color-mix(in srgb, var(--color-muted) 26%, transparent); }
+	.ap-hero__screen { padding: 1rem; background: linear-gradient(90deg, rgba(226,232,240,0.3) 1px, transparent 1px), linear-gradient(180deg, rgba(226,232,240,0.3) 1px, transparent 1px), #0f1d2e; background-size: 40px 40px; display: grid; gap: 0.75rem; }
+
+	.ap-hero__screen-header { display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 0.75rem; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; }
+	.ap-hero__screen-logo { display: inline-flex; align-items: center; justify-content: center; width: 1.4rem; height: 1.4rem; border-radius: 4px; background: #1a5c6b; color: #f5f0e8; font-size: 0.6rem; font-weight: 800; }
+	.ap-hero__screen-brand { font-size: 0.65rem; font-weight: 700; color: #f5f0e8; }
+
+	.ap-hero__screen-hero-block { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 0.65rem; }
+	.ap-hero__screen-lines { display: grid; gap: 0.4rem; padding: 0.75rem; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; }
+	.ap-hero__screen-lines span { height: 0.5rem; border-radius: 999px; }
+	.ap-hero__screen-lines span:first-child { width: 40%; background: #1a5c6b; }
+	.ap-hero__screen-lines span:nth-child(2) { width: 85%; height: 0.65rem; background: rgba(245,240,232,0.15); }
+	.ap-hero__screen-lines span:last-child { width: 60%; background: rgba(255,255,255,0.08); }
+
+	.ap-hero__screen-sidebar { display: flex; flex-direction: column; gap: 0.35rem; padding: 0.75rem; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; }
+	.ap-hero__screen-pill { display: block; padding: 0.3rem 0.5rem; border-radius: 5px; background: rgba(26,92,107,0.35); color: #f5f0e8; font-size: 0.55rem; font-weight: 700; text-align: center; }
+	.ap-hero__screen-pill--alt { background: rgba(209,96,61,0.35); color: #f5f0e8; }
+
+	.ap-hero__screen-tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.45rem; }
+	.ap-hero__screen-tiles span { height: 1.5rem; border-radius: 6px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; font-size: 0.48rem; font-weight: 700; color: rgba(245,240,232,0.5); }
+
+	/* Trust tags */
+	.ap-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: clamp(2rem, 4vw, 3rem); }
+	.ap-tag { display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.4rem 0.65rem; border: 1px solid var(--color-border); border-radius: 999px; background: var(--color-white); font-size: 0.8125rem; font-weight: 600; color: var(--color-muted); }
+	.ap-tag svg { color: var(--color-accent); flex-shrink: 0; }
+
+	/* Shared intro */
+	.ap-section-intro { max-width: 780px; margin-bottom: clamp(2rem, 4vw, 3rem); }
+
+	/* Preview section */
+	.ap-browser-frame { display: block; overflow: hidden; border-radius: 16px; text-decoration: none; transition: box-shadow 0.2s ease, transform 0.2s ease; }
+	.ap-browser-frame:hover { transform: translateY(-2px); box-shadow: 0 32px 80px rgba(15,23,42,0.10); }
+	.ap-browser-frame__chrome { display: flex; gap: 0.45rem; align-items: center; padding: 0.75rem 1rem; border-bottom: 1px solid var(--color-border); background: var(--color-bg-secondary); }
+	.ap-browser-frame__chrome > span:nth-child(-n+3) { width: 0.5rem; height: 0.5rem; border-radius: 999px; background: var(--color-white); border: 1px solid color-mix(in srgb, var(--color-muted) 26%, transparent); }
+	.ap-browser-frame__url { margin-left: 0.75rem; padding: 0.3rem 0.65rem; border-radius: 6px; background: var(--color-white); border: 1px solid var(--color-border); font-size: 0.68rem; font-weight: 600; color: var(--color-muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
+	.ap-browser-frame__body { padding: 1.5rem; background: linear-gradient(90deg, rgba(226,232,240,0.25) 1px, transparent 1px), linear-gradient(180deg, rgba(226,232,240,0.25) 1px, transparent 1px), #0f1d2e; background-size: 48px 48px; }
+
+	.ap-browser-frame__mockup { max-width: 640px; margin-inline: auto; }
+	.ap-mockup-header { display: flex; align-items: center; gap: 0.65rem; padding: 0.65rem 1rem; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; margin-bottom: 0.75rem; }
+	.ap-mockup-logo { display: inline-flex; align-items: center; justify-content: center; width: 1.6rem; height: 1.6rem; border-radius: 5px; background: #1a5c6b; color: #f5f0e8; font-size: 0.65rem; font-weight: 800; }
+	.ap-mockup-nav { width: 2.5rem; height: 0.35rem; border-radius: 999px; background: rgba(255,255,255,0.1); }
+	.ap-mockup-hero { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 0.75rem; margin-bottom: 0.75rem; }
+	.ap-mockup-hero-text { display: flex; flex-direction: column; gap: 0.4rem; padding: 1rem; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; }
+	.ap-mockup-line { height: 0.45rem; border-radius: 999px; }
+	.ap-mockup-line--sm { width: 30%; background: #1a5c6b; }
+	.ap-mockup-line--lg { width: 90%; height: 0.6rem; background: rgba(245,240,232,0.14); }
+	.ap-mockup-line--md { width: 65%; background: rgba(255,255,255,0.08); }
+	.ap-mockup-btns { display: flex; gap: 0.4rem; margin-top: 0.25rem; }
+	.ap-mockup-btns span { width: 3rem; height: 1rem; border-radius: 4px; }
+	.ap-mockup-btns span:first-child { background: #1a5c6b; }
+	.ap-mockup-btns span:last-child { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); }
+
+	.ap-mockup-hero-sidebar { display: flex; flex-direction: column; gap: 0.4rem; padding: 1rem; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; }
+	.ap-mockup-pill { height: 1rem; border-radius: 5px; background: rgba(26,92,107,0.3); }
+	.ap-mockup-pill--accent { background: rgba(209,96,61,0.3); }
+
+	.ap-mockup-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5rem; }
+	.ap-mockup-card { display: flex; flex-direction: column; gap: 0.3rem; padding: 0.55rem; border-radius: 6px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); }
+	.ap-mockup-card span { height: 0.3rem; border-radius: 999px; background: rgba(255,255,255,0.08); }
+	.ap-mockup-card span:first-child { width: 60%; background: rgba(26,92,107,0.4); }
+
+	.ap-preview-cta { display: flex; flex-wrap: wrap; gap: 0.875rem; margin-top: 2rem; }
+
+	/* Audience grid */
+	.ap-audience__grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; }
+	.ap-audience__card { padding: 1.25rem; }
+	.ap-audience__card h3 { font-size: 1.05rem; margin-bottom: 0.35rem; }
+	.ap-audience__card p { font-size: 0.9rem; line-height: 1.55; }
+
+	/* Problem section */
+	.ap-problem__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem; margin-bottom: clamp(2rem, 4vw, 3rem); }
+	.ap-problem__item { display: flex; gap: 0.75rem; align-items: flex-start; padding: 1rem 1.25rem; background: var(--color-white); border: 1px solid var(--color-border); border-radius: var(--radius-md); }
+	.ap-problem__num { flex-shrink: 0; display: inline-flex; align-items: center; justify-content: center; width: 1.6rem; height: 1.6rem; border-radius: 999px; background: var(--color-accent-light); color: var(--color-accent-dark); font-size: 0.68rem; font-weight: 800; }
+	.ap-problem__item p { margin: 0; color: var(--color-text); font-size: 0.92rem; line-height: 1.55; }
+	.ap-problem__solution { max-width: 680px; padding: clamp(1.5rem, 3vw, 2rem); background: var(--color-white); border: 1px solid color-mix(in srgb, var(--color-accent) 35%, var(--color-border)); border-radius: var(--radius-md); }
+	.ap-problem__solution p { font-size: 1rem; line-height: 1.7; }
+	.ap-problem__solution strong { color: var(--color-text); }
+
+	/* Pages list */
+	.ap-pages__list { display: grid; gap: 0; max-width: 780px; }
+	.ap-pages__item { display: flex; gap: 1rem; align-items: flex-start; padding-block: clamp(1rem, 2vw, 1.35rem); border-bottom: 1px solid var(--color-border); }
+	.ap-pages__item:first-child { border-top: 1px solid var(--color-border); }
+	.ap-pages__num { flex-shrink: 0; display: inline-flex; align-items: center; justify-content: center; min-width: 1.8rem; padding: 0.3rem 0.45rem; border-radius: 999px; background: var(--color-accent-light); color: var(--color-accent-dark); font-size: 0.68rem; font-weight: 800; line-height: 1; margin-top: 0.15rem; }
+	.ap-pages__item h3 { font-size: 1.05rem; margin-bottom: 0.15rem; }
+	.ap-pages__item p { margin: 0; color: var(--color-muted); font-size: 0.9rem; line-height: 1.55; }
+
+	/* Features grid */
+	.ap-features__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+	.ap-features__card { padding: 1.25rem; }
+	.ap-features__card h3 { font-size: 1rem; margin-bottom: 0.3rem; }
+	.ap-features__card p { font-size: 0.9rem; line-height: 1.55; }
+
+	/* Design direction */
+	.ap-design__grid { display: grid; gap: 0; max-width: 680px; }
+	.ap-design__item { display: flex; gap: 0.75rem; align-items: flex-start; padding-block: 0.85rem; border-bottom: 1px solid var(--color-border); }
+	.ap-design__item:first-child { border-top: 1px solid var(--color-border); }
+	.ap-design__item svg { flex-shrink: 0; color: var(--color-accent); margin-top: 0.25rem; }
+	.ap-design__item p { margin: 0; color: var(--color-text); font-size: 0.95rem; line-height: 1.6; }
+	.ap-design__palette { display: flex; gap: 0.5rem; margin-top: 1.5rem; }
+	.ap-swatch { width: 2.5rem; height: 2.5rem; border-radius: 8px; border: 1px solid var(--color-border); }
+
+	.ap-design__comparison { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem; max-width: 580px; }
+	.ap-design__col { padding: 1.25rem; background: var(--color-white); border: 1px solid var(--color-border); border-radius: var(--radius-md); }
+	.ap-design__col h3 { font-size: 0.78rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent-dark); margin-bottom: 0.75rem; }
+	.ap-design__col ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.35rem; }
+	.ap-design__col li { font-size: 0.9rem; font-weight: 600; color: var(--color-text); line-height: 1.4; }
+	.ap-design__col--not li { color: var(--color-muted); text-decoration: line-through; text-decoration-color: color-mix(in srgb, var(--color-muted) 35%, transparent); }
+
+	/* Conversion grid */
+	.ap-conversion__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+	.ap-conversion__card { padding: 1.25rem; }
+	.ap-conversion__card h3 { font-size: 1rem; margin-bottom: 0.3rem; }
+	.ap-conversion__card p { font-size: 0.9rem; line-height: 1.55; }
+
+	.ap-conversion__extra { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: clamp(2rem, 4vw, 3rem); max-width: 780px; }
+	.ap-conversion__objections, .ap-conversion__mechanisms { padding: 1.25rem; background: var(--color-white); border: 1px solid var(--color-border); border-radius: var(--radius-md); }
+	.ap-conversion__objections h3, .ap-conversion__mechanisms h3 { font-size: 0.78rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent-dark); margin-bottom: 0.75rem; }
+	.ap-conversion__objections ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.4rem; }
+	.ap-conversion__objections li { font-size: 0.88rem; line-height: 1.5; color: var(--color-muted); font-style: italic; }
+	.ap-conversion__pills { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+	.ap-conversion__pills span { display: inline-flex; padding: 0.3rem 0.55rem; border: 1px solid var(--color-border); border-radius: 999px; background: var(--color-bg); font-size: 0.78rem; font-weight: 600; color: var(--color-muted); }
+
+	/* Customization */
+	.ap-customize__list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.5rem 2rem; max-width: 780px; margin-bottom: 1rem; }
+	.ap-customize__item { display: flex; align-items: flex-start; gap: 0.5rem; padding-block: 0.55rem; }
+	.ap-customize__item svg { flex-shrink: 0; color: var(--color-accent); margin-top: 0.2rem; }
+	.ap-customize__item span { font-size: 0.92rem; font-weight: 500; color: var(--color-text); line-height: 1.5; }
+
+	/* Integrations grid */
+	.ap-integrations__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+	.ap-integrations__card { padding: 1.25rem; }
+	.ap-integrations__card h3 { font-size: 1rem; margin-bottom: 0.3rem; }
+	.ap-integrations__card p { font-size: 0.9rem; line-height: 1.55; }
+
+	/* FAQ */
+	.ap-faq__list { max-width: 680px; margin-inline: auto; }
+	.ap-faq__item { border-bottom: 1px solid var(--color-border); }
+	.ap-faq__item:first-child { border-top: 1px solid var(--color-border); }
+	.ap-faq__q { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.1rem 0; cursor: pointer; list-style: none; font-weight: 600; font-size: 1rem; color: var(--color-text); }
+	.ap-faq__q::-webkit-details-marker { display: none; }
+	.ap-faq__q::marker { display: none; content: ''; }
+	.ap-faq__q svg { flex-shrink: 0; color: var(--color-muted); transition: transform 0.2s ease; }
+	.ap-faq__item[open] .ap-faq__q svg { transform: rotate(180deg); }
+	.ap-faq__a { padding-bottom: 1.25rem; }
+	.ap-faq__a p { margin: 0; color: var(--color-muted); font-size: 0.95rem; line-height: 1.7; }
+
+	/* Responsive */
+	@media (max-width: 1060px) {
+		.ap-audience__grid,
+		.ap-features__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+		.ap-mockup-grid { grid-template-columns: repeat(2, 1fr); }
+	}
+
+	@media (max-width: 900px) {
+		.ap-hero__inner { grid-template-columns: 1fr; }
+		.ap-mockup-hero { grid-template-columns: 1fr; }
+	}
+
+	@media (max-width: 720px) {
+		.ap-audience__grid,
+		.ap-features__grid,
+		.ap-conversion__grid,
+		.ap-problem__grid,
+		.ap-customize__list,
+		.ap-integrations__grid,
+		.ap-conversion__extra,
+		.ap-design__comparison { grid-template-columns: 1fr; }
+		.ap-hero__screen-hero-block { grid-template-columns: 1fr; }
+		.ap-mockup-grid { grid-template-columns: repeat(2, 1fr); }
+	}
+</style>
