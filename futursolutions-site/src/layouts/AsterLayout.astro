@@ -45,8 +45,8 @@ const { title, description, canonicalUrl } = Astro.props;
 				{navItems.map((item) => <a href={item.href}>{item.label}</a>)}
 			</nav>
 			<div class="aster-header__actions">
-				<a class="aster-header__util" href="#faq">Patient Portal</a>
-				<a class="aster-header__cta" href="#pricing">Book Consultation</a>
+				<a class="aster-header__util" href="/demos/solo-practice/patient-portal">Patient Portal</a>
+				<a class="aster-header__cta" href="/demos/solo-practice/new-patients">Book Consultation</a>
 			</div>
 			<button class="aster-header__menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="aster-mobile-menu">
 				<span></span><span></span><span></span>
@@ -55,7 +55,7 @@ const { title, description, canonicalUrl } = Astro.props;
 		<nav class="aster-mobile-menu" id="aster-mobile-menu" aria-label="Mobile navigation" hidden>
 			<div class="aster-container aster-mobile-menu__inner">
 				{navItems.map((item) => <a href={item.href}>{item.label}</a>)}
-				<a class="aster-mobile-menu__cta" href="#pricing">Book Consultation</a>
+				<a class="aster-mobile-menu__cta" href="/demos/solo-practice/new-patients">Book Consultation</a>
 			</div>
 		</nav>
 	</header>
@@ -75,13 +75,13 @@ const { title, description, canonicalUrl } = Astro.props;
 			</nav>
 			<nav class="aster-footer__col" aria-label="Services footer links">
 				<h2>Services</h2>
-				<ul>{footerServices.map((s) => <li><a href="#services">{s}</a></li>)}</ul>
+				<ul>{footerServices.map((s) => <li><a href="/demos/solo-practice/services">{s}</a></li>)}</ul>
 			</nav>
 			<div class="aster-footer__col">
 				<h2>Contact</h2>
 				<ul>
-					<li><a href="#pricing">Book a Consultation</a></li>
-					<li><a href="#faq">Patient Portal</a></li>
+					<li><a href="/demos/solo-practice/new-patients">Book a Consultation</a></li>
+					<li><a href="/demos/solo-practice/patient-portal">Patient Portal</a></li>
 					<li>{brand.location}</li>
 				</ul>
 				<div class="aster-footer__legal">

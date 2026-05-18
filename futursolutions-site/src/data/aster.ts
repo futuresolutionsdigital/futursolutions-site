@@ -14,12 +14,12 @@ export const brand = {
 export const announcement = 'Now accepting new patients for private primary care and wellness consultations.';
 
 export const navItems = [
-	{ label: 'About', href: '#provider' },
-	{ label: 'Services', href: '#services' },
-	{ label: 'How It Works', href: '#care-model' },
-	{ label: 'Pricing', href: '#pricing' },
-	{ label: 'Resources', href: '#resources' },
-	{ label: 'New Patients', href: '#faq' },
+	{ label: 'About', href: '/demos/solo-practice/about' },
+	{ label: 'Services', href: '/demos/solo-practice/services' },
+	{ label: 'How It Works', href: '/demos/solo-practice/how-it-works' },
+	{ label: 'Pricing', href: '/demos/solo-practice/pricing' },
+	{ label: 'Resources', href: '/demos/solo-practice/resources' },
+	{ label: 'New Patients', href: '/demos/solo-practice/new-patients' },
 ];
 
 export const hero = {
@@ -135,12 +135,12 @@ export const faqs = [
 ];
 
 export const footerNav = [
-	{ label: 'About', href: '#provider' },
-	{ label: 'Services', href: '#services' },
-	{ label: 'How It Works', href: '#care-model' },
-	{ label: 'Pricing', href: '#pricing' },
-	{ label: 'Resources', href: '#resources' },
-	{ label: 'FAQ', href: '#faq' },
+	{ label: 'About', href: '/demos/solo-practice/about' },
+	{ label: 'Services', href: '/demos/solo-practice/services' },
+	{ label: 'How It Works', href: '/demos/solo-practice/how-it-works' },
+	{ label: 'Pricing', href: '/demos/solo-practice/pricing' },
+	{ label: 'Resources', href: '/demos/solo-practice/resources' },
+	{ label: 'New Patients', href: '/demos/solo-practice/new-patients' },
 ];
 
 export const footerServices = [

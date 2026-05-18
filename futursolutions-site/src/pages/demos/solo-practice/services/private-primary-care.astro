@@ -1,0 +1,234 @@
+---
+import AsterLayout from '../../../../layouts/AsterLayout.astro';
+import { provider, faqs } from '../../../../data/aster';
+
+const whoFor = [
+	'Patients looking for a dedicated primary care provider',
+	'Patients frustrated with rushed 10-minute visits',
+	'Patients who want continuity — the same provider who knows their history',
+	'Patients who want preventive care, not just reactive appointments',
+	'Patients who prefer transparent pricing over insurance complexity',
+];
+
+const whatsIncluded = [
+	'Comprehensive health evaluation and history review',
+	'Personalized care plan with prioritized next steps',
+	'Lab ordering, review, and clinical interpretation',
+	'Medication review and management',
+	'Preventive screenings and wellness assessments',
+	'Secure messaging between visits (for members)',
+	'Care coordination with specialists when needed',
+];
+
+const concerns = [
+	'Annual physicals and preventive care',
+	'Fatigue and low energy',
+	'Thyroid and metabolic concerns',
+	'Sleep and stress management',
+	'Digestive issues',
+	'Blood pressure and cardiovascular screening',
+	'Chronic symptom investigation',
+	'Medication optimization',
+];
+---
+
+<AsterLayout
+	title="Private Primary Care | Aster Private Health Demo"
+	description="Primary care with more time, context, and continuity. Longer visits and a personal care relationship for patients who want thoughtful, preventive, and ongoing support."
+	canonicalUrl="https://futursolutions.vercel.app/demos/solo-practice/services/private-primary-care/"
+>
+	<section class="sd-hero" aria-labelledby="sd-heading">
+		<div class="aster-container">
+			<a class="sd-back" href="/demos/solo-practice/services">← Back to All Services</a>
+			<p class="aster-eyebrow">Private Primary Care</p>
+			<h1 id="sd-heading">Primary care with more time, context, and continuity.</h1>
+			<p class="aster-lead">Longer visits and a more personal care relationship for patients who want thoughtful, preventive, and ongoing support.</p>
+			<div class="aster-btn-row">
+				<a class="aster-btn aster-btn--primary" href="/demos/solo-practice/new-patients">Book a Consultation</a>
+				<a class="aster-btn aster-btn--secondary" href="/demos/solo-practice/pricing">View Pricing</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="aster-section aster-section--paper" aria-labelledby="sd-who-heading">
+		<div class="aster-container sd-two-col">
+			<div>
+				<p class="aster-eyebrow">Who This Is For</p>
+				<h2 id="sd-who-heading">Designed for patients who want a real primary care relationship.</h2>
+				<p class="aster-lead">Private primary care at Aster is built for patients who want more from their provider — more time, more context, and a relationship that does not reset at every visit.</p>
+			</div>
+			<div class="sd-list-card aster-card">
+				<ul class="sd-check-list">
+					{whoFor.map((item) => (
+						<li>
+							<span class="sd-check-dot" aria-hidden="true"></span>
+							<span>{item}</span>
+						</li>
+					))}
+				</ul>
+			</div>
+		</div>
+	</section>
+
+	<section class="aster-section" aria-labelledby="sd-inc-heading">
+		<div class="aster-container">
+			<div class="sd-intro">
+				<p class="aster-eyebrow">What Is Included</p>
+				<h2 id="sd-inc-heading">Everything you need for thorough, ongoing primary care.</h2>
+			</div>
+			<div class="sd-inc-list">
+				{whatsIncluded.map((item) => (
+					<div class="sd-inc-item">
+						<span class="sd-inc-dot" aria-hidden="true"></span>
+						<span>{item}</span>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<section class="aster-section aster-section--paper" aria-labelledby="sd-concerns-heading">
+		<div class="aster-container">
+			<div class="sd-intro" style="text-align:center; margin-inline:auto;">
+				<p class="aster-eyebrow">Common Concerns Addressed</p>
+				<h2 id="sd-concerns-heading">What patients most often bring to private primary care.</h2>
+			</div>
+			<div class="sd-tag-grid">
+				{concerns.map((c) => <span class="sd-tag">{c}</span>)}
+			</div>
+		</div>
+	</section>
+
+	<section class="aster-section" aria-labelledby="sd-how-heading">
+		<div class="aster-container sd-two-col">
+			<div>
+				<p class="aster-eyebrow">How Visits Work</p>
+				<h2 id="sd-how-heading">Your visit, from start to finish.</h2>
+			</div>
+			<div>
+				<div class="sd-step-list">
+					<div class="sd-step"><span class="sd-step-num">01</span><div><h3>Schedule your visit</h3><p>Book online, by phone, or through the patient portal.</p></div></div>
+					<div class="sd-step"><span class="sd-step-num">02</span><div><h3>Complete intake forms</h3><p>Share your history, concerns, and goals before your appointment.</p></div></div>
+					<div class="sd-step"><span class="sd-step-num">03</span><div><h3>Meet with your provider</h3><p>Your visit is 60–75 minutes (new) or 30–45 minutes (follow-up).</p></div></div>
+					<div class="sd-step"><span class="sd-step-num">04</span><div><h3>Receive your care plan</h3><p>Leave with a clear, practical plan and follow-up timeline.</p></div></div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="aster-section aster-section--paper" aria-labelledby="sd-price-heading">
+		<div class="aster-container">
+			<div class="sd-price-note">
+				<p class="aster-eyebrow">Pricing</p>
+				<h2 id="sd-price-heading">Transparent pricing for private primary care.</h2>
+				<p>New Patient Consultations start at <strong>$225</strong> (60–75 min). Follow-Up Visits start at <strong>$125</strong> (30–45 min). Private Care Membership starts at <strong>$149/month</strong> for ongoing care.</p>
+				<a class="aster-btn aster-btn--secondary" href="/demos/solo-practice/pricing" style="margin-top:1rem;">View Full Pricing</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="aster-section" aria-labelledby="sd-related-heading">
+		<div class="aster-container">
+			<div class="sd-intro">
+				<p class="aster-eyebrow">Related Services</p>
+				<h2 id="sd-related-heading">Other care pathways at Aster Private Health.</h2>
+			</div>
+			<div class="sd-related-list">
+				<a class="sd-related-item" href="/demos/solo-practice/services">Preventive Health</a>
+				<a class="sd-related-item" href="/demos/solo-practice/services">Women's Wellness</a>
+				<a class="sd-related-item" href="/demos/solo-practice/services">Hormone Support</a>
+				<a class="sd-related-item" href="/demos/solo-practice/services">Telehealth Visits</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="aster-section aster-section--paper" aria-labelledby="sd-faq-heading">
+		<div class="aster-container">
+			<div class="sd-intro" style="text-align:center; margin-inline:auto;">
+				<p class="aster-eyebrow">FAQ</p>
+				<h2 id="sd-faq-heading">Questions about private primary care?</h2>
+			</div>
+			<div class="sd-faq-list">
+				{[faqs[4], faqs[3], faqs[0], faqs[5]].map((faq) => (
+					<details class="sd-faq-item">
+						<summary class="sd-faq-q"><span>{faq.question}</span><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 18 18" aria-hidden="true"><path stroke="currentColor" stroke-width="1.3" stroke-linecap="round" d="M4.5 7l4.5 4.5L13.5 7"/></svg></summary>
+						<div class="sd-faq-a"><p>{faq.answer}</p></div>
+					</details>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<section class="aster-section sd-final" aria-labelledby="sd-final-heading">
+		<div class="aster-container">
+			<div class="sd-final-card">
+				<p class="aster-eyebrow sd-final-ey">Your next step</p>
+				<h2 id="sd-final-heading">Ready for primary care that feels personal?</h2>
+				<p class="sd-final-lead">Book a New Patient Consultation and experience primary care with more time, clarity, and continuity.</p>
+				<div class="aster-btn-row" style="justify-content:center;">
+					<a class="aster-btn sd-cta-p" href="/demos/solo-practice/new-patients">Book a Consultation</a>
+					<a class="aster-btn sd-cta-s" href="/demos/solo-practice/services">All Services</a>
+				</div>
+			</div>
+		</div>
+	</section>
+</AsterLayout>
+
+<style>
+.sd-hero { padding-block: clamp(4.5rem, 8vw, 7rem) clamp(3rem, 5vw, 4rem); }
+.sd-back { display: inline-flex; margin-bottom: 1.5rem; font-size: 0.82rem; font-weight: 600; color: var(--aster-clay); }
+.sd-back:hover { color: var(--aster-clay-dark); }
+.sd-intro { max-width: 560px; margin-bottom: clamp(2rem, 4vw, 3rem); }
+
+.sd-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 4vw, 3.5rem); align-items: start; }
+.sd-list-card { padding: 1.5rem 1.65rem; }
+.sd-check-list { padding: 0; margin: 0; list-style: none; display: grid; gap: 0.6rem; }
+.sd-check-list li { display: flex; align-items: baseline; gap: 0.65rem; font-size: 0.88rem; font-weight: 500; color: var(--aster-heading); }
+.sd-check-dot { flex-shrink: 0; width: 5px; height: 5px; border-radius: 50%; background: var(--aster-clay); margin-top: 0.4rem; }
+
+.sd-inc-list { display: grid; gap: 0; max-width: 600px; }
+.sd-inc-item { display: flex; align-items: center; gap: 0.65rem; padding-block: 0.75rem; border-bottom: 1px solid var(--aster-border); font-size: 0.88rem; font-weight: 500; color: var(--aster-heading); }
+.sd-inc-item:first-child { border-top: 1px solid var(--aster-border); }
+.sd-inc-dot { flex-shrink: 0; width: 5px; height: 5px; border-radius: 50%; background: var(--aster-clay); }
+
+.sd-tag-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; max-width: 640px; margin-inline: auto; }
+.sd-tag { padding: 0.5rem 1rem; border: 1px solid var(--aster-border); border-radius: 999px; font-size: 0.82rem; font-weight: 500; color: var(--aster-heading); background: var(--aster-white); }
+
+.sd-step-list { display: grid; gap: 0; }
+.sd-step { display: flex; align-items: flex-start; gap: 0.85rem; padding-block: clamp(1rem, 2vw, 1.35rem); border-bottom: 1px solid var(--aster-border); }
+.sd-step:first-child { border-top: 1px solid var(--aster-border); }
+.sd-step-num { flex-shrink: 0; font-family: var(--aster-serif); font-size: 0.82rem; font-weight: 500; color: var(--aster-clay); opacity: 0.7; line-height: 1.65; }
+.sd-step h3 { margin-bottom: 0.15rem; }
+.sd-step p { margin: 0; color: var(--aster-muted); font-size: 0.85rem; line-height: 1.55; }
+
+.sd-price-note { max-width: 600px; }
+.sd-price-note p { font-size: 0.95rem; line-height: 1.7; }
+.sd-price-note strong { color: var(--aster-heading); }
+
+.sd-related-list { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.sd-related-item { padding: 0.5rem 1.1rem; border: 1px solid var(--aster-border); border-radius: 999px; font-size: 0.82rem; font-weight: 500; color: var(--aster-heading); background: var(--aster-white); }
+.sd-related-item:hover { border-color: var(--aster-clay); color: var(--aster-clay); }
+
+.sd-faq-list { max-width: 680px; margin-inline: auto; }
+.sd-faq-item { border-bottom: 1px solid var(--aster-border); }
+.sd-faq-item:first-child { border-top: 1px solid var(--aster-border); }
+.sd-faq-q { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.1rem 0; cursor: pointer; list-style: none; font-weight: 600; font-size: 0.92rem; color: var(--aster-heading); }
+.sd-faq-q::-webkit-details-marker { display: none; }
+.sd-faq-q::marker { display: none; content: ''; }
+.sd-faq-q svg { flex-shrink: 0; color: var(--aster-muted); transition: transform 0.2s ease; }
+.sd-faq-item[open] .sd-faq-q svg { transform: rotate(180deg); }
+.sd-faq-a { padding-bottom: 1.25rem; }
+.sd-faq-a p { margin: 0; color: var(--aster-text); font-size: 0.88rem; line-height: 1.7; }
+
+.sd-final { padding-block: clamp(2.5rem, 5vw, 4rem); }
+.sd-final-card { max-width: 680px; margin-inline: auto; padding: clamp(2.5rem, 5vw, 4rem); border-radius: var(--aster-radius-lg); background: var(--aster-aubergine); text-align: center; }
+.sd-final-ey { color: rgba(255,255,255,0.45) !important; }
+.sd-final-card h2 { color: var(--aster-white); font-family: var(--aster-serif); font-weight: 500; max-width: 500px; margin-inline: auto; }
+.sd-final-lead { max-width: 460px; margin-inline: auto; color: rgba(255,255,255,0.5); font-size: 0.92rem; line-height: 1.65; }
+.sd-cta-p { background: var(--aster-clay); color: var(--aster-white); }
+.sd-cta-p:hover { background: var(--aster-clay-dark); color: var(--aster-white); }
+.sd-cta-s { border-color: rgba(255,255,255,0.15); background: transparent; color: rgba(255,255,255,0.75); }
+.sd-cta-s:hover { background: rgba(255,255,255,0.07); color: var(--aster-white); }
+
+@media (max-width: 768px) { .sd-two-col { grid-template-columns: 1fr; } }
+</style>

@@ -1,0 +1,231 @@
+---
+import AsterLayout from '../../../layouts/AsterLayout.astro';
+import { pricingCards, pricingNote, faqs } from '../../../data/aster';
+
+const included = [
+	'Longer visits with dedicated provider time',
+	'Personalized care plans with clear next steps',
+	'Lab review and clinical interpretation',
+	'Secure messaging for members',
+	'Follow-up recommendations and care coordination',
+	'Superbills for possible insurance reimbursement',
+];
+
+const notIncluded = [
+	'Emergency or urgent care',
+	'Hospital or surgical care',
+	'Outside lab and imaging fees',
+	'Prescription medication costs',
+	'Specialist referral fees',
+];
+
+const rightForYou = [
+	{ name: 'New Patient Consultation', who: 'You are a new patient looking to establish care, discuss a specific concern, or get a second opinion.', action: 'Book a Consultation' },
+	{ name: 'Follow-Up Visit', who: 'You are an existing patient returning for plan updates, lab review, or ongoing support.', action: 'Schedule Follow-Up' },
+	{ name: 'Private Care Membership', who: 'You want an ongoing care relationship with longer visits, secure messaging, and continuity.', action: 'Learn About Membership' },
+];
+---
+
+<AsterLayout
+	title="Pricing & Membership | Aster Private Health Demo"
+	description="Transparent pricing for private healthcare at Aster Private Health. New patient consultations, follow-up visits, and private care membership — no surprise billing."
+	canonicalUrl="https://futursolutions.vercel.app/demos/solo-practice/pricing/"
+>
+	<section class="px-hero" aria-labelledby="px-heading">
+		<div class="aster-container">
+			<a class="px-back" href="/demos/solo-practice">← Back to Aster Home</a>
+			<p class="aster-eyebrow">Pricing &amp; Membership</p>
+			<h1 id="px-heading">Transparent pricing before you book.</h1>
+			<p class="aster-lead">Know what your care costs before your visit, with simple private-pay options and clear membership support.</p>
+			<div class="aster-btn-row">
+				<a class="aster-btn aster-btn--primary" href="/demos/solo-practice/new-patients">Book a Consultation</a>
+				<a class="aster-btn aster-btn--secondary" href="/demos/solo-practice/how-it-works">How It Works</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="aster-section aster-section--paper" aria-labelledby="px-cards-heading">
+		<div class="aster-container">
+			<div class="px-intro" style="text-align:center; margin-inline:auto;">
+				<p class="aster-eyebrow">Visit Options</p>
+				<h2 id="px-cards-heading">Simple, upfront pricing for every visit type.</h2>
+			</div>
+			<div class="px-list">
+				{pricingCards.map((card) => (
+					<div class:list={['px-item', { 'px-item--feat': card.featured }]}>
+						<div class="px-item-left">
+							<h3>{card.name}</h3>
+							<p class="px-dur">{card.duration}</p>
+							<p class="px-desc">{card.description}</p>
+						</div>
+						<div class="px-item-right">
+							<span class="px-pnote">{card.priceNote}</span>
+							<span class="px-amt">{card.price}{card.priceSuffix && <small>{card.priceSuffix}</small>}</span>
+							<a class:list={['aster-btn', card.featured ? 'aster-btn--primary' : 'aster-btn--secondary']} href="/demos/solo-practice/new-patients" style="margin-top:0.75rem;">
+								{card.featured ? 'Learn About Membership' : 'Book This Visit'}
+							</a>
+						</div>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<section class="aster-section" aria-labelledby="px-how-heading">
+		<div class="aster-container">
+			<div class="px-intro">
+				<p class="aster-eyebrow">How Payment Works</p>
+				<h2 id="px-how-heading">Private-pay care without insurance complexity.</h2>
+			</div>
+			<div class="px-how-panel">
+				<p>Aster Private Health is a direct-pay practice. We do not bill insurance directly, which allows us to offer longer visits and more personalized care without the constraints of insurance-driven time limits.</p>
+				<ul>
+					<li><strong>HSA/FSA funds</strong> are accepted and typically eligible for our services</li>
+					<li><strong>Superbills</strong> are provided so you can submit for possible reimbursement through your insurance</li>
+					<li><strong>Labs, imaging, and prescriptions</strong> are ordered through outside facilities where your insurance benefits apply as usual</li>
+					<li><strong>No surprise billing</strong> — you know exactly what each visit costs before you book</li>
+				</ul>
+			</div>
+		</div>
+	</section>
+
+	<section class="aster-section aster-section--paper" aria-labelledby="px-scope-heading">
+		<div class="aster-container px-scope-grid">
+			<div class="px-scope-card">
+				<h3 class="px-scope-label">What is included</h3>
+				<ul>
+					{included.map((item) => <li>{item}</li>)}
+				</ul>
+			</div>
+			<div class="px-scope-card px-scope-card--muted">
+				<h3 class="px-scope-label">What is not included</h3>
+				<ul>
+					{notIncluded.map((item) => <li>{item}</li>)}
+				</ul>
+				<p class="px-scope-note">If you are experiencing a medical emergency, please call 911 or visit your nearest emergency room.</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="aster-section" aria-labelledby="px-right-heading">
+		<div class="aster-container">
+			<div class="px-intro" style="text-align:center; margin-inline:auto;">
+				<p class="aster-eyebrow">Which option is right for me?</p>
+				<h2 id="px-right-heading">Find the visit type that fits your needs.</h2>
+			</div>
+			<div class="px-right-list">
+				{rightForYou.map((r) => (
+					<div class="px-right-item">
+						<h3>{r.name}</h3>
+						<p>{r.who}</p>
+						<a class="px-right-link" href="/demos/solo-practice/new-patients">{r.action} →</a>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<section class="aster-section aster-section--paper" aria-labelledby="px-faq-heading">
+		<div class="aster-container">
+			<div class="px-intro" style="text-align:center; margin-inline:auto;">
+				<p class="aster-eyebrow">FAQ</p>
+				<h2 id="px-faq-heading">Questions about pricing and payment?</h2>
+			</div>
+			<div class="px-faq-list">
+				{[faqs[0], faqs[1], faqs[6], faqs[5]].map((faq) => (
+					<details class="px-faq-item">
+						<summary class="px-faq-q"><span>{faq.question}</span><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 18 18" aria-hidden="true"><path stroke="currentColor" stroke-width="1.3" stroke-linecap="round" d="M4.5 7l4.5 4.5L13.5 7"/></svg></summary>
+						<div class="px-faq-a"><p>{faq.answer}</p></div>
+					</details>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<section class="aster-section px-final" aria-labelledby="px-final-heading">
+		<div class="aster-container">
+			<div class="px-final-card">
+				<p class="aster-eyebrow px-final-ey">Your next step</p>
+				<h2 id="px-final-heading">Transparent care starts with a conversation.</h2>
+				<p class="px-final-lead">Book a New Patient Consultation and experience healthcare with no hidden fees and no surprises.</p>
+				<div class="aster-btn-row" style="justify-content:center;">
+					<a class="aster-btn px-cta-p" href="/demos/solo-practice/new-patients">Book a Consultation</a>
+					<a class="aster-btn px-cta-s" href="/demos/solo-practice/services">Explore Services</a>
+				</div>
+				<p class="px-final-note">No commitment required. HSA/FSA accepted.</p>
+			</div>
+		</div>
+	</section>
+</AsterLayout>
+
+<style>
+.px-hero { padding-block: clamp(4.5rem, 8vw, 7rem) clamp(3rem, 5vw, 4rem); }
+.px-back { display: inline-flex; margin-bottom: 1.5rem; font-size: 0.82rem; font-weight: 600; color: var(--aster-clay); }
+.px-back:hover { color: var(--aster-clay-dark); }
+.px-intro { max-width: 560px; margin-bottom: clamp(2rem, 4vw, 3rem); }
+
+.px-list { display: grid; gap: 1rem; max-width: 740px; margin-inline: auto; }
+.px-item { display: flex; justify-content: space-between; align-items: center; gap: 2rem; padding: 1.65rem 1.85rem; border: 1px solid var(--aster-border); border-radius: var(--aster-radius); background: var(--aster-white); }
+.px-item--feat { border-color: var(--aster-clay); background: var(--aster-clay-light); box-shadow: 0 4px 20px rgba(167,104,77,0.06); }
+.px-item-left { flex: 1; }
+.px-item-left h3 { margin-bottom: 0.2rem; }
+.px-dur { margin-bottom: 0.5rem; color: var(--aster-muted); font-size: 0.78rem; }
+.px-desc { margin: 0; color: var(--aster-text); font-size: 0.85rem; line-height: 1.55; }
+.px-item-right { display: flex; flex-direction: column; align-items: center; text-align: center; flex-shrink: 0; }
+.px-pnote { font-size: 0.65rem; font-weight: 600; color: var(--aster-muted); text-transform: uppercase; letter-spacing: 0.06em; }
+.px-amt { font-family: var(--aster-serif); font-size: 1.8rem; font-weight: 600; color: var(--aster-heading); line-height: 1.2; }
+.px-amt small { font-size: 0.75rem; font-weight: 500; color: var(--aster-muted); font-family: var(--aster-sans); }
+
+.px-how-panel { max-width: 680px; padding: clamp(1.5rem, 3vw, 2rem); background: var(--aster-paper); border: 1px solid var(--aster-border); border-radius: var(--aster-radius-lg); }
+.px-how-panel p { font-size: 0.92rem; line-height: 1.7; }
+.px-how-panel ul { padding: 0; margin: 1rem 0 0; list-style: none; display: grid; gap: 0.55rem; }
+.px-how-panel li { position: relative; padding-left: 0.85rem; font-size: 0.88rem; line-height: 1.55; color: var(--aster-text); }
+.px-how-panel li::before { content: ''; position: absolute; left: 0; top: 0.5rem; width: 4px; height: 4px; border-radius: 50%; background: var(--aster-clay); }
+.px-how-panel strong { color: var(--aster-heading); }
+
+.px-scope-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; max-width: 760px; margin-inline: auto; }
+.px-scope-card { padding: 1.5rem 1.65rem; border: 1px solid var(--aster-border); border-radius: var(--aster-radius); background: var(--aster-white); }
+.px-scope-card--muted { background: var(--aster-ivory); }
+.px-scope-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--aster-clay); margin-bottom: 0.85rem; }
+.px-scope-card ul { padding: 0; margin: 0; list-style: none; display: grid; gap: 0.45rem; }
+.px-scope-card li { position: relative; padding-left: 0.85rem; font-size: 0.85rem; font-weight: 500; color: var(--aster-text); line-height: 1.5; }
+.px-scope-card li::before { content: ''; position: absolute; left: 0; top: 0.5rem; width: 4px; height: 4px; border-radius: 50%; background: var(--aster-clay); }
+.px-scope-card--muted li::before { background: var(--aster-muted); }
+.px-scope-note { margin-top: 1rem; font-size: 0.78rem; color: var(--aster-muted); font-style: italic; }
+
+.px-right-list { display: grid; gap: 0; max-width: 680px; margin-inline: auto; }
+.px-right-item { padding-block: clamp(1.25rem, 2.5vw, 1.75rem); border-bottom: 1px solid var(--aster-border); }
+.px-right-item:first-child { border-top: 1px solid var(--aster-border); }
+.px-right-item h3 { margin-bottom: 0.3rem; }
+.px-right-item p { color: var(--aster-text); font-size: 0.88rem; line-height: 1.6; }
+.px-right-link { font-size: 0.8rem; font-weight: 600; color: var(--aster-clay); }
+.px-right-link:hover { color: var(--aster-clay-dark); }
+
+.px-faq-list { max-width: 680px; margin-inline: auto; }
+.px-faq-item { border-bottom: 1px solid var(--aster-border); }
+.px-faq-item:first-child { border-top: 1px solid var(--aster-border); }
+.px-faq-q { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.1rem 0; cursor: pointer; list-style: none; font-weight: 600; font-size: 0.92rem; color: var(--aster-heading); }
+.px-faq-q::-webkit-details-marker { display: none; }
+.px-faq-q::marker { display: none; content: ''; }
+.px-faq-q svg { flex-shrink: 0; color: var(--aster-muted); transition: transform 0.2s ease; }
+.px-faq-item[open] .px-faq-q svg { transform: rotate(180deg); }
+.px-faq-a { padding-bottom: 1.25rem; }
+.px-faq-a p { margin: 0; color: var(--aster-text); font-size: 0.88rem; line-height: 1.7; }
+
+.px-final { padding-block: clamp(2.5rem, 5vw, 4rem); }
+.px-final-card { max-width: 680px; margin-inline: auto; padding: clamp(2.5rem, 5vw, 4rem); border-radius: var(--aster-radius-lg); background: var(--aster-aubergine); text-align: center; }
+.px-final-ey { color: rgba(255,255,255,0.45) !important; }
+.px-final-card h2 { color: var(--aster-white); font-family: var(--aster-serif); font-weight: 500; max-width: 500px; margin-inline: auto; }
+.px-final-lead { max-width: 460px; margin-inline: auto; color: rgba(255,255,255,0.5); font-size: 0.92rem; line-height: 1.65; }
+.px-cta-p { background: var(--aster-clay); color: var(--aster-white); }
+.px-cta-p:hover { background: var(--aster-clay-dark); color: var(--aster-white); }
+.px-cta-s { border-color: rgba(255,255,255,0.15); background: transparent; color: rgba(255,255,255,0.75); }
+.px-cta-s:hover { background: rgba(255,255,255,0.07); color: var(--aster-white); }
+.px-final-note { margin-top: 1.25rem; color: rgba(255,255,255,0.3); font-size: 0.72rem; }
+
+@media (max-width: 620px) {
+	.px-item { flex-direction: column; text-align: center; gap: 1rem; }
+	.px-item-left { text-align: center; }
+	.px-scope-grid { grid-template-columns: 1fr; }
+}
+</style>
