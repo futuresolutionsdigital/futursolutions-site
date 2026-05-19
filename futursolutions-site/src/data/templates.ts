@@ -17,7 +17,6 @@ export interface TemplateSystem {
 	detailUrl: string;
 	demoUrl: string | null;
 	auditUrl: string;
-	quickViewSummary: string;
 	featured: boolean;
 	whyDifferent?: { title: string; text: string }[];
 }
@@ -39,7 +38,6 @@ const combinedTemplateTextBlob = (template: TemplateSystem) =>
 		template.category,
 		template.name,
 		template.shortDescription,
-		template.quickViewSummary,
 		...template.features,
 		...template.goals,
 		...template.backendFeatures,
@@ -132,8 +130,6 @@ export const templateSystems: TemplateSystem[] = [
 		detailUrl: '/templates/med-spa',
 		demoUrl: '/demos/med-spa',
 		auditUrl: '/audit?template=med-spa',
-		quickViewSummary:
-			'A premium 9-page med spa demo with treatment menu, Botox detail page, concern guide, results gallery, provider profiles, membership page, and consultation booking flow — all in a warm clinical-luxury design.',
 		featured: true,
 	},
 	{
@@ -171,8 +167,6 @@ export const templateSystems: TemplateSystem[] = [
 		detailUrl: '/templates/solo-practice',
 		demoUrl: '/demos/solo-practice',
 		auditUrl: '/audit?template=solo-practice',
-		quickViewSummary:
-			'A warm editorial mini-site with 10 pages: provider-led homepage, about, services, service detail, how it works, transparent pricing, new patient onboarding, patient resources, contact, and patient portal — all in a calm, premium, clinically credible design.',
 		featured: true,
 	},
 	{
@@ -212,8 +206,6 @@ export const templateSystems: TemplateSystem[] = [
 		detailUrl: '/templates/association',
 		demoUrl: '/demos/association',
 		auditUrl: '/audit?template=association',
-		quickViewSummary:
-			'A complete fictional association website system built around member conversion, policy engagement, CE/event promotion, chapter community, resource discovery, and career advancement — with filterable libraries, detail pages, and institutional credibility sections.',
 		featured: true,
 	},
 	{
@@ -254,8 +246,6 @@ export const templateSystems: TemplateSystem[] = [
 		detailUrl: '/templates/premium-wellness-clinic',
 		demoUrl: '/demos/premium-wellness-clinic',
 		auditUrl: '/audit?template=premium-wellness-clinic',
-		quickViewSummary:
-			'A premium 13-page wellness clinic demo with goal-based navigation, six service categories, five detailed service pages, membership tiers with comparison table, provider cards, signature programs, booking flow, and full supporting pages — all in a warm, calm, medically credible design.',
 		featured: true,
 	},
 	{
@@ -297,8 +287,6 @@ export const templateSystems: TemplateSystem[] = [
 		detailUrl: '/templates/hormone-trt',
 		demoUrl: '/demos/hormone-trt',
 		auditUrl: '/audit?template=hormone-trt',
-		quickViewSummary:
-			"A premium 8-page men's health website system with a red/black sports-performance design, assessment-first conversion funnel, lab-based credibility sections, provider trust, pricing transparency, and discreet ED/sexual health handling — built for TRT clinics, hormone optimization practices, and male performance medicine.",
 		featured: true,
 		whyDifferent: [
 			{ title: 'Built around male patient psychology', text: 'Sensitive topics like ED, libido, fatigue, and weight gain are handled directly but discreetly — with language calibrated for how men actually seek care.' },

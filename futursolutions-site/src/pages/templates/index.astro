@@ -1,7 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import TemplateCard from '../../components/TemplateCard.astro';
-import TemplateQuickView from '../../components/TemplateQuickView.astro';
 import { templateSystems, templateBrowseFilterDefs } from '../../data/templates';
 
 const pageTitle = 'Website Template Systems | Future Solutions';
@@ -104,7 +103,6 @@ const comparisons = [
 			<div id="featured-templates-grid" class="featured-templates__grid">
 				{templateSystems.map((template, index) => <TemplateCard template={template} priority={index + 1} />)}
 			</div>
-			<TemplateQuickView templates={templateSystems} />
 		</div>
 	</section>
 
