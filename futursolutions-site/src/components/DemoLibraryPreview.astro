@@ -1,0 +1,611 @@
+---
+import { templateSystems } from '../data/templates';
+
+const featuredDemos = templateSystems;
+const newDemoSlugs = new Set(['premium-wellness-clinic', 'hormone-trt']);
+---
+
+<section id="demos" class="section section-tight demo-library" aria-labelledby="demo-library-heading">
+	<div class="site-container site-container--wide">
+		<header class="demo-library__head">
+			<div class="demo-library__head-left">
+				<p class="eyebrow">Live demos</p>
+				<h2 id="demo-library-heading" class="display-lg">
+					Real, working clinic and association websites&nbsp;— click&nbsp;through&nbsp;them.
+				</h2>
+			</div>
+			<div class="demo-library__head-right">
+				<p>
+					Every demo below is a launch-ready Foundation. Not a screenshot. Not a Figma file. Walk through pages, read the content, see the system.
+				</p>
+				<a class="demo-library__head-cta" href="/templates">
+					Browse all demos
+					<span aria-hidden="true">&rarr;</span>
+				</a>
+			</div>
+		</header>
+
+		<div class="demo-library__grid">
+			{
+				featuredDemos.map((template, index) => (
+					<article
+						class:list={[
+							'demo-card',
+							{
+								'demo-card--vt': template.slug === 'hormone-trt',
+								'demo-card--new': newDemoSlugs.has(template.slug),
+							},
+						]}
+					>
+						<a class="demo-card__link" href={template.detailUrl} aria-label={`View details for the ${template.name} demo`} />
+
+						<div class="demo-card__media" aria-hidden="true">
+							{template.slug === 'hormone-trt' ? (
+								<div class="vt-prev">
+									<div class="vt-prev__chrome">
+										<span class="vt-prev__dot" />
+										<span class="vt-prev__dot" />
+										<span class="vt-prev__dot" />
+										<span class="vt-prev__label">VANTAGE</span>
+									</div>
+									<div class="vt-prev__screen">
+										<div class="vt-prev__rule" />
+										<div class="vt-prev__hero-block">
+											<span class="vt-prev__tag">MEN'S HEALTH / TRT</span>
+											<span class="vt-prev__headline" />
+											<span class="vt-prev__headline vt-prev__headline--short" />
+											<span class="vt-prev__cta">START ASSESSMENT</span>
+										</div>
+										<div class="vt-prev__stats">
+											<div style="height:55%" />
+											<div style="height:80%" />
+											<div style="height:40%" />
+											<div style="height:65%" />
+										</div>
+										<div class="vt-prev__diagonal" />
+									</div>
+								</div>
+							) : (
+								<div class="demo-card__mockup">
+									<div class="demo-card__topbar">
+										<span />
+										<span />
+										<span />
+									</div>
+									<div class="demo-card__screen">
+										<div class="demo-card__lines">
+											<span />
+											<span />
+											<span />
+										</div>
+										<div class={`demo-card__panel demo-card__panel--${index + 1}`}>
+											<span />
+										</div>
+										<div class="demo-card__tiles">
+											<span />
+											<span />
+											<span />
+										</div>
+									</div>
+								</div>
+							)}
+						</div>
+
+						<div class="demo-card__body">
+							<div class="demo-card__meta">
+								<span class="demo-card__category">{template.category}</span>
+								{newDemoSlugs.has(template.slug) && (
+									<span class="demo-card__badge">New</span>
+								)}
+							</div>
+							<h3 class="demo-card__title">{template.name}</h3>
+							<p class="demo-card__desc">{template.shortDescription}</p>
+							<ul class="demo-card__tags" aria-label={`${template.name} feature tags`}>
+								{template.features.slice(0, 3).map((feature) => (
+									<li>{feature}</li>
+								))}
+							</ul>
+							<div class="demo-card__actions">
+								{template.demoUrl ? (
+									<a class="demo-card__primary" href={template.demoUrl}>
+										View live demo
+										<span aria-hidden="true">&rarr;</span>
+									</a>
+								) : (
+									<span class="demo-card__pending">Demo coming soon</span>
+								)}
+								<a class="demo-card__secondary" href={template.detailUrl}>Details</a>
+							</div>
+						</div>
+					</article>
+				))
+			}
+		</div>
+	</div>
+</section>
+
+<style>
+	.demo-library {
+		background: var(--color-bg-secondary);
+		border-block: 1px solid var(--color-border-soft);
+	}
+
+	.demo-library__head {
+		display: grid;
+		grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+		gap: clamp(2rem, 5vw, 4rem);
+		align-items: end;
+		margin-bottom: clamp(2.5rem, 4vw, 3.5rem);
+	}
+
+	.demo-library__head h2 {
+		max-width: 18ch;
+		margin-bottom: 0;
+	}
+
+	.demo-library__head-right {
+		display: grid;
+		gap: 1rem;
+		justify-items: start;
+	}
+
+	.demo-library__head-right p {
+		max-width: 36ch;
+		margin: 0;
+		color: var(--color-muted);
+		font-size: 1rem;
+		line-height: 1.6;
+	}
+
+	.demo-library__head-cta {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.4rem;
+		color: var(--color-text);
+		font-size: 0.95rem;
+		font-weight: 650;
+		transition: gap var(--transition-base);
+	}
+
+	.demo-library__head-cta:hover {
+		gap: 0.55rem;
+	}
+
+	.demo-library__head-cta span {
+		display: inline-block;
+		transition: transform 220ms var(--ease-out-quart);
+	}
+
+	.demo-library__head-cta:hover span {
+		transform: translateX(2px);
+	}
+
+	.demo-library__grid {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 1.25rem;
+	}
+
+	.demo-card {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		overflow: hidden;
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		background: var(--color-white);
+		box-shadow: var(--shadow-card);
+		transition: transform 320ms var(--ease-out-quart),
+			border-color var(--transition-base),
+			box-shadow var(--transition-base);
+	}
+
+	.demo-card:hover {
+		transform: translateY(-3px);
+		border-color: color-mix(in srgb, var(--color-text) 22%, var(--color-border));
+		box-shadow: var(--shadow-card-hover);
+	}
+
+	.demo-card__link {
+		position: absolute;
+		inset: 0;
+		z-index: 1;
+		content: '';
+	}
+
+	.demo-card__media {
+		position: relative;
+		z-index: 0;
+		padding: 0.85rem 0.85rem 0;
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	.demo-card__mockup {
+		overflow: hidden;
+		border: 1px solid var(--color-border);
+		border-radius: 12px 12px 0 0;
+		background: var(--color-bg);
+	}
+
+	.demo-card__topbar {
+		display: flex;
+		gap: 0.34rem;
+		align-items: center;
+		padding: 0.55rem 0.7rem;
+		background: var(--color-white);
+		border-bottom: 1px solid var(--color-border-soft);
+	}
+
+	.demo-card__topbar span {
+		width: 0.4rem;
+		height: 0.4rem;
+		border-radius: 999px;
+		background: color-mix(in srgb, var(--color-muted) 30%, var(--color-white));
+	}
+
+	.demo-card__screen {
+		display: grid;
+		grid-template-columns: 1.15fr 0.85fr;
+		gap: 0.75rem;
+		min-height: 180px;
+		padding: 1rem;
+		background:
+			linear-gradient(180deg, rgba(255, 255, 255, 0.45), transparent 60%),
+			var(--color-bg);
+	}
+
+	.demo-card__lines {
+		display: flex;
+		flex-direction: column;
+		gap: 0.55rem;
+		justify-content: center;
+	}
+
+	.demo-card__lines span {
+		display: block;
+		height: 0.6rem;
+		border-radius: 999px;
+		background: var(--color-border);
+	}
+
+	.demo-card__lines span:first-child {
+		width: 40%;
+		background: var(--color-accent-light);
+	}
+
+	.demo-card__lines span:nth-child(2) {
+		width: 80%;
+		height: 1rem;
+		background: color-mix(in srgb, var(--color-text) 16%, var(--color-border));
+	}
+
+	.demo-card__lines span:last-child {
+		width: 64%;
+	}
+
+	.demo-card__panel {
+		display: flex;
+		align-items: flex-end;
+		min-height: 108px;
+		padding: 0.6rem;
+		border: 1px solid color-mix(in srgb, var(--color-accent) 26%, var(--color-border));
+		border-radius: 12px;
+		background:
+			linear-gradient(180deg, rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0)),
+			var(--color-accent-light);
+	}
+
+	.demo-card__panel span {
+		width: 70%;
+		height: 0.5rem;
+		border-radius: 999px;
+		background: var(--color-accent);
+	}
+
+	.demo-card__panel--2 span { width: 50%; }
+	.demo-card__panel--3 span { width: 84%; }
+	.demo-card__panel--4 span { width: 60%; }
+	.demo-card__panel--5 span { width: 76%; }
+
+	.demo-card__tiles {
+		grid-column: 1 / -1;
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 0.5rem;
+	}
+
+	.demo-card__tiles span {
+		min-height: 2.1rem;
+		border: 1px solid var(--color-border-soft);
+		border-radius: 10px;
+		background: var(--color-white);
+	}
+
+	.demo-card__body {
+		position: relative;
+		z-index: 2;
+		display: flex;
+		flex-direction: column;
+		gap: 0.6rem;
+		padding: 1.35rem;
+	}
+
+	.demo-card__meta {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 0.5rem;
+	}
+
+	.demo-card__category {
+		color: var(--color-muted);
+		font-size: 0.74rem;
+		font-weight: 600;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+	}
+
+	.demo-card__badge {
+		padding: 0.18rem 0.5rem;
+		border-radius: 999px;
+		background: var(--color-text);
+		color: var(--color-white);
+		font-size: 0.68rem;
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+	}
+
+	.demo-card__title {
+		margin: 0;
+		font-size: 1.25rem;
+		font-weight: 700;
+		letter-spacing: -0.03em;
+		line-height: 1.2;
+	}
+
+	.demo-card__desc {
+		margin: 0;
+		color: var(--color-muted);
+		font-size: 0.93rem;
+		line-height: 1.55;
+	}
+
+	.demo-card__tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.4rem;
+		margin: 0.4rem 0 0 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.demo-card__tags li {
+		padding: 0.3rem 0.55rem;
+		border: 1px solid var(--color-border-soft);
+		border-radius: 999px;
+		background: var(--color-bg-secondary);
+		color: var(--color-muted);
+		font-size: 0.74rem;
+		font-weight: 500;
+		line-height: 1;
+	}
+
+	.demo-card__actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1rem;
+		align-items: center;
+		margin-top: 0.85rem;
+		padding-top: 1rem;
+		border-top: 1px solid var(--color-border-soft);
+	}
+
+	.demo-card__primary {
+		position: relative;
+		z-index: 2;
+		display: inline-flex;
+		align-items: center;
+		gap: 0.35rem;
+		color: var(--color-text);
+		font-size: 0.92rem;
+		font-weight: 650;
+		transition: gap var(--transition-base);
+	}
+
+	.demo-card__primary:hover {
+		gap: 0.55rem;
+	}
+
+	.demo-card__primary span {
+		display: inline-block;
+		transition: transform 220ms var(--ease-out-quart);
+	}
+
+	.demo-card__primary:hover span {
+		transform: translateX(2px);
+	}
+
+	.demo-card__secondary {
+		position: relative;
+		z-index: 2;
+		color: var(--color-muted);
+		font-size: 0.88rem;
+		font-weight: 500;
+		transition: color var(--transition-base);
+	}
+
+	.demo-card__secondary:hover {
+		color: var(--color-text);
+	}
+
+	.demo-card__pending {
+		color: var(--color-muted);
+		font-size: 0.85rem;
+		font-style: italic;
+	}
+
+	.demo-card--new {
+		border-color: color-mix(in srgb, var(--color-text) 18%, var(--color-border));
+	}
+
+	/* VANTAGE preview variant — inherited from the previous template preview */
+	.demo-card--vt {
+		border-color: rgba(200, 30, 30, 0.22);
+	}
+
+	.demo-card--vt .demo-card__media {
+		padding: 0;
+		border-bottom: none;
+	}
+
+	.vt-prev {
+		background: #111;
+		border-radius: 0;
+	}
+
+	.vt-prev__chrome {
+		display: flex;
+		gap: 0.35rem;
+		align-items: center;
+		padding: 0.6rem 0.8rem;
+		background: #0a0a0a;
+		border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+	}
+
+	.vt-prev__dot {
+		width: 5px;
+		height: 5px;
+		border-radius: 50%;
+		background: #c81e1e;
+		opacity: 0.6;
+	}
+
+	.vt-prev__label {
+		margin-left: auto;
+		font-size: 0.48rem;
+		font-weight: 800;
+		letter-spacing: 0.18em;
+		color: rgba(244, 239, 231, 0.2);
+		text-transform: uppercase;
+	}
+
+	.vt-prev__screen {
+		position: relative;
+		display: grid;
+		grid-template-columns: 1fr auto;
+		gap: 0.8rem;
+		padding: 1rem;
+		min-height: 180px;
+		overflow: hidden;
+		background:
+			repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(255, 255, 255, 0.015) 39px, rgba(255, 255, 255, 0.015) 40px),
+			repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(255, 255, 255, 0.015) 39px, rgba(255, 255, 255, 0.015) 40px),
+			#111;
+	}
+
+	.vt-prev__rule {
+		grid-column: 1 / -1;
+		height: 3px;
+		background: #c81e1e;
+		border-radius: 2px;
+	}
+
+	.vt-prev__hero-block {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+		justify-content: center;
+	}
+
+	.vt-prev__tag {
+		width: fit-content;
+		padding: 0.2rem 0.4rem;
+		font-size: 0.4rem;
+		font-weight: 800;
+		letter-spacing: 0.16em;
+		color: #c81e1e;
+		border: 1px solid rgba(200, 30, 30, 0.25);
+		border-radius: 2px;
+		text-transform: uppercase;
+	}
+
+	.vt-prev__headline {
+		display: block;
+		width: 85%;
+		height: 0.65rem;
+		background: rgba(244, 239, 231, 0.7);
+		border-radius: 2px;
+	}
+
+	.vt-prev__headline--short {
+		width: 60%;
+		height: 0.55rem;
+		background: rgba(244, 239, 231, 0.35);
+	}
+
+	.vt-prev__cta {
+		width: fit-content;
+		margin-top: 0.2rem;
+		padding: 0.25rem 0.5rem;
+		font-size: 0.38rem;
+		font-weight: 800;
+		letter-spacing: 0.12em;
+		color: #f4efe7;
+		background: #c81e1e;
+		border-radius: 3px;
+		text-transform: uppercase;
+	}
+
+	.vt-prev__stats {
+		display: flex;
+		gap: 4px;
+		align-items: flex-end;
+		align-self: end;
+		height: 60px;
+		padding: 0.5rem;
+		background: rgba(255, 255, 255, 0.025);
+		border: 1px solid rgba(255, 255, 255, 0.04);
+		border-radius: 6px;
+	}
+
+	.vt-prev__stats div {
+		flex: 1;
+		min-width: 8px;
+		background: rgba(200, 30, 30, 0.4);
+		border-radius: 2px 2px 0 0;
+	}
+
+	.vt-prev__diagonal {
+		position: absolute;
+		bottom: -20px;
+		right: -20px;
+		width: 80px;
+		height: 80px;
+		background: rgba(200, 30, 30, 0.06);
+		transform: rotate(45deg);
+		pointer-events: none;
+	}
+
+	.demo-card--vt .demo-card__category {
+		color: #c81e1e;
+	}
+
+	@media (max-width: 1040px) {
+		.demo-library__head {
+			grid-template-columns: 1fr;
+			gap: 1.5rem;
+		}
+
+		.demo-library__grid {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+
+	@media (max-width: 700px) {
+		.demo-library__grid,
+		.demo-card__screen {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>
