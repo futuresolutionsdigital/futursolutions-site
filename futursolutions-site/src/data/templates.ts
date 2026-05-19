@@ -27,6 +27,7 @@ export const templateBrowseFilterDefs = [
 	{ id: 'solo-practice', label: 'Solo Practice' },
 	{ id: 'wellness-clinic', label: 'Wellness Clinic' },
 	{ id: 'association', label: 'Association' },
+	{ id: 'mens-health', label: "Men's Health" },
 	{ id: 'booking', label: 'Booking' },
 	{ id: 'local-seo', label: 'Local SEO' },
 	{ id: 'backend-ready', label: 'Backend Ready' },
@@ -63,6 +64,9 @@ export function getTemplateMatchFilterIds(template: TemplateSystem): string[] {
 	}
 	if (template.slug === 'premium-wellness-clinic' || template.category.toLowerCase().includes('wellness clinic')) {
 		ids.add('wellness-clinic');
+	}
+	if (template.slug === 'hormone-trt' || template.category.toLowerCase().includes("men's health") || template.category.toLowerCase().includes('trt')) {
+		ids.add('mens-health');
 	}
 
 	const blob = combinedTemplateTextBlob(template);
@@ -251,6 +255,48 @@ export const templateSystems: TemplateSystem[] = [
 		auditUrl: '/audit?template=premium-wellness-clinic',
 		quickViewSummary:
 			'A premium 13-page wellness clinic demo with goal-based navigation, six service categories, five detailed service pages, membership tiers with comparison table, provider cards, signature programs, booking flow, and full supporting pages — all in a warm, calm, medically credible design.',
+		featured: true,
+	},
+	{
+		slug: 'hormone-trt',
+		name: "VANTAGE Men's Health — Premium Hormone & TRT Clinic",
+		category: "Men's Health / TRT",
+		shortDescription:
+			"A premium men's health website template for TRT, ED treatment, hormone optimization, medical weight loss, peptide therapy, and longevity clinics.",
+		longDescription:
+			"A conversion-focused men's health clinic website system built around symptom-based patient routing, lab-guided treatment pathways, provider trust, medical safety language, membership and pricing transparency, and a private assessment-first funnel. Designed for modern TRT clinics, men's hormone optimization practices, ED treatment providers, and male performance medicine clinics.",
+		audience:
+			"Men's health clinics, TRT clinics, hormone optimization practices, ED treatment providers, medical weight loss clinics targeting men, peptide therapy clinics, and male longevity/performance medicine practices.",
+		businessTypes: [
+			"Men's health clinics",
+			'TRT / testosterone clinics',
+			'Hormone optimization practices',
+			'ED treatment providers',
+			"Men's medical weight loss clinics",
+			'Peptide therapy clinics',
+			'Male longevity / performance medicine',
+			'Telehealth men\'s health platforms',
+		],
+		goals: ['Route patients by symptoms not just services', 'Build trust with lab-based credibility', 'Funnel uncertain visitors to private assessment', 'Support ongoing optimization memberships', 'Handle sensitive topics (ED, libido) with discretion', 'Demonstrate medical responsibility'],
+		features: ['Symptom-Based Routing', 'Patient Pathway Cards', 'Assessment Funnel', 'Lab Testing Visual', 'Provider Trust Section', 'Pricing / Membership Cards', 'FAQ Accordion', 'Dark Premium Design System', 'Diagnostic Dashboard Panel', 'Treatment Ecosystem Grid', 'Sticky Mobile CTA', 'Medical Safety Language'],
+		includedPages: ['Homepage', 'Testosterone Optimization', 'ED & Sexual Wellness', 'Medical Weight Loss', 'How It Works', 'Pricing & Memberships', 'Assessment', 'Book Consultation'],
+		problemsSolved: [
+			'Visitors unsure if symptoms warrant evaluation',
+			'Sensitive topics (ED, low libido) need discreet presentation',
+			'Generic TRT sites feel scammy or untrustworthy',
+			'Treatment menus lack symptom-based organization',
+			'No clear funnel from symptoms to provider evaluation',
+			'Medical safety language missing or insufficient',
+		],
+		conversionFeatures: ['Symptom-to-pathway routing', 'Assessment-first CTA funnel', 'Lab-based credibility section', 'Provider oversight trust module', 'Dual-path CTAs (assessment vs. consultation)', 'FAQ objection handling', 'Pricing transparency with safety language'],
+		seoFeatures: ['Condition-based page structure', 'Treatment page architecture', 'FAQ-rich content', 'Local keyword targeting', 'Metadata patterns'],
+		backendFeatures: ['Assessment form capture readiness', 'Consultation booking readiness', 'CRM-ready intake path', 'GoHighLevel-compatible form fields', 'Membership inquiry routing'],
+		complexity: 'Growth',
+		detailUrl: '/templates/hormone-trt',
+		demoUrl: '/demos/hormone-trt',
+		auditUrl: '/audit?template=hormone-trt',
+		quickViewSummary:
+			"A premium 8-page men's health clinic demo with symptom-based patient routing, assessment funnel, lab-based care visuals, provider trust, pricing transparency, and a dark masculine medical design system — built for TRT, ED, weight loss, and longevity clinics.",
 		featured: true,
 	},
 ];

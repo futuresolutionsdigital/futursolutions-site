@@ -1,0 +1,187 @@
+---
+import VantageLayout from '../../../layouts/VantageLayout.astro';
+import { brand } from '../../../data/vantage';
+---
+
+<VantageLayout title="Take the Assessment — VANTAGE Men's Health" description="A private 2-minute health questionnaire to determine whether a men's health evaluation may be appropriate.">
+
+<!-- Hero -->
+<section class="vt-section vt-section--dark as-hero">
+	<div class="vt-container">
+		<p class="vt-eyebrow">Private Health Assessment</p>
+		<h1>Take a 2-minute assessment to see if an evaluation may be right for you.</h1>
+		<p class="vt-lead">This brief questionnaire helps our providers understand your symptoms and goals. It's private, takes less than 2 minutes, and there's no commitment required.</p>
+	</div>
+</section>
+
+<!-- Assessment form -->
+<section class="vt-section vt-section--charcoal as-form-section">
+	<div class="vt-container">
+		<div class="as-form__layout">
+			<div class="as-form__main">
+				<div class="as-demo-note">
+					<strong>Demo Note:</strong> This is a fictional assessment form for demonstration purposes only. No data is collected or transmitted. This form does not provide medical advice.
+				</div>
+
+				<form class="as-form" onsubmit="event.preventDefault()">
+					<div class="as-form__group">
+						<label class="as-form__label" for="as-name">Full Name</label>
+						<input class="as-form__input" type="text" id="as-name" name="name" placeholder="John Smith" />
+					</div>
+
+					<div class="as-form__row">
+						<div class="as-form__group">
+							<label class="as-form__label" for="as-age">Age</label>
+							<input class="as-form__input" type="number" id="as-age" name="age" placeholder="35" min="18" max="99" />
+						</div>
+						<div class="as-form__group">
+							<label class="as-form__label" for="as-email">Email</label>
+							<input class="as-form__input" type="email" id="as-email" name="email" placeholder="john@example.com" />
+						</div>
+					</div>
+
+					<div class="as-form__group">
+						<label class="as-form__label">Which symptoms are you experiencing? <span class="as-form__hint">(Select all that apply)</span></label>
+						<div class="as-form__checks">
+							<label class="as-form__check"><input type="checkbox" name="symptoms" value="fatigue" /> <span>Low energy / fatigue</span></label>
+							<label class="as-form__check"><input type="checkbox" name="symptoms" value="libido" /> <span>Low libido</span></label>
+							<label class="as-form__check"><input type="checkbox" name="symptoms" value="ed" /> <span>Erectile dysfunction</span></label>
+							<label class="as-form__check"><input type="checkbox" name="symptoms" value="weight" /> <span>Weight gain / difficulty losing weight</span></label>
+							<label class="as-form__check"><input type="checkbox" name="symptoms" value="brain-fog" /> <span>Brain fog / poor concentration</span></label>
+							<label class="as-form__check"><input type="checkbox" name="symptoms" value="mood" /> <span>Mood changes / irritability</span></label>
+							<label class="as-form__check"><input type="checkbox" name="symptoms" value="sleep" /> <span>Sleep issues</span></label>
+							<label class="as-form__check"><input type="checkbox" name="symptoms" value="recovery" /> <span>Poor workout recovery</span></label>
+							<label class="as-form__check"><input type="checkbox" name="symptoms" value="muscle" /> <span>Loss of muscle mass</span></label>
+							<label class="as-form__check"><input type="checkbox" name="symptoms" value="hair" /> <span>Hair thinning / loss</span></label>
+						</div>
+					</div>
+
+					<div class="as-form__group">
+						<label class="as-form__label" for="as-goals">What are your primary health goals?</label>
+						<textarea class="as-form__textarea" id="as-goals" name="goals" rows="4" placeholder="Describe what you'd like to improve — energy, body composition, sexual health, overall wellness, etc."></textarea>
+					</div>
+
+					<div class="as-form__group">
+						<label class="as-form__label" for="as-duration">How long have you been experiencing these symptoms?</label>
+						<select class="as-form__input" id="as-duration" name="duration">
+							<option value="">Select duration</option>
+							<option value="weeks">A few weeks</option>
+							<option value="months">1–6 months</option>
+							<option value="6-12">6–12 months</option>
+							<option value="1-2years">1–2 years</option>
+							<option value="2plus">2+ years</option>
+						</select>
+					</div>
+
+					<button type="submit" class="vt-btn vt-btn--primary as-form__submit">Submit Assessment &rarr;</button>
+					<p class="as-form__note">This is a demo form. No data is submitted or stored.</p>
+				</form>
+			</div>
+
+			<aside class="as-form__sidebar">
+				<div class="vt-card">
+					<h3>What happens next?</h3>
+					<div class="as-sidebar__steps">
+						<div class="as-sidebar__step">
+							<span class="as-sidebar__num">1</span>
+							<p>A provider reviews your assessment responses</p>
+						</div>
+						<div class="as-sidebar__step">
+							<span class="as-sidebar__num">2</span>
+							<p>You're contacted to schedule a consultation</p>
+						</div>
+						<div class="as-sidebar__step">
+							<span class="as-sidebar__num">3</span>
+							<p>Lab work is ordered based on your symptoms</p>
+						</div>
+						<div class="as-sidebar__step">
+							<span class="as-sidebar__num">4</span>
+							<p>A personalized plan is developed from your results</p>
+						</div>
+					</div>
+				</div>
+				<div class="vt-card">
+					<h3>Private & confidential</h3>
+					<p>Your responses are treated with the same discretion as any medical record. We do not share or sell personal information.</p>
+				</div>
+				<div class="vt-card">
+					<h3>No commitment</h3>
+					<p>Completing this assessment does not obligate you to anything. It's simply the first step to understanding your options.</p>
+				</div>
+			</aside>
+		</div>
+	</div>
+</section>
+
+<!-- Next steps -->
+<section class="vt-section vt-section--slate as-next">
+	<div class="vt-container as-next__inner">
+		<p class="vt-eyebrow">Prefer to talk first?</p>
+		<h2>Book a consultation directly if you'd rather speak with a provider.</h2>
+		<p class="vt-lead">Some patients prefer a conversation before completing an assessment. That's perfectly fine.</p>
+		<div class="vt-btn-row">
+			<a class="vt-btn vt-btn--primary" href="/demos/hormone-trt/book-consultation">Book Consultation &rarr;</a>
+			<a class="vt-btn vt-btn--secondary" href="/demos/hormone-trt/how-it-works">Learn How It Works</a>
+		</div>
+	</div>
+</section>
+
+<!-- Disclaimer -->
+<section class="vt-section vt-section--dark as-disclaimer">
+	<div class="vt-container">
+		<p class="as-disclaimer__text">{brand.disclaimer}</p>
+	</div>
+</section>
+
+</VantageLayout>
+
+<style>
+.as-hero { padding-top: clamp(5rem, 10vw, 8rem); padding-bottom: clamp(3rem, 6vw, 4rem); }
+.as-hero h1 { max-width: 700px; }
+.as-hero .vt-lead { max-width: 600px; }
+
+.as-form__layout { display: grid; grid-template-columns: 1.6fr 1fr; gap: 3rem; align-items: start; }
+
+.as-demo-note { padding: 1rem 1.25rem; background: rgba(180,134,82,0.1); border: 1px solid rgba(180,134,82,0.25); border-radius: var(--vt-radius); font-size: 0.8rem; color: var(--vt-sand); margin-bottom: 2rem; }
+.as-demo-note strong { color: var(--vt-bronze); }
+
+.as-form { display: flex; flex-direction: column; gap: 1.5rem; }
+.as-form__group { display: flex; flex-direction: column; gap: 0.5rem; }
+.as-form__row { display: grid; grid-template-columns: 1fr 2fr; gap: 1.5rem; }
+.as-form__label { font-size: 0.82rem; font-weight: 600; color: var(--vt-ivory); }
+.as-form__hint { font-weight: 400; color: var(--vt-gray); }
+.as-form__input, .as-form__textarea { padding: 0.75rem 1rem; background: var(--vt-graphite); border: 1px solid var(--vt-border); border-radius: var(--vt-radius); color: var(--vt-ivory); font-size: 0.875rem; transition: border-color 0.2s ease; }
+.as-form__input:focus, .as-form__textarea:focus { outline: none; border-color: var(--vt-bronze); }
+.as-form__input::placeholder, .as-form__textarea::placeholder { color: var(--vt-gray); opacity: 0.6; }
+.as-form__textarea { resize: vertical; min-height: 100px; }
+
+.as-form__checks { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.6rem; }
+.as-form__check { display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; color: var(--vt-gray); cursor: pointer; padding: 0.5rem 0.75rem; border: 1px solid var(--vt-border); border-radius: var(--vt-radius); transition: border-color 0.2s ease; }
+.as-form__check:hover { border-color: rgba(180,134,82,0.3); }
+.as-form__check input { accent-color: var(--vt-bronze); }
+
+.as-form__submit { align-self: flex-start; }
+.as-form__note { font-size: 0.72rem; color: var(--vt-gray); opacity: 0.7; font-style: italic; }
+
+.as-form__sidebar { display: flex; flex-direction: column; gap: 1.25rem; position: sticky; top: 8rem; }
+.as-form__sidebar h3 { color: var(--vt-ivory); font-size: 0.95rem; margin-bottom: 0.75rem; }
+.as-form__sidebar p { color: var(--vt-gray); font-size: 0.85rem; }
+
+.as-sidebar__steps { display: flex; flex-direction: column; gap: 0.75rem; }
+.as-sidebar__step { display: flex; gap: 0.75rem; align-items: flex-start; }
+.as-sidebar__num { flex-shrink: 0; width: 1.5rem; height: 1.5rem; display: flex; align-items: center; justify-content: center; background: var(--vt-bronze); color: var(--vt-graphite); font-weight: 700; font-size: 0.7rem; border-radius: 50%; }
+.as-sidebar__step p { color: var(--vt-gray); font-size: 0.82rem; }
+
+.as-next__inner { text-align: center; max-width: 600px; margin-inline: auto; }
+.as-next__inner .vt-lead { margin-inline: auto; margin-bottom: 2rem; }
+.as-next__inner .vt-btn-row { justify-content: center; }
+
+.as-disclaimer__text { font-size: 0.7rem; color: var(--vt-gray); opacity: 0.6; font-style: italic; max-width: 640px; text-align: center; margin-inline: auto; }
+
+@media (max-width: 768px) {
+	.as-form__layout { grid-template-columns: 1fr; }
+	.as-form__row { grid-template-columns: 1fr; }
+	.as-form__checks { grid-template-columns: 1fr; }
+	.as-form__sidebar { position: static; }
+}
+</style>

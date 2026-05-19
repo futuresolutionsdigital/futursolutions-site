@@ -6,9 +6,10 @@ const templateMeta: Record<string, { category: string; defaultBizType: string }>
 	'solo-practice': { category: 'Solo Practice / NP Practice', defaultBizType: 'Solo Practice' },
 	'association': { category: 'Healthcare / Association', defaultBizType: 'Healthcare Association' },
 	'premium-wellness-clinic': { category: 'Wellness Clinic', defaultBizType: 'Wellness Clinic' },
+	'hormone-trt': { category: "Men's Health / TRT", defaultBizType: "Men's Health Clinic" },
 };
 
-const businessTypes = ['Med Spa', 'Solo Practice', 'Wellness Clinic', 'Functional Medicine', 'Healthcare Association', 'Treatment-Based Clinic', 'Other'];
+const businessTypes = ['Med Spa', 'Solo Practice', 'Wellness Clinic', "Men's Health Clinic", 'Functional Medicine', 'Healthcare Association', 'Treatment-Based Clinic', 'Other'];
 const primaryGoals = [
 	'More bookings or leads',
 	'Better website design',
@@ -178,7 +179,7 @@ const preferredNextSteps = [
 
 <script define:vars={{ templateInterestLabels: auditTemplateSlugToName, templateMetaMap: templateMeta }}>
 	(() => {
-		const allowed = ['med-spa', 'solo-practice', 'association', 'premium-wellness-clinic'];
+		const allowed = ['med-spa', 'solo-practice', 'association', 'premium-wellness-clinic', 'hormone-trt'];
 		const params = typeof window !== 'undefined' ? new URLSearchParams(window.location.search) : null;
 		const raw = params && params.get('template');
 		const slug = raw && allowed.includes(raw) ? raw : null;

@@ -1,0 +1,158 @@
+---
+import VantageLayout from '../../../layouts/VantageLayout.astro';
+import { howItWorks, brand } from '../../../data/vantage';
+---
+
+<VantageLayout title="How It Works — VANTAGE Men's Health" description="The VANTAGE process from assessment to ongoing optimization — lab-based, provider-guided, and personalized.">
+
+<!-- Hero -->
+<section class="vt-section vt-section--dark hiw-hero">
+	<div class="vt-container">
+		<p class="vt-eyebrow">How It Works</p>
+		<h1>From assessment to optimization — a process built for clarity.</h1>
+		<p class="vt-lead">No guesswork. No rushed appointments. The VANTAGE process is designed to give you a complete picture of your health and a personalized path forward.</p>
+		<div class="vt-btn-row">
+			<a class="vt-btn vt-btn--primary" href="/demos/hormone-trt/assessment">Start Your Assessment &rarr;</a>
+			<a class="vt-btn vt-btn--secondary" href="/demos/hormone-trt/book-consultation">Book Consultation</a>
+		</div>
+	</div>
+</section>
+
+<!-- Expanded 5-step process -->
+<section class="vt-section vt-section--charcoal hiw-steps">
+	<div class="vt-container">
+		<div class="vt-section-header">
+			<p class="vt-eyebrow">The Process</p>
+			<h2>Five steps from uncertainty to optimized health</h2>
+			<p class="vt-lead">Every patient follows this framework — adapted to their specific symptoms, goals, and lab results.</p>
+		</div>
+		<div class="hiw-steps__grid">
+			{howItWorks.map((item) => (
+				<div class="hiw-steps__card">
+					<span class="hiw-steps__num">{item.step}</span>
+					<h3>{item.title}</h3>
+					<p>{item.description}</p>
+				</div>
+			))}
+		</div>
+
+		<div class="hiw-steps__detail">
+			<div class="hiw-detail__item">
+				<h3>Step 01 — Assessment</h3>
+				<p>A private, 2-minute online questionnaire covering your primary symptoms, health history, lifestyle, and goals. This information helps your provider prepare for a focused consultation.</p>
+				<p>No medical records are required upfront. You can complete the assessment from any device at any time.</p>
+			</div>
+			<div class="hiw-detail__item">
+				<h3>Step 02 — Labs</h3>
+				<p>Your provider orders a comprehensive panel based on your assessment responses. Labs can be completed at a local Quest or Labcorp location, or at our clinic.</p>
+				<p>Panels typically include: Total & Free Testosterone, SHBG, Estradiol, DHEA-S, PSA, CBC, CMP, Thyroid, Lipids, HbA1c, Vitamin D, and inflammatory markers.</p>
+			</div>
+			<div class="hiw-detail__item">
+				<h3>Step 03 — Consultation</h3>
+				<p>A private 45–60 minute consultation (in-person or telehealth) to review your lab results in detail. Your provider explains what each marker means, how they relate to your symptoms, and what options exist.</p>
+				<p>This is a conversation, not a sales pitch. You'll leave with clarity — whether or not treatment is recommended.</p>
+			</div>
+			<div class="hiw-detail__item">
+				<h3>Step 04 — Your Plan</h3>
+				<p>If treatment is clinically appropriate, your provider builds a personalized protocol. This may include hormone optimization, medications, peptides, or lifestyle recommendations — all grounded in your specific data.</p>
+				<p>You review the plan together, ask questions, and decide how to proceed. Nothing begins without your informed consent.</p>
+			</div>
+			<div class="hiw-detail__item">
+				<h3>Step 05 — Ongoing Optimization</h3>
+				<p>Treatment is not a one-time event. Your provider monitors your labs quarterly, adjusts protocols based on your response, and ensures your care stays on track.</p>
+				<p>Provider messaging, follow-up visits, and priority scheduling are included in optimization memberships.</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- What makes VANTAGE different -->
+<section class="vt-section vt-section--slate hiw-different">
+	<div class="vt-container">
+		<div class="vt-section-header">
+			<p class="vt-eyebrow">The Difference</p>
+			<h2>What makes VANTAGE different from typical men's health clinics</h2>
+		</div>
+		<div class="hiw-different__grid">
+			<div class="vt-card">
+				<h3>Lab-first approach</h3>
+				<p>We never prescribe without testing first. Every protocol is grounded in your actual biomarker data — not assumptions or symptom checklists alone.</p>
+			</div>
+			<div class="vt-card">
+				<h3>Licensed providers only</h3>
+				<p>Your care is managed by board-certified physicians and experienced PAs specializing in men's health and hormone medicine.</p>
+			</div>
+			<div class="vt-card">
+				<h3>No pressure, no upselling</h3>
+				<p>If treatment isn't appropriate for you, we'll tell you. Our goal is appropriate care — not maximum revenue per patient.</p>
+			</div>
+			<div class="vt-card">
+				<h3>Ongoing relationship</h3>
+				<p>This isn't a transactional prescription service. We build lasting provider-patient relationships with regular check-ins and accessible communication.</p>
+			</div>
+			<div class="vt-card">
+				<h3>Privacy & discretion</h3>
+				<p>Sexual health, hormone therapy, and weight management are treated with the same discretion and professionalism as any other medical specialty.</p>
+			</div>
+			<div class="vt-card">
+				<h3>Transparent pricing</h3>
+				<p>You'll know what things cost before you commit. No surprise bills, hidden fees, or bundled services you didn't ask for.</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- CTA -->
+<section class="vt-section vt-section--dark hiw-cta">
+	<div class="vt-container hiw-cta__inner">
+		<p class="vt-eyebrow">Ready to Begin?</p>
+		<h2>Start with a private assessment — it takes less than 2 minutes.</h2>
+		<p class="vt-lead">Your provider will review your responses and guide you through the next steps. No commitment required.</p>
+		<div class="vt-btn-row">
+			<a class="vt-btn vt-btn--primary" href="/demos/hormone-trt/assessment">Take the Assessment &rarr;</a>
+			<a class="vt-btn vt-btn--secondary" href="/demos/hormone-trt/book-consultation">Book Consultation</a>
+		</div>
+	</div>
+</section>
+
+<!-- Disclaimer -->
+<section class="vt-section vt-section--charcoal hiw-disclaimer">
+	<div class="vt-container">
+		<p class="hiw-disclaimer__text">{brand.disclaimer}</p>
+	</div>
+</section>
+
+</VantageLayout>
+
+<style>
+.hiw-hero { padding-top: clamp(5rem, 10vw, 8rem); padding-bottom: clamp(4rem, 8vw, 6rem); }
+.hiw-hero h1 { max-width: 720px; }
+.hiw-hero .vt-lead { max-width: 600px; margin-bottom: 2rem; }
+
+.hiw-steps__grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.25rem; margin-bottom: 4rem; }
+.hiw-steps__card { padding: 1.5rem; border: 1px solid var(--vt-border); border-radius: var(--vt-radius); text-align: center; }
+.hiw-steps__num { display: block; font-size: 1.5rem; font-weight: 800; color: var(--vt-bronze); margin-bottom: 0.75rem; }
+.hiw-steps__card h3 { color: var(--vt-ivory); font-size: 0.9rem; }
+.hiw-steps__card p { color: var(--vt-gray); font-size: 0.8rem; }
+
+.hiw-steps__detail { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+.hiw-detail__item { padding: 1.75rem; border-left: 3px solid var(--vt-bronze); }
+.hiw-detail__item h3 { color: var(--vt-bronze); font-size: 0.85rem; font-weight: 700; letter-spacing: 0.02em; }
+.hiw-detail__item p { color: var(--vt-gray); font-size: 0.875rem; margin-top: 0.75rem; }
+
+.hiw-different__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.hiw-different__grid h3 { color: var(--vt-ivory); }
+.hiw-different__grid p { color: var(--vt-gray); font-size: 0.875rem; }
+
+.hiw-cta__inner { text-align: center; max-width: 600px; margin-inline: auto; }
+.hiw-cta__inner .vt-lead { margin-inline: auto; margin-bottom: 2rem; }
+.hiw-cta__inner .vt-btn-row { justify-content: center; }
+
+.hiw-disclaimer__text { font-size: 0.7rem; color: var(--vt-gray); opacity: 0.6; font-style: italic; max-width: 640px; text-align: center; margin-inline: auto; }
+
+@media (max-width: 768px) {
+	.hiw-steps__grid { grid-template-columns: repeat(2, 1fr); }
+	.hiw-steps__detail { grid-template-columns: 1fr; }
+	.hiw-different__grid { grid-template-columns: 1fr; }
+}
+</style>

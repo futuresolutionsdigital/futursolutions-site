@@ -1,0 +1,161 @@
+---
+import VantageLayout from '../../../layouts/VantageLayout.astro';
+import { brand } from '../../../data/vantage';
+---
+
+<VantageLayout title="Book a Consultation — VANTAGE Men's Health" description="Schedule a private consultation with a VANTAGE provider to review your symptoms, labs, and treatment options.">
+
+<!-- ─── Hero ─── -->
+<section class="vt-section vt-section--dark bc-hero">
+	<div class="vt-container">
+		<p class="vt-eyebrow">Schedule Your Visit</p>
+		<h1>Book a private consultation.</h1>
+		<p class="vt-lead">Meet with a licensed provider to review your symptoms, discuss your goals, and determine whether an evaluation or treatment plan may be appropriate.</p>
+	</div>
+</section>
+
+<!-- ─── Booking Form ─── -->
+<section class="vt-section vt-section--charcoal bc-form-section">
+	<div class="vt-container">
+		<div class="bc-form__split">
+			<div class="bc-form__info">
+				<h2>What to expect</h2>
+				<div class="bc-form__steps">
+					<div class="bc-form__step">
+						<span class="bc-form__step-num">01</span>
+						<div>
+							<h3>Submit your request</h3>
+							<p>Fill out the form with your contact information, preferred date, and a brief note about your concerns.</p>
+						</div>
+					</div>
+					<div class="bc-form__step">
+						<span class="bc-form__step-num">02</span>
+						<div>
+							<h3>Confirmation call</h3>
+							<p>Our team will reach out within one business day to confirm your appointment and answer any initial questions.</p>
+						</div>
+					</div>
+					<div class="bc-form__step">
+						<span class="bc-form__step-num">03</span>
+						<div>
+							<h3>Private consultation</h3>
+							<p>Meet with your provider for a thorough review of symptoms, health history, and goals. Labs may be ordered at this stage.</p>
+						</div>
+					</div>
+				</div>
+				<p class="bc-form__note-text">Consultations are available in-person at our San Diego office or via secure telehealth. Your provider will recommend the best format based on your needs.</p>
+			</div>
+			<div class="bc-form__card">
+				<form class="bc-form" onsubmit="event.preventDefault(); this.querySelector('.bc-form__submit').textContent='Request Sent'; this.querySelector('.bc-form__submit').disabled=true;">
+					<div class="bc-form__field">
+						<label for="bc-name">Full name</label>
+						<input type="text" id="bc-name" name="name" placeholder="Your name" autocomplete="name" />
+					</div>
+					<div class="bc-form__row">
+						<div class="bc-form__field">
+							<label for="bc-email">Email</label>
+							<input type="email" id="bc-email" name="email" placeholder="you@email.com" autocomplete="email" />
+						</div>
+						<div class="bc-form__field">
+							<label for="bc-phone">Phone</label>
+							<input type="tel" id="bc-phone" name="phone" placeholder="(555) 555-0100" autocomplete="tel" />
+						</div>
+					</div>
+					<div class="bc-form__row">
+						<div class="bc-form__field">
+							<label for="bc-date">Preferred date</label>
+							<input type="date" id="bc-date" name="date" />
+						</div>
+						<div class="bc-form__field">
+							<label for="bc-format">Format preference</label>
+							<select id="bc-format" name="format">
+								<option value="">Select format</option>
+								<option value="in-person">In-person</option>
+								<option value="telehealth">Telehealth</option>
+								<option value="either">Either is fine</option>
+							</select>
+						</div>
+					</div>
+					<div class="bc-form__field">
+						<label for="bc-concerns">Primary concerns <span class="bc-form__optional">(optional)</span></label>
+						<textarea id="bc-concerns" name="concerns" rows="4" placeholder="Briefly describe your symptoms, goals, or questions."></textarea>
+					</div>
+					<p class="bc-form__disclaimer">This is a demo form and does not transmit data. In a live implementation, submissions would be encrypted and routed to the clinic's scheduling system.</p>
+					<div class="bc-form__actions">
+						<button type="submit" class="vt-btn vt-btn--primary bc-form__submit">Request Consultation</button>
+						<span class="bc-form__demo-note">Demo form — no data is submitted</span>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- ─── Alternative CTA ─── -->
+<section class="vt-section vt-section--slate bc-alt">
+	<div class="vt-container" style="text-align:center;">
+		<p class="vt-eyebrow">Not Sure Where to Start?</p>
+		<h2>Take the private assessment first.</h2>
+		<p class="vt-lead" style="margin-inline:auto;">The 2-minute assessment helps you identify whether a men's health evaluation may be the right next step — before scheduling a consultation.</p>
+		<div class="vt-btn-row" style="justify-content:center; margin-top:1.5rem;">
+			<a class="vt-btn vt-btn--primary" href="/demos/hormone-trt/assessment">Take the Assessment &rarr;</a>
+		</div>
+	</div>
+</section>
+
+<!-- ─── Disclaimer ─── -->
+<section class="vt-section bc-disclaimer-section" style="padding-top:0;">
+	<div class="vt-container">
+		<p class="bc-disclaimer">{brand.disclaimer}</p>
+	</div>
+</section>
+
+</VantageLayout>
+
+<style>
+/* ═══════════════════════════════════════════════════════
+   BOOK CONSULTATION — VANTAGE Men's Health
+   ═══════════════════════════════════════════════════════ */
+
+.bc-hero { padding-top: clamp(5rem, 10vw, 9rem); padding-bottom: clamp(3rem, 6vw, 5rem); }
+.bc-hero h1 { max-width: 520px; }
+
+.bc-form__split { display: grid; grid-template-columns: 1fr 1.1fr; gap: clamp(3rem, 5vw, 5rem); align-items: start; }
+
+.bc-form__steps { display: flex; flex-direction: column; gap: 1.25rem; margin: 1.5rem 0; }
+.bc-form__step { display: flex; gap: 1rem; }
+.bc-form__step-num { font-size: 0.7rem; font-weight: 800; color: var(--vt-bronze); min-width: 1.5rem; padding-top: 0.15rem; }
+.bc-form__step h3 { font-size: 0.95rem; margin-bottom: 0.2rem; }
+.bc-form__step p { font-size: 0.8rem; color: var(--vt-gray); line-height: 1.55; }
+.bc-form__note-text { font-size: 0.78rem; color: var(--vt-gray); line-height: 1.6; font-style: italic; margin-top: 1rem; }
+
+.bc-form__card { background: rgba(255,255,255,0.03); border: 1px solid var(--vt-border); border-radius: var(--vt-radius); padding: 2rem; }
+.bc-form { display: flex; flex-direction: column; gap: 1rem; }
+.bc-form__row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.bc-form__field { display: flex; flex-direction: column; gap: 0.35rem; }
+.bc-form__field label { font-size: 0.68rem; font-weight: 600; color: var(--vt-gray); letter-spacing: 0.06em; text-transform: uppercase; }
+.bc-form__optional { font-weight: 400; text-transform: none; letter-spacing: 0; }
+.bc-form__field input,
+.bc-form__field select,
+.bc-form__field textarea { padding: 0.7rem 0.85rem; font-size: 0.85rem; color: var(--vt-ivory); background: rgba(255,255,255,0.04); border: 1px solid var(--vt-border); border-radius: var(--vt-radius); transition: border-color var(--vt-transition); }
+.bc-form__field input::placeholder,
+.bc-form__field textarea::placeholder { color: var(--vt-gray); opacity: 0.5; }
+.bc-form__field input:focus,
+.bc-form__field select:focus,
+.bc-form__field textarea:focus { outline: none; border-color: var(--vt-bronze); box-shadow: 0 0 0 3px rgba(180,134,82,0.1); }
+.bc-form__field textarea { resize: vertical; min-height: 100px; }
+.bc-form__field select { cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1.5l5 5 5-5' stroke='%23B48652' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 0.85rem center; padding-right: 2.5rem; }
+.bc-form__disclaimer { font-size: 0.7rem; color: var(--vt-gray); font-style: italic; line-height: 1.5; }
+.bc-form__actions { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+.bc-form__submit:disabled { opacity: 0.6; cursor: default; }
+.bc-form__demo-note { font-size: 0.68rem; color: var(--vt-gray); font-style: italic; }
+
+.bc-alt h2 { max-width: 440px; margin-inline: auto; }
+
+.bc-disclaimer { font-size: 0.65rem; color: var(--vt-gray); font-style: italic; max-width: 640px; opacity: 0.6; }
+
+@media (max-width: 768px) {
+	.bc-form__split { grid-template-columns: 1fr; }
+	.bc-form__row { grid-template-columns: 1fr; }
+}
+</style>

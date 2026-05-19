@@ -1,0 +1,445 @@
+---
+import VantageLayout from '../../../layouts/VantageLayout.astro';
+import { brand, trustBar, symptoms, pathways, howItWorks, treatments, labCategories, providers, pricingTiers, testimonials, faqs } from '../../../data/vantage';
+---
+
+<VantageLayout title="VANTAGE Men's Health — Hormone, Sexual Health & Performance Medicine" description="Data-guided testosterone optimization, ED treatment, medical weight loss, peptide therapy, and longevity care for men. Private evaluations. Lab-based plans. Ongoing monitoring.">
+
+<!-- ═══ HERO — dark, split layout with diagnostic panel ═══ -->
+<section class="vt-section vt-section--dark hp-hero">
+	<div class="vt-container hp-hero__layout">
+		<div class="hp-hero__text">
+			<p class="vt-eyebrow">Private Men's Health & Hormone Optimization</p>
+			<h1>Feel like yourself again — with data-guided men's health care.</h1>
+			<p class="vt-lead">Testosterone optimization, ED treatment, medical weight loss, peptides, and longevity care guided by licensed providers, advanced labs, and ongoing monitoring.</p>
+			<div class="vt-btn-row">
+				<a class="vt-btn vt-btn--primary" href="/demos/hormone-trt/assessment">Take the 2-Minute Assessment &rarr;</a>
+				<a class="vt-btn vt-btn--secondary" href="/demos/hormone-trt/book-consultation">Book a Private Consultation</a>
+			</div>
+			<p class="hp-hero__micro">Private consults &middot; Lab-based plans &middot; Ongoing monitoring</p>
+		</div>
+		<div class="hp-hero__panel" aria-hidden="true">
+			<div class="hp-panel__header">
+				<span class="hp-panel__brand">VANTAGE Optimization Plan</span>
+				<span class="hp-panel__status">Sample · Provider Review</span>
+			</div>
+			<div class="hp-panel__metrics">
+				<div class="hp-panel__metric">
+					<span class="hp-panel__metric-label">Total Testosterone</span>
+					<div class="hp-panel__bar"><div class="hp-panel__bar-fill" style="width:38%"></div></div>
+					<span class="hp-panel__metric-val">312 ng/dL</span>
+				</div>
+				<div class="hp-panel__metric">
+					<span class="hp-panel__metric-label">Free Testosterone</span>
+					<div class="hp-panel__bar"><div class="hp-panel__bar-fill" style="width:28%"></div></div>
+					<span class="hp-panel__metric-val">6.8 pg/mL</span>
+				</div>
+				<div class="hp-panel__metric">
+					<span class="hp-panel__metric-label">SHBG</span>
+					<div class="hp-panel__bar"><div class="hp-panel__bar-fill hp-panel__bar-fill--high" style="width:72%"></div></div>
+					<span class="hp-panel__metric-val">52 nmol/L</span>
+				</div>
+				<div class="hp-panel__metric">
+					<span class="hp-panel__metric-label">Estradiol</span>
+					<div class="hp-panel__bar"><div class="hp-panel__bar-fill" style="width:55%"></div></div>
+					<span class="hp-panel__metric-val">32 pg/mL</span>
+				</div>
+			</div>
+			<div class="hp-panel__symptoms">
+				<span class="hp-panel__tag">Low energy</span>
+				<span class="hp-panel__tag">Brain fog</span>
+				<span class="hp-panel__tag">Weight gain</span>
+				<span class="hp-panel__tag">Low libido</span>
+			</div>
+			<div class="hp-panel__footer">
+				<span class="hp-panel__badge">Provider Review Complete</span>
+				<span class="hp-panel__note">Sample visualization only</span>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- ═══ TRUST BAR ═══ -->
+<section class="hp-trust">
+	<div class="vt-container hp-trust__inner">
+		{trustBar.map((item) => (
+			<div class="hp-trust__item">
+				<span class="hp-trust__dot"></span>
+				<span>{item}</span>
+			</div>
+		))}
+	</div>
+</section>
+
+<!-- ═══ SYMPTOMS — "Is this you?" ═══ -->
+<section class="vt-section vt-section--charcoal hp-symptoms" id="conditions">
+	<div class="vt-container">
+		<div class="vt-section-header">
+			<p class="vt-eyebrow">Symptoms</p>
+			<h2>Men rarely come in for "hormones." They come in because something feels off.</h2>
+			<p class="vt-lead">Low energy, poor recovery, weight gain, ED, low libido, brain fog, and mood changes can overlap. The right starting point is a private evaluation, not guesswork.</p>
+		</div>
+		<div class="hp-symptoms__grid">
+			{symptoms.map((s) => (
+				<div class="hp-symptoms__card vt-card">
+					<h3>{s.title}</h3>
+					<p>{s.description}</p>
+				</div>
+			))}
+		</div>
+		<div style="margin-top:2.5rem;">
+			<a class="vt-btn vt-btn--primary" href="/demos/hormone-trt/assessment">Find Your Starting Point &rarr;</a>
+		</div>
+	</div>
+</section>
+
+<!-- ═══ PATHWAYS — Four core patient pathways ═══ -->
+<section class="vt-section vt-section--dark hp-pathways">
+	<div class="vt-container">
+		<div class="vt-section-header">
+			<p class="vt-eyebrow">Patient Pathways</p>
+			<h2>Choose the path that sounds most like you.</h2>
+		</div>
+		<div class="hp-pathways__grid">
+			{pathways.map((p, i) => (
+				<a class="hp-pathways__card" href={p.href}>
+					<span class="hp-pathways__num">0{i + 1}</span>
+					<h3>{p.title}</h3>
+					<p class="hp-pathways__desc">{p.description}</p>
+					<ul class="hp-pathways__services">
+						{p.services.map((s) => <li>{s}</li>)}
+					</ul>
+					<span class="vt-text-link">Explore this path &rarr;</span>
+				</a>
+			))}
+		</div>
+	</div>
+</section>
+
+<!-- ═══ HOW IT WORKS — Timeline ═══ -->
+<section class="vt-section vt-section--ivory hp-process">
+	<div class="vt-container">
+		<div class="vt-section-header">
+			<p class="vt-eyebrow">How It Works</p>
+			<h2>A clearer process for men's health.</h2>
+		</div>
+		<div class="hp-process__timeline">
+			{howItWorks.map((step) => (
+				<div class="hp-process__step">
+					<span class="hp-process__num">{step.step}</span>
+					<div class="hp-process__content">
+						<h3>{step.title}</h3>
+						<p>{step.description}</p>
+					</div>
+				</div>
+			))}
+		</div>
+		<p class="hp-process__note">Treatment decisions are based on symptoms, lab results, health history, goals, and ongoing follow-up — not one-size-fits-all protocols.</p>
+		<div style="margin-top:1.5rem;">
+			<a class="vt-btn vt-btn--primary" href="/demos/hormone-trt/assessment">Start With the Assessment &rarr;</a>
+		</div>
+	</div>
+</section>
+
+<!-- ═══ TREATMENTS — Treatment ecosystem ═══ -->
+<section class="vt-section vt-section--charcoal hp-treatments" id="treatments">
+	<div class="vt-container">
+		<div class="vt-section-header">
+			<p class="vt-eyebrow">Treatment Areas</p>
+			<h2>Integrated care for hormones, performance, and long-term vitality.</h2>
+		</div>
+		<div class="hp-treatments__grid">
+			{treatments.map((t) => (
+				<a class="hp-treatments__card vt-card" href={t.href}>
+					<h3>{t.title}</h3>
+					<p>{t.description}</p>
+					<span class="hp-treatments__best">Best for: {t.bestFor}</span>
+					<span class="vt-text-link">Learn More &rarr;</span>
+				</a>
+			))}
+		</div>
+	</div>
+</section>
+
+<!-- ═══ LAB-BASED CARE ═══ -->
+<section class="vt-section vt-section--slate hp-labs">
+	<div class="vt-container">
+		<div class="hp-labs__split">
+			<div class="hp-labs__text">
+				<p class="vt-eyebrow">Lab-Based Care</p>
+				<h2>Symptoms matter. Labs give the full picture.</h2>
+				<p class="vt-lead">VANTAGE uses lab testing, provider consultation, and follow-up monitoring to help determine whether treatments like testosterone optimization, ED medication, medical weight loss, or peptide protocols may be appropriate.</p>
+				<p class="hp-labs__safety">Not every patient is a candidate for every treatment. The goal is appropriate care, not maximum medication.</p>
+			</div>
+			<div class="hp-labs__panel" aria-hidden="true">
+				<div class="hp-labs__panel-header">Comprehensive Lab Panel</div>
+				<div class="hp-labs__categories">
+					{labCategories.map((cat) => (
+						<div class="hp-labs__cat">
+							<span class="hp-labs__cat-dot"></span>
+							<span>{cat}</span>
+						</div>
+					))}
+				</div>
+				<div class="hp-labs__panel-footer">Panels customized per patient · Results reviewed with provider</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- ═══ PROVIDERS ═══ -->
+<section class="vt-section vt-section--dark hp-providers" id="providers">
+	<div class="vt-container">
+		<div class="vt-section-header">
+			<p class="vt-eyebrow">Your Care Team</p>
+			<h2>Provider-led care, not protocol-driven shortcuts.</h2>
+			<p class="vt-lead">Every treatment plan is built and monitored by a licensed provider — with medical review before treatment, ongoing monitoring, adjustments over time, and fertility and safety considerations built in.</p>
+		</div>
+		<div class="hp-providers__grid">
+			{providers.map((prov) => (
+				<div class="hp-providers__card vt-card">
+					<div class="hp-providers__initials">{prov.initials}</div>
+					<h3>{prov.name}</h3>
+					<span class="hp-providers__role">{prov.role}</span>
+					<p class="hp-providers__specialties"><strong>Focus:</strong> {prov.specialties}</p>
+					<p class="hp-providers__bio">{prov.bio}</p>
+				</div>
+			))}
+		</div>
+	</div>
+</section>
+
+<!-- ═══ PRICING ═══ -->
+<section class="vt-section vt-section--ivory hp-pricing">
+	<div class="vt-container">
+		<div class="vt-section-header">
+			<p class="vt-eyebrow">Care Plans</p>
+			<h2>Straightforward care plans built for ongoing optimization.</h2>
+		</div>
+		<div class="hp-pricing__grid">
+			{pricingTiers.map((tier) => (
+				<div class:list={['hp-pricing__card', { 'hp-pricing__card--featured': tier.featured }]}>
+					{tier.featured && <span class="hp-pricing__badge">Most Popular</span>}
+					<h3>{tier.name}</h3>
+					<p class="hp-pricing__tagline">{tier.tagline}</p>
+					<p class="hp-pricing__price">{tier.price}</p>
+					<ul class="hp-pricing__includes">
+						{tier.includes.map((item) => <li>{item}</li>)}
+					</ul>
+					<a class="vt-btn vt-btn--primary hp-pricing__cta" href="/demos/hormone-trt/pricing">{tier.cta}</a>
+				</div>
+			))}
+		</div>
+		<p class="hp-pricing__note">Labs, medications, and follow-up costs are explained before treatment begins. No hidden fees.</p>
+		<div style="margin-top:1.5rem;">
+			<a class="vt-btn vt-btn--secondary" href="/demos/hormone-trt/pricing">View Pricing & Memberships</a>
+		</div>
+	</div>
+</section>
+
+<!-- ═══ TESTIMONIALS ═══ -->
+<section class="vt-section vt-section--charcoal hp-testimonials">
+	<div class="vt-container">
+		<div class="vt-section-header">
+			<p class="vt-eyebrow">Patient Experiences</p>
+			<h2>Real care should create clarity, not hype.</h2>
+		</div>
+		<div class="hp-testimonials__grid">
+			{testimonials.map((t) => (
+				<blockquote class="hp-testimonials__card vt-card">
+					<p>&ldquo;{t.text}&rdquo;</p>
+					<footer>
+						<strong>{t.author}</strong>
+						<span>{t.context}</span>
+					</footer>
+				</blockquote>
+			))}
+		</div>
+		<p class="hp-testimonials__disclaimer">Individual results vary. Treatment requires provider evaluation. These are fictional testimonials for demonstration purposes.</p>
+	</div>
+</section>
+
+<!-- ═══ FAQ ═══ -->
+<section class="vt-section vt-section--dark hp-faq" id="faq">
+	<div class="vt-container">
+		<div class="hp-faq__split">
+			<div class="hp-faq__left">
+				<p class="vt-eyebrow">Common Questions</p>
+				<h2>Frequently asked questions</h2>
+			</div>
+			<div class="hp-faq__list">
+				{faqs.map((faq) => (
+					<details class="hp-faq__item">
+						<summary><span>{faq.q}</span></summary>
+						<p>{faq.a}</p>
+					</details>
+				))}
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- ═══ FINAL CTA ═══ -->
+<section class="vt-section vt-section--slate hp-final">
+	<div class="vt-container" style="text-align:center;">
+		<p class="vt-eyebrow">Get Started</p>
+		<h2>Start with answers. Build from there.</h2>
+		<p class="vt-lead" style="margin-inline:auto;">Take the private assessment and see whether a men's health evaluation may be the right next step.</p>
+		<div class="vt-btn-row" style="justify-content:center; margin-top:1.5rem;">
+			<a class="vt-btn vt-btn--primary" href="/demos/hormone-trt/assessment">Take the 2-Minute Assessment &rarr;</a>
+			<a class="vt-btn vt-btn--secondary" href="/demos/hormone-trt/book-consultation">Book a Private Consultation</a>
+		</div>
+	</div>
+</section>
+
+<!-- ═══ DISCLAIMER ═══ -->
+<section class="vt-section hp-disclaimer-section" style="padding-top:0;">
+	<div class="vt-container">
+		<p class="hp-disclaimer">{brand.disclaimer}</p>
+	</div>
+</section>
+
+</VantageLayout>
+
+<style>
+/* ═══════════════════════════════════════════════════════
+   HOMEPAGE — VANTAGE Men's Health
+   ═══════════════════════════════════════════════════════ */
+
+/* ─── Hero ─── */
+.hp-hero { padding-top: clamp(6rem, 12vw, 10rem); padding-bottom: clamp(4rem, 8vw, 7rem); }
+.hp-hero__layout { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: clamp(3rem, 5vw, 6rem); align-items: center; }
+.hp-hero__text { max-width: 560px; }
+.hp-hero__micro { font-size: 0.72rem; color: var(--vt-gray); margin-top: 1.5rem; }
+
+/* Hero panel */
+.hp-hero__panel { background: rgba(255,255,255,0.03); border: 1px solid var(--vt-border); border-radius: var(--vt-radius); padding: 1.5rem; display: flex; flex-direction: column; gap: 1.25rem; }
+.hp-panel__header { display: flex; justify-content: space-between; align-items: center; padding-bottom: 0.75rem; border-bottom: 1px solid var(--vt-border); }
+.hp-panel__brand { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--vt-bronze); }
+.hp-panel__status { font-size: 0.6rem; color: var(--vt-gray); }
+.hp-panel__metrics { display: flex; flex-direction: column; gap: 0.6rem; }
+.hp-panel__metric { display: grid; grid-template-columns: 7rem 1fr 4.5rem; gap: 0.5rem; align-items: center; }
+.hp-panel__metric-label { font-size: 0.62rem; font-weight: 500; color: var(--vt-gray); }
+.hp-panel__bar { height: 4px; background: rgba(255,255,255,0.06); border-radius: 2px; overflow: hidden; }
+.hp-panel__bar-fill { height: 100%; background: var(--vt-bronze); border-radius: 2px; }
+.hp-panel__bar-fill--high { background: var(--vt-steel); }
+.hp-panel__metric-val { font-size: 0.65rem; font-weight: 700; color: var(--vt-ivory); text-align: right; font-variant-numeric: tabular-nums; }
+.hp-panel__symptoms { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.hp-panel__tag { font-size: 0.55rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.25rem 0.5rem; border: 1px solid var(--vt-border); border-radius: 3px; color: var(--vt-sand); }
+.hp-panel__footer { display: flex; justify-content: space-between; align-items: center; padding-top: 0.75rem; border-top: 1px solid var(--vt-border); }
+.hp-panel__badge { font-size: 0.55rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--vt-bronze); }
+.hp-panel__note { font-size: 0.5rem; color: rgba(255,255,255,0.2); font-style: italic; }
+
+@media (max-width: 768px) { .hp-hero__layout { grid-template-columns: 1fr; } .hp-hero__panel { display: none; } }
+
+/* ─── Trust Bar ─── */
+.hp-trust { padding: 1rem 0; border-top: 1px solid var(--vt-border); border-bottom: 1px solid var(--vt-border); background: var(--vt-charcoal); }
+.hp-trust__inner { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem 2.5rem; }
+.hp-trust__item { display: flex; align-items: center; gap: 0.5rem; font-size: 0.72rem; font-weight: 500; color: var(--vt-gray); }
+.hp-trust__dot { width: 6px; height: 6px; border-radius: 50%; background: var(--vt-bronze); flex-shrink: 0; }
+
+/* ─── Symptoms ─── */
+.hp-symptoms__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+.hp-symptoms__card h3 { font-size: 0.95rem; color: var(--vt-ivory); margin-bottom: 0.4rem; }
+.hp-symptoms__card p { font-size: 0.78rem; color: var(--vt-gray); line-height: 1.55; }
+@media (max-width: 768px) { .hp-symptoms__grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 480px) { .hp-symptoms__grid { grid-template-columns: 1fr; } }
+
+/* ─── Pathways ─── */
+.hp-pathways__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+.hp-pathways__card { display: flex; flex-direction: column; padding: 2rem 1.5rem; border: 1px solid var(--vt-border); border-radius: var(--vt-radius); text-decoration: none; transition: border-color var(--vt-transition), background var(--vt-transition); }
+.hp-pathways__card:hover { border-color: var(--vt-border-warm); background: rgba(255,255,255,0.02); }
+.hp-pathways__num { font-size: 0.65rem; font-weight: 700; color: var(--vt-bronze); letter-spacing: 0.08em; margin-bottom: 0.75rem; }
+.hp-pathways__card h3 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+.hp-pathways__desc { font-size: 0.78rem; color: var(--vt-gray); line-height: 1.55; margin-bottom: 1rem; }
+.hp-pathways__services { list-style: none; padding: 0; margin: 0 0 1.25rem; display: flex; flex-direction: column; gap: 0.3rem; }
+.hp-pathways__services li { font-size: 0.7rem; color: var(--vt-sand); padding-left: 0.75rem; position: relative; }
+.hp-pathways__services li::before { content: '—'; position: absolute; left: 0; color: var(--vt-bronze); font-size: 0.6rem; }
+.hp-pathways__card .vt-text-link { margin-top: auto; }
+@media (max-width: 900px) { .hp-pathways__grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 520px) { .hp-pathways__grid { grid-template-columns: 1fr; } }
+
+/* ─── How It Works ─── */
+.hp-process__timeline { display: flex; flex-direction: column; gap: 0; max-width: 640px; }
+.hp-process__step { display: flex; gap: 1.5rem; padding: 1.5rem 0; border-bottom: 1px solid var(--vt-border-light); }
+.hp-process__step:last-child { border-bottom: none; }
+.hp-process__num { font-size: 0.75rem; font-weight: 800; color: var(--vt-steel); min-width: 2rem; padding-top: 0.15rem; }
+.hp-process__content h3 { color: var(--vt-graphite); margin-bottom: 0.25rem; }
+.hp-process__content p { font-size: 0.85rem; color: var(--vt-steel); line-height: 1.6; }
+.hp-process__note { font-size: 0.82rem; color: var(--vt-steel); margin-top: 2rem; max-width: 640px; line-height: 1.6; font-style: italic; }
+
+/* ─── Treatments ─── */
+.hp-treatments__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+.hp-treatments__card { display: flex; flex-direction: column; text-decoration: none; }
+.hp-treatments__card h3 { font-size: 0.95rem; margin-bottom: 0.5rem; }
+.hp-treatments__card p { font-size: 0.78rem; color: var(--vt-gray); line-height: 1.55; margin-bottom: 0.75rem; }
+.hp-treatments__best { font-size: 0.65rem; font-weight: 600; color: var(--vt-sand); margin-bottom: 0.75rem; }
+.hp-treatments__card .vt-text-link { margin-top: auto; }
+@media (max-width: 900px) { .hp-treatments__grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 520px) { .hp-treatments__grid { grid-template-columns: 1fr; } }
+
+/* ─── Labs ─── */
+.hp-labs__split { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(3rem, 5vw, 5rem); align-items: start; }
+.hp-labs__text h2 { max-width: 440px; }
+.hp-labs__safety { font-size: 0.82rem; color: var(--vt-sand); font-style: italic; margin-top: 1.25rem; max-width: 440px; line-height: 1.6; }
+.hp-labs__panel { background: rgba(255,255,255,0.04); border: 1px solid var(--vt-border); border-radius: var(--vt-radius); padding: 1.5rem; }
+.hp-labs__panel-header { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--vt-bronze); padding-bottom: 0.75rem; border-bottom: 1px solid var(--vt-border); margin-bottom: 1rem; }
+.hp-labs__categories { display: flex; flex-direction: column; gap: 0.5rem; }
+.hp-labs__cat { display: flex; align-items: baseline; gap: 0.5rem; font-size: 0.72rem; color: var(--vt-gray); line-height: 1.5; }
+.hp-labs__cat-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--vt-bronze); flex-shrink: 0; margin-top: 0.35rem; }
+.hp-labs__panel-footer { font-size: 0.55rem; color: rgba(255,255,255,0.3); margin-top: 1rem; padding-top: 0.75rem; border-top: 1px solid var(--vt-border); }
+@media (max-width: 768px) { .hp-labs__split { grid-template-columns: 1fr; } }
+
+/* ─── Providers ─── */
+.hp-providers__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+.hp-providers__initials { display: flex; align-items: center; justify-content: center; width: 3rem; height: 3rem; border-radius: var(--vt-radius); background: rgba(180,134,82,0.12); color: var(--vt-bronze); font-size: 0.9rem; font-weight: 700; margin-bottom: 1rem; border: 1px solid rgba(180,134,82,0.2); }
+.hp-providers__card h3 { font-size: 1rem; margin-bottom: 0.15rem; }
+.hp-providers__role { display: block; font-size: 0.62rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--vt-bronze); margin-bottom: 0.75rem; }
+.hp-providers__specialties { font-size: 0.78rem; color: var(--vt-gray); margin-bottom: 0.5rem; }
+.hp-providers__specialties strong { color: var(--vt-ivory); }
+.hp-providers__bio { font-size: 0.82rem; color: var(--vt-gray); line-height: 1.65; }
+@media (max-width: 600px) { .hp-providers__grid { grid-template-columns: 1fr; } }
+
+/* ─── Pricing ─── */
+.hp-pricing__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+.hp-pricing__card { position: relative; padding: 2rem 1.5rem; border: 1px solid var(--vt-border-light); border-radius: var(--vt-radius); background: var(--vt-white); display: flex; flex-direction: column; }
+.hp-pricing__card--featured { border-color: var(--vt-bronze); box-shadow: 0 4px 24px rgba(180,134,82,0.1); }
+.hp-pricing__badge { position: absolute; top: -0.6rem; left: 1.5rem; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.25rem 0.6rem; background: var(--vt-bronze); color: var(--vt-white); border-radius: 3px; }
+.hp-pricing__card h3 { font-size: 1.1rem; color: var(--vt-graphite); margin-bottom: 0.25rem; }
+.hp-pricing__tagline { font-size: 0.78rem; color: var(--vt-steel); margin-bottom: 1rem; }
+.hp-pricing__price { font-size: 1.1rem; font-weight: 800; color: var(--vt-graphite); margin-bottom: 1.25rem; letter-spacing: -0.02em; }
+.hp-pricing__includes { list-style: none; padding: 0; margin: 0 0 1.5rem; display: flex; flex-direction: column; gap: 0.4rem; }
+.hp-pricing__includes li { font-size: 0.78rem; color: var(--vt-steel); padding-left: 1rem; position: relative; }
+.hp-pricing__includes li::before { content: '✓'; position: absolute; left: 0; color: var(--vt-bronze); font-size: 0.7rem; font-weight: 700; }
+.hp-pricing__cta { margin-top: auto; width: 100%; text-align: center; }
+.hp-pricing__note { font-size: 0.78rem; color: var(--vt-steel); margin-top: 2rem; font-style: italic; }
+@media (max-width: 768px) { .hp-pricing__grid { grid-template-columns: 1fr; max-width: 400px; } }
+
+/* ─── Testimonials ─── */
+.hp-testimonials__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+.hp-testimonials__card { margin: 0; border: none; }
+.hp-testimonials__card p { font-size: 0.95rem; font-style: italic; color: var(--vt-ivory); line-height: 1.55; margin-bottom: 1rem; }
+.hp-testimonials__card footer { display: flex; flex-direction: column; gap: 0.1rem; }
+.hp-testimonials__card strong { font-size: 0.78rem; font-style: normal; color: var(--vt-ivory); }
+.hp-testimonials__card span { font-size: 0.65rem; font-style: normal; color: var(--vt-bronze); font-weight: 500; }
+.hp-testimonials__disclaimer { font-size: 0.72rem; color: var(--vt-gray); font-style: italic; margin-top: 2rem; }
+@media (max-width: 600px) { .hp-testimonials__grid { grid-template-columns: 1fr; } }
+
+/* ─── FAQ ─── */
+.hp-faq__split { display: grid; grid-template-columns: 0.4fr 1fr; gap: clamp(2rem, 4vw, 4rem); align-items: start; }
+.hp-faq__left h2 { max-width: 260px; }
+.hp-faq__list { display: flex; flex-direction: column; }
+.hp-faq__item { border-bottom: 1px solid var(--vt-border); }
+.hp-faq__item summary { display: flex; align-items: center; justify-content: space-between; padding: 1.1rem 0; font-size: 0.88rem; font-weight: 600; color: var(--vt-ivory); cursor: pointer; list-style: none; }
+.hp-faq__item summary::-webkit-details-marker { display: none; }
+.hp-faq__item summary::after { content: '+'; font-size: 1.1rem; font-weight: 300; color: var(--vt-bronze); transition: transform var(--vt-transition); }
+.hp-faq__item[open] summary::after { content: '−'; }
+.hp-faq__item p { font-size: 0.85rem; color: var(--vt-gray); line-height: 1.65; padding-bottom: 1.25rem; max-width: 580px; }
+@media (max-width: 700px) { .hp-faq__split { grid-template-columns: 1fr; } }
+
+/* ─── Final CTA ─── */
+.hp-final h2 { max-width: 520px; margin-inline: auto; }
+
+/* ─── Disclaimer ─── */
+.hp-disclaimer { font-size: 0.65rem; color: var(--vt-gray); font-style: italic; max-width: 640px; opacity: 0.6; }
+</style>

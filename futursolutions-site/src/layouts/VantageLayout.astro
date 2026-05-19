@@ -1,0 +1,282 @@
+---
+import DemoBanner from '../components/DemoBanner.astro';
+import { brand, announcement, navItems, footerTreatments, footerConditions, footerCompany } from '../data/vantage';
+import '../styles/global.css';
+
+interface Props { title: string; description: string; canonicalUrl?: string; }
+const { title, description, canonicalUrl } = Astro.props;
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+function isActive(href: string) {
+	const clean = href.replace(/\/$/, '').split('#')[0];
+	if (clean === currentPath) return true;
+	if (clean && currentPath.startsWith(clean + '/')) return true;
+	return false;
+}
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+	<link rel="icon" href="/favicon.ico" />
+	<meta name="viewport" content="width=device-width" />
+	<meta name="generator" content={Astro.generator} />
+	<meta name="description" content={description} />
+	{canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
+	<meta property="og:title" content={title} />
+	<meta property="og:description" content={description} />
+	<meta property="og:type" content="website" />
+	{canonicalUrl && <meta property="og:url" content={canonicalUrl} />}
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+	<title>{title}</title>
+</head>
+<body class="vt-site">
+	<DemoBanner customizeHref="/audit?template=hormone-trt" />
+
+	<header class="vt-header" id="vt-header">
+		<div class="vt-container vt-header__inner">
+			<a class="vt-header__brand" href={brand.homeHref} aria-label="VANTAGE Men's Health home">
+				<span class="vt-header__wordmark">VANTAGE</span>
+				<span class="vt-header__sub">Men's Health</span>
+			</a>
+			<nav class="vt-header__nav" aria-label="Main navigation">
+				{navItems.map((item) => <a href={item.href} class:list={[{ 'is-active': isActive(item.href) }]}>{item.label}</a>)}
+			</nav>
+			<div class="vt-header__actions">
+				<a class="vt-header__cta" href="/demos/hormone-trt/assessment">Take Assessment <span aria-hidden="true">&rarr;</span></a>
+			</div>
+			<button class="vt-header__menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="vt-mobile-menu">
+				<span></span><span></span><span></span>
+			</button>
+		</div>
+		<nav class="vt-mobile-menu" id="vt-mobile-menu" aria-label="Mobile navigation" hidden>
+			<div class="vt-container vt-mobile-menu__inner">
+				{navItems.map((item) => <a href={item.href}>{item.label}</a>)}
+				<a class="vt-mobile-menu__cta" href="/demos/hormone-trt/assessment">Take Assessment &rarr;</a>
+				<a class="vt-mobile-menu__cta vt-mobile-menu__cta--secondary" href="/demos/hormone-trt/book-consultation">Book Consultation</a>
+			</div>
+		</nav>
+	</header>
+
+	<main><slot /></main>
+
+	<footer class="vt-footer">
+		<div class="vt-container vt-footer__grid">
+			<div class="vt-footer__brand-col">
+				<a class="vt-footer__brand" href={brand.homeHref}>VANTAGE</a>
+				<p class="vt-footer__tagline">{brand.tagline}</p>
+				<p class="vt-footer__address">{brand.locationShort} &middot; {brand.phone}</p>
+			</div>
+			<nav class="vt-footer__col" aria-label="Treatments">
+				<h2>Treatments</h2>
+				<ul>{footerTreatments.map((t) => <li><a href="/demos/hormone-trt#treatments">{t}</a></li>)}</ul>
+			</nav>
+			<nav class="vt-footer__col" aria-label="Conditions">
+				<h2>Conditions</h2>
+				<ul>{footerConditions.map((c) => <li><a href="/demos/hormone-trt#conditions">{c}</a></li>)}</ul>
+			</nav>
+			<nav class="vt-footer__col" aria-label="Company links">
+				<h2>Company</h2>
+				<ul>{footerCompany.map((l) => <li><a href={l.href}>{l.label}</a></li>)}</ul>
+			</nav>
+		</div>
+		<div class="vt-container vt-footer__bottom">
+			<p>&copy; {new Date().getFullYear()} {brand.name}. All rights reserved.</p>
+			<p class="vt-footer__disclaimer">{brand.disclaimer} Built by <a href="/">Future Solutions</a>.</p>
+			<div class="vt-footer__legal">
+				<a href="/demos/hormone-trt/book-consultation">Privacy Policy</a>
+				<a href="/demos/hormone-trt/book-consultation">Terms</a>
+				<a href="/demos/hormone-trt/book-consultation">Accessibility</a>
+			</div>
+		</div>
+	</footer>
+
+	<a class="vt-sticky-cta" href="/demos/hormone-trt/assessment" aria-label="Take the assessment">Take Assessment &rarr;</a>
+
+	<script is:inline>
+	(function(){
+		var banner=document.querySelector('.demo-banner');
+		function syncBannerHeight(){
+			var h=banner?banner.offsetHeight:0;
+			document.documentElement.style.setProperty('--vt-banner-h',h+'px');
+		}
+		if(banner){syncBannerHeight();window.addEventListener('resize',syncBannerHeight);}
+
+		var btn=document.querySelector('.vt-header__menu-btn');
+		var menu=document.getElementById('vt-mobile-menu');
+		if(!btn||!menu)return;
+		btn.addEventListener('click',function(){
+			var open=menu.hidden;
+			menu.hidden=!open;
+			btn.setAttribute('aria-expanded',open?'true':'false');
+			btn.classList.toggle('is-open',open);
+		});
+		menu.querySelectorAll('a').forEach(function(a){
+			a.addEventListener('click',function(){
+				menu.hidden=true;
+				btn.setAttribute('aria-expanded','false');
+				btn.classList.remove('is-open');
+			});
+		});
+	})();
+	</script>
+</body>
+</html>
+
+<style is:global>
+/* ═══════════════════════════════════════════════════════
+   VANTAGE MEN'S HEALTH — Premium Masculine Medical
+   ═══════════════════════════════════════════════════════ */
+.vt-site {
+	--vt-graphite: #141615;
+	--vt-charcoal: #232625;
+	--vt-slate: #1E2A32;
+	--vt-ivory: #F5F0E8;
+	--vt-sand: #D8C7AD;
+	--vt-bronze: #B48652;
+	--vt-steel: #526A73;
+	--vt-gray: #A7AAA5;
+	--vt-white: #FFFFFF;
+	--vt-border: rgba(255,255,255,0.08);
+	--vt-border-light: rgba(20,22,21,0.08);
+	--vt-border-warm: rgba(180,134,82,0.2);
+	--vt-radius: 6px;
+	--vt-sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+	--vt-max-width: 1120px;
+	--vt-transition: 0.2s ease;
+
+	margin: 0; min-width: 320px;
+	background: var(--vt-graphite); color: var(--vt-ivory);
+	font-family: var(--vt-sans);
+	font-size: 0.9375rem; line-height: 1.7;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+}
+.vt-site *, .vt-site *::before, .vt-site *::after { box-sizing: border-box; }
+.vt-site img, .vt-site svg { display: block; max-width: 100%; }
+.vt-site a { color: inherit; text-decoration: none; transition: color var(--vt-transition), opacity var(--vt-transition); }
+
+/* Typography */
+.vt-site h1, .vt-site h2, .vt-site h3 { margin-top: 0; color: var(--vt-ivory); font-weight: 700; }
+.vt-site h1 { font-size: clamp(2.6rem, 2rem + 3.5vw, 3.8rem); line-height: 1.05; letter-spacing: -0.035em; margin-bottom: 1.5rem; }
+.vt-site h2 { font-size: clamp(1.5rem, 1.1rem + 1.5vw, 2.2rem); line-height: 1.12; letter-spacing: -0.025em; margin-bottom: 1rem; }
+.vt-site h3 { font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem); line-height: 1.35; letter-spacing: -0.01em; margin-bottom: 0.5rem; }
+.vt-site p { margin-top: 0; margin-bottom: 1rem; }
+.vt-site p:last-child { margin-bottom: 0; }
+.vt-site button, .vt-site input, .vt-site select, .vt-site textarea { font: inherit; }
+.vt-site button { cursor: pointer; }
+.vt-site :focus-visible { outline: 2px solid var(--vt-bronze); outline-offset: 3px; border-radius: 3px; }
+.vt-site ::selection { background: rgba(180,134,82,0.25); color: var(--vt-ivory); }
+
+/* Container */
+.vt-container { width: min(100% - 2.5rem, var(--vt-max-width)); margin-inline: auto; }
+
+/* Sections */
+.vt-section { padding: clamp(4rem, 8vw, 7rem) 0; }
+.vt-section--dark { background: var(--vt-graphite); }
+.vt-section--charcoal { background: var(--vt-charcoal); }
+.vt-section--slate { background: var(--vt-slate); }
+.vt-section--ivory { background: var(--vt-ivory); color: var(--vt-graphite); }
+.vt-section--ivory h1, .vt-section--ivory h2, .vt-section--ivory h3 { color: var(--vt-graphite); }
+.vt-section--sand { background: var(--vt-sand); color: var(--vt-graphite); }
+.vt-section--sand h1, .vt-section--sand h2, .vt-section--sand h3 { color: var(--vt-graphite); }
+
+.vt-section-header { margin-bottom: 3rem; }
+
+/* Eyebrow */
+.vt-eyebrow { display: block; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--vt-bronze); margin-bottom: 0.75rem; }
+.vt-section--ivory .vt-eyebrow, .vt-section--sand .vt-eyebrow { color: var(--vt-steel); }
+
+/* Lead text */
+.vt-lead { font-size: clamp(0.95rem, 0.9rem + 0.3vw, 1.1rem); line-height: 1.6; color: var(--vt-gray); max-width: 560px; }
+.vt-section--ivory .vt-lead { color: var(--vt-steel); }
+.vt-section--sand .vt-lead { color: rgba(20,22,21,0.6); }
+
+/* Buttons */
+.vt-btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem; padding: 0.85rem 1.75rem; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.03em; border-radius: var(--vt-radius); border: 1px solid transparent; transition: all var(--vt-transition); text-decoration: none; white-space: nowrap; }
+.vt-btn--primary { background: var(--vt-bronze); color: var(--vt-graphite); border-color: var(--vt-bronze); }
+.vt-btn--primary:hover { background: #c9975e; border-color: #c9975e; }
+.vt-btn--secondary { background: transparent; color: var(--vt-ivory); border-color: rgba(255,255,255,0.15); }
+.vt-btn--secondary:hover { border-color: var(--vt-bronze); color: var(--vt-bronze); }
+.vt-section--ivory .vt-btn--secondary { color: var(--vt-graphite); border-color: rgba(20,22,21,0.15); }
+.vt-section--ivory .vt-btn--secondary:hover { border-color: var(--vt-bronze); color: var(--vt-bronze); }
+.vt-btn-row { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+
+/* Text link */
+.vt-text-link { font-size: 0.82rem; font-weight: 600; color: var(--vt-bronze); transition: color var(--vt-transition); }
+.vt-text-link:hover { color: #c9975e; }
+
+/* Card */
+.vt-card { background: var(--vt-charcoal); border: 1px solid var(--vt-border); border-radius: var(--vt-radius); padding: 1.75rem; transition: border-color var(--vt-transition), box-shadow var(--vt-transition); }
+.vt-card:hover { border-color: rgba(180,134,82,0.25); }
+.vt-section--ivory .vt-card { background: var(--vt-white); border-color: var(--vt-border-light); }
+.vt-section--ivory .vt-card:hover { border-color: rgba(180,134,82,0.3); box-shadow: 0 4px 16px rgba(0,0,0,0.04); }
+
+/* ─── Header ─── */
+.vt-header { position: sticky; top: var(--vt-banner-h, 3.55rem); z-index: 15; background: rgba(20,22,21,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--vt-border); }
+.vt-header__inner { display: flex; align-items: center; gap: 1.5rem; height: 3.75rem; }
+.vt-header__brand { display: flex; flex-direction: column; line-height: 1; text-decoration: none; }
+.vt-header__wordmark { font-size: 1rem; font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase; color: var(--vt-ivory); }
+.vt-header__sub { font-size: 0.5rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--vt-bronze); margin-top: 0.1rem; }
+.vt-header__nav { display: flex; gap: 1.5rem; margin-left: auto; }
+.vt-header__nav a { font-size: 0.78rem; font-weight: 500; color: var(--vt-gray); transition: color var(--vt-transition); }
+.vt-header__nav a:hover, .vt-header__nav a.is-active { color: var(--vt-ivory); }
+.vt-header__actions { margin-left: 1rem; }
+.vt-header__cta { display: inline-flex; align-items: center; gap: 0.3rem; padding: 0.5rem 1rem; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.02em; color: var(--vt-graphite); background: var(--vt-bronze); border-radius: var(--vt-radius); transition: background var(--vt-transition); }
+.vt-header__cta:hover { background: #c9975e; }
+.vt-header__menu-btn { display: none; background: none; border: none; padding: 0.5rem; cursor: pointer; flex-direction: column; gap: 4px; }
+.vt-header__menu-btn span { display: block; width: 20px; height: 2px; background: var(--vt-ivory); border-radius: 1px; transition: transform var(--vt-transition), opacity var(--vt-transition); }
+.vt-header__menu-btn.is-open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.vt-header__menu-btn.is-open span:nth-child(2) { opacity: 0; }
+.vt-header__menu-btn.is-open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+/* Mobile menu */
+.vt-mobile-menu { border-top: 1px solid var(--vt-border); background: var(--vt-graphite); }
+.vt-mobile-menu__inner { display: flex; flex-direction: column; padding: 1.25rem 0; gap: 0.75rem; }
+.vt-mobile-menu__inner a { font-size: 0.88rem; font-weight: 500; color: var(--vt-gray); padding: 0.35rem 0; }
+.vt-mobile-menu__inner a:hover { color: var(--vt-ivory); }
+.vt-mobile-menu__cta { display: block; text-align: center; padding: 0.75rem; background: var(--vt-bronze); color: var(--vt-graphite) !important; font-weight: 700 !important; border-radius: var(--vt-radius); margin-top: 0.5rem; }
+.vt-mobile-menu__cta--secondary { background: transparent; border: 1px solid rgba(255,255,255,0.15); color: var(--vt-ivory) !important; margin-top: 0; }
+
+/* ─── Footer ─── */
+.vt-footer { padding: clamp(3rem, 6vw, 5rem) 0 1.5rem; background: var(--vt-charcoal); border-top: 1px solid var(--vt-border); }
+.vt-footer__grid { display: grid; grid-template-columns: 1.3fr repeat(3, 1fr); gap: 2rem; padding-bottom: 2.5rem; border-bottom: 1px solid var(--vt-border); }
+.vt-footer__brand { font-size: 0.9rem; font-weight: 800; letter-spacing: 0.15em; text-transform: uppercase; color: var(--vt-ivory); }
+.vt-footer__tagline { font-size: 0.78rem; color: var(--vt-gray); margin-top: 0.5rem; max-width: 280px; }
+.vt-footer__address { font-size: 0.72rem; color: var(--vt-gray); margin-top: 0.5rem; }
+.vt-footer__col h2 { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--vt-bronze); margin-bottom: 0.75rem; }
+.vt-footer__col ul { list-style: none; padding: 0; margin: 0; }
+.vt-footer__col li { margin-bottom: 0.4rem; }
+.vt-footer__col a { font-size: 0.78rem; color: var(--vt-gray); }
+.vt-footer__col a:hover { color: var(--vt-ivory); }
+.vt-footer__bottom { padding-top: 1.5rem; display: flex; flex-wrap: wrap; gap: 0.5rem 2rem; align-items: baseline; }
+.vt-footer__bottom p { font-size: 0.65rem; color: var(--vt-gray); }
+.vt-footer__disclaimer { font-size: 0.6rem !important; color: rgba(167,170,165,0.5) !important; font-style: italic; max-width: 640px; }
+.vt-footer__disclaimer a { color: var(--vt-bronze); }
+.vt-footer__legal { display: flex; gap: 1rem; margin-left: auto; }
+.vt-footer__legal a { font-size: 0.65rem; color: var(--vt-gray); }
+.vt-footer__legal a:hover { color: var(--vt-bronze); }
+
+/* ─── Sticky CTA (mobile) ─── */
+.vt-sticky-cta { display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 14; padding: 0.85rem 1rem; text-align: center; font-size: 0.82rem; font-weight: 700; background: var(--vt-bronze); color: var(--vt-graphite); border-top: 1px solid rgba(180,134,82,0.3); }
+
+/* ─── Responsive ─── */
+@media (prefers-reduced-motion: reduce) {
+	.vt-site, .vt-site * { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+}
+@media (max-width: 960px) {
+	.vt-header__nav, .vt-header__actions { display: none; }
+	.vt-header__menu-btn { display: flex; margin-left: auto; }
+	.vt-footer__grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 640px) {
+	.vt-footer__grid { grid-template-columns: 1fr; }
+	.vt-footer__bottom { flex-direction: column; }
+	.vt-footer__legal { margin-left: 0; }
+	.vt-sticky-cta { display: block; }
+	body.vt-site { padding-bottom: 3.25rem; }
+}
+</style>
