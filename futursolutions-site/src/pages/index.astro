@@ -3,16 +3,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import DemoLibraryPreview from '../components/DemoLibraryPreview.astro';
 import FinalCTA from '../components/FinalCTA.astro';
 import HomeHero from '../components/HomeHero.astro';
-import LaneCards from '../components/LaneCards.astro';
+import OfferOverview from '../components/OfferOverview.astro';
 import ProblemSection from '../components/ProblemSection.astro';
 import ProcessSection from '../components/ProcessSection.astro';
 import ProofStrip from '../components/ProofStrip.astro';
 import SeoVisibilitySection from '../components/SeoVisibilitySection.astro';
 import SystemDiagram from '../components/SystemDiagram.astro';
 
-const pageTitle = 'FutureSolutions — Healthcare websites built like operational systems';
+const pageTitle = 'FutureSolutions — Premium healthcare websites and Growth Systems';
 const pageDescription =
-	'Premium web design and growth systems for clinics, associations, and high-trust service businesses. Foundations, custom builds, and backend lead systems.';
+	'Premium websites, customizable Website Foundations, and CRM-connected Growth Systems for clinics, wellness brands, associations, and high-trust service businesses.';
 const canonicalUrl = 'https://futursolutions.vercel.app/';
 ---
 
@@ -25,14 +25,13 @@ const canonicalUrl = 'https://futursolutions.vercel.app/';
 	ogUrl={canonicalUrl}
 >
 	<HomeHero />
-
+	<OfferOverview />
 	<ProblemSection />
-	<LaneCards />
 	<DemoLibraryPreview />
-	<ProofStrip />
 	<SystemDiagram />
 	<SeoVisibilitySection />
 	<ProcessSection />
+	<ProofStrip />
 	<FinalCTA />
 </BaseLayout>
 

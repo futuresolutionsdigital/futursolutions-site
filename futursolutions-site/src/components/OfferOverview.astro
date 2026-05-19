@@ -1,0 +1,342 @@
+---
+const offers = [
+	{
+		lane: 'foundation',
+		number: '01',
+		title: 'Website Foundations',
+		summary:
+			'Launch from a polished healthcare-specific website built around a real business model — then customize the brand, services, and booking flow.',
+		bestFor: 'Solo and group practices, med spas, hormone clinics, wellness brands ready to launch fast without looking templated.',
+		bullets: [
+			'Curated demo library — every Foundation is a live, clickable site',
+			'Customizable brand, services, page structure, and booking flow',
+			'Faster path to launch than a fully custom build',
+		],
+		ctaLabel: 'Explore Live Demos',
+		ctaHref: '/templates',
+	},
+	{
+		lane: 'custom',
+		number: '02',
+		title: 'Signature Custom Websites',
+		summary:
+			'A fully custom website system designed around a unique brand, service model, or organization — engineered for credibility, clarity, and conversion.',
+		bestFor: 'Clinics, associations, and service businesses with unique positioning, complex content, or larger teams.',
+		bullets: [
+			'Custom design system, page architecture, and content model',
+			'Built around your services, audience, and operational workflow',
+			'Deeper integrations and content strategy where it matters',
+		],
+		ctaLabel: 'See Custom Website service',
+		ctaHref: '/services/custom-healthcare-websites',
+	},
+	{
+		lane: 'growth',
+		number: '03',
+		title: 'Growth Systems',
+		summary:
+			'Connect the site to forms, calendars, CRM routing, follow-up, review requests, and reporting — so leads do not disappear after submitting a form.',
+		bestFor: 'Practices losing inquiries to slow follow-up, missed calls, or scattered tools — and teams that want one source of truth.',
+		bullets: [
+			'Form, booking, and CRM routing wired end-to-end',
+			'Automated follow-up, review requests, and reporting',
+			'Plugs into Foundations or a Signature Custom Website',
+		],
+		ctaLabel: 'See how the system works',
+		ctaHref: '/backend',
+	},
+];
+---
+
+<section class="offer-overview" aria-labelledby="offer-overview-heading">
+	<div class="site-container site-container--wide">
+		<header class="offer-overview__head">
+			<p class="eyebrow">What FutureSolutions provides</p>
+			<h2 id="offer-overview-heading" class="display-lg">
+				Three offers. One diagnostic.
+				<span class="offer-overview__head-soft">Pick the right starting point.</span>
+			</h2>
+			<p class="lead offer-overview__lead">
+				We design the website, build a library of customizable Foundations, and ship the Growth Systems behind both. If you're not sure where to start, request a free Website and Systems Audit and we'll recommend the right path.
+			</p>
+		</header>
+
+		<ul class="offer-overview__grid">
+			{
+				offers.map((offer) => (
+					<li class={`offer-overview__card lane-accent-top lane-accent-top--${offer.lane}`}>
+						<div class="offer-overview__card-head">
+							<span class={`lane-tag lane-tag--${offer.lane}`}>{offer.number}</span>
+							<h3 class="offer-overview__card-title">{offer.title}</h3>
+						</div>
+
+						<p class="offer-overview__card-summary">{offer.summary}</p>
+
+						<ul class="offer-overview__bullets">
+							{offer.bullets.map((b) => (
+								<li>
+									<svg
+										aria-hidden="true"
+										viewBox="0 0 20 20"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="1.8"
+										stroke-linejoin="round"
+										stroke-linecap="round"
+									>
+										<path d="M4 10.5l4 4 8-9" />
+									</svg>
+									<span>{b}</span>
+								</li>
+							))}
+						</ul>
+
+						<div class="offer-overview__best">
+							<span class="offer-overview__best-label">Best for</span>
+							<p>{offer.bestFor}</p>
+						</div>
+
+						<a class="offer-overview__cta" href={offer.ctaHref}>
+							{offer.ctaLabel}
+							<span aria-hidden="true">&rarr;</span>
+						</a>
+					</li>
+				))
+			}
+		</ul>
+
+		<aside class="offer-overview__audit lane-accent-top lane-accent-top--audit" aria-label="Website and Systems Audit">
+			<div class="offer-overview__audit-main">
+				<span class="lane-tag lane-tag--audit">04 · Diagnostic</span>
+				<h3 class="offer-overview__audit-title">Not sure what you need?</h3>
+				<p class="offer-overview__audit-copy">
+					Start with a <strong>Website and Systems Audit</strong>. We review your site, services, booking path, and follow-up workflow, then send a written recommendation — Foundation, Custom, Growth System, Care plan, or none of the above.
+				</p>
+			</div>
+
+			<div class="offer-overview__audit-cta">
+				<a class="button button-primary" href="/audit">
+					Get a Website Audit
+					<span aria-hidden="true">&rarr;</span>
+				</a>
+				<p class="offer-overview__audit-note">Free · No sales pitch · Practical recommendation</p>
+			</div>
+		</aside>
+	</div>
+</section>
+
+<style>
+	.offer-overview {
+		padding-block: var(--section-spacing);
+		background: var(--color-white);
+	}
+
+	.offer-overview__head {
+		display: grid;
+		gap: 1.1rem;
+		max-width: 56rem;
+		margin: 0 0 clamp(2.5rem, 5vw, 3.5rem);
+	}
+
+	.offer-overview__head-soft {
+		display: block;
+		color: var(--color-muted);
+		font-weight: 650;
+	}
+
+	.offer-overview__lead {
+		max-width: 52rem;
+		color: var(--color-muted);
+	}
+
+	.offer-overview__grid {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 1.25rem;
+		margin: 0 0 1.5rem;
+		padding: 0;
+		list-style: none;
+	}
+
+	.offer-overview__card {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		padding: 1.75rem;
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		background: var(--color-white);
+		box-shadow: var(--shadow-card);
+		transition: transform 320ms var(--ease-out-quart),
+			box-shadow var(--transition-base),
+			border-color var(--transition-base);
+	}
+
+	.offer-overview__card:hover {
+		transform: translateY(-3px);
+		box-shadow: var(--shadow-card-hover);
+	}
+
+	.offer-overview__card-head {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 0.75rem;
+	}
+
+	.offer-overview__card-title {
+		margin: 0;
+		font-size: clamp(1.25rem, 1.05rem + 0.5vw, 1.45rem);
+		font-weight: 700;
+		letter-spacing: -0.025em;
+		line-height: 1.25;
+	}
+
+	.offer-overview__card-summary {
+		margin: 0;
+		color: var(--color-muted);
+		font-size: 0.96rem;
+		line-height: 1.6;
+	}
+
+	.offer-overview__bullets {
+		display: grid;
+		gap: 0.55rem;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.offer-overview__bullets li {
+		display: grid;
+		grid-template-columns: 1rem 1fr;
+		gap: 0.55rem;
+		align-items: start;
+		color: var(--color-text);
+		font-size: 0.92rem;
+		line-height: 1.5;
+	}
+
+	.offer-overview__bullets svg {
+		width: 1rem;
+		height: 1rem;
+		margin-top: 0.2rem;
+		color: var(--color-muted);
+	}
+
+	.offer-overview__best {
+		margin-top: auto;
+		padding: 0.85rem 1rem;
+		border: 1px solid var(--color-border-soft);
+		border-radius: var(--radius-sm);
+		background: var(--color-bg);
+	}
+
+	.offer-overview__best-label {
+		display: block;
+		margin-bottom: 0.2rem;
+		color: var(--color-muted);
+		font-size: 0.7rem;
+		font-weight: 700;
+		letter-spacing: 0.14em;
+		text-transform: uppercase;
+	}
+
+	.offer-overview__best p {
+		margin: 0;
+		color: var(--color-text);
+		font-size: 0.875rem;
+		line-height: 1.5;
+	}
+
+	.offer-overview__cta {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.4rem;
+		color: var(--color-text);
+		font-size: 0.95rem;
+		font-weight: 650;
+		letter-spacing: -0.01em;
+		text-decoration: none;
+	}
+
+	.offer-overview__cta:hover {
+		gap: 0.6rem;
+	}
+
+	.offer-overview__cta span {
+		transition: transform var(--transition-base);
+	}
+
+	.offer-overview__cta:hover span {
+		transform: translateX(3px);
+	}
+
+	.offer-overview__audit {
+		position: relative;
+		display: grid;
+		grid-template-columns: 1.4fr 1fr;
+		align-items: center;
+		gap: clamp(1.5rem, 4vw, 3rem);
+		padding: clamp(1.75rem, 4vw, 2.5rem);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		background: linear-gradient(135deg, var(--color-white) 0%, var(--lane-audit-tint) 100%);
+		box-shadow: var(--shadow-card);
+	}
+
+	.offer-overview__audit-main {
+		display: grid;
+		gap: 0.85rem;
+	}
+
+	.offer-overview__audit-title {
+		margin: 0;
+		font-size: clamp(1.4rem, 1.1rem + 0.8vw, 1.75rem);
+		font-weight: 700;
+		letter-spacing: -0.03em;
+		line-height: 1.2;
+	}
+
+	.offer-overview__audit-copy {
+		margin: 0;
+		max-width: 44rem;
+		color: var(--color-muted);
+		font-size: 0.96rem;
+		line-height: 1.6;
+	}
+
+	.offer-overview__audit-copy strong {
+		color: var(--color-text);
+		font-weight: 700;
+	}
+
+	.offer-overview__audit-cta {
+		display: grid;
+		gap: 0.65rem;
+		justify-items: start;
+	}
+
+	.offer-overview__audit-note {
+		margin: 0;
+		color: var(--lane-audit-ink);
+		font-size: 0.78rem;
+		font-weight: 600;
+		letter-spacing: 0.005em;
+	}
+
+	@media (max-width: 1024px) {
+		.offer-overview__grid {
+			grid-template-columns: 1fr;
+		}
+
+		.offer-overview__audit {
+			grid-template-columns: 1fr;
+		}
+
+		.offer-overview__audit-cta {
+			justify-items: start;
+		}
+	}
+</style>
