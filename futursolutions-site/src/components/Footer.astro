@@ -1,30 +1,44 @@
 ---
 const footerColumns = [
 	{
-		title: 'Services',
+		title: 'Solutions',
 		links: [
-			{ label: 'Website Templates', href: '/templates' },
-			{ label: 'Custom Websites', href: '/services/custom-healthcare-websites' },
-			{ label: 'SEO / Local Visibility', href: '/seo' },
-			{ label: 'Backend Systems', href: '/backend' },
-			{ label: 'Ongoing Optimization', href: '/services/ongoing-optimization' },
+			{ label: 'Website Foundations', href: '/services/template-setup' },
+			{ label: 'Signature Custom Websites', href: '/services/custom-healthcare-websites' },
+			{ label: 'Growth Systems', href: '/backend' },
+			{ label: 'Practice Operations', href: '#' },
+			{ label: 'Care & Optimization', href: '/services/ongoing-optimization' },
 		],
 	},
 	{
-		title: 'Templates',
+		title: 'Demos',
 		links: [
-			{ label: 'Med Spa Template', href: '/templates/med-spa' },
-			{ label: 'Solo Practice Template', href: '/templates/solo-practice' },
-			{ label: 'Association Template', href: '/templates/association' },
-			{ label: 'View All Templates', href: '/templates' },
+			{ label: 'Med Spa', href: '/templates/med-spa' },
+			{ label: 'Solo Practice', href: '/templates/solo-practice' },
+			{ label: 'Wellness Clinic', href: '/templates/premium-wellness-clinic' },
+			{ label: 'Hormone / TRT', href: '/templates/hormone-trt' },
+			{ label: 'Association', href: '/templates/association' },
+			{ label: 'View All Demos', href: '/templates' },
+		],
+	},
+	{
+		// Phase 4 will activate /industries/[slug]
+		title: 'Industries',
+		links: [
+			{ label: 'Med Spa', href: '#' },
+			{ label: 'Hormone / TRT', href: '#' },
+			{ label: 'Solo Practice', href: '#' },
+			{ label: 'Wellness Clinic', href: '#' },
+			{ label: 'Association', href: '#' },
+			{ label: 'Lead-Gen Service', href: '#' },
 		],
 	},
 	{
 		title: 'Resources',
 		links: [
 			{ label: 'Resources', href: '/resources' },
-			{ label: 'Website Audit', href: '/audit' },
-			{ label: 'Services', href: '/services' },
+			{ label: 'Website & Systems Audit', href: '/audit' },
+			{ label: 'Book a Strategy Call', href: '#' },
 		],
 	},
 ];
@@ -34,8 +48,8 @@ const footerColumns = [
 	<div class="site-container">
 		<div class="site-footer__grid">
 			<div class="site-footer__company">
-				<a class="site-footer__brand" href="/">Future Solutions</a>
-				<p>Modern healthcare websites, templates, SEO foundations, and backend systems for health and wellness businesses.</p>
+				<a class="site-footer__brand" href="/">FutureSolutions</a>
+				<p>Premium web design and growth systems for clinics, associations, and high-trust service businesses.</p>
 			</div>
 
 			{footerColumns.map((column) => (
@@ -44,7 +58,14 @@ const footerColumns = [
 					<ul>
 						{column.links.map((link) => (
 							<li>
-								<a href={link.href}>{link.label}</a>
+								<a
+									href={link.href}
+									class:list={{ 'is-placeholder': link.href === '#' }}
+									aria-disabled={link.href === '#' ? 'true' : undefined}
+									title={link.href === '#' ? 'Coming soon' : undefined}
+								>
+									{link.label}
+								</a>
 							</li>
 						))}
 					</ul>
@@ -53,7 +74,7 @@ const footerColumns = [
 		</div>
 
 		<div class="site-footer__bottom">
-			<p>&copy; {new Date().getFullYear()} Future Solutions. All rights reserved.</p>
+			<p>&copy; {new Date().getFullYear()} FutureSolutions. All rights reserved.</p>
 		</div>
 	</div>
 </footer>
@@ -66,7 +87,7 @@ const footerColumns = [
 
 	.site-footer__grid {
 		display: grid;
-		grid-template-columns: minmax(220px, 1.3fr) repeat(3, minmax(0, 1fr));
+		grid-template-columns: minmax(220px, 1.3fr) repeat(4, minmax(0, 1fr));
 		gap: clamp(2rem, 5vw, 4rem);
 		padding-block: clamp(3rem, 6vw, 4.5rem);
 	}
@@ -116,6 +137,15 @@ const footerColumns = [
 		color: var(--color-accent-dark);
 	}
 
+	.site-footer__column a.is-placeholder {
+		opacity: 0.5;
+		cursor: not-allowed;
+	}
+
+	.site-footer__column a.is-placeholder:hover {
+		color: var(--color-muted);
+	}
+
 	.site-footer__bottom {
 		padding-block: 1.25rem 1.5rem;
 		border-top: 1px solid var(--color-border);
@@ -124,6 +154,12 @@ const footerColumns = [
 	.site-footer__bottom p {
 		margin: 0;
 		font-size: 0.875rem;
+	}
+
+	@media (max-width: 1080px) {
+		.site-footer__grid {
+			grid-template-columns: minmax(220px, 1fr) repeat(2, minmax(0, 1fr));
+		}
 	}
 
 	@media (max-width: 900px) {
