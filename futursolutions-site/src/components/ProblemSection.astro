@@ -8,7 +8,7 @@ const problems = [
 	{
 		number: '02',
 		title: 'Weak conversion paths',
-		text: 'Calls-to-action are buried, inconsistent, or disconnected from the way patients actually make decisions.',
+		text: 'Calls-to-action are buried, inconsistent, or disconnected from how patients actually make decisions.',
 	},
 	{
 		number: '03',
@@ -24,82 +24,142 @@ const problems = [
 ---
 
 <section class="section section-muted problem-section" aria-labelledby="problem-heading">
-	<div class="site-container">
-		<div class="problem-section__intro">
-			<p class="eyebrow">The hidden gap</p>
-			<h2 id="problem-heading">Most healthcare websites look fine — but fail where it matters.</h2>
-			<p class="lead">
-				A modern site can still lose leads through unclear messaging, weak service pages, buried calls-to-action, poor local visibility, and no follow-up system.
-			</p>
-		</div>
+	<div class="site-container site-container--wide">
+		<header class="problem-section__head">
+			<div class="problem-section__head-left">
+				<p class="eyebrow">The hidden gap</p>
+				<h2 id="problem-heading" class="display-lg">
+					Most healthcare websites look fine — and quietly leak leads anyway.
+				</h2>
+			</div>
+			<div class="problem-section__head-right">
+				<p>
+					Even modern, well-designed sites lose patients to four predictable gaps. We design around all four.
+				</p>
+			</div>
+		</header>
 
-		<div class="problem-section__grid">
-			{problems.map((problem) => (
-				<article class="card problem-card">
-					<span>{problem.number}</span>
-					<h3>{problem.title}</h3>
-					<p>{problem.text}</p>
-				</article>
-			))}
-		</div>
+		<ul class="problem-section__grid" aria-label="Common gaps in healthcare websites">
+			{
+				problems.map((problem) => (
+					<li class="problem-card">
+						<header class="problem-card__header">
+							<span class="problem-card__number">{problem.number}</span>
+							<span class="problem-card__indicator" aria-hidden="true" />
+						</header>
+						<h3 class="problem-card__title">{problem.title}</h3>
+						<p class="problem-card__text">{problem.text}</p>
+					</li>
+				))
+			}
+		</ul>
 	</div>
 </section>
 
 <style>
-	.problem-section__intro {
-		max-width: 780px;
+	.problem-section {
+		background: var(--color-bg-secondary);
+		border-block: 1px solid var(--color-border-soft);
 	}
 
-	.problem-section__intro h2 {
-		max-width: 760px;
+	.problem-section__head {
+		display: grid;
+		grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+		gap: clamp(2rem, 5vw, 4rem);
+		align-items: end;
+		margin-bottom: clamp(2.5rem, 4vw, 3.5rem);
+	}
+
+	.problem-section__head h2 {
+		max-width: 22ch;
+		margin-bottom: 0;
+	}
+
+	.problem-section__head-right p {
+		max-width: 36ch;
+		margin: 0;
+		color: var(--color-muted);
+		font-size: 1rem;
+		line-height: 1.6;
 	}
 
 	.problem-section__grid {
 		display: grid;
 		grid-template-columns: repeat(4, minmax(0, 1fr));
-		gap: 1rem;
-		margin-top: clamp(2rem, 4vw, 3rem);
+		gap: 1.25rem;
+		margin: 0;
+		padding: 0;
+		list-style: none;
 	}
 
 	.problem-card {
 		display: flex;
 		flex-direction: column;
-		min-height: 100%;
-		padding: 1.25rem;
-	}
-
-	.problem-card span {
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		width: 2.25rem;
-		height: 2.25rem;
-		margin-bottom: 1.5rem;
+		padding: 1.5rem;
 		border: 1px solid var(--color-border);
-		border-radius: var(--radius-sm);
-		background: var(--color-bg-secondary);
-		color: var(--color-accent-dark);
-		font-size: 0.75rem;
+		border-radius: var(--radius-md);
+		background: var(--color-white);
+		transition: transform 320ms var(--ease-out-quart),
+			border-color var(--transition-base),
+			box-shadow var(--transition-base);
+	}
+
+	.problem-card:hover {
+		transform: translateY(-2px);
+		border-color: color-mix(in srgb, var(--color-text) 18%, var(--color-border));
+		box-shadow: var(--shadow-card);
+	}
+
+	.problem-card__header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		margin-bottom: 1.25rem;
+	}
+
+	.problem-card__number {
+		color: var(--color-muted);
+		font-size: 0.74rem;
 		font-weight: 700;
+		font-variant-numeric: tabular-nums;
+		letter-spacing: 0.14em;
 	}
 
-	.problem-card h3 {
-		font-size: 1.1rem;
-		letter-spacing: -0.02em;
+	.problem-card__indicator {
+		display: inline-block;
+		width: 8px;
+		height: 8px;
+		border-radius: 2px;
+		background: var(--color-text);
+		transform: rotate(45deg);
 	}
 
-	.problem-card p {
-		font-size: 0.9375rem;
-		line-height: 1.6;
+	.problem-card__title {
+		margin: 0 0 0.55rem 0;
+		font-size: 1.18rem;
+		font-weight: 650;
+		letter-spacing: -0.025em;
+		line-height: 1.2;
 	}
 
-	@media (max-width: 980px) {
+	.problem-card__text {
+		margin: 0;
+		color: var(--color-muted);
+		font-size: 0.93rem;
+		line-height: 1.55;
+	}
+
+	@media (max-width: 1080px) {
+		.problem-section__head {
+			grid-template-columns: 1fr;
+		}
+
 		.problem-section__grid {
 			grid-template-columns: repeat(2, minmax(0, 1fr));
 		}
 	}
 
-	@media (max-width: 620px) {
+	@media (max-width: 560px) {
 		.problem-section__grid {
 			grid-template-columns: 1fr;
 		}
