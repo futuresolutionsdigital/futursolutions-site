@@ -1,0 +1,293 @@
+---
+const nodes = [
+	{
+		label: 'Website',
+		sub: 'Service & landing pages',
+		icon: 'globe',
+	},
+	{
+		label: 'Lead capture',
+		sub: 'Forms, intakes, quizzes',
+		icon: 'inbox',
+	},
+	{
+		label: 'CRM & routing',
+		sub: 'GoHighLevel pipelines',
+		icon: 'database',
+	},
+	{
+		label: 'Booking',
+		sub: 'Calendars & confirmations',
+		icon: 'calendar',
+	},
+	{
+		label: 'Follow-up',
+		sub: 'Email + SMS sequences',
+		icon: 'message',
+	},
+	{
+		label: 'Reporting',
+		sub: 'Source, status, outcome',
+		icon: 'chart',
+	},
+];
+
+const principles = [
+	{
+		title: 'Owned data',
+		text: 'Lead, source, status, and outcome live in your CRM — not a third-party plugin.',
+	},
+	{
+		title: 'Fast routing',
+		text: 'New inquiries reach the right person in seconds, with full context.',
+	},
+	{
+		title: 'No drop-off',
+		text: 'Automated reminders and sequences keep prospects warm until they book.',
+	},
+];
+---
+
+<section id="system" class="section-loose system-diagram section-ink" aria-labelledby="system-diagram-heading">
+	<div class="dot-grid dot-grid--ink" aria-hidden="true"></div>
+
+	<div class="site-container site-container--wide system-diagram__inner">
+		<div class="system-diagram__head">
+			<p class="eyebrow">Practice Growth System</p>
+			<h2 id="system-diagram-heading" class="display-lg">
+				What happens after someone fills out the form on your site.
+			</h2>
+			<p class="lead system-diagram__lead">
+				A website that captures leads is half a system. We design and wire the other half — capture, routing, booking, follow-up, and reporting — so nothing drops between the click and the consultation.
+			</p>
+		</div>
+
+		<ol class="system-diagram__flow" aria-label="Lead system flow">
+			{
+				nodes.map((node, i) => (
+					<li class="system-node">
+						<div class="system-node__icon" aria-hidden="true">
+							{node.icon === 'globe' && (
+								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+									<circle cx="12" cy="12" r="9" />
+									<path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18" />
+								</svg>
+							)}
+							{node.icon === 'inbox' && (
+								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+									<path d="M3 13l3-7h12l3 7v6a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z" />
+									<path d="M3 13h5l1 2h6l1-2h5" />
+								</svg>
+							)}
+							{node.icon === 'database' && (
+								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+									<ellipse cx="12" cy="5" rx="8" ry="3" />
+									<path d="M4 5v14c0 1.66 3.58 3 8 3s8-1.34 8-3V5M4 12c0 1.66 3.58 3 8 3s8-1.34 8-3" />
+								</svg>
+							)}
+							{node.icon === 'calendar' && (
+								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+									<rect x="3" y="5" width="18" height="16" rx="2" />
+									<path d="M3 10h18M8 3v4M16 3v4" />
+								</svg>
+							)}
+							{node.icon === 'message' && (
+								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+									<path d="M4 5h16a1 1 0 0 1 1 1v11a1 1 0 0 1-1 1H8l-4 3V6a1 1 0 0 1 1-1z" />
+								</svg>
+							)}
+							{node.icon === 'chart' && (
+								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+									<path d="M4 20h16M6 16l4-5 4 3 4-7" />
+								</svg>
+							)}
+						</div>
+						<div class="system-node__label">
+							<span class="system-node__index">{String(i + 1).padStart(2, '0')}</span>
+							<p class="system-node__title">{node.label}</p>
+							<p class="system-node__sub">{node.sub}</p>
+						</div>
+					</li>
+				))
+			}
+		</ol>
+
+		<div class="system-diagram__principles">
+			{
+				principles.map((p) => (
+					<div class="system-principle">
+						<div class="system-principle__indicator" aria-hidden="true" />
+						<h3 class="system-principle__title">{p.title}</h3>
+						<p class="system-principle__text">{p.text}</p>
+					</div>
+				))
+			}
+		</div>
+	</div>
+</section>
+
+<style>
+	.system-diagram {
+		position: relative;
+		overflow: hidden;
+	}
+
+	.system-diagram__inner {
+		position: relative;
+	}
+
+	.system-diagram__head {
+		max-width: 64ch;
+		margin-bottom: clamp(3rem, 5.5vw, 4.5rem);
+	}
+
+	.system-diagram__head h2 {
+		max-width: 22ch;
+		margin-bottom: 1.25rem;
+	}
+
+	.system-diagram__lead {
+		max-width: 60ch;
+	}
+
+	.system-diagram__flow {
+		position: relative;
+		display: grid;
+		grid-template-columns: repeat(6, minmax(0, 1fr));
+		gap: 1rem;
+		margin: 0 0 clamp(3rem, 5vw, 4rem) 0;
+		padding: 2.5rem 1.25rem;
+		border: 1px solid var(--color-ink-line);
+		border-radius: var(--radius-xl);
+		background: var(--color-ink-soft);
+		list-style: none;
+	}
+
+	.system-diagram__flow::before {
+		position: absolute;
+		top: 50%;
+		left: 4rem;
+		right: 4rem;
+		height: 1px;
+		background: linear-gradient(90deg, transparent, var(--color-ink-line-strong) 12%, var(--color-ink-line-strong) 88%, transparent);
+		transform: translateY(-50%);
+		content: '';
+		z-index: 0;
+		pointer-events: none;
+	}
+
+	.system-node {
+		position: relative;
+		z-index: 1;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 0.85rem;
+	}
+
+	.system-node__icon {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 2.85rem;
+		height: 2.85rem;
+		border: 1px solid var(--color-ink-line-strong);
+		border-radius: 12px;
+		background: var(--color-ink);
+		color: var(--color-ink-accent);
+		box-shadow: 0 0 0 4px var(--color-ink-soft);
+	}
+
+	.system-node__icon svg {
+		width: 1.25rem;
+		height: 1.25rem;
+	}
+
+	.system-node__label {
+		display: grid;
+		gap: 0.2rem;
+	}
+
+	.system-node__index {
+		color: var(--color-ink-muted);
+		font-size: 0.7rem;
+		font-weight: 700;
+		font-variant-numeric: tabular-nums;
+		letter-spacing: 0.16em;
+	}
+
+	.system-node__title {
+		margin: 0;
+		color: var(--color-white);
+		font-size: 0.98rem;
+		font-weight: 650;
+		letter-spacing: -0.02em;
+		line-height: 1.2;
+	}
+
+	.system-node__sub {
+		margin: 0;
+		color: var(--color-ink-muted);
+		font-size: 0.82rem;
+		line-height: 1.45;
+	}
+
+	.system-diagram__principles {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 2.5rem;
+	}
+
+	.system-principle {
+		position: relative;
+		padding-left: 1.25rem;
+		border-left: 1px solid var(--color-ink-line-strong);
+	}
+
+	.system-principle__indicator {
+		position: absolute;
+		top: 0;
+		left: -3.5px;
+		width: 6px;
+		height: 6px;
+		border-radius: 999px;
+		background: var(--color-ink-accent);
+	}
+
+	.system-principle__title {
+		margin: 0 0 0.5rem 0;
+		color: var(--color-white);
+		font-size: 1.05rem;
+		font-weight: 650;
+		letter-spacing: -0.02em;
+	}
+
+	.system-principle__text {
+		margin: 0;
+		color: var(--color-ink-muted);
+		font-size: 0.93rem;
+		line-height: 1.6;
+	}
+
+	@media (max-width: 1080px) {
+		.system-diagram__flow {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+			gap: 1.5rem 1rem;
+		}
+
+		.system-diagram__flow::before {
+			display: none;
+		}
+
+		.system-diagram__principles {
+			grid-template-columns: 1fr;
+			gap: 1.5rem;
+		}
+	}
+
+	@media (max-width: 620px) {
+		.system-diagram__flow {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+</style>
