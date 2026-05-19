@@ -2,9 +2,9 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { auditTemplateSlugToName } from '../../data/templates';
 
-const pageTitle = 'Audit Request Received | Future Solutions';
+const pageTitle = 'Audit Request Received | FutureSolutions';
 const pageDescription =
-	'Your Future Solutions website audit request has been received. Learn what happens next and explore template systems while you wait.';
+	'Your FutureSolutions Website and Systems Audit request has been received. Learn what happens next and explore the Foundation library while you wait.';
 const canonicalUrl = 'https://futursolutions.vercel.app/audit-requested/';
 
 const nextSteps = [
@@ -21,7 +21,7 @@ const nextSteps = [
 	{
 		step: '03',
 		title: 'Recommendation',
-		text: 'You get a practical next-step recommendation: template setup, custom website, SEO foundation, backend system, or ongoing optimization.',
+		text: 'You get a practical next-step recommendation: Industry Website Foundation, Signature Custom Website, SEO foundation, Growth System, or Care and Optimization.',
 	},
 	{
 		step: '04',
@@ -56,17 +56,17 @@ const templates = [
 const usefulLinks = [
 	{
 		title: 'View Services',
-		text: 'Understand the full service ecosystem: templates, custom websites, SEO, backend systems, and ongoing optimization.',
+		text: 'Understand the full lane ecosystem: Foundations, Custom Websites, SEO, Growth Systems, and Care and Optimization.',
 		href: '/services',
 	},
 	{
-		title: 'Explore Backend Systems',
+		title: 'Explore Growth Systems',
 		text: 'See how website inquiries can connect to lead capture, booking, follow-up, and pipeline tracking.',
 		href: '/backend',
 	},
 	{
 		title: 'Read Resources',
-		text: 'Browse planned guides about website trust, conversion, local visibility, and backend lead systems.',
+		text: 'Browse planned guides about website trust, conversion, local visibility, and Growth Systems.',
 		href: '/resources',
 	},
 ];
@@ -88,7 +88,7 @@ const usefulLinks = [
 				We will review your website and look for opportunities to improve trust, service clarity, local visibility, conversion flow, and backend follow-up.
 			</p>
 			<div class="button-row">
-				<a class="button button-primary" href="/templates">View Templates</a>
+				<a class="button button-primary" href="/templates">Explore Live Demos</a>
 				<a class="button button-secondary" href="/audit">Back to Audit Page</a>
 			</div>
 			<p class="audit-requested-hero__note">
@@ -118,10 +118,10 @@ const usefulLinks = [
 	<section class="section audit-requested-templates" aria-labelledby="audit-requested-templates-heading">
 		<div class="site-container">
 			<div class="audit-requested__intro">
-				<p class="eyebrow">Template systems</p>
-				<h2 id="audit-requested-templates-heading">While you wait, explore launch-ready website systems.</h2>
+				<p class="eyebrow">Demo library</p>
+				<h2 id="audit-requested-templates-heading">While you wait, explore the live demo library.</h2>
 				<p class="lead">
-					If you are still comparing options, review the template systems built for med spas, solo practices, and healthcare associations.
+					If you are still comparing options, walk through the live Foundations built for med spas, solo practices, men's health / TRT clinics, wellness clinics, and healthcare associations.
 				</p>
 			</div>
 			<div class="audit-requested__grid audit-requested__grid--3">
@@ -129,7 +129,7 @@ const usefulLinks = [
 					<article class="card audit-requested-card">
 						<h3>{template.name}</h3>
 						<p>{template.description}</p>
-						<a href={template.href}>View Template</a>
+						<a href={template.href}>View Demo</a>
 					</article>
 				))}
 			</div>
@@ -161,11 +161,11 @@ const usefulLinks = [
 					<p class="eyebrow">Keep exploring</p>
 					<h2 id="audit-requested-final-heading">Want to keep exploring your options?</h2>
 					<p class="lead">
-						Review the template systems or service paths while we prepare your recommendation.
+						Walk through the live demo library or the service lanes while we prepare your recommendation.
 					</p>
 				</div>
 				<div class="button-row">
-					<a class="button button-primary" href="/templates">View Templates</a>
+					<a class="button button-primary" href="/templates">Explore Live Demos</a>
 					<a class="button button-secondary" href="/services">View Services</a>
 				</div>
 			</div>
@@ -184,9 +184,9 @@ const usefulLinks = [
 		var heading = document.getElementById('audit-requested-heading');
 		var lead = document.getElementById('audit-requested-lead');
 
-		if (eyebrow) eyebrow.textContent = 'Template Customization Request Received';
-		if (heading) heading.textContent = 'Thanks \u2014 we received your template customization request.';
-		if (lead) lead.textContent = 'We will review your practice details and recommend how to adapt the ' + label + ' template around your provider story, services, and goals.';
+		if (eyebrow) eyebrow.textContent = 'Foundation Customization Request Received';
+		if (heading) heading.textContent = 'Thanks \u2014 we received your Foundation customization request.';
+		if (lead) lead.textContent = 'We will review your practice details and recommend how to adapt the ' + label + ' Website Foundation around your provider story, services, and goals.';
 	})();
 </script>
 

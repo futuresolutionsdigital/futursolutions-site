@@ -13,14 +13,14 @@ export interface ServiceOffering {
 export const serviceOfferings: ServiceOffering[] = [
 	{
 		slug: 'template-setup',
-		name: 'Template Setup',
-		shortDescription: 'A polished website system based on one of our healthcare-focused templates.',
+		name: 'Industry Website Foundation',
+		shortDescription: 'A polished, launch-ready website built on one of our industry-specific Website Foundations.',
 		longDescription:
-			'Template Setup turns a healthcare-focused website system into a polished, launch-ready foundation for your business.',
-		bestFor: 'Practices that want to launch quickly with a professional foundation.',
-		includes: ['Template customization', 'Core page setup', 'Basic SEO foundation', 'Trust and conversion sections', 'Launch support'],
+			'A FutureSolutions Industry Website Foundation turns a healthcare-specific website system into a polished, launch-ready foundation for your practice — shipped in days, not months.',
+		bestFor: 'Practices that want to launch quickly on a strong, healthcare-specific foundation.',
+		includes: ['Foundation customization', 'Core page setup', 'Basic SEO foundation', 'Trust and conversion sections', 'Launch support'],
 		whyItMatters: 'You start from a healthcare-specific structure instead of a blank page or generic theme.',
-		ctaLabel: 'View Template Setup',
+		ctaLabel: 'View Foundation Setup',
 		ctaHref: '/services/template-setup',
 	},
 	{

@@ -2,9 +2,9 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import AuditFormShell from '../../components/AuditFormShell.astro';
 
-const pageTitle = 'Website Audit | Future Solutions';
+const pageTitle = 'Website and Systems Audit | FutureSolutions';
 const pageDescription =
-	'Request a website audit or template customization recommendation for your healthcare or wellness business.';
+	'Request a Website and Systems Audit for your healthcare or high-trust service business — site, content, conversion, lead capture, and visibility, reviewed and reported.';
 const canonicalUrl = 'https://futursolutions.vercel.app/audit/';
 
 const expectations = [
@@ -58,7 +58,7 @@ const processSteps = [
 	{
 		step: '03',
 		title: 'You receive audit notes or a Loom walkthrough',
-		text: 'A practical next-step recommendation: template setup, custom build, SEO foundation, backend system, or ongoing optimization.',
+		text: 'A practical next-step recommendation: Industry Website Foundation, Signature Custom build, SEO foundation, Growth System, or Care and Optimization.',
 	},
 	{
 		step: '04',
@@ -79,10 +79,10 @@ const processSteps = [
 	<section class="section audit-hero" aria-labelledby="audit-heading">
 		<div class="site-container audit-hero__inner">
 			<div class="audit-hero__content">
-				<p class="eyebrow">Website Audit</p>
+				<p class="eyebrow">Website and Systems Audit</p>
 				<h1 id="audit-heading">Find the hidden gaps in your healthcare website.</h1>
 				<p class="lead">
-					Request a website audit and get a clear breakdown of how your site could improve trust, service clarity, local visibility, and conversion flow.
+					Request a Website and Systems Audit and get a clear breakdown of how your site could improve trust, service clarity, local visibility, lead capture, and follow-up.
 				</p>
 				<p class="audit-hero__helper">
 					Built for med spas, solo practices, wellness clinics, functional medicine providers, and healthcare organizations.
@@ -155,12 +155,12 @@ const processSteps = [
 					<p class="eyebrow">Next step</p>
 					<h2 id="audit-final-heading">Want a clearer picture of what your site needs?</h2>
 					<p class="lead">
-						Start with an audit and get a practical recommendation before committing to a template, custom site, or backend system.
+						Start with an audit and get a practical recommendation before committing to a Website Foundation, Signature Custom build, or Growth System.
 					</p>
 				</div>
 				<div class="button-row">
 					<a class="button button-primary" href="#audit-form">Back to audit form</a>
-					<a class="button button-secondary" href="/templates">View Templates</a>
+					<a class="button button-secondary" href="/templates">Explore Live Demos</a>
 				</div>
 			</div>
 		</div>
@@ -186,10 +186,10 @@ const processSteps = [
 		const lead = heading?.nextElementSibling;
 		const eyebrow = heading?.previousElementSibling;
 
-		if (heading) heading.textContent = `Customize this ${category} website template.`;
-		if (eyebrow && eyebrow.classList.contains('eyebrow')) eyebrow.textContent = 'Template Customization';
+		if (heading) heading.textContent = `Customize this ${category} Website Foundation.`;
+		if (eyebrow && eyebrow.classList.contains('eyebrow')) eyebrow.textContent = 'Foundation Customization';
 		if (lead && lead.classList.contains('lead')) {
-			lead.textContent = 'Tell us about your practice, services, current website, and goals. We\u2019ll recommend how to adapt this template around your provider story, services, pricing model, and patient onboarding process.';
+			lead.textContent = 'Tell us about your practice, services, current website, and goals. We\u2019ll recommend how to adapt this Website Foundation around your provider story, services, pricing model, and patient onboarding process.';
 		}
 	})();
 </script>
