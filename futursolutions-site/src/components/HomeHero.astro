@@ -1,0 +1,335 @@
+---
+const stats = [
+	{ value: '5', label: 'Live demo websites' },
+	{ value: '24+', label: 'Page templates ready' },
+	{ value: '12+', label: 'Healthcare verticals' },
+];
+
+const tickerItems = [
+	'Solo & private practice',
+	'Med spas',
+	'Hormone / TRT clinics',
+	'Wellness clinics',
+	'Professional associations',
+	'High-trust local services',
+];
+---
+
+<section class="home-hero" aria-labelledby="homepage-heading">
+	<div class="home-hero__grid-bg" aria-hidden="true"></div>
+	<div class="home-hero__glow" aria-hidden="true"></div>
+
+	<div class="site-container site-container--wide home-hero__inner">
+		<a class="home-hero__kicker" href="/templates">
+			<span class="home-hero__kicker-dot" aria-hidden="true"></span>
+			<span class="home-hero__kicker-label">New</span>
+			<span class="home-hero__kicker-text">Lumen Health House — premium wellness clinic demo is live</span>
+			<span class="home-hero__kicker-arrow" aria-hidden="true">&rarr;</span>
+		</a>
+
+		<h1 id="homepage-heading" class="display-xl home-hero__headline">
+			Healthcare websites built like
+			<span class="home-hero__headline-accent">operational systems</span>,
+			not brochures.
+		</h1>
+
+		<p class="lead home-hero__lead">
+			FutureSolutions designs and ships industry-specific website Foundations, signature Custom websites, and the Growth Systems behind them — for clinics, associations, and high-trust service businesses.
+		</p>
+
+		<div class="home-hero__cta-row">
+			<a class="button button-primary home-hero__cta-primary" href="/templates">
+				Explore Live Demos
+				<span aria-hidden="true">&rarr;</span>
+			</a>
+			<a class="button button-secondary" href="/audit">Get a Website and Systems Audit</a>
+		</div>
+
+		<dl class="home-hero__stats" aria-label="At a glance">
+			{
+				stats.map((s) => (
+					<div class="home-hero__stat">
+						<dt class="home-hero__stat-value">{s.value}</dt>
+						<dd class="home-hero__stat-label">{s.label}</dd>
+					</div>
+				))
+			}
+		</dl>
+	</div>
+
+	<div class="home-hero__ticker" aria-label="Industries we serve">
+		<div class="home-hero__ticker-track">
+			{
+				[...tickerItems, ...tickerItems].map((item, i) => (
+					<span class="home-hero__ticker-item">
+						<span class="home-hero__ticker-bullet" aria-hidden="true">&bull;</span>
+						{item}
+					</span>
+				))
+			}
+		</div>
+	</div>
+</section>
+
+<style>
+	.home-hero {
+		position: relative;
+		overflow: hidden;
+		padding-top: clamp(4rem, 8vw, 6.5rem);
+		padding-bottom: 0;
+		background: linear-gradient(180deg, var(--color-white) 0%, var(--color-bg) 100%);
+	}
+
+	.home-hero__grid-bg {
+		position: absolute;
+		inset: 0;
+		pointer-events: none;
+		background-image: radial-gradient(rgba(15, 23, 42, 0.055) 1px, transparent 1px);
+		background-size: 32px 32px;
+		mask-image: radial-gradient(ellipse 70% 55% at 50% 35%, #000 35%, transparent 78%);
+		-webkit-mask-image: radial-gradient(ellipse 70% 55% at 50% 35%, #000 35%, transparent 78%);
+	}
+
+	.home-hero__glow {
+		position: absolute;
+		top: -10rem;
+		left: 50%;
+		width: 60rem;
+		height: 32rem;
+		pointer-events: none;
+		background: radial-gradient(ellipse at center, rgba(95, 143, 139, 0.16), transparent 60%);
+		transform: translateX(-50%);
+		filter: blur(20px);
+	}
+
+	.home-hero__inner {
+		position: relative;
+		display: grid;
+		justify-items: start;
+		padding-bottom: clamp(3.5rem, 6vw, 5.25rem);
+	}
+
+	.home-hero__kicker {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.55rem;
+		margin-bottom: 1.75rem;
+		padding: 0.4rem 0.9rem 0.4rem 0.55rem;
+		border: 1px solid var(--color-border);
+		border-radius: 999px;
+		background: rgba(255, 255, 255, 0.7);
+		backdrop-filter: blur(8px);
+		color: var(--color-text);
+		font-size: 0.8125rem;
+		font-weight: 500;
+		line-height: 1;
+		transition: border-color var(--transition-base), background-color var(--transition-base);
+	}
+
+	.home-hero__kicker:hover {
+		border-color: color-mix(in srgb, var(--color-text) 22%, var(--color-border));
+		background: var(--color-white);
+	}
+
+	.home-hero__kicker-dot {
+		display: inline-block;
+		width: 0.5rem;
+		height: 0.5rem;
+		border-radius: 999px;
+		background: var(--color-accent);
+		box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-accent) 18%, transparent);
+	}
+
+	.home-hero__kicker-label {
+		padding: 0.18rem 0.42rem;
+		border-radius: 999px;
+		background: var(--color-text);
+		color: var(--color-white);
+		font-size: 0.68rem;
+		font-weight: 700;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+	}
+
+	.home-hero__kicker-text {
+		color: var(--color-muted);
+	}
+
+	.home-hero__kicker:hover .home-hero__kicker-text {
+		color: var(--color-text);
+	}
+
+	.home-hero__kicker-arrow {
+		margin-left: 0.1rem;
+		color: var(--color-muted);
+		transition: transform 220ms var(--ease-out-quart);
+	}
+
+	.home-hero__kicker:hover .home-hero__kicker-arrow {
+		transform: translateX(2px);
+		color: var(--color-text);
+	}
+
+	.home-hero__headline {
+		margin-bottom: 1.5rem;
+		max-width: 18ch;
+	}
+
+	.home-hero__headline-accent {
+		display: inline;
+		background: linear-gradient(180deg, transparent 62%, color-mix(in srgb, var(--color-accent) 32%, transparent) 62%);
+		background-repeat: no-repeat;
+		padding-inline: 0.05em;
+	}
+
+	.home-hero__lead {
+		max-width: 56ch;
+		margin-bottom: 2.25rem;
+		font-size: clamp(1.125rem, 1.05rem + 0.4vw, 1.3125rem);
+		color: var(--color-muted);
+	}
+
+	.home-hero__cta-row {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.85rem;
+		align-items: center;
+		margin-bottom: 3.5rem;
+	}
+
+	.home-hero__cta-primary span {
+		display: inline-block;
+		transition: transform 220ms var(--ease-out-quart);
+	}
+
+	.home-hero__cta-primary:hover span {
+		transform: translateX(2px);
+	}
+
+	.home-hero__stats {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, auto));
+		gap: clamp(2rem, 5vw, 3.5rem);
+		margin: 0;
+	}
+
+	.home-hero__stat {
+		display: grid;
+		gap: 0.35rem;
+		padding-left: 1.1rem;
+		border-left: 2px solid var(--color-border);
+	}
+
+	.home-hero__stat-value {
+		color: var(--color-text);
+		font-size: clamp(1.85rem, 1.4rem + 1.6vw, 2.4rem);
+		font-weight: 700;
+		letter-spacing: -0.04em;
+		line-height: 1;
+		font-variant-numeric: tabular-nums;
+	}
+
+	.home-hero__stat-label {
+		margin: 0;
+		color: var(--color-muted);
+		font-size: 0.8125rem;
+		font-weight: 500;
+		letter-spacing: 0.01em;
+		line-height: 1.4;
+	}
+
+	.home-hero__ticker {
+		position: relative;
+		overflow: hidden;
+		padding-block: 1rem;
+		border-top: 1px solid var(--color-border-soft);
+		border-bottom: 1px solid var(--color-border-soft);
+		background: var(--color-white);
+	}
+
+	.home-hero__ticker::before,
+	.home-hero__ticker::after {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		z-index: 1;
+		width: 6rem;
+		pointer-events: none;
+		content: '';
+	}
+
+	.home-hero__ticker::before {
+		left: 0;
+		background: linear-gradient(90deg, var(--color-white), transparent);
+	}
+
+	.home-hero__ticker::after {
+		right: 0;
+		background: linear-gradient(-90deg, var(--color-white), transparent);
+	}
+
+	.home-hero__ticker-track {
+		display: flex;
+		align-items: center;
+		gap: 2.5rem;
+		width: max-content;
+		animation: ticker-slide 38s linear infinite;
+	}
+
+	.home-hero__ticker-item {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.9rem;
+		color: var(--color-muted);
+		font-size: 0.875rem;
+		font-weight: 500;
+		letter-spacing: -0.005em;
+		white-space: nowrap;
+	}
+
+	.home-hero__ticker-bullet {
+		color: var(--color-border);
+		font-size: 0.8rem;
+	}
+
+	@keyframes ticker-slide {
+		from { transform: translateX(0); }
+		to { transform: translateX(-50%); }
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.home-hero__ticker-track {
+			animation: none;
+		}
+	}
+
+	@media (max-width: 720px) {
+		.home-hero {
+			padding-top: 3.5rem;
+		}
+
+		.home-hero__kicker-text {
+			display: none;
+		}
+
+		.home-hero__stats {
+			grid-template-columns: 1fr;
+			gap: 1.25rem;
+		}
+
+		.home-hero__stat {
+			padding-left: 1rem;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.home-hero__cta-row {
+			flex-direction: column;
+			align-items: stretch;
+		}
+
+		.home-hero__cta-row .button {
+			justify-content: center;
+		}
+	}
+</style>
