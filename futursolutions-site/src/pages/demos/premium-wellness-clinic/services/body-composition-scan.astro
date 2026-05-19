@@ -91,6 +91,58 @@ import WellnessLayout from '../../../../layouts/WellnessLayout.astro';
 	</div>
 </section>
 
+<!-- ═══ Results Dashboard Visual — surface bg ═══ -->
+<section class="wh-section wh-section--surface sp-dashboard">
+	<div class="wh-container">
+		<div class="wh-section-header">
+			<p class="wh-eyebrow">Sample Results</p>
+			<h2>What your scan report looks like.</h2>
+		</div>
+		<div class="sp-dashboard__panel">
+			<div class="sp-dashboard__header">
+				<span class="sp-dashboard__title">Lumen Body Composition Report</span>
+				<span class="sp-dashboard__meta">Sample · Age 38 · Female</span>
+			</div>
+			<div class="sp-dashboard__grid">
+				<div class="sp-dashboard__metric">
+					<span class="sp-dashboard__label">Lean Mass</span>
+					<span class="sp-dashboard__value">104.2 lb</span>
+					<span class="sp-dashboard__bar" style="width:62%"></span>
+				</div>
+				<div class="sp-dashboard__metric">
+					<span class="sp-dashboard__label">Body Fat</span>
+					<span class="sp-dashboard__value">28.4%</span>
+					<span class="sp-dashboard__bar" style="width:48%"></span>
+				</div>
+				<div class="sp-dashboard__metric">
+					<span class="sp-dashboard__label">Visceral Fat</span>
+					<span class="sp-dashboard__value">Level 6</span>
+					<span class="sp-dashboard__bar" style="width:40%"></span>
+				</div>
+				<div class="sp-dashboard__metric">
+					<span class="sp-dashboard__label">Hydration</span>
+					<span class="sp-dashboard__value">56.8%</span>
+					<span class="sp-dashboard__bar" style="width:57%"></span>
+				</div>
+				<div class="sp-dashboard__metric">
+					<span class="sp-dashboard__label">BMR</span>
+					<span class="sp-dashboard__value">1,420 kcal</span>
+					<span class="sp-dashboard__bar" style="width:65%"></span>
+				</div>
+				<div class="sp-dashboard__metric">
+					<span class="sp-dashboard__label">Phase Angle</span>
+					<span class="sp-dashboard__value">5.8°</span>
+					<span class="sp-dashboard__bar" style="width:55%"></span>
+				</div>
+			</div>
+			<div class="sp-dashboard__footer">
+				Baseline scan — follow-up recommended in 90 days
+			</div>
+		</div>
+		<p class="sp-dashboard__disclaimer">Sample visual for demonstration only. Results vary and should be interpreted with provider guidance.</p>
+	</div>
+</section>
+
 <!-- ═══ Who It's For — surface bg, two-column ═══ -->
 <section class="wh-section wh-section--surface sp-who">
 	<div class="wh-container sp-who__split">
@@ -317,6 +369,20 @@ import WellnessLayout from '../../../../layouts/WellnessLayout.astro';
 /* ─── What It Is ─── */
 .sp-what__inner { max-width: 680px; }
 .sp-what__inner p { font-size: 0.95rem; line-height: 1.7; color: var(--wh-text); }
+
+/* ─── Results Dashboard ─── */
+.sp-dashboard__panel { background: var(--wh-ink); border-radius: var(--wh-radius); padding: 2rem; margin-top: 1.5rem; }
+.sp-dashboard__header { display: flex; justify-content: space-between; align-items: center; padding-bottom: 1.25rem; margin-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.08); }
+.sp-dashboard__title { font-size: 0.75rem; font-weight: 600; color: var(--wh-white); letter-spacing: 0.02em; }
+.sp-dashboard__meta { font-size: 0.65rem; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.08em; }
+.sp-dashboard__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.75rem; }
+.sp-dashboard__metric { display: flex; flex-direction: column; gap: 0.35rem; }
+.sp-dashboard__label { font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.4); }
+.sp-dashboard__value { font-size: 1.5rem; font-weight: 700; color: var(--wh-white); letter-spacing: -0.02em; }
+.sp-dashboard__bar { display: block; height: 4px; border-radius: 2px; background: var(--wh-sage); margin-top: 0.25rem; }
+.sp-dashboard__footer { margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid rgba(255,255,255,0.08); font-size: 0.7rem; color: rgba(255,255,255,0.4); text-align: center; }
+.sp-dashboard__disclaimer { font-size: 0.75rem; color: var(--wh-muted); margin-top: 1rem; text-align: center; }
+@media (max-width: 600px) { .sp-dashboard__grid { grid-template-columns: repeat(2, 1fr); gap: 1.25rem; } .sp-dashboard__header { flex-direction: column; align-items: flex-start; gap: 0.35rem; } }
 
 /* ─── Who It's For ─── */
 .sp-who__split { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 4vw, 4rem); }

@@ -40,6 +40,36 @@ import { testimonials, brand } from '../../../data/wellness';
 	</div>
 </section>
 
+<!-- ─── Why Clients Choose Lumen ─── -->
+<section class="wh-section rv-proof">
+	<div class="wh-container">
+		<p class="wh-eyebrow">The Lumen Difference</p>
+		<h2>Why clients choose Lumen.</h2>
+		<div class="rv-proof__grid">
+			<div class="rv-proof__card">
+				<span class="rv-proof__icon">&#9670;</span>
+				<h3>Clear explanations</h3>
+				<p>Providers explain every option, every test, and every recommendation in plain language.</p>
+			</div>
+			<div class="rv-proof__card">
+				<span class="rv-proof__icon">&#9670;</span>
+				<h3>No pressure</h3>
+				<p>You'll never be upsold. Your provider recommends what fits your goals — nothing more.</p>
+			</div>
+			<div class="rv-proof__card">
+				<span class="rv-proof__icon">&#9670;</span>
+				<h3>Easy booking</h3>
+				<p>Straightforward scheduling, minimal wait times, and a process designed around your convenience.</p>
+			</div>
+			<div class="rv-proof__card">
+				<span class="rv-proof__icon">&#9670;</span>
+				<h3>Ongoing guidance</h3>
+				<p>Wellness isn't a single visit. Your team stays with you — adjusting, tracking, and refining your plan.</p>
+			</div>
+		</div>
+	</div>
+</section>
+
 <!-- ─── Disclaimer ─── -->
 <section class="rv-disclaimer-section">
 	<div class="wh-container">
@@ -88,6 +118,16 @@ import { testimonials, brand } from '../../../data/wellness';
 .rv-reviews__quote strong { font-size: 0.78rem; font-style: normal; color: var(--wh-ink); }
 .rv-reviews__quote span { font-size: 0.65rem; font-style: normal; color: var(--wh-sage); font-weight: 500; }
 @media (max-width: 600px) { .rv-reviews__layout { grid-template-columns: 1fr; } }
+
+/* ─── Why Clients Choose Lumen: proof cards ─── */
+.rv-proof h2 { max-width: 400px; margin-bottom: 2.5rem; }
+.rv-proof__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+.rv-proof__card { padding: 1.5rem; border: 1px solid var(--wh-border); border-radius: var(--wh-radius); }
+.rv-proof__icon { display: block; font-size: 0.6rem; color: var(--wh-sage); margin-bottom: 0.75rem; }
+.rv-proof__card h3 { font-size: 0.9rem; margin-bottom: 0.4rem; }
+.rv-proof__card p { font-size: 0.8rem; color: var(--wh-muted); line-height: 1.6; }
+@media (max-width: 768px) { .rv-proof__grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 480px) { .rv-proof__grid { grid-template-columns: 1fr; } }
 
 /* ─── Disclaimer ─── */
 .rv-disclaimer-section { padding: clamp(1.5rem, 3vw, 2.5rem) 0; }

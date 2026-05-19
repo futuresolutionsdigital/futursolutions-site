@@ -91,6 +91,42 @@ import WellnessLayout from '../../../../layouts/WellnessLayout.astro';
 	</div>
 </section>
 
+<!-- ═══ Protocol Visual — default bg ═══ -->
+<section class="wh-section sp-protocol">
+	<div class="wh-container">
+		<div class="wh-section-header">
+			<p class="wh-eyebrow">Your Session</p>
+			<h2>A typical contrast therapy protocol.</h2>
+		</div>
+		<div class="sp-protocol__flow">
+			<div class="sp-protocol__phase sp-protocol__phase--stone">
+				<span class="sp-protocol__circle">01</span>
+				<span class="sp-protocol__name">Heat</span>
+				<span class="sp-protocol__desc">Infrared sauna · 15–20 min</span>
+			</div>
+			<div class="sp-protocol__line"></div>
+			<div class="sp-protocol__phase sp-protocol__phase--sage">
+				<span class="sp-protocol__circle">02</span>
+				<span class="sp-protocol__name">Cold</span>
+				<span class="sp-protocol__desc">Cold plunge · 3–5 min</span>
+			</div>
+			<div class="sp-protocol__line"></div>
+			<div class="sp-protocol__phase sp-protocol__phase--muted">
+				<span class="sp-protocol__circle">03</span>
+				<span class="sp-protocol__name">Rest</span>
+				<span class="sp-protocol__desc">Rest & hydrate · 5–10 min</span>
+			</div>
+			<div class="sp-protocol__line"></div>
+			<div class="sp-protocol__phase sp-protocol__phase--sage">
+				<span class="sp-protocol__circle">04</span>
+				<span class="sp-protocol__name">Repeat</span>
+				<span class="sp-protocol__desc">2–3 rounds total</span>
+			</div>
+		</div>
+		<p class="sp-protocol__note">Sessions can be customized based on your tolerance and recovery goals. Your wellness team adjusts the protocol as you progress.</p>
+	</div>
+</section>
+
 <!-- ═══ Who It's For — surface bg, two-column ═══ -->
 <section class="wh-section wh-section--surface sp-who">
 	<div class="wh-container sp-who__split">
@@ -311,6 +347,23 @@ import WellnessLayout from '../../../../layouts/WellnessLayout.astro';
 /* ─── What It Is ─── */
 .sp-what__inner { max-width: 680px; }
 .sp-what__inner p { font-size: 0.95rem; line-height: 1.7; color: var(--wh-text); }
+
+/* ─── Protocol Visual ─── */
+.sp-protocol__flow { display: flex; align-items: center; justify-content: center; gap: 0; margin-top: 2rem; }
+.sp-protocol__phase { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; text-align: center; min-width: 120px; }
+.sp-protocol__circle { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.05em; color: var(--wh-white); }
+.sp-protocol__phase--stone .sp-protocol__circle { background: var(--wh-stone); }
+.sp-protocol__phase--sage .sp-protocol__circle { background: var(--wh-sage); }
+.sp-protocol__phase--muted .sp-protocol__circle { background: var(--wh-muted); }
+.sp-protocol__name { font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em; color: var(--wh-ink); }
+.sp-protocol__desc { font-size: 0.75rem; color: var(--wh-muted); max-width: 140px; line-height: 1.4; }
+.sp-protocol__line { width: 48px; height: 1px; background: var(--wh-border-strong); flex-shrink: 0; margin-bottom: 2rem; }
+.sp-protocol__note { font-size: 0.82rem; color: var(--wh-muted); text-align: center; max-width: 560px; margin: 2rem auto 0; line-height: 1.6; }
+@media (max-width: 600px) {
+	.sp-protocol__flow { flex-direction: column; align-items: center; gap: 0; }
+	.sp-protocol__line { width: 1px; height: 32px; margin-bottom: 0; }
+	.sp-protocol__phase { min-width: auto; }
+}
 
 /* ─── Who It's For ─── */
 .sp-who__split { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 4vw, 4rem); }

@@ -34,6 +34,31 @@ import { providers, brand } from '../../../data/wellness';
 	</div>
 </section>
 
+<!-- ─── Care Philosophy ─── -->
+<section class="wh-section wh-section--surface pv-philosophy">
+	<div class="wh-container">
+		<p class="wh-eyebrow">Care Philosophy</p>
+		<h2>How our providers work.</h2>
+		<div class="pv-philosophy__grid">
+			<div class="pv-philosophy__item">
+				<span class="pv-philosophy__num">01</span>
+				<h3>Listen first</h3>
+				<p>Every plan starts with a genuine conversation. Your goals, concerns, and history matter more than a checklist.</p>
+			</div>
+			<div class="pv-philosophy__item">
+				<span class="pv-philosophy__num">02</span>
+				<h3>Test when it matters</h3>
+				<p>We use labs and diagnostics to inform decisions — not to sell services. Data supports the plan, not the other way around.</p>
+			</div>
+			<div class="pv-philosophy__item">
+				<span class="pv-philosophy__num">03</span>
+				<h3>Guide with clarity</h3>
+				<p>Your provider explains your options honestly — what's likely to help, what isn't necessary, and what you can expect.</p>
+			</div>
+		</div>
+	</div>
+</section>
+
 <!-- ─── Clinical Oversight ─── -->
 <section class="wh-section wh-section--sage pv-oversight">
 	<div class="wh-container">
@@ -96,6 +121,15 @@ import { providers, brand } from '../../../data/wellness';
 .pv-team__bio { font-size: 0.88rem; color: var(--wh-muted); line-height: 1.7; }
 .pv-team__note { margin-top: 1.5rem; font-size: 0.72rem; color: var(--wh-muted); font-style: italic; }
 @media (max-width: 600px) { .pv-team__profile { flex-direction: column; gap: 0.75rem; } }
+
+/* ─── Care Philosophy: surface bg, three columns ─── */
+.pv-philosophy h2 { max-width: 400px; margin-bottom: 2.5rem; }
+.pv-philosophy__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+.pv-philosophy__item { padding: 1.5rem; border: 1px solid var(--wh-border); border-radius: var(--wh-radius); }
+.pv-philosophy__num { display: block; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; color: var(--wh-sage); margin-bottom: 0.75rem; }
+.pv-philosophy__item h3 { font-size: 0.95rem; margin-bottom: 0.5rem; }
+.pv-philosophy__item p { font-size: 0.82rem; color: var(--wh-muted); line-height: 1.65; }
+@media (max-width: 700px) { .pv-philosophy__grid { grid-template-columns: 1fr; } }
 
 /* ─── Clinical Oversight: sage bg, split layout ─── */
 .pv-oversight__split { display: grid; grid-template-columns: 1fr 1.3fr; gap: clamp(3rem, 5vw, 5rem); align-items: start; }

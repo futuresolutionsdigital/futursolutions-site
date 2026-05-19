@@ -91,6 +91,69 @@ import WellnessLayout from '../../../../layouts/WellnessLayout.astro';
 	</div>
 </section>
 
+<!-- ═══ Lab Review Pathway — surface bg, vertical timeline ═══ -->
+<section class="wh-section wh-section--surface sp-labpath">
+	<div class="wh-container">
+		<div class="wh-section-header">
+			<p class="wh-eyebrow">Your Optimization Path</p>
+			<h2>From symptoms to a provider-guided plan.</h2>
+		</div>
+		<div class="sp-labpath__timeline">
+			<div class="sp-labpath__step">
+				<div class="sp-labpath__marker">
+					<span class="sp-labpath__num">01</span>
+					<span class="sp-labpath__dot"></span>
+				</div>
+				<div class="sp-labpath__body">
+					<h3>Symptoms &amp; Goals</h3>
+					<p>Discuss what you're experiencing — fatigue, mood changes, low drive, metabolic shifts</p>
+				</div>
+			</div>
+			<div class="sp-labpath__step">
+				<div class="sp-labpath__marker">
+					<span class="sp-labpath__num">02</span>
+					<span class="sp-labpath__dot"></span>
+				</div>
+				<div class="sp-labpath__body">
+					<h3>Comprehensive Labs</h3>
+					<p>Full hormone panel: testosterone, estrogen, thyroid, cortisol, DHEA, and metabolic markers</p>
+				</div>
+			</div>
+			<div class="sp-labpath__step">
+				<div class="sp-labpath__marker">
+					<span class="sp-labpath__num">03</span>
+					<span class="sp-labpath__dot"></span>
+				</div>
+				<div class="sp-labpath__body">
+					<h3>Provider Review</h3>
+					<p>Detailed clinical interpretation of your results in context of your history and goals</p>
+				</div>
+			</div>
+			<div class="sp-labpath__step">
+				<div class="sp-labpath__marker">
+					<span class="sp-labpath__num">04</span>
+					<span class="sp-labpath__dot"></span>
+				</div>
+				<div class="sp-labpath__body">
+					<h3>Protocol Options</h3>
+					<p>If appropriate, your provider discusses optimization approaches — bioidentical, peptide, or lifestyle-first</p>
+				</div>
+			</div>
+			<div class="sp-labpath__step">
+				<div class="sp-labpath__marker">
+					<span class="sp-labpath__num">05</span>
+					<span class="sp-labpath__dot"></span>
+				</div>
+				<div class="sp-labpath__body">
+					<h3>Monitoring</h3>
+					<p>Follow-up labs at 90 days, ongoing adjustments, and regular provider check-ins</p>
+				</div>
+			</div>
+		</div>
+		<p class="sp-labpath__note"><em>Hormone optimization requires clinical eligibility. Not all clients are candidates for hormone therapy. Your provider will only recommend a protocol if supported by labs, symptoms, and health history.</em></p>
+	</div>
+</section>
+
 <!-- ═══ Who It's For — surface bg, two-column ═══ -->
 <section class="wh-section wh-section--surface sp-who">
 	<div class="wh-container sp-who__split">
@@ -313,6 +376,19 @@ import WellnessLayout from '../../../../layouts/WellnessLayout.astro';
 /* ─── What It Is ─── */
 .sp-what__inner { max-width: 680px; }
 .sp-what__inner p { font-size: 0.95rem; line-height: 1.7; color: var(--wh-text); }
+
+/* ─── Lab Pathway: vertical timeline ─── */
+.sp-labpath__timeline { max-width: 600px; margin-top: 2rem; position: relative; }
+.sp-labpath__step { display: flex; gap: 1.25rem; position: relative; padding-bottom: 2rem; }
+.sp-labpath__step:last-child { padding-bottom: 0; }
+.sp-labpath__marker { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; position: relative; width: 2rem; }
+.sp-labpath__num { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.05em; color: var(--wh-sage); margin-bottom: 0.4rem; }
+.sp-labpath__dot { width: 10px; height: 10px; border-radius: 50%; border: 2px solid var(--wh-sage); background: var(--wh-surface); flex-shrink: 0; position: relative; z-index: 1; }
+.sp-labpath__step:not(:last-child) .sp-labpath__marker::after { content: ''; position: absolute; top: calc(0.6rem + 0.4rem + 10px); left: 50%; transform: translateX(-50%); width: 1px; height: calc(100% - 0.6rem - 0.4rem - 10px + 2rem); background: var(--wh-border-strong); }
+.sp-labpath__body { padding-top: 0.1rem; }
+.sp-labpath__body h3 { font-size: 0.9rem; font-weight: 600; color: var(--wh-ink); margin-bottom: 0.2rem; }
+.sp-labpath__body p { font-size: 0.82rem; color: var(--wh-muted); line-height: 1.6; }
+.sp-labpath__note { font-size: 0.78rem; color: var(--wh-muted); margin-top: 2.5rem; max-width: 600px; line-height: 1.6; }
 
 /* ─── Who It's For ─── */
 .sp-who__split { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 4vw, 4rem); }

@@ -60,6 +60,51 @@ const articleContent: Record<string, { intro: string; body: string; closing: str
 };
 
 const content = articleContent[article.slug];
+
+const articleMeta: Record<string, { readingTime: string; takeaways: string[]; relatedService: { label: string; href: string } }> = {
+	'first-iv-therapy-visit': {
+		readingTime: '3 min read',
+		takeaways: ['No consultation required for most IV protocols', 'Sessions take 30–60 minutes in a private room', 'Hydrate well before and after your session'],
+		relatedService: { label: 'IV Therapy', href: '/demos/premium-wellness-clinic/services/iv-therapy' },
+	},
+	'sauna-vs-cold-plunge-vs-contrast': {
+		readingTime: '4 min read',
+		takeaways: ['Sauna focuses on relaxation and detox', 'Cold plunge targets inflammation and mood', 'Contrast therapy combines both for maximum recovery'],
+		relatedService: { label: 'Contrast Therapy', href: '/demos/premium-wellness-clinic/services/contrast-therapy' },
+	},
+	'body-composition-scans-weight-loss': {
+		readingTime: '3 min read',
+		takeaways: ['Scans differentiate fat, muscle, and water changes', 'More accurate than a scale for tracking progress', 'Most clients scan monthly or quarterly'],
+		relatedService: { label: 'Body Composition Scan', href: '/demos/premium-wellness-clinic/services/body-composition-scan' },
+	},
+	'is-medical-weight-loss-right': {
+		readingTime: '4 min read',
+		takeaways: ['Designed for people who want clinical support', 'Starts with labs and a provider consultation', 'A wellness consultation is the best first step'],
+		relatedService: { label: 'Medical Weight Loss', href: '/demos/premium-wellness-clinic/services/medical-weight-loss' },
+	},
+	'services-requiring-consultation': {
+		readingTime: '2 min read',
+		takeaways: ['Hormone, weight loss, and peptide services require consultation', 'IV therapy, recovery, and scans can be booked directly', 'A wellness consultation covers all services'],
+		relatedService: { label: 'New Client Guide', href: '/demos/premium-wellness-clinic/new-clients' },
+	},
+	'recovery-therapy-frequency': {
+		readingTime: '3 min read',
+		takeaways: ['Contrast therapy: 1–3x per week for active recovery', 'Consistency matters more than intensity', 'Your provider can help build a schedule'],
+		relatedService: { label: 'Contrast Therapy', href: '/demos/premium-wellness-clinic/services/contrast-therapy' },
+	},
+	'before-hormone-optimization': {
+		readingTime: '4 min read',
+		takeaways: ['Starts with a comprehensive hormone panel', 'Not everyone needs hormone therapy', 'Protocols are only recommended when supported by labs'],
+		relatedService: { label: 'Hormone Optimization', href: '/demos/premium-wellness-clinic/services/hormone-optimization' },
+	},
+	'how-memberships-work': {
+		readingTime: '3 min read',
+		takeaways: ['Three tiers: Recover, Optimize, and Longevity', 'Monthly credits, priority booking, and discounts', 'Memberships are optional — not required to visit'],
+		relatedService: { label: 'View Memberships', href: '/demos/premium-wellness-clinic/memberships' },
+	},
+};
+
+const meta = articleMeta[article.slug];
 ---
 
 <WellnessLayout title={`${article.title} — Lumen Health House`} description={`${content.intro.slice(0, 155)}…`}>
@@ -69,6 +114,25 @@ const content = articleContent[article.slug];
 	<div class="wh-container">
 		<p class="wh-eyebrow">{article.category}</p>
 		<h1>{article.title}</h1>
+		<div class="ra-hero__meta">
+			<span class="ra-hero__time">{meta.readingTime}</span>
+			<span class="ra-hero__sep">&middot;</span>
+			<span class="ra-hero__cat">Lumen Health House Resources</span>
+		</div>
+	</div>
+</section>
+
+<!-- ─── Key Takeaways ─── -->
+<section class="wh-section wh-section--surface ra-takeaways">
+	<div class="wh-container">
+		<div class="ra-takeaways__box">
+			<h2 class="ra-takeaways__heading">Key Takeaways</h2>
+			<ul class="ra-takeaways__list">
+				{meta.takeaways.map((t) => (
+					<li>{t}</li>
+				))}
+			</ul>
+		</div>
 	</div>
 </section>
 
@@ -79,7 +143,11 @@ const content = articleContent[article.slug];
 			<p>{content.intro}</p>
 			<p>{content.body}</p>
 			<p>{content.closing}</p>
-			<p class="ra-content__note">This is a preview. Full article content would appear here.</p>
+			<p class="ra-content__note">This is a preview article for demonstration purposes. In a live implementation, this page would contain a full-length educational guide with additional sections, clinical references, and multimedia content.</p>
+		</div>
+		<div class="ra-content__service-cta">
+			<span class="ra-content__service-label">Related Service</span>
+			<a class="wh-btn wh-btn--secondary" href={meta.relatedService.href}>{meta.relatedService.label} &rarr;</a>
 		</div>
 		<div class="ra-content__back">
 			<a class="wh-text-link" href="/demos/premium-wellness-clinic/resources">&larr; Back to all resources</a>
@@ -132,6 +200,17 @@ const content = articleContent[article.slug];
 /* ─── Hero (compact) ─── */
 .ra-hero { padding-top: clamp(4rem, 8vw, 7rem); padding-bottom: clamp(2rem, 4vw, 3.5rem); }
 .ra-hero h1 { max-width: 600px; font-size: clamp(1.5rem, 3vw, 2.25rem); }
+.ra-hero__meta { display: flex; align-items: center; gap: 0.5rem; margin-top: 1rem; }
+.ra-hero__time { font-size: 0.72rem; font-weight: 600; color: var(--wh-sage); }
+.ra-hero__sep { color: rgba(255,255,255,0.2); font-size: 0.6rem; }
+.ra-hero__cat { font-size: 0.68rem; color: rgba(255,255,255,0.4); }
+
+/* ─── Key Takeaways ─── */
+.ra-takeaways__box { max-width: 640px; padding: 1.5rem; border-left: 3px solid var(--wh-sage); }
+.ra-takeaways__heading { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--wh-sage); margin-bottom: 0.75rem; }
+.ra-takeaways__list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.5rem; }
+.ra-takeaways__list li { font-size: 0.88rem; color: var(--wh-text); line-height: 1.5; padding-left: 1rem; position: relative; }
+.ra-takeaways__list li::before { content: '—'; position: absolute; left: 0; color: var(--wh-muted); }
 
 /* ─── Article Content ─── */
 .ra-content__body {
@@ -150,6 +229,24 @@ const content = articleContent[article.slug];
 	border-left: 2px solid var(--wh-border);
 	padding-left: 1rem;
 	margin-top: 1.5rem;
+}
+.ra-content__service-cta {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	margin-top: 2rem;
+	padding: 1.25rem;
+	background: var(--wh-surface);
+	border-radius: var(--wh-radius);
+	max-width: 640px;
+}
+.ra-content__service-label {
+	font-size: 0.62rem;
+	font-weight: 700;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	color: var(--wh-muted);
+	white-space: nowrap;
 }
 .ra-content__back {
 	margin-top: 2.5rem;

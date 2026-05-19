@@ -91,6 +91,44 @@ import WellnessLayout from '../../../../layouts/WellnessLayout.astro';
 	</div>
 </section>
 
+<!-- ═══ Clinical Pathway — surface bg, horizontal steps ═══ -->
+<section class="wh-section wh-section--surface sp-pathway">
+	<div class="wh-container">
+		<div class="wh-section-header">
+			<p class="wh-eyebrow">Your Weight Loss Pathway</p>
+			<h2>A structured, provider-guided process.</h2>
+		</div>
+		<div class="sp-pathway__track">
+			<div class="sp-pathway__step">
+				<div class="sp-pathway__circle">01</div>
+				<h3 class="sp-pathway__title">Consultation</h3>
+				<p class="sp-pathway__desc">Health history, goals, initial assessment</p>
+			</div>
+			<div class="sp-pathway__step">
+				<div class="sp-pathway__circle">02</div>
+				<h3 class="sp-pathway__title">Baseline</h3>
+				<p class="sp-pathway__desc">Labs, body scan, metabolic analysis</p>
+			</div>
+			<div class="sp-pathway__step">
+				<div class="sp-pathway__circle">03</div>
+				<h3 class="sp-pathway__title">Personalized Plan</h3>
+				<p class="sp-pathway__desc">Nutrition, medication evaluation, targets</p>
+			</div>
+			<div class="sp-pathway__step">
+				<div class="sp-pathway__circle">04</div>
+				<h3 class="sp-pathway__title">Active Phase</h3>
+				<p class="sp-pathway__desc">Monthly check-ins, adjustments, support</p>
+			</div>
+			<div class="sp-pathway__step">
+				<div class="sp-pathway__circle">05</div>
+				<h3 class="sp-pathway__title">Progress Review</h3>
+				<p class="sp-pathway__desc">Follow-up scans, lab comparison, plan refinement</p>
+			</div>
+		</div>
+		<p class="sp-pathway__note">Every pathway is personalized. Your provider adjusts the plan based on your progress, labs, and goals. No guaranteed outcomes.</p>
+	</div>
+</section>
+
 <!-- ═══ Who It's For — surface bg, two-column ═══ -->
 <section class="wh-section wh-section--surface sp-who">
 	<div class="wh-container sp-who__split">
@@ -313,6 +351,24 @@ import WellnessLayout from '../../../../layouts/WellnessLayout.astro';
 /* ─── What It Is ─── */
 .sp-what__inner { max-width: 680px; }
 .sp-what__inner p { font-size: 0.95rem; line-height: 1.7; color: var(--wh-text); }
+
+/* ─── Pathway: horizontal connected steps ─── */
+.sp-pathway__track { display: flex; align-items: flex-start; position: relative; gap: 0; margin-top: 2rem; }
+.sp-pathway__step { flex: 1; display: flex; flex-direction: column; align-items: center; text-align: center; position: relative; }
+.sp-pathway__circle { width: 32px; height: 32px; border-radius: 50%; border: 2px solid var(--wh-sage); background: var(--wh-surface); display: flex; align-items: center; justify-content: center; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.05em; color: var(--wh-sage); position: relative; z-index: 1; flex-shrink: 0; }
+.sp-pathway__step:not(:last-child)::after { content: ''; position: absolute; top: 16px; left: calc(50% + 16px); width: calc(100% - 32px); height: 1px; background: var(--wh-border-strong); }
+.sp-pathway__title { font-size: 0.85rem; font-weight: 600; color: var(--wh-ink); margin-top: 0.75rem; margin-bottom: 0.25rem; }
+.sp-pathway__desc { font-size: 0.78rem; color: var(--wh-muted); line-height: 1.5; max-width: 160px; }
+.sp-pathway__note { font-size: 0.78rem; color: var(--wh-muted); margin-top: 2.5rem; text-align: center; max-width: 640px; margin-inline: auto; line-height: 1.6; }
+@media (max-width: 700px) {
+	.sp-pathway__track { flex-direction: column; align-items: flex-start; gap: 0; }
+	.sp-pathway__step { flex-direction: row; align-items: flex-start; text-align: left; gap: 1rem; padding-bottom: 1.5rem; }
+	.sp-pathway__step:last-child { padding-bottom: 0; }
+	.sp-pathway__step:not(:last-child)::after { top: 32px; left: 15px; width: 1px; height: calc(100% - 32px); }
+	.sp-pathway__desc { max-width: none; }
+	.sp-pathway__title { margin-top: 0; }
+	.sp-pathway__note { text-align: left; }
+}
 
 /* ─── Who It's For ─── */
 .sp-who__split { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 4vw, 4rem); }

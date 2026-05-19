@@ -81,6 +81,49 @@ import WellnessLayout from '../../../../layouts/WellnessLayout.astro';
 	</div>
 </section>
 
+<!-- ═══ Popular IV Goals — surface bg ═══ -->
+<section class="wh-section wh-section--surface sp-goals">
+	<div class="wh-container">
+		<div class="wh-section-header">
+			<p class="wh-eyebrow">Choose Your Focus</p>
+			<h2>Popular IV therapy goals.</h2>
+		</div>
+		<div class="sp-goals__grid">
+			<div class="sp-goals__card">
+				<span class="sp-goals__dot sp-goals__dot--sage"></span>
+				<h3>Energy & Focus</h3>
+				<p>B-complex, B12, magnesium, taurine</p>
+			</div>
+			<div class="sp-goals__card">
+				<span class="sp-goals__dot sp-goals__dot--stone"></span>
+				<h3>Recovery & Performance</h3>
+				<p>Amino acids, electrolytes, vitamin C, zinc</p>
+			</div>
+			<div class="sp-goals__card">
+				<span class="sp-goals__dot sp-goals__dot--sage"></span>
+				<h3>Immune Defense</h3>
+				<p>High-dose vitamin C, zinc, glutathione, selenium</p>
+			</div>
+			<div class="sp-goals__card">
+				<span class="sp-goals__dot sp-goals__dot--stone"></span>
+				<h3>Hydration Reset</h3>
+				<p>Saline, electrolytes, B-vitamins, magnesium</p>
+			</div>
+			<div class="sp-goals__card">
+				<span class="sp-goals__dot sp-goals__dot--sage"></span>
+				<h3>Skin & Glow</h3>
+				<p>Glutathione, biotin, vitamin C, collagen support</p>
+			</div>
+			<div class="sp-goals__card">
+				<span class="sp-goals__dot sp-goals__dot--stone"></span>
+				<h3>Hangover Relief</h3>
+				<p>Anti-nausea, B-complex, electrolytes, hydration</p>
+			</div>
+		</div>
+		<p class="sp-goals__note">Your IV specialist customizes each drip based on your goals. Custom blends and add-ons are available.</p>
+	</div>
+</section>
+
 <!-- ═══ What It Is — default bg, editorial prose ═══ -->
 <section class="wh-section sp-what">
 	<div class="wh-container sp-what__inner">
@@ -310,6 +353,17 @@ import WellnessLayout from '../../../../layouts/WellnessLayout.astro';
 .sp-benefits__num { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; color: var(--wh-sage); padding-top: 0.15rem; flex-shrink: 0; min-width: 1.5rem; }
 .sp-benefits__item h3 { font-size: 0.9rem; margin-bottom: 0.2rem; }
 .sp-benefits__item p { font-size: 0.82rem; color: var(--wh-muted); }
+
+/* ─── IV Goals Module ─── */
+.sp-goals__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 1.5rem; }
+.sp-goals__card { background: var(--wh-white); border: 1px solid var(--wh-border-strong); border-radius: var(--wh-radius); padding: 1.25rem; position: relative; }
+.sp-goals__card h3 { font-size: 0.88rem; color: var(--wh-ink); margin-bottom: 0.35rem; }
+.sp-goals__card p { font-size: 0.75rem; color: var(--wh-muted); line-height: 1.5; margin: 0; }
+.sp-goals__dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; margin-bottom: 0.6rem; }
+.sp-goals__dot--sage { background: var(--wh-sage); }
+.sp-goals__dot--stone { background: var(--wh-stone); }
+.sp-goals__note { font-size: 0.82rem; color: var(--wh-muted); text-align: center; max-width: 560px; margin: 1.75rem auto 0; line-height: 1.6; }
+@media (max-width: 600px) { .sp-goals__grid { grid-template-columns: 1fr; } }
 
 /* ─── What It Is ─── */
 .sp-what__inner { max-width: 680px; }
