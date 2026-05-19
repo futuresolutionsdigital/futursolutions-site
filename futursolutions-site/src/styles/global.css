@@ -48,6 +48,29 @@
 	--shadow-card: 0 18px 45px rgba(15, 23, 42, 0.05);
 	--shadow-card-hover: 0 28px 60px rgba(15, 23, 42, 0.08);
 	--shadow-lift: 0 36px 80px rgba(15, 23, 42, 0.10);
+
+	/* Lane accents — used for color-coded offer categories.
+	   Sage = Foundations · Slate = Custom · Blue = Growth ·
+	   Sand = Audit · Mineral = Care. */
+	--lane-foundation: #5F8F8B;
+	--lane-foundation-tint: #EAF2F1;
+	--lane-foundation-ink: #3F6764;
+
+	--lane-custom: #1F2937;
+	--lane-custom-tint: #ECEEF2;
+	--lane-custom-ink: #0F172A;
+
+	--lane-growth: #4F7CAC;
+	--lane-growth-tint: #EAF1F8;
+	--lane-growth-ink: #325883;
+
+	--lane-audit: #C6996A;
+	--lane-audit-tint: #F7EFE3;
+	--lane-audit-ink: #8C6536;
+
+	--lane-care: #8B9AA6;
+	--lane-care-tint: #EEF1F4;
+	--lane-care-ink: #5E6B77;
 }
 
 *,
@@ -406,6 +429,101 @@ p:last-child {
 .dot-grid--ink {
 	background-image: radial-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px);
 }
+
+/* ─── Lane accent system ───────────────────────────────────────────
+   Apply color-coded treatments to cards, chips, icon badges, and
+   top-borders based on the lane category of an element. */
+
+.lane-tag {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.4rem;
+	padding: 0.32rem 0.6rem;
+	border-radius: 999px;
+	font-size: 0.7rem;
+	font-weight: 700;
+	letter-spacing: 0.1em;
+	line-height: 1;
+	text-transform: uppercase;
+	white-space: nowrap;
+}
+
+.lane-tag::before {
+	content: '';
+	width: 0.42rem;
+	height: 0.42rem;
+	border-radius: 999px;
+	background: currentColor;
+}
+
+.lane-tag--foundation { background: var(--lane-foundation-tint); color: var(--lane-foundation-ink); }
+.lane-tag--custom     { background: var(--lane-custom-tint);     color: var(--lane-custom-ink); }
+.lane-tag--growth     { background: var(--lane-growth-tint);     color: var(--lane-growth-ink); }
+.lane-tag--audit      { background: var(--lane-audit-tint);      color: var(--lane-audit-ink); }
+.lane-tag--care       { background: var(--lane-care-tint);       color: var(--lane-care-ink); }
+
+/* Solid lane chip — for stronger emphasis (e.g. badge on a card) */
+.lane-chip {
+	display: inline-flex;
+	align-items: center;
+	padding: 0.22rem 0.55rem;
+	border-radius: 999px;
+	color: var(--color-white);
+	font-size: 0.68rem;
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	line-height: 1;
+	text-transform: uppercase;
+}
+
+.lane-chip--foundation { background: var(--lane-foundation); }
+.lane-chip--custom     { background: var(--lane-custom); }
+.lane-chip--growth     { background: var(--lane-growth); }
+.lane-chip--audit      { background: var(--lane-audit); }
+.lane-chip--care       { background: var(--lane-care); }
+
+/* Top accent bar — for cards that want a single colored edge */
+.lane-accent-top {
+	position: relative;
+}
+
+.lane-accent-top::before {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 3px;
+	border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+	content: '';
+}
+
+.lane-accent-top--foundation::before { background: var(--lane-foundation); }
+.lane-accent-top--custom::before     { background: var(--lane-custom); }
+.lane-accent-top--growth::before     { background: var(--lane-growth); }
+.lane-accent-top--audit::before      { background: var(--lane-audit); }
+.lane-accent-top--care::before       { background: var(--lane-care); }
+
+/* Icon badge with lane tint */
+.lane-icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 2.5rem;
+	height: 2.5rem;
+	border-radius: 12px;
+	flex-shrink: 0;
+}
+
+.lane-icon svg {
+	width: 1.2rem;
+	height: 1.2rem;
+}
+
+.lane-icon--foundation { background: var(--lane-foundation-tint); color: var(--lane-foundation-ink); }
+.lane-icon--custom     { background: var(--lane-custom-tint);     color: var(--lane-custom-ink); }
+.lane-icon--growth     { background: var(--lane-growth-tint);     color: var(--lane-growth-ink); }
+.lane-icon--audit      { background: var(--lane-audit-tint);      color: var(--lane-audit-ink); }
+.lane-icon--care       { background: var(--lane-care-tint);       color: var(--lane-care-ink); }
 
 @media (prefers-reduced-motion: reduce) {
 	*,
