@@ -1,0 +1,215 @@
+---
+const promises = [
+	{
+		icon: 'shield',
+		title: 'Healthcare-aware',
+		text: 'Pages designed around HIPAA-aware practices, accessibility, and the regulatory tone clinical buyers expect.',
+	},
+	{
+		icon: 'target',
+		title: 'Conversion-first',
+		text: 'Every page is structured around the questions visitors actually need answered before they book.',
+	},
+	{
+		icon: 'link',
+		title: 'CRM-connected',
+		text: 'Forms, calendars, and follow-up are wired into your GoHighLevel system on launch day — not bolted on later.',
+	},
+	{
+		icon: 'gauge',
+		title: 'Lighthouse-grade',
+		text: 'Static-first Astro builds with strong performance, semantic markup, and clean SEO scaffolding by default.',
+	},
+];
+
+const stack = ['Astro', 'TypeScript', 'GoHighLevel', 'Vercel', 'Sanity', 'Cal.com'];
+---
+
+<section class="section-tight proof-strip" aria-labelledby="proof-strip-heading">
+	<div class="site-container site-container--wide">
+		<div class="proof-strip__statement">
+			<p class="eyebrow">What you can expect</p>
+			<h2 id="proof-strip-heading" class="proof-strip__headline">
+				No theme reskins. No&nbsp;handoff to a&nbsp;junior. No&nbsp;dead launch.
+				<span class="proof-strip__headline-soft">A studio that ships premium, healthcare-aware websites that actually convert — and stays with you after launch.</span>
+			</h2>
+		</div>
+
+		<ul class="proof-strip__grid" aria-label="What you can expect from a FutureSolutions engagement">
+			{
+				promises.map((p) => (
+					<li class="proof-card">
+						<div class="proof-card__icon" aria-hidden="true">
+							{p.icon === 'shield' && (
+								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+									<path d="M12 3l8 3v6a10 10 0 0 1-8 9 10 10 0 0 1-8-9V6z" />
+									<path d="M9 12l2 2 4-4" />
+								</svg>
+							)}
+							{p.icon === 'target' && (
+								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+									<circle cx="12" cy="12" r="9" />
+									<circle cx="12" cy="12" r="5" />
+									<circle cx="12" cy="12" r="1.5" fill="currentColor" />
+								</svg>
+							)}
+							{p.icon === 'link' && (
+								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+									<path d="M10 14a4 4 0 0 0 5.66 0l3-3a4 4 0 0 0-5.66-5.66l-1.5 1.5" />
+									<path d="M14 10a4 4 0 0 0-5.66 0l-3 3a4 4 0 0 0 5.66 5.66l1.5-1.5" />
+								</svg>
+							)}
+							{p.icon === 'gauge' && (
+								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+									<path d="M4 19a8 8 0 1 1 16 0" />
+									<path d="M12 19l4-6" />
+									<circle cx="12" cy="19" r="1.5" fill="currentColor" stroke="none" />
+								</svg>
+							)}
+						</div>
+						<h3 class="proof-card__title">{p.title}</h3>
+						<p class="proof-card__text">{p.text}</p>
+					</li>
+				))
+			}
+		</ul>
+
+		<div class="proof-strip__stack" aria-label="Technology and tooling we build with">
+			<span class="proof-strip__stack-label">Built on</span>
+			<ul class="proof-strip__stack-list">
+				{stack.map((s) => <li>{s}</li>)}
+			</ul>
+		</div>
+	</div>
+</section>
+
+<style>
+	.proof-strip {
+		background: var(--color-bg);
+	}
+
+	.proof-strip__statement {
+		max-width: 64ch;
+		margin-bottom: clamp(2.5rem, 4vw, 3.5rem);
+	}
+
+	.proof-strip__headline {
+		margin: 0;
+		font-size: clamp(1.85rem, 1.4rem + 1.85vw, 2.6rem);
+		font-weight: 700;
+		letter-spacing: -0.035em;
+		line-height: 1.18;
+	}
+
+	.proof-strip__headline-soft {
+		display: block;
+		margin-top: 1rem;
+		color: var(--color-muted);
+		font-size: clamp(1.05rem, 0.92rem + 0.55vw, 1.18rem);
+		font-weight: 500;
+		letter-spacing: -0.018em;
+		line-height: 1.5;
+	}
+
+	.proof-strip__grid {
+		display: grid;
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+		gap: 1.25rem;
+		margin: 0 0 clamp(3rem, 5vw, 4rem) 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.proof-card {
+		display: flex;
+		flex-direction: column;
+		gap: 0.65rem;
+		padding: 1.5rem;
+		border: 1px solid var(--color-border-soft);
+		border-radius: var(--radius-md);
+		background: var(--color-white);
+		transition: border-color var(--transition-base), transform 320ms var(--ease-out-quart);
+	}
+
+	.proof-card:hover {
+		transform: translateY(-2px);
+		border-color: var(--color-border);
+	}
+
+	.proof-card__icon {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 2.4rem;
+		height: 2.4rem;
+		margin-bottom: 0.55rem;
+		border: 1px solid var(--color-border);
+		border-radius: 10px;
+		background: var(--color-white);
+		color: var(--color-text);
+	}
+
+	.proof-card__icon svg {
+		width: 1.15rem;
+		height: 1.15rem;
+	}
+
+	.proof-card__title {
+		margin: 0;
+		font-size: 1.05rem;
+		font-weight: 650;
+		letter-spacing: -0.02em;
+	}
+
+	.proof-card__text {
+		margin: 0;
+		color: var(--color-muted);
+		font-size: 0.91rem;
+		line-height: 1.55;
+	}
+
+	.proof-strip__stack {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 1.25rem;
+		padding-top: 1.5rem;
+		border-top: 1px solid var(--color-border-soft);
+	}
+
+	.proof-strip__stack-label {
+		color: var(--color-muted);
+		font-size: 0.74rem;
+		font-weight: 700;
+		letter-spacing: 0.16em;
+		text-transform: uppercase;
+	}
+
+	.proof-strip__stack-list {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.6rem 1.25rem;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.proof-strip__stack-list li {
+		color: var(--color-text);
+		font-size: 0.92rem;
+		font-weight: 600;
+		letter-spacing: -0.005em;
+	}
+
+	@media (max-width: 980px) {
+		.proof-strip__grid {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+
+	@media (max-width: 560px) {
+		.proof-strip__grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>
