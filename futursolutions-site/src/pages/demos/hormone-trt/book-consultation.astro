@@ -6,20 +6,20 @@ import { brand } from '../../../data/vantage';
 <VantageLayout title="Book a Consultation — VANTAGE Men's Health" description="Schedule a private consultation with a VANTAGE provider to review your symptoms, labs, and treatment options.">
 
 <!-- Hero -->
-<section class="vt-sec vt-sec--ink bc-hero">
-	<div class="vt-contain">
-		<p class="vt-eye">Schedule Your Visit</p>
+<section class="vt-s vt-s--black bc-hero">
+	<div class="vt-w">
+		<span class="vt-e">Private Consult Request</span>
 		<h1>Book a private consultation.</h1>
 		<p class="vt-sub">Meet with a licensed provider to review your symptoms, discuss your goals, and determine whether an evaluation or treatment plan may be appropriate.</p>
 	</div>
 </section>
 
 <!-- Booking Form -->
-<section class="vt-sec vt-sec--graphite bc-form-section">
-	<div class="vt-contain">
+<section class="vt-s vt-s--charcoal bc-form-section">
+	<div class="vt-w">
 		<div class="bc-split">
 			<div class="bc-info">
-				<p class="vt-eye">Process</p>
+				<span class="vt-e">Process</span>
 				<h2>What to expect</h2>
 				<div class="bc-steps">
 					<div class="bc-step">
@@ -53,20 +53,21 @@ import { brand } from '../../../data/vantage';
 					<span>Secure Form</span>
 				</div>
 				<div class="bc-card__body">
-					<form class="bc-form" onsubmit="event.preventDefault(); this.querySelector('.bc-form__submit').textContent='Request Sent'; this.querySelector('.bc-form__submit').disabled=true;">
+					<div class="bc-demo-note">
+						<strong>Demo Note:</strong> This form does not transmit data. For demonstration purposes only.
+					</div>
+					<form class="bc-form" onsubmit="event.preventDefault(); this.querySelector('.bc-submit').textContent='Request Sent'; this.querySelector('.bc-submit').disabled=true;">
 						<div class="bc-field">
 							<label for="bc-name">Full name</label>
 							<input type="text" id="bc-name" name="name" placeholder="Your name" autocomplete="name" />
 						</div>
-						<div class="bc-row">
-							<div class="bc-field">
-								<label for="bc-email">Email</label>
-								<input type="email" id="bc-email" name="email" placeholder="you@email.com" autocomplete="email" />
-							</div>
-							<div class="bc-field">
-								<label for="bc-phone">Phone</label>
-								<input type="tel" id="bc-phone" name="phone" placeholder="(555) 555-0100" autocomplete="tel" />
-							</div>
+						<div class="bc-field">
+							<label for="bc-email">Email</label>
+							<input type="email" id="bc-email" name="email" placeholder="you@email.com" autocomplete="email" />
+						</div>
+						<div class="bc-field">
+							<label for="bc-phone">Phone</label>
+							<input type="tel" id="bc-phone" name="phone" placeholder="(555) 555-0100" autocomplete="tel" />
 						</div>
 						<div class="bc-row">
 							<div class="bc-field">
@@ -87,11 +88,8 @@ import { brand } from '../../../data/vantage';
 							<label for="bc-concerns">Primary concerns <span class="bc-optional">(optional)</span></label>
 							<textarea id="bc-concerns" name="concerns" rows="4" placeholder="Briefly describe your symptoms, goals, or questions."></textarea>
 						</div>
-						<p class="bc-form__disclaimer">This is a demo form and does not transmit data. In a live implementation, submissions would be encrypted and routed to the clinic's scheduling system.</p>
-						<div class="bc-form__actions">
-							<button type="submit" class="vt-btn vt-btn--bronze bc-form__submit">Request Consultation</button>
-							<span class="bc-form__demo-tag">Demo form — no data is submitted</span>
-						</div>
+						<button type="submit" class="vt-btn vt-btn--red bc-submit">Request Consultation &rarr;</button>
+						<p class="bc-form__note">This is a demo form. No data is submitted or stored.</p>
 					</form>
 				</div>
 			</div>
@@ -100,20 +98,21 @@ import { brand } from '../../../data/vantage';
 </section>
 
 <!-- Alternative CTA -->
-<section class="vt-sec vt-sec--steel bc-alt">
-	<div class="vt-contain">
-		<p class="vt-eye">Not Sure Where to Start?</p>
-		<h2>Take the private assessment first.</h2>
+<section class="vt-s vt-s--carbon bc-alt">
+	<div class="vt-w">
+		<span class="vt-e">Not Sure Where to Start?</span>
+		<h2>Take the assessment first.</h2>
 		<p class="vt-sub">The 2-minute assessment helps you identify whether a men's health evaluation may be the right next step — before scheduling a consultation.</p>
 		<div class="vt-btn-row" style="margin-top:1.25rem;">
-			<a class="vt-btn vt-btn--bronze" href="/demos/hormone-trt/assessment">Take the Assessment &rarr;</a>
+			<a class="vt-btn vt-btn--red" href="/demos/hormone-trt/assessment">Take the Assessment &rarr;</a>
+			<a class="vt-btn vt-btn--dark" href="/demos/hormone-trt/how-it-works">Learn How It Works</a>
 		</div>
 	</div>
 </section>
 
 <!-- Disclaimer -->
-<section class="vt-sec vt-sec--ink bc-disc">
-	<div class="vt-contain">
+<section class="vt-s vt-s--black bc-disc">
+	<div class="vt-w">
 		<p class="bc-disc__text">{brand.disclaimer}</p>
 	</div>
 </section>
@@ -121,7 +120,7 @@ import { brand } from '../../../data/vantage';
 </VantageLayout>
 
 <style>
-/* ═══ BOOK CONSULTATION — Clinical Command Center ═══ */
+/* ═══ BOOK CONSULTATION — Elite Sports Performance ═══ */
 
 .bc-hero { padding: clamp(4rem, 8vw, 6rem) 0 clamp(2rem, 4vw, 3rem); }
 .bc-hero h1 { max-width: 520px; }
@@ -129,7 +128,7 @@ import { brand } from '../../../data/vantage';
 /* Split layout */
 .bc-split { display: grid; grid-template-columns: 1fr 1.15fr; gap: clamp(2.5rem, 5vw, 4rem); align-items: start; }
 
-/* Steps — stacked rows with borders */
+/* Steps */
 .bc-steps { display: flex; flex-direction: column; margin: 1.25rem 0; }
 .bc-step {
 	display: flex;
@@ -142,22 +141,22 @@ import { brand } from '../../../data/vantage';
 .bc-step__num {
 	font-size: 0.62rem;
 	font-weight: 800;
-	color: var(--vt-bronze);
+	color: var(--vt-red);
 	letter-spacing: 0.06em;
 	min-width: 1.5rem;
 	padding-top: 0.1rem;
 }
 .bc-step__body h3 { font-size: 0.88rem; margin-bottom: 0.2rem; }
-.bc-step__body p { font-size: 0.78rem; color: rgba(244,237,226,0.5); line-height: 1.55; margin: 0; }
+.bc-step__body p { font-size: 0.78rem; color: rgba(244,239,231,0.5); line-height: 1.55; margin: 0; }
 .bc-note {
 	font-size: 0.75rem;
-	color: rgba(244,237,226,0.4);
+	color: rgba(244,239,231,0.4);
 	line-height: 1.6;
 	font-style: italic;
 	margin-top: 0.75rem;
 }
 
-/* Form card — panel style */
+/* Form card */
 .bc-card {
 	border: 1px solid var(--vt-border);
 	border-radius: var(--vt-r);
@@ -173,10 +172,22 @@ import { brand } from '../../../data/vantage';
 	font-weight: 700;
 	letter-spacing: 0.14em;
 	text-transform: uppercase;
-	color: var(--vt-bronze);
+	color: var(--vt-red);
 }
-.bc-card__head span:last-child { color: rgba(244,237,226,0.3); font-weight: 500; }
+.bc-card__head span:last-child { color: rgba(244,239,231,0.3); font-weight: 500; }
 .bc-card__body { padding: 1.5rem 1.25rem; }
+
+/* Demo note */
+.bc-demo-note {
+	padding: 0.7rem 0.85rem;
+	background: rgba(215,25,32,0.04);
+	border: 1px solid var(--vt-border-red);
+	border-radius: var(--vt-r);
+	font-size: 0.72rem;
+	color: rgba(244,239,231,0.6);
+	margin-bottom: 1.25rem;
+}
+.bc-demo-note strong { color: var(--vt-red); }
 
 /* Form */
 .bc-form { display: flex; flex-direction: column; gap: 1rem; }
@@ -185,7 +196,7 @@ import { brand } from '../../../data/vantage';
 .bc-field label {
 	font-size: 0.65rem;
 	font-weight: 700;
-	color: rgba(244,237,226,0.5);
+	color: rgba(244,239,231,0.5);
 	letter-spacing: 0.08em;
 	text-transform: uppercase;
 }
@@ -196,36 +207,35 @@ import { brand } from '../../../data/vantage';
 	padding: 0.65rem 0.85rem;
 	font-size: 0.85rem;
 	color: var(--vt-bone);
-	background: rgba(255,255,255,0.03);
+	background: rgba(255,255,255,0.04);
 	border: 1px solid var(--vt-border);
 	border-radius: var(--vt-r);
 	transition: border-color var(--vt-ease);
 }
 .bc-field input::placeholder,
-.bc-field textarea::placeholder { color: rgba(244,237,226,0.25); }
+.bc-field textarea::placeholder { color: rgba(244,239,231,0.25); }
 .bc-field input:focus,
 .bc-field select:focus,
-.bc-field textarea:focus { outline: none; border-color: var(--vt-bronze); }
+.bc-field textarea:focus { outline: none; border-color: var(--vt-red); }
 .bc-field textarea { resize: vertical; min-height: 100px; }
 .bc-field select {
 	cursor: pointer;
 	appearance: none;
-	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1.5l5 5 5-5' stroke='%23B48652' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1.5l5 5 5-5' stroke='%23D71920' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
 	background-repeat: no-repeat;
 	background-position: right 0.85rem center;
 	padding-right: 2.5rem;
 }
-.bc-form__disclaimer { font-size: 0.65rem; color: rgba(244,237,226,0.3); font-style: italic; line-height: 1.5; margin: 0; }
-.bc-form__actions { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
-.bc-form__submit:disabled { opacity: 0.5; cursor: default; }
-.bc-form__demo-tag { font-size: 0.62rem; color: rgba(244,237,226,0.25); font-style: italic; }
+.bc-submit { align-self: flex-start; }
+.bc-submit:disabled { opacity: 0.5; cursor: default; }
+.bc-form__note { font-size: 0.65rem; color: rgba(244,239,231,0.25); font-style: italic; }
 
-/* Alt CTA — left-aligned */
+/* Alt CTA */
 .bc-alt h2 { max-width: 460px; }
 
 /* Disclaimer */
 .bc-disc { padding-top: 0; padding-bottom: clamp(2rem, 4vw, 3rem); }
-.bc-disc__text { font-size: 0.58rem; color: rgba(244,237,226,0.15); font-style: italic; max-width: 600px; }
+.bc-disc__text { font-size: 0.58rem; color: rgba(244,239,231,0.15); font-style: italic; max-width: 600px; }
 
 @media (max-width: 768px) {
 	.bc-split { grid-template-columns: 1fr; }

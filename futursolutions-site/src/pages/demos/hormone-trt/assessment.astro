@@ -6,24 +6,24 @@ import { brand } from '../../../data/vantage';
 <VantageLayout title="Take the Assessment — VANTAGE Men's Health" description="A private 2-minute health questionnaire to determine whether a men's health evaluation may be appropriate.">
 
 <!-- Hero -->
-<section class="vt-sec vt-sec--ink as-hero">
-	<div class="vt-contain">
-		<p class="vt-eye">Private Health Assessment</p>
+<section class="vt-s vt-s--black as-hero">
+	<div class="vt-w">
+		<span class="vt-e">Performance Assessment</span>
 		<h1>Take a 2-minute assessment to see if an evaluation may be right for you.</h1>
 		<p class="vt-sub">This brief questionnaire helps our providers understand your symptoms and goals. It's private, takes less than 2 minutes, and there's no commitment required.</p>
 	</div>
 </section>
 
 <!-- Assessment form -->
-<section class="vt-sec vt-sec--graphite as-form-section">
-	<div class="vt-contain">
+<section class="vt-s vt-s--charcoal as-form-section">
+	<div class="vt-w">
 		<div class="as-layout">
 			<div class="as-main">
 				<div class="as-demo-note">
 					<strong>Demo Note:</strong> This is a fictional assessment form for demonstration purposes only. No data is collected or transmitted. This form does not provide medical advice.
 				</div>
 
-				<form class="as-form" onsubmit="event.preventDefault(); this.querySelector('.as-form__submit').textContent='Assessment Submitted'; this.querySelector('.as-form__submit').disabled=true;">
+				<form class="as-form" onsubmit="event.preventDefault(); this.querySelector('.as-submit').textContent='Assessment Submitted'; this.querySelector('.as-submit').disabled=true;">
 					<div class="as-form__group">
 						<label class="as-form__label" for="as-name">Full Name</label>
 						<input class="as-form__input" type="text" id="as-name" name="name" placeholder="John Smith" />
@@ -73,48 +73,42 @@ import { brand } from '../../../data/vantage';
 						</select>
 					</div>
 
-					<button type="submit" class="vt-btn vt-btn--bronze as-form__submit">Submit Assessment &rarr;</button>
+					<button type="submit" class="vt-btn vt-btn--red as-submit">Submit Assessment &rarr;</button>
 					<p class="as-form__note">This is a demo form. No data is submitted or stored.</p>
 				</form>
 			</div>
 
 			<aside class="as-sidebar">
-				<div class="vt-panel">
-					<div class="vt-panel__head"><span>What Happens Next</span><span>4 Steps</span></div>
-					<div class="vt-panel__body">
-						<div class="as-steps">
-							<div class="as-step">
-								<span class="vt-dot vt-dot--bronze"></span>
-								<p>A provider reviews your assessment responses</p>
-							</div>
-							<div class="as-step">
-								<span class="vt-dot vt-dot--bronze"></span>
-								<p>You're contacted to schedule a consultation</p>
-							</div>
-							<div class="as-step">
-								<span class="vt-dot vt-dot--bronze"></span>
-								<p>Lab work is ordered based on your symptoms</p>
-							</div>
-							<div class="as-step">
-								<span class="vt-dot vt-dot--bronze"></span>
-								<p>A personalized plan is developed from your results</p>
-							</div>
+				<div class="as-panel">
+					<span class="vt-e">What Happens Next</span>
+					<div class="as-steps">
+						<div class="as-step">
+							<span class="as-step__num">1</span>
+							<p>A provider reviews your assessment responses</p>
+						</div>
+						<div class="as-step">
+							<span class="as-step__num">2</span>
+							<p>You're contacted to schedule a consultation</p>
+						</div>
+						<div class="as-step">
+							<span class="as-step__num">3</span>
+							<p>Lab work is ordered based on your symptoms</p>
+						</div>
+						<div class="as-step">
+							<span class="as-step__num">4</span>
+							<p>A personalized plan is developed from your results</p>
 						</div>
 					</div>
 				</div>
 
-				<div class="vt-panel">
-					<div class="vt-panel__head"><span>Private</span><span>Confidential</span></div>
-					<div class="vt-panel__body">
-						<p class="as-sidebar__text">Your responses are treated with the same discretion as any medical record. We do not share or sell personal information.</p>
-					</div>
+				<div class="as-panel as-panel--quiet">
+					<h3>Private &amp; Confidential</h3>
+					<p>Your responses are treated with the same discretion as any medical record. We do not share or sell personal information.</p>
 				</div>
 
-				<div class="vt-panel">
-					<div class="vt-panel__head"><span>No Commitment</span><span>Risk-Free</span></div>
-					<div class="vt-panel__body">
-						<p class="as-sidebar__text">Completing this assessment does not obligate you to anything. It's simply the first step to understanding your options.</p>
-					</div>
+				<div class="as-panel as-panel--quiet">
+					<h3>No Commitment</h3>
+					<p>Completing this assessment does not obligate you to anything. It's simply the first step to understanding your options.</p>
 				</div>
 			</aside>
 		</div>
@@ -122,21 +116,21 @@ import { brand } from '../../../data/vantage';
 </section>
 
 <!-- Alternative CTA -->
-<section class="vt-sec vt-sec--steel as-alt">
-	<div class="vt-contain">
-		<p class="vt-eye">Prefer to talk first?</p>
-		<h2>Book a consultation directly if you'd rather speak with a provider.</h2>
+<section class="vt-s vt-s--carbon as-alt">
+	<div class="vt-w">
+		<span class="vt-e">Prefer to Talk First?</span>
+		<h2>Book a consultation directly.</h2>
 		<p class="vt-sub">Some patients prefer a conversation before completing an assessment. That's perfectly fine.</p>
 		<div class="vt-btn-row" style="margin-top:1.25rem;">
-			<a class="vt-btn vt-btn--bronze" href="/demos/hormone-trt/book-consultation">Book Consultation &rarr;</a>
-			<a class="vt-btn vt-btn--outline" href="/demos/hormone-trt/how-it-works">Learn How It Works</a>
+			<a class="vt-btn vt-btn--red" href="/demos/hormone-trt/book-consultation">Book Consultation &rarr;</a>
+			<a class="vt-btn vt-btn--dark" href="/demos/hormone-trt/how-it-works">Learn How It Works</a>
 		</div>
 	</div>
 </section>
 
 <!-- Disclaimer -->
-<section class="vt-sec vt-sec--ink as-disc">
-	<div class="vt-contain">
+<section class="vt-s vt-s--black as-disc">
+	<div class="vt-w">
 		<p class="as-disc__text">{brand.disclaimer}</p>
 	</div>
 </section>
@@ -144,7 +138,7 @@ import { brand } from '../../../data/vantage';
 </VantageLayout>
 
 <style>
-/* ═══ ASSESSMENT — Clinical Command Center ═══ */
+/* ═══ ASSESSMENT — Elite Sports Performance ═══ */
 
 .as-hero { padding: clamp(4rem, 8vw, 6rem) 0 clamp(2rem, 4vw, 3rem); }
 .as-hero h1 { max-width: 680px; }
@@ -153,40 +147,40 @@ import { brand } from '../../../data/vantage';
 /* Layout */
 .as-layout { display: grid; grid-template-columns: 1.6fr 1fr; gap: 2.5rem; align-items: start; }
 
-/* Demo note — bronze tint */
+/* Demo note — red tint */
 .as-demo-note {
 	padding: 0.85rem 1rem;
-	background: rgba(180,134,82,0.06);
-	border: 1px solid var(--vt-border-bronze);
+	background: rgba(215,25,32,0.04);
+	border: 1px solid var(--vt-border-red);
 	border-radius: var(--vt-r);
 	font-size: 0.78rem;
-	color: var(--vt-sand);
+	color: rgba(244,239,231,0.6);
 	margin-bottom: 2rem;
 }
-.as-demo-note strong { color: var(--vt-bronze); }
+.as-demo-note strong { color: var(--vt-red); }
 
 /* Form */
 .as-form { display: flex; flex-direction: column; gap: 1.35rem; }
 .as-form__group { display: flex; flex-direction: column; gap: 0.4rem; }
 .as-form__row { display: grid; grid-template-columns: 1fr 2fr; gap: 1.25rem; }
 .as-form__label { font-size: 0.72rem; font-weight: 700; color: var(--vt-bone); letter-spacing: 0.03em; }
-.as-form__hint { font-weight: 400; color: rgba(244,237,226,0.4); }
+.as-form__hint { font-weight: 400; color: rgba(244,239,231,0.4); }
 .as-form__input {
 	padding: 0.65rem 0.85rem;
-	background: rgba(255,255,255,0.03);
+	background: rgba(255,255,255,0.04);
 	border: 1px solid var(--vt-border);
 	border-radius: var(--vt-r);
 	color: var(--vt-bone);
 	font-size: 0.85rem;
 	transition: border-color var(--vt-ease);
 }
-.as-form__input:focus { outline: none; border-color: var(--vt-bronze); }
-.as-form__input::placeholder { color: rgba(244,237,226,0.25); }
+.as-form__input:focus { outline: none; border-color: var(--vt-red); }
+.as-form__input::placeholder { color: rgba(244,239,231,0.25); }
 .as-form__textarea { resize: vertical; min-height: 100px; }
 select.as-form__input {
 	cursor: pointer;
 	appearance: none;
-	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1.5l5 5 5-5' stroke='%23B48652' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1.5l5 5 5-5' stroke='%23D71920' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
 	background-repeat: no-repeat;
 	background-position: right 0.85rem center;
 	padding-right: 2.5rem;
@@ -199,7 +193,7 @@ select.as-form__input {
 	align-items: center;
 	gap: 0.4rem;
 	font-size: 0.78rem;
-	color: rgba(244,237,226,0.55);
+	color: rgba(244,239,231,0.55);
 	cursor: pointer;
 	padding: 0.4rem 0.75rem;
 	border: 1px solid var(--vt-border);
@@ -207,28 +201,49 @@ select.as-form__input {
 	transition: border-color var(--vt-ease), color var(--vt-ease);
 	white-space: nowrap;
 }
-.as-chip:hover { border-color: var(--vt-border-bronze); color: var(--vt-bone); }
-.as-chip:has(input:checked) { border-color: var(--vt-bronze); color: var(--vt-bone); background: rgba(180,134,82,0.06); }
-.as-chip input { accent-color: var(--vt-bronze); width: 12px; height: 12px; }
+.as-chip:hover { border-color: var(--vt-border-red); color: var(--vt-bone); }
+.as-chip:has(input:checked) { border-color: var(--vt-red); color: var(--vt-bone); background: rgba(215,25,32,0.06); }
+.as-chip input { accent-color: var(--vt-red); width: 12px; height: 12px; }
 
-.as-form__submit { align-self: flex-start; }
-.as-form__submit:disabled { opacity: 0.5; cursor: default; }
-.as-form__note { font-size: 0.65rem; color: rgba(244,237,226,0.25); font-style: italic; }
+.as-submit { align-self: flex-start; }
+.as-submit:disabled { opacity: 0.5; cursor: default; }
+.as-form__note { font-size: 0.65rem; color: rgba(244,239,231,0.25); font-style: italic; }
 
 /* Sidebar */
 .as-sidebar { display: flex; flex-direction: column; gap: 1rem; position: sticky; top: 8rem; }
-.as-steps { display: flex; flex-direction: column; gap: 0.85rem; }
-.as-step { display: flex; gap: 0.65rem; align-items: flex-start; padding-top: 0.15rem; }
-.as-step .vt-dot { margin-top: 0.35rem; }
-.as-step p { font-size: 0.8rem; color: rgba(244,237,226,0.55); margin: 0; }
-.as-sidebar__text { font-size: 0.8rem; color: rgba(244,237,226,0.5); margin: 0; line-height: 1.55; }
+.as-panel {
+	padding: 1.25rem;
+	border: 1px solid var(--vt-border);
+	border-radius: var(--vt-r);
+}
+.as-panel--quiet { padding: 1rem 1.25rem; }
+.as-panel--quiet h3 { font-size: 0.78rem; margin-bottom: 0.25rem; }
+.as-panel--quiet p { font-size: 0.78rem; color: rgba(244,239,231,0.5); margin: 0; line-height: 1.55; }
 
-/* Alt CTA — left-aligned */
+.as-steps { display: flex; flex-direction: column; gap: 0.85rem; margin-top: 0.75rem; }
+.as-step { display: flex; gap: 0.75rem; align-items: flex-start; }
+.as-step__num {
+	flex-shrink: 0;
+	width: 1.4rem;
+	height: 1.4rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 50%;
+	background: var(--vt-red);
+	color: var(--vt-white);
+	font-size: 0.6rem;
+	font-weight: 800;
+	margin-top: 0.1rem;
+}
+.as-step p { font-size: 0.8rem; color: rgba(244,239,231,0.55); margin: 0; line-height: 1.5; }
+
+/* Alt CTA */
 .as-alt h2 { max-width: 520px; }
 
 /* Disclaimer */
 .as-disc { padding-top: 0; padding-bottom: clamp(2rem, 4vw, 3rem); }
-.as-disc__text { font-size: 0.58rem; color: rgba(244,237,226,0.15); font-style: italic; max-width: 600px; }
+.as-disc__text { font-size: 0.58rem; color: rgba(244,239,231,0.15); font-style: italic; max-width: 600px; }
 
 @media (max-width: 768px) {
 	.as-layout { grid-template-columns: 1fr; }

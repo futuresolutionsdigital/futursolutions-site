@@ -3,67 +3,75 @@ import VantageLayout from '../../../layouts/VantageLayout.astro';
 import { pricingTiers, brand } from '../../../data/vantage';
 ---
 
-<VantageLayout title="Pricing & Care Plans — VANTAGE Men's Health" description="Transparent pricing for initial evaluations, optimization memberships, and advanced add-on protocols.">
+<VantageLayout title="Pricing & Care Plans — VANTAGE Men's Health" description="Transparent pricing for initial evaluations, optimization memberships, and advanced protocols. No hidden fees.">
 
-<!-- Hero -->
-<section class="vt-sec vt-sec--ink px-hero">
-	<div class="vt-contain">
-		<p class="vt-eye">Pricing & Care Plans</p>
-		<h1>Transparent pricing. No hidden fees. No surprises.</h1>
-		<p class="vt-sub">We believe you should know what things cost before you commit. Every plan starts with a comprehensive evaluation and lab work.</p>
+<!-- ═══ HERO ═══ -->
+<section class="vt-s vt-s--black px-hero">
+	<div class="vt-w">
+		<span class="vt-e">Pricing</span>
+		<h1>Transparent pricing.<br/>No hidden fees.</h1>
+		<p class="vt-sub">You should know what things cost before you commit. Every plan starts with a comprehensive evaluation and lab work — no surprise bills, no bundled services you didn't ask for.</p>
 		<div class="vt-btn-row" style="margin-top:1.5rem;">
-			<a class="vt-btn vt-btn--bronze" href="/demos/hormone-trt/assessment">Take the Assessment &rarr;</a>
-			<a class="vt-btn vt-btn--outline" href="/demos/hormone-trt/book-consultation">Book Consultation</a>
+			<a class="vt-btn vt-btn--red" href="/demos/hormone-trt/assessment">Start My Assessment &rarr;</a>
+			<a class="vt-btn vt-btn--dark" href="/demos/hormone-trt/book-consultation">Book a Private Consult</a>
 		</div>
 	</div>
 </section>
 
-<!-- Pricing tiers — horizontal comparison panel -->
-<section class="vt-sec vt-sec--graphite">
-	<div class="vt-contain">
-		<p class="vt-eye">Care Plans</p>
-		<h2>Choose the level of care that fits your needs</h2>
+<!-- ═══ PRICING BOARD — 3-col comparison ═══ -->
+<section class="vt-s vt-s--carbon px-board-sec">
+	<div class="vt-w">
+		<span class="vt-e">Care Plans</span>
+		<h2>Choose your level of care.</h2>
 		<p class="vt-sub">Every patient begins with an initial evaluation. Ongoing optimization is available via monthly membership.</p>
-		<div class="px-tiers">
-			{pricingTiers.map((tier, i) => (
-				<div class:list={['px-tiers__col', { 'px-tiers__col--featured': tier.featured, 'px-tiers__col--last': i === pricingTiers.length - 1 }]}>
-					{tier.featured && <span class="px-tiers__badge">Most Popular</span>}
-					<div class="px-tiers__top">
-						<h3>{tier.name}</h3>
-						<p class="px-tiers__tag">{tier.tagline}</p>
-						<span class="px-tiers__price">{tier.price}</span>
-					</div>
-					<ul class="px-tiers__includes">
+		<div class="px-board">
+			{pricingTiers.map((tier) => (
+				<div class:list={['px-board__col', { 'px-board__col--featured': tier.featured }]}>
+					{tier.featured && <span class="px-board__badge">Recommended</span>}
+					<h3>{tier.name}</h3>
+					<p class="px-board__tag">{tier.tagline}</p>
+					<span class="px-board__price">{tier.price}</span>
+					<ul class="px-board__list">
 						{tier.includes.map((item) => <li>{item}</li>)}
 					</ul>
-					<a class="vt-btn vt-btn--bronze px-tiers__cta" href="/demos/hormone-trt/book-consultation">{tier.cta}</a>
+					<a class="vt-btn vt-btn--red px-board__cta" href="/demos/hormone-trt/book-consultation">{tier.cta}</a>
 				</div>
 			))}
 		</div>
+		<p class="px-board__note">Labs, medications, and follow-up costs are explained before treatment begins. No hidden fees.</p>
 	</div>
 </section>
 
-<!-- What's included — stacked panels -->
-<section class="vt-sec vt-sec--steel">
-	<div class="vt-contain">
-		<p class="vt-eye">What's Included</p>
-		<h2>More detail on what each plan covers</h2>
-		<div class="px-detail">
-			<div class="vt-panel">
-				<div class="vt-panel__head"><span>Initial Evaluation</span><span>One-time</span></div>
-				<div class="vt-panel__body">
+<!-- ═══ WHAT'S INCLUDED — stacked panels with red-labeled headers ═══ -->
+<section class="vt-s vt-s--charcoal px-included-sec">
+	<div class="vt-w">
+		<span class="vt-e">What's Included</span>
+		<h2>More detail on what each plan covers.</h2>
+		<div class="px-included">
+			<div class="px-included__panel">
+				<div class="px-included__head">
+					<span class="px-included__label">Initial Evaluation</span>
+					<span class="px-included__freq">One-time</span>
+				</div>
+				<div class="px-included__body">
 					<p>Your first visit includes a 45–60 minute private consultation with a licensed provider, a comprehensive lab panel (30+ biomarkers), symptom and goal review, treatment recommendations, and a follow-up plan outline. This evaluation determines whether treatment is appropriate and establishes your baseline.</p>
 				</div>
 			</div>
-			<div class="vt-panel">
-				<div class="vt-panel__head"><span>Optimization Membership</span><span>Monthly</span></div>
-				<div class="vt-panel__body">
+			<div class="px-included__panel">
+				<div class="px-included__head">
+					<span class="px-included__label">Optimization Membership</span>
+					<span class="px-included__freq">Monthly</span>
+				</div>
+				<div class="px-included__body">
 					<p>For patients on active protocols, the monthly membership includes regular follow-up visits (in-person or telehealth), quarterly lab monitoring, protocol adjustments, secure provider messaging, and priority scheduling. Medications and lab draw fees are billed separately and transparently.</p>
 				</div>
 			</div>
-			<div class="vt-panel">
-				<div class="vt-panel__head"><span>Advanced Add-Ons</span><span>As needed</span></div>
-				<div class="vt-panel__body">
+			<div class="px-included__panel">
+				<div class="px-included__head">
+					<span class="px-included__label">Advanced Protocols</span>
+					<span class="px-included__freq">As needed</span>
+				</div>
+				<div class="px-included__body">
 					<p>Additional protocols — such as ED treatments, GLP-1 medications, peptide therapy, NAD+, and hair loss support — are discussed during your evaluation. Pricing depends on the specific protocol and is always disclosed before you begin.</p>
 				</div>
 			</div>
@@ -71,62 +79,60 @@ import { pricingTiers, brand } from '../../../data/vantage';
 	</div>
 </section>
 
-<!-- Policy notes — stacked rows with borders -->
-<section class="vt-sec vt-sec--graphite">
-	<div class="vt-contain">
-		<p class="vt-eye">Good to Know</p>
-		<h2>Policies & billing notes</h2>
+<!-- ═══ POLICY NOTES — stacked rows with red dots ═══ -->
+<section class="vt-s vt-s--black px-policy-sec">
+	<div class="vt-w">
+		<span class="vt-e">Good to Know</span>
+		<h2>Policies & billing notes.</h2>
 		<div class="px-policy">
 			<div class="px-policy__item">
-				<div class="px-policy__row">
-					<span class="vt-dot vt-dot--bronze"></span>
+				<span class="px-policy__dot"></span>
+				<div>
 					<h3>Insurance</h3>
+					<p>VANTAGE operates as a private-pay clinic. We do not bill insurance directly. However, we can provide itemized receipts (superbills) that you may submit to your insurer for potential reimbursement.</p>
 				</div>
-				<p>VANTAGE operates as a private-pay clinic. We do not bill insurance directly. However, we can provide itemized receipts (superbills) that you may submit to your insurer for potential reimbursement.</p>
 			</div>
 			<div class="px-policy__item">
-				<div class="px-policy__row">
-					<span class="vt-dot vt-dot--bronze"></span>
+				<span class="px-policy__dot"></span>
+				<div>
 					<h3>Lab costs</h3>
+					<p>Lab draw fees are separate from consultation fees. Comprehensive panels typically range from $150–$350 depending on the markers ordered. Exact costs are disclosed before labs are drawn.</p>
 				</div>
-				<p>Lab draw fees are separate from consultation fees. Comprehensive panels typically range from $150–$350 depending on the markers ordered. Exact costs are disclosed before labs are drawn.</p>
 			</div>
 			<div class="px-policy__item">
-				<div class="px-policy__row">
-					<span class="vt-dot vt-dot--bronze"></span>
+				<span class="px-policy__dot"></span>
+				<div>
 					<h3>Medications</h3>
+					<p>Prescription medications are billed separately through our pharmacy partners. Your provider will discuss costs as part of your treatment plan review.</p>
 				</div>
-				<p>Prescription medications are billed separately through our pharmacy partners. Your provider will discuss costs as part of your treatment plan review.</p>
 			</div>
 			<div class="px-policy__item px-policy__item--last">
-				<div class="px-policy__row">
-					<span class="vt-dot vt-dot--bronze"></span>
+				<span class="px-policy__dot"></span>
+				<div>
 					<h3>Cancellation policy</h3>
+					<p>Appointments cancelled with less than 24 hours notice may incur a fee. Memberships can be paused or cancelled at any time with 30 days written notice.</p>
 				</div>
-				<p>Appointments cancelled with less than 24 hours notice may incur a fee. Memberships can be paused or cancelled at any time with 30 days written notice.</p>
 			</div>
 		</div>
 	</div>
 </section>
 
-<!-- CTA -->
-<section class="vt-sec vt-sec--steel">
-	<div class="vt-contain">
-		<div class="px-cta">
-			<p class="vt-eye">Get Started</p>
-			<h2>Ready to take the first step?</h2>
-			<p class="vt-sub">Start with a free assessment to determine if an evaluation may be appropriate for you.</p>
-			<div class="vt-btn-row" style="margin-top:1.25rem;">
-				<a class="vt-btn vt-btn--bronze" href="/demos/hormone-trt/assessment">Take the Assessment &rarr;</a>
-				<a class="vt-btn vt-btn--outline" href="/demos/hormone-trt/book-consultation">Book Consultation</a>
-			</div>
+<!-- ═══ CTA — RED PANEL ═══ -->
+<section class="px-final">
+	<div class="vt-w px-final__inner">
+		<span class="vt-e">Get Started</span>
+		<h2>Ready to take the first step?</h2>
+		<p class="vt-sub">Start with a free assessment to determine if an evaluation may be appropriate for you.</p>
+		<div class="vt-btn-row" style="margin-top:1.5rem;">
+			<a class="vt-btn vt-btn--red" href="/demos/hormone-trt/assessment" style="background:var(--vt-white);color:var(--vt-red);border-color:var(--vt-white);">Start My Assessment &rarr;</a>
+			<a class="vt-btn vt-btn--dark" href="/demos/hormone-trt/book-consultation" style="background:transparent;color:var(--vt-white);border-color:rgba(255,255,255,0.3);">Book a Private Consult</a>
 		</div>
 	</div>
 </section>
 
-<!-- Disclaimer -->
-<div class="vt-sec--ink" style="padding:0 0 2rem;">
-	<div class="vt-contain">
+<!-- ═══ DISCLAIMER ═══ -->
+<div class="vt-s--black" style="padding:0 0 2rem;">
+	<div class="vt-w">
 		<p class="px-disc">{brand.disclaimer}</p>
 	</div>
 </div>
@@ -134,49 +140,64 @@ import { pricingTiers, brand } from '../../../data/vantage';
 </VantageLayout>
 
 <style>
-/* ─── Hero ─── */
-.px-hero { padding: clamp(4rem, 8vw, 6rem) 0 clamp(2rem, 4vw, 3rem); }
-.px-hero h1 { max-width: 700px; }
-.px-hero .vt-sub { max-width: 540px; }
+/* ═══════════════════════════════════════════════════════
+   PRICING — Elite Sports Performance Medicine
+   ═══════════════════════════════════════════════════════ */
 
-/* ─── Pricing tiers — horizontal comparison panel (mirrors homepage) ─── */
-.px-tiers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin-top: 2rem; border: 1px solid var(--vt-border); border-radius: var(--vt-r); overflow: hidden; }
-.px-tiers__col { padding: 1.75rem; border-right: 1px solid var(--vt-border); display: flex; flex-direction: column; position: relative; }
-.px-tiers__col--last { border-right: none; }
-.px-tiers__col--featured { background: rgba(180,134,82,0.04); }
-.px-tiers__badge { position: absolute; top: 0; right: 1rem; font-size: 0.5rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.2rem 0.5rem; background: var(--vt-bronze); color: var(--vt-ink); border-radius: 0 0 var(--vt-r) var(--vt-r); }
-.px-tiers__top { margin-bottom: 1.25rem; }
-.px-tiers__top h3 { font-size: 0.95rem; font-weight: 700; color: var(--vt-bone); margin-bottom: 0.15rem; }
-.px-tiers__tag { font-size: 0.72rem; color: rgba(244,237,226,0.4); margin-bottom: 0.75rem; }
-.px-tiers__price { font-size: 1rem; font-weight: 800; color: var(--vt-bone); letter-spacing: -0.02em; }
-.px-tiers__includes { list-style: none; padding: 0; margin: 0 0 1.5rem; flex: 1; }
-.px-tiers__includes li { font-size: 0.72rem; color: rgba(244,237,226,0.45); padding: 0.3rem 0; border-bottom: 1px solid var(--vt-border); }
-.px-tiers__includes li:last-child { border-bottom: none; }
-.px-tiers__cta { width: 100%; text-align: center; font-size: 0.68rem; }
+/* Hero */
+.px-hero { padding: clamp(5rem, 10vw, 8rem) 0 clamp(3rem, 6vw, 4rem); position: relative; overflow: hidden; }
+.px-hero::before { content: ''; position: absolute; top: -40%; right: -10%; width: 45%; height: 180%; background: var(--vt-red); transform: skewX(-12deg); opacity: 0.04; pointer-events: none; }
+.px-hero h1 { max-width: 650px; }
+.px-hero .vt-sub { max-width: 500px; }
 
-/* ─── What's included — stacked panels ─── */
-.px-detail { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
-.px-detail p { font-size: 0.78rem; color: rgba(244,237,226,0.4); line-height: 1.55; }
+/* Pricing board — 3-col comparison */
+.px-board-sec h2 { margin-bottom: 0.5rem; }
+.px-board-sec .vt-sub { margin-bottom: 0; }
+.px-board { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(255,255,255,0.04); border-radius: var(--vt-r); overflow: hidden; margin: 2rem 0 1rem; }
+.px-board__col { padding: 1.75rem; background: var(--vt-charcoal); display: flex; flex-direction: column; position: relative; }
+.px-board__col--featured { background: rgba(215,25,32,0.04); border-top: 3px solid var(--vt-red); }
+.px-board__badge { position: absolute; top: 0; right: 1rem; font-size: 0.5rem; font-weight: 900; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.2rem 0.5rem; background: var(--vt-red); color: var(--vt-white); border-radius: 0 0 var(--vt-r) var(--vt-r); }
+.px-board__col h3 { font-size: 0.95rem; margin-bottom: 0.15rem; }
+.px-board__tag { font-size: 0.72rem; color: rgba(244,239,231,0.4); margin-bottom: 0.75rem; }
+.px-board__price { font-size: 1.1rem; font-weight: 900; color: var(--vt-white); letter-spacing: -0.02em; margin-bottom: 1rem; }
+.px-board__list { list-style: none; padding: 0; margin: 0 0 1.5rem; flex: 1; }
+.px-board__list li { font-size: 0.72rem; color: rgba(244,239,231,0.5); padding: 0.35rem 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+.px-board__list li:last-child { border-bottom: none; }
+.px-board__cta { width: 100%; text-align: center; font-size: 0.65rem; }
+.px-board__note { font-size: 0.72rem; color: rgba(244,239,231,0.3); font-style: italic; }
 
-/* ─── Policy notes — stacked rows with borders ─── */
-.px-policy { display: flex; flex-direction: column; gap: 0; margin-top: 2rem; }
-.px-policy__item { padding: 1.1rem 0; border-bottom: 1px solid var(--vt-border); }
+/* What's included — stacked panels */
+.px-included-sec h2 { margin-bottom: 2rem; }
+.px-included { display: flex; flex-direction: column; gap: 1px; background: rgba(255,255,255,0.04); border-radius: var(--vt-r); overflow: hidden; }
+.px-included__panel { background: var(--vt-carbon); }
+.px-included__head { display: flex; justify-content: space-between; align-items: center; padding: 1rem 1.25rem; border-bottom: 1px solid rgba(255,255,255,0.04); }
+.px-included__label { font-size: 0.78rem; font-weight: 800; color: var(--vt-red); letter-spacing: 0.04em; text-transform: uppercase; }
+.px-included__freq { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--vt-steel); }
+.px-included__body { padding: 1.25rem; }
+.px-included__body p { font-size: 0.78rem; color: rgba(244,239,231,0.5); line-height: 1.6; }
+
+/* Policy notes — stacked rows with red dots */
+.px-policy-sec h2 { margin-bottom: 2rem; }
+.px-policy { display: flex; flex-direction: column; gap: 0; max-width: 700px; }
+.px-policy__item { display: flex; gap: 0.85rem; padding: 1.2rem 0; border-bottom: 1px solid var(--vt-border); align-items: start; }
 .px-policy__item--last { border-bottom: none; }
-.px-policy__row { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.25rem; }
-.px-policy__item h3 { font-size: 0.95rem; font-weight: 700; color: var(--vt-bone); margin-bottom: 0; }
-.px-policy__item p { font-size: 0.78rem; color: rgba(244,237,226,0.4); line-height: 1.55; padding-left: 0.9rem; }
+.px-policy__dot { width: 8px; height: 8px; min-width: 8px; border-radius: 50%; background: var(--vt-red); margin-top: 0.35rem; }
+.px-policy__item h3 { font-size: 0.92rem; font-weight: 700; margin-bottom: 0.2rem; }
+.px-policy__item p { font-size: 0.78rem; color: rgba(244,239,231,0.5); line-height: 1.55; }
 
-/* ─── CTA — left-aligned ─── */
-.px-cta { max-width: 560px; }
-.px-cta .vt-sub { margin-bottom: 0; }
+/* CTA — red panel */
+.px-final { background: var(--vt-red); padding: clamp(3rem, 6vw, 5rem) 0; position: relative; overflow: hidden; }
+.px-final::before { content: ''; position: absolute; top: -30%; right: -5%; width: 40%; height: 160%; background: rgba(0,0,0,0.08); transform: skewX(-12deg); pointer-events: none; }
+.px-final__inner { position: relative; z-index: 1; }
+.px-final h2 { color: var(--vt-white); }
+.px-final .vt-e { color: rgba(255,255,255,0.5); }
+.px-final .vt-sub { color: rgba(255,255,255,0.7); }
 
-/* ─── Disclaimer ─── */
-.px-disc { font-size: 0.58rem; color: rgba(244,237,226,0.15); font-style: italic; max-width: 560px; }
+/* Disclaimer */
+.px-disc { font-size: 0.55rem; color: rgba(244,239,231,0.12); font-style: italic; max-width: 560px; }
 
-/* ─── Responsive ─── */
+/* Responsive */
 @media (max-width: 768px) {
-	.px-tiers { grid-template-columns: 1fr; }
-	.px-tiers__col { border-right: none; border-bottom: 1px solid var(--vt-border); }
-	.px-tiers__col--last { border-bottom: none; }
+	.px-board { grid-template-columns: 1fr; }
 }
 </style>

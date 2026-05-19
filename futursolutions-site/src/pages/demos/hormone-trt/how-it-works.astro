@@ -1,143 +1,168 @@
 ---
 import VantageLayout from '../../../layouts/VantageLayout.astro';
-import { howItWorks, brand } from '../../../data/vantage';
+import { gameplan, brand } from '../../../data/vantage';
 ---
 
-<VantageLayout title="How It Works — VANTAGE Men's Health" description="The VANTAGE process from assessment to ongoing optimization — lab-based, provider-guided, and personalized.">
+<VantageLayout title="How It Works — VANTAGE Men's Health" description="The VANTAGE Game Plan — from assessment to optimization. Lab-based, provider-guided, and personalized.">
 
-<!-- Hero -->
-<section class="vt-sec vt-sec--ink hiw-hero">
-	<div class="vt-contain">
-		<p class="vt-eye">How It Works</p>
-		<h1>From assessment to optimization — a process built for clarity.</h1>
-		<p class="vt-sub">No guesswork. No rushed appointments. The VANTAGE process is designed to give you a complete picture of your health and a personalized path forward.</p>
+<!-- ═══ HERO ═══ -->
+<section class="vt-s vt-s--black hiw-hero">
+	<div class="vt-w">
+		<span class="vt-e">The VANTAGE Game Plan</span>
+		<h1>From assessment<br/>to optimization.</h1>
+		<p class="vt-sub">No guesswork. No rushed appointments. A structured process built for clarity — from first assessment to ongoing performance tracking.</p>
 		<div class="vt-btn-row" style="margin-top:1.5rem;">
-			<a class="vt-btn vt-btn--bronze" href="/demos/hormone-trt/assessment">Start Your Assessment &rarr;</a>
-			<a class="vt-btn vt-btn--outline" href="/demos/hormone-trt/book-consultation">Book Consultation</a>
+			<a class="vt-btn vt-btn--red" href="/demos/hormone-trt/assessment">Start My Assessment &rarr;</a>
+			<a class="vt-btn vt-btn--dark" href="/demos/hormone-trt/book-consultation">Book a Private Consult</a>
 		</div>
 	</div>
 </section>
 
-<!-- 5-step overview + expanded detail -->
-<section class="vt-sec vt-sec--graphite">
-	<div class="vt-contain">
-		<p class="vt-eye">The Process</p>
-		<h2>Five steps from uncertainty to optimized health</h2>
+<!-- ═══ 6-STEP GAME PLAN — field-line steps on bone ═══ -->
+<section class="vt-s vt-s--bone hiw-gp">
+	<div class="vt-w">
+		<span class="vt-e">The Process</span>
+		<h2>Six steps. One clear path forward.</h2>
 		<p class="vt-sub">Every patient follows this framework — adapted to their specific symptoms, goals, and lab results.</p>
-
-		<!-- Horizontal connected-step track -->
-		<div class="hiw-track">
-			{howItWorks.map((item, i) => (
-				<div class:list={['hiw-track__step', { 'hiw-track__step--last': i === howItWorks.length - 1 }]}>
-					<div class="hiw-track__dot"></div>
-					<span class="hiw-track__num">{item.step}</span>
-					<h3>{item.title}</h3>
-					<p>{item.description}</p>
+		<div class="hiw-field">
+			<div class="hiw-field__line" aria-hidden="true"></div>
+			{gameplan.map((s, i) => (
+				<div class:list={['hiw-field__step', { 'hiw-field__step--first': i === 0 }]}>
+					<span class="hiw-field__marker">{s.step}</span>
+					<span class="hiw-field__label">{s.label}</span>
+					<p class="hiw-field__desc">{s.description}</p>
 				</div>
 			))}
 		</div>
+	</div>
+</section>
 
-		<!-- Expanded step details — stacked rows with left border-accent -->
+<!-- ═══ EXPANDED STEP DETAILS ═══ -->
+<section class="vt-s vt-s--charcoal hiw-detail-sec">
+	<div class="vt-w">
+		<span class="vt-e">Step-by-Step</span>
+		<h2>What happens at each stage.</h2>
 		<div class="hiw-detail">
 			<div class="hiw-detail__item">
-				<h3>Step 01 — Assessment</h3>
+				<div class="hiw-detail__head">
+					<span class="hiw-detail__num">01</span>
+					<h3>Assessment</h3>
+				</div>
 				<p>A private, 2-minute online questionnaire covering your primary symptoms, health history, lifestyle, and goals. This information helps your provider prepare for a focused consultation.</p>
 				<p>No medical records are required upfront. You can complete the assessment from any device at any time.</p>
 			</div>
 			<div class="hiw-detail__item">
-				<h3>Step 02 — Labs</h3>
+				<div class="hiw-detail__head">
+					<span class="hiw-detail__num">02</span>
+					<h3>Labs</h3>
+				</div>
 				<p>Your provider orders a comprehensive panel based on your assessment responses. Labs can be completed at a local Quest or Labcorp location, or at our clinic.</p>
 				<p>Panels typically include: Total & Free Testosterone, SHBG, Estradiol, DHEA-S, PSA, CBC, CMP, Thyroid, Lipids, HbA1c, Vitamin D, and inflammatory markers.</p>
 			</div>
 			<div class="hiw-detail__item">
-				<h3>Step 03 — Consultation</h3>
+				<div class="hiw-detail__head">
+					<span class="hiw-detail__num">03</span>
+					<h3>Provider Review</h3>
+				</div>
 				<p>A private 45–60 minute consultation (in-person or telehealth) to review your lab results in detail. Your provider explains what each marker means, how they relate to your symptoms, and what options exist.</p>
 				<p>This is a conversation, not a sales pitch. You'll leave with clarity — whether or not treatment is recommended.</p>
 			</div>
 			<div class="hiw-detail__item">
-				<h3>Step 04 — Your Plan</h3>
+				<div class="hiw-detail__head">
+					<span class="hiw-detail__num">04</span>
+					<h3>Treatment Plan</h3>
+				</div>
 				<p>If treatment is clinically appropriate, your provider builds a personalized protocol. This may include hormone optimization, medications, peptides, or lifestyle recommendations — all grounded in your specific data.</p>
 				<p>You review the plan together, ask questions, and decide how to proceed. Nothing begins without your informed consent.</p>
 			</div>
 			<div class="hiw-detail__item">
-				<h3>Step 05 — Ongoing Optimization</h3>
-				<p>Treatment is not a one-time event. Your provider monitors your labs quarterly, adjusts protocols based on your response, and ensures your care stays on track.</p>
-				<p>Provider messaging, follow-up visits, and priority scheduling are included in optimization memberships.</p>
+				<div class="hiw-detail__head">
+					<span class="hiw-detail__num">05</span>
+					<h3>Follow-Up</h3>
+				</div>
+				<p>Regular check-ins ensure your protocol is working as expected. Your provider reviews symptoms, adjusts dosing, and addresses any concerns in follow-up visits — in-person or via telehealth.</p>
+				<p>Provider messaging and priority scheduling keep you connected between visits.</p>
+			</div>
+			<div class="hiw-detail__item hiw-detail__item--last">
+				<div class="hiw-detail__head">
+					<span class="hiw-detail__num">06</span>
+					<h3>Optimization</h3>
+				</div>
+				<p>Treatment is not a one-time event. Your provider monitors your labs quarterly, adjusts protocols based on your response, and ensures your care stays on track over time.</p>
+				<p>The goal is ongoing improvement — not just a number on a chart, but how you actually feel and perform.</p>
 			</div>
 		</div>
 	</div>
 </section>
 
-<!-- What makes VANTAGE different -->
-<section class="vt-sec vt-sec--steel">
-	<div class="vt-contain">
-		<p class="vt-eye">The Difference</p>
-		<h2>What makes VANTAGE different from typical men's health clinics</h2>
+<!-- ═══ WHAT MAKES VANTAGE DIFFERENT ═══ -->
+<section class="vt-s vt-s--black hiw-diff-sec">
+	<div class="vt-w">
+		<span class="vt-e">The Difference</span>
+		<h2>What makes VANTAGE different.</h2>
 		<div class="hiw-diff">
 			<div class="hiw-diff__item">
-				<div class="hiw-diff__row">
-					<span class="vt-dot vt-dot--bronze"></span>
+				<span class="hiw-diff__dot"></span>
+				<div>
 					<h3>Lab-first approach</h3>
+					<p>We never prescribe without testing first. Every protocol is grounded in your actual biomarker data — not assumptions or symptom checklists alone.</p>
 				</div>
-				<p>We never prescribe without testing first. Every protocol is grounded in your actual biomarker data — not assumptions or symptom checklists alone.</p>
 			</div>
 			<div class="hiw-diff__item">
-				<div class="hiw-diff__row">
-					<span class="vt-dot vt-dot--bronze"></span>
+				<span class="hiw-diff__dot"></span>
+				<div>
 					<h3>Licensed providers only</h3>
+					<p>Your care is managed by board-certified physicians and experienced PAs specializing in men's health and hormone medicine.</p>
 				</div>
-				<p>Your care is managed by board-certified physicians and experienced PAs specializing in men's health and hormone medicine.</p>
 			</div>
 			<div class="hiw-diff__item">
-				<div class="hiw-diff__row">
-					<span class="vt-dot vt-dot--bronze"></span>
+				<span class="hiw-diff__dot"></span>
+				<div>
 					<h3>No pressure, no upselling</h3>
+					<p>If treatment isn't appropriate for you, we'll tell you. Our goal is appropriate care — not maximum revenue per patient.</p>
 				</div>
-				<p>If treatment isn't appropriate for you, we'll tell you. Our goal is appropriate care — not maximum revenue per patient.</p>
 			</div>
 			<div class="hiw-diff__item">
-				<div class="hiw-diff__row">
-					<span class="vt-dot vt-dot--bronze"></span>
+				<span class="hiw-diff__dot"></span>
+				<div>
 					<h3>Ongoing relationship</h3>
+					<p>This isn't a transactional prescription service. We build lasting provider-patient relationships with regular check-ins and accessible communication.</p>
 				</div>
-				<p>This isn't a transactional prescription service. We build lasting provider-patient relationships with regular check-ins and accessible communication.</p>
 			</div>
 			<div class="hiw-diff__item">
-				<div class="hiw-diff__row">
-					<span class="vt-dot vt-dot--bronze"></span>
+				<span class="hiw-diff__dot"></span>
+				<div>
 					<h3>Privacy & discretion</h3>
+					<p>Sexual health, hormone therapy, and weight management are treated with the same discretion and professionalism as any other medical specialty.</p>
 				</div>
-				<p>Sexual health, hormone therapy, and weight management are treated with the same discretion and professionalism as any other medical specialty.</p>
 			</div>
 			<div class="hiw-diff__item hiw-diff__item--last">
-				<div class="hiw-diff__row">
-					<span class="vt-dot vt-dot--bronze"></span>
+				<span class="hiw-diff__dot"></span>
+				<div>
 					<h3>Transparent pricing</h3>
+					<p>You'll know what things cost before you commit. No surprise bills, hidden fees, or bundled services you didn't ask for.</p>
 				</div>
-				<p>You'll know what things cost before you commit. No surprise bills, hidden fees, or bundled services you didn't ask for.</p>
 			</div>
 		</div>
 	</div>
 </section>
 
-<!-- CTA -->
-<section class="vt-sec vt-sec--ink">
-	<div class="vt-contain">
-		<div class="hiw-cta">
-			<p class="vt-eye">Ready to Begin?</p>
-			<h2>Start with a private assessment — it takes less than 2 minutes.</h2>
-			<p class="vt-sub">Your provider will review your responses and guide you through the next steps. No commitment required.</p>
-			<div class="vt-btn-row" style="margin-top:1.25rem;">
-				<a class="vt-btn vt-btn--bronze" href="/demos/hormone-trt/assessment">Take the Assessment &rarr;</a>
-				<a class="vt-btn vt-btn--outline" href="/demos/hormone-trt/book-consultation">Book Consultation</a>
-			</div>
+<!-- ═══ CTA — RED PANEL ═══ -->
+<section class="hiw-final">
+	<div class="vt-w hiw-final__inner">
+		<span class="vt-e">Decision Time</span>
+		<h2>Ready to build your plan?</h2>
+		<p class="vt-sub">Start with a private assessment — it takes less than 2 minutes. Your provider will review your responses and guide the next step.</p>
+		<div class="vt-btn-row" style="margin-top:1.5rem;">
+			<a class="vt-btn vt-btn--red" href="/demos/hormone-trt/assessment" style="background:var(--vt-white);color:var(--vt-red);border-color:var(--vt-white);">Start My Assessment &rarr;</a>
+			<a class="vt-btn vt-btn--dark" href="/demos/hormone-trt/book-consultation" style="background:transparent;color:var(--vt-white);border-color:rgba(255,255,255,0.3);">Book a Private Consult</a>
 		</div>
 	</div>
 </section>
 
-<!-- Disclaimer -->
-<div class="vt-sec--graphite" style="padding:0 0 2rem;">
-	<div class="vt-contain">
+<!-- ═══ DISCLAIMER ═══ -->
+<div class="vt-s--black" style="padding:0 0 2rem;">
+	<div class="vt-w">
 		<p class="hiw-disc">{brand.disclaimer}</p>
 	</div>
 </div>
@@ -145,47 +170,63 @@ import { howItWorks, brand } from '../../../data/vantage';
 </VantageLayout>
 
 <style>
-/* ─── Hero ─── */
-.hiw-hero { padding: clamp(4rem, 8vw, 6rem) 0 clamp(2rem, 4vw, 3rem); }
-.hiw-hero h1 { max-width: 720px; }
-.hiw-hero .vt-sub { max-width: 560px; }
+/* ═══════════════════════════════════════════════════════
+   HOW IT WORKS — Elite Sports Performance Medicine
+   ═══════════════════════════════════════════════════════ */
 
-/* ─── 5-step track — horizontal connected steps ─── */
-.hiw-track { display: flex; gap: 0; margin: 2rem 0 3rem; border: 1px solid var(--vt-border); border-radius: var(--vt-r); overflow: hidden; }
-.hiw-track__step { flex: 1; padding: 1.25rem 1rem; border-right: 1px solid var(--vt-border); }
-.hiw-track__step--last { border-right: none; }
-.hiw-track__dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.1); border: 1.5px solid rgba(255,255,255,0.1); margin-bottom: 0.75rem; }
-.hiw-track__step:first-child .hiw-track__dot { background: var(--vt-bronze); border-color: var(--vt-bronze); box-shadow: 0 0 6px rgba(180,134,82,0.3); }
-.hiw-track__num { display: block; font-size: 0.55rem; font-weight: 800; letter-spacing: 0.1em; color: var(--vt-bronze); margin-bottom: 0.2rem; }
-.hiw-track__step h3 { font-size: 0.85rem; font-weight: 700; color: var(--vt-bone); margin-bottom: 0.3rem; }
-.hiw-track__step p { font-size: 0.68rem; color: rgba(244,237,226,0.4); line-height: 1.45; }
+/* Hero */
+.hiw-hero { padding: clamp(5rem, 10vw, 8rem) 0 clamp(3rem, 6vw, 4rem); position: relative; overflow: hidden; }
+.hiw-hero::before { content: ''; position: absolute; top: -40%; right: -10%; width: 45%; height: 180%; background: var(--vt-red); transform: skewX(-12deg); opacity: 0.04; pointer-events: none; }
+.hiw-hero h1 { max-width: 600px; }
+.hiw-hero .vt-sub { max-width: 500px; }
 
-/* ─── Expanded detail — stacked rows with left border-accent ─── */
-.hiw-detail { display: flex; flex-direction: column; gap: 0; max-width: 680px; }
-.hiw-detail__item { padding: 1.5rem 0 1.5rem 1.25rem; border-left: 3px solid var(--vt-bronze); border-bottom: 1px solid var(--vt-border); }
-.hiw-detail__item:last-child { border-bottom: none; }
-.hiw-detail__item h3 { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.02em; color: var(--vt-bronze); margin-bottom: 0.5rem; }
-.hiw-detail__item p { font-size: 0.78rem; color: rgba(244,237,226,0.4); line-height: 1.55; margin-top: 0.5rem; }
+/* 6-step game plan — field-line steps on bone */
+.hiw-gp h2 { max-width: 400px; }
+.hiw-gp .vt-sub { margin-bottom: 2.5rem; }
+.hiw-field { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0; position: relative; }
+.hiw-field__line { position: absolute; top: 1.15rem; left: 1.5rem; right: 1.5rem; height: 2px; background: var(--vt-border-light); z-index: 0; }
+.hiw-field__step { position: relative; z-index: 1; text-align: center; }
+.hiw-field__marker { display: flex; align-items: center; justify-content: center; width: 2.3rem; height: 2.3rem; margin: 0 auto 0.75rem; font-size: 0.7rem; font-weight: 900; color: var(--vt-white); background: var(--vt-charcoal); border: 2px solid var(--vt-charcoal); border-radius: 50%; }
+.hiw-field__step--first .hiw-field__marker { background: var(--vt-red); border-color: var(--vt-red); }
+.hiw-field__label { display: block; font-size: 0.72rem; font-weight: 800; color: var(--vt-black); margin-bottom: 0.2rem; }
+.hiw-field__desc { font-size: 0.62rem; color: var(--vt-steel); line-height: 1.4; padding: 0 0.25rem; }
 
-/* ─── What makes VANTAGE different — stacked rows with border separators ─── */
-.hiw-diff { display: flex; flex-direction: column; gap: 0; margin-top: 2rem; }
-.hiw-diff__item { padding: 1.1rem 0; border-bottom: 1px solid var(--vt-border); }
+/* Expanded step details */
+.hiw-detail-sec h2 { margin-bottom: 2rem; }
+.hiw-detail { display: flex; flex-direction: column; gap: 0; max-width: 700px; }
+.hiw-detail__item { padding: 1.5rem 0; border-bottom: 1px solid var(--vt-border); }
+.hiw-detail__item--last { border-bottom: none; }
+.hiw-detail__head { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.6rem; }
+.hiw-detail__num { font-size: 1.1rem; font-weight: 900; color: var(--vt-red); line-height: 1; min-width: 1.5rem; }
+.hiw-detail__item h3 { font-size: 0.92rem; font-weight: 700; margin-bottom: 0; }
+.hiw-detail__item p { font-size: 0.78rem; color: rgba(244,239,231,0.5); line-height: 1.6; margin-top: 0.5rem; }
+
+/* What makes VANTAGE different — stacked rows with red accent dots */
+.hiw-diff-sec h2 { margin-bottom: 2rem; }
+.hiw-diff { display: flex; flex-direction: column; gap: 0; max-width: 700px; }
+.hiw-diff__item { display: flex; gap: 0.85rem; padding: 1.2rem 0; border-bottom: 1px solid var(--vt-border); align-items: start; }
 .hiw-diff__item--last { border-bottom: none; }
-.hiw-diff__row { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.25rem; }
-.hiw-diff__item h3 { font-size: 0.95rem; font-weight: 700; color: var(--vt-bone); margin-bottom: 0; }
-.hiw-diff__item p { font-size: 0.78rem; color: rgba(244,237,226,0.4); line-height: 1.55; padding-left: 0.9rem; }
+.hiw-diff__dot { width: 8px; height: 8px; min-width: 8px; border-radius: 50%; background: var(--vt-red); margin-top: 0.35rem; }
+.hiw-diff__item h3 { font-size: 0.92rem; font-weight: 700; margin-bottom: 0.2rem; }
+.hiw-diff__item p { font-size: 0.78rem; color: rgba(244,239,231,0.5); line-height: 1.55; }
 
-/* ─── CTA — left-aligned ─── */
-.hiw-cta { max-width: 560px; }
-.hiw-cta .vt-sub { margin-bottom: 0; }
+/* CTA — red panel */
+.hiw-final { background: var(--vt-red); padding: clamp(3rem, 6vw, 5rem) 0; position: relative; overflow: hidden; }
+.hiw-final::before { content: ''; position: absolute; top: -30%; right: -5%; width: 40%; height: 160%; background: rgba(0,0,0,0.08); transform: skewX(-12deg); pointer-events: none; }
+.hiw-final__inner { position: relative; z-index: 1; }
+.hiw-final h2 { color: var(--vt-white); }
+.hiw-final .vt-e { color: rgba(255,255,255,0.5); }
+.hiw-final .vt-sub { color: rgba(255,255,255,0.7); }
 
-/* ─── Disclaimer ─── */
-.hiw-disc { font-size: 0.58rem; color: rgba(244,237,226,0.15); font-style: italic; max-width: 560px; }
+/* Disclaimer */
+.hiw-disc { font-size: 0.55rem; color: rgba(244,239,231,0.12); font-style: italic; max-width: 560px; }
 
-/* ─── Responsive ─── */
+/* Responsive */
 @media (max-width: 768px) {
-	.hiw-track { flex-direction: column; }
-	.hiw-track__step { border-right: none; border-bottom: 1px solid var(--vt-border); }
-	.hiw-track__step--last { border-bottom: none; }
+	.hiw-field { grid-template-columns: repeat(3, 1fr); gap: 1.5rem 0; }
+	.hiw-field__line { display: none; }
+}
+@media (max-width: 480px) {
+	.hiw-field { grid-template-columns: repeat(2, 1fr); }
 }
 </style>

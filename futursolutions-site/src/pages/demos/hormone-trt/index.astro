@@ -1,149 +1,106 @@
 ---
 import VantageLayout from '../../../layouts/VantageLayout.astro';
-import { brand, trustBar, symptoms, symptomCategories, pathways, protocol, treatments, treatmentMatrix, labCategories, providers, pricingTiers, testimonials, faqs, pillars } from '../../../data/vantage';
+import { brand, performanceStandard, performanceBreakdown, gamePlanTracks, gameplan, treatmentStack, labCategories, providers, pricingTiers, patientWins, faqs } from '../../../data/vantage';
 ---
 
 <VantageLayout title="VANTAGE Men's Health — Hormone, Sexual Health & Performance Medicine" description="Data-guided testosterone optimization, ED treatment, medical weight loss, peptide therapy, and longevity care for men. Private evaluations. Lab-based plans. Ongoing monitoring.">
 
-<!-- ═══ 1. HERO — full-bleed with overlapping diagnostic console ═══ -->
+<!-- ═══ 1. HERO — diagonal red accent, asymmetric, scoreboard stats ═══ -->
 <section class="hero">
-	<div class="vt-contain hero__inner">
+	<div class="hero__stripe" aria-hidden="true"></div>
+	<div class="vt-w hero__grid">
 		<div class="hero__copy">
-			<p class="vt-eye">Private Men's Performance Medicine</p>
-			<h1>Stop guessing.<br/>Start with the data.</h1>
-			<p class="hero__lead">Hormone, sexual health, weight, and performance care for men — guided by labs, licensed providers, and a plan built around your goals.</p>
+			<span class="vt-e">Elite Men's Performance Medicine</span>
+			<h1>Build your<br/><span class="hero__accent">comeback</span> plan.</h1>
+			<p class="hero__lead">Hormone optimization, ED care, medical weight loss, and longevity medicine for men — guided by labs, licensed providers, and ongoing performance tracking.</p>
 			<div class="vt-btn-row">
-				<a class="vt-btn vt-btn--bronze" href="/demos/hormone-trt/assessment">Run the 2-Minute Assessment &rarr;</a>
-				<a class="vt-btn vt-btn--outline" href="/demos/hormone-trt/book-consultation">Book a Private Consult</a>
+				<a class="vt-btn vt-btn--red" href="/demos/hormone-trt/assessment">Start My Assessment &rarr;</a>
+				<a class="vt-btn vt-btn--dark" href="/demos/hormone-trt/book-consultation">Book a Private Consult</a>
 			</div>
-			<p class="hero__micro">Private &middot; Lab-based &middot; Provider-led</p>
 		</div>
-	</div>
-	<div class="vt-contain hero__console-wrap">
-		<div class="hero__console" aria-hidden="true">
-			<div class="vt-panel__head"><span>VANTAGE Diagnostic Console</span><span>Sample · Provider Review</span></div>
-			<div class="hero__console-body">
-				<div class="hero__markers">
-					<div class="hero__marker">
-						<span class="hero__marker-label">Total T</span>
-						<span class="hero__marker-val">312 <small>ng/dL</small></span>
-						<div class="hero__range"><div class="hero__range-fill" style="width:32%;left:0"></div><div class="hero__range-opt" style="left:45%;width:35%"></div></div>
-					</div>
-					<div class="hero__marker">
-						<span class="hero__marker-label">Free T</span>
-						<span class="hero__marker-val">6.8 <small>pg/mL</small></span>
-						<div class="hero__range"><div class="hero__range-fill" style="width:22%;left:0"></div><div class="hero__range-opt" style="left:40%;width:40%"></div></div>
-					</div>
-					<div class="hero__marker">
-						<span class="hero__marker-label">SHBG</span>
-						<span class="hero__marker-val">52 <small>nmol/L</small></span>
-						<div class="hero__range"><div class="hero__range-fill hero__range-fill--high" style="width:18%;left:65%"></div><div class="hero__range-opt" style="left:20%;width:35%"></div></div>
-					</div>
-					<div class="hero__marker">
-						<span class="hero__marker-label">Estradiol</span>
-						<span class="hero__marker-val">32 <small>pg/mL</small></span>
-						<div class="hero__range"><div class="hero__range-fill" style="width:15%;left:50%"></div><div class="hero__range-opt" style="left:25%;width:30%"></div></div>
-					</div>
-				</div>
-				<div class="hero__profile">
-					<div class="hero__profile-head">Symptom Profile</div>
-					<div class="hero__chips">
-						<span>Low energy</span><span>Brain fog</span><span>Weight gain</span><span>Low libido</span>
-					</div>
-					<div class="hero__status">
-						<span class="vt-dot vt-dot--bronze"></span>
-						<span>Provider review complete</span>
-					</div>
+		<div class="hero__stats" aria-hidden="true">
+			<div class="hero__stat-card">
+				<div class="hero__stat-hdr">Performance Plan</div>
+				<div class="hero__stat-row"><span class="hero__label">Energy</span><span class="hero__bar"><span class="hero__fill" style="width:35%"></span></span><span class="hero__val">Low</span></div>
+				<div class="hero__stat-row"><span class="hero__label">Libido</span><span class="hero__bar"><span class="hero__fill" style="width:28%"></span></span><span class="hero__val">Low</span></div>
+				<div class="hero__stat-row"><span class="hero__label">Recovery</span><span class="hero__bar"><span class="hero__fill" style="width:42%"></span></span><span class="hero__val">Below</span></div>
+				<div class="hero__stat-row"><span class="hero__label">Body Comp</span><span class="hero__bar"><span class="hero__fill" style="width:50%"></span></span><span class="hero__val">Mid</span></div>
+				<div class="hero__stat-row"><span class="hero__label">Hormones</span><span class="hero__bar"><span class="hero__fill hero__fill--alert" style="width:25%"></span></span><span class="hero__val">Flag</span></div>
+				<div class="hero__stat-foot">
+					<span class="hero__badge">Provider Review Required</span>
+					<span class="hero__pending">Lab Work Pending</span>
 				</div>
 			</div>
 		</div>
 	</div>
 </section>
 
-<!-- ═══ 2. STATUS RAIL — thin data strip ═══ -->
-<div class="rail">
-	<div class="vt-contain rail__inner">
-		{trustBar.map((item) => (
-			<div class="rail__item">
-				<span class="vt-dot vt-dot--bronze"></span>
-				<span>{item}</span>
-			</div>
-		))}
-	</div>
-</div>
-
-<!-- ═══ 3. PILLARS — operating system strip ═══ -->
-<section class="vt-sec vt-sec--graphite pillars">
-	<div class="vt-contain">
-		<p class="vt-eye">The VANTAGE System</p>
-		<h2>Men's health care built like a system — not a sales funnel.</h2>
-		<div class="pillars__track">
-			{pillars.map((p) => (
-				<div class="pillars__block">
-					<span class="pillars__num">{p.num}</span>
-					<h3>{p.title}</h3>
-					<p>{p.description}</p>
+<!-- ═══ 2. PERFORMANCE STANDARD — bold band ═══ -->
+<section class="standard">
+	<div class="vt-w">
+		<span class="standard__title">The VANTAGE Standard</span>
+		<div class="standard__pillars">
+			{performanceStandard.map((p) => (
+				<div class="standard__pillar">
+					<span class="standard__num">{p.num}</span>
+					<div>
+						<h3>{p.title}</h3>
+						<p>{p.description}</p>
+					</div>
 				</div>
 			))}
 		</div>
 	</div>
 </section>
 
-<!-- ═══ 4. SYMPTOM DOSSIER — categorized chips with side panel ═══ -->
-<section class="vt-sec vt-sec--ink dossier" id="conditions">
-	<div class="vt-contain dossier__layout">
-		<div class="dossier__main">
-			<p class="vt-eye">Symptom Intelligence</p>
-			<h2>Build your symptom profile.</h2>
-			<p class="vt-sub">Men rarely come in for "hormones." They come in because something feels off. These symptoms overlap — the right starting point is a private evaluation, not guesswork.</p>
-			<div class="dossier__clusters">
-				{symptomCategories.map((cat) => (
-					<div class="dossier__cluster">
-						<span class="dossier__cat">{cat.category}</span>
-						<div class="dossier__chips">
-							{cat.items.map((item) => (
-								<span class="dossier__chip">{item}</span>
-							))}
-						</div>
-					</div>
-				))}
-			</div>
-		</div>
-		<div class="dossier__side">
-			<div class="vt-panel">
-				<div class="vt-panel__head"><span>Next Step</span><span>Assessment</span></div>
-				<div class="vt-panel__body">
-					<p class="dossier__side-lead">Identify your pattern. Get a private evaluation.</p>
-					<div class="dossier__side-steps">
-						<div class="dossier__side-step"><span class="vt-dot vt-dot--bronze"></span><span>Complete the 2-minute assessment</span></div>
-						<div class="dossier__side-step"><span class="vt-dot vt-dot--steel"></span><span>Provider reviews your profile</span></div>
-						<div class="dossier__side-step"><span class="vt-dot vt-dot--steel"></span><span>Labs ordered based on symptoms</span></div>
-					</div>
-					<a class="vt-btn vt-btn--bronze dossier__cta" href="/demos/hormone-trt/assessment">Build My Profile &rarr;</a>
-				</div>
-			</div>
+<!-- ═══ 3. PERFORMANCE BREAKDOWN — scoreboard stat blocks ═══ -->
+<section class="vt-s vt-s--black breakdown" id="problems">
+	<div class="vt-w">
+		<span class="vt-e">Performance Breakdown</span>
+		<h2>Where are you losing performance?</h2>
+		<p class="vt-sub">Men rarely come in for "hormones." They come in because something feels off. These signals overlap — the right starting point is a private evaluation, not guesswork.</p>
+		<div class="breakdown__grid">
+			{performanceBreakdown.map((item) => (
+				<a class="breakdown__card" href={item.href}>
+					<span class="breakdown__signal">{item.signal}</span>
+					<span class="vt-redline"></span>
+					<p class="breakdown__issue">{item.issue}</p>
+					<span class="breakdown__path">{item.pathway} &rarr;</span>
+				</a>
+			))}
 		</div>
 	</div>
 </section>
 
-<!-- ═══ 5. CARE TRACKS — offset numbered panels ═══ -->
-<section class="vt-sec vt-sec--charcoal tracks">
-	<div class="vt-contain">
-		<p class="vt-eye">Care Tracks</p>
-		<h2>Choose the path that sounds most like you.</h2>
+<!-- ═══ 4. GAME PLAN TRACKS — playbook panels ═══ -->
+<section class="vt-s vt-s--charcoal tracks">
+	<div class="vt-w">
+		<span class="vt-e">Game Plans</span>
+		<h2>Choose your starting game plan.</h2>
 		<div class="tracks__list">
-			{pathways.map((p, i) => (
-				<a class="tracks__item" href={p.href}>
-					<div class="tracks__left">
-						<span class="tracks__num">Track 0{i + 1}</span>
-						<h3>{p.title}</h3>
-						<p>{p.description}</p>
+			{gamePlanTracks.map((track) => (
+				<a class="tracks__panel" href={track.href}>
+					<div class="tracks__head">
+						<span class="tracks__num">Game Plan {track.num}</span>
+						<h3>{track.title}</h3>
 					</div>
-					<div class="tracks__right">
-						{p.services.map((s) => (
-							<span class="tracks__service"><span class="vt-dot vt-dot--bronze"></span>{s}</span>
-						))}
-						<span class="vt-link">Explore this path &rarr;</span>
+					<div class="tracks__body">
+						<div class="tracks__col">
+							<span class="tracks__col-label">Common Signs</span>
+							{track.signs.map((s) => <span class="tracks__tag">{s}</span>)}
+						</div>
+						<div class="tracks__col">
+							<span class="tracks__col-label">What We Evaluate</span>
+							{track.evaluates.map((e) => <span class="tracks__eval">{e}</span>)}
+						</div>
+						<div class="tracks__col">
+							<span class="tracks__col-label">Possible Treatments</span>
+							{track.treatments.map((t) => <span class="tracks__treat">{t}</span>)}
+						</div>
+					</div>
+					<div class="tracks__foot">
+						<span class="tracks__first">First step: {track.firstStep}</span>
+						<span class="vt-link">Explore this plan &rarr;</span>
 					</div>
 				</a>
 			))}
@@ -151,41 +108,39 @@ import { brand, trustBar, symptoms, symptomCategories, pathways, protocol, treat
 	</div>
 </section>
 
-<!-- ═══ 6. PROTOCOL TIMELINE — horizontal connected steps ═══ -->
-<section class="vt-sec vt-sec--steel proto">
-	<div class="vt-contain">
-		<p class="vt-eye">The Protocol</p>
-		<h2>From symptoms to strategy.</h2>
-		<div class="proto__track">
-			{protocol.map((s, i) => (
-				<div class:list={['proto__step', { 'proto__step--active': i === 0 }]}>
-					<div class="proto__dot"></div>
-					<span class="proto__num">{s.step}</span>
-					<span class="proto__label">{s.label}</span>
-					<p class="proto__desc">{s.description}</p>
+<!-- ═══ 5. THE VANTAGE GAME PLAN — field-line horizontal steps ═══ -->
+<section class="vt-s vt-s--bone gp">
+	<div class="vt-w">
+		<span class="vt-e">The Process</span>
+		<h2>The VANTAGE Game Plan.</h2>
+		<p class="vt-sub">Treatment decisions are based on symptoms, lab results, health history, goals, and ongoing follow-up — not one-size-fits-all protocols.</p>
+		<div class="gp__field">
+			<div class="gp__line" aria-hidden="true"></div>
+			{gameplan.map((s, i) => (
+				<div class:list={['gp__step', { 'gp__step--first': i === 0 }]}>
+					<span class="gp__marker">{s.step}</span>
+					<span class="gp__label">{s.label}</span>
+					<p class="gp__desc">{s.description}</p>
 				</div>
 			))}
 		</div>
-		<p class="proto__note">Treatment decisions are based on symptoms, lab results, health history, goals, and ongoing follow-up — not one-size-fits-all protocols.</p>
-		<a class="vt-btn vt-btn--bronze" href="/demos/hormone-trt/assessment" style="margin-top:1.25rem;">Start With the Assessment &rarr;</a>
+		<a class="vt-btn vt-btn--red" href="/demos/hormone-trt/assessment" style="margin-top:2rem;">Start With the Assessment &rarr;</a>
 	</div>
 </section>
 
-<!-- ═══ 7. TREATMENT MATRIX — categorized rows ═══ -->
-<section class="vt-sec vt-sec--ink matrix" id="treatments">
-	<div class="vt-contain">
-		<p class="vt-eye">Treatment Map</p>
-		<h2>Integrated care for hormones, performance, and long-term vitality.</h2>
-		<div class="matrix__grid">
-			{treatmentMatrix.map((group) => (
-				<div class="matrix__row">
-					<span class="matrix__cat">{group.category}</span>
-					<div class="matrix__items">
+<!-- ═══ 6. PERFORMANCE MEDICINE STACK — stacked category bands ═══ -->
+<section class="vt-s vt-s--black stack" id="treatments">
+	<div class="vt-w">
+		<span class="vt-e">Treatment Map</span>
+		<h2>Performance medicine stack.</h2>
+		<p class="vt-sub">Integrated care for hormones, performance, and long-term vitality.</p>
+		<div class="stack__bands">
+			{treatmentStack.map((group) => (
+				<div class="stack__band">
+					<span class="stack__cat">{group.category}</span>
+					<div class="stack__items">
 						{group.items.map((item) => (
-							<a class="matrix__item" href={item.href}>
-								<span>{item.title}</span>
-								<span class="matrix__arrow">&rarr;</span>
-							</a>
+							<a class="stack__item" href={item.href}>{item.title}<span>&rarr;</span></a>
 						))}
 					</div>
 				</div>
@@ -194,80 +149,78 @@ import { brand, trustBar, symptoms, symptomCategories, pathways, protocol, treat
 	</div>
 </section>
 
-<!-- ═══ 8. LAB DASHBOARD — full-width mock interface ═══ -->
-<section class="vt-sec vt-sec--graphite labs">
-	<div class="vt-contain">
-		<div class="labs__intro">
-			<p class="vt-eye">Lab Intelligence</p>
-			<h2>Your labs become the map.</h2>
-			<p class="vt-sub">VANTAGE uses comprehensive lab testing, provider consultation, and follow-up monitoring to determine whether treatments may be appropriate. Not every symptom is low testosterone — we look at the broader picture.</p>
-		</div>
-		<div class="labs__dashboard" aria-hidden="true">
-			<div class="vt-panel__head"><span>Comprehensive Lab Panel</span><span>Panels customized per patient</span></div>
-			<div class="labs__grid">
+<!-- ═══ 7. LAB SECTION — sports science biomarker tiles ═══ -->
+<section class="vt-s vt-s--charcoal labs">
+	<div class="vt-w">
+		<div class="labs__split">
+			<div class="labs__text">
+				<span class="vt-e">Lab Intelligence</span>
+				<h2>Labs turn symptoms into a strategy.</h2>
+				<p class="vt-sub">Not every man with low energy needs TRT. VANTAGE looks at hormones, metabolic health, recovery markers, history, and goals before recommending treatment.</p>
+				<a class="vt-btn vt-btn--red" href="/demos/hormone-trt/how-it-works" style="margin-top:1.25rem;">See the Full Process &rarr;</a>
+			</div>
+			<div class="labs__tiles" aria-hidden="true">
 				{labCategories.map((cat, i) => (
-					<div class="labs__cell">
-						<span class="labs__cell-num">0{i + 1}</span>
-						<span class="labs__cell-name">{cat}</span>
+					<div class="labs__tile">
+						<span class="labs__tile-group">{cat.group}</span>
+						<span class="labs__tile-name">{cat.name}</span>
+						<div class="labs__tile-bar"><div class="labs__tile-fill" style={`width:${[65,45,82,70,55,60,78,48][i]}%`}></div></div>
 					</div>
 				))}
 			</div>
-			<div class="labs__footer">
-				<span class="vt-dot vt-dot--bronze"></span>
-				<span>Results reviewed with provider · Not every patient is a candidate for every treatment</span>
-			</div>
 		</div>
 	</div>
 </section>
 
-<!-- ═══ 9. PROVIDERS — editorial layout ═══ -->
-<section class="vt-sec vt-sec--ink provs" id="providers">
-	<div class="vt-contain">
-		<div class="provs__header">
-			<p class="vt-eye">Your Care Team</p>
-			<h2>Provider-led care with guardrails.</h2>
-			<p class="vt-sub">Every treatment plan is built and monitored by a licensed provider — with medical review before treatment, ongoing monitoring, adjustments over time, and fertility and safety considerations built in.</p>
-		</div>
-		<div class="provs__list">
+<!-- ═══ 8. PROVIDERS — roster-style ═══ -->
+<section class="vt-s vt-s--black roster" id="providers">
+	<div class="vt-w">
+		<span class="vt-e">Performance Medical Team</span>
+		<h2>Provider-led care with guardrails.</h2>
+		<p class="vt-sub" style="margin-bottom:2rem;">Every treatment plan is built and monitored by a licensed provider. Medical review before treatment. Ongoing monitoring. Fertility and safety considered.</p>
+		<div class="roster__list">
 			{providers.map((prov) => (
-				<div class="provs__card">
-					<div class="provs__initials">{prov.initials}</div>
-					<div class="provs__info">
-						<h3>{prov.name}</h3>
-						<span class="provs__role">{prov.role}</span>
-						<p class="provs__focus"><strong>Focus:</strong> {prov.specialties}</p>
-						<p class="provs__bio">{prov.bio}</p>
+				<div class="roster__card">
+					<div class="roster__id">
+						<span class="roster__initials">{prov.initials}</span>
+						<div class="roster__name-block">
+							<h3>{prov.name}</h3>
+							<span class="roster__role">{prov.role}</span>
+						</div>
 					</div>
+					<span class="roster__creds">{prov.credentials}</span>
+					<div class="roster__tags">
+						{prov.specialties.map((s) => <span class="roster__tag">{s}</span>)}
+					</div>
+					<p class="roster__bio">{prov.bio}</p>
 				</div>
 			))}
 		</div>
-		<div class="provs__rails">
-			<div class="provs__rail"><span class="vt-dot vt-dot--bronze"></span>Medical review before any treatment</div>
-			<div class="provs__rail"><span class="vt-dot vt-dot--bronze"></span>Ongoing lab monitoring and adjustments</div>
-			<div class="provs__rail"><span class="vt-dot vt-dot--bronze"></span>Fertility and safety considerations</div>
-			<div class="provs__rail"><span class="vt-dot vt-dot--bronze"></span>Not every patient is a candidate</div>
+		<div class="roster__rails">
+			<span>Medical review before any treatment</span>
+			<span>Ongoing lab monitoring and adjustments</span>
+			<span>Fertility and safety considerations</span>
+			<span>Not every patient is a candidate</span>
 		</div>
 	</div>
 </section>
 
-<!-- ═══ 10. PRICING — horizontal comparison ═══ -->
-<section class="vt-sec vt-sec--charcoal pricing">
-	<div class="vt-contain">
-		<p class="vt-eye">Care Plans</p>
-		<h2>Built for ongoing care, not one-off injections.</h2>
-		<div class="pricing__row">
+<!-- ═══ 9. PRICING — club membership board ═══ -->
+<section class="vt-s vt-s--carbon pricing">
+	<div class="vt-w">
+		<span class="vt-e">Care Plans</span>
+		<h2>Built for ongoing optimization — not one-off injections.</h2>
+		<div class="pricing__board">
 			{pricingTiers.map((tier) => (
-				<div class:list={['pricing__tier', { 'pricing__tier--featured': tier.featured }]}>
-					{tier.featured && <span class="pricing__badge">Most Popular</span>}
-					<div class="pricing__top">
-						<h3>{tier.name}</h3>
-						<p class="pricing__tag">{tier.tagline}</p>
-						<span class="pricing__price">{tier.price}</span>
-					</div>
-					<ul class="pricing__includes">
+				<div class:list={['pricing__col', { 'pricing__col--featured': tier.featured }]}>
+					{tier.featured && <span class="pricing__badge">Recommended</span>}
+					<h3>{tier.name}</h3>
+					<p class="pricing__tag">{tier.tagline}</p>
+					<span class="pricing__price">{tier.price}</span>
+					<ul class="pricing__list">
 						{tier.includes.map((item) => <li>{item}</li>)}
 					</ul>
-					<a class="vt-btn vt-btn--bronze pricing__cta" href="/demos/hormone-trt/pricing">{tier.cta}</a>
+					<a class="vt-btn vt-btn--red pricing__cta" href="/demos/hormone-trt/pricing">{tier.cta}</a>
 				</div>
 			))}
 		</div>
@@ -275,66 +228,61 @@ import { brand, trustBar, symptoms, symptomCategories, pathways, protocol, treat
 	</div>
 </section>
 
-<!-- ═══ 11. PATIENT NOTES — dossier format ═══ -->
-<section class="vt-sec vt-sec--ink notes">
-	<div class="vt-contain">
-		<p class="vt-eye">Patient Experiences</p>
-		<h2>Real care should create clarity, not hype.</h2>
-		<div class="notes__list">
-			{testimonials.map((t, i) => (
-				<div class="notes__entry">
-					<div class="notes__meta">
-						<span class="notes__num">Note 0{i + 1}</span>
-						<span class="notes__ctx">{t.context}</span>
-					</div>
-					<blockquote class="notes__quote">&ldquo;{t.text}&rdquo;</blockquote>
-					<span class="notes__author">{t.author}</span>
+<!-- ═══ 10. PATIENT WINS — numbered entries ═══ -->
+<section class="vt-s vt-s--black wins">
+	<div class="vt-w">
+		<span class="vt-e">Patient Wins</span>
+		<h2>Real care creates clarity, not hype.</h2>
+		<div class="wins__grid">
+			{patientWins.map((w) => (
+				<div class="wins__card">
+					<span class="wins__num">Win {w.num}</span>
+					<div class="wins__meta"><strong>Concern:</strong> {w.concern}</div>
+					<div class="wins__meta"><strong>Result:</strong> {w.result}</div>
+					<blockquote class="wins__quote">&ldquo;{w.quote}&rdquo;</blockquote>
+					<span class="wins__author">{w.author}</span>
 				</div>
 			))}
 		</div>
-		<p class="notes__disc">Individual results vary. Treatment requires provider evaluation. These are fictional testimonials for demonstration purposes.</p>
+		<p class="wins__disc">Individual results vary. Treatment requires provider evaluation. These are fictional testimonials for demonstration purposes.</p>
 	</div>
 </section>
 
-<!-- ═══ 12. FAQ — inline accordion ═══ -->
-<section class="vt-sec vt-sec--graphite faq" id="faq">
-	<div class="vt-contain">
-		<p class="vt-eye">Common Questions</p>
-		<h2>Objection handling.</h2>
+<!-- ═══ 11. FAQ — grouped accordion ═══ -->
+<section class="vt-s vt-s--charcoal faq" id="faq">
+	<div class="vt-w">
+		<span class="vt-e">Common Questions</span>
+		<h2>Straight answers.</h2>
 		<div class="faq__list">
-			{faqs.map((faq) => (
+			{faqs.map((f) => (
 				<details class="faq__item">
-					<summary>{faq.q}</summary>
-					<p>{faq.a}</p>
+					<summary>
+						<span class="faq__group">{f.group}</span>
+						<span class="faq__q">{f.q}</span>
+					</summary>
+					<p>{f.a}</p>
 				</details>
 			))}
 		</div>
 	</div>
 </section>
 
-<!-- ═══ 13. FINAL CTA — command decision panel ═══ -->
-<section class="vt-sec vt-sec--steel final">
-	<div class="vt-contain final__inner">
-		<div class="final__copy">
-			<p class="vt-eye">Decision Point</p>
-			<h2>Get the data. Know your options.</h2>
-			<p class="vt-sub">Take the private assessment and see whether a men's health evaluation may be the right next step.</p>
-			<div class="vt-btn-row" style="margin-top:1.25rem;">
-				<a class="vt-btn vt-btn--bronze" href="/demos/hormone-trt/assessment">Run the Assessment &rarr;</a>
-				<a class="vt-btn vt-btn--outline" href="/demos/hormone-trt/book-consultation">Book a Private Consult</a>
-			</div>
-		</div>
-		<div class="final__strip" aria-hidden="true">
-			<div class="final__stat"><span class="final__stat-val">6</span><span class="final__stat-lbl">Protocol Steps</span></div>
-			<div class="final__stat"><span class="final__stat-val">40+</span><span class="final__stat-lbl">Lab Markers</span></div>
-			<div class="final__stat"><span class="final__stat-val">90-day</span><span class="final__stat-lbl">First Review</span></div>
+<!-- ═══ 12. FINAL CTA — decisive action ═══ -->
+<section class="final">
+	<div class="vt-w final__inner">
+		<span class="vt-e">Decision Time</span>
+		<h2>Ready to build your plan?</h2>
+		<p class="vt-sub">Start with a private assessment. If care is appropriate, your provider will guide the next step.</p>
+		<div class="vt-btn-row" style="margin-top:1.5rem;">
+			<a class="vt-btn vt-btn--red" href="/demos/hormone-trt/assessment">Start My Assessment &rarr;</a>
+			<a class="vt-btn vt-btn--dark" href="/demos/hormone-trt/book-consultation">Book a Private Consult</a>
 		</div>
 	</div>
 </section>
 
 <!-- ═══ DISCLAIMER ═══ -->
-<div class="vt-sec--ink" style="padding:0 0 2rem;">
-	<div class="vt-contain">
+<div class="vt-s--black" style="padding:0 0 2rem;">
+	<div class="vt-w">
 		<p class="disc">{brand.disclaimer}</p>
 	</div>
 </div>
@@ -343,177 +291,173 @@ import { brand, trustBar, symptoms, symptomCategories, pathways, protocol, treat
 
 <style>
 /* ═══════════════════════════════════════════════════════
-   HOMEPAGE — VANTAGE Clinical Command Center
-   Every section uses a DISTINCT layout pattern.
+   HOMEPAGE — VANTAGE Sports Performance Medicine
    ═══════════════════════════════════════════════════════ */
 
-/* ─── 1. HERO: full-bleed with offset console ─── */
-.hero { background: var(--vt-ink); padding: clamp(5rem, 10vw, 8rem) 0 0; }
-.hero__copy { max-width: 580px; }
-.hero__lead { font-size: 0.92rem; color: rgba(244,237,226,0.5); line-height: 1.6; max-width: 500px; margin-bottom: 1.5rem; }
-.hero__micro { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(244,237,226,0.2); margin-top: 1.5rem; }
-.hero__console-wrap { margin-top: 3rem; padding-bottom: clamp(2rem, 4vw, 3rem); }
-.hero__console { background: var(--vt-graphite); border: 1px solid var(--vt-border); border-radius: var(--vt-r); overflow: hidden; max-width: 780px; }
-.hero__console-body { display: grid; grid-template-columns: 1.4fr 1fr; }
-.hero__markers { padding: 1.25rem; display: flex; flex-direction: column; gap: 0.85rem; border-right: 1px solid var(--vt-border); }
-.hero__marker { display: flex; align-items: center; gap: 0.75rem; }
-.hero__marker-label { font-size: 0.58rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(244,237,226,0.35); min-width: 4.5rem; }
-.hero__marker-val { font-size: 0.72rem; font-weight: 800; color: var(--vt-bone); font-variant-numeric: tabular-nums; min-width: 5.5rem; text-align: right; }
-.hero__marker-val small { font-size: 0.55rem; font-weight: 500; color: rgba(244,237,226,0.3); margin-left: 0.15rem; }
-.hero__range { position: relative; flex: 1; height: 3px; background: rgba(255,255,255,0.04); border-radius: 2px; min-width: 80px; }
-.hero__range-fill { position: absolute; top: 0; height: 100%; background: var(--vt-bronze); border-radius: 2px; }
-.hero__range-fill--high { background: var(--vt-steel); }
-.hero__range-opt { position: absolute; top: -1px; height: 5px; border: 1px solid rgba(255,255,255,0.08); border-radius: 2px; }
-.hero__profile { padding: 1.25rem; display: flex; flex-direction: column; gap: 0.75rem; }
-.hero__profile-head { font-size: 0.55rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--vt-bronze); }
-.hero__chips { display: flex; flex-wrap: wrap; gap: 0.35rem; }
-.hero__chips span { font-size: 0.55rem; font-weight: 600; letter-spacing: 0.04em; padding: 0.2rem 0.5rem; border: 1px solid var(--vt-border); border-radius: var(--vt-r); color: var(--vt-sand); }
-.hero__status { display: flex; align-items: center; gap: 0.4rem; font-size: 0.55rem; color: rgba(244,237,226,0.35); margin-top: auto; }
-@media (max-width: 700px) { .hero__console-body { grid-template-columns: 1fr; } .hero__markers { border-right: none; border-bottom: 1px solid var(--vt-border); } .hero__marker { flex-wrap: wrap; } .hero__range { min-width: 60px; } }
+/* 1. HERO — diagonal stripe + scoreboard */
+.hero { background: var(--vt-black); padding: clamp(5rem, 10vw, 8rem) 0 clamp(3rem, 6vw, 4rem); position: relative; overflow: hidden; }
+.hero__stripe { position: absolute; top: -40%; right: -10%; width: 45%; height: 180%; background: var(--vt-red); transform: skewX(-12deg); opacity: 0.04; pointer-events: none; }
+.hero__grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: clamp(2rem, 4vw, 4rem); align-items: center; }
+.hero__copy { position: relative; z-index: 1; }
+.hero__accent { color: var(--vt-red); }
+.hero__lead { font-size: 0.9rem; color: rgba(244,239,231,0.55); max-width: 460px; margin-bottom: 1.5rem; line-height: 1.6; }
+.hero__stats { position: relative; z-index: 1; }
+.hero__stat-card { background: var(--vt-charcoal); border: 1px solid rgba(255,255,255,0.06); border-radius: var(--vt-r); overflow: hidden; border-top: 3px solid var(--vt-red); }
+.hero__stat-hdr { padding: 0.75rem 1rem; font-size: 0.58rem; font-weight: 900; letter-spacing: 0.16em; text-transform: uppercase; color: var(--vt-white); border-bottom: 1px solid rgba(255,255,255,0.06); }
+.hero__stat-row { display: flex; align-items: center; gap: 0.6rem; padding: 0.5rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.04); }
+.hero__label { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: rgba(244,239,231,0.4); min-width: 5.5rem; }
+.hero__bar { flex: 1; height: 4px; background: rgba(255,255,255,0.06); border-radius: 2px; overflow: hidden; }
+.hero__fill { display: block; height: 100%; background: var(--vt-steel); border-radius: 2px; }
+.hero__fill--alert { background: var(--vt-red); }
+.hero__val { font-size: 0.58rem; font-weight: 800; color: var(--vt-silver); min-width: 2.5rem; text-align: right; letter-spacing: 0.04em; text-transform: uppercase; }
+.hero__stat-foot { display: flex; justify-content: space-between; align-items: center; padding: 0.6rem 1rem; }
+.hero__badge { font-size: 0.52rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--vt-red); }
+.hero__pending { font-size: 0.5rem; color: rgba(244,239,231,0.2); letter-spacing: 0.06em; }
+@media (max-width: 768px) { .hero__grid { grid-template-columns: 1fr; } .hero__stats { max-width: 400px; } }
 
-/* ─── 2. STATUS RAIL ─── */
-.rail { padding: 0.65rem 0; background: var(--vt-graphite); border-top: 1px solid var(--vt-border); border-bottom: 1px solid var(--vt-border); }
-.rail__inner { display: flex; flex-wrap: wrap; gap: 0.75rem 2rem; justify-content: center; }
-.rail__item { display: flex; align-items: center; gap: 0.4rem; font-size: 0.62rem; font-weight: 600; color: rgba(244,237,226,0.35); letter-spacing: 0.03em; }
+/* 2. PERFORMANCE STANDARD — bold red band */
+.standard { padding: 0; background: var(--vt-charcoal); border-top: 1px solid rgba(255,255,255,0.04); border-bottom: 1px solid rgba(255,255,255,0.04); }
+.standard__title { display: block; font-size: 0.55rem; font-weight: 900; letter-spacing: 0.22em; text-transform: uppercase; color: var(--vt-red); padding: 0.85rem 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+.standard__pillars { display: grid; grid-template-columns: repeat(4, 1fr); }
+.standard__pillar { display: flex; gap: 0.65rem; padding: 1.1rem 1rem 1.1rem 0; border-right: 1px solid rgba(255,255,255,0.04); align-items: start; }
+.standard__pillar:last-child { border-right: none; }
+.standard__num { font-size: 1.2rem; font-weight: 900; color: var(--vt-red); line-height: 1; min-width: 1.8rem; }
+.standard__pillar h3 { font-size: 0.78rem; margin-bottom: 0.15rem; }
+.standard__pillar p { font-size: 0.68rem; color: rgba(244,239,231,0.4); line-height: 1.45; }
+@media (max-width: 768px) { .standard__pillars { grid-template-columns: 1fr 1fr; } .standard__pillar:nth-child(2) { border-right: none; } .standard__pillar:nth-child(-n+2) { border-bottom: 1px solid rgba(255,255,255,0.04); } }
+@media (max-width: 480px) { .standard__pillars { grid-template-columns: 1fr; } .standard__pillar { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.04); } .standard__pillar:last-child { border-bottom: none; } }
 
-/* ─── 3. PILLARS — operating system strip ─── */
-.pillars h2 { max-width: 520px; margin-bottom: 2.5rem; }
-.pillars__track { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border: 1px solid var(--vt-border); border-radius: var(--vt-r); overflow: hidden; }
-.pillars__block { padding: 1.5rem; border-right: 1px solid var(--vt-border); }
-.pillars__block:last-child { border-right: none; }
-.pillars__num { font-size: 0.6rem; font-weight: 800; color: var(--vt-bronze); letter-spacing: 0.08em; display: block; margin-bottom: 0.5rem; }
-.pillars__block h3 { font-size: 0.9rem; }
-.pillars__block p { font-size: 0.75rem; color: rgba(244,237,226,0.4); line-height: 1.5; }
-@media (max-width: 768px) { .pillars__track { grid-template-columns: 1fr 1fr; } .pillars__block:nth-child(2) { border-right: none; } .pillars__block:nth-child(-n+2) { border-bottom: 1px solid var(--vt-border); } }
-@media (max-width: 480px) { .pillars__track { grid-template-columns: 1fr; } .pillars__block { border-right: none; border-bottom: 1px solid var(--vt-border); } .pillars__block:last-child { border-bottom: none; } }
+/* 3. PERFORMANCE BREAKDOWN — scoreboard cards */
+.breakdown h2 { max-width: 480px; margin-bottom: 0.5rem; }
+.breakdown .vt-sub { margin-bottom: 2.5rem; }
+.breakdown__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(255,255,255,0.04); border-radius: var(--vt-r); overflow: hidden; }
+.breakdown__card { display: flex; flex-direction: column; gap: 0.5rem; padding: 1.5rem; background: var(--vt-charcoal); text-decoration: none; transition: background var(--vt-ease); }
+.breakdown__card:hover { background: var(--vt-carbon); }
+.breakdown__signal { font-size: 0.95rem; font-weight: 900; color: var(--vt-white); letter-spacing: -0.01em; }
+.breakdown__issue { font-size: 0.75rem; color: rgba(244,239,231,0.5); line-height: 1.5; flex: 1; }
+.breakdown__path { font-size: 0.62rem; font-weight: 700; color: var(--vt-red); letter-spacing: 0.04em; text-transform: uppercase; margin-top: 0.25rem; }
+@media (max-width: 768px) { .breakdown__grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 480px) { .breakdown__grid { grid-template-columns: 1fr; } }
 
-/* ─── 4. SYMPTOM DOSSIER ─── */
-.dossier__layout { display: grid; grid-template-columns: 1.6fr 1fr; gap: clamp(2rem, 4vw, 4rem); align-items: start; }
-.dossier__clusters { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2rem; }
-.dossier__cat { display: block; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--vt-steel); margin-bottom: 0.5rem; }
-.dossier__chips { display: flex; flex-wrap: wrap; gap: 0.3rem; }
-.dossier__chip { font-size: 0.68rem; font-weight: 500; padding: 0.3rem 0.65rem; background: rgba(255,255,255,0.03); border: 1px solid var(--vt-border); border-radius: var(--vt-r); color: rgba(244,237,226,0.6); transition: border-color var(--vt-ease); }
-.dossier__chip:hover { border-color: var(--vt-border-bronze); }
-.dossier__side-lead { font-size: 0.82rem; color: var(--vt-bone); margin-bottom: 1rem; font-weight: 600; }
-.dossier__side-steps { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.25rem; }
-.dossier__side-step { display: flex; align-items: center; gap: 0.5rem; font-size: 0.72rem; color: rgba(244,237,226,0.5); }
-.dossier__cta { width: 100%; text-align: center; }
-@media (max-width: 768px) { .dossier__layout { grid-template-columns: 1fr; } .dossier__clusters { grid-template-columns: 1fr; } }
+/* 4. GAME PLAN TRACKS — stacked playbook panels */
+.tracks__list { display: flex; flex-direction: column; gap: 1px; margin-top: 2rem; background: rgba(255,255,255,0.04); border-radius: var(--vt-r); overflow: hidden; }
+.tracks__panel { display: block; background: var(--vt-carbon); padding: 1.5rem; text-decoration: none; transition: background var(--vt-ease); }
+.tracks__panel:hover { background: rgba(255,255,255,0.03); }
+.tracks__head { display: flex; align-items: baseline; gap: 1rem; margin-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.04); padding-bottom: 0.75rem; }
+.tracks__num { font-size: 0.55rem; font-weight: 900; letter-spacing: 0.12em; text-transform: uppercase; color: var(--vt-red); white-space: nowrap; }
+.tracks__head h3 { font-size: 1.05rem; }
+.tracks__body { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 1rem; }
+.tracks__col-label { display: block; font-size: 0.52rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--vt-steel); margin-bottom: 0.4rem; }
+.tracks__tag, .tracks__eval, .tracks__treat { display: block; font-size: 0.72rem; color: rgba(244,239,231,0.5); padding: 0.15rem 0; }
+.tracks__foot { display: flex; justify-content: space-between; align-items: center; padding-top: 0.75rem; border-top: 1px solid rgba(255,255,255,0.04); }
+.tracks__first { font-size: 0.68rem; color: rgba(244,239,231,0.35); font-style: italic; }
+@media (max-width: 600px) { .tracks__body { grid-template-columns: 1fr; gap: 0.75rem; } .tracks__head { flex-direction: column; gap: 0.3rem; } }
 
-/* ─── 5. CARE TRACKS — stacked rows ─── */
-.tracks__list { display: flex; flex-direction: column; gap: 0; margin-top: 2rem; }
-.tracks__item { display: grid; grid-template-columns: 1.3fr 1fr; gap: 2rem; padding: 1.5rem 0; border-bottom: 1px solid var(--vt-border); text-decoration: none; transition: background var(--vt-ease); }
-.tracks__item:first-child { padding-top: 0; }
-.tracks__item:last-child { border-bottom: none; }
-.tracks__item:hover { background: rgba(255,255,255,0.015); }
-.tracks__num { font-size: 0.55rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--vt-bronze); display: block; margin-bottom: 0.3rem; }
-.tracks__left h3 { font-size: 1.1rem; margin-bottom: 0.3rem; }
-.tracks__left p { font-size: 0.8rem; color: rgba(244,237,226,0.45); }
-.tracks__right { display: flex; flex-direction: column; gap: 0.35rem; }
-.tracks__service { display: flex; align-items: center; gap: 0.4rem; font-size: 0.72rem; color: rgba(244,237,226,0.5); }
-.tracks__right .vt-link { margin-top: 0.5rem; }
-@media (max-width: 600px) { .tracks__item { grid-template-columns: 1fr; gap: 0.75rem; } }
+/* 5. GAME PLAN — field-line steps on bone */
+.gp h2 { max-width: 380px; }
+.gp .vt-sub { margin-bottom: 2.5rem; }
+.gp__field { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0; position: relative; }
+.gp__line { position: absolute; top: 1.15rem; left: 1.5rem; right: 1.5rem; height: 2px; background: var(--vt-border-light); z-index: 0; }
+.gp__step { position: relative; z-index: 1; text-align: center; }
+.gp__marker { display: flex; align-items: center; justify-content: center; width: 2.3rem; height: 2.3rem; margin: 0 auto 0.75rem; font-size: 0.7rem; font-weight: 900; color: var(--vt-white); background: var(--vt-charcoal); border: 2px solid var(--vt-charcoal); border-radius: 50%; }
+.gp__step--first .gp__marker { background: var(--vt-red); border-color: var(--vt-red); }
+.gp__label { display: block; font-size: 0.72rem; font-weight: 800; color: var(--vt-black); margin-bottom: 0.2rem; }
+.gp__desc { font-size: 0.62rem; color: var(--vt-steel); line-height: 1.4; padding: 0 0.25rem; }
+@media (max-width: 768px) { .gp__field { grid-template-columns: repeat(3, 1fr); gap: 1.5rem 0; } .gp__line { display: none; } }
+@media (max-width: 480px) { .gp__field { grid-template-columns: repeat(2, 1fr); } }
 
-/* ─── 6. PROTOCOL TIMELINE — horizontal track ─── */
-.proto__track { display: flex; gap: 0; margin: 2.5rem 0 1.5rem; border: 1px solid var(--vt-border); border-radius: var(--vt-r); overflow: hidden; }
-.proto__step { flex: 1; padding: 1.25rem 1rem; border-right: 1px solid var(--vt-border); position: relative; }
-.proto__step:last-child { border-right: none; }
-.proto__dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.1); border: 1.5px solid var(--vt-border-med); margin-bottom: 0.75rem; }
-.proto__step--active .proto__dot { background: var(--vt-bronze); border-color: var(--vt-bronze); box-shadow: 0 0 6px rgba(180,134,82,0.3); }
-.proto__num { display: block; font-size: 0.55rem; font-weight: 800; letter-spacing: 0.1em; color: var(--vt-bronze); margin-bottom: 0.2rem; }
-.proto__label { display: block; font-size: 0.82rem; font-weight: 700; color: var(--vt-bone); margin-bottom: 0.3rem; }
-.proto__desc { font-size: 0.68rem; color: rgba(244,237,226,0.4); line-height: 1.45; }
-.proto__note { font-size: 0.78rem; color: rgba(244,237,226,0.4); font-style: italic; max-width: 580px; }
-@media (max-width: 768px) { .proto__track { flex-direction: column; } .proto__step { border-right: none; border-bottom: 1px solid var(--vt-border); } .proto__step:last-child { border-bottom: none; } }
+/* 6. TREATMENT STACK — stacked category bands */
+.stack h2 { max-width: 480px; margin-bottom: 0.5rem; }
+.stack .vt-sub { margin-bottom: 2rem; }
+.stack__bands { display: flex; flex-direction: column; }
+.stack__band { display: grid; grid-template-columns: 150px 1fr; gap: 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+.stack__band:last-child { border-bottom: none; }
+.stack__cat { font-size: 0.58rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--vt-red); padding: 1rem 1rem 1rem 0; border-right: 1px solid rgba(255,255,255,0.04); }
+.stack__items { display: flex; flex-wrap: wrap; gap: 0.4rem; padding: 1rem; align-items: center; }
+.stack__item { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.4rem 0.75rem; font-size: 0.72rem; font-weight: 600; color: var(--vt-bone); background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: var(--vt-r); text-decoration: none; transition: border-color var(--vt-ease), background var(--vt-ease); }
+.stack__item:hover { border-color: var(--vt-border-red); background: rgba(215,25,32,0.04); }
+.stack__item span { font-size: 0.6rem; color: var(--vt-red); }
+@media (max-width: 600px) { .stack__band { grid-template-columns: 1fr; } .stack__cat { border-right: none; padding-bottom: 0.25rem; } .stack__items { padding-left: 0; } }
 
-/* ─── 7. TREATMENT MATRIX — categorized rows ─── */
-.matrix__grid { margin-top: 2rem; }
-.matrix__row { display: grid; grid-template-columns: 140px 1fr; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid var(--vt-border); align-items: start; }
-.matrix__row:last-child { border-bottom: none; }
-.matrix__cat { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--vt-steel); padding-top: 0.15rem; }
-.matrix__items { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-.matrix__item { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.45rem 0.85rem; background: rgba(255,255,255,0.025); border: 1px solid var(--vt-border); border-radius: var(--vt-r); font-size: 0.75rem; font-weight: 600; color: var(--vt-bone); text-decoration: none; transition: border-color var(--vt-ease), background var(--vt-ease); }
-.matrix__item:hover { border-color: var(--vt-border-bronze); background: rgba(180,134,82,0.05); }
-.matrix__arrow { font-size: 0.65rem; color: var(--vt-bronze); }
-@media (max-width: 600px) { .matrix__row { grid-template-columns: 1fr; gap: 0.4rem; } }
+/* 7. LABS — split with biomarker tiles */
+.labs__split { display: grid; grid-template-columns: 1fr 1.2fr; gap: clamp(2rem, 4vw, 4rem); align-items: start; }
+.labs__text { padding-top: 1rem; }
+.labs__tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(255,255,255,0.04); border-radius: var(--vt-r); overflow: hidden; }
+.labs__tile { background: var(--vt-carbon); padding: 1rem; }
+.labs__tile-group { display: block; font-size: 0.48rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--vt-red); margin-bottom: 0.25rem; }
+.labs__tile-name { display: block; font-size: 0.75rem; font-weight: 700; color: var(--vt-bone); margin-bottom: 0.5rem; }
+.labs__tile-bar { height: 3px; background: rgba(255,255,255,0.06); border-radius: 2px; overflow: hidden; }
+.labs__tile-fill { display: block; height: 100%; background: var(--vt-steel); border-radius: 2px; }
+@media (max-width: 768px) { .labs__split { grid-template-columns: 1fr; } }
 
-/* ─── 8. LAB DASHBOARD — full-width mock interface ─── */
-.labs__intro { max-width: 520px; margin-bottom: 2.5rem; }
-.labs__dashboard { background: var(--vt-ink); border: 1px solid var(--vt-border); border-radius: var(--vt-r); overflow: hidden; }
-.labs__grid { display: grid; grid-template-columns: repeat(4, 1fr); }
-.labs__cell { padding: 1rem 1.25rem; border-right: 1px solid var(--vt-border); border-bottom: 1px solid var(--vt-border); }
-.labs__cell:nth-child(4n) { border-right: none; }
-.labs__cell:nth-last-child(-n+4) { border-bottom: none; }
-.labs__cell-num { display: block; font-size: 0.5rem; font-weight: 800; color: var(--vt-bronze); letter-spacing: 0.1em; margin-bottom: 0.25rem; }
-.labs__cell-name { font-size: 0.68rem; color: rgba(244,237,226,0.5); line-height: 1.4; }
-.labs__footer { display: flex; align-items: center; gap: 0.4rem; padding: 0.75rem 1.25rem; font-size: 0.58rem; color: rgba(244,237,226,0.3); border-top: 1px solid var(--vt-border); }
-@media (max-width: 768px) { .labs__grid { grid-template-columns: repeat(2, 1fr); } .labs__cell:nth-child(2n) { border-right: none; } .labs__cell:nth-last-child(-n+2) { border-bottom: none; } .labs__cell:nth-last-child(n+3) { border-bottom: 1px solid var(--vt-border); } }
-@media (max-width: 480px) { .labs__grid { grid-template-columns: 1fr; } .labs__cell { border-right: none; border-bottom: 1px solid var(--vt-border); } .labs__cell:last-child { border-bottom: none; } }
+/* 8. PROVIDERS — roster style */
+.roster__list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: rgba(255,255,255,0.04); border-radius: var(--vt-r); overflow: hidden; margin-bottom: 2rem; }
+.roster__card { background: var(--vt-charcoal); padding: 1.5rem; }
+.roster__id { display: flex; align-items: center; gap: 0.85rem; margin-bottom: 0.75rem; }
+.roster__initials { display: flex; align-items: center; justify-content: center; width: 2.5rem; height: 2.5rem; background: var(--vt-red); color: var(--vt-white); font-size: 0.75rem; font-weight: 900; border-radius: var(--vt-r); flex-shrink: 0; }
+.roster__name-block h3 { font-size: 0.92rem; margin-bottom: 0; }
+.roster__role { font-size: 0.58rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--vt-red); }
+.roster__creds { display: block; font-size: 0.62rem; color: rgba(244,239,231,0.35); margin-bottom: 0.6rem; font-style: italic; }
+.roster__tags { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-bottom: 0.75rem; }
+.roster__tag { font-size: 0.58rem; font-weight: 600; padding: 0.15rem 0.5rem; border: 1px solid rgba(255,255,255,0.06); border-radius: var(--vt-r); color: rgba(244,239,231,0.5); }
+.roster__bio { font-size: 0.75rem; color: rgba(244,239,231,0.45); line-height: 1.5; }
+.roster__rails { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border: 1px solid rgba(255,255,255,0.06); border-radius: var(--vt-r); overflow: hidden; }
+.roster__rails span { font-size: 0.65rem; color: rgba(244,239,231,0.4); padding: 0.7rem 1rem; border-right: 1px solid rgba(255,255,255,0.04); text-align: center; }
+.roster__rails span:last-child { border-right: none; }
+.roster__rails span::before { content: ''; display: inline-block; width: 4px; height: 4px; background: var(--vt-red); border-radius: 50%; margin-right: 0.4rem; vertical-align: middle; }
+@media (max-width: 768px) { .roster__list { grid-template-columns: 1fr; } .roster__rails { grid-template-columns: 1fr 1fr; } .roster__rails span:nth-child(2) { border-right: none; } }
+@media (max-width: 480px) { .roster__rails { grid-template-columns: 1fr; } .roster__rails span { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.04); text-align: left; } .roster__rails span:last-child { border-bottom: none; } }
 
-/* ─── 9. PROVIDERS — editorial stacked rows ─── */
-.provs__header { max-width: 540px; margin-bottom: 2.5rem; }
-.provs__list { display: flex; flex-direction: column; gap: 0; margin-bottom: 2rem; }
-.provs__card { display: flex; gap: 1.25rem; padding: 1.5rem 0; border-bottom: 1px solid var(--vt-border); }
-.provs__card:first-child { padding-top: 0; }
-.provs__card:last-child { border-bottom: none; }
-.provs__initials { display: flex; align-items: center; justify-content: center; width: 2.75rem; height: 2.75rem; flex-shrink: 0; border-radius: var(--vt-r); background: rgba(180,134,82,0.08); color: var(--vt-bronze); font-size: 0.8rem; font-weight: 800; border: 1px solid var(--vt-border-bronze); }
-.provs__info h3 { font-size: 0.95rem; margin-bottom: 0.1rem; }
-.provs__role { display: block; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--vt-bronze); margin-bottom: 0.6rem; }
-.provs__focus { font-size: 0.78rem; color: rgba(244,237,226,0.5); margin-bottom: 0.3rem; }
-.provs__focus strong { color: var(--vt-bone); }
-.provs__bio { font-size: 0.78rem; color: rgba(244,237,226,0.4); line-height: 1.55; }
-.provs__rails { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; padding: 1.25rem; background: rgba(255,255,255,0.02); border: 1px solid var(--vt-border); border-radius: var(--vt-r); }
-.provs__rail { display: flex; align-items: center; gap: 0.4rem; font-size: 0.68rem; color: rgba(244,237,226,0.45); }
-@media (max-width: 600px) { .provs__card { flex-direction: column; gap: 0.75rem; } .provs__rails { grid-template-columns: 1fr; } }
+/* 9. PRICING — comparison board */
+.pricing__board { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(255,255,255,0.04); border-radius: var(--vt-r); overflow: hidden; margin: 2rem 0 1rem; }
+.pricing__col { padding: 1.75rem; background: var(--vt-charcoal); display: flex; flex-direction: column; position: relative; }
+.pricing__col--featured { background: rgba(215,25,32,0.04); border-top: 3px solid var(--vt-red); }
+.pricing__badge { position: absolute; top: 0; right: 1rem; font-size: 0.5rem; font-weight: 900; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.2rem 0.5rem; background: var(--vt-red); color: var(--vt-white); border-radius: 0 0 var(--vt-r) var(--vt-r); }
+.pricing__col h3 { font-size: 0.95rem; margin-bottom: 0.15rem; }
+.pricing__tag { font-size: 0.72rem; color: rgba(244,239,231,0.4); margin-bottom: 0.75rem; }
+.pricing__price { font-size: 1.1rem; font-weight: 900; color: var(--vt-white); letter-spacing: -0.02em; margin-bottom: 1rem; }
+.pricing__list { list-style: none; padding: 0; margin: 0 0 1.5rem; flex: 1; }
+.pricing__list li { font-size: 0.72rem; color: rgba(244,239,231,0.5); padding: 0.35rem 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+.pricing__list li:last-child { border-bottom: none; }
+.pricing__cta { width: 100%; text-align: center; font-size: 0.65rem; }
+.pricing__note { font-size: 0.72rem; color: rgba(244,239,231,0.3); font-style: italic; }
+@media (max-width: 768px) { .pricing__board { grid-template-columns: 1fr; } }
 
-/* ─── 10. PRICING — horizontal comparison ─── */
-.pricing__row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin: 2rem 0; border: 1px solid var(--vt-border); border-radius: var(--vt-r); overflow: hidden; }
-.pricing__tier { padding: 1.75rem; border-right: 1px solid var(--vt-border); display: flex; flex-direction: column; position: relative; }
-.pricing__tier:last-child { border-right: none; }
-.pricing__tier--featured { background: rgba(180,134,82,0.04); }
-.pricing__badge { position: absolute; top: 0; right: 1rem; font-size: 0.5rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.2rem 0.5rem; background: var(--vt-bronze); color: var(--vt-ink); border-radius: 0 0 var(--vt-r) var(--vt-r); }
-.pricing__top { margin-bottom: 1.25rem; }
-.pricing__top h3 { font-size: 0.95rem; margin-bottom: 0.15rem; }
-.pricing__tag { font-size: 0.72rem; color: rgba(244,237,226,0.4); margin-bottom: 0.75rem; }
-.pricing__price { font-size: 1rem; font-weight: 800; color: var(--vt-bone); letter-spacing: -0.02em; }
-.pricing__includes { list-style: none; padding: 0; margin: 0 0 1.5rem; flex: 1; }
-.pricing__includes li { font-size: 0.72rem; color: rgba(244,237,226,0.45); padding: 0.3rem 0; border-bottom: 1px solid var(--vt-border); }
-.pricing__includes li:last-child { border-bottom: none; }
-.pricing__cta { width: 100%; text-align: center; font-size: 0.68rem; }
-.pricing__note { font-size: 0.72rem; color: rgba(244,237,226,0.3); font-style: italic; }
-@media (max-width: 768px) { .pricing__row { grid-template-columns: 1fr; } .pricing__tier { border-right: none; border-bottom: 1px solid var(--vt-border); } .pricing__tier:last-child { border-bottom: none; } }
+/* 10. PATIENT WINS — numbered cards */
+.wins__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(255,255,255,0.04); border-radius: var(--vt-r); overflow: hidden; margin: 2rem 0 1rem; }
+.wins__card { background: var(--vt-charcoal); padding: 1.5rem; }
+.wins__num { display: block; font-size: 0.55rem; font-weight: 900; letter-spacing: 0.14em; text-transform: uppercase; color: var(--vt-red); margin-bottom: 0.5rem; }
+.wins__meta { font-size: 0.72rem; color: rgba(244,239,231,0.45); margin-bottom: 0.25rem; }
+.wins__meta strong { color: var(--vt-white); font-weight: 700; }
+.wins__quote { margin: 0.75rem 0 0.5rem; font-size: 0.88rem; font-style: italic; color: var(--vt-bone); line-height: 1.5; }
+.wins__author { font-size: 0.62rem; color: rgba(244,239,231,0.3); }
+.wins__disc { font-size: 0.6rem; color: rgba(244,239,231,0.2); font-style: italic; }
+@media (max-width: 600px) { .wins__grid { grid-template-columns: 1fr; } }
 
-/* ─── 11. PATIENT NOTES — dossier entries ─── */
-.notes__list { display: flex; flex-direction: column; gap: 0; margin: 2rem 0; }
-.notes__entry { padding: 1.25rem 0; border-bottom: 1px solid var(--vt-border); }
-.notes__entry:last-child { border-bottom: none; }
-.notes__meta { display: flex; align-items: center; gap: 1rem; margin-bottom: 0.6rem; }
-.notes__num { font-size: 0.55rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--vt-bronze); }
-.notes__ctx { font-size: 0.6rem; font-weight: 600; color: var(--vt-steel); letter-spacing: 0.04em; }
-.notes__quote { margin: 0; font-size: 0.92rem; font-style: italic; color: var(--vt-bone); line-height: 1.5; max-width: 600px; margin-bottom: 0.4rem; }
-.notes__author { font-size: 0.68rem; color: rgba(244,237,226,0.35); }
-.notes__disc { font-size: 0.65rem; color: rgba(244,237,226,0.25); font-style: italic; }
-
-/* ─── 12. FAQ — single-column inline ─── */
+/* 11. FAQ — grouped accordion */
 .faq h2 { margin-bottom: 2rem; }
-.faq__list { max-width: 680px; }
-.faq__item { border-bottom: 1px solid var(--vt-border); }
-.faq__item summary { display: flex; align-items: center; justify-content: space-between; padding: 0.85rem 0; font-size: 0.85rem; font-weight: 600; color: var(--vt-bone); cursor: pointer; list-style: none; }
+.faq__list { max-width: 700px; }
+.faq__item { border-bottom: 1px solid rgba(255,255,255,0.06); }
+.faq__item summary { display: flex; align-items: center; gap: 0.75rem; padding: 0.85rem 0; cursor: pointer; list-style: none; }
 .faq__item summary::-webkit-details-marker { display: none; }
-.faq__item summary::after { content: '+'; font-size: 1rem; font-weight: 300; color: var(--vt-bronze); }
+.faq__group { font-size: 0.5rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--vt-red); min-width: 5.5rem; flex-shrink: 0; }
+.faq__q { font-size: 0.85rem; font-weight: 600; color: var(--vt-bone); flex: 1; }
+.faq__item summary::after { content: '+'; font-size: 1rem; font-weight: 400; color: var(--vt-red); margin-left: auto; }
 .faq__item[open] summary::after { content: '\2212'; }
-.faq__item p { font-size: 0.8rem; color: rgba(244,237,226,0.45); line-height: 1.6; padding-bottom: 1rem; max-width: 560px; }
+.faq__item p { font-size: 0.8rem; color: rgba(244,239,231,0.5); line-height: 1.6; padding: 0 0 1rem 6.25rem; max-width: 560px; }
 
-/* ─── 13. FINAL CTA — command decision ─── */
-.final__inner { display: grid; grid-template-columns: 1.5fr 1fr; gap: 3rem; align-items: center; }
-.final__copy h2 { max-width: 400px; }
-.final__strip { display: flex; flex-direction: column; gap: 0; border: 1px solid var(--vt-border); border-radius: var(--vt-r); overflow: hidden; }
-.final__stat { display: flex; align-items: baseline; gap: 0.75rem; padding: 0.85rem 1.25rem; border-bottom: 1px solid var(--vt-border); }
-.final__stat:last-child { border-bottom: none; }
-.final__stat-val { font-size: 1.1rem; font-weight: 900; color: var(--vt-bone); min-width: 3.5rem; }
-.final__stat-lbl { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(244,237,226,0.35); }
-@media (max-width: 700px) { .final__inner { grid-template-columns: 1fr; } .final__strip { flex-direction: row; } .final__stat { flex: 1; border-bottom: none; border-right: 1px solid var(--vt-border); flex-direction: column; gap: 0.2rem; } .final__stat:last-child { border-right: none; } }
+/* 12. FINAL CTA — red panel */
+.final { background: var(--vt-red); padding: clamp(3rem, 6vw, 5rem) 0; position: relative; overflow: hidden; }
+.final::before { content: ''; position: absolute; top: -30%; right: -5%; width: 40%; height: 160%; background: rgba(0,0,0,0.08); transform: skewX(-12deg); pointer-events: none; }
+.final__inner { position: relative; z-index: 1; }
+.final h2 { color: var(--vt-white); }
+.final .vt-e { color: rgba(255,255,255,0.5); }
+.final .vt-sub { color: rgba(255,255,255,0.7); }
+.final .vt-btn--red { background: var(--vt-white); color: var(--vt-red); border-color: var(--vt-white); }
+.final .vt-btn--red:hover { background: var(--vt-bone); }
+.final .vt-btn--dark { background: transparent; color: var(--vt-white); border-color: rgba(255,255,255,0.3); }
+.final .vt-btn--dark:hover { border-color: var(--vt-white); }
 
-/* ─── Disclaimer ─── */
-.disc { font-size: 0.58rem; color: rgba(244,237,226,0.15); font-style: italic; max-width: 560px; }
+/* Disclaimer */
+.disc { font-size: 0.55rem; color: rgba(244,239,231,0.12); font-style: italic; max-width: 560px; }
 </style>
