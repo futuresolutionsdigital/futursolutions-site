@@ -4,29 +4,73 @@ import { serviceOfferings } from '../../data/services';
 
 const pageTitle = 'Services | FutureSolutions';
 const pageDescription =
-	'FutureSolutions builds Industry Website Foundations, Signature Custom Websites, SEO foundations, Growth Systems, and Care and Optimization for healthcare and high-trust service businesses.';
+	'Choose the level of system your business needs — Website Foundations, Signature Custom Websites, Growth Systems, Visibility, and Care and Optimization for healthcare and high-trust service businesses.';
 const canonicalUrl = 'https://futursolutions.vercel.app/services/';
 
-const principles = [
+/**
+ * Maps each service slug to a lane category, the decision-tree section label,
+ * and an outcome-oriented "what changes after this" sentence. Keeps the data
+ * file lean while letting the page render decision-first.
+ */
+const servicePresentation: Record<string, {
+	lane: 'foundation' | 'custom' | 'growth' | 'audit' | 'care' | 'visibility';
+	section: string;
+	outcome: string;
+}> = {
+	'template-setup': {
+		lane: 'foundation',
+		section: 'Start with a Foundation',
+		outcome: 'A polished, healthcare-specific site launched faster than a fully custom build — without looking templated.',
+	},
+	'custom-website-system': {
+		lane: 'custom',
+		section: 'Build Custom',
+		outcome: 'A bespoke website system shaped around your brand, services, content model, and operational workflow.',
+	},
+	'backend-system-setup': {
+		lane: 'growth',
+		section: 'Add a Growth System',
+		outcome: 'Forms, booking, CRM routing, follow-up, and reporting wired end-to-end — so leads stop disappearing after submit.',
+	},
+	'seo-local-visibility-foundation': {
+		lane: 'visibility',
+		section: 'Improve Visibility',
+		outcome: 'Clearer service structure, metadata, and local content paths so patients and search engines understand what you offer.',
+	},
+	'ongoing-optimization': {
+		lane: 'care',
+		section: 'Keep Optimizing',
+		outcome: 'A site that keeps evolving with your services, audience, and content — instead of going stale six months after launch.',
+	},
+};
+
+const decisionRows = [
 	{
-		title: 'Trust',
-		text: 'Healthcare visitors need to feel confident before they ever book.',
+		ask: 'I need to launch a credible website fast.',
+		answer: 'Start with a Website Foundation.',
+		lane: 'foundation',
 	},
 	{
-		title: 'Clarity',
-		text: 'Your site should make services, audiences, and next steps obvious.',
+		ask: 'My brand and services are unusual or complex.',
+		answer: 'Build a Signature Custom Website.',
+		lane: 'custom',
 	},
 	{
-		title: 'Visibility',
-		text: 'Search engines need clear structure to understand what you offer.',
+		ask: 'My site is fine, but leads disappear after the form.',
+		answer: 'Add a Growth System.',
+		lane: 'growth',
 	},
 	{
-		title: 'Follow-Up',
-		text: 'A lead is only useful if it is captured, organized, and followed up with.',
+		ask: "Patients can't find us locally or our pages don't rank.",
+		answer: 'Improve Visibility.',
+		lane: 'visibility',
+	},
+	{
+		ask: 'We launched — now I want it to keep getting better.',
+		answer: 'Add Care and Optimization.',
+		lane: 'care',
 	},
 ];
-
-const flowSteps = ['Website Visit', 'Form Submission', 'CRM Contact', 'Follow-Up', 'Next Step'];
 
 const processSteps = [
 	{
@@ -63,90 +107,91 @@ const processSteps = [
 	<section class="section services-hero" aria-labelledby="services-heading">
 		<div class="site-container services-hero__inner">
 			<p class="eyebrow">Services</p>
-			<h1 id="services-heading">Website systems for health and wellness businesses that need more than a polished homepage.</h1>
+			<h1 id="services-heading">Choose the level of system your business&nbsp;needs.</h1>
 			<p class="lead">
-				FutureSolutions combines modern website structure, healthcare-specific Foundations, local visibility, and Growth Systems into one practical digital foundation.
+				Five services that build on each other — from a fast Foundation launch to a fully custom site, the Growth System behind both, and ongoing optimization. Start anywhere; expand when ready.
 			</p>
 			<div class="button-row">
-				<a class="button button-primary" href="/audit">Get a Website and Systems Audit</a>
+				<a class="button button-primary" href="/audit">Get a Website Audit</a>
 				<a class="button button-secondary" href="/templates">Explore Live Demos</a>
 			</div>
 		</div>
 	</section>
 
-	<section class="section services-principles" aria-labelledby="services-principles-heading">
+	<section class="section services-decision" aria-labelledby="services-decision-heading">
 		<div class="site-container">
-			<div class="services-principles__intro">
-				<p class="eyebrow">System first</p>
-				<h2 id="services-principles-heading">A better website starts with a better system.</h2>
-				<p class="lead">
-					Most health and wellness businesses do not need more random marketing tactics. They need a clear website structure, stronger service pages, better local visibility, and a follow-up system that keeps leads from getting lost.
-				</p>
+			<div class="services-decision__intro">
+				<p class="eyebrow">Quick decision matrix</p>
+				<h2 id="services-decision-heading">Which one fits your situation?</h2>
+				<p class="lead">If something below sounds like you, jump straight to that section.</p>
 			</div>
-			<div class="services-principles__grid">
-				{principles.map((principle) => (
-					<article class="card services-principles__card">
-						<h3>{principle.title}</h3>
-						<p>{principle.text}</p>
-					</article>
+			<ul class="services-decision__list">
+				{decisionRows.map((row) => (
+					<li class={`services-decision__row services-decision__row--${row.lane}`}>
+						<span class="services-decision__ask">"{row.ask}"</span>
+						<span class="services-decision__arrow" aria-hidden="true">&rarr;</span>
+						<span class={`services-decision__answer services-decision__answer--${row.lane}`}>{row.answer}</span>
+					</li>
 				))}
-			</div>
+			</ul>
 		</div>
 	</section>
 
 	<section class="section section-muted services-grid-section" aria-labelledby="services-grid-heading">
 		<div class="site-container">
 			<div class="services-grid-section__intro">
-				<p class="eyebrow">Service ecosystem</p>
+				<p class="eyebrow">Five services. One system.</p>
 				<h2 id="services-grid-heading">Build the level of system your business needs.</h2>
 			</div>
 			<div class="services-grid">
-				{serviceOfferings.map((service) => (
-					<article class="card service-offering" id={service.slug}>
-						<div class="service-offering__header">
-							<span aria-hidden="true"></span>
+				{serviceOfferings.map((service) => {
+					const present = servicePresentation[service.slug];
+					return (
+						<article
+							class:list={[
+								'card service-offering',
+								present && `lane-accent-top lane-accent-top--${present.lane === 'visibility' ? 'foundation' : present.lane}`,
+							]}
+							id={service.slug}
+						>
+							{present && (
+								<header class="service-offering__head">
+									<span class="service-offering__section-label">{present.section}</span>
+									{present.lane !== 'visibility' ? (
+										<span class={`lane-tag lane-tag--${present.lane}`}>{present.lane}</span>
+									) : (
+										<span class="service-offering__visibility-tag">Visibility</span>
+									)}
+								</header>
+							)}
 							<h3>{service.name}</h3>
-							<p>{service.shortDescription}</p>
-						</div>
-						<div class="service-offering__meta">
-							<p>
-								<strong>Best for</strong>
-								<span>{service.bestFor}</span>
-							</p>
-							<div>
-								<strong>Includes</strong>
+							<p class="service-offering__summary">{service.shortDescription}</p>
+
+							<div class="service-offering__outcomes">
+								<div>
+									<strong>What changes</strong>
+									<span>{present?.outcome ?? service.whyItMatters}</span>
+								</div>
+								<div>
+									<strong>Best for</strong>
+									<span>{service.bestFor}</span>
+								</div>
+							</div>
+
+							<details class="service-offering__details">
+								<summary>What's included</summary>
 								<ul>
 									{service.includes.map((item) => <li>{item}</li>)}
 								</ul>
-							</div>
-							<p>
-								<strong>Why it matters</strong>
-								<span>{service.whyItMatters}</span>
-							</p>
-						</div>
-						<a class="service-offering__link" href={service.ctaHref}>{service.ctaLabel}</a>
-					</article>
-				))}
-			</div>
-		</div>
-	</section>
+							</details>
 
-	<section class="section services-operations" aria-labelledby="services-operations-heading">
-		<div class="site-container">
-			<div class="services-operations__intro">
-				<p class="eyebrow">Operations</p>
-				<h2 id="services-operations-heading">The website is only the front door.</h2>
-			<p class="lead">
-				FutureSolutions also wires the site to the systems behind it: lead capture, booking, CRM organization, follow-up, and pipeline visibility — your full Growth System.
-			</p>
-			</div>
-			<div class="services-operations__flow" aria-label="Lead system flow">
-				{flowSteps.map((step, index) => (
-					<div class="card services-operations__step">
-						<span>{String(index + 1).padStart(2, '0')}</span>
-						<p>{step}</p>
-					</div>
-				))}
+							<a class="service-offering__link" href={service.ctaHref}>
+								{service.ctaLabel}
+								<span aria-hidden="true">&rarr;</span>
+							</a>
+						</article>
+					);
+				})}
 			</div>
 		</div>
 	</section>
@@ -180,7 +225,7 @@ const processSteps = [
 					</p>
 				</div>
 				<div class="button-row">
-					<a class="button button-primary" href="/audit">Get a Website and Systems Audit</a>
+					<a class="button button-primary" href="/audit">Get a Website Audit</a>
 					<a class="button button-secondary" href="/templates">Explore Live Demos</a>
 				</div>
 			</div>
@@ -206,9 +251,8 @@ const processSteps = [
 	}
 
 	.services-hero__inner,
-	.services-principles__intro,
+	.services-decision__intro,
 	.services-grid-section__intro,
-	.services-operations__intro,
 	.services-process__intro {
 		max-width: 820px;
 	}
@@ -217,35 +261,78 @@ const processSteps = [
 		max-width: 900px;
 	}
 
-	.services-principles__grid,
 	.services-grid,
-	.services-operations__flow,
 	.services-process__grid {
 		display: grid;
 		gap: 1rem;
 		margin-top: clamp(2rem, 4vw, 3rem);
 	}
 
-	.services-principles__grid {
-		grid-template-columns: repeat(4, minmax(0, 1fr));
+	.services-decision__list {
+		display: grid;
+		gap: 0.65rem;
+		margin: clamp(2rem, 4vw, 2.5rem) 0 0;
+		padding: 0;
+		list-style: none;
 	}
 
-	.services-principles__card,
+	.services-decision__row {
+		display: grid;
+		grid-template-columns: minmax(0, 1.4fr) auto minmax(0, 1fr);
+		align-items: center;
+		gap: 1rem;
+		padding: 1rem 1.25rem;
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-md);
+		background: var(--color-white);
+		transition: border-color var(--transition-base), background var(--transition-base);
+	}
+
+	.services-decision__row:hover {
+		border-color: color-mix(in srgb, var(--color-text) 18%, var(--color-border));
+	}
+
+	.services-decision__row--foundation:hover { background: color-mix(in srgb, var(--lane-foundation-tint) 35%, var(--color-white)); }
+	.services-decision__row--custom:hover     { background: color-mix(in srgb, var(--lane-custom-tint) 35%, var(--color-white)); }
+	.services-decision__row--growth:hover     { background: color-mix(in srgb, var(--lane-growth-tint) 35%, var(--color-white)); }
+	.services-decision__row--visibility:hover { background: color-mix(in srgb, var(--lane-foundation-tint) 22%, var(--color-white)); }
+	.services-decision__row--care:hover       { background: color-mix(in srgb, var(--lane-care-tint) 35%, var(--color-white)); }
+
+	.services-decision__ask {
+		color: var(--color-text);
+		font-size: 0.98rem;
+		font-style: italic;
+		line-height: 1.45;
+	}
+
+	.services-decision__arrow {
+		color: var(--color-muted);
+		font-weight: 700;
+	}
+
+	.services-decision__answer {
+		font-size: 0.95rem;
+		font-weight: 650;
+		letter-spacing: -0.01em;
+	}
+
+	.services-decision__answer--foundation { color: var(--lane-foundation-ink); }
+	.services-decision__answer--custom     { color: var(--lane-custom-ink); }
+	.services-decision__answer--growth     { color: var(--lane-growth-ink); }
+	.services-decision__answer--visibility { color: var(--lane-foundation-ink); }
+	.services-decision__answer--care       { color: var(--lane-care-ink); }
+
 	.service-offering,
-	.services-operations__step,
 	.services-process__card {
-		padding: 1.25rem;
+		padding: 1.5rem;
 	}
 
-	.services-principles__card h3,
 	.service-offering h3,
 	.services-process__card h3 {
 		font-size: 1.15rem;
 		letter-spacing: -0.02em;
 	}
 
-	.services-principles__card p,
-	.service-offering p,
 	.services-process__card p {
 		font-size: 0.9375rem;
 		line-height: 1.6;
@@ -256,79 +343,127 @@ const processSteps = [
 	}
 
 	.service-offering {
+		position: relative;
 		display: flex;
 		flex-direction: column;
+		gap: 0.85rem;
 		min-height: 100%;
 	}
 
-	.service-offering__header > span {
-		display: block;
-		width: 2.4rem;
-		height: 0.25rem;
-		margin-bottom: 1.5rem;
-		border-radius: 999px;
-		background: var(--color-accent);
+	.service-offering__head {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: space-between;
+		gap: 0.5rem;
+		margin-bottom: 0.25rem;
 	}
 
-	.service-offering__meta {
-		display: grid;
-		gap: 1rem;
-		margin-top: 1.4rem;
-		padding-top: 1.25rem;
-		border-top: 1px solid var(--color-border);
-	}
-
-	.service-offering__meta p,
-	.service-offering__meta ul {
-		margin: 0;
-	}
-
-	.service-offering__meta p,
-	.service-offering__meta div {
-		display: grid;
-		gap: 0.4rem;
-	}
-
-	.service-offering__meta strong {
-		color: var(--color-accent-dark);
-		font-size: 0.75rem;
-		font-weight: 800;
-		letter-spacing: 0.08em;
+	.service-offering__section-label {
+		color: var(--color-muted);
+		font-size: 0.72rem;
+		font-weight: 700;
+		letter-spacing: 0.14em;
 		text-transform: uppercase;
 	}
 
-	.service-offering__meta span,
-	.service-offering__meta li {
+	.service-offering__visibility-tag {
+		display: inline-flex;
+		align-items: center;
+		padding: 0.22rem 0.55rem;
+		border-radius: 999px;
+		background: var(--color-bg-secondary);
 		color: var(--color-muted);
-		font-size: 0.9rem;
+		font-size: 0.68rem;
+		font-weight: 700;
+		letter-spacing: 0.1em;
+		line-height: 1;
+		text-transform: uppercase;
+	}
+
+	.service-offering__summary {
+		margin: 0;
+		color: var(--color-muted);
+		font-size: 0.95rem;
+		line-height: 1.6;
+	}
+
+	.service-offering__outcomes {
+		display: grid;
+		gap: 0.85rem;
+		padding: 1rem 1.1rem;
+		border-radius: var(--radius-sm);
+		background: var(--color-bg);
+	}
+
+	.service-offering__outcomes div {
+		display: grid;
+		gap: 0.25rem;
+	}
+
+	.service-offering__outcomes strong {
+		color: var(--color-text);
+		font-size: 0.72rem;
+		font-weight: 800;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+	}
+
+	.service-offering__outcomes span {
+		color: var(--color-text);
+		font-size: 0.92rem;
 		line-height: 1.55;
 	}
 
-	.service-offering__meta ul {
+	.service-offering__details {
+		border-top: 1px solid var(--color-border-soft);
+		padding-top: 0.85rem;
+	}
+
+	.service-offering__details summary {
+		color: var(--color-muted);
+		font-size: 0.85rem;
+		font-weight: 600;
+		cursor: pointer;
+		list-style: none;
+	}
+
+	.service-offering__details summary::after {
+		content: ' ▾';
+		font-size: 0.7em;
+	}
+
+	.service-offering__details[open] summary::after {
+		content: ' ▴';
+	}
+
+	.service-offering__details ul {
 		display: grid;
-		gap: 0.35rem;
+		gap: 0.3rem;
+		margin: 0.6rem 0 0;
 		padding-left: 1.1rem;
+		color: var(--color-muted);
+		font-size: 0.875rem;
+		line-height: 1.5;
 	}
 
 	.service-offering__link {
 		display: inline-flex;
+		align-items: center;
+		gap: 0.35rem;
 		width: fit-content;
 		margin-top: auto;
-		padding-top: 1.35rem;
+		padding-top: 0.5rem;
 		color: var(--color-text);
-		font-size: 0.9375rem;
-		font-weight: 700;
+		font-size: 0.92rem;
+		font-weight: 650;
+		transition: gap var(--transition-base);
 	}
 
 	.service-offering__link:hover {
-		color: var(--color-accent-dark);
+		gap: 0.55rem;
 	}
 
-	.services-operations__flow {
-		grid-template-columns: repeat(5, minmax(0, 1fr));
-	}
-
-	.services-operations__step span,
 	.services-process__card span {
 		display: inline-flex;
 		margin-bottom: 1.25rem;
@@ -340,13 +475,6 @@ const processSteps = [
 		font-size: 0.72rem;
 		font-weight: 800;
 		line-height: 1;
-	}
-
-	.services-operations__step p {
-		margin: 0;
-		color: var(--color-text);
-		font-size: 0.95rem;
-		font-weight: 700;
 	}
 
 	.services-process__grid {
@@ -400,17 +528,22 @@ const processSteps = [
 	}
 
 	@media (max-width: 1040px) {
-		.services-principles__grid,
-		.services-operations__flow,
 		.services-process__grid {
 			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+
+		.services-decision__row {
+			grid-template-columns: minmax(0, 1fr);
+			gap: 0.4rem;
+		}
+
+		.services-decision__arrow {
+			display: none;
 		}
 	}
 
 	@media (max-width: 760px) {
-		.services-principles__grid,
 		.services-grid,
-		.services-operations__flow,
 		.services-process__grid,
 		.services-final__card {
 			grid-template-columns: 1fr;

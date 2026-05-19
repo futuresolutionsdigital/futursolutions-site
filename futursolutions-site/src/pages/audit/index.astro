@@ -8,11 +8,12 @@ const pageDescription =
 const canonicalUrl = 'https://futursolutions.vercel.app/audit/';
 
 const expectations = [
-	'Trust and first impression',
-	'Service clarity',
-	'CTA and booking flow',
-	'Local visibility structure',
-	'Lead capture and follow-up path',
+	'First-impression trust review',
+	'Service clarity review',
+	'Booking and conversion path review',
+	'Local visibility review',
+	'Follow-up system review',
+	'Recommended next step',
 ];
 
 const reviewCards = [
@@ -80,21 +81,35 @@ const processSteps = [
 		<div class="site-container audit-hero__inner">
 			<div class="audit-hero__content">
 				<p class="eyebrow">Website and Systems Audit</p>
-				<h1 id="audit-heading">Find the hidden gaps in your healthcare website.</h1>
+				<h1 id="audit-heading">Find the gaps between your website and your booked&nbsp;consults.</h1>
 				<p class="lead">
-					Request a Website and Systems Audit and get a clear breakdown of how your site could improve trust, service clarity, local visibility, lead capture, and follow-up.
+					A practical review of your site, services, booking path, and follow-up workflow. We send back written notes or a Loom walkthrough with a recommended next step — Foundation, Custom, Growth System, Care plan, or none of the above.
 				</p>
+
+				<div class="audit-hero__youll-get lane-accent-top lane-accent-top--audit">
+					<p class="audit-hero__youll-get-label">
+						<span class="lane-tag lane-tag--audit">You'll get</span>
+						<span class="audit-hero__youll-get-meta">Free · 5 business days · No sales pitch</span>
+					</p>
+					<ul class="audit-hero__expectations" aria-label="Audit deliverables">
+						{expectations.map((expectation) => (
+							<li>
+								<svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+									<path d="M4 10.5l4 4 8-9" />
+								</svg>
+								<span>{expectation}</span>
+							</li>
+						))}
+					</ul>
+				</div>
+
+				<p class="audit-hero__reassurance">
+					<strong>No pressure.</strong> The audit is meant to clarify whether you need a Foundation, Custom Website, Growth System, Care plan, or nothing urgent. We'll tell you if it's the last one.
+				</p>
+
 				<p class="audit-hero__helper">
-					Built for med spas, solo practices, wellness clinics, functional medicine providers, and healthcare organizations.
+					Built for med spas, solo practices, wellness clinics, hormone clinics, functional medicine providers, and healthcare associations.
 				</p>
-				<ul class="audit-hero__expectations" aria-label="Audit focus areas">
-					{expectations.map((expectation) => (
-						<li>
-							<span aria-hidden="true"></span>
-							{expectation}
-						</li>
-					))}
-				</ul>
 			</div>
 
 			<AuditFormShell />
@@ -153,13 +168,13 @@ const processSteps = [
 			<div class="audit-final__card">
 				<div>
 					<p class="eyebrow">Next step</p>
-					<h2 id="audit-final-heading">Want a clearer picture of what your site needs?</h2>
+					<h2 id="audit-final-heading">Want a clearer picture of what your site actually&nbsp;needs?</h2>
 					<p class="lead">
-						Start with an audit and get a practical recommendation before committing to a Website Foundation, Signature Custom build, or Growth System.
+						Start with an audit and get a practical recommendation before committing to a Website Foundation, Signature Custom build, Growth System, or Care plan.
 					</p>
 				</div>
 				<div class="button-row">
-					<a class="button button-primary" href="#audit-form">Back to audit form</a>
+					<a class="button button-primary" href="#audit-form">Back to the form</a>
 					<a class="button button-secondary" href="/templates">Explore Live Demos</a>
 				</div>
 			</div>
@@ -234,28 +249,69 @@ const processSteps = [
 		line-height: 1.65;
 	}
 
+	.audit-hero__youll-get {
+		margin-top: 1.75rem;
+		padding: 1.4rem 1.5rem;
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		background: linear-gradient(135deg, var(--color-white) 0%, var(--lane-audit-tint) 100%);
+		box-shadow: var(--shadow-card);
+	}
+
+	.audit-hero__youll-get-label {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 0.65rem;
+		margin: 0 0 1rem 0;
+	}
+
+	.audit-hero__youll-get-meta {
+		color: var(--lane-audit-ink);
+		font-size: 0.8rem;
+		font-weight: 600;
+	}
+
 	.audit-hero__expectations {
 		display: grid;
-		gap: 0.8rem;
-		margin: 2rem 0 0;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 0.6rem 1.5rem;
+		margin: 0;
 		padding: 0;
 		list-style: none;
 	}
 
 	.audit-hero__expectations li {
-		display: flex;
-		gap: 0.7rem;
-		align-items: center;
+		display: grid;
+		grid-template-columns: 1rem 1fr;
+		gap: 0.55rem;
+		align-items: start;
 		color: var(--color-text);
-		font-size: 0.95rem;
-		font-weight: 700;
+		font-size: 0.92rem;
+		font-weight: 600;
+		line-height: 1.45;
 	}
 
-	.audit-hero__expectations span {
-		width: 0.55rem;
-		height: 0.55rem;
-		border-radius: 999px;
-		background: var(--color-accent);
+	.audit-hero__expectations svg {
+		width: 1rem;
+		height: 1rem;
+		margin-top: 0.18rem;
+		color: var(--lane-audit-ink);
+	}
+
+	.audit-hero__reassurance {
+		margin: 1.5rem 0 0 0;
+		padding: 1rem 1.1rem;
+		border-left: 3px solid var(--lane-audit);
+		background: var(--color-bg);
+		color: var(--color-text);
+		font-size: 0.93rem;
+		line-height: 1.55;
+	}
+
+	.audit-hero__reassurance strong {
+		color: var(--lane-audit-ink);
+		font-weight: 700;
 	}
 
 	.audit-review__intro,
@@ -386,7 +442,8 @@ const processSteps = [
 		.audit-hero__inner,
 		.audit-review__grid,
 		.audit-process__grid,
-		.audit-final__card {
+		.audit-final__card,
+		.audit-hero__expectations {
 			grid-template-columns: 1fr;
 		}
 

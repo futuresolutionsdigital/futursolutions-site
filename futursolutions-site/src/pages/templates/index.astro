@@ -8,6 +8,24 @@ const pageDescription =
 	'A library of launch-ready website Foundations for healthcare and wellness brands — customizable, industry-specific, and built like the start of a real operational system.';
 const canonicalUrl = 'https://futursolutions.vercel.app/templates/';
 
+const explainerItems = [
+	{
+		lane: 'foundation',
+		label: 'Live demo',
+		text: 'A real, clickable website you can walk through. Same pages, same flow, same system a launched project would use.',
+	},
+	{
+		lane: 'custom',
+		label: 'Website Foundation',
+		text: 'The underlying structure behind that demo — page architecture, content patterns, forms, and conversion paths — customizable around your brand, services, and booking flow.',
+	},
+	{
+		lane: 'growth',
+		label: 'Customized project',
+		text: 'What you actually get: your brand applied, your services written in, your booking path wired up. Not a template install.',
+	},
+];
+
 const differenceCards = [
 	{
 		title: 'Healthcare-specific structure',
@@ -27,24 +45,30 @@ const differenceCards = [
 	},
 ];
 
-const comparisons = [
+const offerComparison = [
 	{
-		name: 'Med Spa Foundation',
-		bestFor: 'Treatment-based practices',
-		goal: 'Book consultations',
-		complexity: 'Growth',
+		lane: 'foundation',
+		name: 'Website Foundation',
+		bestFor: 'You want a premium healthcare site fast, based on a proven structure',
+		notFor: 'Highly unique positioning or complex content models',
+		outcome: 'A customized launch built on a real demo Foundation',
+		complexity: 'Starter · Growth',
 	},
 	{
-		name: 'Solo Practice Foundation',
-		bestFor: 'Independent providers',
-		goal: 'Build trust',
-		complexity: 'Starter / Growth',
-	},
-	{
-		name: 'Association Foundation',
-		bestFor: 'Member organizations',
-		goal: 'Organize resources and events',
+		lane: 'custom',
+		name: 'Signature Custom Website',
+		bestFor: 'Unique brand, complex services, or larger organization',
+		notFor: 'Practices who would benefit from a faster Foundation launch',
+		outcome: 'A fully bespoke design system and page architecture',
 		complexity: 'Advanced',
+	},
+	{
+		lane: 'growth',
+		name: 'Growth System',
+		bestFor: 'Your site is fine but leads disappear after the form',
+		notFor: 'Pre-launch businesses without a site yet',
+		outcome: 'Lead capture, booking, follow-up, and reporting wired end-to-end',
+		complexity: 'Add-on · Standalone',
 	},
 ];
 ---
@@ -59,15 +83,33 @@ const comparisons = [
 >
 	<section class="section templates-hero" aria-labelledby="templates-heading">
 		<div class="site-container templates-hero__inner">
-			<p class="eyebrow">Industry Foundations</p>
+			<p class="eyebrow">Website Foundations · Live demos</p>
 			<h1 id="templates-heading">Industry website Foundations for healthcare and wellness brands.</h1>
 			<p class="lead">
-				A library of launch-ready website Foundations — customizable, industry-specific, and built like the start of a real operational system, not a generic theme.
+				Each Foundation is a live demo website built around a real business model. If one fits, we customize the brand, pages, services, content, booking path, and backend setup around your business.
 			</p>
 			<div class="button-row">
-				<a class="button button-primary" href="#featured-templates">Explore the Library</a>
-				<a class="button button-secondary" href="/audit">Get a Website and Systems Audit</a>
+				<a class="button button-primary" href="/audit">Get a Website Audit</a>
+				<a class="button button-secondary" href="#featured-templates">Explore the library</a>
 			</div>
+		</div>
+	</section>
+
+	<section class="section section-tight templates-explainer" aria-labelledby="templates-explainer-heading">
+		<div class="site-container">
+			<div class="templates-explainer__head">
+				<p class="eyebrow">Am I buying a template?</p>
+				<h2 id="templates-explainer-heading">No. You are starting from a strategic Foundation and adapting it into a real business website.</h2>
+				<p class="lead">Three terms get used together — here's the difference.</p>
+			</div>
+			<ul class="templates-explainer__grid">
+				{explainerItems.map((item) => (
+					<li class={`templates-explainer__card lane-accent-top lane-accent-top--${item.lane}`}>
+						<span class={`lane-tag lane-tag--${item.lane}`}>{item.label}</span>
+						<p>{item.text}</p>
+					</li>
+				))}
+			</ul>
 		</div>
 	</section>
 
@@ -161,32 +203,35 @@ const comparisons = [
 	<section class="section section-muted template-comparison" aria-labelledby="template-comparison-heading">
 		<div class="site-container">
 			<div class="template-comparison__intro">
-				<p class="eyebrow">Comparison</p>
-				<h2 id="template-comparison-heading">Not sure which Foundation fits?</h2>
+				<p class="eyebrow">Foundation · Custom · Growth System</p>
+				<h2 id="template-comparison-heading">Which level of system fits your business?</h2>
+				<p class="lead">A Foundation is the fastest path to a launched site. A Signature Custom build fits larger or uniquely positioned organizations. A Growth System is the lead and booking workflow behind either one.</p>
 			</div>
 			<div class="template-comparison__grid">
-				{comparisons.map((comparison) => (
-					<article class="card template-comparison__card">
-						<h3>{comparison.name}</h3>
+				{offerComparison.map((item) => (
+					<article class={`card template-comparison__card lane-accent-top lane-accent-top--${item.lane}`}>
+						<span class={`lane-tag lane-tag--${item.lane}`}>{item.complexity}</span>
+						<h3>{item.name}</h3>
 						<dl>
 							<div>
 								<dt>Best for</dt>
-								<dd>{comparison.bestFor}</dd>
+								<dd>{item.bestFor}</dd>
 							</div>
 							<div>
-								<dt>Primary goal</dt>
-								<dd>{comparison.goal}</dd>
+								<dt>Not the right fit if</dt>
+								<dd>{item.notFor}</dd>
 							</div>
 							<div>
-								<dt>Complexity</dt>
-								<dd>{comparison.complexity}</dd>
+								<dt>What you get</dt>
+								<dd>{item.outcome}</dd>
 							</div>
 						</dl>
 					</article>
 				))}
 			</div>
 			<div class="template-comparison__cta">
-				<a class="button button-primary" href="/audit">Get a Website and Systems Audit</a>
+				<a class="button button-primary" href="/audit">Get a Website Audit</a>
+				<p class="template-comparison__cta-note">Not sure which one? The audit recommends the right path.</p>
 			</div>
 		</div>
 	</section>
@@ -202,7 +247,7 @@ const comparisons = [
 					</p>
 				</div>
 				<div class="button-row">
-					<a class="button button-primary" href="/audit">Get a Website and Systems Audit</a>
+					<a class="button button-primary" href="/audit">Get a Website Audit</a>
 					<a class="button button-secondary" href="/services">View Solutions</a>
 				</div>
 			</div>
@@ -296,14 +341,73 @@ const comparisons = [
 		box-shadow: 0 0 0 1px color-mix(in srgb, var(--color-accent) 22%, transparent);
 	}
 
-	.template-difference__grid,
-	.template-comparison__grid {
+	.template-difference__grid {
 		grid-template-columns: repeat(4, minmax(0, 1fr));
+	}
+
+	.template-comparison__grid {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 1.25rem;
 	}
 
 	.template-difference__card,
 	.template-comparison__card {
 		padding: 1.25rem;
+	}
+
+	.template-comparison__card {
+		display: grid;
+		gap: 0.85rem;
+		align-content: start;
+		padding: 1.5rem;
+	}
+
+	.template-comparison__intro {
+		max-width: 760px;
+	}
+
+	.templates-explainer {
+		background: var(--color-white);
+	}
+
+	.templates-explainer__head {
+		max-width: 760px;
+		margin-bottom: clamp(2rem, 4vw, 2.75rem);
+	}
+
+	.templates-explainer__head h2 {
+		max-width: 36ch;
+		margin-bottom: 0.85rem;
+	}
+
+	.templates-explainer__head .lead {
+		color: var(--color-muted);
+	}
+
+	.templates-explainer__grid {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 1rem;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.templates-explainer__card {
+		display: grid;
+		gap: 0.85rem;
+		padding: 1.5rem;
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		background: var(--color-white);
+		box-shadow: var(--shadow-card);
+	}
+
+	.templates-explainer__card p {
+		margin: 0;
+		color: var(--color-text);
+		font-size: 0.95rem;
+		line-height: 1.6;
 	}
 
 	.template-difference__card h3,
@@ -344,7 +448,18 @@ const comparisons = [
 	}
 
 	.template-comparison__cta {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 1.25rem;
 		margin-top: 2rem;
+	}
+
+	.template-comparison__cta-note {
+		margin: 0;
+		color: var(--color-muted);
+		font-size: 0.9rem;
+		font-weight: 500;
 	}
 
 	.templates-final {
@@ -396,7 +511,8 @@ const comparisons = [
 	@media (max-width: 1040px) {
 		.featured-templates__grid,
 		.template-difference__grid,
-		.template-comparison__grid {
+		.template-comparison__grid,
+		.templates-explainer__grid {
 			grid-template-columns: repeat(2, minmax(0, 1fr));
 		}
 	}
@@ -405,6 +521,7 @@ const comparisons = [
 		.featured-templates__grid,
 		.template-difference__grid,
 		.template-comparison__grid,
+		.templates-explainer__grid,
 		.templates-final__card {
 			grid-template-columns: 1fr;
 		}
