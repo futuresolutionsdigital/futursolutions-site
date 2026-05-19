@@ -1,81 +1,195 @@
-<section id="audit" class="section final-cta" aria-labelledby="final-cta-heading">
-	<div class="site-container">
-		<div class="final-cta__card">
-			<div>
-				<p class="eyebrow">Website audit</p>
-				<h2 id="final-cta-heading">Want to know what your website is missing?</h2>
-				<p class="lead">
-					Request a website audit and get a clear breakdown of how your site could improve trust, visibility, and conversions.
-				</p>
-			</div>
-			<div class="button-row">
-				<a class="button button-primary" href="/audit">Get a Website Audit</a>
-				<a class="button button-secondary" href="/templates">View Templates</a>
+---
+const includes = [
+	'Site, content, and conversion review',
+	'Lead capture and booking-system audit',
+	'Visibility and SEO scan',
+];
+---
+
+<section id="audit" class="section-loose final-cta section-ink" aria-labelledby="final-cta-heading">
+	<div class="dot-grid dot-grid--ink final-cta__dots" aria-hidden="true"></div>
+	<div class="final-cta__glow" aria-hidden="true"></div>
+
+	<div class="site-container site-container--wide final-cta__inner">
+		<div class="final-cta__main">
+			<p class="eyebrow">Start with the audit</p>
+			<h2 id="final-cta-heading" class="display-lg final-cta__headline">
+				Let's take a clear look at your website —
+				<span class="final-cta__headline-soft">and what could be working harder.</span>
+			</h2>
+			<p class="lead final-cta__lead">
+				Request a Website and Systems Audit. We review your current site, lead capture, visibility, and follow-up, and send you a structured breakdown of where the most value is — for free.
+			</p>
+
+			<div class="final-cta__actions">
+				<a class="button button-on-ink final-cta__primary" href="/audit">
+					Get a Website and Systems Audit
+					<span aria-hidden="true">&rarr;</span>
+				</a>
+				<a class="button button-on-ink-secondary" href="/audit">Book a Strategy Call</a>
 			</div>
 		</div>
+
+		<aside class="final-cta__side" aria-label="What's included in the audit">
+			<p class="final-cta__side-label">What you get</p>
+			<ul class="final-cta__side-list">
+				{
+					includes.map((item) => (
+						<li>
+							<span class="final-cta__side-check" aria-hidden="true">
+								<svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+									<polyline points="2,6 5,9 10,3" />
+								</svg>
+							</span>
+							{item}
+						</li>
+					))
+				}
+			</ul>
+			<p class="final-cta__side-note">No sales pitch. Read the report, decide if it's useful.</p>
+		</aside>
 	</div>
 </section>
 
 <style>
 	.final-cta {
-		background: var(--color-accent-light);
+		position: relative;
+		overflow: hidden;
 	}
 
-	.final-cta__card {
+	.final-cta__dots {
+		mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, #000 40%, transparent 85%);
+		-webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, #000 40%, transparent 85%);
+	}
+
+	.final-cta__glow {
+		position: absolute;
+		top: -10rem;
+		left: 50%;
+		width: 65rem;
+		height: 30rem;
+		pointer-events: none;
+		background: radial-gradient(ellipse at center, rgba(143, 184, 179, 0.18), transparent 60%);
+		transform: translateX(-50%);
+		filter: blur(20px);
+	}
+
+	.final-cta__inner {
+		position: relative;
 		display: grid;
-		grid-template-columns: minmax(0, 1fr) auto;
-		gap: 2rem;
-		align-items: end;
-		padding: clamp(1.5rem, 4vw, 3rem);
-		border: 1px solid color-mix(in srgb, var(--color-accent) 24%, transparent);
-		border-radius: 20px;
-		background: var(--color-text);
-		box-shadow: 0 24px 60px rgba(15, 23, 42, 0.12);
+		grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.85fr);
+		gap: clamp(2.5rem, 5vw, 4.5rem);
+		align-items: start;
 	}
 
-	.final-cta .eyebrow {
-		color: color-mix(in srgb, var(--color-accent-light) 84%, var(--color-white));
+	.final-cta__main h2 {
+		max-width: 22ch;
+		margin-bottom: 1.25rem;
 	}
 
-	.final-cta h2,
-	.final-cta .lead {
+	.final-cta__headline {
 		color: var(--color-white);
 	}
 
-	.final-cta h2 {
-		max-width: 720px;
+	.final-cta__headline-soft {
+		display: block;
+		color: var(--color-ink-muted);
+		font-weight: 600;
 	}
 
-	.final-cta .lead {
-		max-width: 680px;
-		opacity: 0.78;
+	.final-cta__lead {
+		max-width: 60ch;
+		margin: 0 0 2rem 0;
 	}
 
-	.final-cta .button-row {
-		justify-content: flex-end;
-		margin-top: 0;
+	.final-cta__actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.85rem;
 	}
 
-	.final-cta .button-secondary {
-		background: transparent;
-		border-color: rgba(255, 255, 255, 0.22);
-		color: var(--color-white);
+	.final-cta__primary span {
+		display: inline-block;
+		transition: transform 220ms var(--ease-out-quart);
 	}
 
-	.final-cta .button-secondary:hover {
-		background: rgba(255, 255, 255, 0.08);
-		border-color: rgba(255, 255, 255, 0.38);
-		color: var(--color-white);
+	.final-cta__primary:hover span {
+		transform: translateX(2px);
 	}
 
-	@media (max-width: 860px) {
-		.final-cta__card {
+	.final-cta__side {
+		padding: 1.85rem;
+		border: 1px solid var(--color-ink-line-strong);
+		border-radius: var(--radius-lg);
+		background: var(--color-ink-soft);
+	}
+
+	.final-cta__side-label {
+		margin: 0 0 1.1rem 0;
+		color: var(--color-ink-accent);
+		font-size: 0.74rem;
+		font-weight: 700;
+		letter-spacing: 0.16em;
+		text-transform: uppercase;
+	}
+
+	.final-cta__side-list {
+		display: grid;
+		gap: 0.8rem;
+		margin: 0 0 1.5rem 0;
+		padding-bottom: 1.5rem;
+		border-bottom: 1px solid var(--color-ink-line);
+		list-style: none;
+	}
+
+	.final-cta__side-list li {
+		display: grid;
+		grid-template-columns: auto 1fr;
+		gap: 0.7rem;
+		align-items: center;
+		color: var(--color-ink-text);
+		font-size: 0.93rem;
+		line-height: 1.45;
+	}
+
+	.final-cta__side-check {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 1.1rem;
+		height: 1.1rem;
+		border-radius: 999px;
+		background: var(--color-ink-accent);
+		color: var(--color-ink);
+	}
+
+	.final-cta__side-check svg {
+		width: 0.7rem;
+		height: 0.7rem;
+	}
+
+	.final-cta__side-note {
+		margin: 0;
+		color: var(--color-ink-muted);
+		font-size: 0.85rem;
+		font-style: italic;
+		line-height: 1.5;
+	}
+
+	@media (max-width: 980px) {
+		.final-cta__inner {
 			grid-template-columns: 1fr;
-			align-items: start;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.final-cta__actions {
+			flex-direction: column;
+			align-items: stretch;
 		}
 
-		.final-cta .button-row {
-			justify-content: flex-start;
+		.final-cta__actions .button {
+			justify-content: center;
 		}
 	}
 </style>
