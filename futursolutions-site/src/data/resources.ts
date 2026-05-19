@@ -98,7 +98,7 @@ export const resources: ResourceEntry[] = [
 	{
 		slug: 'after-contact-form-submission',
 		title: 'What Happens After Someone Fills Out Your Contact Form?',
-		category: 'Backend Systems',
+		category: 'Growth Systems',
 		audience: 'Practices with inquiry forms',
 		excerpt:
 			'A website conversion is not complete until the lead is captured, organized, followed up with, and given a clear next step.',

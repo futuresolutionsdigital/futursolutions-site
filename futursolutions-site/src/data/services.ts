@@ -63,14 +63,14 @@ export const serviceOfferings: ServiceOffering[] = [
 	},
 	{
 		slug: 'backend-system-setup',
-		name: 'Backend System Setup',
+		name: 'Growth System Setup',
 		shortDescription: 'A backend lead system that captures, organizes, and follows up with website inquiries.',
 		longDescription:
-			'Backend System Setup plans the operational path behind your website so inquiries can move from form submission to follow-up.',
+			'Growth System Setup plans and wires the operational path behind your website so inquiries move from form submission to booked consult — automatically.',
 		bestFor: 'Businesses that do not want leads disappearing after a form submission.',
-		includes: ['Lead capture flow', 'Booking path', 'CRM contact creation', 'Follow-up sequence planning', 'Pipeline structure'],
-		whyItMatters: 'Most websites collect leads. A real system manages them.',
-		ctaLabel: 'Set Up Your Backend System',
+		includes: ['Lead capture flow', 'Booking path', 'CRM contact creation', 'Follow-up sequence planning', 'Pipeline and reporting structure'],
+		whyItMatters: 'Most websites collect leads. A Growth System manages them — captured, routed, followed up with, and tracked.',
+		ctaLabel: 'See how a Growth System works',
 		ctaHref: '/backend',
 	},
 	{

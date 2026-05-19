@@ -70,7 +70,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
 		whoItsFor: ['Med spas', 'Solo practices', 'Wellness clinics', 'Functional medicine providers', 'New health brands'],
 		relatedServices: [
 			{ label: 'SEO / Local Visibility', href: '/seo' },
-			{ label: 'Backend System Setup', href: '/backend' },
+			{ label: 'Growth System Setup', href: '/backend' },
 			{ label: 'Ongoing Optimization', href: '/services/ongoing-optimization' },
 		],
 		faqs: [
@@ -107,8 +107,8 @@ export const serviceDetails: Record<string, ServiceDetail> = {
 		heading: 'Signature custom healthcare websites built around trust, visibility, and conversion.',
 		supportingCopy:
 			'FutureSolutions builds custom websites for health and wellness businesses that need a tailored digital presence, clear service structure, and a connected path from visitor to lead.',
-		primaryCta: { label: 'Book a Strategy Call', href: '/audit' },
-		secondaryCta: { label: 'Get a Website and Systems Audit', href: '/audit' },
+		primaryCta: { label: 'Get a Website Audit', href: '/audit' },
+		secondaryCta: { label: 'Explore Live Demos', href: '/templates' },
 		problemHeading: 'Generic websites rarely fit serious healthcare brands.',
 		problems: [
 			'The design may look fine but not reflect the business.',
@@ -142,7 +142,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
 		],
 		relatedServices: [
 			{ label: 'SEO / Local Visibility', href: '/seo' },
-			{ label: 'Backend System Setup', href: '/backend' },
+			{ label: 'Growth System Setup', href: '/backend' },
 			{ label: 'Care and Optimization', href: '/services/ongoing-optimization' },
 			{ label: 'Industry Website Foundation', href: '/services/template-setup' },
 		],
@@ -167,7 +167,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
 		finalHeading: 'Need a site built around your actual business?',
 		finalCopy:
 			'Request a Website and Systems Audit and get a clear recommendation for whether your business needs a Signature Custom site, an Industry Website Foundation, an SEO Foundation, or a Growth System.',
-		finalPrimaryCta: { label: 'Get a Website and Systems Audit', href: '/audit' },
+		finalPrimaryCta: { label: 'Get a Website Audit', href: '/audit' },
 		finalSecondaryCta: { label: 'View Services', href: '/services' },
 	},
 	'ongoing-optimization': {
@@ -181,7 +181,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
 		supportingCopy:
 			'FutureSolutions provides ongoing Care and Optimization — site updates, SEO improvements, content publishing, landing pages, and conversion refinements — so your digital presence does not go stale.',
 		primaryCta: { label: 'Keep Improving Your Website', href: '/audit' },
-		secondaryCta: { label: 'Book a Strategy Call', href: '/audit' },
+		secondaryCta: { label: 'Explore Live Demos', href: '/templates' },
 		problemHeading: 'Most websites slowly go stale after launch.',
 		problems: [
 			'Services change but the website does not.',
@@ -213,7 +213,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
 		],
 		relatedServices: [
 			{ label: 'SEO / Local Visibility', href: '/seo' },
-			{ label: 'Backend System Setup', href: '/backend' },
+			{ label: 'Growth System Setup', href: '/backend' },
 			{ label: 'Signature Custom Website', href: '/services/custom-healthcare-websites' },
 			{ label: 'Industry Website Foundation', href: '/services/template-setup' },
 		],
@@ -238,7 +238,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
 		finalHeading: 'Want your website to keep improving?',
 		finalCopy:
 			'Request a Website and Systems Audit and get a recommendation for the highest-impact improvements to make next.',
-		finalPrimaryCta: { label: 'Get a Website and Systems Audit', href: '/audit' },
+		finalPrimaryCta: { label: 'Get a Website Audit', href: '/audit' },
 		finalSecondaryCta: { label: 'View Services', href: '/services' },
 	},
 };
