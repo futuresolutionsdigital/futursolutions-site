@@ -24,8 +24,19 @@ import { brand } from '../../../data/vantage';
 			<div class="to-hero__card-row"><span class="to-hero__card-label">First Review</span><span class="to-hero__card-val">90-day</span></div>
 			<div class="to-hero__card-row"><span class="to-hero__card-label">Monitoring</span><span class="to-hero__card-val">Quarterly</span></div>
 		</div>
+		<div class="vt-img to-hero__img"><span class="vt-img__label">Hormone Performance Lab</span></div>
 	</div>
 </section>
+
+<!-- ═══ KEY MARKERS REVIEWED ═══ -->
+<div class="vt-s vt-s--charcoal to-markers">
+	<div class="vt-w">
+		<span class="vt-e">Key Markers Reviewed</span>
+		<div class="to-markers__row">
+			<span>Total T</span><span>Free T</span><span>SHBG</span><span>Estradiol</span><span>CBC</span><span>Lipids</span><span>PSA</span><span>Thyroid</span>
+		</div>
+	</div>
+</div>
 
 <!-- ═══ WHY MEN SEEK HELP — stacked rows with numbers ═══ -->
 <section class="vt-s vt-s--charcoal to-reasons">
@@ -286,6 +297,18 @@ import { brand } from '../../../data/vantage';
 .to-final .vt-btn--red:hover { background: var(--vt-bone); }
 .to-final .vt-btn--dark { background: transparent; color: var(--vt-white); border-color: rgba(255,255,255,0.3); }
 .to-final .vt-btn--dark:hover { border-color: var(--vt-white); }
+
+/* ═══ HERO IMAGE PLACEHOLDER ═══ */
+.to-hero__img { min-height: 100px; margin-top: 2rem; grid-column: 1 / -1; }
+@media (max-width: 768px) { .to-hero__img { display: none; } }
+
+/* ═══ KEY MARKERS BAND ═══ */
+.to-markers__row { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.to-markers__row span { font-size: 0.68rem; font-weight: 700; padding: 0.35rem 0.75rem; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 3px; color: var(--vt-bone); }
+
+/* ═══ REASON ROW HOVER ═══ */
+.to-reasons__row { transition: border-color 0.2s; border-left: 3px solid transparent; padding-left: 0.75rem; }
+.to-reasons__row:hover { border-left-color: var(--vt-red); }
 
 /* ═══ DISCLAIMER ═══ */
 .to-disc { font-size: 0.55rem; color: rgba(244,239,231,0.12); font-style: italic; max-width: 560px; }

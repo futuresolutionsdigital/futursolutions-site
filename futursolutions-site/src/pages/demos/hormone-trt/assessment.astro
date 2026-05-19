@@ -19,6 +19,13 @@ import { brand } from '../../../data/vantage';
 	<div class="vt-w">
 		<div class="as-layout">
 			<div class="as-main">
+				<div class="as-progress" aria-hidden="true">
+					<div class="as-progress__step as-progress__step--active"><span>01</span> Profile</div>
+					<div class="as-progress__step"><span>02</span> Symptoms</div>
+					<div class="as-progress__step"><span>03</span> Goals</div>
+					<div class="as-progress__step"><span>04</span> Next Step</div>
+				</div>
+
 				<div class="as-demo-note">
 					<strong>Demo Note:</strong> This is a fictional assessment form for demonstration purposes only. No data is collected or transmitted. This form does not provide medical advice.
 				</div>
@@ -148,6 +155,14 @@ import { brand } from '../../../data/vantage';
 .as-layout { display: grid; grid-template-columns: 1.6fr 1fr; gap: 2.5rem; align-items: start; }
 
 /* Demo note — red tint */
+/* Progress bar */
+.as-progress { display: flex; gap: 0; margin-bottom: 2rem; border: 1px solid rgba(255,255,255,0.06); border-radius: 3px; overflow: hidden; }
+.as-progress__step { flex: 1; padding: 0.6rem 0.75rem; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: rgba(244,239,231,0.3); border-right: 1px solid rgba(255,255,255,0.04); text-align: center; }
+.as-progress__step:last-child { border-right: none; }
+.as-progress__step span { display: block; font-size: 0.75rem; font-weight: 900; color: rgba(244,239,231,0.15); margin-bottom: 0.15rem; }
+.as-progress__step--active { background: rgba(215,25,32,0.06); color: var(--vt-red); }
+.as-progress__step--active span { color: var(--vt-red); }
+
 .as-demo-note {
 	padding: 0.85rem 1rem;
 	background: rgba(215,25,32,0.04);
@@ -249,5 +264,9 @@ select.as-form__input {
 	.as-layout { grid-template-columns: 1fr; }
 	.as-form__row { grid-template-columns: 1fr; }
 	.as-sidebar { position: static; }
+}
+@media (max-width: 600px) {
+	.as-progress { flex-wrap: wrap; }
+	.as-progress__step { flex: 1 0 48%; }
 }
 </style>

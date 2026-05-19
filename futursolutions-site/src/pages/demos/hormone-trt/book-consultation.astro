@@ -19,6 +19,7 @@ import { brand } from '../../../data/vantage';
 	<div class="vt-w">
 		<div class="bc-split">
 			<div class="bc-info">
+				<div class="vt-img bc-img"><span class="vt-img__label">Private Consult</span></div>
 				<span class="vt-e">Process</span>
 				<h2>What to expect</h2>
 				<div class="bc-steps">
@@ -127,6 +128,8 @@ import { brand } from '../../../data/vantage';
 
 /* Split layout */
 .bc-split { display: grid; grid-template-columns: 1fr 1.15fr; gap: clamp(2.5rem, 5vw, 4rem); align-items: start; }
+
+.bc-img { min-height: 90px; margin-bottom: 1.25rem; }
 
 /* Steps */
 .bc-steps { display: flex; flex-direction: column; margin: 1.25rem 0; }

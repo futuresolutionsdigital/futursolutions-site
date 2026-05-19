@@ -26,6 +26,19 @@ import { brand } from '../../../data/vantage';
 	</div>
 </section>
 
+<!-- ═══ PRIVACY & DISCRETION BAND ═══ -->
+<div class="vt-s vt-s--carbon ed-privacy-band">
+	<div class="vt-w">
+		<div class="ed-shield">
+			<span class="ed-shield__icon">&#9670;</span>
+			<div>
+				<span class="vt-e">Private Care</span>
+				<p class="ed-shield__text">All sexual health consultations, evaluations, and treatments are handled with complete confidentiality. No shared records. No judgment. Provider-patient discretion at every step.</p>
+			</div>
+		</div>
+	</div>
+</div>
+
 <!-- ═══ A MEDICAL ISSUE — stacked rows with numbers + red accent ═══ -->
 <section class="vt-s vt-s--charcoal ed-medical">
 	<div class="vt-w">
@@ -203,6 +216,11 @@ import { brand } from '../../../data/vantage';
 .ed-final .vt-btn--red:hover { background: var(--vt-bone); }
 .ed-final .vt-btn--dark { background: transparent; color: var(--vt-white); border-color: rgba(255,255,255,0.3); }
 .ed-final .vt-btn--dark:hover { border-color: var(--vt-white); }
+
+/* ═══ PRIVACY & DISCRETION BAND ═══ */
+.ed-shield { display: flex; gap: 1.25rem; align-items: start; max-width: 640px; padding: 1.25rem; border: 1px solid var(--vt-border-red); border-radius: 3px; background: rgba(215,25,32,0.02); }
+.ed-shield__icon { font-size: 1.1rem; color: var(--vt-red); flex-shrink: 0; margin-top: 0.15rem; }
+.ed-shield__text { font-size: 0.8rem; color: rgba(244,239,231,0.5); line-height: 1.55; }
 
 /* ═══ DISCLAIMER ═══ */
 .ed-disc { font-size: 0.55rem; color: rgba(244,239,231,0.12); font-style: italic; max-width: 560px; }

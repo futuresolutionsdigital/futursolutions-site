@@ -27,6 +27,22 @@ import { brand } from '../../../data/vantage';
 	</div>
 </section>
 
+<!-- ═══ METABOLIC FACTORS ═══ -->
+<div class="vt-s vt-s--charcoal mwl-factors">
+	<div class="vt-w">
+		<span class="vt-e">Metabolic Factors</span>
+		<div class="mwl-factors__grid">
+			<div class="mwl-factors__item"><span class="mwl-factors__signal">Insulin Resistance</span><div class="mwl-factors__bar"><div style="width:70%"></div></div></div>
+			<div class="mwl-factors__item"><span class="mwl-factors__signal">Sleep Quality</span><div class="mwl-factors__bar"><div style="width:45%"></div></div></div>
+			<div class="mwl-factors__item"><span class="mwl-factors__signal">Hormone Balance</span><div class="mwl-factors__bar"><div style="width:35%"></div></div></div>
+			<div class="mwl-factors__item"><span class="mwl-factors__signal">Appetite Control</span><div class="mwl-factors__bar"><div style="width:60%"></div></div></div>
+			<div class="mwl-factors__item"><span class="mwl-factors__signal">Recovery</span><div class="mwl-factors__bar"><div style="width:50%"></div></div></div>
+			<div class="mwl-factors__item"><span class="mwl-factors__signal">Inflammation</span><div class="mwl-factors__bar"><div style="width:55%"></div></div></div>
+		</div>
+		<p class="mwl-factors__note">These factors are evaluated during your metabolic assessment. Not every factor applies to every patient.</p>
+	</div>
+</div>
+
 <!-- ═══ BEYOND WILLPOWER — numbered rows ═══ -->
 <section class="vt-s vt-s--charcoal mwl-beyond">
 	<div class="vt-w">
@@ -223,6 +239,15 @@ import { brand } from '../../../data/vantage';
 .mwl-final .vt-btn--red:hover { background: var(--vt-bone); }
 .mwl-final .vt-btn--dark { background: transparent; color: var(--vt-white); border-color: rgba(255,255,255,0.3); }
 .mwl-final .vt-btn--dark:hover { border-color: var(--vt-white); }
+
+/* ═══ METABOLIC FACTORS SCOREBOARD ═══ */
+.mwl-factors__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(255,255,255,0.04); border-radius: 3px; overflow: hidden; margin: 1.5rem 0; }
+.mwl-factors__item { background: var(--vt-carbon); padding: 1rem; }
+.mwl-factors__signal { display: block; font-size: 0.72rem; font-weight: 700; color: var(--vt-bone); margin-bottom: 0.4rem; }
+.mwl-factors__bar { height: 4px; background: rgba(255,255,255,0.06); border-radius: 2px; overflow: hidden; }
+.mwl-factors__bar div { height: 100%; background: var(--vt-steel); border-radius: 2px; }
+.mwl-factors__note { font-size: 0.65rem; color: rgba(244,239,231,0.25); font-style: italic; }
+@media (max-width: 600px) { .mwl-factors__grid { grid-template-columns: 1fr; } }
 
 /* ═══ DISCLAIMER ═══ */
 .mwl-disc { font-size: 0.55rem; color: rgba(244,239,231,0.12); font-style: italic; max-width: 560px; }
