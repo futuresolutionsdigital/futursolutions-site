@@ -5,178 +5,220 @@ import { brand } from '../../../data/vantage';
 
 <VantageLayout title="ED & Sexual Wellness — VANTAGE Men's Health" description="Private, provider-led treatment for erectile dysfunction, low libido, and sexual health concerns.">
 
-<!-- Hero -->
-<section class="vt-section vt-section--dark ed-hero">
-	<div class="vt-container">
-		<p class="vt-eyebrow">ED & Sexual Wellness</p>
+<!-- ═══ HERO ═══ -->
+<section class="vt-sec vt-sec--ink ed-hero">
+	<div class="vt-contain">
+		<p class="vt-eye">ED & Sexual Wellness</p>
 		<h1>Private, provider-led sexual health care for men.</h1>
-		<p class="vt-lead">Erectile dysfunction and low libido are medical issues — not personal failures. We evaluate the underlying causes, discuss treatment options, and provide discreet, ongoing care.</p>
+		<p class="vt-sub">Erectile dysfunction and low libido are medical issues — not personal failures. We evaluate the underlying causes, discuss treatment options, and provide discreet, ongoing care.</p>
 		<div class="vt-btn-row">
-			<a class="vt-btn vt-btn--primary" href="/demos/hormone-trt/assessment">Take the Assessment &rarr;</a>
-			<a class="vt-btn vt-btn--secondary" href="/demos/hormone-trt/book-consultation">Book Consultation</a>
+			<a class="vt-btn vt-btn--bronze" href="/demos/hormone-trt/assessment">Take the Assessment &rarr;</a>
+			<a class="vt-btn vt-btn--outline" href="/demos/hormone-trt/book-consultation">Book Consultation</a>
 		</div>
 	</div>
 </section>
 
-<!-- This is a medical issue -->
-<section class="vt-section vt-section--charcoal ed-reassurance">
-	<div class="vt-container ed-reassurance__layout">
-		<div class="ed-reassurance__text">
-			<p class="vt-eyebrow">A Medical Issue</p>
+<!-- ═══ A MEDICAL ISSUE — split layout with angular data panel ═══ -->
+<section class="vt-sec vt-sec--graphite ed-medical">
+	<div class="vt-contain ed-medical__layout">
+		<div class="ed-medical__text">
+			<p class="vt-eye">A Medical Issue</p>
 			<h2>ED affects over 50% of men between 40 and 70. It's far more common than most realize.</h2>
-			<p class="vt-lead">Erectile dysfunction is not about willpower or attraction. It can be caused by hormonal imbalances, vascular issues, medication side effects, stress, or a combination of factors. A proper evaluation can help identify the cause.</p>
-			<p>At VANTAGE, your sexual health is treated with the same clinical rigor and discretion as any other medical concern. No judgment. No sales pressure. Just data-driven care.</p>
+			<p class="vt-sub">Erectile dysfunction is not about willpower or attraction. It can be caused by hormonal imbalances, vascular issues, medication side effects, stress, or a combination of factors. A proper evaluation can help identify the cause.</p>
+			<p class="ed-medical__body">At VANTAGE, your sexual health is treated with the same clinical rigor and discretion as any other medical concern. No judgment. No sales pressure. Just data-driven care.</p>
 		</div>
-		<div class="ed-reassurance__stats">
-			<div class="ed-reassurance__stat">
-				<span class="ed-reassurance__num">52%</span>
-				<span class="ed-reassurance__label">of men experience some form of ED</span>
-			</div>
-			<div class="ed-reassurance__stat">
-				<span class="ed-reassurance__num">70%</span>
-				<span class="ed-reassurance__label">of ED cases have a physical cause</span>
-			</div>
-			<div class="ed-reassurance__stat">
-				<span class="ed-reassurance__num">85%+</span>
-				<span class="ed-reassurance__label">may respond to appropriate treatment</span>
-			</div>
-		</div>
-	</div>
-</section>
-
-<!-- Treatment approach -->
-<section class="vt-section vt-section--slate ed-approach">
-	<div class="vt-container">
-		<div class="vt-section-header">
-			<p class="vt-eyebrow">Treatment Approach</p>
-			<h2>Comprehensive evaluation, personalized options</h2>
-			<p class="vt-lead">We don't prescribe without understanding. Your provider evaluates potential causes before recommending a treatment plan.</p>
-		</div>
-		<div class="ed-approach__grid">
-			<div class="vt-card">
-				<h3>Hormone evaluation</h3>
-				<p>Low testosterone is a common contributor to ED and reduced libido. Labs help determine whether hormone optimization may be beneficial.</p>
-			</div>
-			<div class="vt-card">
-				<h3>Oral medications</h3>
-				<p>PDE5 inhibitors (sildenafil, tadalafil) can be evaluated as part of a broader treatment strategy when clinically appropriate.</p>
-			</div>
-			<div class="vt-card">
-				<h3>Combination protocols</h3>
-				<p>Some men benefit from addressing both hormonal and vascular factors simultaneously, under close provider supervision.</p>
-			</div>
-			<div class="vt-card">
-				<h3>Lifestyle & vascular health</h3>
-				<p>Cardiovascular fitness, sleep, and metabolic health all influence erectile function. Your provider may recommend targeted lifestyle modifications.</p>
+		<div class="ed-medical__panel">
+			<div class="vt-panel__head"><span>Prevalence Data</span><span>Clinical</span></div>
+			<div class="ed-medical__stats">
+				<div class="ed-medical__stat">
+					<span class="ed-medical__val">52%</span>
+					<span class="ed-medical__label">of men experience some form of ED</span>
+				</div>
+				<div class="ed-medical__stat">
+					<span class="ed-medical__val">70%</span>
+					<span class="ed-medical__label">of ED cases have a physical cause</span>
+				</div>
+				<div class="ed-medical__stat">
+					<span class="ed-medical__val">85%+</span>
+					<span class="ed-medical__label">may respond to appropriate treatment</span>
+				</div>
 			</div>
 		</div>
 	</div>
 </section>
 
-<!-- Privacy emphasis -->
-<section class="vt-section vt-section--dark ed-privacy">
-	<div class="vt-container ed-privacy__layout">
-		<div>
-			<p class="vt-eyebrow">Your Privacy</p>
+<!-- ═══ TREATMENT APPROACH — stacked rows with borders ═══ -->
+<section class="vt-sec vt-sec--steel ed-approach">
+	<div class="vt-contain">
+		<p class="vt-eye">Treatment Approach</p>
+		<h2>Comprehensive evaluation, personalized options</h2>
+		<p class="vt-sub">We don't prescribe without understanding. Your provider evaluates potential causes before recommending a treatment plan.</p>
+		<div class="ed-approach__list">
+			<div class="ed-approach__row">
+				<span class="vt-dot vt-dot--bronze"></span>
+				<div class="ed-approach__content">
+					<h3>Hormone evaluation</h3>
+					<p>Low testosterone is a common contributor to ED and reduced libido. Labs help determine whether hormone optimization may be beneficial.</p>
+				</div>
+			</div>
+			<div class="ed-approach__row">
+				<span class="vt-dot vt-dot--bronze"></span>
+				<div class="ed-approach__content">
+					<h3>Oral medications</h3>
+					<p>PDE5 inhibitors (sildenafil, tadalafil) can be evaluated as part of a broader treatment strategy when clinically appropriate.</p>
+				</div>
+			</div>
+			<div class="ed-approach__row">
+				<span class="vt-dot vt-dot--bronze"></span>
+				<div class="ed-approach__content">
+					<h3>Combination protocols</h3>
+					<p>Some men benefit from addressing both hormonal and vascular factors simultaneously, under close provider supervision.</p>
+				</div>
+			</div>
+			<div class="ed-approach__row">
+				<span class="vt-dot vt-dot--bronze"></span>
+				<div class="ed-approach__content">
+					<h3>Lifestyle & vascular health</h3>
+					<p>Cardiovascular fitness, sleep, and metabolic health all influence erectile function. Your provider may recommend targeted lifestyle modifications.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- ═══ PRIVACY — data panel with bordered items ═══ -->
+<section class="vt-sec vt-sec--ink ed-privacy">
+	<div class="vt-contain ed-privacy__layout">
+		<div class="ed-privacy__text">
+			<p class="vt-eye">Your Privacy</p>
 			<h2>Discreet care from start to finish</h2>
-			<p class="vt-lead">We understand that sexual health is deeply personal. Every aspect of your care at VANTAGE is handled with complete confidentiality.</p>
+			<p class="vt-sub">We understand that sexual health is deeply personal. Every aspect of your care at VANTAGE is handled with complete confidentiality.</p>
 		</div>
-		<ul class="ed-privacy__list">
-			<li>Private consultations — in-person or telehealth</li>
-			<li>Discreet communication and billing</li>
-			<li>No shared waiting rooms for sexual health visits</li>
-			<li>Provider-patient confidentiality upheld at every step</li>
-			<li>Secure patient portal for messaging and records</li>
-		</ul>
+		<div class="ed-privacy__panel">
+			<div class="vt-panel__head"><span>Privacy Protocol</span><span>Standard</span></div>
+			<div class="ed-privacy__items">
+				<div class="ed-privacy__item"><span class="vt-dot vt-dot--bronze"></span><span>Private consultations — in-person or telehealth</span></div>
+				<div class="ed-privacy__item"><span class="vt-dot vt-dot--bronze"></span><span>Discreet communication and billing</span></div>
+				<div class="ed-privacy__item"><span class="vt-dot vt-dot--bronze"></span><span>No shared waiting rooms for sexual health visits</span></div>
+				<div class="ed-privacy__item"><span class="vt-dot vt-dot--bronze"></span><span>Provider-patient confidentiality upheld at every step</span></div>
+				<div class="ed-privacy__item"><span class="vt-dot vt-dot--bronze"></span><span>Secure patient portal for messaging and records</span></div>
+			</div>
+		</div>
 	</div>
 </section>
 
-<!-- FAQ -->
-<section class="vt-section vt-section--charcoal ed-faq">
-	<div class="vt-container">
-		<div class="vt-section-header">
-			<p class="vt-eyebrow">Common Questions</p>
-			<h2>Frequently asked questions about ED treatment</h2>
-		</div>
+<!-- ═══ FAQ — semantic accordion, single column ═══ -->
+<section class="vt-sec vt-sec--graphite ed-faq">
+	<div class="vt-contain">
+		<p class="vt-eye">Common Questions</p>
+		<h2>Frequently asked questions about ED treatment</h2>
 		<div class="ed-faq__list">
-			<div class="ed-faq__item">
-				<h3>Do I need labs before treatment?</h3>
+			<details class="ed-faq__item">
+				<summary>Do I need labs before treatment?</summary>
 				<p>Yes. Labs help identify hormonal, metabolic, or vascular contributors to ED. Treatment is most effective when guided by data.</p>
-			</div>
-			<div class="ed-faq__item">
-				<h3>Is this just a prescription service?</h3>
+			</details>
+			<details class="ed-faq__item">
+				<summary>Is this just a prescription service?</summary>
 				<p>No. We provide comprehensive evaluations. Medications are one tool among many, and are only recommended when clinically appropriate.</p>
-			</div>
-			<div class="ed-faq__item">
-				<h3>Can low testosterone cause ED?</h3>
+			</details>
+			<details class="ed-faq__item">
+				<summary>Can low testosterone cause ED?</summary>
 				<p>It can be a contributing factor. Many men with ED also have suboptimal testosterone levels. Both can be evaluated and addressed together.</p>
-			</div>
-			<div class="ed-faq__item">
-				<h3>Will my partner know?</h3>
+			</details>
+			<details class="ed-faq__item">
+				<summary>Will my partner know?</summary>
 				<p>Your care is confidential. We do not share information with anyone unless you provide written consent.</p>
+			</details>
+		</div>
+	</div>
+</section>
+
+<!-- ═══ CTA — left-aligned with data strip ═══ -->
+<section class="vt-sec vt-sec--steel ed-cta">
+	<div class="vt-contain ed-cta__inner">
+		<div class="ed-cta__copy">
+			<p class="vt-eye">Take the Next Step</p>
+			<h2>Private evaluation. Real answers. No judgment.</h2>
+			<p class="vt-sub">Start with a confidential assessment and let your provider guide you toward the right approach.</p>
+			<div class="vt-btn-row" style="margin-top:1.25rem;">
+				<a class="vt-btn vt-btn--bronze" href="/demos/hormone-trt/assessment">Take the Assessment &rarr;</a>
+				<a class="vt-btn vt-btn--outline" href="/demos/hormone-trt/book-consultation">Book Consultation</a>
 			</div>
 		</div>
-	</div>
-</section>
-
-<!-- CTA -->
-<section class="vt-section vt-section--slate ed-cta">
-	<div class="vt-container ed-cta__inner">
-		<p class="vt-eyebrow">Take the Next Step</p>
-		<h2>Private evaluation. Real answers. No judgment.</h2>
-		<p class="vt-lead">Start with a confidential assessment and let your provider guide you toward the right approach.</p>
-		<div class="vt-btn-row">
-			<a class="vt-btn vt-btn--primary" href="/demos/hormone-trt/assessment">Take the Assessment &rarr;</a>
-			<a class="vt-btn vt-btn--secondary" href="/demos/hormone-trt/book-consultation">Book Consultation</a>
+		<div class="ed-cta__strip" aria-hidden="true">
+			<div class="ed-cta__stat"><span class="ed-cta__stat-val">52%</span><span class="ed-cta__stat-lbl">Prevalence</span></div>
+			<div class="ed-cta__stat"><span class="ed-cta__stat-val">85%+</span><span class="ed-cta__stat-lbl">Response Rate</span></div>
+			<div class="ed-cta__stat"><span class="ed-cta__stat-val">100%</span><span class="ed-cta__stat-lbl">Confidential</span></div>
 		</div>
 	</div>
 </section>
 
-<!-- Disclaimer -->
-<section class="vt-section vt-section--dark ed-disclaimer">
-	<div class="vt-container">
-		<p class="ed-disclaimer__text">{brand.disclaimer}</p>
+<!-- ═══ DISCLAIMER ═══ -->
+<div class="vt-sec--ink" style="padding:0 0 2rem;">
+	<div class="vt-contain">
+		<p class="ed-disc">{brand.disclaimer}</p>
 	</div>
-</section>
+</div>
 
 </VantageLayout>
 
 <style>
-.ed-hero { padding-top: clamp(5rem, 10vw, 8rem); padding-bottom: clamp(4rem, 8vw, 6rem); }
-.ed-hero h1 { max-width: 680px; }
-.ed-hero .vt-lead { max-width: 600px; margin-bottom: 2rem; }
+/* ═══ HERO ═══ */
+.ed-hero { padding: clamp(4rem, 8vw, 6rem) 0 clamp(2rem, 4vw, 3rem); }
+.ed-hero h1 { max-width: 620px; }
+.ed-hero .vt-sub { max-width: 560px; margin-bottom: 1.5rem; }
 
-.ed-reassurance__layout { display: grid; grid-template-columns: 1.4fr 1fr; gap: 3rem; align-items: center; }
-.ed-reassurance__text p:last-of-type { color: var(--vt-gray); font-size: 0.9rem; margin-top: 1.5rem; }
-.ed-reassurance__stats { display: flex; flex-direction: column; gap: 1.5rem; }
-.ed-reassurance__stat { padding: 1.25rem; border: 1px solid var(--vt-border); border-radius: var(--vt-radius); }
-.ed-reassurance__num { display: block; font-size: 1.75rem; font-weight: 800; color: var(--vt-bronze); margin-bottom: 0.25rem; }
-.ed-reassurance__label { font-size: 0.8rem; color: var(--vt-gray); }
+/* ═══ A MEDICAL ISSUE — split layout with angular panel ═══ */
+.ed-medical__layout { display: grid; grid-template-columns: 1.4fr 1fr; gap: 3rem; align-items: start; }
+.ed-medical__text h2 { margin-bottom: 0.75rem; }
+.ed-medical__body { font-size: 0.82rem; color: rgba(244,237,226,0.45); line-height: 1.55; margin-top: 1.25rem; }
+.ed-medical__panel { border: 1px solid var(--vt-border); border-radius: var(--vt-r); overflow: hidden; background: var(--vt-ink); }
+.ed-medical__stats { display: flex; flex-direction: column; }
+.ed-medical__stat { display: flex; align-items: baseline; gap: 0.75rem; padding: 1rem 1.25rem; border-bottom: 1px solid var(--vt-border); }
+.ed-medical__stat:last-child { border-bottom: none; }
+.ed-medical__val { font-size: 1.25rem; font-weight: 900; color: var(--vt-bronze); min-width: 3.5rem; }
+.ed-medical__label { font-size: 0.72rem; color: rgba(244,237,226,0.45); }
+@media (max-width: 768px) { .ed-medical__layout { grid-template-columns: 1fr; } }
 
-.ed-approach__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
-.ed-approach__grid h3 { color: var(--vt-ivory); }
-.ed-approach__grid p { color: var(--vt-gray); font-size: 0.875rem; }
+/* ═══ TREATMENT — stacked bordered rows ═══ */
+.ed-approach h2 { max-width: 480px; margin-bottom: 0.5rem; }
+.ed-approach .vt-sub { margin-bottom: 2rem; }
+.ed-approach__list { display: flex; flex-direction: column; }
+.ed-approach__row { display: flex; align-items: flex-start; gap: 1rem; padding: 1.25rem 0; border-bottom: 1px solid var(--vt-border); }
+.ed-approach__row:last-child { border-bottom: none; }
+.ed-approach__row .vt-dot { margin-top: 0.35rem; flex-shrink: 0; }
+.ed-approach__content h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.2rem; }
+.ed-approach__content p { font-size: 0.78rem; color: rgba(244,237,226,0.4); line-height: 1.55; }
 
-.ed-privacy__layout { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
-.ed-privacy__list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 1rem; }
-.ed-privacy__list li { padding-left: 1.25rem; position: relative; color: var(--vt-gray); font-size: 0.9rem; }
-.ed-privacy__list li::before { content: ''; position: absolute; left: 0; top: 0.5em; width: 6px; height: 6px; background: var(--vt-bronze); border-radius: 50%; }
+/* ═══ PRIVACY — data panel format ═══ */
+.ed-privacy__layout { display: grid; grid-template-columns: 1fr 1.2fr; gap: 3rem; align-items: start; }
+.ed-privacy__text h2 { margin-bottom: 0.5rem; }
+.ed-privacy__panel { border: 1px solid var(--vt-border); border-radius: var(--vt-r); overflow: hidden; background: rgba(255,255,255,0.015); }
+.ed-privacy__items { display: flex; flex-direction: column; }
+.ed-privacy__item { display: flex; align-items: center; gap: 0.6rem; padding: 0.85rem 1.25rem; border-bottom: 1px solid var(--vt-border); font-size: 0.78rem; color: rgba(244,237,226,0.5); }
+.ed-privacy__item:last-child { border-bottom: none; }
+@media (max-width: 768px) { .ed-privacy__layout { grid-template-columns: 1fr; } }
 
-.ed-faq__list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
-.ed-faq__item { padding: 1.5rem; border: 1px solid var(--vt-border); border-radius: var(--vt-radius); }
-.ed-faq__item h3 { color: var(--vt-ivory); font-size: 0.95rem; }
-.ed-faq__item p { color: var(--vt-gray); font-size: 0.85rem; }
+/* ═══ FAQ — single-column accordion ═══ */
+.ed-faq h2 { margin-bottom: 2rem; }
+.ed-faq__list { max-width: 680px; }
+.ed-faq__item { border-bottom: 1px solid var(--vt-border); }
+.ed-faq__item summary { display: flex; align-items: center; justify-content: space-between; padding: 0.85rem 0; font-size: 0.85rem; font-weight: 600; color: var(--vt-bone); cursor: pointer; list-style: none; }
+.ed-faq__item summary::-webkit-details-marker { display: none; }
+.ed-faq__item summary::after { content: '+'; font-size: 1rem; font-weight: 300; color: var(--vt-bronze); }
+.ed-faq__item[open] summary::after { content: '\2212'; }
+.ed-faq__item p { font-size: 0.8rem; color: rgba(244,237,226,0.45); line-height: 1.6; padding-bottom: 1rem; max-width: 560px; }
 
-.ed-cta__inner { text-align: center; max-width: 600px; margin-inline: auto; }
-.ed-cta__inner .vt-lead { margin-inline: auto; margin-bottom: 2rem; }
-.ed-cta__inner .vt-btn-row { justify-content: center; }
+/* ═══ CTA — left-aligned with data strip ═══ */
+.ed-cta__inner { display: grid; grid-template-columns: 1.5fr 1fr; gap: 3rem; align-items: center; }
+.ed-cta__copy h2 { max-width: 400px; }
+.ed-cta__strip { display: flex; flex-direction: column; gap: 0; border: 1px solid var(--vt-border); border-radius: var(--vt-r); overflow: hidden; }
+.ed-cta__stat { display: flex; align-items: baseline; gap: 0.75rem; padding: 0.85rem 1.25rem; border-bottom: 1px solid var(--vt-border); }
+.ed-cta__stat:last-child { border-bottom: none; }
+.ed-cta__stat-val { font-size: 1.1rem; font-weight: 900; color: var(--vt-bone); min-width: 3.5rem; }
+.ed-cta__stat-lbl { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(244,237,226,0.35); }
+@media (max-width: 700px) { .ed-cta__inner { grid-template-columns: 1fr; } .ed-cta__strip { flex-direction: row; } .ed-cta__stat { flex: 1; border-bottom: none; border-right: 1px solid var(--vt-border); flex-direction: column; gap: 0.2rem; } .ed-cta__stat:last-child { border-right: none; } }
 
-.ed-disclaimer__text { font-size: 0.7rem; color: var(--vt-gray); opacity: 0.6; font-style: italic; max-width: 640px; text-align: center; margin-inline: auto; }
-
-@media (max-width: 768px) {
-	.ed-reassurance__layout { grid-template-columns: 1fr; }
-	.ed-approach__grid { grid-template-columns: 1fr; }
-	.ed-privacy__layout { grid-template-columns: 1fr; }
-	.ed-faq__list { grid-template-columns: 1fr; }
-}
+/* ═══ DISCLAIMER ═══ */
+.ed-disc { font-size: 0.58rem; color: rgba(244,237,226,0.15); font-style: italic; max-width: 560px; }
 </style>

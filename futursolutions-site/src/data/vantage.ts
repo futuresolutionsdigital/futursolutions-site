@@ -15,12 +15,12 @@ export const brand = {
 export const announcement = 'Now accepting new patients · Private telehealth + in-person evaluations available';
 
 export const navItems = [
-	{ label: 'Conditions', href: '/demos/hormone-trt#conditions' },
+	{ label: 'Problems', href: '/demos/hormone-trt#conditions' },
 	{ label: 'Treatments', href: '/demos/hormone-trt#treatments' },
-	{ label: 'How It Works', href: '/demos/hormone-trt/how-it-works' },
+	{ label: 'Process', href: '/demos/hormone-trt/how-it-works' },
 	{ label: 'Pricing', href: '/demos/hormone-trt/pricing' },
-	{ label: 'Resources', href: '/demos/hormone-trt#faq' },
-	{ label: 'About', href: '/demos/hormone-trt#providers' },
+	{ label: 'FAQ', href: '/demos/hormone-trt#faq' },
+	{ label: 'Providers', href: '/demos/hormone-trt#providers' },
 ];
 
 export const footerTreatments = [
@@ -175,6 +175,50 @@ export const testimonials = [
 	{ text: 'The process felt private and professional. No pressure, no sales pitch — just a clear plan based on my results.', author: 'Patient, age 51', context: 'Initial evaluation' },
 	{ text: 'I had more energy, better sleep, and consistency after getting a real plan instead of guessing.', author: 'Patient, age 38', context: 'Hormone & weight management' },
 	{ text: 'I appreciated that they did not push treatment before testing. They explained what the numbers meant and let me decide.', author: 'Patient, age 46', context: 'ED & sexual wellness' },
+];
+
+export const symptomCategories = [
+	{ category: 'Energy', items: ['Persistent fatigue', 'Afternoon crashes', 'Poor sleep quality', 'Low motivation'] },
+	{ category: 'Sexual Health', items: ['Erectile difficulty', 'Low libido', 'Reduced performance', 'Confidence changes'] },
+	{ category: 'Body', items: ['Stubborn weight gain', 'Muscle loss', 'Slow recovery', 'Belly fat accumulation'] },
+	{ category: 'Mood & Focus', items: ['Brain fog', 'Irritability', 'Low drive', 'Poor concentration'] },
+];
+
+export const protocol = [
+	{ step: '01', label: 'Intake', description: 'Private symptom assessment and health history review', status: 'active' },
+	{ step: '02', label: 'Labs', description: 'Comprehensive bloodwork — hormones, metabolic, thyroid, lipids', status: 'pending' },
+	{ step: '03', label: 'Review', description: 'Provider interprets results in context of your symptoms and goals', status: 'pending' },
+	{ step: '04', label: 'Plan', description: 'Personalized protocol built around your data and objectives', status: 'pending' },
+	{ step: '05', label: 'Monitor', description: 'Quarterly labs, follow-up visits, and plan adjustments', status: 'pending' },
+	{ step: '06', label: 'Optimize', description: 'Ongoing refinement for sustained results over time', status: 'pending' },
+];
+
+export const treatmentMatrix = [
+	{ category: 'Hormones', items: [
+		{ title: 'Testosterone Optimization', href: '/demos/hormone-trt/testosterone-optimization' },
+		{ title: 'Hormone Panel & Monitoring', href: '/demos/hormone-trt/how-it-works' },
+	]},
+	{ category: 'Sexual Health', items: [
+		{ title: 'ED Treatment', href: '/demos/hormone-trt/ed-sexual-wellness' },
+		{ title: 'Libido & Performance', href: '/demos/hormone-trt/ed-sexual-wellness' },
+	]},
+	{ category: 'Metabolic', items: [
+		{ title: 'Medical Weight Loss', href: '/demos/hormone-trt/medical-weight-loss' },
+		{ title: 'GLP-1 Evaluation', href: '/demos/hormone-trt/medical-weight-loss' },
+	]},
+	{ category: 'Recovery & Longevity', items: [
+		{ title: 'Peptide Protocols', href: '/demos/hormone-trt/how-it-works' },
+		{ title: 'NAD+ & Vitamin Therapy', href: '/demos/hormone-trt/how-it-works' },
+		{ title: 'Hair Loss Support', href: '/demos/hormone-trt/how-it-works' },
+		{ title: 'Longevity Medicine', href: '/demos/hormone-trt/how-it-works' },
+	]},
+];
+
+export const pillars = [
+	{ num: '01', title: 'Assess', description: 'Private symptom questionnaire and health history before any recommendation.' },
+	{ num: '02', title: 'Test', description: 'Comprehensive labs — not a basic panel. Hormones, metabolic, thyroid, inflammation.' },
+	{ num: '03', title: 'Prescribe Carefully', description: 'Treatment only when labs, symptoms, and history support it. Not everyone needs TRT.' },
+	{ num: '04', title: 'Optimize Over Time', description: 'Ongoing monitoring, quarterly labs, and plan adjustments. This is not a one-visit clinic.' },
 ];
 
 export const faqs = [

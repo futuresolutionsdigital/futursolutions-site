@@ -1,6 +1,6 @@
 ---
 import DemoBanner from '../components/DemoBanner.astro';
-import { brand, announcement, navItems, footerTreatments, footerConditions, footerCompany } from '../data/vantage';
+import { brand, navItems, footerTreatments, footerConditions, footerCompany } from '../data/vantage';
 import '../styles/global.css';
 
 interface Props { title: string; description: string; canonicalUrl?: string; }
@@ -30,82 +30,80 @@ function isActive(href: string) {
 	{canonicalUrl && <meta property="og:url" content={canonicalUrl} />}
 	<link rel="preconnect" href="https://fonts.googleapis.com" />
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
 	<title>{title}</title>
 </head>
 <body class="vt-site">
 	<DemoBanner customizeHref="/audit?template=hormone-trt" />
 
-	<header class="vt-header" id="vt-header">
-		<div class="vt-container vt-header__inner">
-			<a class="vt-header__brand" href={brand.homeHref} aria-label="VANTAGE Men's Health home">
-				<span class="vt-header__wordmark">VANTAGE</span>
-				<span class="vt-header__sub">Men's Health</span>
+	<!-- ═══ COMMAND BAR HEADER ═══ -->
+	<header class="vt-cmd" id="vt-header">
+		<div class="vt-cmd__bar">
+			<a class="vt-cmd__brand" href={brand.homeHref} aria-label="VANTAGE Men's Health home">
+				<span class="vt-cmd__logo">VANTAGE</span>
 			</a>
-			<nav class="vt-header__nav" aria-label="Main navigation">
+			<nav class="vt-cmd__nav" aria-label="Main navigation">
 				{navItems.map((item) => <a href={item.href} class:list={[{ 'is-active': isActive(item.href) }]}>{item.label}</a>)}
 			</nav>
-			<div class="vt-header__actions">
-				<a class="vt-header__cta" href="/demos/hormone-trt/assessment">Take Assessment <span aria-hidden="true">&rarr;</span></a>
+			<div class="vt-cmd__right">
+				<span class="vt-cmd__status">Private &middot; Lab-Based &middot; Provider-Led</span>
+				<a class="vt-cmd__cta" href="/demos/hormone-trt/assessment">Assessment</a>
 			</div>
-			<button class="vt-header__menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="vt-mobile-menu">
-				<span></span><span></span><span></span>
+			<button class="vt-cmd__menu" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="vt-mobile-menu">
+				<span></span><span></span>
 			</button>
 		</div>
-		<nav class="vt-mobile-menu" id="vt-mobile-menu" aria-label="Mobile navigation" hidden>
-			<div class="vt-container vt-mobile-menu__inner">
+		<nav class="vt-cmd__mobile" id="vt-mobile-menu" aria-label="Mobile navigation" hidden>
+			<div class="vt-cmd__mobile-inner">
 				{navItems.map((item) => <a href={item.href}>{item.label}</a>)}
-				<a class="vt-mobile-menu__cta" href="/demos/hormone-trt/assessment">Take Assessment &rarr;</a>
-				<a class="vt-mobile-menu__cta vt-mobile-menu__cta--secondary" href="/demos/hormone-trt/book-consultation">Book Consultation</a>
+				<div class="vt-cmd__mobile-actions">
+					<a class="vt-cmd__mobile-primary" href="/demos/hormone-trt/assessment">Run Assessment &rarr;</a>
+					<a class="vt-cmd__mobile-secondary" href="/demos/hormone-trt/book-consultation">Book Consult</a>
+				</div>
 			</div>
 		</nav>
 	</header>
 
 	<main><slot /></main>
 
-	<footer class="vt-footer">
-		<div class="vt-container vt-footer__grid">
-			<div class="vt-footer__brand-col">
-				<a class="vt-footer__brand" href={brand.homeHref}>VANTAGE</a>
-				<p class="vt-footer__tagline">{brand.tagline}</p>
-				<p class="vt-footer__address">{brand.locationShort} &middot; {brand.phone}</p>
+	<!-- ═══ COMPACT FOOTER ═══ -->
+	<footer class="vt-foot">
+		<div class="vt-contain vt-foot__top">
+			<div class="vt-foot__brand">
+				<span class="vt-foot__logo">VANTAGE</span>
+				<p>{brand.tagline}</p>
 			</div>
-			<nav class="vt-footer__col" aria-label="Treatments">
+			<nav class="vt-foot__links" aria-label="Footer treatments">
 				<h2>Treatments</h2>
-				<ul>{footerTreatments.map((t) => <li><a href="/demos/hormone-trt#treatments">{t}</a></li>)}</ul>
+				{footerTreatments.map((t) => <a href="/demos/hormone-trt#treatments">{t}</a>)}
 			</nav>
-			<nav class="vt-footer__col" aria-label="Conditions">
+			<nav class="vt-foot__links" aria-label="Footer conditions">
 				<h2>Conditions</h2>
-				<ul>{footerConditions.map((c) => <li><a href="/demos/hormone-trt#conditions">{c}</a></li>)}</ul>
+				{footerConditions.map((c) => <a href="/demos/hormone-trt#conditions">{c}</a>)}
 			</nav>
-			<nav class="vt-footer__col" aria-label="Company links">
+			<nav class="vt-foot__links" aria-label="Footer company">
 				<h2>Company</h2>
-				<ul>{footerCompany.map((l) => <li><a href={l.href}>{l.label}</a></li>)}</ul>
+				{footerCompany.map((l) => <a href={l.href}>{l.label}</a>)}
 			</nav>
 		</div>
-		<div class="vt-container vt-footer__bottom">
-			<p>&copy; {new Date().getFullYear()} {brand.name}. All rights reserved.</p>
-			<p class="vt-footer__disclaimer">{brand.disclaimer} Built by <a href="/">Future Solutions</a>.</p>
-			<div class="vt-footer__legal">
-				<a href="/demos/hormone-trt/book-consultation">Privacy Policy</a>
+		<div class="vt-contain vt-foot__bottom">
+			<span>&copy; {new Date().getFullYear()} {brand.name}</span>
+			<span class="vt-foot__disc">{brand.disclaimer} Built by <a href="/">Future Solutions</a>.</span>
+			<div class="vt-foot__legal">
+				<a href="/demos/hormone-trt/book-consultation">Privacy</a>
 				<a href="/demos/hormone-trt/book-consultation">Terms</a>
-				<a href="/demos/hormone-trt/book-consultation">Accessibility</a>
 			</div>
 		</div>
 	</footer>
 
-	<a class="vt-sticky-cta" href="/demos/hormone-trt/assessment" aria-label="Take the assessment">Take Assessment &rarr;</a>
+	<a class="vt-sticky" href="/demos/hormone-trt/assessment" aria-label="Take the assessment">Run Assessment &rarr;</a>
 
 	<script is:inline>
 	(function(){
 		var banner=document.querySelector('.demo-banner');
-		function syncBannerHeight(){
-			var h=banner?banner.offsetHeight:0;
-			document.documentElement.style.setProperty('--vt-banner-h',h+'px');
-		}
-		if(banner){syncBannerHeight();window.addEventListener('resize',syncBannerHeight);}
-
-		var btn=document.querySelector('.vt-header__menu-btn');
+		function sync(){var h=banner?banner.offsetHeight:0;document.documentElement.style.setProperty('--vt-banner-h',h+'px');}
+		if(banner){sync();window.addEventListener('resize',sync);}
+		var btn=document.querySelector('.vt-cmd__menu');
 		var menu=document.getElementById('vt-mobile-menu');
 		if(!btn||!menu)return;
 		btn.addEventListener('click',function(){
@@ -115,11 +113,7 @@ function isActive(href: string) {
 			btn.classList.toggle('is-open',open);
 		});
 		menu.querySelectorAll('a').forEach(function(a){
-			a.addEventListener('click',function(){
-				menu.hidden=true;
-				btn.setAttribute('aria-expanded','false');
-				btn.classList.remove('is-open');
-			});
+			a.addEventListener('click',function(){menu.hidden=true;btn.setAttribute('aria-expanded','false');btn.classList.remove('is-open');});
 		});
 	})();
 	</script>
@@ -128,155 +122,158 @@ function isActive(href: string) {
 
 <style is:global>
 /* ═══════════════════════════════════════════════════════
-   VANTAGE MEN'S HEALTH — Premium Masculine Medical
+   VANTAGE — Clinical Command Center Design System
    ═══════════════════════════════════════════════════════ */
 .vt-site {
-	--vt-graphite: #141615;
-	--vt-charcoal: #232625;
-	--vt-slate: #1E2A32;
-	--vt-ivory: #F5F0E8;
-	--vt-sand: #D8C7AD;
+	--vt-ink: #090B0A;
+	--vt-graphite: #121514;
+	--vt-charcoal: #1A201D;
+	--vt-steel-dark: #25333A;
+	--vt-steel: #5D737C;
+	--vt-bone: #F4EDE2;
+	--vt-sand: #C9B89D;
 	--vt-bronze: #B48652;
-	--vt-steel: #526A73;
-	--vt-gray: #A7AAA5;
+	--vt-amber: #D6A756;
+	--vt-mist: #DDE5E1;
 	--vt-white: #FFFFFF;
-	--vt-border: rgba(255,255,255,0.08);
-	--vt-border-light: rgba(20,22,21,0.08);
-	--vt-border-warm: rgba(180,134,82,0.2);
-	--vt-radius: 6px;
-	--vt-sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-	--vt-max-width: 1120px;
-	--vt-transition: 0.2s ease;
+	--vt-border: rgba(255,255,255,0.06);
+	--vt-border-med: rgba(255,255,255,0.1);
+	--vt-border-bronze: rgba(180,134,82,0.15);
+	--vt-glow: rgba(180,134,82,0.06);
+	--vt-r: 4px;
+	--vt-font: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+	--vt-max: 1100px;
+	--vt-ease: 0.18s ease;
 
 	margin: 0; min-width: 320px;
-	background: var(--vt-graphite); color: var(--vt-ivory);
-	font-family: var(--vt-sans);
-	font-size: 0.9375rem; line-height: 1.7;
+	background: var(--vt-ink); color: var(--vt-bone);
+	font-family: var(--vt-font);
+	font-size: 0.9375rem; line-height: 1.65;
 	text-rendering: optimizeLegibility;
 	-webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
 }
 .vt-site *, .vt-site *::before, .vt-site *::after { box-sizing: border-box; }
 .vt-site img, .vt-site svg { display: block; max-width: 100%; }
-.vt-site a { color: inherit; text-decoration: none; transition: color var(--vt-transition), opacity var(--vt-transition); }
+.vt-site a { color: inherit; text-decoration: none; transition: color var(--vt-ease), opacity var(--vt-ease); }
 
-/* Typography */
-.vt-site h1, .vt-site h2, .vt-site h3 { margin-top: 0; color: var(--vt-ivory); font-weight: 700; }
-.vt-site h1 { font-size: clamp(2.6rem, 2rem + 3.5vw, 3.8rem); line-height: 1.05; letter-spacing: -0.035em; margin-bottom: 1.5rem; }
-.vt-site h2 { font-size: clamp(1.5rem, 1.1rem + 1.5vw, 2.2rem); line-height: 1.12; letter-spacing: -0.025em; margin-bottom: 1rem; }
-.vt-site h3 { font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem); line-height: 1.35; letter-spacing: -0.01em; margin-bottom: 0.5rem; }
-.vt-site p { margin-top: 0; margin-bottom: 1rem; }
+/* ─── Typography — sharper, more tactical ─── */
+.vt-site h1, .vt-site h2, .vt-site h3 { margin-top: 0; color: var(--vt-bone); font-weight: 800; }
+.vt-site h1 { font-size: clamp(2.4rem, 1.8rem + 3vw, 3.6rem); line-height: 1.02; letter-spacing: -0.04em; margin-bottom: 1.25rem; }
+.vt-site h2 { font-size: clamp(1.4rem, 1rem + 1.5vw, 2rem); line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 0.75rem; }
+.vt-site h3 { font-size: 0.95rem; line-height: 1.3; letter-spacing: -0.01em; margin-bottom: 0.35rem; font-weight: 700; }
+.vt-site p { margin-top: 0; margin-bottom: 0.75rem; }
 .vt-site p:last-child { margin-bottom: 0; }
 .vt-site button, .vt-site input, .vt-site select, .vt-site textarea { font: inherit; }
 .vt-site button { cursor: pointer; }
-.vt-site :focus-visible { outline: 2px solid var(--vt-bronze); outline-offset: 3px; border-radius: 3px; }
-.vt-site ::selection { background: rgba(180,134,82,0.25); color: var(--vt-ivory); }
+.vt-site :focus-visible { outline: 2px solid var(--vt-bronze); outline-offset: 2px; border-radius: 2px; }
+.vt-site ::selection { background: rgba(180,134,82,0.2); color: var(--vt-bone); }
 
-/* Container */
-.vt-container { width: min(100% - 2.5rem, var(--vt-max-width)); margin-inline: auto; }
+/* ─── Container ─── */
+.vt-contain { width: min(100% - 2rem, var(--vt-max)); margin-inline: auto; }
 
-/* Sections */
-.vt-section { padding: clamp(4rem, 8vw, 7rem) 0; }
-.vt-section--dark { background: var(--vt-graphite); }
-.vt-section--charcoal { background: var(--vt-charcoal); }
-.vt-section--slate { background: var(--vt-slate); }
-.vt-section--ivory { background: var(--vt-ivory); color: var(--vt-graphite); }
-.vt-section--ivory h1, .vt-section--ivory h2, .vt-section--ivory h3 { color: var(--vt-graphite); }
-.vt-section--sand { background: var(--vt-sand); color: var(--vt-graphite); }
-.vt-section--sand h1, .vt-section--sand h2, .vt-section--sand h3 { color: var(--vt-graphite); }
+/* ─── Sections — distinct from wellness ─── */
+.vt-sec { padding: clamp(3.5rem, 7vw, 6rem) 0; }
+.vt-sec--ink { background: var(--vt-ink); }
+.vt-sec--graphite { background: var(--vt-graphite); }
+.vt-sec--charcoal { background: var(--vt-charcoal); }
+.vt-sec--steel { background: var(--vt-steel-dark); }
+.vt-sec--bone { background: var(--vt-bone); color: var(--vt-graphite); }
+.vt-sec--bone h1, .vt-sec--bone h2, .vt-sec--bone h3 { color: var(--vt-graphite); }
+.vt-sec--bone .vt-eye { color: var(--vt-steel); }
+.vt-sec--bone .vt-sub { color: var(--vt-steel); }
 
-.vt-section-header { margin-bottom: 3rem; }
+/* ─── Micro components ─── */
+.vt-eye { display: block; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--vt-bronze); margin-bottom: 0.6rem; }
+.vt-sub { font-size: 0.88rem; line-height: 1.55; color: rgba(244,237,226,0.55); max-width: 480px; }
+.vt-sec--bone .vt-sub { color: rgba(18,21,20,0.55); }
 
-/* Eyebrow */
-.vt-eyebrow { display: block; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--vt-bronze); margin-bottom: 0.75rem; }
-.vt-section--ivory .vt-eyebrow, .vt-section--sand .vt-eyebrow { color: var(--vt-steel); }
+/* ─── Buttons — angular, tactical ─── */
+.vt-btn { display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.7rem 1.4rem; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; border-radius: var(--vt-r); border: 1px solid transparent; transition: all var(--vt-ease); text-decoration: none; white-space: nowrap; }
+.vt-btn--bronze { background: var(--vt-bronze); color: var(--vt-ink); border-color: var(--vt-bronze); }
+.vt-btn--bronze:hover { background: #c9975e; border-color: #c9975e; }
+.vt-btn--outline { background: transparent; color: var(--vt-bone); border-color: var(--vt-border-med); }
+.vt-btn--outline:hover { border-color: var(--vt-bronze); color: var(--vt-bronze); }
+.vt-sec--bone .vt-btn--outline { color: var(--vt-graphite); border-color: rgba(18,21,20,0.15); }
+.vt-sec--bone .vt-btn--outline:hover { border-color: var(--vt-bronze); color: var(--vt-bronze); }
+.vt-btn-row { display: flex; flex-wrap: wrap; gap: 0.6rem; }
 
-/* Lead text */
-.vt-lead { font-size: clamp(0.95rem, 0.9rem + 0.3vw, 1.1rem); line-height: 1.6; color: var(--vt-gray); max-width: 560px; }
-.vt-section--ivory .vt-lead { color: var(--vt-steel); }
-.vt-section--sand .vt-lead { color: rgba(20,22,21,0.6); }
+/* ─── Data panel — dashboard component ─── */
+.vt-panel { background: var(--vt-graphite); border: 1px solid var(--vt-border); border-radius: var(--vt-r); overflow: hidden; }
+.vt-panel__head { display: flex; justify-content: space-between; align-items: center; padding: 0.6rem 1rem; border-bottom: 1px solid var(--vt-border); font-size: 0.55rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--vt-bronze); }
+.vt-panel__head span:last-child { color: rgba(244,237,226,0.3); font-weight: 500; }
+.vt-panel__body { padding: 1.25rem; }
 
-/* Buttons */
-.vt-btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem; padding: 0.85rem 1.75rem; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.03em; border-radius: var(--vt-radius); border: 1px solid transparent; transition: all var(--vt-transition); text-decoration: none; white-space: nowrap; }
-.vt-btn--primary { background: var(--vt-bronze); color: var(--vt-graphite); border-color: var(--vt-bronze); }
-.vt-btn--primary:hover { background: #c9975e; border-color: #c9975e; }
-.vt-btn--secondary { background: transparent; color: var(--vt-ivory); border-color: rgba(255,255,255,0.15); }
-.vt-btn--secondary:hover { border-color: var(--vt-bronze); color: var(--vt-bronze); }
-.vt-section--ivory .vt-btn--secondary { color: var(--vt-graphite); border-color: rgba(20,22,21,0.15); }
-.vt-section--ivory .vt-btn--secondary:hover { border-color: var(--vt-bronze); color: var(--vt-bronze); }
-.vt-btn-row { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+/* ─── Text link ─── */
+.vt-link { font-size: 0.75rem; font-weight: 600; color: var(--vt-bronze); letter-spacing: 0.03em; }
+.vt-link:hover { color: #c9975e; }
 
-/* Text link */
-.vt-text-link { font-size: 0.82rem; font-weight: 600; color: var(--vt-bronze); transition: color var(--vt-transition); }
-.vt-text-link:hover { color: #c9975e; }
+/* ─── Status dot ─── */
+.vt-dot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; }
+.vt-dot--bronze { background: var(--vt-bronze); }
+.vt-dot--steel { background: var(--vt-steel); }
 
-/* Card */
-.vt-card { background: var(--vt-charcoal); border: 1px solid var(--vt-border); border-radius: var(--vt-radius); padding: 1.75rem; transition: border-color var(--vt-transition), box-shadow var(--vt-transition); }
-.vt-card:hover { border-color: rgba(180,134,82,0.25); }
-.vt-section--ivory .vt-card { background: var(--vt-white); border-color: var(--vt-border-light); }
-.vt-section--ivory .vt-card:hover { border-color: rgba(180,134,82,0.3); box-shadow: 0 4px 16px rgba(0,0,0,0.04); }
+/* ═══ COMMAND BAR HEADER ═══ */
+.vt-cmd { position: sticky; top: var(--vt-banner-h, 3.55rem); z-index: 15; background: rgba(9,11,10,0.95); backdrop-filter: blur(16px); border-bottom: 1px solid var(--vt-border); }
+.vt-cmd__bar { display: flex; align-items: center; gap: 1.25rem; height: 3.25rem; width: min(100% - 2rem, var(--vt-max)); margin-inline: auto; }
+.vt-cmd__brand { text-decoration: none; }
+.vt-cmd__logo { font-size: 0.85rem; font-weight: 900; letter-spacing: 0.22em; text-transform: uppercase; color: var(--vt-bone); }
+.vt-cmd__nav { display: flex; gap: 1.25rem; margin-left: auto; }
+.vt-cmd__nav a { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: rgba(244,237,226,0.4); transition: color var(--vt-ease); }
+.vt-cmd__nav a:hover, .vt-cmd__nav a.is-active { color: var(--vt-bone); }
+.vt-cmd__right { display: flex; align-items: center; gap: 1rem; margin-left: 1rem; }
+.vt-cmd__status { font-size: 0.55rem; font-weight: 500; letter-spacing: 0.08em; color: rgba(244,237,226,0.25); white-space: nowrap; }
+.vt-cmd__cta { padding: 0.35rem 0.85rem; font-size: 0.62rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; background: var(--vt-bronze); color: var(--vt-ink); border-radius: var(--vt-r); transition: background var(--vt-ease); }
+.vt-cmd__cta:hover { background: #c9975e; }
 
-/* ─── Header ─── */
-.vt-header { position: sticky; top: var(--vt-banner-h, 3.55rem); z-index: 15; background: rgba(20,22,21,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--vt-border); }
-.vt-header__inner { display: flex; align-items: center; gap: 1.5rem; height: 3.75rem; }
-.vt-header__brand { display: flex; flex-direction: column; line-height: 1; text-decoration: none; }
-.vt-header__wordmark { font-size: 1rem; font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase; color: var(--vt-ivory); }
-.vt-header__sub { font-size: 0.5rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--vt-bronze); margin-top: 0.1rem; }
-.vt-header__nav { display: flex; gap: 1.5rem; margin-left: auto; }
-.vt-header__nav a { font-size: 0.78rem; font-weight: 500; color: var(--vt-gray); transition: color var(--vt-transition); }
-.vt-header__nav a:hover, .vt-header__nav a.is-active { color: var(--vt-ivory); }
-.vt-header__actions { margin-left: 1rem; }
-.vt-header__cta { display: inline-flex; align-items: center; gap: 0.3rem; padding: 0.5rem 1rem; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.02em; color: var(--vt-graphite); background: var(--vt-bronze); border-radius: var(--vt-radius); transition: background var(--vt-transition); }
-.vt-header__cta:hover { background: #c9975e; }
-.vt-header__menu-btn { display: none; background: none; border: none; padding: 0.5rem; cursor: pointer; flex-direction: column; gap: 4px; }
-.vt-header__menu-btn span { display: block; width: 20px; height: 2px; background: var(--vt-ivory); border-radius: 1px; transition: transform var(--vt-transition), opacity var(--vt-transition); }
-.vt-header__menu-btn.is-open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
-.vt-header__menu-btn.is-open span:nth-child(2) { opacity: 0; }
-.vt-header__menu-btn.is-open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+/* Menu button — two-line style */
+.vt-cmd__menu { display: none; background: none; border: none; padding: 0.5rem; flex-direction: column; gap: 5px; margin-left: auto; }
+.vt-cmd__menu span { display: block; width: 18px; height: 1.5px; background: var(--vt-bone); transition: transform var(--vt-ease), opacity var(--vt-ease); }
+.vt-cmd__menu.is-open span:first-child { transform: translateY(3.25px) rotate(45deg); }
+.vt-cmd__menu.is-open span:last-child { transform: translateY(-3.25px) rotate(-45deg); }
 
 /* Mobile menu */
-.vt-mobile-menu { border-top: 1px solid var(--vt-border); background: var(--vt-graphite); }
-.vt-mobile-menu__inner { display: flex; flex-direction: column; padding: 1.25rem 0; gap: 0.75rem; }
-.vt-mobile-menu__inner a { font-size: 0.88rem; font-weight: 500; color: var(--vt-gray); padding: 0.35rem 0; }
-.vt-mobile-menu__inner a:hover { color: var(--vt-ivory); }
-.vt-mobile-menu__cta { display: block; text-align: center; padding: 0.75rem; background: var(--vt-bronze); color: var(--vt-graphite) !important; font-weight: 700 !important; border-radius: var(--vt-radius); margin-top: 0.5rem; }
-.vt-mobile-menu__cta--secondary { background: transparent; border: 1px solid rgba(255,255,255,0.15); color: var(--vt-ivory) !important; margin-top: 0; }
+.vt-cmd__mobile { background: var(--vt-ink); border-top: 1px solid var(--vt-border); }
+.vt-cmd__mobile-inner { display: flex; flex-direction: column; padding: 1rem 0; gap: 0.5rem; width: min(100% - 2rem, var(--vt-max)); margin-inline: auto; }
+.vt-cmd__mobile-inner > a { font-size: 0.8rem; font-weight: 600; color: rgba(244,237,226,0.5); padding: 0.4rem 0; letter-spacing: 0.03em; }
+.vt-cmd__mobile-inner > a:hover { color: var(--vt-bone); }
+.vt-cmd__mobile-actions { display: flex; gap: 0.5rem; margin-top: 0.75rem; }
+.vt-cmd__mobile-primary { flex: 1; text-align: center; padding: 0.65rem; font-size: 0.75rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; background: var(--vt-bronze); color: var(--vt-ink); border-radius: var(--vt-r); }
+.vt-cmd__mobile-secondary { flex: 1; text-align: center; padding: 0.65rem; font-size: 0.75rem; font-weight: 700; border: 1px solid var(--vt-border-med); color: var(--vt-bone); border-radius: var(--vt-r); }
 
-/* ─── Footer ─── */
-.vt-footer { padding: clamp(3rem, 6vw, 5rem) 0 1.5rem; background: var(--vt-charcoal); border-top: 1px solid var(--vt-border); }
-.vt-footer__grid { display: grid; grid-template-columns: 1.3fr repeat(3, 1fr); gap: 2rem; padding-bottom: 2.5rem; border-bottom: 1px solid var(--vt-border); }
-.vt-footer__brand { font-size: 0.9rem; font-weight: 800; letter-spacing: 0.15em; text-transform: uppercase; color: var(--vt-ivory); }
-.vt-footer__tagline { font-size: 0.78rem; color: var(--vt-gray); margin-top: 0.5rem; max-width: 280px; }
-.vt-footer__address { font-size: 0.72rem; color: var(--vt-gray); margin-top: 0.5rem; }
-.vt-footer__col h2 { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--vt-bronze); margin-bottom: 0.75rem; }
-.vt-footer__col ul { list-style: none; padding: 0; margin: 0; }
-.vt-footer__col li { margin-bottom: 0.4rem; }
-.vt-footer__col a { font-size: 0.78rem; color: var(--vt-gray); }
-.vt-footer__col a:hover { color: var(--vt-ivory); }
-.vt-footer__bottom { padding-top: 1.5rem; display: flex; flex-wrap: wrap; gap: 0.5rem 2rem; align-items: baseline; }
-.vt-footer__bottom p { font-size: 0.65rem; color: var(--vt-gray); }
-.vt-footer__disclaimer { font-size: 0.6rem !important; color: rgba(167,170,165,0.5) !important; font-style: italic; max-width: 640px; }
-.vt-footer__disclaimer a { color: var(--vt-bronze); }
-.vt-footer__legal { display: flex; gap: 1rem; margin-left: auto; }
-.vt-footer__legal a { font-size: 0.65rem; color: var(--vt-gray); }
-.vt-footer__legal a:hover { color: var(--vt-bronze); }
+/* ═══ COMPACT FOOTER ═══ */
+.vt-foot { background: var(--vt-graphite); border-top: 1px solid var(--vt-border); padding: clamp(2.5rem, 5vw, 4rem) 0 1.25rem; }
+.vt-foot__top { display: grid; grid-template-columns: 1.4fr repeat(3, 1fr); gap: 1.5rem; padding-bottom: 2rem; border-bottom: 1px solid var(--vt-border); }
+.vt-foot__logo { font-size: 0.75rem; font-weight: 900; letter-spacing: 0.22em; text-transform: uppercase; color: var(--vt-bone); display: block; margin-bottom: 0.4rem; }
+.vt-foot__brand p { font-size: 0.72rem; color: rgba(244,237,226,0.35); max-width: 260px; line-height: 1.5; }
+.vt-foot__links { display: flex; flex-direction: column; gap: 0.3rem; }
+.vt-foot__links h2 { font-size: 0.55rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--vt-bronze); margin-bottom: 0.4rem; }
+.vt-foot__links a { font-size: 0.72rem; color: rgba(244,237,226,0.4); }
+.vt-foot__links a:hover { color: var(--vt-bone); }
+.vt-foot__bottom { display: flex; flex-wrap: wrap; gap: 0.4rem 1.5rem; padding-top: 1rem; align-items: baseline; }
+.vt-foot__bottom span { font-size: 0.6rem; color: rgba(244,237,226,0.25); }
+.vt-foot__disc { font-size: 0.55rem !important; color: rgba(244,237,226,0.15) !important; font-style: italic; max-width: 560px; }
+.vt-foot__disc a { color: var(--vt-bronze); }
+.vt-foot__legal { display: flex; gap: 0.75rem; margin-left: auto; }
+.vt-foot__legal a { font-size: 0.6rem; color: rgba(244,237,226,0.3); }
+.vt-foot__legal a:hover { color: var(--vt-bronze); }
 
-/* ─── Sticky CTA (mobile) ─── */
-.vt-sticky-cta { display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 14; padding: 0.85rem 1rem; text-align: center; font-size: 0.82rem; font-weight: 700; background: var(--vt-bronze); color: var(--vt-graphite); border-top: 1px solid rgba(180,134,82,0.3); }
+/* ═══ STICKY MOBILE CTA ═══ */
+.vt-sticky { display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 14; padding: 0.75rem; text-align: center; font-size: 0.75rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; background: var(--vt-bronze); color: var(--vt-ink); }
 
-/* ─── Responsive ─── */
+/* ═══ RESPONSIVE ═══ */
 @media (prefers-reduced-motion: reduce) {
 	.vt-site, .vt-site * { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
 }
-@media (max-width: 960px) {
-	.vt-header__nav, .vt-header__actions { display: none; }
-	.vt-header__menu-btn { display: flex; margin-left: auto; }
-	.vt-footer__grid { grid-template-columns: 1fr 1fr; }
+@media (max-width: 900px) {
+	.vt-cmd__nav, .vt-cmd__right { display: none; }
+	.vt-cmd__menu { display: flex; }
+	.vt-foot__top { grid-template-columns: 1fr 1fr; }
 }
-@media (max-width: 640px) {
-	.vt-footer__grid { grid-template-columns: 1fr; }
-	.vt-footer__bottom { flex-direction: column; }
-	.vt-footer__legal { margin-left: 0; }
-	.vt-sticky-cta { display: block; }
-	body.vt-site { padding-bottom: 3.25rem; }
+@media (max-width: 600px) {
+	.vt-foot__top { grid-template-columns: 1fr; }
+	.vt-foot__bottom { flex-direction: column; }
+	.vt-foot__legal { margin-left: 0; }
+	.vt-sticky { display: block; }
+	body.vt-site { padding-bottom: 3rem; }
 }
 </style>
