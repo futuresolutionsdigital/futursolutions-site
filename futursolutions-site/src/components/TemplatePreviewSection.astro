@@ -14,29 +14,56 @@ import { templateSystems } from '../data/templates';
 
 		<div class="template-preview__grid">
 			{templateSystems.map((template, index) => (
-				<article class="template-card card">
-					<div class="template-card__mockup" aria-hidden="true">
-						<div class="template-card__topbar">
-							<span></span>
-							<span></span>
-							<span></span>
+				<article class:list={['template-card', 'card', { 'template-card--vt': template.slug === 'hormone-trt' }]}>
+					{template.slug === 'hormone-trt' ? (
+						<div class="template-card__mockup vt-prev" aria-hidden="true">
+							<div class="vt-prev__chrome">
+								<span class="vt-prev__dot"></span>
+								<span class="vt-prev__dot"></span>
+								<span class="vt-prev__dot"></span>
+								<span class="vt-prev__label">VANTAGE</span>
+							</div>
+							<div class="vt-prev__screen">
+								<div class="vt-prev__rule"></div>
+								<div class="vt-prev__hero-block">
+									<span class="vt-prev__tag">MEN'S HEALTH / TRT</span>
+									<span class="vt-prev__headline"></span>
+									<span class="vt-prev__headline vt-prev__headline--short"></span>
+									<span class="vt-prev__cta">START ASSESSMENT</span>
+								</div>
+								<div class="vt-prev__stats">
+									<div style="height:55%"></div>
+									<div style="height:80%"></div>
+									<div style="height:40%"></div>
+									<div style="height:65%"></div>
+								</div>
+								<div class="vt-prev__diagonal"></div>
+							</div>
 						</div>
-						<div class="template-card__screen">
-							<div class="template-card__hero-lines">
+					) : (
+						<div class="template-card__mockup" aria-hidden="true">
+							<div class="template-card__topbar">
 								<span></span>
 								<span></span>
 								<span></span>
 							</div>
-							<div class={`template-card__panel template-card__panel--${index + 1}`}>
-								<span></span>
-							</div>
-							<div class="template-card__tiles">
-								<span></span>
-								<span></span>
-								<span></span>
+							<div class="template-card__screen">
+								<div class="template-card__hero-lines">
+									<span></span>
+									<span></span>
+									<span></span>
+								</div>
+								<div class={`template-card__panel template-card__panel--${index + 1}`}>
+									<span></span>
+								</div>
+								<div class="template-card__tiles">
+									<span></span>
+									<span></span>
+									<span></span>
+								</div>
 							</div>
 						</div>
-					</div>
+					)}
 
 					<div class="template-card__content">
 						<p class="template-card__category">{template.category}</p>
@@ -274,6 +301,144 @@ import { templateSystems } from '../data/templates';
 		font-size: 0.78rem;
 		font-weight: 600;
 		line-height: 1;
+	}
+
+	/* ═══ VANTAGE preview variant ═══ */
+	.template-card--vt {
+		border-color: rgba(200, 30, 30, 0.18);
+	}
+
+	.vt-prev {
+		padding: 0;
+		border-bottom: none;
+		background: #111;
+	}
+
+	.vt-prev__chrome {
+		display: flex;
+		gap: 0.35rem;
+		align-items: center;
+		padding: 0.6rem 0.8rem;
+		background: #0a0a0a;
+		border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+	}
+
+	.vt-prev__dot {
+		width: 5px;
+		height: 5px;
+		border-radius: 50%;
+		background: #c81e1e;
+		opacity: 0.6;
+	}
+
+	.vt-prev__label {
+		margin-left: auto;
+		font-size: 0.48rem;
+		font-weight: 800;
+		letter-spacing: 0.18em;
+		color: rgba(244, 239, 231, 0.2);
+		text-transform: uppercase;
+	}
+
+	.vt-prev__screen {
+		position: relative;
+		display: grid;
+		grid-template-columns: 1fr auto;
+		gap: 0.8rem;
+		padding: 1rem;
+		min-height: 190px;
+		overflow: hidden;
+		background:
+			repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(255, 255, 255, 0.015) 39px, rgba(255, 255, 255, 0.015) 40px),
+			repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(255, 255, 255, 0.015) 39px, rgba(255, 255, 255, 0.015) 40px),
+			#111;
+	}
+
+	.vt-prev__rule {
+		grid-column: 1 / -1;
+		height: 3px;
+		background: #c81e1e;
+		border-radius: 2px;
+	}
+
+	.vt-prev__hero-block {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+		justify-content: center;
+	}
+
+	.vt-prev__tag {
+		width: fit-content;
+		padding: 0.2rem 0.4rem;
+		font-size: 0.4rem;
+		font-weight: 800;
+		letter-spacing: 0.16em;
+		color: #c81e1e;
+		border: 1px solid rgba(200, 30, 30, 0.25);
+		border-radius: 2px;
+		text-transform: uppercase;
+	}
+
+	.vt-prev__headline {
+		display: block;
+		width: 85%;
+		height: 0.65rem;
+		background: rgba(244, 239, 231, 0.7);
+		border-radius: 2px;
+	}
+
+	.vt-prev__headline--short {
+		width: 60%;
+		height: 0.55rem;
+		background: rgba(244, 239, 231, 0.35);
+	}
+
+	.vt-prev__cta {
+		width: fit-content;
+		margin-top: 0.2rem;
+		padding: 0.25rem 0.5rem;
+		font-size: 0.38rem;
+		font-weight: 800;
+		letter-spacing: 0.12em;
+		color: #f4efe7;
+		background: #c81e1e;
+		border-radius: 3px;
+		text-transform: uppercase;
+	}
+
+	.vt-prev__stats {
+		display: flex;
+		gap: 4px;
+		align-items: flex-end;
+		align-self: end;
+		height: 60px;
+		padding: 0.5rem;
+		background: rgba(255, 255, 255, 0.025);
+		border: 1px solid rgba(255, 255, 255, 0.04);
+		border-radius: 6px;
+	}
+
+	.vt-prev__stats div {
+		flex: 1;
+		min-width: 8px;
+		background: rgba(200, 30, 30, 0.4);
+		border-radius: 2px 2px 0 0;
+	}
+
+	.vt-prev__diagonal {
+		position: absolute;
+		bottom: -20px;
+		right: -20px;
+		width: 80px;
+		height: 80px;
+		background: rgba(200, 30, 30, 0.06);
+		transform: rotate(45deg);
+		pointer-events: none;
+	}
+
+	.template-card--vt .template-card__category {
+		color: #c81e1e;
 	}
 
 	.template-preview__cta {

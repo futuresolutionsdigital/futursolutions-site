@@ -51,7 +51,10 @@ const processSteps = [
 		variant="muted"
 		eyebrow="Problems solved"
 		heading="What this system helps fix"
-		description="The structure is designed to address common gaps that keep healthcare websites from earning trust, being found, and converting qualified visitors."
+		description={template.slug === 'hormone-trt'
+			? "Men's health sites face unique trust and conversion challenges. This template addresses the gaps that keep TRT and hormone clinics from converting qualified patients."
+			: "The structure is designed to address common gaps that keep healthcare websites from earning trust, being found, and converting qualified visitors."
+		}
 		items={template.problemsSolved}
 		columns={2}
 	/>
@@ -80,6 +83,26 @@ const processSteps = [
 		variant="checklist"
 		columns={2}
 	/>
+
+	{template.whyDifferent && template.whyDifferent.length > 0 && (
+		<section class="section detail-why-different" aria-labelledby="detail-why-different-heading">
+			<div class="site-container">
+				<div class="detail-why-different__intro">
+					<p class="eyebrow">Differentiation</p>
+					<h2 id="detail-why-different-heading">Why this template is different</h2>
+				</div>
+				<div class="detail-why-different__grid">
+					{template.whyDifferent.map((item, index) => (
+						<article class="card detail-why-different__card">
+							<span class="detail-why-different__num">{String(index + 1).padStart(2, '0')}</span>
+							<h3>{item.title}</h3>
+							<p>{item.text}</p>
+						</article>
+					))}
+				</div>
+			</div>
+		</section>
+	)}
 
 	<section class="section section-muted detail-backend" aria-labelledby="detail-backend-heading">
 		<div class="site-container">
@@ -125,6 +148,45 @@ const processSteps = [
 </BaseLayout>
 
 <style>
+	.detail-why-different__intro {
+		max-width: 780px;
+	}
+
+	.detail-why-different__grid {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 1rem;
+		margin-top: clamp(2rem, 4vw, 3rem);
+	}
+
+	.detail-why-different__card {
+		padding: 1.4rem;
+	}
+
+	.detail-why-different__num {
+		display: inline-flex;
+		width: fit-content;
+		margin-bottom: 1rem;
+		padding: 0.35rem 0.52rem;
+		border: 1px solid color-mix(in srgb, var(--color-accent) 35%, var(--color-border));
+		border-radius: 999px;
+		background: var(--color-accent-light);
+		color: var(--color-accent-dark);
+		font-size: 0.72rem;
+		font-weight: 800;
+		line-height: 1;
+	}
+
+	.detail-why-different__card h3 {
+		font-size: 1.1rem;
+		letter-spacing: -0.02em;
+	}
+
+	.detail-why-different__card p {
+		font-size: 0.9375rem;
+		line-height: 1.6;
+	}
+
 	.detail-backend__intro,
 	.detail-process__intro {
 		max-width: 780px;
@@ -196,14 +258,16 @@ const processSteps = [
 
 	@media (max-width: 1060px) {
 		.detail-backend__flow,
-		.detail-process__grid {
+		.detail-process__grid,
+		.detail-why-different__grid {
 			grid-template-columns: repeat(2, minmax(0, 1fr));
 		}
 	}
 
 	@media (max-width: 620px) {
 		.detail-backend__flow,
-		.detail-process__grid {
+		.detail-process__grid,
+		.detail-why-different__grid {
 			grid-template-columns: 1fr;
 		}
 	}

@@ -6,13 +6,19 @@ interface Props {
 }
 
 const { template } = Astro.props;
+const isVantage = template.slug === 'hormone-trt';
 ---
 
-<section class="section template-detail-hero" aria-labelledby="template-detail-heading">
+<section class:list={['section', 'template-detail-hero', { 'template-detail-hero--vantage': isVantage }]} aria-labelledby="template-detail-heading">
 	<div class="site-container template-detail-hero__inner">
 		<div class="template-detail-hero__content">
 			<p class="eyebrow">Template System</p>
-			<h1 id="template-detail-heading">{template.name}</h1>
+			<h1 id="template-detail-heading">
+				{isVantage
+					? "Premium men's health website system for TRT, ED care, and hormone optimization."
+					: template.name
+				}
+			</h1>
 			<p class="lead">{template.longDescription || template.shortDescription}</p>
 			<div class="button-row">
 				<a class="button button-primary" href={template.auditUrl}>Get This Template Customized</a>
@@ -27,28 +33,83 @@ const { template } = Astro.props;
 			<p class="template-detail-hero__meta">Complexity: {template.complexity}</p>
 		</div>
 
-		<div class="template-detail-hero__preview card" aria-hidden="true">
-			<div class="template-detail-hero__chrome">
-				<span></span>
-				<span></span>
-				<span></span>
+		{isVantage ? (
+			<div class="vt-detail-preview" aria-hidden="true">
+				<div class="vt-detail-preview__chrome">
+					<span class="vt-detail-preview__dot"></span>
+					<span class="vt-detail-preview__dot"></span>
+					<span class="vt-detail-preview__dot"></span>
+					<span class="vt-detail-preview__chrome-label">VANTAGE</span>
+				</div>
+				<div class="vt-detail-preview__screen">
+					<div class="vt-detail-preview__rule"></div>
+					<div class="vt-detail-preview__nav">
+						<span>TESTOSTERONE</span>
+						<span>ED CARE</span>
+						<span>WEIGHT LOSS</span>
+						<span>PRICING</span>
+					</div>
+					<div class="vt-detail-preview__hero">
+						<div class="vt-detail-preview__hero-text">
+							<span class="vt-detail-preview__tag">PERFORMANCE MEDICINE</span>
+							<span class="vt-detail-preview__h1"></span>
+							<span class="vt-detail-preview__h1 vt-detail-preview__h1--short"></span>
+							<span class="vt-detail-preview__sub"></span>
+							<span class="vt-detail-preview__cta">BUILD YOUR COMEBACK PLAN</span>
+						</div>
+						<div class="vt-detail-preview__stat-panel">
+							<div class="vt-detail-preview__stat-header">BIOMARKERS</div>
+							<div class="vt-detail-preview__stat-bars">
+								<div style="height:50%"></div>
+								<div style="height:75%"></div>
+								<div style="height:40%"></div>
+								<div style="height:85%"></div>
+								<div style="height:60%"></div>
+								<div style="height:45%"></div>
+							</div>
+						</div>
+					</div>
+					<div class="vt-detail-preview__cards">
+						<div class="vt-detail-preview__card">
+							<span></span>
+							<span></span>
+						</div>
+						<div class="vt-detail-preview__card">
+							<span></span>
+							<span></span>
+						</div>
+						<div class="vt-detail-preview__card">
+							<span></span>
+							<span></span>
+						</div>
+					</div>
+					<div class="vt-detail-preview__diag"></div>
+				</div>
 			</div>
-			<div class="template-detail-hero__screen">
-				<div class="template-detail-hero__lines">
+		) : (
+			<div class="template-detail-hero__preview card" aria-hidden="true">
+				<div class="template-detail-hero__chrome">
 					<span></span>
 					<span></span>
 					<span></span>
 				</div>
-				<div class="template-detail-hero__panel">
-					<span>{template.category}</span>
-				</div>
-				<div class="template-detail-hero__tiles">
-					<span></span>
-					<span></span>
-					<span></span>
+				<div class="template-detail-hero__screen">
+					<div class="template-detail-hero__lines">
+						<span></span>
+						<span></span>
+						<span></span>
+					</div>
+					<div class="template-detail-hero__panel">
+						<span>{template.category}</span>
+					</div>
+					<div class="template-detail-hero__tiles">
+						<span></span>
+						<span></span>
+						<span></span>
+					</div>
 				</div>
 			</div>
-		</div>
+		)}
 	</div>
 </section>
 
@@ -186,9 +247,218 @@ const { template } = Astro.props;
 		background: var(--color-white);
 	}
 
+	/* ═══ VANTAGE detail preview ═══ */
+	.vt-detail-preview {
+		overflow: hidden;
+		border-radius: 22px;
+		background: #0a0a0a;
+		box-shadow:
+			0 24px 70px rgba(15, 23, 42, 0.12),
+			0 0 0 1px rgba(200, 30, 30, 0.12);
+	}
+
+	.vt-detail-preview__chrome {
+		display: flex;
+		gap: 0.35rem;
+		align-items: center;
+		padding: 0.7rem 0.9rem;
+		background: #080808;
+		border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+	}
+
+	.vt-detail-preview__dot {
+		width: 6px;
+		height: 6px;
+		border-radius: 50%;
+		background: #c81e1e;
+		opacity: 0.5;
+	}
+
+	.vt-detail-preview__chrome-label {
+		margin-left: auto;
+		font-size: 0.5rem;
+		font-weight: 800;
+		letter-spacing: 0.2em;
+		color: rgba(244, 239, 231, 0.18);
+		text-transform: uppercase;
+	}
+
+	.vt-detail-preview__screen {
+		position: relative;
+		display: grid;
+		gap: 0.8rem;
+		padding: 1.1rem;
+		overflow: hidden;
+		background:
+			repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(255, 255, 255, 0.012) 39px, rgba(255, 255, 255, 0.012) 40px),
+			repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(255, 255, 255, 0.012) 39px, rgba(255, 255, 255, 0.012) 40px),
+			#111;
+	}
+
+	.vt-detail-preview__rule {
+		height: 3px;
+		background: #c81e1e;
+		border-radius: 2px;
+	}
+
+	.vt-detail-preview__nav {
+		display: flex;
+		gap: 0.8rem;
+		padding-bottom: 0.5rem;
+		border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+	}
+
+	.vt-detail-preview__nav span {
+		font-size: 0.38rem;
+		font-weight: 700;
+		letter-spacing: 0.14em;
+		color: rgba(244, 239, 231, 0.25);
+		text-transform: uppercase;
+	}
+
+	.vt-detail-preview__hero {
+		display: grid;
+		grid-template-columns: 1fr auto;
+		gap: 0.8rem;
+		align-items: start;
+	}
+
+	.vt-detail-preview__hero-text {
+		display: flex;
+		flex-direction: column;
+		gap: 0.4rem;
+	}
+
+	.vt-detail-preview__tag {
+		width: fit-content;
+		padding: 0.15rem 0.35rem;
+		font-size: 0.35rem;
+		font-weight: 800;
+		letter-spacing: 0.16em;
+		color: #c81e1e;
+		border: 1px solid rgba(200, 30, 30, 0.25);
+		border-radius: 2px;
+		text-transform: uppercase;
+	}
+
+	.vt-detail-preview__h1 {
+		display: block;
+		width: 90%;
+		height: 0.75rem;
+		background: rgba(244, 239, 231, 0.65);
+		border-radius: 2px;
+	}
+
+	.vt-detail-preview__h1--short {
+		width: 65%;
+		height: 0.6rem;
+		background: rgba(244, 239, 231, 0.3);
+	}
+
+	.vt-detail-preview__sub {
+		display: block;
+		width: 80%;
+		height: 0.35rem;
+		background: rgba(244, 239, 231, 0.1);
+		border-radius: 2px;
+	}
+
+	.vt-detail-preview__cta {
+		width: fit-content;
+		margin-top: 0.25rem;
+		padding: 0.25rem 0.55rem;
+		font-size: 0.35rem;
+		font-weight: 800;
+		letter-spacing: 0.12em;
+		color: #f4efe7;
+		background: #c81e1e;
+		border-radius: 3px;
+		text-transform: uppercase;
+	}
+
+	.vt-detail-preview__stat-panel {
+		width: 90px;
+		padding: 0.55rem;
+		background: rgba(255, 255, 255, 0.025);
+		border: 1px solid rgba(255, 255, 255, 0.05);
+		border-radius: 8px;
+	}
+
+	.vt-detail-preview__stat-header {
+		font-size: 0.32rem;
+		font-weight: 800;
+		letter-spacing: 0.16em;
+		color: rgba(200, 30, 30, 0.5);
+		text-transform: uppercase;
+		margin-bottom: 0.4rem;
+	}
+
+	.vt-detail-preview__stat-bars {
+		display: flex;
+		gap: 3px;
+		align-items: flex-end;
+		height: 44px;
+	}
+
+	.vt-detail-preview__stat-bars div {
+		flex: 1;
+		background: rgba(200, 30, 30, 0.35);
+		border-radius: 2px 2px 0 0;
+	}
+
+	.vt-detail-preview__cards {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 0.5rem;
+	}
+
+	.vt-detail-preview__card {
+		display: grid;
+		gap: 0.35rem;
+		padding: 0.55rem;
+		background: rgba(255, 255, 255, 0.025);
+		border: 1px solid rgba(255, 255, 255, 0.04);
+		border-radius: 6px;
+	}
+
+	.vt-detail-preview__card span:first-child {
+		display: block;
+		width: 70%;
+		height: 0.4rem;
+		background: rgba(244, 239, 231, 0.2);
+		border-radius: 2px;
+	}
+
+	.vt-detail-preview__card span:last-child {
+		display: block;
+		width: 50%;
+		height: 0.3rem;
+		background: rgba(244, 239, 231, 0.08);
+		border-radius: 2px;
+	}
+
+	.vt-detail-preview__diag {
+		position: absolute;
+		bottom: -25px;
+		right: -25px;
+		width: 90px;
+		height: 90px;
+		background: rgba(200, 30, 30, 0.05);
+		transform: rotate(45deg);
+		pointer-events: none;
+	}
+
 	@media (max-width: 900px) {
 		.template-detail-hero__inner {
 			grid-template-columns: 1fr;
+		}
+
+		.vt-detail-preview__hero {
+			grid-template-columns: 1fr;
+		}
+
+		.vt-detail-preview__stat-panel {
+			width: 100%;
 		}
 	}
 </style>

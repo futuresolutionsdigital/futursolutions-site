@@ -10,36 +10,64 @@ interface Props {
 const { template, priority = 1 } = Astro.props;
 const visibleFeatures = template.features.slice(0, 4);
 const matchFilters = getTemplateMatchFilterIds(template).join(' ');
+const isVantage = template.slug === 'hormone-trt';
 ---
 
 <article
-	class="template-system-card card"
+	class:list={['template-system-card', 'card', { 'template-system-card--vantage': isVantage }]}
 	data-template-card
 	data-template-filters={matchFilters}
 	data-template-slug={template.slug}
 >
-	<div class="template-system-card__mockup" aria-hidden="true">
-		<div class="template-system-card__chrome">
-			<span></span>
-			<span></span>
-			<span></span>
+	{isVantage ? (
+		<div class="template-system-card__mockup vt-mockup" aria-hidden="true">
+			<div class="vt-mockup__chrome">
+				<span class="vt-mockup__dot"></span>
+				<span class="vt-mockup__dot"></span>
+				<span class="vt-mockup__dot"></span>
+				<span class="vt-mockup__chrome-label">VANTAGE</span>
+			</div>
+			<div class="vt-mockup__screen">
+				<div class="vt-mockup__rule"></div>
+				<div class="vt-mockup__hero-block">
+					<span class="vt-mockup__tag">MEN'S HEALTH / TRT</span>
+					<span class="vt-mockup__headline"></span>
+					<span class="vt-mockup__headline vt-mockup__headline--short"></span>
+					<span class="vt-mockup__cta">START ASSESSMENT</span>
+				</div>
+				<div class="vt-mockup__stats">
+					<div class="vt-mockup__stat-bar" style="height:55%"></div>
+					<div class="vt-mockup__stat-bar" style="height:80%"></div>
+					<div class="vt-mockup__stat-bar" style="height:40%"></div>
+					<div class="vt-mockup__stat-bar" style="height:65%"></div>
+				</div>
+				<div class="vt-mockup__diagonal"></div>
+			</div>
 		</div>
-		<div class="template-system-card__screen">
-			<div class="template-system-card__lines">
+	) : (
+		<div class="template-system-card__mockup" aria-hidden="true">
+			<div class="template-system-card__chrome">
 				<span></span>
 				<span></span>
 				<span></span>
 			</div>
-			<div class="template-system-card__panel">
-				<span>{String(priority).padStart(2, '0')}</span>
-			</div>
-			<div class="template-system-card__tiles">
-				<span></span>
-				<span></span>
-				<span></span>
+			<div class="template-system-card__screen">
+				<div class="template-system-card__lines">
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
+				<div class="template-system-card__panel">
+					<span>{String(priority).padStart(2, '0')}</span>
+				</div>
+				<div class="template-system-card__tiles">
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
 			</div>
 		</div>
-	</div>
+	)}
 
 	<div class="template-system-card__body">
 		<p class="template-system-card__category">{template.category}</p>
@@ -293,6 +321,144 @@ const matchFilters = getTemplateMatchFilterIds(template).join(' ');
 
 	.template-system-card__customize:hover {
 		text-decoration-thickness: 2px;
+	}
+
+	/* ═══ VANTAGE dark mockup variant ═══ */
+	.template-system-card--vantage {
+		border-color: rgba(200, 30, 30, 0.18);
+	}
+
+	.vt-mockup {
+		padding: 0;
+		border-bottom: none;
+		background: #111;
+	}
+
+	.vt-mockup__chrome {
+		display: flex;
+		gap: 0.35rem;
+		align-items: center;
+		padding: 0.6rem 0.8rem;
+		background: #0a0a0a;
+		border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+	}
+
+	.vt-mockup__dot {
+		width: 5px;
+		height: 5px;
+		border-radius: 50%;
+		background: #c81e1e;
+		opacity: 0.6;
+	}
+
+	.vt-mockup__chrome-label {
+		margin-left: auto;
+		font-size: 0.48rem;
+		font-weight: 800;
+		letter-spacing: 0.18em;
+		color: rgba(244, 239, 231, 0.2);
+		text-transform: uppercase;
+	}
+
+	.vt-mockup__screen {
+		position: relative;
+		display: grid;
+		grid-template-columns: 1fr auto;
+		gap: 0.8rem;
+		padding: 1rem;
+		min-height: 200px;
+		overflow: hidden;
+		background:
+			repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(255, 255, 255, 0.015) 39px, rgba(255, 255, 255, 0.015) 40px),
+			repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(255, 255, 255, 0.015) 39px, rgba(255, 255, 255, 0.015) 40px),
+			#111;
+	}
+
+	.vt-mockup__rule {
+		grid-column: 1 / -1;
+		height: 3px;
+		background: #c81e1e;
+		border-radius: 2px;
+	}
+
+	.vt-mockup__hero-block {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+		justify-content: center;
+	}
+
+	.vt-mockup__tag {
+		width: fit-content;
+		padding: 0.2rem 0.4rem;
+		font-size: 0.4rem;
+		font-weight: 800;
+		letter-spacing: 0.16em;
+		color: #c81e1e;
+		border: 1px solid rgba(200, 30, 30, 0.25);
+		border-radius: 2px;
+		text-transform: uppercase;
+	}
+
+	.vt-mockup__headline {
+		display: block;
+		width: 85%;
+		height: 0.65rem;
+		background: rgba(244, 239, 231, 0.7);
+		border-radius: 2px;
+	}
+
+	.vt-mockup__headline--short {
+		width: 60%;
+		height: 0.55rem;
+		background: rgba(244, 239, 231, 0.35);
+	}
+
+	.vt-mockup__cta {
+		width: fit-content;
+		margin-top: 0.2rem;
+		padding: 0.25rem 0.5rem;
+		font-size: 0.38rem;
+		font-weight: 800;
+		letter-spacing: 0.12em;
+		color: #f4efe7;
+		background: #c81e1e;
+		border-radius: 3px;
+		text-transform: uppercase;
+	}
+
+	.vt-mockup__stats {
+		display: flex;
+		gap: 4px;
+		align-items: flex-end;
+		align-self: end;
+		height: 60px;
+		padding: 0.5rem;
+		background: rgba(255, 255, 255, 0.025);
+		border: 1px solid rgba(255, 255, 255, 0.04);
+		border-radius: 6px;
+	}
+
+	.vt-mockup__stat-bar {
+		flex: 1;
+		min-width: 8px;
+		background: rgba(200, 30, 30, 0.4);
+		border-radius: 2px 2px 0 0;
+	}
+
+	.vt-mockup__diagonal {
+		position: absolute;
+		bottom: -20px;
+		right: -20px;
+		width: 80px;
+		height: 80px;
+		background: rgba(200, 30, 30, 0.06);
+		transform: rotate(45deg);
+		pointer-events: none;
+	}
+
+	.template-system-card--vantage .template-system-card__category {
+		color: #c81e1e;
 	}
 
 	@media (max-width: 700px) {
