@@ -24,7 +24,12 @@ import { brand } from '../../../data/vantage';
 			<div class="to-hero__card-row"><span class="to-hero__card-label">First Review</span><span class="to-hero__card-val">90-day</span></div>
 			<div class="to-hero__card-row"><span class="to-hero__card-label">Monitoring</span><span class="to-hero__card-val">Quarterly</span></div>
 		</div>
-		<div class="vt-img to-hero__img"><span class="vt-img__label">Hormone Performance Lab</span></div>
+		<div class="vt-img to-hero__img">
+			<div class="vt-img__chrome"><span class="vt-img__dot"></span><span class="vt-img__dot"></span><span class="vt-img__chrome-label">Hormone Panel</span></div>
+			<span class="vt-img__label">Hormone Performance Lab</span>
+			<div class="vt-img__bars"><span class="vt-img__bar" style="height:55%"></span><span class="vt-img__bar" style="height:35%"></span><span class="vt-img__bar" style="height:70%"></span><span class="vt-img__bar" style="height:45%"></span><span class="vt-img__bar" style="height:80%"></span><span class="vt-img__bar" style="height:60%"></span></div>
+			<span class="vt-img__corner"></span>
+		</div>
 	</div>
 </section>
 
@@ -299,12 +304,13 @@ import { brand } from '../../../data/vantage';
 .to-final .vt-btn--dark:hover { border-color: var(--vt-white); }
 
 /* ═══ HERO IMAGE PLACEHOLDER ═══ */
-.to-hero__img { min-height: 100px; margin-top: 2rem; grid-column: 1 / -1; }
+.to-hero__img { min-height: 140px; margin-top: 2rem; grid-column: 1 / -1; }
 @media (max-width: 768px) { .to-hero__img { display: none; } }
 
 /* ═══ KEY MARKERS BAND ═══ */
-.to-markers__row { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-.to-markers__row span { font-size: 0.68rem; font-weight: 700; padding: 0.35rem 0.75rem; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 3px; color: var(--vt-bone); }
+.to-markers__row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.04); border-radius: 3px; overflow: hidden; margin-top: 0.75rem; }
+.to-markers__row span { font-size: 0.72rem; font-weight: 700; padding: 0.65rem 0.85rem; background: var(--vt-carbon); color: var(--vt-bone); text-align: center; border: none; border-radius: 0; }
+@media (max-width: 600px) { .to-markers__row { grid-template-columns: repeat(2, 1fr); } }
 
 /* ═══ REASON ROW HOVER ═══ */
 .to-reasons__row { transition: border-color 0.2s; border-left: 3px solid transparent; padding-left: 0.75rem; }

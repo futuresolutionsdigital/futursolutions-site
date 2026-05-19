@@ -15,7 +15,12 @@ import { gameplan, brand } from '../../../data/vantage';
 			<a class="vt-btn vt-btn--red" href="/demos/hormone-trt/assessment">Start My Assessment &rarr;</a>
 			<a class="vt-btn vt-btn--dark" href="/demos/hormone-trt/book-consultation">Book a Private Consult</a>
 		</div>
-		<div class="vt-img hiw-hero-img"><span class="vt-img__label">The VANTAGE Process</span></div>
+		<div class="vt-img hiw-hero-img">
+  <div class="vt-img__chrome"><span class="vt-img__dot"></span><span class="vt-img__dot"></span><span class="vt-img__chrome-label">Game Plan Overview</span></div>
+  <span class="vt-img__label">The VANTAGE Process</span>
+  <div class="vt-img__bars"><span class="vt-img__bar" style="height:30%"></span><span class="vt-img__bar" style="height:50%"></span><span class="vt-img__bar" style="height:70%"></span><span class="vt-img__bar" style="height:90%"></span><span class="vt-img__bar" style="height:75%"></span><span class="vt-img__bar" style="height:95%"></span></div>
+  <span class="vt-img__corner"></span>
+</div>
 	</div>
 </section>
 
@@ -195,7 +200,7 @@ import { gameplan, brand } from '../../../data/vantage';
 
 /* Expanded step details */
 .hiw-detail-sec h2 { margin-bottom: 2rem; }
-.hiw-detail { display: flex; flex-direction: column; gap: 0; max-width: 700px; }
+.hiw-detail { display: flex; flex-direction: column; gap: 0; max-width: 800px; }
 .hiw-detail__item { padding: 1.5rem 0; border-bottom: 1px solid var(--vt-border); }
 .hiw-detail__item--last { border-bottom: none; }
 .hiw-detail__head { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.6rem; }
@@ -205,7 +210,7 @@ import { gameplan, brand } from '../../../data/vantage';
 
 /* What makes VANTAGE different — stacked rows with red accent dots */
 .hiw-diff-sec h2 { margin-bottom: 2rem; }
-.hiw-diff { display: flex; flex-direction: column; gap: 0; max-width: 700px; }
+.hiw-diff { display: flex; flex-direction: column; gap: 0; max-width: 800px; }
 .hiw-diff__item { display: flex; gap: 0.85rem; padding: 1.2rem 0; border-bottom: 1px solid var(--vt-border); align-items: start; }
 .hiw-diff__item--last { border-bottom: none; }
 .hiw-diff__dot { width: 8px; height: 8px; min-width: 8px; border-radius: 50%; background: var(--vt-red); margin-top: 0.35rem; }
