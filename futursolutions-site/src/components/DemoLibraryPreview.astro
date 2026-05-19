@@ -3,23 +3,36 @@ import { templateSystems } from '../data/templates';
 
 const featuredDemos = templateSystems;
 const newDemoSlugs = new Set(['premium-wellness-clinic', 'hormone-trt']);
+
+/**
+ * Per-Foundation visual palette. Each template gets a small accent treatment in
+ * its stylized preview so the row reads as a curated library rather than five
+ * identical mockups. Values are tints — never fully saturated.
+ */
+const demoPalette: Record<string, { accent: string; tint: string; ink: string }> = {
+	'med-spa': { accent: '#B97485', tint: '#F7EBEE', ink: '#7E4856' },
+	'solo-practice': { accent: '#5F8F8B', tint: '#EAF2F1', ink: '#3F6764' },
+	'association': { accent: '#4F7CAC', tint: '#EAF1F8', ink: '#325883' },
+	'premium-wellness-clinic': { accent: '#C6996A', tint: '#F7EFE3', ink: '#8C6536' },
+	'hormone-trt': { accent: '#C81E1E', tint: '#1A0F0F', ink: '#C81E1E' },
+};
 ---
 
 <section id="demos" class="section section-tight demo-library" aria-labelledby="demo-library-heading">
 	<div class="site-container site-container--wide">
 		<header class="demo-library__head">
 			<div class="demo-library__head-left">
-				<p class="eyebrow">Live demos</p>
+				<p class="eyebrow">Website Foundations · Live demos</p>
 				<h2 id="demo-library-heading" class="display-lg">
-					Real, working clinic and association websites&nbsp;— click&nbsp;through&nbsp;them.
+					Walk through live website Foundations built for real healthcare business&nbsp;models.
 				</h2>
 			</div>
 			<div class="demo-library__head-right">
 				<p>
-					Every demo below is a launch-ready Foundation. Not a screenshot. Not a Figma file. Walk through pages, read the content, see the system.
+					Each Foundation is a real, clickable website — not a screenshot or Figma file. Use one as a starting point for your project, or treat it as proof of the design and system quality behind a Signature Custom build.
 				</p>
 				<a class="demo-library__head-cta" href="/templates">
-					Browse all demos
+					Browse all Foundations
 					<span aria-hidden="true">&rarr;</span>
 				</a>
 			</div>
@@ -27,98 +40,111 @@ const newDemoSlugs = new Set(['premium-wellness-clinic', 'hormone-trt']);
 
 		<div class="demo-library__grid">
 			{
-				featuredDemos.map((template, index) => (
-					<article
-						class:list={[
-							'demo-card',
-							{
-								'demo-card--vt': template.slug === 'hormone-trt',
-								'demo-card--new': newDemoSlugs.has(template.slug),
-							},
-						]}
-					>
-						<a class="demo-card__link" href={template.detailUrl} aria-label={`View details for the ${template.name} demo`} />
+				featuredDemos.map((template, index) => {
+					const palette = demoPalette[template.slug];
+					const styleVars = palette
+						? `--demo-accent:${palette.accent};--demo-tint:${palette.tint};--demo-ink:${palette.ink};`
+						: undefined;
+					return (
+						<article
+							class:list={[
+								'demo-card',
+								{
+									'demo-card--vt': template.slug === 'hormone-trt',
+									'demo-card--new': newDemoSlugs.has(template.slug),
+								},
+							]}
+							style={styleVars}
+						>
+							<a class="demo-card__link" href={template.detailUrl} aria-label={`View details for the ${template.name} Foundation`} />
 
-						<div class="demo-card__media" aria-hidden="true">
-							{template.slug === 'hormone-trt' ? (
-								<div class="vt-prev">
-									<div class="vt-prev__chrome">
-										<span class="vt-prev__dot" />
-										<span class="vt-prev__dot" />
-										<span class="vt-prev__dot" />
-										<span class="vt-prev__label">VANTAGE</span>
-									</div>
-									<div class="vt-prev__screen">
-										<div class="vt-prev__rule" />
-										<div class="vt-prev__hero-block">
-											<span class="vt-prev__tag">MEN'S HEALTH / TRT</span>
-											<span class="vt-prev__headline" />
-											<span class="vt-prev__headline vt-prev__headline--short" />
-											<span class="vt-prev__cta">START ASSESSMENT</span>
+							<div class="demo-card__media" aria-hidden="true">
+								{template.slug === 'hormone-trt' ? (
+									<div class="vt-prev">
+										<div class="vt-prev__chrome">
+											<span class="vt-prev__dot" />
+											<span class="vt-prev__dot" />
+											<span class="vt-prev__dot" />
+											<span class="vt-prev__label">VANTAGE</span>
 										</div>
-										<div class="vt-prev__stats">
-											<div style="height:55%" />
-											<div style="height:80%" />
-											<div style="height:40%" />
-											<div style="height:65%" />
-										</div>
-										<div class="vt-prev__diagonal" />
-									</div>
-								</div>
-							) : (
-								<div class="demo-card__mockup">
-									<div class="demo-card__topbar">
-										<span />
-										<span />
-										<span />
-									</div>
-									<div class="demo-card__screen">
-										<div class="demo-card__lines">
-											<span />
-											<span />
-											<span />
-										</div>
-										<div class={`demo-card__panel demo-card__panel--${index + 1}`}>
-											<span />
-										</div>
-										<div class="demo-card__tiles">
-											<span />
-											<span />
-											<span />
+										<div class="vt-prev__screen">
+											<div class="vt-prev__rule" />
+											<div class="vt-prev__hero-block">
+												<span class="vt-prev__tag">MEN'S HEALTH / TRT</span>
+												<span class="vt-prev__headline" />
+												<span class="vt-prev__headline vt-prev__headline--short" />
+												<span class="vt-prev__cta">START ASSESSMENT</span>
+											</div>
+											<div class="vt-prev__stats">
+												<div style="height:55%" />
+												<div style="height:80%" />
+												<div style="height:40%" />
+												<div style="height:65%" />
+											</div>
+											<div class="vt-prev__diagonal" />
 										</div>
 									</div>
-								</div>
-							)}
-						</div>
-
-						<div class="demo-card__body">
-							<div class="demo-card__meta">
-								<span class="demo-card__category">{template.category}</span>
-								{newDemoSlugs.has(template.slug) && (
-									<span class="demo-card__badge">New</span>
-								)}
-							</div>
-							<h3 class="demo-card__title">{template.name}</h3>
-							<p class="demo-card__desc">{template.shortDescription}</p>
-							<ul class="demo-card__tags" aria-label={`${template.name} feature tags`}>
-								{template.features.slice(0, 3).map((feature) => (
-									<li>{feature}</li>
-								))}
-							</ul>
-							<div class="demo-card__actions">
-								{template.demoUrl ? (
-									<a class="demo-card__primary" href={template.demoUrl}>
-										View live demo
-										<span aria-hidden="true">&rarr;</span>
-									</a>
 								) : (
-									<span class="demo-card__pending">Demo coming soon</span>
+									<div class="demo-card__mockup">
+										<div class="demo-card__topbar">
+											<span />
+											<span />
+											<span />
+											<span class="demo-card__topbar-label">{template.category}</span>
+										</div>
+										<div class="demo-card__screen">
+											<div class="demo-card__lines">
+												<span class="demo-card__tag" />
+												<span class="demo-card__headline" />
+												<span class="demo-card__sub" />
+												<span class="demo-card__cta-pill" />
+											</div>
+											<div class={`demo-card__panel demo-card__panel--${index + 1}`}>
+												<span class="demo-card__panel-bar demo-card__panel-bar--a" />
+												<span class="demo-card__panel-bar demo-card__panel-bar--b" />
+												<span class="demo-card__panel-bar demo-card__panel-bar--c" />
+											</div>
+											<div class="demo-card__tiles">
+												<span />
+												<span />
+												<span />
+											</div>
+										</div>
+									</div>
 								)}
-								<a class="demo-card__secondary" href={template.detailUrl}>Details</a>
 							</div>
-						</div>
-					</article>
-				))
+
+							<div class="demo-card__body">
+								<div class="demo-card__meta">
+									<span class="lane-chip lane-chip--foundation">Foundation</span>
+									<span class="demo-card__category">{template.category}</span>
+									{newDemoSlugs.has(template.slug) && (
+										<span class="demo-card__badge">New</span>
+									)}
+								</div>
+								<h3 class="demo-card__title">{template.name}</h3>
+								<p class="demo-card__desc">{template.shortDescription}</p>
+								<ul class="demo-card__tags" aria-label={`${template.name} feature tags`}>
+									{template.features.slice(0, 3).map((feature) => (
+										<li>{feature}</li>
+									))}
+								</ul>
+								<div class="demo-card__actions">
+									{template.demoUrl ? (
+										<a class="demo-card__primary" href={template.demoUrl}>
+											View live demo
+											<span aria-hidden="true">&rarr;</span>
+										</a>
+									) : (
+										<span class="demo-card__pending">Demo coming soon</span>
+									)}
+									<a class="demo-card__secondary" href={template.detailUrl}>Foundation details</a>
+									<a class="demo-card__tertiary" href={template.auditUrl}>Get this customized</a>
+								</div>
+							</div>
+						</article>
+					);
+				})
 			}
 		</div>
 	</div>
@@ -236,11 +262,21 @@ const newDemoSlugs = new Set(['premium-wellness-clinic', 'hormone-trt']);
 		border-bottom: 1px solid var(--color-border-soft);
 	}
 
-	.demo-card__topbar span {
+	.demo-card__topbar span:not(.demo-card__topbar-label) {
 		width: 0.4rem;
 		height: 0.4rem;
 		border-radius: 999px;
 		background: color-mix(in srgb, var(--color-muted) 30%, var(--color-white));
+	}
+
+	.demo-card__topbar-label {
+		margin-left: auto;
+		font-size: 0.52rem;
+		font-weight: 700;
+		letter-spacing: 0.14em;
+		color: var(--demo-ink, var(--color-muted));
+		text-transform: uppercase;
+		opacity: 0.6;
 	}
 
 	.demo-card__screen {
@@ -250,8 +286,8 @@ const newDemoSlugs = new Set(['premium-wellness-clinic', 'hormone-trt']);
 		min-height: 180px;
 		padding: 1rem;
 		background:
-			linear-gradient(180deg, rgba(255, 255, 255, 0.45), transparent 60%),
-			var(--color-bg);
+			linear-gradient(180deg, rgba(255, 255, 255, 0.7), transparent 65%),
+			var(--demo-tint, var(--color-bg));
 	}
 
 	.demo-card__lines {
@@ -261,51 +297,71 @@ const newDemoSlugs = new Set(['premium-wellness-clinic', 'hormone-trt']);
 		justify-content: center;
 	}
 
-	.demo-card__lines span {
+	.demo-card__tag {
 		display: block;
-		height: 0.6rem;
-		border-radius: 999px;
-		background: var(--color-border);
+		width: 32%;
+		height: 0.5rem;
+		border-radius: 2px;
+		background: var(--demo-accent, var(--color-accent));
+		opacity: 0.7;
 	}
 
-	.demo-card__lines span:first-child {
-		width: 40%;
-		background: var(--color-accent-light);
+	.demo-card__headline {
+		display: block;
+		width: 86%;
+		height: 0.85rem;
+		border-radius: 3px;
+		background: color-mix(in srgb, var(--color-text) 75%, transparent);
 	}
 
-	.demo-card__lines span:nth-child(2) {
-		width: 80%;
-		height: 1rem;
-		background: color-mix(in srgb, var(--color-text) 16%, var(--color-border));
-	}
-
-	.demo-card__lines span:last-child {
+	.demo-card__sub {
+		display: block;
 		width: 64%;
+		height: 0.55rem;
+		border-radius: 999px;
+		background: color-mix(in srgb, var(--color-text) 28%, var(--color-border));
+	}
+
+	.demo-card__cta-pill {
+		display: block;
+		width: 44%;
+		height: 0.8rem;
+		margin-top: 0.15rem;
+		border-radius: 4px;
+		background: var(--demo-accent, var(--color-accent));
 	}
 
 	.demo-card__panel {
 		display: flex;
-		align-items: flex-end;
+		flex-direction: column;
+		justify-content: flex-end;
+		gap: 0.32rem;
 		min-height: 108px;
 		padding: 0.6rem;
-		border: 1px solid color-mix(in srgb, var(--color-accent) 26%, var(--color-border));
+		border: 1px solid color-mix(in srgb, var(--demo-accent, var(--color-accent)) 35%, var(--color-border));
 		border-radius: 12px;
 		background:
-			linear-gradient(180deg, rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0)),
-			var(--color-accent-light);
+			linear-gradient(180deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0)),
+			color-mix(in srgb, var(--demo-tint, var(--color-accent-light)) 80%, var(--color-white));
 	}
 
-	.demo-card__panel span {
-		width: 70%;
-		height: 0.5rem;
+	.demo-card__panel-bar {
+		display: block;
+		height: 0.4rem;
 		border-radius: 999px;
-		background: var(--color-accent);
+		background: var(--demo-accent, var(--color-accent));
 	}
 
-	.demo-card__panel--2 span { width: 50%; }
-	.demo-card__panel--3 span { width: 84%; }
-	.demo-card__panel--4 span { width: 60%; }
-	.demo-card__panel--5 span { width: 76%; }
+	.demo-card__panel-bar--a { width: 80%; opacity: 0.85; }
+	.demo-card__panel-bar--b { width: 60%; opacity: 0.6; }
+	.demo-card__panel-bar--c { width: 45%; opacity: 0.35; }
+
+	/* Subtle per-template panel layout signatures so each preview reads
+	   differently at a glance, even though the structure is shared. */
+	.demo-card__panel--1 { justify-content: space-between; }
+	.demo-card__panel--2 { justify-content: center; align-items: flex-start; }
+	.demo-card__panel--3 { align-items: center; }
+	.demo-card__panel--4 { justify-content: flex-end; }
 
 	.demo-card__tiles {
 		grid-column: 1 / -1;
@@ -316,9 +372,13 @@ const newDemoSlugs = new Set(['premium-wellness-clinic', 'hormone-trt']);
 
 	.demo-card__tiles span {
 		min-height: 2.1rem;
-		border: 1px solid var(--color-border-soft);
+		border: 1px solid color-mix(in srgb, var(--demo-accent, var(--color-accent)) 18%, var(--color-border-soft));
 		border-radius: 10px;
 		background: var(--color-white);
+	}
+
+	.demo-card__tiles span:first-child {
+		background: color-mix(in srgb, var(--demo-tint, var(--color-accent-light)) 70%, var(--color-white));
 	}
 
 	.demo-card__body {
@@ -332,20 +392,21 @@ const newDemoSlugs = new Set(['premium-wellness-clinic', 'hormone-trt']);
 
 	.demo-card__meta {
 		display: flex;
+		flex-wrap: wrap;
 		align-items: center;
-		justify-content: space-between;
 		gap: 0.5rem;
 	}
 
 	.demo-card__category {
 		color: var(--color-muted);
-		font-size: 0.74rem;
+		font-size: 0.7rem;
 		font-weight: 600;
 		letter-spacing: 0.12em;
 		text-transform: uppercase;
 	}
 
 	.demo-card__badge {
+		margin-left: auto;
 		padding: 0.18rem 0.5rem;
 		border-radius: 999px;
 		background: var(--color-text);
@@ -392,9 +453,12 @@ const newDemoSlugs = new Set(['premium-wellness-clinic', 'hormone-trt']);
 	}
 
 	.demo-card__actions {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 1rem;
+		display: grid;
+		grid-template-columns: 1fr auto;
+		grid-template-areas:
+			'primary primary'
+			'secondary tertiary';
+		gap: 0.7rem 0.9rem;
 		align-items: center;
 		margin-top: 0.85rem;
 		padding-top: 1rem;
@@ -402,19 +466,30 @@ const newDemoSlugs = new Set(['premium-wellness-clinic', 'hormone-trt']);
 	}
 
 	.demo-card__primary {
+		grid-area: primary;
 		position: relative;
 		z-index: 2;
 		display: inline-flex;
 		align-items: center;
-		gap: 0.35rem;
-		color: var(--color-text);
-		font-size: 0.92rem;
+		justify-content: center;
+		gap: 0.4rem;
+		padding: 0.6rem 0.9rem;
+		border: 1px solid var(--color-text);
+		border-radius: var(--radius-sm);
+		background: var(--color-text);
+		color: var(--color-white);
+		font-size: 0.88rem;
 		font-weight: 650;
-		transition: gap var(--transition-base);
+		letter-spacing: -0.005em;
+		transition: gap var(--transition-base),
+			background var(--transition-base),
+			border-color var(--transition-base);
 	}
 
 	.demo-card__primary:hover {
 		gap: 0.55rem;
+		background: var(--color-ink);
+		border-color: var(--color-ink);
 	}
 
 	.demo-card__primary span {
@@ -427,26 +502,42 @@ const newDemoSlugs = new Set(['premium-wellness-clinic', 'hormone-trt']);
 	}
 
 	.demo-card__secondary {
+		grid-area: secondary;
 		position: relative;
 		z-index: 2;
-		color: var(--color-muted);
-		font-size: 0.88rem;
-		font-weight: 500;
+		color: var(--color-text);
+		font-size: 0.85rem;
+		font-weight: 600;
+		letter-spacing: -0.005em;
 		transition: color var(--transition-base);
 	}
 
 	.demo-card__secondary:hover {
-		color: var(--color-text);
+		color: var(--demo-ink, var(--color-text));
+	}
+
+	.demo-card__tertiary {
+		grid-area: tertiary;
+		position: relative;
+		z-index: 2;
+		justify-self: end;
+		color: var(--color-muted);
+		font-size: 0.82rem;
+		font-weight: 500;
+		letter-spacing: -0.005em;
+		transition: color var(--transition-base);
+	}
+
+	.demo-card__tertiary:hover {
+		color: var(--lane-audit-ink);
 	}
 
 	.demo-card__pending {
+		grid-area: primary;
+		justify-self: start;
 		color: var(--color-muted);
 		font-size: 0.85rem;
 		font-style: italic;
-	}
-
-	.demo-card--new {
-		border-color: color-mix(in srgb, var(--color-text) 18%, var(--color-border));
 	}
 
 	/* VANTAGE preview variant — inherited from the previous template preview */
