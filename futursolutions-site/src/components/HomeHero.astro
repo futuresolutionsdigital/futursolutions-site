@@ -1,8 +1,29 @@
 ---
-const stats = [
-	{ value: '5', label: 'Live demo websites' },
-	{ value: '24+', label: 'Page templates ready' },
-	{ value: '12+', label: 'Healthcare verticals' },
+const systemMap = [
+	{
+		lane: 'foundation',
+		label: 'Website Foundation',
+		sub: 'Customizable starting point',
+		icon: 'layers',
+	},
+	{
+		lane: 'custom',
+		label: 'Signature Custom Website',
+		sub: 'Built around your brand',
+		icon: 'sparkle',
+	},
+	{
+		lane: 'growth',
+		label: 'Growth System',
+		sub: 'Forms · Booking · Follow-up',
+		icon: 'flow',
+	},
+	{
+		lane: 'audit',
+		label: 'Website + Systems Audit',
+		sub: 'Free diagnostic',
+		icon: 'scope',
+	},
 ];
 
 const tickerItems = [
@@ -27,34 +48,69 @@ const tickerItems = [
 			<span class="home-hero__kicker-arrow" aria-hidden="true">&rarr;</span>
 		</a>
 
+		<p class="eyebrow home-hero__eyebrow">Healthcare websites + growth systems</p>
+
 		<h1 id="homepage-heading" class="display-xl home-hero__headline">
-			Healthcare websites built like
-			<span class="home-hero__headline-accent">operational systems</span>,
-			not brochures.
+			Premium websites, customizable
+			<span class="home-hero__headline-accent">Website Foundations</span>,
+			and the Growth Systems behind them.
 		</h1>
 
 		<p class="lead home-hero__lead">
-			FutureSolutions designs and ships industry-specific website Foundations, signature Custom websites, and the Growth Systems behind them — for clinics, associations, and high-trust service businesses.
+			FutureSolutions designs the pages patients see — and the backend workflow your team uses to capture, book, and follow up with leads. For clinics, wellness brands, associations, and high-trust service businesses.
 		</p>
 
 		<div class="home-hero__cta-row">
-			<a class="button button-primary home-hero__cta-primary" href="/templates">
-				Explore Live Demos
+			<a class="button button-primary home-hero__cta-primary" href="/audit">
+				Get a Website Audit
 				<span aria-hidden="true">&rarr;</span>
 			</a>
-			<a class="button button-secondary" href="/audit">Get a Website and Systems Audit</a>
+			<a class="button button-secondary" href="/templates">Explore Live Demos</a>
 		</div>
 
-		<dl class="home-hero__stats" aria-label="At a glance">
-			{
-				stats.map((s) => (
-					<div class="home-hero__stat">
-						<dt class="home-hero__stat-value">{s.value}</dt>
-						<dd class="home-hero__stat-label">{s.label}</dd>
-					</div>
-				))
-			}
-		</dl>
+		<div class="home-hero__system" aria-label="What FutureSolutions builds">
+			<p class="home-hero__system-label">What we build</p>
+			<ul class="home-hero__system-grid">
+				{
+					systemMap.map((item) => (
+						<li class={`home-hero__system-card lane-accent-top lane-accent-top--${item.lane}`}>
+							<span class={`lane-icon lane-icon--${item.lane}`} aria-hidden="true">
+								{item.icon === 'layers' && (
+									<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round">
+										<path d="M12 3l9 5-9 5-9-5z" />
+										<path d="M3 13l9 5 9-5M3 18l9 5 9-5" />
+									</svg>
+								)}
+								{item.icon === 'sparkle' && (
+									<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round">
+										<path d="M12 3v6M12 15v6M3 12h6M15 12h6" />
+										<path d="M6 6l3 3M15 15l3 3M18 6l-3 3M9 15l-3 3" />
+									</svg>
+								)}
+								{item.icon === 'flow' && (
+									<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round">
+										<rect x="3" y="4" width="6" height="6" rx="1.5" />
+										<rect x="15" y="4" width="6" height="6" rx="1.5" />
+										<rect x="9" y="14" width="6" height="6" rx="1.5" />
+										<path d="M6 10v2h6M18 10v2h-6" />
+									</svg>
+								)}
+								{item.icon === 'scope' && (
+									<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round">
+										<circle cx="11" cy="11" r="6" />
+										<path d="M16 16l5 5" />
+									</svg>
+								)}
+							</span>
+							<div class="home-hero__system-text">
+								<p class="home-hero__system-label-inner">{item.label}</p>
+								<p class="home-hero__system-sub">{item.sub}</p>
+							</div>
+						</li>
+					))
+				}
+			</ul>
+		</div>
 	</div>
 
 	<div class="home-hero__ticker" aria-label="Industries we serve">
@@ -170,14 +226,19 @@ const tickerItems = [
 		color: var(--color-text);
 	}
 
+	.home-hero__eyebrow {
+		margin-bottom: 1.1rem;
+		color: var(--lane-foundation-ink);
+	}
+
 	.home-hero__headline {
 		margin-bottom: 1.5rem;
-		max-width: 18ch;
+		max-width: 22ch;
 	}
 
 	.home-hero__headline-accent {
 		display: inline;
-		background: linear-gradient(180deg, transparent 62%, color-mix(in srgb, var(--color-accent) 32%, transparent) 62%);
+		background: linear-gradient(180deg, transparent 62%, var(--lane-foundation-tint) 62%);
 		background-repeat: no-repeat;
 		padding-inline: 0.05em;
 	}
@@ -206,36 +267,82 @@ const tickerItems = [
 		transform: translateX(2px);
 	}
 
-	.home-hero__stats {
-		display: grid;
-		grid-template-columns: repeat(3, minmax(0, auto));
-		gap: clamp(2rem, 5vw, 3.5rem);
+	.home-hero__system {
 		margin: 0;
+		padding-top: 0.5rem;
 	}
 
-	.home-hero__stat {
-		display: grid;
-		gap: 0.35rem;
-		padding-left: 1.1rem;
-		border-left: 2px solid var(--color-border);
-	}
-
-	.home-hero__stat-value {
-		color: var(--color-text);
-		font-size: clamp(1.85rem, 1.4rem + 1.6vw, 2.4rem);
+	.home-hero__system-label {
+		margin: 0 0 1rem 0;
+		color: var(--color-muted);
+		font-size: 0.72rem;
 		font-weight: 700;
-		letter-spacing: -0.04em;
-		line-height: 1;
-		font-variant-numeric: tabular-nums;
+		letter-spacing: 0.18em;
+		text-transform: uppercase;
 	}
 
-	.home-hero__stat-label {
+	.home-hero__system-grid {
+		display: grid;
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+		gap: 0.85rem;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.home-hero__system-card {
+		position: relative;
+		display: flex;
+		align-items: center;
+		gap: 0.8rem;
+		padding: 1rem 1.05rem;
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-md);
+		background: var(--color-white);
+		box-shadow: var(--shadow-card);
+		transition: transform 320ms var(--ease-out-quart),
+			border-color var(--transition-base),
+			box-shadow var(--transition-base);
+	}
+
+	.home-hero__system-card:hover {
+		transform: translateY(-2px);
+		box-shadow: var(--shadow-card-hover);
+	}
+
+	.home-hero__system-card .lane-icon {
+		width: 2.2rem;
+		height: 2.2rem;
+		border-radius: 10px;
+	}
+
+	.home-hero__system-card .lane-icon svg {
+		width: 1.05rem;
+		height: 1.05rem;
+	}
+
+	.home-hero__system-text {
+		display: grid;
+		gap: 0.15rem;
+		min-width: 0;
+	}
+
+	.home-hero__system-label-inner {
+		margin: 0;
+		color: var(--color-text);
+		font-size: 0.92rem;
+		font-weight: 650;
+		letter-spacing: -0.015em;
+		line-height: 1.2;
+	}
+
+	.home-hero__system-sub {
 		margin: 0;
 		color: var(--color-muted);
-		font-size: 0.8125rem;
+		font-size: 0.78rem;
 		font-weight: 500;
-		letter-spacing: 0.01em;
-		line-height: 1.4;
+		letter-spacing: -0.005em;
+		line-height: 1.35;
 	}
 
 	.home-hero__ticker {
@@ -303,6 +410,12 @@ const tickerItems = [
 		}
 	}
 
+	@media (max-width: 1080px) {
+		.home-hero__system-grid {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+
 	@media (max-width: 720px) {
 		.home-hero {
 			padding-top: 3.5rem;
@@ -311,14 +424,11 @@ const tickerItems = [
 		.home-hero__kicker-text {
 			display: none;
 		}
+	}
 
-		.home-hero__stats {
+	@media (max-width: 520px) {
+		.home-hero__system-grid {
 			grid-template-columns: 1fr;
-			gap: 1.25rem;
-		}
-
-		.home-hero__stat {
-			padding-left: 1rem;
 		}
 	}
 
