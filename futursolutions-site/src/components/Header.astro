@@ -1,5 +1,7 @@
 ---
 const currentPath = Astro.url.pathname;
+// Industries and Work nav entries are intentionally omitted until Phase 4 builds
+// /industries/[slug] and /work routes. They will be reintroduced then.
 const navItems = [
 	{
 		label: 'Demos',
@@ -11,10 +13,6 @@ const navItems = [
 		href: '/services',
 		isActive: currentPath === '/services' || currentPath.startsWith('/services/'),
 	},
-	// Phase 4 builds /industries/[slug] pages
-	{ label: 'Industries', href: '#', isActive: false, isPlaceholder: true },
-	// Phase 4 builds /work
-	{ label: 'Work', href: '#', isActive: false, isPlaceholder: true },
 	{
 		label: 'Resources',
 		href: '/resources',
@@ -39,10 +37,8 @@ const navItems = [
 				navItems.map((item) => (
 					<a
 						href={item.href}
-						class:list={{ 'is-active': item.isActive, 'is-placeholder': item.isPlaceholder }}
+						class:list={{ 'is-active': item.isActive }}
 						aria-current={item.isActive ? 'page' : undefined}
-						aria-disabled={item.isPlaceholder ? 'true' : undefined}
-						title={item.isPlaceholder ? 'Coming soon' : undefined}
 					>
 						{item.label}
 					</a>
@@ -51,8 +47,8 @@ const navItems = [
 		</nav>
 		<div class="site-header__actions">
 			<a class="site-header__audit-link" href="/audit">Get a Website Audit</a>
-			{/* Real CTA target will be a Cal.com (or similar) booking link; placeholder for now */}
-			<a class="site-header__cta" href="#" title="Strategy call booking link coming soon">
+			{/* Routes to /audit until a Cal.com (or similar) booking link is wired */}
+			<a class="site-header__cta" href="/audit">
 				Book a Strategy Call
 			</a>
 		</div>
@@ -112,15 +108,6 @@ const navItems = [
 	.site-header__nav a:hover,
 	.site-header__nav a.is-active {
 		color: var(--color-text);
-	}
-
-	.site-header__nav a.is-placeholder {
-		opacity: 0.55;
-		cursor: not-allowed;
-	}
-
-	.site-header__nav a.is-placeholder:hover {
-		color: var(--color-muted);
 	}
 
 	.site-header__nav a.is-active::after {
