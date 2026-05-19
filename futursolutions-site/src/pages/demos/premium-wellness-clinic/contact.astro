@@ -68,7 +68,7 @@ import { brand } from '../../../data/wellness';
 				<p class="wh-lead">Have a question about services, scheduling, or anything else? Fill out the form below and our team will get back to you.</p>
 			</div>
 			<div class="ct-form__card">
-				<form class="ct-form" onsubmit="return false;">
+				<form class="ct-form" onsubmit="event.preventDefault(); this.querySelector('.ct-form__submit').textContent='Message Sent'; this.querySelector('.ct-form__submit').disabled=true;">
 					<div class="ct-form__row">
 						<div class="ct-form__field">
 							<label for="ct-name">Full Name</label>
@@ -102,7 +102,7 @@ import { brand } from '../../../data/wellness';
 						<textarea id="ct-message" name="message" rows="5" placeholder="Tell us how we can help..."></textarea>
 					</div>
 					<div class="ct-form__actions">
-						<button type="submit" class="wh-btn wh-btn--primary">Send Message</button>
+						<button type="submit" class="wh-btn wh-btn--primary ct-form__submit">Send Message</button>
 						<p class="ct-form__note">This is a demo form and does not submit data.</p>
 					</div>
 				</form>
@@ -177,6 +177,7 @@ import { brand } from '../../../data/wellness';
 .ct-form__field textarea { resize: vertical; min-height: 120px; }
 .ct-form__field select { cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1.5l5 5 5-5' stroke='%236B8F7B' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 0.85rem center; padding-right: 2.5rem; }
 .ct-form__actions { display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap; }
+.ct-form__submit:disabled { opacity: 0.6; cursor: default; }
 .ct-form__note { font-size: 0.72rem; color: var(--wh-muted); font-style: italic; }
 @media (max-width: 520px) { .ct-form__row { grid-template-columns: 1fr; } .ct-form__card { padding: 1.5rem; } }
 
