@@ -26,7 +26,7 @@ const navItems = [
 ];
 ---
 
-<header class="site-header">
+<header class="site-header" data-header>
 	<div class="site-container site-header__inner">
 		<a class="site-header__brand" href="/" aria-label="FutureSolutions home">
 			<span class="site-header__mark" aria-hidden="true">
@@ -54,8 +54,58 @@ const navItems = [
 				<span class="site-header__cta-arrow" aria-hidden="true">&rarr;</span>
 			</a>
 		</div>
+		<button
+			class="site-header__burger"
+			type="button"
+			aria-expanded="false"
+			aria-controls="mobile-nav"
+			aria-label="Toggle navigation"
+			data-burger
+		>
+			<span class="site-header__burger-bar"></span>
+			<span class="site-header__burger-bar"></span>
+			<span class="site-header__burger-bar"></span>
+		</button>
+	</div>
+
+	<div class="site-header__mobile-panel" id="mobile-nav" data-mobile-panel>
+		<nav class="site-header__mobile-nav" aria-label="Mobile navigation">
+			{
+				navItems.map((item) => (
+					<a
+						href={item.href}
+						class:list={{ 'is-active': item.isActive }}
+						aria-current={item.isActive ? 'page' : undefined}
+					>
+						{item.label}
+					</a>
+				))
+			}
+		</nav>
+		<div class="site-header__mobile-actions">
+			<a class="button button-secondary site-header__mobile-btn" href="/templates">Explore Live Demos</a>
+			<a class="button button-primary site-header__mobile-btn" href="/audit">Get a Website Audit</a>
+		</div>
 	</div>
 </header>
+
+<script>
+	const header = document.querySelector('[data-header]');
+	const burger = document.querySelector('[data-burger]');
+	const panel = document.querySelector('[data-mobile-panel]');
+	if (burger && panel && header) {
+		burger.addEventListener('click', () => {
+			const open = header.classList.toggle('is-mobile-open');
+			burger.setAttribute('aria-expanded', String(open));
+		});
+		panel.querySelectorAll('a').forEach((link) => {
+			link.addEventListener('click', () => {
+				header.classList.remove('is-mobile-open');
+				burger.setAttribute('aria-expanded', 'false');
+			});
+		});
+	}
+</script>
 
 <style>
 	.site-header {
@@ -213,6 +263,91 @@ const navItems = [
 		transform: translate(2px, -0.5px);
 	}
 
+	/* ═══ Hamburger button ═══ */
+	.site-header__burger {
+		display: none;
+		flex-direction: column;
+		justify-content: center;
+		gap: 4px;
+		width: 2.25rem;
+		height: 2.25rem;
+		padding: 0.4rem;
+		border: none;
+		border-radius: var(--radius-sm);
+		background: transparent;
+		cursor: pointer;
+		-webkit-tap-highlight-color: transparent;
+	}
+
+	.site-header__burger-bar {
+		display: block;
+		width: 100%;
+		height: 2px;
+		border-radius: 2px;
+		background: var(--color-text);
+		transition: transform 240ms ease, opacity 200ms ease;
+	}
+
+	.is-mobile-open .site-header__burger-bar:nth-child(1) {
+		transform: translateY(6px) rotate(45deg);
+	}
+	.is-mobile-open .site-header__burger-bar:nth-child(2) {
+		opacity: 0;
+	}
+	.is-mobile-open .site-header__burger-bar:nth-child(3) {
+		transform: translateY(-6px) rotate(-45deg);
+	}
+
+	/* ═══ Mobile panel ═══ */
+	.site-header__mobile-panel {
+		display: none;
+		flex-direction: column;
+		gap: 1.25rem;
+		padding: 1.25rem var(--container-pad, 1.25rem) 1.75rem;
+		border-top: 1px solid var(--color-border-soft);
+		background: color-mix(in srgb, var(--color-bg) 96%, transparent);
+	}
+
+	.is-mobile-open .site-header__mobile-panel {
+		display: flex;
+	}
+
+	.site-header__mobile-nav {
+		display: flex;
+		flex-direction: column;
+		gap: 0.15rem;
+	}
+
+	.site-header__mobile-nav a {
+		display: block;
+		padding: 0.65rem 0.75rem;
+		border-radius: var(--radius-sm);
+		color: var(--color-text);
+		font-size: 1rem;
+		font-weight: 600;
+		transition: background var(--transition-base);
+	}
+
+	.site-header__mobile-nav a:hover,
+	.site-header__mobile-nav a.is-active {
+		background: color-mix(in srgb, var(--color-text) 5%, transparent);
+	}
+
+	.site-header__mobile-nav a.is-active {
+		color: var(--color-text);
+		font-weight: 700;
+	}
+
+	.site-header__mobile-actions {
+		display: grid;
+		gap: 0.6rem;
+	}
+
+	.site-header__mobile-btn {
+		width: 100%;
+		justify-content: center;
+	}
+
 	@media (max-width: 1140px) {
 		.site-header__inner {
 			gap: 1rem;
@@ -238,22 +373,13 @@ const navItems = [
 		.site-header__nav {
 			display: none;
 		}
-	}
 
-	@media (max-width: 440px) {
-		.site-header__cta {
-			padding-inline: 0.85rem;
-			font-size: 0.8125rem;
-		}
-
-		.site-header__cta-arrow {
+		.site-header__actions {
 			display: none;
 		}
-	}
 
-	@media (max-width: 380px) {
-		.site-header__cta {
-			display: none;
+		.site-header__burger {
+			display: flex;
 		}
 	}
 </style>
