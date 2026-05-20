@@ -79,7 +79,7 @@ export const resources: ResourceEntry[] = [
 		excerpt:
 			'Local visibility starts with structured service pages, metadata, internal links, location relevance, and useful content.',
 		relatedService: 'Local Visibility',
-		ctaLabel: 'Request a Website and Systems Audit',
+		ctaLabel: 'Request a Website Audit',
 		ctaHref: '/audit',
 		status: 'Planned',
 	},
@@ -91,7 +91,7 @@ export const resources: ResourceEntry[] = [
 		excerpt:
 			'Dedicated service pages help visitors understand what you offer and help search engines understand your services.',
 		relatedService: 'Local Visibility',
-		ctaLabel: 'Request a Website and Systems Audit',
+		ctaLabel: 'Request a Website Audit',
 		ctaHref: '/audit',
 		status: 'Planned',
 	},
@@ -127,7 +127,7 @@ export const resources: ResourceEntry[] = [
 		excerpt:
 			'A stronger website connects trust, service clarity, lead capture, booking flow, and follow-up into one practical system.',
 		relatedService: 'Growth System Setup',
-		ctaLabel: 'Request a Website and Systems Audit',
+		ctaLabel: 'Request a Website Audit',
 		ctaHref: '/audit',
 		status: 'Planned',
 	},

@@ -43,7 +43,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
 		heading: 'Launch faster on a healthcare website system built around trust and conversion.',
 		supportingCopy:
 			'FutureSolutions Website Foundations give health and wellness businesses a polished starting point — with the structure, pages, and conversion flow already planned.',
-		primaryCta: { label: 'Get a Foundation Customized', href: '/audit' },
+		primaryCta: { label: 'Get This Foundation Customized', href: '/audit' },
 		secondaryCta: { label: 'Explore Live Demos', href: '/templates' },
 		problemHeading: 'Starting from scratch slows everything down.',
 		problems: [
