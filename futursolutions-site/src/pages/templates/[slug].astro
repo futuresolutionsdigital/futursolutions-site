@@ -367,7 +367,7 @@ const paletteVars = palette
 
 	.detail-mid-cta__text {
 		margin: 0;
-		font-size: 1.1rem;
+		font-size: 1.2rem;
 		font-weight: 700;
 		color: var(--color-text);
 	}
@@ -578,6 +578,13 @@ const paletteVars = palette
 		letter-spacing: -0.02em;
 	}
 
+	/* Section accent top borders */
+	.detail-pages,
+	.detail-strategic,
+	.detail-backend {
+		border-top: 2px solid color-mix(in srgb, var(--foundation-accent, var(--lane-foundation)) 35%, transparent);
+	}
+
 	/* Rich audience (per-template detail) */
 	.detail-audience-rich__intro,
 	.detail-pages__intro,
@@ -724,11 +731,11 @@ const paletteVars = palette
 		align-items: center;
 		justify-content: space-between;
 		gap: 1rem;
-		padding: 1.1rem 0;
+		padding: 1.25rem 0;
 		cursor: pointer;
 		list-style: none;
 		font-weight: 650;
-		font-size: 1rem;
+		font-size: 1.05rem;
 		color: var(--color-text);
 	}
 
