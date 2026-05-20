@@ -8,6 +8,7 @@ interface Props {
 const { template } = Astro.props;
 
 const glance = template.atAGlance;
+const isVantage = template.slug === 'hormone-trt';
 
 const items = glance
 	? [
@@ -21,7 +22,7 @@ const items = glance
 
 {
 	glance && (
-		<section class="section foundation-glance" aria-labelledby="foundation-glance-heading">
+		<section class:list={['section', 'foundation-glance', { 'foundation-glance--vantage': isVantage }]} aria-labelledby="foundation-glance-heading">
 			<div class="site-container">
 				<div class="foundation-glance__panel">
 					<div class="foundation-glance__left">
@@ -266,6 +267,75 @@ const items = glance
 		color: var(--color-muted);
 		font-size: 0.88rem;
 		font-style: italic;
+	}
+
+	/* ═══ VANTAGE (dark) overrides ═══ */
+	.foundation-glance--vantage {
+		background: #111;
+		border-color: rgba(200, 30, 30, 0.12);
+	}
+
+	.foundation-glance--vantage .foundation-glance__panel {
+		background: #141414;
+		border-color: rgba(200, 30, 30, 0.14);
+		box-shadow: 0 16px 48px rgba(0, 0, 0, 0.35);
+	}
+
+	.foundation-glance--vantage .foundation-glance__head .eyebrow {
+		color: #B82020;
+	}
+
+	.foundation-glance--vantage .foundation-glance__heading {
+		color: #f4efe7;
+	}
+
+	.foundation-glance--vantage .foundation-glance__item {
+		background: rgba(255, 255, 255, 0.03);
+		border-color: rgba(255, 255, 255, 0.06);
+	}
+
+	.foundation-glance--vantage .foundation-glance__label {
+		color: #B82020;
+	}
+
+	.foundation-glance--vantage .foundation-glance__icon {
+		background: rgba(200, 30, 30, 0.08);
+		border-color: rgba(200, 30, 30, 0.16);
+		color: #C81E1E;
+	}
+
+	.foundation-glance--vantage .foundation-glance__value {
+		color: rgba(244, 239, 231, 0.78);
+	}
+
+	.foundation-glance--vantage .foundation-glance__signal {
+		color: rgba(244, 239, 231, 0.82);
+	}
+
+	.foundation-glance--vantage .foundation-glance__signal svg {
+		color: #C81E1E;
+	}
+
+	.foundation-glance--vantage .button-primary {
+		background: #C81E1E;
+		border-color: #C81E1E;
+		color: #f4efe7;
+	}
+
+	.foundation-glance--vantage .button-primary:hover {
+		background: #a81a1a;
+		border-color: #a81a1a;
+	}
+
+	.foundation-glance--vantage .button-secondary {
+		background: transparent;
+		border-color: rgba(244, 239, 231, 0.16);
+		color: #f4efe7;
+	}
+
+	.foundation-glance--vantage .button-secondary:hover {
+		background: rgba(244, 239, 231, 0.05);
+		border-color: rgba(244, 239, 231, 0.3);
 	}
 
 	@media (max-width: 900px) {

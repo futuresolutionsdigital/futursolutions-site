@@ -480,6 +480,55 @@ const isVantage = template.slug === 'hormone-trt';
 		pointer-events: none;
 	}
 
+	/* ═══ VANTAGE hero text & CTA overrides ═══ */
+	.template-detail-hero--vantage::before {
+		background:
+			radial-gradient(circle at 78% 12%, rgba(200, 30, 30, 0.12), transparent 35%),
+			linear-gradient(180deg, #111 0%, #0e0b0b 72%);
+	}
+
+	.template-detail-hero--vantage .eyebrow {
+		color: #C81E1E;
+	}
+
+	.template-detail-hero--vantage h1 {
+		color: #f4efe7;
+	}
+
+	.template-detail-hero--vantage .lead {
+		color: rgba(244, 239, 231, 0.68);
+	}
+
+	.template-detail-hero--vantage .button-primary {
+		background: #C81E1E;
+		border-color: #C81E1E;
+		color: #f4efe7;
+	}
+
+	.template-detail-hero--vantage .button-primary:hover {
+		background: #a81a1a;
+		border-color: #a81a1a;
+	}
+
+	.template-detail-hero--vantage .button-secondary {
+		background: transparent;
+		border-color: rgba(244, 239, 231, 0.2);
+		color: #f4efe7;
+	}
+
+	.template-detail-hero--vantage .button-secondary:hover {
+		background: rgba(244, 239, 231, 0.06);
+		border-color: rgba(244, 239, 231, 0.35);
+	}
+
+	.template-detail-hero--vantage .template-detail-hero__audit-link {
+		color: rgba(244, 239, 231, 0.45);
+	}
+
+	.template-detail-hero--vantage .template-detail-hero__audit-link:hover {
+		color: rgba(244, 239, 231, 0.75);
+	}
+
 	@media (max-width: 900px) {
 		.template-detail-hero__inner {
 			grid-template-columns: 1fr;
