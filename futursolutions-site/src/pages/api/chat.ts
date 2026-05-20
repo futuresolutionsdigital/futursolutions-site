@@ -11,8 +11,18 @@ const RATE_LIMIT_MAX = 12;
 
 const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
 
+let lastCleanup = Date.now();
+
 function isRateLimited(ip: string): boolean {
 	const now = Date.now();
+
+	if (now - lastCleanup > 300_000) {
+		for (const [key, entry] of rateLimitMap) {
+			if (now > entry.resetAt) rateLimitMap.delete(key);
+		}
+		lastCleanup = now;
+	}
+
 	const entry = rateLimitMap.get(ip);
 
 	if (!entry || now > entry.resetAt) {
@@ -23,14 +33,6 @@ function isRateLimited(ip: string): boolean {
 	entry.count++;
 	return entry.count > RATE_LIMIT_MAX;
 }
-
-// Periodically clean stale entries (every 5 min)
-setInterval(() => {
-	const now = Date.now();
-	for (const [ip, entry] of rateLimitMap) {
-		if (now > entry.resetAt) rateLimitMap.delete(ip);
-	}
-}, 300_000);
 
 interface ChatMessage {
 	role: 'user' | 'assistant';

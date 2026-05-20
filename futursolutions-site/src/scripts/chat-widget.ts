@@ -49,7 +49,7 @@ function formatContent(raw: string): string {
 
 	// Convert markdown-style links or plain paths to clickable links
 	html = html.replace(
-		/(\/(?:audit|templates|services|resources|seo|backend)(?:\/[a-z0-9-]+)?(?:\?[a-z0-9=&-]+)?)/g,
+		/(\/(?:audit|templates|services|resources|seo|backend|demos)(?:\/[a-z0-9-]+)*(?:\?[a-z0-9=&-]+)?)/g,
 		'<a href="$1" class="chat-msg__link">$1</a>',
 	);
 
