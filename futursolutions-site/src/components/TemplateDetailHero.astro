@@ -30,7 +30,10 @@ const isVantage = template.slug === 'hormone-trt';
 				}
 				<a class="button button-secondary" href={template.auditUrl}>Get This Foundation Customized</a>
 			</div>
-			<p class="template-detail-hero__meta">Complexity: {template.complexity}</p>
+			<a class="template-detail-hero__audit-link" href="/audit">
+				Not sure yet? Request a Website Audit
+				<span aria-hidden="true">&rarr;</span>
+			</a>
 		</div>
 
 		{isVantage ? (
@@ -149,11 +152,29 @@ const isVantage = template.slug === 'hormone-trt';
 		max-width: 760px;
 	}
 
-	.template-detail-hero__meta {
-		margin-top: 1.25rem;
-		color: var(--color-accent-dark);
-		font-size: 0.9375rem;
-		font-weight: 700;
+	.template-detail-hero__audit-link {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.4rem;
+		margin-top: 0.85rem;
+		color: var(--color-muted);
+		font-size: 0.88rem;
+		font-weight: 600;
+		transition: color var(--transition-base), gap var(--transition-base);
+	}
+
+	.template-detail-hero__audit-link:hover {
+		color: var(--foundation-ink, var(--color-text));
+		gap: 0.55rem;
+	}
+
+	.template-detail-hero__audit-link span {
+		display: inline-block;
+		transition: transform 220ms var(--ease-out-quart);
+	}
+
+	.template-detail-hero__audit-link:hover span {
+		transform: translateX(2px);
 	}
 
 	.template-detail-hero__preview {

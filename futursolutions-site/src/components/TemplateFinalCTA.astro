@@ -2,19 +2,15 @@
 interface Props {
 	heading?: string;
 	description?: string;
-	primaryText?: string;
-	secondaryText?: string;
-	primaryHref?: string;
-	secondaryHref?: string;
+	demoUrl?: string | null;
+	auditUrl?: string;
 }
 
 const {
-	heading = 'Want this system customized for your business?',
-	description = 'Request a website audit and get a clear recommendation based on your business, services, current site, and conversion goals.',
-	primaryText = 'Get This Foundation Customized',
-	secondaryText = 'Request a Website Audit',
-	primaryHref = '/audit',
-	secondaryHref = '/audit',
+	heading = 'Want this Foundation customized for your business?',
+	description = 'Walk through the live demo, request customization, or start with a Website Audit for a clear recommendation.',
+	demoUrl,
+	auditUrl = '/audit',
 } = Astro.props;
 ---
 
@@ -26,9 +22,17 @@ const {
 				<h2 id="template-final-cta-heading">{heading}</h2>
 				<p class="lead">{description}</p>
 			</div>
-			<div class="button-row">
-				<a class="button button-primary" href={primaryHref}>{primaryText}</a>
-				<a class="button button-secondary" href={secondaryHref}>{secondaryText}</a>
+			<div class="template-final-cta__actions">
+				{demoUrl ? (
+					<a class="button button-primary" href={demoUrl}>View Live Demo</a>
+				) : (
+					<a class="button button-primary" href="/templates">Browse All Foundations</a>
+				)}
+				<a class="button button-secondary" href={auditUrl}>Get This Customized</a>
+				<a class="template-final-cta__audit" href="/audit">
+					Or request a Website Audit
+					<span aria-hidden="true">&rarr;</span>
+				</a>
 			</div>
 		</div>
 	</div>
@@ -69,21 +73,48 @@ const {
 		opacity: 0.78;
 	}
 
-	.template-final-cta .button-row {
-		justify-content: flex-end;
-		margin-top: 0;
+	.template-final-cta__actions {
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+		align-items: flex-end;
+		justify-content: center;
 	}
 
-	.template-final-cta .button-secondary {
+	.template-final-cta__actions .button-secondary {
 		background: transparent;
 		border-color: rgba(255, 255, 255, 0.22);
 		color: var(--color-white);
 	}
 
-	.template-final-cta .button-secondary:hover {
+	.template-final-cta__actions .button-secondary:hover {
 		background: rgba(255, 255, 255, 0.08);
 		border-color: rgba(255, 255, 255, 0.38);
 		color: var(--color-white);
+	}
+
+	.template-final-cta__audit {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.35rem;
+		color: rgba(255, 255, 255, 0.6);
+		font-size: 0.82rem;
+		font-weight: 600;
+		transition: color var(--transition-base), gap var(--transition-base);
+	}
+
+	.template-final-cta__audit:hover {
+		color: var(--color-white);
+		gap: 0.5rem;
+	}
+
+	.template-final-cta__audit span {
+		display: inline-block;
+		transition: transform 220ms var(--ease-out-quart);
+	}
+
+	.template-final-cta__audit:hover span {
+		transform: translateX(2px);
 	}
 
 	@media (max-width: 860px) {
@@ -92,8 +123,10 @@ const {
 			align-items: start;
 		}
 
-		.template-final-cta .button-row {
-			justify-content: flex-start;
+		.template-final-cta__actions {
+			align-items: flex-start;
+			flex-direction: row;
+			flex-wrap: wrap;
 		}
 	}
 </style>
