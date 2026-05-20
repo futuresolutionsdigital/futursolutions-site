@@ -173,10 +173,30 @@ const offers = [
 			border-color var(--transition-base);
 	}
 
+	.offer-overview__card.lane-accent-top::before {
+		height: 5px;
+	}
+
 	.offer-overview__card:hover {
 		transform: translateY(-3px);
 		box-shadow: var(--shadow-card-hover);
 	}
+
+	.offer-overview__card.lane-accent-top--foundation:hover {
+		border-color: color-mix(in srgb, var(--lane-foundation) 38%, var(--color-border));
+	}
+
+	.offer-overview__card.lane-accent-top--custom:hover {
+		border-color: color-mix(in srgb, var(--lane-custom) 32%, var(--color-border));
+	}
+
+	.offer-overview__card.lane-accent-top--growth:hover {
+		border-color: color-mix(in srgb, var(--lane-growth) 38%, var(--color-border));
+	}
+
+	.offer-overview__card.lane-accent-top--foundation .offer-overview__bullets svg { color: var(--lane-foundation); }
+	.offer-overview__card.lane-accent-top--custom     .offer-overview__bullets svg { color: var(--lane-custom); }
+	.offer-overview__card.lane-accent-top--growth     .offer-overview__bullets svg { color: var(--lane-growth); }
 
 	.offer-overview__card-head {
 		display: flex;

@@ -85,7 +85,15 @@ const stack = ['Astro', 'TypeScript', 'GoHighLevel', 'Vercel', 'Sanity', 'Cal.co
 
 <style>
 	.proof-strip {
-		background: var(--color-bg);
+		position: relative;
+		background:
+			radial-gradient(ellipse 60% 70% at 90% 110%, color-mix(in srgb, var(--lane-audit) 18%, transparent), transparent 65%),
+			linear-gradient(180deg, var(--lane-custom-ink) 0%, var(--lane-custom) 100%);
+		color: var(--color-white);
+	}
+
+	.proof-strip .eyebrow {
+		color: color-mix(in srgb, var(--lane-audit-tint) 90%, var(--color-white));
 	}
 
 	.proof-strip__statement {
@@ -95,6 +103,7 @@ const stack = ['Astro', 'TypeScript', 'GoHighLevel', 'Vercel', 'Sanity', 'Cal.co
 
 	.proof-strip__headline {
 		margin: 0;
+		color: var(--color-white);
 		font-size: clamp(1.85rem, 1.4rem + 1.85vw, 2.6rem);
 		font-weight: 700;
 		letter-spacing: -0.035em;
@@ -104,7 +113,7 @@ const stack = ['Astro', 'TypeScript', 'GoHighLevel', 'Vercel', 'Sanity', 'Cal.co
 	.proof-strip__headline-soft {
 		display: block;
 		margin-top: 1rem;
-		color: var(--color-muted);
+		color: color-mix(in srgb, var(--color-white) 76%, transparent);
 		font-size: clamp(1.05rem, 0.92rem + 0.55vw, 1.18rem);
 		font-weight: 500;
 		letter-spacing: -0.018em;
@@ -125,15 +134,17 @@ const stack = ['Astro', 'TypeScript', 'GoHighLevel', 'Vercel', 'Sanity', 'Cal.co
 		flex-direction: column;
 		gap: 0.65rem;
 		padding: 1.5rem;
-		border: 1px solid var(--color-border-soft);
+		border: 1px solid color-mix(in srgb, var(--color-white) 12%, transparent);
 		border-radius: var(--radius-md);
-		background: var(--color-white);
-		transition: border-color var(--transition-base), transform 320ms var(--ease-out-quart);
+		background: color-mix(in srgb, var(--color-white) 6%, transparent);
+		backdrop-filter: blur(2px);
+		transition: border-color var(--transition-base), background-color var(--transition-base), transform 320ms var(--ease-out-quart);
 	}
 
 	.proof-card:hover {
 		transform: translateY(-2px);
-		border-color: var(--color-border);
+		border-color: color-mix(in srgb, var(--lane-audit) 60%, transparent);
+		background: color-mix(in srgb, var(--color-white) 10%, transparent);
 	}
 
 	.proof-card__icon {
@@ -143,10 +154,10 @@ const stack = ['Astro', 'TypeScript', 'GoHighLevel', 'Vercel', 'Sanity', 'Cal.co
 		width: 2.4rem;
 		height: 2.4rem;
 		margin-bottom: 0.55rem;
-		border: 1px solid var(--color-border);
+		border: 1px solid color-mix(in srgb, var(--lane-audit) 38%, transparent);
 		border-radius: 10px;
-		background: var(--color-white);
-		color: var(--color-text);
+		background: color-mix(in srgb, var(--lane-audit) 14%, transparent);
+		color: var(--lane-audit-tint);
 	}
 
 	.proof-card__icon svg {
@@ -156,6 +167,7 @@ const stack = ['Astro', 'TypeScript', 'GoHighLevel', 'Vercel', 'Sanity', 'Cal.co
 
 	.proof-card__title {
 		margin: 0;
+		color: var(--color-white);
 		font-size: 1.05rem;
 		font-weight: 650;
 		letter-spacing: -0.02em;
@@ -163,7 +175,7 @@ const stack = ['Astro', 'TypeScript', 'GoHighLevel', 'Vercel', 'Sanity', 'Cal.co
 
 	.proof-card__text {
 		margin: 0;
-		color: var(--color-muted);
+		color: color-mix(in srgb, var(--color-white) 72%, transparent);
 		font-size: 0.91rem;
 		line-height: 1.55;
 	}
@@ -174,11 +186,11 @@ const stack = ['Astro', 'TypeScript', 'GoHighLevel', 'Vercel', 'Sanity', 'Cal.co
 		align-items: center;
 		gap: 1.25rem;
 		padding-top: 1.5rem;
-		border-top: 1px solid var(--color-border-soft);
+		border-top: 1px solid color-mix(in srgb, var(--color-white) 12%, transparent);
 	}
 
 	.proof-strip__stack-label {
-		color: var(--color-muted);
+		color: color-mix(in srgb, var(--lane-audit-tint) 84%, var(--color-white));
 		font-size: 0.74rem;
 		font-weight: 700;
 		letter-spacing: 0.16em;
@@ -195,7 +207,7 @@ const stack = ['Astro', 'TypeScript', 'GoHighLevel', 'Vercel', 'Sanity', 'Cal.co
 	}
 
 	.proof-strip__stack-list li {
-		color: var(--color-text);
+		color: var(--color-white);
 		font-size: 0.92rem;
 		font-weight: 600;
 		letter-spacing: -0.005em;

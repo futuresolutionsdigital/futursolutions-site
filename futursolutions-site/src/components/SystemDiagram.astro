@@ -162,6 +162,14 @@ const principles = [
 	.system-diagram {
 		position: relative;
 		overflow: hidden;
+		background:
+			radial-gradient(ellipse 80% 60% at 80% 0%, color-mix(in srgb, var(--lane-growth-tint) 75%, transparent), transparent 70%),
+			linear-gradient(180deg, var(--color-bg) 0%, color-mix(in srgb, var(--lane-growth-tint) 50%, var(--color-bg)) 100%);
+		border-block: 1px solid color-mix(in srgb, var(--lane-growth) 16%, var(--color-border-soft));
+	}
+
+	.system-diagram .eyebrow {
+		color: var(--lane-growth-ink);
 	}
 
 	.system-diagram__inner {

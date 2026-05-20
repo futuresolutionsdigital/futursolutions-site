@@ -58,8 +58,15 @@ const problems = [
 
 <style>
 	.problem-section {
-		background: var(--color-bg-secondary);
-		border-block: 1px solid var(--color-border-soft);
+		position: relative;
+		background:
+			radial-gradient(ellipse 80% 60% at 20% 0%, color-mix(in srgb, var(--lane-audit-tint) 70%, transparent), transparent 70%),
+			linear-gradient(180deg, var(--color-bg) 0%, color-mix(in srgb, var(--lane-audit-tint) 55%, var(--color-bg)) 100%);
+		border-block: 1px solid color-mix(in srgb, var(--lane-audit) 18%, var(--color-border-soft));
+	}
+
+	.problem-section__head .eyebrow {
+		color: var(--lane-audit-ink);
 	}
 
 	.problem-section__head {
@@ -118,9 +125,9 @@ const problems = [
 	}
 
 	.problem-card__number {
-		color: var(--color-muted);
+		color: var(--lane-audit-ink);
 		font-size: 0.74rem;
-		font-weight: 700;
+		font-weight: 800;
 		font-variant-numeric: tabular-nums;
 		letter-spacing: 0.14em;
 	}
@@ -130,7 +137,7 @@ const problems = [
 		width: 8px;
 		height: 8px;
 		border-radius: 2px;
-		background: var(--color-text);
+		background: var(--lane-audit);
 		transform: rotate(45deg);
 	}
 
