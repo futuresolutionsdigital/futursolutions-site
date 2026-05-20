@@ -1,5 +1,6 @@
 import type { APIRoute } from 'astro';
 import OpenAI from 'openai';
+import { OPENAI_API_KEY } from 'astro:env/server';
 import { SYSTEM_PROMPT } from '../../lib/chatbot-system-prompt';
 
 export const prerender = false;
@@ -59,8 +60,7 @@ function validateMessages(body: unknown): ChatMessage[] | null {
 }
 
 export const POST: APIRoute = async ({ request, clientAddress }) => {
-	const apiKey = process.env.OPENAI_API_KEY;
-	if (!apiKey) {
+	if (!OPENAI_API_KEY) {
 		return new Response(JSON.stringify({ error: 'Server configuration error' }), {
 			status: 500,
 			headers: { 'Content-Type': 'application/json' },
@@ -93,7 +93,7 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
 		});
 	}
 
-	const openai = new OpenAI({ apiKey });
+	const openai = new OpenAI({ apiKey: OPENAI_API_KEY });
 
 	try {
 		const stream = await openai.chat.completions.create({
