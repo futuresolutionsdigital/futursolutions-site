@@ -29,7 +29,7 @@ const demoPalette: Record<string, { accent: string; tint: string; ink: string }>
 			</div>
 			<div class="demo-library__head-right">
 				<p>
-					Each Foundation is a real, clickable website — not a screenshot or Figma file. Use one as a starting point for your project, or treat it as proof of the design and system quality behind a Signature Custom build.
+					Each Foundation is a real, clickable website — not a screenshot or Figma file. Use one as a strategic starting point, or treat it as proof of the system quality behind a Signature Custom build.
 				</p>
 				<a class="demo-library__head-cta" href="/templates">
 					Browse all Foundations
@@ -37,6 +37,21 @@ const demoPalette: Record<string, { accent: string; tint: string; ink: string }>
 				</a>
 			</div>
 		</header>
+
+		<ul class="demo-library__signals" aria-label="What each Foundation is">
+			<li>
+				<span class="demo-library__signals-dot demo-library__signals-dot--live" aria-hidden="true"></span>
+				<span><strong>Live and clickable.</strong> Real working sites, not mockups.</span>
+			</li>
+			<li>
+				<span class="demo-library__signals-dot demo-library__signals-dot--strategic" aria-hidden="true"></span>
+				<span><strong>Strategic, not generic.</strong> Built around a specific business model.</span>
+			</li>
+			<li>
+				<span class="demo-library__signals-dot demo-library__signals-dot--custom" aria-hidden="true"></span>
+				<span><strong>Customizable for your brand.</strong> Services, content, booking, branding.</span>
+			</li>
+		</ul>
 
 		<div class="demo-library__grid">
 			{
@@ -51,7 +66,6 @@ const demoPalette: Record<string, { accent: string; tint: string; ink: string }>
 								'demo-card',
 								{
 									'demo-card--vt': template.slug === 'hormone-trt',
-									'demo-card--new': newDemoSlugs.has(template.slug),
 								},
 							]}
 							style={styleVars}
@@ -65,6 +79,10 @@ const demoPalette: Record<string, { accent: string; tint: string; ink: string }>
 											<span class="vt-prev__dot" />
 											<span class="vt-prev__dot" />
 											<span class="vt-prev__dot" />
+											<span class="vt-prev__live">
+												<span class="vt-prev__live-dot"></span>
+												LIVE
+											</span>
 											<span class="vt-prev__label">VANTAGE</span>
 										</div>
 										<div class="vt-prev__screen">
@@ -90,6 +108,10 @@ const demoPalette: Record<string, { accent: string; tint: string; ink: string }>
 											<span />
 											<span />
 											<span />
+											<span class="demo-card__topbar-live" aria-hidden="true">
+												<span class="demo-card__topbar-live-dot"></span>
+												LIVE
+											</span>
 											<span class="demo-card__topbar-label">{template.category}</span>
 										</div>
 										<div class="demo-card__screen">
@@ -139,7 +161,10 @@ const demoPalette: Record<string, { accent: string; tint: string; ink: string }>
 										<span class="demo-card__pending">Demo coming soon</span>
 									)}
 									<a class="demo-card__secondary" href={template.detailUrl}>Foundation details</a>
-									<a class="demo-card__tertiary" href={template.auditUrl}>Get this customized</a>
+									<a class="demo-card__tertiary" href={template.auditUrl}>
+										Get this customized
+										<span aria-hidden="true">&rarr;</span>
+									</a>
 								</div>
 							</div>
 						</article>
@@ -206,6 +231,59 @@ const demoPalette: Record<string, { accent: string; tint: string; ink: string }>
 		transform: translateX(2px);
 	}
 
+	.demo-library__signals {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 0.5rem;
+		margin: 0 0 clamp(2rem, 3.5vw, 2.5rem) 0;
+		padding: 0.85rem 1rem;
+		border: 1px solid var(--color-border-soft);
+		border-radius: var(--radius-md);
+		background: var(--color-white);
+		list-style: none;
+	}
+
+	.demo-library__signals li {
+		display: flex;
+		align-items: flex-start;
+		gap: 0.6rem;
+		padding: 0.35rem 0.5rem;
+		color: var(--color-muted);
+		font-size: 0.88rem;
+		line-height: 1.5;
+	}
+
+	.demo-library__signals strong {
+		display: block;
+		color: var(--color-text);
+		font-weight: 700;
+		letter-spacing: -0.005em;
+	}
+
+	.demo-library__signals-dot {
+		flex-shrink: 0;
+		display: inline-block;
+		width: 0.55rem;
+		height: 0.55rem;
+		margin-top: 0.45rem;
+		border-radius: 999px;
+	}
+
+	.demo-library__signals-dot--live {
+		background: var(--lane-foundation);
+		box-shadow: 0 0 0 4px color-mix(in srgb, var(--lane-foundation) 24%, transparent);
+	}
+
+	.demo-library__signals-dot--strategic {
+		background: var(--lane-custom);
+		box-shadow: 0 0 0 4px color-mix(in srgb, var(--lane-custom) 18%, transparent);
+	}
+
+	.demo-library__signals-dot--custom {
+		background: var(--lane-audit);
+		box-shadow: 0 0 0 4px color-mix(in srgb, var(--lane-audit) 24%, transparent);
+	}
+
 	.demo-library__grid {
 		display: grid;
 		grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -270,13 +348,47 @@ const demoPalette: Record<string, { accent: string; tint: string; ink: string }>
 	}
 
 	.demo-card__topbar-label {
-		margin-left: auto;
+		margin-left: 0.4rem;
 		font-size: 0.52rem;
 		font-weight: 700;
 		letter-spacing: 0.14em;
 		color: var(--demo-ink, var(--color-muted));
 		text-transform: uppercase;
 		opacity: 0.6;
+	}
+
+	.demo-card__topbar-live {
+		margin-left: auto;
+		display: inline-flex;
+		align-items: center;
+		gap: 0.28rem;
+		padding: 0.18rem 0.42rem;
+		border: 1px solid color-mix(in srgb, var(--lane-foundation) 32%, var(--color-border-soft));
+		border-radius: 999px;
+		background: color-mix(in srgb, var(--lane-foundation-tint) 80%, var(--color-white));
+		color: var(--lane-foundation-ink);
+		font-size: 0.5rem;
+		font-weight: 800;
+		letter-spacing: 0.16em;
+	}
+
+	.demo-card__topbar-live-dot {
+		display: inline-block;
+		width: 5px;
+		height: 5px;
+		border-radius: 999px;
+		background: var(--lane-foundation);
+		box-shadow: 0 0 0 3px color-mix(in srgb, var(--lane-foundation) 22%, transparent);
+		animation: demo-live-pulse 2.4s ease-in-out infinite;
+	}
+
+	@keyframes demo-live-pulse {
+		0%, 100% { opacity: 1; box-shadow: 0 0 0 3px color-mix(in srgb, var(--lane-foundation) 22%, transparent); }
+		50%      { opacity: 0.78; box-shadow: 0 0 0 5px color-mix(in srgb, var(--lane-foundation) 8%, transparent); }
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.demo-card__topbar-live-dot { animation: none; }
 	}
 
 	.demo-card__screen {
@@ -521,15 +633,28 @@ const demoPalette: Record<string, { accent: string; tint: string; ink: string }>
 		position: relative;
 		z-index: 2;
 		justify-self: end;
-		color: var(--color-muted);
+		display: inline-flex;
+		align-items: center;
+		gap: 0.3rem;
+		color: var(--lane-audit-ink);
 		font-size: 0.82rem;
-		font-weight: 500;
+		font-weight: 600;
 		letter-spacing: -0.005em;
-		transition: color var(--transition-base);
+		transition: color var(--transition-base), gap var(--transition-base);
 	}
 
 	.demo-card__tertiary:hover {
-		color: var(--lane-audit-ink);
+		color: var(--color-text);
+		gap: 0.45rem;
+	}
+
+	.demo-card__tertiary span {
+		display: inline-block;
+		transition: transform 220ms var(--ease-out-quart);
+	}
+
+	.demo-card__tertiary:hover span {
+		transform: translateX(2px);
 	}
 
 	.demo-card__pending {
@@ -573,12 +698,46 @@ const demoPalette: Record<string, { accent: string; tint: string; ink: string }>
 	}
 
 	.vt-prev__label {
-		margin-left: auto;
+		margin-left: 0.4rem;
 		font-size: 0.48rem;
 		font-weight: 800;
 		letter-spacing: 0.18em;
 		color: rgba(244, 239, 231, 0.2);
 		text-transform: uppercase;
+	}
+
+	.vt-prev__live {
+		margin-left: auto;
+		display: inline-flex;
+		align-items: center;
+		gap: 0.28rem;
+		padding: 0.18rem 0.42rem;
+		border: 1px solid rgba(200, 30, 30, 0.4);
+		border-radius: 999px;
+		background: rgba(200, 30, 30, 0.12);
+		color: #f4efe7;
+		font-size: 0.46rem;
+		font-weight: 800;
+		letter-spacing: 0.16em;
+	}
+
+	.vt-prev__live-dot {
+		display: inline-block;
+		width: 5px;
+		height: 5px;
+		border-radius: 999px;
+		background: #c81e1e;
+		box-shadow: 0 0 0 3px rgba(200, 30, 30, 0.18);
+		animation: demo-live-pulse-vt 2.4s ease-in-out infinite;
+	}
+
+	@keyframes demo-live-pulse-vt {
+		0%, 100% { opacity: 1; box-shadow: 0 0 0 3px rgba(200, 30, 30, 0.22); }
+		50%      { opacity: 0.78; box-shadow: 0 0 0 5px rgba(200, 30, 30, 0.06); }
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.vt-prev__live-dot { animation: none; }
 	}
 
 	.vt-prev__screen {
@@ -686,6 +845,11 @@ const demoPalette: Record<string, { accent: string; tint: string; ink: string }>
 		.demo-library__head {
 			grid-template-columns: 1fr;
 			gap: 1.5rem;
+		}
+
+		.demo-library__signals {
+			grid-template-columns: 1fr;
+			gap: 0.25rem;
 		}
 
 		.demo-library__grid {
