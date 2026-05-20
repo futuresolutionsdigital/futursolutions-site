@@ -64,7 +64,7 @@ export const serviceOfferings: ServiceOffering[] = [
 	{
 		slug: 'backend-system-setup',
 		name: 'Growth System Setup',
-		shortDescription: 'A backend lead system that captures, organizes, and follows up with website inquiries.',
+		shortDescription: 'A Growth System that captures, organizes, and follows up with website inquiries.',
 		longDescription:
 			'Growth System Setup plans and wires the operational path behind your website so inquiries move from form submission to booked consult — automatically.',
 		bestFor: 'Businesses that do not want leads disappearing after a form submission.',

@@ -65,7 +65,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
 			'Basic SEO setup',
 			'Mobile optimization',
 			'Launch support',
-			'Optional backend system integration',
+			'Optional Growth System integration',
 		],
 		whoItsFor: ['Med spas', 'Solo practices', 'Wellness clinics', 'Functional medicine providers', 'New health brands'],
 		relatedServices: [
@@ -84,7 +84,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
 			},
 			{
 				question: 'Can this connect to booking or lead capture later?',
-				answer: 'Yes. The page structure can support booking paths, contact forms, and later backend system connections when those tools are ready.',
+				answer: 'Yes. The page structure can support booking paths, contact forms, and later Growth System connections when those tools are ready.',
 			},
 			{
 				question: 'Is this a good fit if I need to launch quickly?',
@@ -232,7 +232,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
 			},
 			{
 				question: 'Can this include backend workflow refinements?',
-				answer: 'Yes. Once backend systems are ready, ongoing support can include refinements to lead capture, follow-up, and pipeline workflows.',
+				answer: 'Yes. Once a Growth System is connected, ongoing support can include refinements to lead capture, follow-up, and pipeline workflows.',
 			},
 		],
 		finalHeading: 'Want your website to keep improving?',
