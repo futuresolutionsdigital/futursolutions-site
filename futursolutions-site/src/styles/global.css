@@ -16,6 +16,7 @@
 
 	/* Deep ink (full-bleed dark sections) */
 	--color-ink: #0A0E1A;
+	--color-deep-ink: var(--color-ink);
 	--color-ink-soft: #141A28;
 	--color-ink-line: rgba(255, 255, 255, 0.07);
 	--color-ink-line-strong: rgba(255, 255, 255, 0.14);
