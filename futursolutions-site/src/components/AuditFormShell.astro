@@ -345,8 +345,17 @@ const preferredNextSteps = [
 	.audit-form-shell select:focus,
 	.audit-form-shell textarea:focus {
 		border-color: color-mix(in srgb, var(--color-accent) 55%, var(--color-border));
-		outline: none;
 		background: var(--color-white);
+	}
+
+	.audit-form-shell input[type="text"]:focus-visible,
+	.audit-form-shell input[type="email"]:focus-visible,
+	.audit-form-shell input[type="url"]:focus-visible,
+	.audit-form-shell select:focus-visible,
+	.audit-form-shell textarea:focus-visible {
+		outline: 3px solid color-mix(in srgb, var(--color-accent) 42%, transparent);
+		outline-offset: 2px;
+		border-radius: 6px;
 	}
 
 	.audit-form-shell__checkboxes {
