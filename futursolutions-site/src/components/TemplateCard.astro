@@ -77,18 +77,18 @@ const isVantage = template.slug === 'hormone-trt';
 			{visibleFeatures.map((feature) => <span>{feature}</span>)}
 		</div>
 		<div class="template-system-card__row">
-			<a class="button button-primary" href={template.detailUrl}>See Details</a>
-		</div>
-		<div class="template-system-card__demo-row">
 			{
 				template.demoUrl ? (
-					<a class="template-system-card__demo template-system-card__demo--link" href={template.demoUrl}>
-						View Live Demo
-					</a>
+					<a class="button button-primary" href={template.demoUrl}>View Live Demo</a>
 				) : (
-					<span class="template-system-card__demo">Demo Coming Soon</span>
+					<span class="template-system-card__demo-pending">Demo Coming Soon</span>
 				)
 			}
+		</div>
+		<div class="template-system-card__demo-row">
+			<a class="template-system-card__demo template-system-card__demo--link" href={template.detailUrl}>
+				See Foundation Details
+			</a>
 			<a class="template-system-card__customize" href={template.auditUrl}>
 				Get This Customized
 			</a>
@@ -293,6 +293,18 @@ const isVantage = template.slug === 'hormone-trt';
 
 	.template-system-card__customize:hover {
 		text-decoration-thickness: 2px;
+	}
+
+	.template-system-card__demo-pending {
+		display: inline-flex;
+		padding: 0.5rem 0.85rem;
+		border: 1px dashed var(--color-border);
+		border-radius: var(--radius-sm);
+		background: var(--color-bg);
+		color: var(--color-muted);
+		font-size: 0.85rem;
+		font-weight: 600;
+		font-style: italic;
 	}
 
 	/* ═══ VANTAGE dark mockup variant ═══ */

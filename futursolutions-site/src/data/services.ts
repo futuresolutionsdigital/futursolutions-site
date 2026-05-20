@@ -13,22 +13,22 @@ export interface ServiceOffering {
 export const serviceOfferings: ServiceOffering[] = [
 	{
 		slug: 'template-setup',
-		name: 'Industry Website Foundation',
+		name: 'Website Foundations',
 		shortDescription: 'A polished, launch-ready website built on one of our industry-specific Website Foundations.',
 		longDescription:
-			'A FutureSolutions Industry Website Foundation turns a healthcare-specific website system into a polished, launch-ready foundation for your practice — shipped in days, not months.',
+			'A FutureSolutions Website Foundation turns a healthcare-specific website system into a polished, launch-ready foundation for your practice — shipped in days, not months.',
 		bestFor: 'Practices that want to launch quickly on a strong, healthcare-specific foundation.',
 		includes: ['Foundation customization', 'Core page setup', 'Basic SEO foundation', 'Trust and conversion sections', 'Launch support'],
 		whyItMatters: 'You start from a healthcare-specific structure instead of a blank page or generic theme.',
-		ctaLabel: 'View Foundation Setup',
+		ctaLabel: 'See Foundation Details',
 		ctaHref: '/services/template-setup',
 	},
 	{
 		slug: 'custom-website-system',
-		name: 'Custom Website System',
+		name: 'Signature Custom Websites',
 		shortDescription: 'A custom website built around your brand, services, audience, and conversion goals.',
 		longDescription:
-			'Custom Website System creates a tailored digital presence shaped around your positioning, services, content, and conversion path.',
+			'A Signature Custom Website is a fully custom site shaped around your positioning, services, content, and conversion path.',
 		bestFor: 'Businesses that need a tailored digital presence.',
 		includes: [
 			'Custom page strategy',
@@ -38,16 +38,16 @@ export const serviceOfferings: ServiceOffering[] = [
 			'Conversion-focused layout',
 		],
 		whyItMatters: 'Your site is structured around your actual business, not forced into a generic layout.',
-		ctaLabel: 'View Custom Websites',
+		ctaLabel: 'See Custom Website service',
 		ctaHref: '/services/custom-healthcare-websites',
 	},
 	{
 		slug: 'seo-local-visibility-foundation',
-		name: 'SEO / Local Visibility Foundation',
+		name: 'Local Visibility',
 		shortDescription:
 			'A practical setup that helps search engines and visitors understand what your business offers and where it serves.',
 		longDescription:
-			'SEO / Local Visibility Foundation gives your website clearer service structure, metadata, and content pathways for local discovery.',
+			'Local Visibility gives your website clearer service structure, metadata, and content pathways for local discovery.',
 		bestFor: 'Health and wellness businesses that need better local discovery and clearer service structure.',
 		includes: [
 			'Service page structure',
@@ -75,15 +75,15 @@ export const serviceOfferings: ServiceOffering[] = [
 	},
 	{
 		slug: 'ongoing-optimization',
-		name: 'Ongoing Optimization',
+		name: 'Care and Optimization',
 		shortDescription:
-			'Monthly support to keep improving the website, content, SEO structure, and conversion flow after launch.',
+			'Monthly support to keep improving the website, content, visibility structure, and conversion flow after launch.',
 		longDescription:
-			'Ongoing Optimization keeps your website, service pages, content, SEO structure, and conversion path aligned after launch.',
+			'Care and Optimization keeps your website, service pages, content, visibility structure, and conversion path aligned after launch.',
 		bestFor: 'Businesses that want the site to keep improving instead of going stale.',
-		includes: ['Website updates', 'New pages', 'SEO improvements', 'Content publishing', 'Conversion refinements', 'Technical maintenance'],
+		includes: ['Website updates', 'New pages', 'Visibility improvements', 'Content publishing', 'Conversion refinements', 'Technical maintenance'],
 		whyItMatters: 'Your website should evolve with your business, offers, and audience.',
-		ctaLabel: 'View Optimization Options',
+		ctaLabel: 'View Care plan options',
 		ctaHref: '/services/ongoing-optimization',
 	},
 ];

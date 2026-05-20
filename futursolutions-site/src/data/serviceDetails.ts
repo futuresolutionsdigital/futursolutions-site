@@ -35,11 +35,11 @@ export interface ServiceDetail {
 export const serviceDetails: Record<string, ServiceDetail> = {
 	'template-setup': {
 		slug: 'template-setup',
-		title: 'Industry Website Foundation Setup | FutureSolutions',
+		title: 'Website Foundations | FutureSolutions',
 		description:
 			'Launch faster with a healthcare-specific Website Foundation customized around your services, trust signals, conversion flow, and local visibility.',
 		canonicalPath: '/services/template-setup',
-		eyebrow: 'Industry Website Foundation',
+		eyebrow: 'Website Foundations',
 		heading: 'Launch faster on a healthcare website system built around trust and conversion.',
 		supportingCopy:
 			'FutureSolutions Website Foundations give health and wellness businesses a polished starting point — with the structure, pages, and conversion flow already planned.',
@@ -69,9 +69,9 @@ export const serviceDetails: Record<string, ServiceDetail> = {
 		],
 		whoItsFor: ['Med spas', 'Solo practices', 'Wellness clinics', 'Functional medicine providers', 'New health brands'],
 		relatedServices: [
-			{ label: 'SEO / Local Visibility', href: '/seo' },
+			{ label: 'Local Visibility', href: '/seo' },
 			{ label: 'Growth System Setup', href: '/backend' },
-			{ label: 'Ongoing Optimization', href: '/services/ongoing-optimization' },
+			{ label: 'Care and Optimization', href: '/services/ongoing-optimization' },
 		],
 		faqs: [
 			{
@@ -141,14 +141,14 @@ export const serviceDetails: Record<string, ServiceDetail> = {
 			'Providers with complex offers',
 		],
 		relatedServices: [
-			{ label: 'SEO / Local Visibility', href: '/seo' },
+			{ label: 'Local Visibility', href: '/seo' },
 			{ label: 'Growth System Setup', href: '/backend' },
 			{ label: 'Care and Optimization', href: '/services/ongoing-optimization' },
-			{ label: 'Industry Website Foundation', href: '/services/template-setup' },
+			{ label: 'Website Foundations', href: '/services/template-setup' },
 		],
 		faqs: [
 			{
-				question: 'How is this different from an Industry Website Foundation?',
+				question: 'How is this different from a Website Foundation?',
 				answer: 'A Signature Custom Website is planned around your specific positioning, content, services, and conversion goals — instead of starting from a predefined healthcare-specific Foundation. Both ship the same level of polish; Custom is for practices that need a deeper, brand-led system.',
 			},
 			{
@@ -166,7 +166,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
 		],
 		finalHeading: 'Need a site built around your actual business?',
 		finalCopy:
-			'Request a Website and Systems Audit and get a clear recommendation for whether your business needs a Signature Custom site, an Industry Website Foundation, an SEO Foundation, or a Growth System.',
+			'Request a Website and Systems Audit and get a clear recommendation for whether your business needs a Signature Custom Website, a Website Foundation, Local Visibility work, or a Growth System.',
 		finalPrimaryCta: { label: 'Get a Website Audit', href: '/audit' },
 		finalSecondaryCta: { label: 'View Services', href: '/services' },
 	},
@@ -212,10 +212,10 @@ export const serviceDetails: Record<string, ServiceDetail> = {
 			'Businesses that want conversion improvements over time',
 		],
 		relatedServices: [
-			{ label: 'SEO / Local Visibility', href: '/seo' },
+			{ label: 'Local Visibility', href: '/seo' },
 			{ label: 'Growth System Setup', href: '/backend' },
 			{ label: 'Signature Custom Website', href: '/services/custom-healthcare-websites' },
-			{ label: 'Industry Website Foundation', href: '/services/template-setup' },
+			{ label: 'Website Foundations', href: '/services/template-setup' },
 		],
 		faqs: [
 			{

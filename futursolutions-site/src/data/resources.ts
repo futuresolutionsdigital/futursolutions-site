@@ -18,7 +18,7 @@ export const resources: ResourceEntry[] = [
 		audience: 'Health and wellness businesses',
 		excerpt:
 			'A patient often forms an opinion about your practice before they read a full paragraph. Learn how design, structure, clarity, and navigation influence trust.',
-		relatedService: 'Custom Website System',
+		relatedService: 'Signature Custom Websites',
 		ctaLabel: 'Request a Website Audit',
 		ctaHref: '/audit',
 		status: 'Planned',
@@ -42,7 +42,7 @@ export const resources: ResourceEntry[] = [
 		audience: 'Health and wellness businesses',
 		excerpt:
 			'A clear homepage should build trust quickly, explain services clearly, guide visitors toward the next step, and support local visibility.',
-		relatedService: 'Industry Website Foundation',
+		relatedService: 'Website Foundations',
 		ctaLabel: 'Explore Live Demos',
 		ctaHref: '/templates',
 		status: 'Planned',
@@ -74,11 +74,11 @@ export const resources: ResourceEntry[] = [
 	{
 		slug: 'local-seo-basics-medical-wellness',
 		title: 'Local SEO Basics for Medical and Wellness Practices',
-		category: 'Local SEO',
+		category: 'Local Visibility',
 		audience: 'Medical and wellness practices',
 		excerpt:
 			'Local visibility starts with structured service pages, metadata, internal links, location relevance, and useful content.',
-		relatedService: 'SEO / Local Visibility Foundation',
+		relatedService: 'Local Visibility',
 		ctaLabel: 'Request a Website and Systems Audit',
 		ctaHref: '/audit',
 		status: 'Planned',
@@ -86,11 +86,11 @@ export const resources: ResourceEntry[] = [
 	{
 		slug: 'service-pages-local-seo',
 		title: 'Why Every Service Deserves Its Own Page',
-		category: 'Local SEO',
+		category: 'Local Visibility',
 		audience: 'Service-based healthcare businesses',
 		excerpt:
 			'Dedicated service pages help visitors understand what you offer and help search engines understand your services.',
-		relatedService: 'SEO / Local Visibility Foundation',
+		relatedService: 'Local Visibility',
 		ctaLabel: 'Request a Website and Systems Audit',
 		ctaHref: '/audit',
 		status: 'Planned',
@@ -109,12 +109,12 @@ export const resources: ResourceEntry[] = [
 	},
 	{
 		slug: 'template-vs-custom-website',
-		title: 'Industry Foundation vs Signature Custom: Which Is Right for Your Practice?',
+		title: 'Website Foundation vs Signature Custom: Which Is Right for Your Practice?',
 		category: 'Foundations',
 		audience: 'Growing healthcare practices',
 		excerpt:
-			'An Industry Website Foundation helps you launch faster, while a Signature Custom Website gives you deeper strategy and flexibility.',
-		relatedService: 'Industry Website Foundation / Signature Custom Website',
+			'A Website Foundation helps you launch faster, while a Signature Custom Website gives you deeper strategy and flexibility.',
+		relatedService: 'Website Foundations / Signature Custom Website',
 		ctaLabel: 'Explore Live Demos',
 		ctaHref: '/templates',
 		status: 'Planned',
