@@ -12,7 +12,7 @@ const isVantage = template.slug === 'hormone-trt';
 <section class:list={['section', 'template-detail-hero', { 'template-detail-hero--vantage': isVantage }]} aria-labelledby="template-detail-heading">
 	<div class="site-container template-detail-hero__inner">
 		<div class="template-detail-hero__content">
-			<p class="eyebrow">Website Foundation</p>
+			<p class="eyebrow">Website Foundation · {template.category}</p>
 			<h1 id="template-detail-heading">
 				{isVantage
 					? "Premium men's health website system for TRT, ED care, and hormone optimization."
@@ -128,8 +128,8 @@ const isVantage = template.slug === 'hormone-trt';
 		inset: 0;
 		z-index: -1;
 		background:
-			radial-gradient(circle at 78% 18%, color-mix(in srgb, var(--foundation-accent, var(--color-accent)) 22%, transparent), transparent 30%),
-			linear-gradient(180deg, var(--color-white) 0%, color-mix(in srgb, var(--foundation-tint, var(--color-bg)) 55%, var(--color-bg)) 72%);
+			radial-gradient(circle at 78% 18%, color-mix(in srgb, var(--foundation-accent, var(--color-accent)) 30%, transparent), transparent 35%),
+			linear-gradient(180deg, var(--color-white) 0%, color-mix(in srgb, var(--foundation-tint, var(--color-bg)) 60%, var(--color-bg)) 72%);
 		content: '';
 	}
 
@@ -228,7 +228,7 @@ const isVantage = template.slug === 'hormone-trt';
 
 	.template-detail-hero__lines span:first-child {
 		width: 40%;
-		background: var(--color-accent-light);
+		background: color-mix(in srgb, var(--foundation-accent, var(--color-accent)) 26%, var(--color-border));
 	}
 
 	.template-detail-hero__lines span:nth-child(2) {
@@ -246,13 +246,13 @@ const isVantage = template.slug === 'hormone-trt';
 		display: flex;
 		align-items: flex-end;
 		padding: 1rem;
-		border: 1px solid color-mix(in srgb, var(--color-accent) 28%, var(--color-border));
+		border: 1px solid color-mix(in srgb, var(--foundation-accent, var(--color-accent)) 28%, var(--color-border));
 		border-radius: 16px;
-		background: var(--color-accent-light);
+		background: color-mix(in srgb, var(--foundation-tint, var(--color-accent-light)) 55%, var(--color-white));
 	}
 
 	.template-detail-hero__panel span {
-		color: var(--color-accent-dark);
+		color: var(--foundation-ink, var(--color-accent-dark));
 		font-size: 0.85rem;
 		font-weight: 800;
 		letter-spacing: 0.06em;
@@ -263,6 +263,13 @@ const isVantage = template.slug === 'hormone-trt';
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
 		gap: 0.7rem;
+	}
+
+	.template-detail-hero__tiles span:first-child {
+		min-height: 3rem;
+		border: 1px solid color-mix(in srgb, var(--foundation-accent, var(--color-accent)) 18%, var(--color-border));
+		border-radius: 12px;
+		background: color-mix(in srgb, var(--foundation-tint, var(--color-bg)) 30%, var(--color-white));
 	}
 
 	.template-detail-hero__tiles span {
