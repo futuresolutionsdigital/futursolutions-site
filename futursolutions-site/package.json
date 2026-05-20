@@ -12,7 +12,9 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/vercel": "^10.0.7",
     "@sanity/client": "^7.22.0",
-    "astro": "^6.1.8"
+    "astro": "^6.1.8",
+    "openai": "^6.38.0"
   }
 }
