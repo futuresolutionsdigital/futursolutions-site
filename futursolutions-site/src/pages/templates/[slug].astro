@@ -140,13 +140,48 @@ const paletteVars = palette
 		</section>
 	)}
 
-	<TemplateDetailSection
-		variant="muted"
-		eyebrow="Conversion"
-		heading="Conversion features"
-		items={template.conversionFeatures}
-		columns={2}
-	/>
+	<!-- Mid-page CTA break -->
+	<div class="detail-mid-cta" aria-label="Call to action">
+		<div class="site-container detail-mid-cta__inner">
+			<p class="detail-mid-cta__text">Ready to see it live?</p>
+			<div class="detail-mid-cta__actions">
+				{template.demoUrl ? (
+					<a class="button button-primary detail-mid-cta__primary" href={template.demoUrl}>
+						View Live Demo
+						<span aria-hidden="true">&rarr;</span>
+					</a>
+				) : (
+					<a class="button button-primary detail-mid-cta__primary" href="/templates">
+						Browse Foundations
+					</a>
+				)}
+				<a class="detail-mid-cta__link" href={template.auditUrl}>Get This Customized</a>
+			</div>
+		</div>
+	</div>
+
+	<!-- Conversion features — compact checklist strip -->
+	<section class="section section-muted detail-conversion-strip" aria-labelledby="detail-conversion-heading">
+		<div class="site-container">
+			<div class="detail-conversion-strip__intro">
+				<p class="eyebrow">Conversion</p>
+				<h2 id="detail-conversion-heading">Conversion features built into every page.</h2>
+			</div>
+			<ul class="detail-conversion-strip__list">
+				{template.conversionFeatures.map((f) => {
+					const item = typeof f === 'string' ? { text: f } : f;
+					return (
+						<li class="detail-conversion-strip__item">
+							<svg aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+								<path d="M3.5 8 6 10.5l6.5-7" />
+							</svg>
+							<span>{item.title ? `${item.title} — ${item.text}` : item.text}</span>
+						</li>
+					);
+				})}
+			</ul>
+		</div>
+	</section>
 
 	<TemplateDetailSection
 		eyebrow="Local visibility"
@@ -176,21 +211,30 @@ const paletteVars = palette
 		</section>
 	)}
 
-	<section class="section section-muted detail-backend" aria-labelledby="detail-backend-heading">
+	<section class="section section-ink detail-backend" aria-labelledby="detail-backend-heading">
 		<div class="site-container">
 			<div class="detail-backend__intro">
-			<p class="eyebrow">Growth System ready</p>
-			<h2 id="detail-backend-heading">Built to connect to a real Growth System when you're ready.</h2>
-			<p class="lead">
-				This Foundation can later connect to GoHighLevel for lead capture, booking, CRM follow-up, and pipeline tracking.
-			</p>
+				<p class="eyebrow detail-backend__eyebrow">Growth System ready</p>
+				<h2 id="detail-backend-heading">Built to connect to a real Growth System when you're ready.</h2>
+				<p class="lead">
+					This Foundation can later connect to GoHighLevel for lead capture, booking, CRM follow-up, and pipeline tracking.
+				</p>
 			</div>
-			<div class="detail-backend__flow" aria-label="Backend workflow">
+			<div class="detail-backend__pipeline" aria-label="Growth System pipeline">
 				{backendFlow.map((step, index) => (
-					<div class="card detail-backend__step">
-						<span>{String(index + 1).padStart(2, '0')}</span>
-						<p>{step}</p>
-					</div>
+					<>
+						<div class="detail-backend__node">
+							<span class="detail-backend__node-num">{String(index + 1).padStart(2, '0')}</span>
+							<p class="detail-backend__node-label">{step}</p>
+						</div>
+						{index < backendFlow.length - 1 && (
+							<span class="detail-backend__connector" aria-hidden="true">
+								<svg viewBox="0 0 20 8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+									<path d="M0 4h16M14 1l3 3-3 3" />
+								</svg>
+							</span>
+						)}
+					</>
 				))}
 			</div>
 			<div class="detail-backend__features">
@@ -203,7 +247,7 @@ const paletteVars = palette
 		<div class="site-container">
 			<div class="detail-process__intro">
 				<p class="eyebrow">Customization process</p>
-				<h2 id="detail-process-heading">From Foundation to launch-ready system.</h2>
+				<h2 id="detail-process-heading">How a {template.category} Foundation becomes a launch-ready system.</h2>
 			</div>
 			<div class="detail-process__grid">
 				{processSteps.map((step, index) => (
@@ -287,10 +331,10 @@ const paletteVars = palette
 		width: fit-content;
 		margin-bottom: 1rem;
 		padding: 0.35rem 0.52rem;
-		border: 1px solid color-mix(in srgb, var(--color-accent) 35%, var(--color-border));
+		border: 1px solid color-mix(in srgb, var(--foundation-accent, var(--color-accent)) 35%, var(--color-border));
 		border-radius: 999px;
-		background: var(--color-accent-light);
-		color: var(--color-accent-dark);
+		background: color-mix(in srgb, var(--foundation-accent, var(--color-accent)) 12%, var(--color-white));
+		color: var(--foundation-ink, var(--color-accent-dark));
 		font-size: 0.72rem;
 		font-weight: 800;
 		line-height: 1;
@@ -306,55 +350,181 @@ const paletteVars = palette
 		line-height: 1.6;
 	}
 
-	.detail-backend__intro,
-	.detail-process__intro {
+	/* ═══ Mid-page CTA divider ═══ */
+	.detail-mid-cta {
+		padding: clamp(1.5rem, 3vw, 2rem) 0;
+		background: color-mix(in srgb, var(--foundation-tint, var(--lane-foundation-tint)) 50%, var(--color-white));
+		border-block: 1px solid color-mix(in srgb, var(--foundation-accent, var(--lane-foundation)) 12%, var(--color-border-soft));
+	}
+
+	.detail-mid-cta__inner {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 1.5rem;
+		flex-wrap: wrap;
+	}
+
+	.detail-mid-cta__text {
+		margin: 0;
+		font-size: 1.1rem;
+		font-weight: 700;
+		color: var(--color-text);
+	}
+
+	.detail-mid-cta__actions {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+	}
+
+	.detail-mid-cta__primary {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.35rem;
+	}
+
+	.detail-mid-cta__primary span {
+		display: inline-block;
+		transition: transform 220ms var(--ease-out-quart);
+	}
+
+	.detail-mid-cta__primary:hover span {
+		transform: translateX(2px);
+	}
+
+	.detail-mid-cta__link {
+		color: var(--foundation-ink, var(--color-text));
+		font-size: 0.88rem;
+		font-weight: 650;
+		text-decoration: underline;
+		text-underline-offset: 3px;
+		transition: color var(--transition-base);
+	}
+
+	.detail-mid-cta__link:hover {
+		color: var(--color-text);
+	}
+
+	/* ═══ Conversion checklist strip ═══ */
+	.detail-conversion-strip__intro {
 		max-width: 780px;
 	}
 
-	.detail-backend__flow,
-	.detail-process__grid {
+	.detail-conversion-strip__list {
 		display: grid;
-		gap: 1rem;
+		grid-template-columns: 1fr;
+		gap: 0;
+		max-width: 720px;
+		margin: clamp(1.5rem, 3vw, 2rem) 0 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.detail-conversion-strip__item {
+		display: flex;
+		align-items: center;
+		gap: 0.65rem;
+		padding: 0.7rem 0.85rem;
+		border-bottom: 1px solid var(--color-border-soft);
+	}
+
+	.detail-conversion-strip__item:first-child {
+		border-top: 1px solid var(--color-border-soft);
+	}
+
+	.detail-conversion-strip__item:nth-child(even) {
+		background: color-mix(in srgb, var(--foundation-tint, var(--lane-foundation-tint)) 30%, var(--color-white));
+	}
+
+	.detail-conversion-strip__item svg {
+		flex-shrink: 0;
+		width: 0.95rem;
+		height: 0.95rem;
+		color: var(--foundation-accent, var(--lane-foundation));
+	}
+
+	.detail-conversion-strip__item span {
+		font-size: 0.92rem;
+		font-weight: 550;
+		color: var(--color-text);
+		line-height: 1.45;
+	}
+
+	/* ═══ Dark pipeline — Growth System ═══ */
+	.detail-backend {
+		background: var(--color-deep-ink);
+		color: var(--color-white);
+	}
+
+	.detail-backend__intro {
+		max-width: 780px;
+	}
+
+	.detail-backend__eyebrow {
+		color: var(--lane-growth) !important;
+	}
+
+	.detail-backend__intro h2 {
+		color: var(--color-white);
+	}
+
+	.detail-backend__intro .lead {
+		color: rgba(255, 255, 255, 0.62);
+	}
+
+	.detail-backend__pipeline {
+		display: flex;
+		align-items: center;
+		gap: 0;
 		margin-top: clamp(2rem, 4vw, 3rem);
+		overflow-x: auto;
+		padding-bottom: 0.5rem;
 	}
 
-	.detail-backend__flow {
-		grid-template-columns: repeat(5, minmax(0, 1fr));
+	.detail-backend__node {
+		flex-shrink: 0;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0.55rem;
+		padding: 1.2rem 1rem;
+		min-width: 120px;
+		border: 1px solid rgba(255, 255, 255, 0.08);
+		border-radius: var(--radius-md);
+		background: rgba(255, 255, 255, 0.04);
 	}
 
-	.detail-process__grid {
-		grid-template-columns: repeat(4, minmax(0, 1fr));
-	}
-
-	.detail-backend__step,
-	.detail-process__card {
-		padding: 1.25rem;
-	}
-
-	.detail-backend__step span,
-	.detail-process__card span {
+	.detail-backend__node-num {
 		display: inline-flex;
-		margin-bottom: 1.25rem;
-		padding: 0.35rem 0.52rem;
-		border: 1px solid color-mix(in srgb, var(--color-accent) 35%, var(--color-border));
+		padding: 0.3rem 0.5rem;
 		border-radius: 999px;
-		background: var(--color-accent-light);
-		color: var(--color-accent-dark);
-		font-size: 0.72rem;
+		background: color-mix(in srgb, var(--lane-growth) 22%, transparent);
+		color: var(--lane-growth);
+		font-size: 0.68rem;
 		font-weight: 800;
 		line-height: 1;
 	}
 
-	.detail-backend__step p {
+	.detail-backend__node-label {
 		margin: 0;
-		color: var(--color-text);
-		font-size: 0.95rem;
+		font-size: 0.88rem;
 		font-weight: 700;
+		text-align: center;
+		color: rgba(255, 255, 255, 0.85);
 	}
 
-	.detail-process__card h3 {
-		font-size: 1.1rem;
-		letter-spacing: -0.02em;
+	.detail-backend__connector {
+		flex-shrink: 0;
+		display: flex;
+		align-items: center;
+		padding: 0 0.25rem;
+	}
+
+	.detail-backend__connector svg {
+		width: 1.2rem;
+		height: 0.5rem;
+		color: rgba(255, 255, 255, 0.18);
 	}
 
 	.detail-backend__features {
@@ -367,12 +537,45 @@ const paletteVars = palette
 	.detail-backend__features span {
 		display: inline-flex;
 		padding: 0.42rem 0.65rem;
-		border: 1px solid var(--color-border);
+		border: 1px solid rgba(255, 255, 255, 0.1);
 		border-radius: 999px;
-		background: var(--color-white);
-		color: var(--color-muted);
+		background: rgba(255, 255, 255, 0.04);
+		color: rgba(255, 255, 255, 0.52);
 		font-size: 0.8125rem;
 		font-weight: 700;
+	}
+
+	.detail-process__intro {
+		max-width: 780px;
+	}
+
+	.detail-process__grid {
+		display: grid;
+		gap: 1rem;
+		margin-top: clamp(2rem, 4vw, 3rem);
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+	}
+
+	.detail-process__card {
+		padding: 1.25rem;
+	}
+
+	.detail-process__card span {
+		display: inline-flex;
+		margin-bottom: 1.25rem;
+		padding: 0.35rem 0.52rem;
+		border: 1px solid color-mix(in srgb, var(--foundation-accent, var(--color-accent)) 35%, var(--color-border));
+		border-radius: 999px;
+		background: color-mix(in srgb, var(--foundation-accent, var(--color-accent)) 12%, var(--color-white));
+		color: var(--foundation-ink, var(--color-accent-dark));
+		font-size: 0.72rem;
+		font-weight: 800;
+		line-height: 1;
+	}
+
+	.detail-process__card h3 {
+		font-size: 1.1rem;
+		letter-spacing: -0.02em;
 	}
 
 	/* Rich audience (per-template detail) */
@@ -433,6 +636,13 @@ const paletteVars = palette
 		border-top: 1px solid var(--color-border);
 	}
 
+	.detail-pages__item:nth-child(even) {
+		background: color-mix(in srgb, var(--foundation-tint, var(--lane-foundation-tint)) 35%, var(--color-white));
+		padding-inline: 1rem;
+		margin-inline: -1rem;
+		border-radius: var(--radius-sm);
+	}
+
 	.detail-pages__num {
 		flex-shrink: 0;
 		display: inline-flex;
@@ -441,8 +651,8 @@ const paletteVars = palette
 		min-width: 1.8rem;
 		padding: 0.3rem 0.45rem;
 		border-radius: 999px;
-		background: var(--lane-foundation-tint);
-		color: var(--lane-foundation-ink);
+		background: color-mix(in srgb, var(--foundation-accent, var(--lane-foundation)) 14%, var(--color-white));
+		color: var(--foundation-ink, var(--lane-foundation-ink));
 		font-size: 0.68rem;
 		font-weight: 800;
 		line-height: 1;
@@ -485,7 +695,7 @@ const paletteVars = palette
 		width: 1rem;
 		height: 1rem;
 		margin-top: 0.2rem;
-		color: var(--lane-foundation);
+		color: var(--foundation-accent, var(--lane-foundation));
 	}
 
 	.detail-customize__item span {
@@ -549,7 +759,6 @@ const paletteVars = palette
 	}
 
 	@media (max-width: 1060px) {
-		.detail-backend__flow,
 		.detail-process__grid,
 		.detail-why-different__grid {
 			grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -559,16 +768,33 @@ const paletteVars = palette
 		.detail-strategic__grid {
 			grid-template-columns: repeat(2, minmax(0, 1fr));
 		}
+
+		.detail-backend__pipeline {
+			flex-wrap: wrap;
+			gap: 0.5rem;
+		}
+
+		.detail-backend__connector {
+			display: none;
+		}
+
+		.detail-backend__node {
+			flex: 1 1 calc(50% - 0.5rem);
+			min-width: 0;
+		}
 	}
 
 	@media (max-width: 620px) {
-		.detail-backend__flow,
 		.detail-process__grid,
 		.detail-why-different__grid,
 		.detail-audience-rich__grid,
 		.detail-strategic__grid,
 		.detail-customize__list {
 			grid-template-columns: 1fr;
+		}
+
+		.detail-backend__node {
+			flex: 1 1 100%;
 		}
 	}
 </style>
