@@ -12,7 +12,7 @@ const isVantage = template.slug === 'hormone-trt';
 <section class:list={['section', 'template-detail-hero', { 'template-detail-hero--vantage': isVantage }]} aria-labelledby="template-detail-heading">
 	<div class="site-container template-detail-hero__inner">
 		<div class="template-detail-hero__content">
-			<p class="eyebrow">Template System</p>
+			<p class="eyebrow">Website Foundation</p>
 			<h1 id="template-detail-heading">
 				{isVantage
 					? "Premium men's health website system for TRT, ED care, and hormone optimization."
@@ -21,14 +21,14 @@ const isVantage = template.slug === 'hormone-trt';
 			</h1>
 			<p class="lead">{template.longDescription || template.shortDescription}</p>
 			<div class="button-row">
-				<a class="button button-primary" href={template.auditUrl}>Get This Template Customized</a>
 				{
 					template.demoUrl ? (
-						<a class="button button-secondary" href={template.demoUrl}>View Live Demo</a>
+						<a class="button button-primary" href={template.demoUrl}>View Live Demo</a>
 					) : (
-						<a class="button button-secondary" href="/templates">Back to Templates</a>
+						<a class="button button-primary" href="/templates">Back to Live Demos</a>
 					)
 				}
+				<a class="button button-secondary" href={template.auditUrl}>Get This Foundation Customized</a>
 			</div>
 			<p class="template-detail-hero__meta">Complexity: {template.complexity}</p>
 		</div>

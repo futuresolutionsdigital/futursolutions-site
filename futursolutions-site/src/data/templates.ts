@@ -425,7 +425,7 @@ export const templateSystems: TemplateSystem[] = [
 		shortDescription:
 			"A red/black sports-performance men's health website system for TRT, ED care, hormone optimization, medical weight loss, peptide therapy, and longevity clinics.",
 		longDescription:
-			"A conversion-focused website template for men's health clinics offering testosterone optimization, ED treatment, medical weight loss, peptide therapy, longevity medicine, lab-based care, and private consultation funnels. Built with a dark, masculine sports-performance design system and assessment-first patient routing.",
+			"A conversion-focused Website Foundation for men's health clinics offering testosterone optimization, ED treatment, medical weight loss, peptide therapy, longevity medicine, lab-based care, and private consultation funnels. Built with a dark, masculine sports-performance design system and assessment-first patient routing.",
 		audience:
 			"Men's health clinics, TRT clinics, hormone optimization practices, ED treatment providers, medical weight loss clinics targeting men, peptide therapy clinics, and male longevity/performance medicine practices.",
 		businessTypes: [

@@ -43,11 +43,11 @@ const medSpaConfig = {
 	primaryCtaHref: '/demos/med-spa/contact',
 	footerBrandHref: '/demos/med-spa',
 	footerBrandText: 'Luma Aesthetics',
-	footerNote: 'Demonstration practice site showcasing a Future Solutions website template.',
+	footerNote: 'Demonstration practice site showcasing a FutureSolutions Website Foundation.',
 	footerLinks: [
 		{ label: 'Treatments', href: '/demos/med-spa/treatments' },
 		{ label: 'Consultation', href: '/demos/med-spa/contact' },
-		{ label: 'Template Details', href: '/templates/med-spa' },
+		{ label: 'Foundation Details', href: '/templates/med-spa' },
 	],
 } as const;
 
@@ -68,7 +68,7 @@ const activeConfig =
 				primaryCtaHref: props.primaryCtaHref!,
 				footerBrandHref: props.footerBrandHref!,
 				footerBrandText: props.footerBrandText!,
-				footerNote: props.footerNote ?? 'Demonstration solo practice site showcasing a Future Solutions website template.',
+				footerNote: props.footerNote ?? 'Demonstration solo practice site showcasing a FutureSolutions Website Foundation.',
 				footerLinks: props.footerLinks!,
 		  }
 		: medSpaConfig;

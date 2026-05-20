@@ -212,13 +212,13 @@ const preferredNextSteps = [
 		if (nameField instanceof HTMLInputElement) nameField.value = label;
 		if (categoryField instanceof HTMLInputElement && meta) categoryField.value = meta.category;
 		if (sourceField instanceof HTMLInputElement) sourceField.value = '/templates/' + slug;
-		if (leadTypeField instanceof HTMLInputElement) leadTypeField.value = 'Template Customization Request';
-		if (inquiryField instanceof HTMLInputElement) inquiryField.value = 'template_customization';
+		if (leadTypeField instanceof HTMLInputElement) leadTypeField.value = 'Foundation Customization Request';
+		if (inquiryField instanceof HTMLInputElement) inquiryField.value = 'foundation_customization';
 
-		if (eyebrowEl) eyebrowEl.textContent = 'Template customization';
-		if (headingEl) headingEl.textContent = 'Customize this template for your practice.';
-		if (descEl) descEl.textContent = 'Tell us about your practice, services, and goals. We\u2019ll recommend how to adapt this template around your provider story, pricing model, and patient onboarding process.';
-		if (submitBtn) submitBtn.textContent = 'Request Template Customization';
+		if (eyebrowEl) eyebrowEl.textContent = 'Foundation customization';
+		if (headingEl) headingEl.textContent = 'Customize this Foundation for your practice.';
+		if (descEl) descEl.textContent = 'Tell us about your practice, services, and goals. We\u2019ll recommend how to adapt this Website Foundation around your provider story, pricing model, and patient onboarding process.';
+		if (submitBtn) submitBtn.textContent = 'Request Foundation Customization';
 
 		if (bizTypeField instanceof HTMLSelectElement && meta) {
 			for (var i = 0; i < bizTypeField.options.length; i++) {
