@@ -1,9 +1,10 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import FoundationAtAGlance from '../../components/FoundationAtAGlance.astro';
 import TemplateDetailHero from '../../components/TemplateDetailHero.astro';
 import TemplateDetailSection from '../../components/TemplateDetailSection.astro';
 import TemplateFinalCTA from '../../components/TemplateFinalCTA.astro';
-import { templateSystems, type TemplateSystem } from '../../data/templates';
+import { templateSystems, foundationPalette, type TemplateSystem } from '../../data/templates';
 
 export function getStaticPaths() {
 	return templateSystems.map((template) => ({
@@ -27,6 +28,11 @@ const processSteps = [
 	'Connect SEO and Growth Systems',
 	'Launch and optimize',
 ];
+
+const palette = foundationPalette[template.slug];
+const paletteVars = palette
+	? `--foundation-accent:${palette.accent};--foundation-tint:${palette.tint};--foundation-ink:${palette.ink};`
+	: undefined;
 ---
 
 <BaseLayout
@@ -37,7 +43,10 @@ const processSteps = [
 	ogDescription={pageDescription}
 	ogUrl={canonicalUrl}
 >
+	<div class="foundation-page" style={paletteVars} data-foundation-slug={template.slug}>
 	<TemplateDetailHero template={template} />
+
+	<FoundationAtAGlance template={template} />
 
 	{template.audienceDetails && template.audienceDetails.length > 0 ? (
 		<section class="section detail-audience-rich" aria-labelledby="detail-audience-heading">
@@ -254,6 +263,7 @@ const processSteps = [
 	)}
 
 	<TemplateFinalCTA primaryHref={template.auditUrl} secondaryHref="/audit" />
+	</div>
 </BaseLayout>
 
 <style>

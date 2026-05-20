@@ -1,0 +1,259 @@
+---
+import type { TemplateSystem } from '../data/templates';
+
+interface Props {
+	template: TemplateSystem;
+}
+
+const { template } = Astro.props;
+
+const glance = template.atAGlance;
+
+const items = glance
+	? [
+			{ label: 'Best for', value: glance.bestFor, icon: 'audience' },
+			{ label: 'Primary goal', value: glance.primaryGoal, icon: 'target' },
+			{ label: 'Includes', value: glance.includes, icon: 'pages' },
+			{ label: 'Typical path', value: glance.typicalPath, icon: 'path' },
+		]
+	: [];
+---
+
+{
+	glance && (
+		<section class="section-tight foundation-glance" aria-labelledby="foundation-glance-heading">
+			<div class="site-container">
+				<header class="foundation-glance__head">
+					<p class="eyebrow">At a glance</p>
+					<h2 id="foundation-glance-heading" class="foundation-glance__heading">
+						What this Website Foundation is — in 30 seconds.
+					</h2>
+				</header>
+
+				<dl class="foundation-glance__grid">
+					{items.map((item) => (
+						<div class="foundation-glance__item">
+							<dt class="foundation-glance__label">
+								<span class="foundation-glance__icon" aria-hidden="true">
+									{item.icon === 'audience' && (
+										<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+											<circle cx="7.5" cy="7.5" r="3" />
+											<path d="M2.5 16c.6-2.5 2.7-4 5-4s4.4 1.5 5 4" />
+											<circle cx="14.5" cy="6" r="2.2" />
+											<path d="M12.8 11.5c1.6.4 2.9 1.7 3.7 3.6" />
+										</svg>
+									)}
+									{item.icon === 'target' && (
+										<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+											<circle cx="10" cy="10" r="7" />
+											<circle cx="10" cy="10" r="3.5" />
+											<circle cx="10" cy="10" r="1" fill="currentColor" stroke="none" />
+										</svg>
+									)}
+									{item.icon === 'pages' && (
+										<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+											<rect x="3.5" y="2.5" width="10" height="13" rx="1.5" />
+											<rect x="6.5" y="5.5" width="10" height="13" rx="1.5" />
+										</svg>
+									)}
+									{item.icon === 'path' && (
+										<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+											<circle cx="4" cy="4" r="1.5" />
+											<circle cx="16" cy="10" r="1.5" />
+											<circle cx="4" cy="16" r="1.5" />
+											<path d="M5.4 4.5h6.4a2 2 0 0 1 2 2v2.4" />
+											<path d="M14.6 11.5H8.2a2 2 0 0 0-2 2V16" />
+										</svg>
+									)}
+								</span>
+								{item.label}
+							</dt>
+							<dd class="foundation-glance__value">{item.value}</dd>
+						</div>
+					))}
+				</dl>
+
+				<div class="foundation-glance__signals" aria-label="Foundation guarantees">
+					<span class="foundation-glance__signal">
+						<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+							<path d="M3 8.5l3 3 7-7" />
+						</svg>
+						Live and clickable
+					</span>
+					<span class="foundation-glance__signal">
+						<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+							<path d="M3 8.5l3 3 7-7" />
+						</svg>
+						Fully customizable
+					</span>
+					<span class="foundation-glance__signal">
+						<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+							<path d="M3 8.5l3 3 7-7" />
+						</svg>
+						Growth System ready
+					</span>
+				</div>
+
+				<div class="foundation-glance__actions">
+					{template.demoUrl ? (
+						<a class="button button-primary" href={template.demoUrl}>
+							View Live Demo
+							<span aria-hidden="true">&rarr;</span>
+						</a>
+					) : (
+						<span class="foundation-glance__pending">Demo coming soon</span>
+					)}
+					<a class="button button-secondary" href={template.auditUrl}>
+						Get This Foundation Customized
+					</a>
+				</div>
+			</div>
+		</section>
+	)
+}
+
+<style>
+	.foundation-glance {
+		position: relative;
+		background:
+			linear-gradient(180deg, var(--color-white) 0%, color-mix(in srgb, var(--lane-foundation-tint) 65%, var(--color-white)) 100%);
+		border-block: 1px solid color-mix(in srgb, var(--lane-foundation) 16%, var(--color-border-soft));
+	}
+
+	.foundation-glance__head {
+		max-width: 56rem;
+		margin: 0 0 clamp(1.5rem, 3vw, 2.25rem) 0;
+	}
+
+	.foundation-glance__head .eyebrow {
+		color: var(--lane-foundation-ink);
+	}
+
+	.foundation-glance__heading {
+		margin: 0;
+		font-size: clamp(1.5rem, 1.1rem + 1.2vw, 2rem);
+		font-weight: 700;
+		letter-spacing: -0.03em;
+		line-height: 1.2;
+	}
+
+	.foundation-glance__grid {
+		display: grid;
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+		gap: 0.85rem;
+		margin: 0 0 1.25rem 0;
+	}
+
+	.foundation-glance__item {
+		display: grid;
+		gap: 0.5rem;
+		padding: 1.1rem 1.15rem;
+		border: 1px solid color-mix(in srgb, var(--lane-foundation) 16%, var(--color-border-soft));
+		border-radius: var(--radius-md);
+		background: var(--color-white);
+		box-shadow: var(--shadow-card);
+	}
+
+	.foundation-glance__label {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.55rem;
+		margin: 0;
+		color: var(--lane-foundation-ink);
+		font-size: 0.7rem;
+		font-weight: 800;
+		letter-spacing: 0.16em;
+		text-transform: uppercase;
+	}
+
+	.foundation-glance__icon {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 1.65rem;
+		height: 1.65rem;
+		border: 1px solid color-mix(in srgb, var(--lane-foundation) 28%, var(--color-border-soft));
+		border-radius: 8px;
+		background: var(--lane-foundation-tint);
+		color: var(--lane-foundation-ink);
+	}
+
+	.foundation-glance__icon svg {
+		width: 0.9rem;
+		height: 0.9rem;
+	}
+
+	.foundation-glance__value {
+		margin: 0;
+		color: var(--color-text);
+		font-size: 0.93rem;
+		font-weight: 500;
+		line-height: 1.5;
+	}
+
+	.foundation-glance__signals {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1.25rem;
+		margin: 0 0 1.5rem 0;
+		padding: 0.85rem 1rem;
+		border: 1px solid color-mix(in srgb, var(--lane-foundation) 22%, var(--color-border-soft));
+		border-radius: var(--radius-sm);
+		background: var(--color-white);
+	}
+
+	.foundation-glance__signal {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.45rem;
+		color: var(--color-text);
+		font-size: 0.86rem;
+		font-weight: 650;
+	}
+
+	.foundation-glance__signal svg {
+		width: 1rem;
+		height: 1rem;
+		color: var(--lane-foundation);
+	}
+
+	.foundation-glance__actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.75rem;
+	}
+
+	.foundation-glance__actions .button-primary span {
+		display: inline-block;
+		margin-left: 0.35rem;
+		transition: transform 220ms var(--ease-out-quart);
+	}
+
+	.foundation-glance__actions .button-primary:hover span {
+		transform: translateX(2px);
+	}
+
+	.foundation-glance__pending {
+		display: inline-flex;
+		align-items: center;
+		padding: 0.6rem 0.9rem;
+		color: var(--color-muted);
+		font-style: italic;
+	}
+
+	@media (max-width: 1024px) {
+		.foundation-glance__grid {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+
+	@media (max-width: 560px) {
+		.foundation-glance__grid {
+			grid-template-columns: 1fr;
+		}
+
+		.foundation-glance__signals {
+			gap: 0.6rem;
+		}
+	}
+</style>

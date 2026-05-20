@@ -25,7 +25,28 @@ export interface TemplateSystem {
 	customizationOptions?: string[];
 	salesFaqs?: { q: string; a: string }[];
 	pageDetails?: { name: string; purpose: string }[];
+	/** Compact above-the-fold summary used by FoundationAtAGlance after the hero. */
+	atAGlance?: {
+		bestFor: string;
+		primaryGoal: string;
+		includes: string;
+		typicalPath: string;
+	};
 }
+
+/**
+ * Per-Foundation accent palette. Used by both the homepage demo library
+ * preview and the Foundation detail hero so each Foundation reads as
+ * its own product, not a copy of the others. Values are tints — never
+ * fully saturated.
+ */
+export const foundationPalette: Record<string, { accent: string; tint: string; ink: string }> = {
+	'med-spa': { accent: '#B97485', tint: '#F7EBEE', ink: '#7E4856' },
+	'solo-practice': { accent: '#5F8F8B', tint: '#EAF2F1', ink: '#3F6764' },
+	'association': { accent: '#4F7CAC', tint: '#EAF1F8', ink: '#325883' },
+	'premium-wellness-clinic': { accent: '#C6996A', tint: '#F7EFE3', ink: '#8C6536' },
+	'hormone-trt': { accent: '#C81E1E', tint: '#1A0F0F', ink: '#C81E1E' },
+};
 
 /** Filter chip definitions for /templates browsing (exclude "all"; handled separately). */
 export const templateBrowseFilterDefs = [
@@ -137,6 +158,12 @@ export const templateSystems: TemplateSystem[] = [
 		demoUrl: '/demos/med-spa',
 		auditUrl: '/audit?template=med-spa',
 		featured: true,
+		atAGlance: {
+			bestFor: 'Med spas, injectables studios, laser clinics, and aesthetic dermatology practices.',
+			primaryGoal: 'Educate on treatments responsibly and drive consultation bookings.',
+			includes: '9 pages · Treatment menu · Concern guide · Results gallery · Provider trust · Membership · Booking flow.',
+			typicalPath: 'Foundation → customize brand & services → connect booking and follow-up → launch.',
+		},
 		audienceDetails: [
 			{ label: 'Med spas', desc: 'Full-service aesthetic practices offering injectables, lasers, skin treatments, and wellness.' },
 			{ label: 'Injectables studios', desc: 'Built to explain Botox, fillers, and facial balancing with trust-first service pages.' },
@@ -226,6 +253,12 @@ export const templateSystems: TemplateSystem[] = [
 		demoUrl: '/demos/solo-practice',
 		auditUrl: '/audit?template=solo-practice',
 		featured: true,
+		atAGlance: {
+			bestFor: 'Solo NPs, private primary care, DPC, concierge medicine, and cash-pay practices.',
+			primaryGoal: 'Build provider trust and drive consultation bookings.',
+			includes: '10 pages · Provider story · Care model walkthrough · Transparent pricing · Resource hub.',
+			typicalPath: 'Foundation → customize provider & services → connect booking and CRM → launch.',
+		},
 		audienceDetails: [
 			{ label: 'Solo nurse practitioners', desc: 'NPs building or scaling a private practice with a personal care model.' },
 			{ label: 'Private primary care', desc: 'Physicians offering relationship-driven, non-insurance care.' },
@@ -318,6 +351,12 @@ export const templateSystems: TemplateSystem[] = [
 		demoUrl: '/demos/association',
 		auditUrl: '/audit?template=association',
 		featured: true,
+		atAGlance: {
+			bestFor: 'Statewide or national professional associations in healthcare, nursing, or allied health.',
+			primaryGoal: 'Grow membership, promote events, and activate advocacy.',
+			includes: '14 pages · Membership · Events · Advocacy · Resources · Chapters · Career center.',
+			typicalPath: 'Foundation → customize org & content model → connect CMS and member systems → launch.',
+		},
 		audienceDetails: [
 			{ label: 'Nursing associations', desc: 'State or national organizations representing nurses, NPs, and advanced practice providers.' },
 			{ label: 'Medical associations', desc: 'Physician-led organizations coordinating advocacy, education, and professional standards.' },
@@ -417,6 +456,12 @@ export const templateSystems: TemplateSystem[] = [
 		demoUrl: '/demos/premium-wellness-clinic',
 		auditUrl: '/audit?template=premium-wellness-clinic',
 		featured: true,
+		atAGlance: {
+			bestFor: 'Premium wellness clinics offering IV, hormone, weight loss, and longevity programs.',
+			primaryGoal: 'Present a calm premium brand and route visitors to the right service or program.',
+			includes: '13 pages · Service category grid · Provider trust · Membership tiers · Resource hub.',
+			typicalPath: 'Foundation → customize brand & programs → connect Growth System → launch.',
+		},
 	},
 	{
 		slug: 'hormone-trt',
@@ -458,6 +503,12 @@ export const templateSystems: TemplateSystem[] = [
 		demoUrl: '/demos/hormone-trt',
 		auditUrl: '/audit?template=hormone-trt',
 		featured: true,
+		atAGlance: {
+			bestFor: "Men's health clinics offering TRT, ED care, hormone optimization, and medical weight loss.",
+			primaryGoal: 'Qualify visitors and route them through assessment to private consultation.',
+			includes: 'Multi-page system · Assessment-first routing · Service depth · Pricing · Compliance-aware copy.',
+			typicalPath: 'Foundation → customize brand & services → connect assessment and CRM → launch.',
+		},
 		whyDifferent: [
 			{ title: 'Built around male patient psychology', text: 'Sensitive topics like ED, libido, fatigue, and weight gain are handled directly but discreetly — with language calibrated for how men actually seek care.' },
 			{ title: 'Sports-performance brand positioning', text: 'The design avoids generic wellness softness and cheap TRT hype by positioning care like a premium performance medicine system.' },

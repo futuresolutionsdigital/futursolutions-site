@@ -125,9 +125,13 @@ const isVantage = template.slug === 'hormone-trt';
 		inset: 0;
 		z-index: -1;
 		background:
-			radial-gradient(circle at 78% 18%, rgba(95, 143, 139, 0.12), transparent 30%),
-			linear-gradient(180deg, var(--color-white) 0%, var(--color-bg) 72%);
+			radial-gradient(circle at 78% 18%, color-mix(in srgb, var(--foundation-accent, var(--color-accent)) 22%, transparent), transparent 30%),
+			linear-gradient(180deg, var(--color-white) 0%, color-mix(in srgb, var(--foundation-tint, var(--color-bg)) 55%, var(--color-bg)) 72%);
 		content: '';
+	}
+
+	.template-detail-hero .eyebrow {
+		color: var(--foundation-ink, var(--lane-foundation-ink));
 	}
 
 	.template-detail-hero__inner {

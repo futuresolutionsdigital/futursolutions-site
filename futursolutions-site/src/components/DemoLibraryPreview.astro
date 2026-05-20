@@ -1,21 +1,8 @@
 ---
-import { templateSystems } from '../data/templates';
+import { templateSystems, foundationPalette } from '../data/templates';
 
 const featuredDemos = templateSystems;
 const newDemoSlugs = new Set(['premium-wellness-clinic', 'hormone-trt']);
-
-/**
- * Per-Foundation visual palette. Each template gets a small accent treatment in
- * its stylized preview so the row reads as a curated library rather than five
- * identical mockups. Values are tints — never fully saturated.
- */
-const demoPalette: Record<string, { accent: string; tint: string; ink: string }> = {
-	'med-spa': { accent: '#B97485', tint: '#F7EBEE', ink: '#7E4856' },
-	'solo-practice': { accent: '#5F8F8B', tint: '#EAF2F1', ink: '#3F6764' },
-	'association': { accent: '#4F7CAC', tint: '#EAF1F8', ink: '#325883' },
-	'premium-wellness-clinic': { accent: '#C6996A', tint: '#F7EFE3', ink: '#8C6536' },
-	'hormone-trt': { accent: '#C81E1E', tint: '#1A0F0F', ink: '#C81E1E' },
-};
 ---
 
 <section id="demos" class="section section-tight demo-library" aria-labelledby="demo-library-heading">
@@ -56,7 +43,7 @@ const demoPalette: Record<string, { accent: string; tint: string; ink: string }>
 		<div class="demo-library__grid">
 			{
 				featuredDemos.map((template, index) => {
-					const palette = demoPalette[template.slug];
+					const palette = foundationPalette[template.slug];
 					const styleVars = palette
 						? `--demo-accent:${palette.accent};--demo-tint:${palette.tint};--demo-ink:${palette.ink};`
 						: undefined;
