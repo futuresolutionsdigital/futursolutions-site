@@ -59,7 +59,7 @@ function validateMessages(body: unknown): ChatMessage[] | null {
 }
 
 export const POST: APIRoute = async ({ request, clientAddress }) => {
-	const apiKey = import.meta.env.OPENAI_API_KEY;
+	const apiKey = process.env.OPENAI_API_KEY;
 	if (!apiKey) {
 		return new Response(JSON.stringify({ error: 'Server configuration error' }), {
 			status: 500,
