@@ -142,59 +142,118 @@ const processSteps = [
 			<div class="services-grid-section__intro">
 				<p class="eyebrow">Five services. One system.</p>
 				<h2 id="services-grid-heading">Build the level of system your business needs.</h2>
+				<p class="services-grid-section__sub">
+					<strong>Three primary offers</strong> — Foundation, Custom, Growth System — plus <strong>two supporting layers</strong> for Local Visibility and Care.
+				</p>
 			</div>
-			<div class="services-grid">
-				{serviceOfferings.map((service) => {
-					const present = servicePresentation[service.slug];
-					const laneKey = present?.lane === 'visibility' ? 'foundation' : present?.lane;
-					return (
-						<article
-							class:list={[
-								'card service-offering',
-								present && `lane-accent-top lane-accent-top--${laneKey}`,
-								present && `service-offering--${laneKey}`,
-							]}
-							id={service.slug}
-						>
-							{present && (
-								<header class="service-offering__head">
-									<span class="service-offering__section-label">{present.section}</span>
-									{present.lane !== 'visibility' ? (
-										<span class={`lane-tag lane-tag--${present.lane}`}>{present.lane}</span>
-									) : (
-										<span class="service-offering__visibility-tag">Visibility</span>
-									)}
-								</header>
-							)}
-							<h3>{service.name}</h3>
-							<p class="service-offering__summary">{service.shortDescription}</p>
 
-							<div class="service-offering__outcomes">
-								<div>
-									<strong>What changes</strong>
-									<span>{present?.outcome ?? service.whyItMatters}</span>
-								</div>
-								<div>
-									<strong>Best for</strong>
-									<span>{service.bestFor}</span>
-								</div>
-							</div>
+			{(() => {
+				const primarySlugs = new Set(['template-setup', 'custom-website-system', 'backend-system-setup']);
+				const primary = serviceOfferings.filter((s) => primarySlugs.has(s.slug));
+				const supporting = serviceOfferings.filter((s) => !primarySlugs.has(s.slug));
+				return (
+					<>
+						<div class="services-grid services-grid--primary">
+							{primary.map((service) => {
+								const present = servicePresentation[service.slug];
+								const laneKey = present?.lane === 'visibility' ? 'foundation' : present?.lane;
+								return (
+									<article
+										class:list={[
+											'card service-offering service-offering--primary',
+											present && `lane-accent-top lane-accent-top--${laneKey}`,
+											present && `service-offering--${laneKey}`,
+										]}
+										id={service.slug}
+									>
+										{present && (
+											<header class="service-offering__head">
+												<span class="service-offering__section-label">{present.section}</span>
+												{present.lane !== 'visibility' ? (
+													<span class={`lane-tag lane-tag--${present.lane}`}>{present.lane}</span>
+												) : (
+													<span class="service-offering__visibility-tag">Visibility</span>
+												)}
+											</header>
+										)}
+										<h3>{service.name}</h3>
+										<p class="service-offering__summary">{service.shortDescription}</p>
 
-							<details class="service-offering__details">
-								<summary>What's included</summary>
-								<ul>
-									{service.includes.map((item) => <li>{item}</li>)}
-								</ul>
-							</details>
+										<div class="service-offering__outcomes">
+											<div>
+												<strong>What changes</strong>
+												<span>{present?.outcome ?? service.whyItMatters}</span>
+											</div>
+											<div>
+												<strong>Best for</strong>
+												<span>{service.bestFor}</span>
+											</div>
+										</div>
 
-							<a class="service-offering__link" href={service.ctaHref}>
-								{service.ctaLabel}
-								<span aria-hidden="true">&rarr;</span>
-							</a>
-						</article>
-					);
-				})}
-			</div>
+										<details class="service-offering__details">
+											<summary>What's included</summary>
+											<ul>
+												{service.includes.map((item) => <li>{item}</li>)}
+											</ul>
+										</details>
+
+										<a class="service-offering__link" href={service.ctaHref}>
+											{service.ctaLabel}
+											<span aria-hidden="true">&rarr;</span>
+										</a>
+									</article>
+								);
+							})}
+						</div>
+
+						<div class="services-supporting-head">
+							<span class="services-supporting-head__label">Supporting layers</span>
+							<span class="services-supporting-head__rule" aria-hidden="true"></span>
+							<span class="services-supporting-head__note">Add to any primary offer</span>
+						</div>
+
+						<div class="services-grid services-grid--supporting">
+							{supporting.map((service) => {
+								const present = servicePresentation[service.slug];
+								const laneKey = present?.lane === 'visibility' ? 'foundation' : present?.lane;
+								return (
+									<article
+										class:list={[
+											'card service-offering service-offering--supporting',
+											present && `lane-accent-top lane-accent-top--${laneKey}`,
+											present && `service-offering--${laneKey}`,
+										]}
+										id={service.slug}
+									>
+										{present && (
+											<header class="service-offering__head">
+												<span class="service-offering__section-label">{present.section}</span>
+												{present.lane !== 'visibility' ? (
+													<span class={`lane-tag lane-tag--${present.lane}`}>{present.lane}</span>
+												) : (
+													<span class="service-offering__visibility-tag">Visibility</span>
+												)}
+											</header>
+										)}
+										<h3>{service.name}</h3>
+										<p class="service-offering__summary">{service.shortDescription}</p>
+
+										<div class="service-offering__compact-outcome">
+											<strong>Best for</strong>
+											<span>{service.bestFor}</span>
+										</div>
+
+										<a class="service-offering__link" href={service.ctaHref}>
+											{service.ctaLabel}
+											<span aria-hidden="true">&rarr;</span>
+										</a>
+									</article>
+								);
+							})}
+						</div>
+					</>
+				);
+			})()}
 		</div>
 	</section>
 
@@ -340,8 +399,53 @@ const processSteps = [
 		line-height: 1.6;
 	}
 
-	.services-grid {
+	.services-grid--primary {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+
+	.services-grid--supporting {
 		grid-template-columns: repeat(2, minmax(0, 1fr));
+		max-width: 56rem;
+	}
+
+	.services-grid-section__sub {
+		margin: 0.5rem 0 0;
+		color: var(--color-muted);
+		font-size: 0.96rem;
+		line-height: 1.55;
+	}
+
+	.services-grid-section__sub strong {
+		color: var(--color-text);
+		font-weight: 700;
+	}
+
+	.services-supporting-head {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+		margin: clamp(2.25rem, 4vw, 3rem) 0 0.85rem;
+	}
+
+	.services-supporting-head__label {
+		color: var(--color-text);
+		font-size: 0.74rem;
+		font-weight: 800;
+		letter-spacing: 0.16em;
+		text-transform: uppercase;
+	}
+
+	.services-supporting-head__rule {
+		flex: 1;
+		height: 1px;
+		background: linear-gradient(90deg, var(--color-border), transparent);
+	}
+
+	.services-supporting-head__note {
+		color: var(--color-muted);
+		font-size: 0.78rem;
+		font-weight: 600;
+		letter-spacing: 0.02em;
 	}
 
 	.service-offering {
@@ -350,6 +454,48 @@ const processSteps = [
 		flex-direction: column;
 		gap: 0.85rem;
 		min-height: 100%;
+	}
+
+	.service-offering--supporting {
+		padding: 1.25rem;
+		gap: 0.7rem;
+	}
+
+	.service-offering--supporting h3 {
+		font-size: 1.05rem;
+	}
+
+	.service-offering--supporting .service-offering__summary {
+		font-size: 0.9rem;
+	}
+
+	.service-offering__compact-outcome {
+		display: grid;
+		gap: 0.25rem;
+		padding: 0.75rem 0.9rem;
+		border: 1px solid var(--color-border-soft);
+		border-radius: var(--radius-sm);
+		background: var(--color-bg);
+	}
+
+	.service-offering--foundation.service-offering--supporting .service-offering__compact-outcome { background: color-mix(in srgb, var(--lane-foundation-tint) 60%, var(--color-bg)); border-color: color-mix(in srgb, var(--lane-foundation) 16%, var(--color-border-soft)); }
+	.service-offering--care.service-offering--supporting .service-offering__compact-outcome       { background: color-mix(in srgb, var(--lane-care-tint) 65%, var(--color-bg));       border-color: color-mix(in srgb, var(--lane-care) 16%, var(--color-border-soft)); }
+
+	.service-offering--foundation.service-offering--supporting .service-offering__compact-outcome strong { color: var(--lane-foundation-ink); }
+	.service-offering--care.service-offering--supporting .service-offering__compact-outcome strong       { color: var(--lane-care-ink); }
+
+	.service-offering__compact-outcome strong {
+		color: var(--color-text);
+		font-size: 0.7rem;
+		font-weight: 800;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+	}
+
+	.service-offering__compact-outcome span {
+		color: var(--color-text);
+		font-size: 0.88rem;
+		line-height: 1.5;
 	}
 
 	.service-offering__head {
@@ -541,6 +687,10 @@ const processSteps = [
 	}
 
 	@media (max-width: 1040px) {
+		.services-grid--primary {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+
 		.services-process__grid {
 			grid-template-columns: repeat(2, minmax(0, 1fr));
 		}
@@ -556,7 +706,8 @@ const processSteps = [
 	}
 
 	@media (max-width: 760px) {
-		.services-grid,
+		.services-grid--primary,
+		.services-grid--supporting,
 		.services-process__grid,
 		.services-final__card {
 			grid-template-columns: 1fr;
