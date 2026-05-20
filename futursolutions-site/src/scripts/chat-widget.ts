@@ -47,20 +47,16 @@ function escapeHtml(text: string): string {
 function formatContent(raw: string): string {
 	let html = escapeHtml(raw);
 
-	// Convert markdown-style links or plain paths to clickable links
 	html = html.replace(
 		/(\/(?:audit|templates|services|resources|seo|backend|demos)(?:\/[a-z0-9-]+)*(?:\?[a-z0-9=&-]+)?)/g,
 		'<a href="$1" class="chat-msg__link">$1</a>',
 	);
 
-	// Convert **bold** to <strong>
 	html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
 
-	// Convert bullet lines
 	html = html.replace(/^[-•]\s+(.+)$/gm, '<li>$1</li>');
 	html = html.replace(/(<li>.*<\/li>\n?)+/g, '<ul>$&</ul>');
 
-	// Paragraphs
 	html = html
 		.split('\n\n')
 		.filter((p) => p.trim())
@@ -100,17 +96,34 @@ function setLoading(loading: boolean) {
 	input.disabled = loading;
 }
 
+const STREAM_RENDER_INTERVAL = 55;
+
 async function sendMessage(text: string) {
 	appendMessage('user', text);
 	setLoading(true);
 
 	const streamBubble = document.createElement('div');
-	streamBubble.className = 'chat-msg chat-msg--assistant';
+	streamBubble.className = 'chat-msg chat-msg--assistant chat-msg--streaming';
 	streamBubble.innerHTML = '<div class="chat-msg__body"><span class="chat-msg__typing">...</span></div>';
 	messagesEl.appendChild(streamBubble);
 	scrollToBottom();
 
 	let fullResponse = '';
+	let renderQueued = false;
+	let lastRender = 0;
+
+	function queueStreamRender() {
+		if (renderQueued) return;
+		const now = performance.now();
+		const wait = Math.max(0, STREAM_RENDER_INTERVAL - (now - lastRender));
+		renderQueued = true;
+		setTimeout(() => {
+			renderQueued = false;
+			lastRender = performance.now();
+			streamBubble.innerHTML = `<div class="chat-msg__body">${escapeHtml(fullResponse)}</div>`;
+			scrollToBottom();
+		}, wait);
+	}
 
 	try {
 		const res = await fetch('/api/chat', {
@@ -123,6 +136,7 @@ async function sendMessage(text: string) {
 
 		if (!res.ok) {
 			const err = await res.json().catch(() => ({ error: 'Something went wrong.' }));
+			streamBubble.classList.remove('chat-msg--streaming');
 			streamBubble.innerHTML = `<div class="chat-msg__body"><p>${escapeHtml(err.error || 'Something went wrong. Please try again.')}</p></div>`;
 			setLoading(false);
 			return;
@@ -149,23 +163,27 @@ async function sendMessage(text: string) {
 				try {
 					const text = JSON.parse(payload) as string;
 					if (text === '[ERROR]') {
+						streamBubble.classList.remove('chat-msg--streaming');
 						streamBubble.innerHTML =
 							'<div class="chat-msg__body"><p>Something went wrong. Please try again.</p></div>';
 						setLoading(false);
 						return;
 					}
 					fullResponse += text;
-					renderMessage('assistant', fullResponse, streamBubble);
+					queueStreamRender();
 				} catch {
 					// skip malformed chunks
 				}
 			}
 		}
 
+		streamBubble.classList.remove('chat-msg--streaming');
 		if (fullResponse) {
+			renderMessage('assistant', fullResponse, streamBubble);
 			messages.push({ role: 'assistant', content: fullResponse });
 		}
 	} catch {
+		streamBubble.classList.remove('chat-msg--streaming');
 		streamBubble.innerHTML =
 			'<div class="chat-msg__body"><p>Connection error. Please check your internet and try again.</p></div>';
 	}
@@ -181,12 +199,12 @@ form.addEventListener('submit', (e) => {
 	sendMessage(text);
 });
 
-// Inject message bubble styles
 const style = document.createElement('style');
 style.textContent = `
 	.chat-msg {
 		display: flex;
 		max-width: 88%;
+		animation: msgFadeIn 250ms ease-out both;
 	}
 	.chat-msg--user {
 		align-self: flex-end;
@@ -202,14 +220,17 @@ style.textContent = `
 		word-break: break-word;
 	}
 	.chat-msg--user .chat-msg__body {
-		background: #0F172A;
+		background: #5F8F8B;
 		color: #fff;
 		border-bottom-right-radius: 4px;
 	}
 	.chat-msg--assistant .chat-msg__body {
-		background: #F5F7F9;
-		color: #0F172A;
+		background: #F0F2F5;
+		color: #1A2332;
 		border-bottom-left-radius: 4px;
+	}
+	.chat-msg--streaming .chat-msg__body {
+		transition: none;
 	}
 	.chat-msg__body p {
 		margin: 0 0 0.4rem;
@@ -228,12 +249,12 @@ style.textContent = `
 		font-weight: 650;
 	}
 	.chat-msg__link {
-		color: #4C7370;
+		color: #3D6B67;
 		text-decoration: underline;
 		text-underline-offset: 2px;
 	}
 	.chat-msg--user .chat-msg__link {
-		color: #B0D4D1;
+		color: #D4EDEB;
 	}
 	.chat-msg__typing {
 		display: inline-block;
@@ -243,6 +264,10 @@ style.textContent = `
 	@keyframes typingPulse {
 		0%, 100% { opacity: 0.4; }
 		50% { opacity: 1; }
+	}
+	@keyframes msgFadeIn {
+		from { opacity: 0; transform: translateY(6px); }
+		to { opacity: 1; transform: translateY(0); }
 	}
 `;
 document.head.appendChild(style);

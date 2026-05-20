@@ -1,5 +1,6 @@
 ---
 import DemoBanner from '../components/DemoBanner.astro';
+import ChatWidget from '../components/ChatWidget.astro';
 import { aureaNav, footerNavGroups } from '../data/aurea';
 import '../styles/global.css';
 
@@ -165,6 +166,7 @@ const currentPath = Astro.url.pathname;
 				});
 			})();
 		</script>
+		<ChatWidget />
 	</body>
 </html>
 

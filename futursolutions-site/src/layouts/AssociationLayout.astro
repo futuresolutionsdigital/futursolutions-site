@@ -1,6 +1,7 @@
 ---
 import DemoBanner from '../components/DemoBanner.astro';
 import AssociationSearch from '../components/association/AssociationSearch.astro';
+import ChatWidget from '../components/ChatWidget.astro';
 import { assocBrand, utilityLinks, primaryNav, footerNavGroups } from '../data/association';
 import '../styles/global.css';
 
@@ -177,6 +178,7 @@ const currentPath = Astro.url.pathname;
 				});
 			})();
 		</script>
+		<ChatWidget />
 	</body>
 </html>
 

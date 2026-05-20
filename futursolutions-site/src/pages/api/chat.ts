@@ -60,12 +60,7 @@ function validateMessages(body: unknown): ChatMessage[] | null {
 }
 
 export const POST: APIRoute = async ({ request, clientAddress }) => {
-	console.log('[chat] POST /api/chat hit');
-	console.log('[chat] OPENAI_API_KEY present:', !!OPENAI_API_KEY);
-	console.log('[chat] OPENAI_API_KEY starts with:', OPENAI_API_KEY ? OPENAI_API_KEY.slice(0, 7) + '...' : 'EMPTY');
-
 	if (!OPENAI_API_KEY) {
-		console.error('[chat] FAIL: no API key');
 		return new Response(JSON.stringify({ error: 'Server configuration error' }), {
 			status: 500,
 			headers: { 'Content-Type': 'application/json' },
@@ -74,7 +69,6 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
 
 	const ip = clientAddress || 'unknown';
 	if (isRateLimited(ip)) {
-		console.log('[chat] FAIL: rate limited IP', ip);
 		return new Response(JSON.stringify({ error: 'Too many requests. Please wait a moment.' }), {
 			status: 429,
 			headers: { 'Content-Type': 'application/json' },
@@ -84,9 +78,7 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
 	let body: unknown;
 	try {
 		body = await request.json();
-		console.log('[chat] Body parsed OK, keys:', Object.keys(body as object));
-	} catch (parseErr) {
-		console.error('[chat] FAIL: body parse error', parseErr);
+	} catch {
 		return new Response(JSON.stringify({ error: 'Invalid request body' }), {
 			status: 400,
 			headers: { 'Content-Type': 'application/json' },
@@ -95,19 +87,15 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
 
 	const messages = validateMessages(body);
 	if (!messages) {
-		console.error('[chat] FAIL: message validation failed', JSON.stringify(body).slice(0, 200));
 		return new Response(JSON.stringify({ error: 'Invalid messages format' }), {
 			status: 400,
 			headers: { 'Content-Type': 'application/json' },
 		});
 	}
 
-	console.log('[chat] Messages validated:', messages.length, 'messages. Last role:', messages[messages.length - 1].role);
-
 	const openai = new OpenAI({ apiKey: OPENAI_API_KEY });
 
 	try {
-		console.log('[chat] Calling OpenAI gpt-4o-mini with', messages.length + 1, 'messages (incl system)...');
 		const stream = await openai.chat.completions.create({
 			model: 'gpt-4o-mini',
 			messages: [
@@ -118,8 +106,6 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
 			max_tokens: 600,
 			temperature: 0.7,
 		});
-
-		console.log('[chat] OpenAI stream created successfully, returning SSE response');
 
 		const encoder = new TextEncoder();
 		const readable = new ReadableStream({
@@ -133,9 +119,7 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
 					}
 					controller.enqueue(encoder.encode('data: [DONE]\n\n'));
 					controller.close();
-					console.log('[chat] Stream completed successfully');
-				} catch (streamErr) {
-					console.error('[chat] FAIL: stream read error', streamErr);
+				} catch {
 					controller.enqueue(encoder.encode(`data: ${JSON.stringify('[ERROR]')}\n\n`));
 					controller.close();
 				}
@@ -152,15 +136,7 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
 		});
 	} catch (err) {
 		const message = err instanceof Error ? err.message : 'Unknown error';
-		const status = (err as { status?: number })?.status;
-		const code = (err as { code?: string })?.code;
-		console.error('[chat] FAIL: OpenAI API error');
-		console.error('[chat]   message:', message);
-		console.error('[chat]   status:', status);
-		console.error('[chat]   code:', code);
-		if (err instanceof Error) {
-			console.error('[chat]   stack:', err.stack);
-		}
+		console.error('OpenAI API error:', message);
 		return new Response(JSON.stringify({ error: 'Failed to get response. Please try again.' }), {
 			status: 502,
 			headers: { 'Content-Type': 'application/json' },

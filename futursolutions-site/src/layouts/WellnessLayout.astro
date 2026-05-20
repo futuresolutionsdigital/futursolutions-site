@@ -1,5 +1,6 @@
 ---
 import DemoBanner from '../components/DemoBanner.astro';
+import ChatWidget from '../components/ChatWidget.astro';
 import { brand, announcement, navItems, footerNav, footerServices } from '../data/wellness';
 import '../styles/global.css';
 
@@ -133,6 +134,7 @@ function isActive(href: string) {
 		});
 	})();
 	</script>
+	<ChatWidget />
 </body>
 </html>
 
