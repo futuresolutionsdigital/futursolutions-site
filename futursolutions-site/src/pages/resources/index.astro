@@ -12,22 +12,32 @@ const pillars = [
 	{
 		title: 'Trust and Credibility',
 		text: 'Healthcare websites must earn confidence quickly.',
+		lane: 'custom',
+		label: 'Brand',
 	},
 	{
 		title: 'Conversion and Booking Flow',
 		text: 'A website should guide visitors toward the next step.',
+		lane: 'audit',
+		label: 'Conversion',
 	},
 	{
 		title: 'SEO and Local Visibility',
 		text: 'Search visibility starts with structure, service clarity, and useful content.',
+		lane: 'foundation',
+		label: 'Visibility',
 	},
 	{
 		title: 'Growth Systems',
 		text: 'A lead is only useful if it is captured, organized, and followed up with.',
+		lane: 'growth',
+		label: 'Systems',
 	},
 	{
 		title: 'Website Foundations',
 		text: 'Industry Website Foundations are valuable when they are niche-specific and strategically structured.',
+		lane: 'foundation',
+		label: 'Foundations',
 	},
 ];
 ---
@@ -65,7 +75,8 @@ const pillars = [
 			</div>
 			<div class="resources-pillars__grid">
 				{pillars.map((pillar) => (
-					<article class="card resources-pillars__card">
+					<article class={`card resources-pillars__card lane-accent-top lane-accent-top--${pillar.lane}`}>
+						<span class={`lane-tag lane-tag--${pillar.lane}`}>{pillar.label}</span>
 						<h3>{pillar.title}</h3>
 						<p>{pillar.text}</p>
 					</article>
@@ -77,10 +88,10 @@ const pillars = [
 	<section id="featured-resources" class="section section-muted featured-resources" aria-labelledby="featured-resources-heading">
 		<div class="site-container">
 			<div class="featured-resources__intro">
-				<p class="eyebrow">Planned library</p>
-				<h2 id="featured-resources-heading">Planned resource library.</h2>
+				<p class="eyebrow">Resource roadmap · Coming soon</p>
+				<h2 id="featured-resources-heading">Articles in development.</h2>
 				<p class="lead">
-					These articles will support the audit, Foundation, SEO, and Growth System paths as the site grows.
+					Each piece below is mapped to a specific buyer question. They publish as the site grows; in the meantime, the audit is the fastest way to get a written recommendation for your business.
 				</p>
 			</div>
 			<div class="featured-resources__grid">
@@ -166,15 +177,24 @@ const pillars = [
 	}
 
 	.resources-pillars__card {
+		display: flex;
+		flex-direction: column;
+		gap: 0.6rem;
 		padding: 1.25rem;
 	}
 
+	.resources-pillars__card .lane-tag {
+		align-self: flex-start;
+	}
+
 	.resources-pillars__card h3 {
+		margin: 0;
 		font-size: 1.08rem;
 		letter-spacing: -0.02em;
 	}
 
 	.resources-pillars__card p {
+		margin: 0;
 		font-size: 0.92rem;
 		line-height: 1.58;
 	}

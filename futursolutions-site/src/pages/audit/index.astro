@@ -221,9 +221,13 @@ const processSteps = [
 		inset: 0;
 		z-index: -1;
 		background:
-			radial-gradient(circle at 78% 18%, rgba(95, 143, 139, 0.12), transparent 30%),
-			linear-gradient(180deg, var(--color-white) 0%, var(--color-bg) 72%);
+			radial-gradient(circle at 78% 18%, color-mix(in srgb, var(--lane-audit) 22%, transparent), transparent 30%),
+			linear-gradient(180deg, var(--color-white) 0%, color-mix(in srgb, var(--lane-audit-tint) 60%, var(--color-bg)) 72%);
 		content: '';
+	}
+
+	.audit-hero .eyebrow {
+		color: var(--lane-audit-ink);
 	}
 
 	.audit-hero__inner {
@@ -362,10 +366,10 @@ const processSteps = [
 	.audit-audience__chips span {
 		display: inline-flex;
 		padding: 0.55rem 0.75rem;
-		border: 1px solid color-mix(in srgb, var(--color-accent) 28%, var(--color-border));
+		border: 1px solid color-mix(in srgb, var(--lane-audit) 28%, var(--color-border));
 		border-radius: 999px;
 		background: var(--color-white);
-		color: var(--color-accent-dark);
+		color: var(--lane-audit-ink);
 		font-size: 0.875rem;
 		font-weight: 700;
 		line-height: 1;
@@ -375,10 +379,10 @@ const processSteps = [
 		display: inline-flex;
 		margin-bottom: 1.25rem;
 		padding: 0.35rem 0.52rem;
-		border: 1px solid color-mix(in srgb, var(--color-accent) 35%, var(--color-border));
+		border: 1px solid color-mix(in srgb, var(--lane-audit) 30%, var(--color-border));
 		border-radius: 999px;
-		background: var(--color-accent-light);
-		color: var(--color-accent-dark);
+		background: var(--lane-audit-tint);
+		color: var(--lane-audit-ink);
 		font-size: 0.72rem;
 		font-weight: 800;
 		line-height: 1;
