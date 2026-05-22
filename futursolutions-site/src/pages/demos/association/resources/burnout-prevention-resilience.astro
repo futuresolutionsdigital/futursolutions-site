@@ -1,0 +1,254 @@
+---
+import AssociationLayout from '../../../../layouts/AssociationLayout.astro';
+import AssociationFinalCTA from '../../../../components/association/AssociationFinalCTA.astro';
+import {
+	routeMetadata,
+	resourceDetailBurnout as d,
+	resourceDetailBurnoutQuickFacts as quickFacts,
+	resourceDetailBurnoutObjectives as objectives,
+	resourceDetailBurnoutSpeakers as speakers,
+	resourceDetailBurnoutRelated as related,
+} from '../../../../data/association';
+
+const meta = routeMetadata['/demos/association/resources/burnout-prevention-resilience'];
+---
+
+<AssociationLayout title={meta.title} description={meta.description}>
+	<!-- Hero -->
+	<section class="rdetail-hero" aria-labelledby="rdetail-hero-heading">
+		<div class="assoc-container rdetail-hero__inner">
+			<a class="rdetail-hero__back" href={d.tertiaryLink.href}>{d.tertiaryLink.text}</a>
+			<p class="assoc-eyebrow">{d.eyebrow}</p>
+			<h1 id="rdetail-hero-heading">{d.headline}</h1>
+			<p class="rdetail-hero__lead">{d.lead}</p>
+			<div class="rdetail-hero__badges">
+				<span class="rdetail-hero__badge rdetail-hero__badge--public">{d.access}</span>
+				<span class="rdetail-hero__badge rdetail-hero__badge--ce">{d.ce}</span>
+				<span class="rdetail-hero__badge">{d.format}</span>
+				<span class="rdetail-hero__badge">Updated {d.updated}</span>
+				<span class="rdetail-hero__badge">{d.duration}</span>
+			</div>
+			<div class="assoc-btn-row">
+				<a class="assoc-btn assoc-btn--primary" href={d.primaryCta.href}>{d.primaryCta.text}</a>
+				<a class="assoc-btn assoc-btn--secondary" href={d.secondaryCta.href}>{d.secondaryCta.text}</a>
+			</div>
+			<p class="rdetail-hero__note">{d.disclaimer}</p>
+		</div>
+	</section>
+
+	<!-- Quick Facts -->
+	<section class="assoc-section" aria-label="Webinar quick facts">
+		<div class="assoc-container">
+			<div class="rdetail-facts">
+				{quickFacts.map((f) => (
+					<div class="rdetail-facts__item">
+						<span class="rdetail-facts__label">{f.label}</span>
+						<span class="rdetail-facts__value">{f.value}</span>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- Learning Objectives -->
+	<section class="assoc-section assoc-section--warm" aria-labelledby="rdetail-obj-heading">
+		<div class="assoc-container">
+			<p class="assoc-eyebrow">Learning Objectives</p>
+			<h2 id="rdetail-obj-heading">What you will learn</h2>
+			<div class="rdetail-obj-grid">
+				{objectives.map((o, i) => (
+					<div class="assoc-card rdetail-obj-card">
+						<span class="rdetail-obj-card__num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+						<h3>{o.title}</h3>
+						<p>{o.description}</p>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- Webinar Content / Player Placeholder -->
+	<section class="assoc-section" id="webinar-content" aria-labelledby="rdetail-webinar-heading">
+		<div class="assoc-container">
+			<p class="assoc-eyebrow">Webinar Recording</p>
+			<h2 id="rdetail-webinar-heading">Watch the full session</h2>
+			<div class="rdetail-player">
+				<div class="rdetail-player__placeholder">
+					<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+					<span>Webinar Player</span>
+					<small>90-minute recorded session · 1.5 CE credits</small>
+				</div>
+			</div>
+			<div class="rdetail-chapters">
+				<h3>Session Chapters</h3>
+				<div class="rdetail-chapter-list">
+					<div class="rdetail-chapter"><span class="rdetail-chapter__time">0:00</span><span>Introduction and overview</span></div>
+					<div class="rdetail-chapter"><span class="rdetail-chapter__time">8:30</span><span>Understanding burnout: individual, team, and organizational factors</span></div>
+					<div class="rdetail-chapter"><span class="rdetail-chapter__time">25:00</span><span>Evidence-based personal resilience strategies</span></div>
+					<div class="rdetail-chapter"><span class="rdetail-chapter__time">42:00</span><span>Team wellness interventions and peer support structures</span></div>
+					<div class="rdetail-chapter"><span class="rdetail-chapter__time">58:00</span><span>Making the organizational case for systemic wellness investment</span></div>
+					<div class="rdetail-chapter"><span class="rdetail-chapter__time">72:00</span><span>Q&A and audience discussion</span></div>
+					<div class="rdetail-chapter"><span class="rdetail-chapter__time">85:00</span><span>Summary and CE claiming instructions</span></div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Speakers -->
+	<section class="assoc-section assoc-section--warm" aria-labelledby="rdetail-speakers-heading">
+		<div class="assoc-container">
+			<p class="assoc-eyebrow">Presenters</p>
+			<h2 id="rdetail-speakers-heading">Meet the speakers</h2>
+			<div class="rdetail-speakers">
+				{speakers.map((s) => (
+					<div class="assoc-card rdetail-speaker-card">
+						<div class="rdetail-speaker-card__avatar" aria-hidden="true">
+							{s.name.split(' ').map((n) => n[0]).join('')}
+						</div>
+						<div>
+							<h3>{s.name}</h3>
+							<p class="rdetail-speaker-card__role">{s.role}</p>
+							<p class="rdetail-speaker-card__bio">{s.bio}</p>
+						</div>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- CE Info -->
+	<section class="assoc-section" aria-labelledby="rdetail-ce-heading">
+		<div class="assoc-container rdetail-ce__inner">
+			<div class="rdetail-ce__content">
+				<p class="assoc-eyebrow">CE & Certificate</p>
+				<h2 id="rdetail-ce-heading">Earn your certificate</h2>
+				<p class="rdetail-ce__desc">Watch the full webinar, complete the post-session evaluation, and download your CE certificate.</p>
+			</div>
+			<div class="rdetail-ce__steps">
+				<div class="rdetail-ce__step"><span class="rdetail-ce__step-num">1</span><div><h3>Watch the full recording</h3><p>View all session chapters from start to finish.</p></div></div>
+				<div class="rdetail-ce__step"><span class="rdetail-ce__step-num">2</span><div><h3>Complete the evaluation</h3><p>Answer brief assessment questions about key concepts.</p></div></div>
+				<div class="rdetail-ce__step"><span class="rdetail-ce__step-num">3</span><div><h3>Submit session feedback</h3><p>Complete a quick survey to help improve future programming.</p></div></div>
+				<div class="rdetail-ce__step"><span class="rdetail-ce__step-num">4</span><div><h3>Download certificate</h3><p>Your CE certificate is available within 48 hours.</p></div></div>
+			</div>
+		</div>
+		<div class="assoc-container">
+			<p class="rdetail-ce__disclaimer">Credit language is sample content for this fictional demo and would be reviewed by the appropriate accrediting body for a real association.</p>
+		</div>
+	</section>
+
+	<!-- Related Resources -->
+	<section class="assoc-section assoc-section--warm" aria-labelledby="rdetail-related-heading">
+		<div class="assoc-container">
+			<p class="assoc-eyebrow">Related</p>
+			<h2 id="rdetail-related-heading">Related resources</h2>
+			<div class="rdetail-related-grid">
+				{related.map((r) => (
+					<a href={r.href} class="assoc-card rdetail-related-card">
+						<div class="rdetail-related-card__tags">
+							<span class="rdetail-related-card__type">{r.type}</span>
+							{r.ce && <span class="rdetail-related-card__ce">{r.ce}</span>}
+						</div>
+						<h3>{r.title}</h3>
+						<span class="rdetail-related-card__link">View Resource →</span>
+					</a>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<AssociationFinalCTA />
+</AssociationLayout>
+
+<style>
+	/* Hero */
+	.rdetail-hero { padding-block: clamp(2.5rem, 5vw, 4rem); background: linear-gradient(175deg, var(--assoc-bg) 40%, color-mix(in srgb, var(--assoc-sand) 40%, var(--assoc-bg)) 100%); border-bottom: 1px solid var(--assoc-border); }
+	.rdetail-hero__inner { max-width: 720px; }
+	.rdetail-hero__back { display: inline-block; margin-bottom: 1rem; font-size: 0.82rem; font-weight: 700; color: var(--assoc-teal); }
+	.rdetail-hero__back:hover { color: var(--assoc-navy); }
+	.rdetail-hero h1 { text-wrap: balance; }
+	.rdetail-hero__lead { font-size: clamp(1rem, 0.98rem + 0.15vw, 1.1rem); line-height: 1.6; color: var(--assoc-slate); max-width: 620px; }
+	.rdetail-hero__badges { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.75rem; }
+	.rdetail-hero__badge { padding: 0.2rem 0.55rem; border-radius: 999px; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; background: color-mix(in srgb, var(--assoc-slate) 8%, var(--assoc-white)); color: var(--assoc-slate); }
+	.rdetail-hero__badge--public { background: color-mix(in srgb, var(--assoc-teal) 10%, var(--assoc-white)); color: var(--assoc-teal); }
+	.rdetail-hero__badge--ce { background: color-mix(in srgb, var(--assoc-navy) 10%, var(--assoc-white)); color: var(--assoc-navy); }
+	.rdetail-hero__note { font-size: 0.72rem; color: var(--assoc-slate); opacity: 0.55; margin-top: 0.75rem; }
+
+	/* Quick Facts */
+	.rdetail-facts { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0; border: 1px solid var(--assoc-border); border-radius: var(--assoc-radius); background: var(--assoc-white); overflow: hidden; }
+	.rdetail-facts__item { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 1rem 0.5rem; border-right: 1px solid var(--assoc-border); }
+	.rdetail-facts__item:last-child { border-right: none; }
+	.rdetail-facts__label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--assoc-slate); margin-bottom: 0.2rem; }
+	.rdetail-facts__value { font-size: 0.92rem; font-weight: 800; color: var(--assoc-navy); }
+
+	/* Learning Objectives */
+	.rdetail-obj-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 2rem; }
+	.rdetail-obj-card { padding: 1.5rem; }
+	.rdetail-obj-card__num { font-size: 1.3rem; font-weight: 800; color: var(--assoc-teal); opacity: 0.3; line-height: 1; display: block; margin-bottom: 0.65rem; }
+	.rdetail-obj-card h3 { font-size: 1rem; margin-bottom: 0.3rem; }
+	.rdetail-obj-card p { font-size: 0.88rem; line-height: 1.5; margin: 0; }
+
+	/* Player Placeholder */
+	.rdetail-player { margin-top: 2rem; }
+	.rdetail-player__placeholder {
+		display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.75rem;
+		padding: 4rem 2rem; border-radius: var(--assoc-radius-lg); background: var(--assoc-navy);
+		color: rgba(255, 255, 255, 0.5);
+	}
+	.rdetail-player__placeholder svg { color: var(--assoc-teal); opacity: 0.7; }
+	.rdetail-player__placeholder span { font-size: 0.92rem; font-weight: 700; color: var(--assoc-white); }
+	.rdetail-player__placeholder small { font-size: 0.78rem; }
+
+	/* Session Chapters */
+	.rdetail-chapters { margin-top: 2rem; }
+	.rdetail-chapters h3 { font-size: 0.85rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--assoc-slate); margin-bottom: 1rem; }
+	.rdetail-chapter-list { display: grid; gap: 0; }
+	.rdetail-chapter { display: flex; gap: 1rem; padding: 0.75rem 0; border-bottom: 1px solid var(--assoc-border); font-size: 0.9rem; }
+	.rdetail-chapter:last-child { border-bottom: none; }
+	.rdetail-chapter__time { font-family: monospace; font-size: 0.82rem; font-weight: 700; color: var(--assoc-teal); min-width: 3.5rem; flex-shrink: 0; }
+
+	/* Speakers */
+	.rdetail-speakers { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 2rem; }
+	.rdetail-speaker-card { display: flex; gap: 1.25rem; padding: 1.5rem; align-items: flex-start; }
+	.rdetail-speaker-card__avatar {
+		flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+		width: 3rem; height: 3rem; border-radius: 50%; background: var(--assoc-teal-light); color: var(--assoc-teal);
+		font-size: 0.85rem; font-weight: 800;
+	}
+	.rdetail-speaker-card h3 { font-size: 1rem; margin-bottom: 0.1rem; }
+	.rdetail-speaker-card__role { font-size: 0.82rem; font-weight: 600; color: var(--assoc-teal); margin-bottom: 0.35rem; }
+	.rdetail-speaker-card__bio { font-size: 0.85rem; line-height: 1.5; margin: 0; }
+
+	/* CE Info */
+	.rdetail-ce__inner { display: grid; grid-template-columns: 0.45fr 0.55fr; gap: clamp(2rem, 5vw, 4rem); align-items: start; }
+	.rdetail-ce__desc { font-size: 0.92rem; line-height: 1.6; }
+	.rdetail-ce__steps { display: grid; gap: 0.75rem; }
+	.rdetail-ce__step { display: flex; gap: 0.85rem; align-items: flex-start; }
+	.rdetail-ce__step-num { flex-shrink: 0; display: flex; align-items: center; justify-content: center; width: 2rem; height: 2rem; border-radius: 50%; background: var(--assoc-teal-light); color: var(--assoc-teal); font-size: 0.82rem; font-weight: 800; }
+	.rdetail-ce__step h3 { font-size: 0.92rem; margin-bottom: 0.1rem; }
+	.rdetail-ce__step p { font-size: 0.82rem; line-height: 1.45; margin: 0; }
+	.rdetail-ce__disclaimer { font-size: 0.72rem; color: var(--assoc-slate); opacity: 0.55; margin-top: 1rem; }
+
+	/* Related Resources */
+	.rdetail-related-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 2rem; }
+	.rdetail-related-card { display: flex; flex-direction: column; padding: 1.25rem; }
+	.rdetail-related-card:hover { border-color: var(--assoc-teal); transform: translateY(-1px); }
+	.rdetail-related-card__tags { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-bottom: 0.65rem; }
+	.rdetail-related-card__type { padding: 0.12rem 0.4rem; border-radius: 4px; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; background: var(--assoc-teal-light); color: var(--assoc-teal); }
+	.rdetail-related-card__ce { padding: 0.12rem 0.4rem; border-radius: 4px; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; background: color-mix(in srgb, var(--assoc-navy) 8%, var(--assoc-white)); color: var(--assoc-navy); }
+	.rdetail-related-card h3 { font-size: 0.92rem; margin-bottom: 0.25rem; flex: 1; line-height: 1.3; }
+	.rdetail-related-card__link { font-size: 0.78rem; font-weight: 700; color: var(--assoc-teal); }
+
+	@media (max-width: 768px) {
+		.rdetail-facts { grid-template-columns: repeat(3, 1fr); }
+		.rdetail-facts__item:nth-child(3) { border-right: none; }
+		.rdetail-obj-grid { grid-template-columns: 1fr; }
+		.rdetail-speakers { grid-template-columns: 1fr; }
+		.rdetail-ce__inner { grid-template-columns: 1fr; }
+		.rdetail-related-grid { grid-template-columns: 1fr 1fr; }
+	}
+	@media (max-width: 480px) {
+		.rdetail-facts { grid-template-columns: repeat(2, 1fr); }
+		.rdetail-facts__item:nth-child(even) { border-right: none; }
+		.rdetail-related-grid { grid-template-columns: 1fr; }
+	}
+</style>

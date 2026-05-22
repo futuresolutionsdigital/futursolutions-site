@@ -1,10 +1,17 @@
 ---
 import { proofStats } from '../../data/association';
+
+interface Props {
+	stats?: { value: string; label: string }[];
+	ariaLabel?: string;
+}
+
+const { stats = proofStats, ariaLabel = 'Association impact' } = Astro.props;
 ---
 
-<section class="stat-strip" aria-label="Association impact">
+<section class="stat-strip" aria-label={ariaLabel}>
 	<div class="assoc-container stat-strip__inner">
-		{proofStats.map((stat) => (
+		{stats.map((stat) => (
 			<div class="stat-strip__item">
 				<span class="stat-strip__value">{stat.value}</span>
 				<span class="stat-strip__label">{stat.label}</span>
@@ -15,7 +22,7 @@ import { proofStats } from '../../data/association';
 
 <style>
 	.stat-strip {
-		padding-block: clamp(1.5rem, 3vw, 2.25rem);
+		padding-block: clamp(1.25rem, 2.5vw, 2rem);
 		background: var(--assoc-navy);
 		color: var(--assoc-white);
 	}
@@ -24,7 +31,7 @@ import { proofStats } from '../../data/association';
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: center;
-		gap: clamp(1.5rem, 4vw, 3rem);
+		gap: clamp(1.25rem, 3.5vw, 2.75rem);
 	}
 
 	.stat-strip__item {
@@ -36,7 +43,7 @@ import { proofStats } from '../../data/association';
 	}
 
 	.stat-strip__value {
-		font-size: clamp(1.5rem, 1.3rem + 0.8vw, 2rem);
+		font-size: clamp(1.4rem, 1.2rem + 0.7vw, 1.85rem);
 		font-weight: 800;
 		letter-spacing: -0.02em;
 		line-height: 1;

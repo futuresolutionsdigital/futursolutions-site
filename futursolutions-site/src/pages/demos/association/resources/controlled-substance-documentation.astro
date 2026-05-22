@@ -1,0 +1,223 @@
+---
+import AssociationLayout from '../../../../layouts/AssociationLayout.astro';
+import AssociationResourceAccessPanel from '../../../../components/association/AssociationResourceAccessPanel.astro';
+import AssociationFinalCTA from '../../../../components/association/AssociationFinalCTA.astro';
+import {
+	routeMetadata,
+	resourceDetailControlledSubstance as d,
+	resourceDetailCSQuickFacts as quickFacts,
+	resourceDetailCSObjectives as objectives,
+	resourceDetailCSOutline as outline,
+	resourceDetailCSRelated as related,
+} from '../../../../data/association';
+
+const meta = routeMetadata['/demos/association/resources/controlled-substance-documentation'];
+---
+
+<AssociationLayout title={meta.title} description={meta.description}>
+	<!-- Hero -->
+	<section class="rdetail-hero" aria-labelledby="rdetail-hero-heading">
+		<div class="assoc-container rdetail-hero__inner">
+			<a class="rdetail-hero__back" href={d.tertiaryLink.href}>{d.tertiaryLink.text}</a>
+			<p class="assoc-eyebrow">{d.eyebrow}</p>
+			<h1 id="rdetail-hero-heading">{d.headline}</h1>
+			<p class="rdetail-hero__lead">{d.lead}</p>
+			<div class="rdetail-hero__badges">
+				<span class="rdetail-hero__badge rdetail-hero__badge--access">{d.access}</span>
+				<span class="rdetail-hero__badge rdetail-hero__badge--ce">{d.ce}</span>
+				<span class="rdetail-hero__badge">{d.format}</span>
+				<span class="rdetail-hero__badge">Updated {d.updated}</span>
+				<span class="rdetail-hero__badge">{d.duration}</span>
+			</div>
+			<div class="assoc-btn-row">
+				<a class="assoc-btn assoc-btn--primary" href={d.primaryCta.href}>{d.primaryCta.text}</a>
+				<a class="assoc-btn assoc-btn--secondary" href={d.secondaryCta.href}>{d.secondaryCta.text}</a>
+			</div>
+			<p class="rdetail-hero__note">{d.disclaimer}</p>
+		</div>
+	</section>
+
+	<!-- Quick Facts -->
+	<section class="assoc-section" aria-label="Resource quick facts">
+		<div class="assoc-container">
+			<div class="rdetail-facts">
+				{quickFacts.map((f) => (
+					<div class="rdetail-facts__item">
+						<span class="rdetail-facts__label">{f.label}</span>
+						<span class="rdetail-facts__value">{f.value}</span>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- Learning Objectives -->
+	<section class="assoc-section assoc-section--warm" aria-labelledby="rdetail-obj-heading">
+		<div class="assoc-container">
+			<p class="assoc-eyebrow">What You'll Learn</p>
+			<h2 id="rdetail-obj-heading">Documentation skills that protect you and your patients</h2>
+			<div class="rdetail-obj-grid">
+				{objectives.map((o, i) => (
+					<div class="assoc-card rdetail-obj-card">
+						<span class="rdetail-obj-card__num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+						<h3>{o.title}</h3>
+						<p>{o.description}</p>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- Guide Outline -->
+	<section class="assoc-section" id="guide-outline" aria-labelledby="rdetail-outline-heading">
+		<div class="assoc-container">
+			<p class="assoc-eyebrow">Guide Contents</p>
+			<h2 id="rdetail-outline-heading">Guide outline</h2>
+			<div class="rdetail-outline">
+				{outline.map((m) => (
+					<div class:list={['rdetail-module', { 'rdetail-module--locked': m.locked }]}>
+						<div class="rdetail-module__num">
+							{m.locked ? (
+								<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-label="Member-only"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+							) : (
+								<span>{m.module}</span>
+							)}
+						</div>
+						<div class="rdetail-module__body">
+							<h3>Section {m.module}: {m.title}</h3>
+							<div class="rdetail-module__meta">
+								<span>{m.length}</span>
+								<span class="rdetail-module__dot" aria-hidden="true">·</span>
+								<span>{m.type}</span>
+								{m.locked && <span class="rdetail-module__lock">Member-only</span>}
+							</div>
+						</div>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- CE Info -->
+	<section class="assoc-section assoc-section--warm" aria-labelledby="rdetail-ce-heading">
+		<div class="assoc-container rdetail-ce__inner">
+			<div class="rdetail-ce__content">
+				<p class="assoc-eyebrow">CE & Certificate</p>
+				<h2 id="rdetail-ce-heading">Earn your certificate</h2>
+				<p class="rdetail-ce__desc">Complete all four sections, review the audit checklist, and download your CE certificate — all within the MHPA learning portal.</p>
+			</div>
+			<div class="rdetail-ce__steps">
+				<div class="rdetail-ce__step"><span class="rdetail-ce__step-num">1</span><div><h3>Read all sections</h3><p>Work through each section at your own pace.</p></div></div>
+				<div class="rdetail-ce__step"><span class="rdetail-ce__step-num">2</span><div><h3>Download templates</h3><p>Save the monitoring agreement and PDMP documentation templates.</p></div></div>
+				<div class="rdetail-ce__step"><span class="rdetail-ce__step-num">3</span><div><h3>Complete the assessment</h3><p>Answer a brief assessment to verify your understanding.</p></div></div>
+				<div class="rdetail-ce__step"><span class="rdetail-ce__step-num">4</span><div><h3>Download certificate</h3><p>Your CE certificate is available within 48 hours.</p></div></div>
+			</div>
+		</div>
+		<div class="assoc-container">
+			<p class="rdetail-ce__disclaimer">Credit language is sample content for this fictional demo and would be reviewed by the appropriate accrediting body for a real association.</p>
+		</div>
+	</section>
+
+	<!-- Member Access -->
+	<AssociationResourceAccessPanel />
+
+	<!-- Related Resources -->
+	<section class="assoc-section" aria-labelledby="rdetail-related-heading">
+		<div class="assoc-container">
+			<p class="assoc-eyebrow">Related</p>
+			<h2 id="rdetail-related-heading">Related resources</h2>
+			<div class="rdetail-related-grid">
+				{related.map((r) => (
+					<a href={r.href} class="assoc-card rdetail-related-card">
+						<div class="rdetail-related-card__tags">
+							<span class="rdetail-related-card__type">{r.type}</span>
+							<span class:list={['rdetail-related-card__access', { 'rdetail-related-card__access--member': r.access === 'Member-only' }]}>{r.access}</span>
+							{r.ce && <span class="rdetail-related-card__ce">{r.ce}</span>}
+						</div>
+						<h3>{r.title}</h3>
+						<span class="rdetail-related-card__link">View Resource →</span>
+					</a>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<AssociationFinalCTA />
+</AssociationLayout>
+
+<style>
+	/* Hero */
+	.rdetail-hero { padding-block: clamp(2.5rem, 5vw, 4rem); background: linear-gradient(175deg, var(--assoc-bg) 40%, color-mix(in srgb, var(--assoc-sand) 40%, var(--assoc-bg)) 100%); border-bottom: 1px solid var(--assoc-border); }
+	.rdetail-hero__inner { max-width: 720px; }
+	.rdetail-hero__back { display: inline-block; margin-bottom: 1rem; font-size: 0.82rem; font-weight: 700; color: var(--assoc-teal); }
+	.rdetail-hero__back:hover { color: var(--assoc-navy); }
+	.rdetail-hero h1 { text-wrap: balance; }
+	.rdetail-hero__lead { font-size: clamp(1rem, 0.98rem + 0.15vw, 1.1rem); line-height: 1.6; color: var(--assoc-slate); max-width: 620px; }
+	.rdetail-hero__badges { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.75rem; }
+	.rdetail-hero__badge { padding: 0.2rem 0.55rem; border-radius: 999px; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; background: color-mix(in srgb, var(--assoc-slate) 8%, var(--assoc-white)); color: var(--assoc-slate); }
+	.rdetail-hero__badge--access { background: color-mix(in srgb, var(--assoc-coral) 10%, var(--assoc-white)); color: var(--assoc-coral); }
+	.rdetail-hero__badge--ce { background: color-mix(in srgb, var(--assoc-navy) 10%, var(--assoc-white)); color: var(--assoc-navy); }
+	.rdetail-hero__note { font-size: 0.72rem; color: var(--assoc-slate); opacity: 0.55; margin-top: 0.75rem; }
+
+	/* Quick Facts */
+	.rdetail-facts { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0; border: 1px solid var(--assoc-border); border-radius: var(--assoc-radius); background: var(--assoc-white); overflow: hidden; }
+	.rdetail-facts__item { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 1rem 0.5rem; border-right: 1px solid var(--assoc-border); }
+	.rdetail-facts__item:last-child { border-right: none; }
+	.rdetail-facts__label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--assoc-slate); margin-bottom: 0.2rem; }
+	.rdetail-facts__value { font-size: 0.92rem; font-weight: 800; color: var(--assoc-navy); }
+
+	/* Learning Objectives */
+	.rdetail-obj-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 2rem; }
+	.rdetail-obj-card { padding: 1.5rem; }
+	.rdetail-obj-card__num { font-size: 1.3rem; font-weight: 800; color: var(--assoc-teal); opacity: 0.3; line-height: 1; display: block; margin-bottom: 0.65rem; }
+	.rdetail-obj-card h3 { font-size: 1rem; margin-bottom: 0.3rem; }
+	.rdetail-obj-card p { font-size: 0.88rem; line-height: 1.5; margin: 0; }
+
+	/* Outline */
+	.rdetail-outline { display: grid; gap: 0; margin-top: 2rem; }
+	.rdetail-module { display: flex; align-items: center; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid var(--assoc-border); }
+	.rdetail-module:last-child { border-bottom: none; }
+	.rdetail-module__num { flex-shrink: 0; display: flex; align-items: center; justify-content: center; width: 2.25rem; height: 2.25rem; border-radius: 50%; background: var(--assoc-teal-light); color: var(--assoc-teal); font-size: 0.88rem; font-weight: 800; }
+	.rdetail-module__num svg { display: inline; }
+	.rdetail-module--locked .rdetail-module__num { background: color-mix(in srgb, var(--assoc-slate) 8%, var(--assoc-white)); color: var(--assoc-slate); }
+	.rdetail-module h3 { font-size: 0.95rem; margin-bottom: 0.15rem; }
+	.rdetail-module--locked h3 { color: var(--assoc-slate); }
+	.rdetail-module__meta { display: flex; flex-wrap: wrap; gap: 0.35rem; font-size: 0.78rem; font-weight: 600; color: var(--assoc-slate); }
+	.rdetail-module__dot { opacity: 0.35; }
+	.rdetail-module__lock { padding: 0.1rem 0.4rem; border-radius: 4px; font-size: 0.62rem; font-weight: 700; background: color-mix(in srgb, var(--assoc-coral) 8%, var(--assoc-white)); color: var(--assoc-coral); text-transform: uppercase; letter-spacing: 0.04em; }
+
+	/* CE Info */
+	.rdetail-ce__inner { display: grid; grid-template-columns: 0.45fr 0.55fr; gap: clamp(2rem, 5vw, 4rem); align-items: start; }
+	.rdetail-ce__desc { font-size: 0.92rem; line-height: 1.6; }
+	.rdetail-ce__steps { display: grid; gap: 0.75rem; }
+	.rdetail-ce__step { display: flex; gap: 0.85rem; align-items: flex-start; }
+	.rdetail-ce__step-num { flex-shrink: 0; display: flex; align-items: center; justify-content: center; width: 2rem; height: 2rem; border-radius: 50%; background: var(--assoc-teal-light); color: var(--assoc-teal); font-size: 0.82rem; font-weight: 800; }
+	.rdetail-ce__step h3 { font-size: 0.92rem; margin-bottom: 0.1rem; }
+	.rdetail-ce__step p { font-size: 0.82rem; line-height: 1.45; margin: 0; }
+	.rdetail-ce__disclaimer { font-size: 0.72rem; color: var(--assoc-slate); opacity: 0.55; margin-top: 1rem; }
+
+	/* Related Resources */
+	.rdetail-related-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 2rem; }
+	.rdetail-related-card { display: flex; flex-direction: column; padding: 1.25rem; }
+	.rdetail-related-card:hover { border-color: var(--assoc-teal); transform: translateY(-1px); }
+	.rdetail-related-card__tags { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-bottom: 0.65rem; }
+	.rdetail-related-card__type { padding: 0.12rem 0.4rem; border-radius: 4px; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; background: var(--assoc-teal-light); color: var(--assoc-teal); }
+	.rdetail-related-card__access { padding: 0.12rem 0.4rem; border-radius: 4px; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; background: color-mix(in srgb, var(--assoc-slate) 8%, var(--assoc-white)); color: var(--assoc-slate); }
+	.rdetail-related-card__access--member { background: color-mix(in srgb, var(--assoc-coral) 8%, var(--assoc-white)); color: var(--assoc-coral); }
+	.rdetail-related-card__ce { padding: 0.12rem 0.4rem; border-radius: 4px; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; background: color-mix(in srgb, var(--assoc-navy) 8%, var(--assoc-white)); color: var(--assoc-navy); }
+	.rdetail-related-card h3 { font-size: 0.92rem; margin-bottom: 0.25rem; flex: 1; line-height: 1.3; }
+	.rdetail-related-card__link { font-size: 0.78rem; font-weight: 700; color: var(--assoc-teal); }
+
+	@media (max-width: 768px) {
+		.rdetail-facts { grid-template-columns: repeat(3, 1fr); }
+		.rdetail-facts__item:nth-child(3) { border-right: none; }
+		.rdetail-obj-grid { grid-template-columns: 1fr; }
+		.rdetail-ce__inner { grid-template-columns: 1fr; }
+		.rdetail-related-grid { grid-template-columns: 1fr 1fr; }
+	}
+	@media (max-width: 480px) {
+		.rdetail-facts { grid-template-columns: repeat(2, 1fr); }
+		.rdetail-facts__item:nth-child(even) { border-right: none; }
+		.rdetail-related-grid { grid-template-columns: 1fr; }
+	}
+</style>

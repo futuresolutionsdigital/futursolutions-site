@@ -1,0 +1,264 @@
+---
+import AssociationLayout from '../../../../layouts/AssociationLayout.astro';
+import AssociationFinalCTA from '../../../../components/association/AssociationFinalCTA.astro';
+import {
+	routeMetadata,
+	chapterDetailBayArea as d,
+	chapterDetailBayAreaQuickFacts as quickFacts,
+	chapterDetailBayAreaEvents as events,
+	chapterDetailBayAreaLeaders as leaders,
+	chapterDetailBayAreaPriorities as priorities,
+	chapterDetailBayAreaAnnouncements as announcements,
+	chapterDetailInvolvement as involvement,
+	chapterDetailResources as resources,
+} from '../../../../data/association';
+
+const meta = routeMetadata['/demos/association/chapters/bay-area'];
+---
+
+<AssociationLayout title={meta.title} description={meta.description}>
+	<!-- Hero -->
+	<section class="cdetail-hero" aria-labelledby="cdetail-hero-heading">
+		<div class="assoc-container cdetail-hero__inner">
+			<a class="cdetail-hero__back" href={d.tertiaryLink.href}>{d.tertiaryLink.text}</a>
+			<p class="assoc-eyebrow">{d.eyebrow}</p>
+			<h1 id="cdetail-hero-heading">{d.headline}</h1>
+			<p class="cdetail-hero__lead">{d.lead}</p>
+			<div class="cdetail-hero__highlights">
+				<span>{d.memberCount} members</span>
+				<span class="cdetail-hero__dot" aria-hidden="true">·</span>
+				<span>{d.upcomingEvents} upcoming events</span>
+				<span class="cdetail-hero__dot" aria-hidden="true">·</span>
+				<span>{d.meetingFrequency}</span>
+				<span class="cdetail-hero__dot" aria-hidden="true">·</span>
+				<span>{d.advocacyStatus}</span>
+			</div>
+			<div class="cdetail-hero__focus">
+				{d.focusAreas.map((area) => <span class="cdetail-hero__focus-tag">{area}</span>)}
+			</div>
+			<div class="assoc-btn-row">
+				<a class="assoc-btn assoc-btn--primary" href={d.primaryCta.href}>{d.primaryCta.text}</a>
+				<a class="assoc-btn assoc-btn--secondary" href={d.secondaryCta.href}>{d.secondaryCta.text}</a>
+			</div>
+		</div>
+	</section>
+
+	<!-- Quick Facts -->
+	<section class="assoc-section" aria-label="Chapter quick facts">
+		<div class="assoc-container">
+			<div class="cdetail-facts">
+				{quickFacts.map((f) => (
+					<div class="cdetail-facts__item">
+						<span class="cdetail-facts__label">{f.label}</span>
+						<span class="cdetail-facts__value">{f.value}</span>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- Events -->
+	<section class="assoc-section assoc-section--warm" id="events" aria-labelledby="cdetail-events-heading">
+		<div class="assoc-container">
+			<p class="assoc-eyebrow">Upcoming Events</p>
+			<h2 id="cdetail-events-heading">What's happening in the Bay Area</h2>
+			<div class="cdetail-events">
+				{events.map((e) => (
+					<a href={e.href} class="assoc-card cdetail-event-card">
+						<div class="cdetail-event-card__date">
+							<span class="cdetail-event-card__month">{e.date.split(' ')[0]}</span>
+							<span class="cdetail-event-card__day">{e.date.split(' ')[1].replace(',', '')}</span>
+						</div>
+						<div>
+							<span class="cdetail-event-card__type">{e.type}</span>
+							<h3>{e.title}</h3>
+							<p>{e.summary}</p>
+							<span class="cdetail-event-card__location">{e.location}</span>
+						</div>
+					</a>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- Leaders -->
+	<section class="assoc-section" aria-labelledby="cdetail-leaders-heading">
+		<div class="assoc-container">
+			<p class="assoc-eyebrow">Chapter Leadership</p>
+			<h2 id="cdetail-leaders-heading">Meet the Bay Area chapter team</h2>
+			<div class="cdetail-leaders">
+				{leaders.map((l) => (
+					<div class="assoc-card cdetail-leader-card">
+						<div class="cdetail-leader-card__avatar" aria-hidden="true">{l.initials}</div>
+						<div>
+							<h3>{l.name}</h3>
+							<p class="cdetail-leader-card__role">{l.role}</p>
+							<p class="cdetail-leader-card__bio">{l.bio}</p>
+						</div>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- Local Priorities -->
+	<section class="assoc-section assoc-section--warm" aria-labelledby="cdetail-priorities-heading">
+		<div class="assoc-container">
+			<p class="assoc-eyebrow">Local Priorities</p>
+			<h2 id="cdetail-priorities-heading">What the Bay Area chapter is focused on</h2>
+			<div class="cdetail-priorities">
+				{priorities.map((p) => (
+					<div class="assoc-card cdetail-priority-card">
+						<h3>{p.title}</h3>
+						<p>{p.description}</p>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- Get Involved -->
+	<section class="assoc-section" aria-labelledby="cdetail-involved-heading">
+		<div class="assoc-container">
+			<p class="assoc-eyebrow">Get Involved</p>
+			<h2 id="cdetail-involved-heading">Ways to connect with your chapter</h2>
+			<div class="cdetail-involved">
+				{involvement.map((item) => (
+					<a href={item.href} class="assoc-card cdetail-involved-card">
+						<h3>{item.title}</h3>
+						<p>{item.description}</p>
+					</a>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- Resources -->
+	<section class="assoc-section assoc-section--warm" aria-labelledby="cdetail-resources-heading">
+		<div class="assoc-container">
+			<p class="assoc-eyebrow">Chapter Resources</p>
+			<h2 id="cdetail-resources-heading">Tools and guides for chapter members</h2>
+			<div class="cdetail-resources">
+				{resources.map((r) => (
+					<a href={r.href} class="assoc-card cdetail-resource-card">
+						<span class="cdetail-resource-card__type">{r.type}</span>
+						<h3>{r.title}</h3>
+						<p>{r.summary}</p>
+					</a>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- Announcements -->
+	<section class="assoc-section" aria-labelledby="cdetail-announce-heading">
+		<div class="assoc-container">
+			<p class="assoc-eyebrow">Recent Announcements</p>
+			<h2 id="cdetail-announce-heading">Chapter news and updates</h2>
+			<div class="cdetail-announcements">
+				{announcements.map((a) => (
+					<div class="cdetail-announcement">
+						<span class="cdetail-announcement__date">{a.date}</span>
+						<div>
+							<h3>{a.title}</h3>
+							<p>{a.summary}</p>
+						</div>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<AssociationFinalCTA
+		headline="Your local professional network starts here."
+		subheadline="Connect with Bay Area healthcare professionals through events, mentorship, and advocacy — all through your MHPA membership."
+		primaryCta={{ text: 'Attend an Event', href: '#events' }}
+		secondaryCta={{ text: 'Join MHPA', href: '/demos/association/membership' }}
+	/>
+</AssociationLayout>
+
+<style>
+	/* Hero */
+	.cdetail-hero { padding-block: clamp(2.5rem, 5vw, 4rem); background: linear-gradient(175deg, var(--assoc-bg) 40%, color-mix(in srgb, var(--assoc-sand) 40%, var(--assoc-bg)) 100%); border-bottom: 1px solid var(--assoc-border); }
+	.cdetail-hero__inner { max-width: 720px; }
+	.cdetail-hero__back { display: inline-block; margin-bottom: 1rem; font-size: 0.82rem; font-weight: 700; color: var(--assoc-teal); }
+	.cdetail-hero__back:hover { color: var(--assoc-navy); }
+	.cdetail-hero h1 { text-wrap: balance; }
+	.cdetail-hero__lead { font-size: clamp(1rem, 0.98rem + 0.15vw, 1.1rem); line-height: 1.6; color: var(--assoc-slate); max-width: 620px; }
+	.cdetail-hero__highlights { display: flex; flex-wrap: wrap; gap: 0.35rem; font-size: 0.85rem; font-weight: 600; color: var(--assoc-slate); margin-bottom: 0.75rem; }
+	.cdetail-hero__dot { opacity: 0.35; }
+	.cdetail-hero__focus { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1rem; }
+	.cdetail-hero__focus-tag { padding: 0.2rem 0.55rem; border-radius: 999px; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; background: var(--assoc-teal-light); color: var(--assoc-teal); }
+
+	/* Quick Facts */
+	.cdetail-facts { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0; border: 1px solid var(--assoc-border); border-radius: var(--assoc-radius); background: var(--assoc-white); overflow: hidden; }
+	.cdetail-facts__item { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 1rem 0.5rem; border-right: 1px solid var(--assoc-border); }
+	.cdetail-facts__item:last-child { border-right: none; }
+	.cdetail-facts__label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--assoc-slate); margin-bottom: 0.2rem; }
+	.cdetail-facts__value { font-size: 0.92rem; font-weight: 800; color: var(--assoc-navy); }
+
+	/* Events */
+	.cdetail-events { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem; }
+	.cdetail-event-card { display: flex; gap: 1rem; padding: 1.25rem; align-items: flex-start; }
+	.cdetail-event-card:hover { border-color: var(--assoc-teal); transform: translateY(-1px); }
+	.cdetail-event-card__date { flex-shrink: 0; display: flex; flex-direction: column; align-items: center; min-width: 44px; padding: 0.45rem 0.35rem 0.35rem; border-radius: 8px; background: var(--assoc-navy); color: var(--assoc-white); }
+	.cdetail-event-card__month { font-size: 0.58rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.85; }
+	.cdetail-event-card__day { font-size: 1.15rem; font-weight: 800; line-height: 1.1; }
+	.cdetail-event-card__type { display: inline-block; margin-bottom: 0.35rem; padding: 0.12rem 0.4rem; border-radius: 5px; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; background: var(--assoc-teal-light); color: var(--assoc-teal); }
+	.cdetail-event-card h3 { font-size: 0.95rem; margin-bottom: 0.2rem; line-height: 1.3; }
+	.cdetail-event-card p { font-size: 0.82rem; line-height: 1.45; margin: 0 0 0.3rem; }
+	.cdetail-event-card__location { font-size: 0.75rem; font-weight: 600; color: var(--assoc-slate); }
+
+	/* Leaders */
+	.cdetail-leaders { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2rem; }
+	.cdetail-leader-card { display: flex; gap: 1rem; padding: 1.5rem; align-items: flex-start; }
+	.cdetail-leader-card__avatar { flex-shrink: 0; display: flex; align-items: center; justify-content: center; width: 2.75rem; height: 2.75rem; border-radius: 50%; background: var(--assoc-teal-light); color: var(--assoc-teal); font-size: 0.8rem; font-weight: 800; }
+	.cdetail-leader-card h3 { font-size: 0.95rem; margin-bottom: 0.1rem; }
+	.cdetail-leader-card__role { font-size: 0.78rem; font-weight: 700; color: var(--assoc-teal); margin-bottom: 0.3rem; }
+	.cdetail-leader-card__bio { font-size: 0.82rem; line-height: 1.45; margin: 0; }
+
+	/* Priorities */
+	.cdetail-priorities { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 2rem; }
+	.cdetail-priority-card { padding: 1.5rem; }
+	.cdetail-priority-card h3 { font-size: 1rem; margin-bottom: 0.3rem; }
+	.cdetail-priority-card p { font-size: 0.88rem; line-height: 1.5; margin: 0; }
+
+	/* Get Involved */
+	.cdetail-involved { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 2rem; }
+	.cdetail-involved-card { padding: 1.5rem; }
+	.cdetail-involved-card:hover { border-color: var(--assoc-teal); transform: translateY(-1px); }
+	.cdetail-involved-card h3 { font-size: 1rem; margin-bottom: 0.3rem; }
+	.cdetail-involved-card p { font-size: 0.88rem; line-height: 1.5; margin: 0; }
+
+	/* Resources */
+	.cdetail-resources { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 2rem; }
+	.cdetail-resource-card { display: flex; flex-direction: column; padding: 1.25rem; }
+	.cdetail-resource-card:hover { border-color: var(--assoc-teal); transform: translateY(-1px); }
+	.cdetail-resource-card__type { display: inline-block; align-self: flex-start; margin-bottom: 0.5rem; padding: 0.12rem 0.4rem; border-radius: 4px; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; background: var(--assoc-teal-light); color: var(--assoc-teal); }
+	.cdetail-resource-card h3 { font-size: 0.92rem; margin-bottom: 0.2rem; }
+	.cdetail-resource-card p { font-size: 0.82rem; line-height: 1.45; margin: 0; }
+
+	/* Announcements */
+	.cdetail-announcements { display: grid; gap: 0; margin-top: 2rem; }
+	.cdetail-announcement { display: flex; gap: 1.25rem; padding: 1rem 0; border-bottom: 1px solid var(--assoc-border); align-items: flex-start; }
+	.cdetail-announcement:last-child { border-bottom: none; }
+	.cdetail-announcement__date { flex-shrink: 0; min-width: 100px; font-size: 0.78rem; font-weight: 700; color: var(--assoc-teal); padding-top: 0.1rem; }
+	.cdetail-announcement h3 { font-size: 0.95rem; margin-bottom: 0.15rem; }
+	.cdetail-announcement p { font-size: 0.85rem; line-height: 1.5; margin: 0; }
+
+	@media (max-width: 768px) {
+		.cdetail-facts { grid-template-columns: repeat(3, 1fr); }
+		.cdetail-facts__item:nth-child(3) { border-right: none; }
+		.cdetail-events { grid-template-columns: 1fr; }
+		.cdetail-leaders { grid-template-columns: 1fr; }
+		.cdetail-priorities { grid-template-columns: 1fr; }
+		.cdetail-involved { grid-template-columns: 1fr; }
+		.cdetail-resources { grid-template-columns: 1fr; }
+	}
+	@media (max-width: 480px) {
+		.cdetail-facts { grid-template-columns: repeat(2, 1fr); }
+		.cdetail-facts__item:nth-child(even) { border-right: none; }
+		.cdetail-announcement { flex-direction: column; gap: 0.35rem; }
+		.cdetail-announcement__date { min-width: auto; }
+	}
+</style>

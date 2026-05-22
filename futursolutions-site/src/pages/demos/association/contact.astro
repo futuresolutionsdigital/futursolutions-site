@@ -6,9 +6,9 @@ import AssociationContactForm from '../../../components/association/AssociationC
 import AssociationContactProcess from '../../../components/association/AssociationContactProcess.astro';
 import AssociationContactQuickLinks from '../../../components/association/AssociationContactQuickLinks.astro';
 import AssociationContactDirectory from '../../../components/association/AssociationContactDirectory.astro';
-import AssociationContactFAQ from '../../../components/association/AssociationContactFAQ.astro';
+import AssociationFAQ from '../../../components/association/AssociationFAQ.astro';
 import AssociationFinalCTA from '../../../components/association/AssociationFinalCTA.astro';
-import { routeMetadata } from '../../../data/association';
+import { routeMetadata, contactFaqs } from '../../../data/association';
 
 const meta = routeMetadata['/demos/association/contact'];
 ---
@@ -20,7 +20,7 @@ const meta = routeMetadata['/demos/association/contact'];
 	<AssociationContactProcess />
 	<AssociationContactQuickLinks />
 	<AssociationContactDirectory />
-	<AssociationContactFAQ />
+	<AssociationFAQ faqs={contactFaqs} heading="Contact questions, answered." contactHref="" />
 	<AssociationFinalCTA
 		headline="Ready to turn association interest into action?"
 		subheadline="A modern contact system should route members, sponsors, employers, and stakeholders to the right next step quickly."

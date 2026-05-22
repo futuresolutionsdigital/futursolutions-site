@@ -1,7 +1,7 @@
 ---
 import AssociationLayout from '../../../../layouts/AssociationLayout.astro';
 import AssociationChapterDetailHero from '../../../../components/association/AssociationChapterDetailHero.astro';
-import AssociationChapterQuickFacts from '../../../../components/association/AssociationChapterQuickFacts.astro';
+import AssociationQuickFacts from '../../../../components/association/AssociationQuickFacts.astro';
 import AssociationChapterDetailEvents from '../../../../components/association/AssociationChapterDetailEvents.astro';
 import AssociationChapterDetailLeaders from '../../../../components/association/AssociationChapterDetailLeaders.astro';
 import AssociationChapterLocalPriorities from '../../../../components/association/AssociationChapterLocalPriorities.astro';
@@ -9,14 +9,14 @@ import AssociationChapterGetInvolved from '../../../../components/association/As
 import AssociationChapterDetailResources from '../../../../components/association/AssociationChapterDetailResources.astro';
 import AssociationChapterAnnouncements from '../../../../components/association/AssociationChapterAnnouncements.astro';
 import AssociationFinalCTA from '../../../../components/association/AssociationFinalCTA.astro';
-import { routeMetadata } from '../../../../data/association';
+import { routeMetadata, chapterDetailQuickFacts } from '../../../../data/association';
 
 const meta = routeMetadata['/demos/association/chapters/northern-california'];
 ---
 
 <AssociationLayout title={meta.title} description={meta.description}>
 	<AssociationChapterDetailHero />
-	<AssociationChapterQuickFacts />
+	<AssociationQuickFacts facts={chapterDetailQuickFacts} ariaLabel="Chapter quick facts" />
 	<AssociationChapterDetailEvents />
 	<AssociationChapterDetailLeaders />
 	<AssociationChapterLocalPriorities />

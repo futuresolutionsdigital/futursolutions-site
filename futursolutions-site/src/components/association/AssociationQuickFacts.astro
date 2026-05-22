@@ -1,0 +1,63 @@
+---
+interface Props {
+	facts: { label: string; value: string }[];
+	ariaLabel?: string;
+}
+
+const { facts, ariaLabel = 'Quick facts' } = Astro.props;
+---
+
+<section class="assoc-section" aria-label={ariaLabel}>
+	<div class="assoc-container">
+		<div class="assoc-qf">
+			{facts.map((f) => (
+				<div class="assoc-qf__item">
+					<span class="assoc-qf__label">{f.label}</span>
+					<span class="assoc-qf__value">{f.value}</span>
+				</div>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+	.assoc-qf {
+		display: grid;
+		grid-template-columns: repeat(6, 1fr);
+		gap: 0;
+		border: 1px solid var(--assoc-border);
+		border-radius: var(--assoc-radius);
+		background: var(--assoc-white);
+		overflow: hidden;
+	}
+	.assoc-qf__item {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+		padding: 1rem 0.5rem;
+		border-right: 1px solid var(--assoc-border);
+	}
+	.assoc-qf__item:last-child { border-right: none; }
+	.assoc-qf__label {
+		font-size: 0.68rem;
+		font-weight: 700;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+		color: var(--assoc-slate);
+		margin-bottom: 0.2rem;
+	}
+	.assoc-qf__value {
+		font-size: 0.92rem;
+		font-weight: 800;
+		color: var(--assoc-navy);
+	}
+	@media (max-width: 768px) {
+		.assoc-qf { grid-template-columns: repeat(3, 1fr); }
+		.assoc-qf__item:nth-child(3) { border-right: none; }
+	}
+	@media (max-width: 480px) {
+		.assoc-qf { grid-template-columns: repeat(2, 1fr); }
+		.assoc-qf__item:nth-child(even) { border-right: none; }
+	}
+</style>

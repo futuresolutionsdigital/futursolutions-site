@@ -10,9 +10,9 @@ import AssociationMembershipAdvocacy from '../../../components/association/Assoc
 import AssociationMembershipEducation from '../../../components/association/AssociationMembershipEducation.astro';
 import AssociationMembershipCommunity from '../../../components/association/AssociationMembershipCommunity.astro';
 import AssociationMembershipStories from '../../../components/association/AssociationMembershipStories.astro';
-import AssociationMembershipFAQ from '../../../components/association/AssociationMembershipFAQ.astro';
+import AssociationFAQ from '../../../components/association/AssociationFAQ.astro';
 import AssociationFinalCTA from '../../../components/association/AssociationFinalCTA.astro';
-import { routeMetadata } from '../../../data/association';
+import { routeMetadata, membershipFaqs } from '../../../data/association';
 
 const meta = routeMetadata['/demos/association/membership'];
 ---
@@ -34,6 +34,6 @@ const meta = routeMetadata['/demos/association/membership'];
 	<AssociationMembershipEducation />
 	<AssociationMembershipCommunity />
 	<AssociationMembershipStories />
-	<AssociationMembershipFAQ />
+	<AssociationFAQ faqs={membershipFaqs} heading="Membership questions, answered." lead="If you have a question not covered here, contact the MHPA membership team." />
 	<AssociationFinalCTA />
 </AssociationLayout>

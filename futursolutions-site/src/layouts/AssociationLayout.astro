@@ -38,6 +38,7 @@ const currentPath = Astro.url.pathname;
 		<title>{title}</title>
 	</head>
 	<body class="assoc-site">
+		<a class="assoc-skip-link" href="#main-content">Skip to main content</a>
 		<DemoBanner customizeHref="/audit?template=association" />
 
 		<div class="assoc-utility-bar">
@@ -109,7 +110,7 @@ const currentPath = Astro.url.pathname;
 			</nav>
 		</header>
 
-		<main>
+		<main id="main-content">
 			<slot />
 		</main>
 
@@ -189,6 +190,7 @@ const currentPath = Astro.url.pathname;
 		--assoc-teal-light: #E6F2F3;
 		--assoc-sand: #F4EFE7;
 		--assoc-coral: #D96C4A;
+		--assoc-coral-text: #B5573A;
 		--assoc-coral-light: #FDF0EB;
 		--assoc-slate: #52616B;
 		--assoc-border: #E7EDF0;
@@ -213,6 +215,24 @@ const currentPath = Astro.url.pathname;
 		text-rendering: optimizeLegibility;
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
+	}
+
+	.assoc-skip-link {
+		position: absolute;
+		top: -100%;
+		left: 1rem;
+		z-index: 10000;
+		padding: 0.75rem 1.25rem;
+		border-radius: 8px;
+		background: var(--assoc-navy);
+		color: var(--assoc-white);
+		font-size: 0.9rem;
+		font-weight: 700;
+		text-decoration: none;
+	}
+
+	.assoc-skip-link:focus {
+		top: 0.5rem;
 	}
 
 	.assoc-site *,
@@ -716,7 +736,7 @@ const currentPath = Astro.url.pathname;
 		font-weight: 700;
 		letter-spacing: 0.1em;
 		text-transform: uppercase;
-		color: rgba(255, 255, 255, 0.35);
+		color: rgba(255, 255, 255, 0.5);
 	}
 
 	.assoc-footer__col ul {
@@ -745,7 +765,7 @@ const currentPath = Astro.url.pathname;
 	.assoc-footer__bottom p {
 		margin-bottom: 0.4rem;
 		font-size: 0.78rem;
-		color: rgba(255, 255, 255, 0.35);
+		color: rgba(255, 255, 255, 0.5);
 	}
 
 	.assoc-footer__disclaimer {

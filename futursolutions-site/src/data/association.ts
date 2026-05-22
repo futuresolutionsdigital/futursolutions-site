@@ -1333,7 +1333,7 @@ export const resourceLibraryItems = [
 	{ title: 'Preceptor Onboarding Toolkit', summary: 'Orientation materials, evaluation rubrics, and scheduling templates for new preceptors.', type: 'Toolkit', topic: 'Preceptorship', audience: 'Clinical Leaders', access: 'Member-only', ce: 'No CE', duration: 'Toolkit', date: 'February 2026', href: '/demos/association/resources', featured: false },
 	{ title: 'Chapter Meeting Planning Template', summary: 'Agenda templates, speaker coordination guides, and logistics checklists for local chapter events.', type: 'Template', topic: 'Chapter Tools', audience: 'Chapter Leaders', access: 'Member-only', ce: 'No CE', duration: 'Template', date: 'January 2026', href: '/demos/association/resources', featured: false },
 	{ title: 'Reimbursement Basics for Clinical Services', summary: 'An introductory guide to billing codes, documentation requirements, and payer navigation.', type: 'Practice Guide', topic: 'Reimbursement', audience: 'New Professionals', access: 'Public', ce: 'CE eligible', duration: '45 min', date: 'April 2026', href: '/demos/association/resources', featured: false },
-	{ title: 'Burnout Prevention and Team Resilience', summary: 'Evidence-based strategies for individual resilience and team-level wellness in clinical settings.', type: 'Webinar', topic: 'Workforce', audience: 'Clinical Leaders', access: 'Public', ce: 'CE eligible', duration: '90 min', date: 'March 2026', href: '/demos/association/resources', featured: false },
+	{ title: 'Burnout Prevention and Team Resilience', summary: 'Evidence-based strategies for individual resilience and team-level wellness in clinical settings.', type: 'Webinar', topic: 'Workforce', audience: 'Clinical Leaders', access: 'Public', ce: 'CE eligible', duration: '90 min', date: 'March 2026', href: '/demos/association/resources/burnout-prevention-resilience', featured: false },
 	{ title: 'Advocacy Talking Points Template', summary: 'Customizable talking points for legislative meetings, phone calls, and written communications.', type: 'Policy Brief', topic: 'Advocacy', audience: 'Practicing Professionals', access: 'Public', ce: 'No CE', duration: 'Template', date: 'May 2026', href: '/demos/association/advocacy#toolkit', featured: false },
 	{ title: 'Clinical Decision Support Guide', summary: 'A reference framework for integrating clinical evidence, patient preferences, and risk assessment.', type: 'Practice Guide', topic: 'Clinical Practice', audience: 'Practicing Professionals', access: 'Member-only', ce: 'CE eligible', duration: '1.5 hours', date: 'February 2026', href: '/demos/association/resources', featured: false },
 	{ title: 'New Professional Career Roadmap', summary: 'A structured guide to your first five years in healthcare practice — from licensure to leadership.', type: 'Career Resource', topic: 'Career Growth', audience: 'New Professionals', access: 'Public', ce: 'No CE', duration: 'Guide', date: 'January 2026', href: '/demos/association/resources', featured: false },
@@ -1342,7 +1342,7 @@ export const resourceLibraryItems = [
 	{ title: 'Mentorship Conversation Guide', summary: 'Structured conversation frameworks for mentors and mentees at different career stages.', type: 'Career Resource', topic: 'Career Growth', audience: 'Students', access: 'Public', ce: 'No CE', duration: 'Guide', date: 'February 2026', href: '/demos/association/resources', featured: false },
 	{ title: 'Conference CE Claiming Instructions', summary: 'Step-by-step instructions for claiming CE credit from MHPA conferences and on-demand sessions.', type: 'Practice Guide', topic: 'Education', audience: 'Practicing Professionals', access: 'Public', ce: 'No CE', duration: 'Quick Reference', date: 'May 2026', href: '/demos/association/resources', featured: false },
 	{ title: 'Practice Question Submission Guide', summary: 'How to submit clinical, legal, or practice-related questions to MHPA for expert review and response.', type: 'Practice Guide', topic: 'Clinical Practice', audience: 'Practicing Professionals', access: 'Member-only', ce: 'No CE', duration: 'Quick Reference', date: 'January 2026', href: '/demos/association/resources', featured: false },
-	{ title: 'Controlled Substance Documentation Guide', summary: 'Best practices for documenting controlled substance prescribing, monitoring agreements, and PDMP use.', type: 'Practice Guide', topic: 'Documentation', audience: 'Practicing Professionals', access: 'Member-only', ce: 'CE eligible', duration: '1 hour', date: 'April 2026', href: '/demos/association/resources', featured: false },
+	{ title: 'Controlled Substance Documentation Guide', summary: 'Best practices for documenting controlled substance prescribing, monitoring agreements, and PDMP use.', type: 'Practice Guide', topic: 'Documentation', audience: 'Practicing Professionals', access: 'Member-only', ce: 'CE eligible', duration: '1 hour', date: 'April 2026', href: '/demos/association/resources/controlled-substance-documentation', featured: false },
 	{ title: 'New Graduate Practice Readiness Checklist', summary: 'A step-by-step checklist to prepare for your first clinical role, including credentialing, malpractice, and onboarding.', type: 'Career Resource', topic: 'Career Growth', audience: 'Students', access: 'Public', ce: 'No CE', duration: 'Checklist', date: 'March 2026', href: '/demos/association/resources', featured: false },
 	{ title: 'Annual Conference Session Archive', summary: 'Recorded sessions from the 2025 MHPA Annual Conference, organized by topic and CE eligibility.', type: 'Webinar', topic: 'Education', audience: 'Practicing Professionals', access: 'Member-only', ce: 'On-demand CE', duration: '12+ hours', date: 'January 2026', href: '/demos/association/events', featured: false },
 	{ title: 'Preceptorship Evaluation Rubric', summary: 'Standardized rubric for evaluating student performance during clinical rotations.', type: 'Template', topic: 'Preceptorship', audience: 'Clinical Leaders', access: 'Member-only', ce: 'No CE', duration: 'Template', date: 'February 2026', href: '/demos/association/resources', featured: false },
@@ -1471,6 +1471,100 @@ export const resourceDetailRelated = [
 	{ title: 'Conference CE Claiming Instructions', type: 'Practice Guide', ce: '', access: 'Public', href: '/demos/association/resources' },
 ];
 
+// ── Resource Detail: Controlled Substance Documentation ──
+
+export const resourceDetailControlledSubstance = {
+	eyebrow: 'Practice Guide',
+	headline: 'Controlled Substance Documentation Guide',
+	lead: 'Best practices for documenting controlled substance prescribing, monitoring agreements, and PDMP use — with templates and compliance checklists for healthcare professionals.',
+	access: 'Member-only',
+	ce: '1.0 CE credit',
+	format: 'Practice guide + templates',
+	audience: 'Practicing Professionals',
+	duration: '1 hour',
+	updated: 'April 2026',
+	primaryCta: { text: 'Access Guide', href: '#guide-outline' },
+	secondaryCta: { text: 'Save to My Resources', href: '#access' },
+	tertiaryLink: { text: '← Back to Resources', href: '/demos/association/resources' },
+	disclaimer: 'This is a fictional resource detail page for demo purposes.',
+} as const;
+
+export const resourceDetailCSQuickFacts = [
+	{ label: 'Format', value: 'Guide + templates' },
+	{ label: 'Credit', value: '1.0 CE' },
+	{ label: 'Access', value: 'Member-only' },
+	{ label: 'Audience', value: 'Practicing professionals' },
+	{ label: 'Duration', value: '1 hour' },
+	{ label: 'Updated', value: 'April 2026' },
+];
+
+export const resourceDetailCSObjectives = [
+	{ title: 'Document controlled substance decisions', description: 'Apply consistent documentation frameworks for prescribing rationale, risk assessment, and clinical reasoning.' },
+	{ title: 'Structure monitoring agreements', description: 'Use templates for patient-provider monitoring agreements that meet state and federal documentation requirements.' },
+	{ title: 'Integrate PDMP use into workflows', description: 'Document Prescription Drug Monitoring Program checks efficiently while maintaining compliance and patient safety.' },
+	{ title: 'Prepare for documentation audits', description: 'Understand common audit triggers and use the audit preparation checklist to ensure records are complete and defensible.' },
+];
+
+export const resourceDetailCSOutline = [
+	{ module: 1, title: 'Prescribing Documentation Fundamentals', length: '15 min', type: 'Guide + Examples', locked: false },
+	{ module: 2, title: 'Monitoring Agreement Templates', length: '15 min', type: 'Downloadable Templates', locked: false },
+	{ module: 3, title: 'PDMP Integration and Documentation', length: '15 min', type: 'Workflow Guide', locked: true },
+	{ module: 4, title: 'Audit Preparation Checklist', length: '15 min', type: 'Checklist + Assessment', locked: true },
+];
+
+export const resourceDetailCSRelated = [
+	{ title: 'Pharmacology Update: 2026 Guidelines', type: 'CE Course', ce: '3.0 CE', access: 'Member-only', href: '/demos/association/resources/pharmacology-update-2026' },
+	{ title: 'Billing Documentation Essentials', type: 'Practice Guide', ce: 'CE eligible', access: 'Member-only', href: '/demos/association/resources' },
+	{ title: 'Telehealth Documentation Checklist', type: 'Template', ce: '', access: 'Public', href: '/demos/association/resources' },
+	{ title: 'Clinical Decision Support Guide', type: 'Practice Guide', ce: 'CE eligible', access: 'Member-only', href: '/demos/association/resources' },
+];
+
+// ── Resource Detail: Burnout Prevention ──
+
+export const resourceDetailBurnout = {
+	eyebrow: 'Webinar Recording',
+	headline: 'Burnout Prevention and Team Resilience',
+	lead: 'An evidence-based webinar exploring individual resilience strategies, team-level wellness interventions, and organizational factors that reduce burnout in clinical settings.',
+	access: 'Public',
+	ce: '1.5 CE credits',
+	format: 'Recorded webinar',
+	audience: 'Clinical Leaders',
+	duration: '90 minutes',
+	updated: 'March 2026',
+	primaryCta: { text: 'Watch Webinar', href: '#webinar-content' },
+	secondaryCta: { text: 'Save to My Resources', href: '#access' },
+	tertiaryLink: { text: '← Back to Resources', href: '/demos/association/resources' },
+	disclaimer: 'This is a fictional resource detail page for demo purposes.',
+} as const;
+
+export const resourceDetailBurnoutQuickFacts = [
+	{ label: 'Format', value: 'Recorded webinar' },
+	{ label: 'Credit', value: '1.5 CE' },
+	{ label: 'Access', value: 'Public' },
+	{ label: 'Audience', value: 'Clinical leaders' },
+	{ label: 'Duration', value: '90 minutes' },
+	{ label: 'Updated', value: 'March 2026' },
+];
+
+export const resourceDetailBurnoutObjectives = [
+	{ title: 'Recognize burnout risk factors', description: 'Identify individual, team, and organizational factors that contribute to burnout in clinical environments.' },
+	{ title: 'Apply individual resilience strategies', description: 'Learn evidence-based personal resilience techniques including cognitive reframing, recovery habits, and boundary setting.' },
+	{ title: 'Implement team wellness interventions', description: 'Design team-level wellness check-ins, peer support structures, and workload distribution strategies that reduce collective burnout.' },
+	{ title: 'Advocate for organizational change', description: 'Build a business case for systemic wellness investment and present actionable recommendations to organizational leadership.' },
+];
+
+export const resourceDetailBurnoutSpeakers = [
+	{ name: 'Dr. Sarah Kimura', role: 'Chief Wellness Officer, Pacific Health Systems', bio: 'Clinical psychologist specializing in healthcare workforce wellness and organizational resilience programs.' },
+	{ name: 'Dr. Marcus Webb', role: 'Emergency Medicine PA-C, MHPA President-Elect', bio: 'Clinician and advocate focused on workforce policy, rural healthcare access, and sustainable practice models.' },
+];
+
+export const resourceDetailBurnoutRelated = [
+	{ title: 'Quality Improvement Starter Toolkit', type: 'Toolkit', ce: 'CE eligible', access: 'Member-only', href: '/demos/association/resources' },
+	{ title: 'Leadership Roundtable Replay', type: 'Webinar', ce: 'On-demand CE', access: 'Member-only', href: '/demos/association/resources' },
+	{ title: 'Employer Partnership Guide', type: 'Report', ce: '', access: 'Public', href: '/demos/association/resources' },
+	{ title: 'Rural Practice Resource Packet', type: 'Toolkit', ce: '', access: 'Public', href: '/demos/association/resources' },
+];
+
 // ── Resources: Guidance Paths ──
 
 export const resourceGuidancePaths = [
@@ -1509,7 +1603,7 @@ export const chapterRegions = [
 	{ name: 'Central Valley', slug: 'central-valley', region: 'Central Valley', summary: 'Covering Fresno, Bakersfield, Stockton, Modesto, and rural communities with a focus on workforce and access issues.', memberCount: 520, upcomingEvents: 5, meetingFrequency: 'Monthly', cityFocus: 'Fresno Bakersfield Stockton Modesto', tags: ['networking', 'advocacy', 'education'], href: '/demos/association/chapters' },
 	{ name: 'Southern California', slug: 'southern-california', region: 'Southern California', summary: 'The largest regional network, connecting professionals across Los Angeles, San Diego, Orange County, and surrounding areas.', memberCount: 1400, upcomingEvents: 12, meetingFrequency: 'Biweekly', cityFocus: 'Los Angeles San Diego Orange County', tags: ['networking', 'advocacy', 'mentorship', 'leadership', 'education'], href: '/demos/association/chapters' },
 	{ name: 'Inland Empire & Desert', slug: 'inland-empire', region: 'Inland Empire & Desert', summary: 'Serving Riverside, San Bernardino, Palm Springs, and desert communities with a focus on rural access and new professional support.', memberCount: 380, upcomingEvents: 4, meetingFrequency: 'Monthly', cityFocus: 'Riverside San Bernardino Palm Springs', tags: ['networking', 'mentorship', 'education'], href: '/demos/association/chapters' },
-	{ name: 'Bay Area', slug: 'bay-area', region: 'Bay Area', summary: 'Connecting professionals across San Francisco, Oakland, San Jose, and the broader Bay Area with robust CE programming and leadership development.', memberCount: 1100, upcomingEvents: 10, meetingFrequency: 'Biweekly', cityFocus: 'San Francisco Oakland San Jose', tags: ['networking', 'advocacy', 'mentorship', 'leadership', 'education'], href: '/demos/association/chapters' },
+	{ name: 'Bay Area', slug: 'bay-area', region: 'Bay Area', summary: 'Connecting professionals across San Francisco, Oakland, San Jose, and the broader Bay Area with robust CE programming and leadership development.', memberCount: 1100, upcomingEvents: 10, meetingFrequency: 'Biweekly', cityFocus: 'San Francisco Oakland San Jose', tags: ['networking', 'advocacy', 'mentorship', 'leadership', 'education'], href: '/demos/association/chapters/bay-area' },
 	{ name: 'Coastal Region', slug: 'coastal-region', region: 'Coastal Region', summary: 'Chapters along the central coast serving Santa Barbara, San Luis Obispo, Monterey, and Santa Cruz communities.', memberCount: 290, upcomingEvents: 3, meetingFrequency: 'Monthly', cityFocus: 'Santa Barbara San Luis Obispo Monterey Santa Cruz', tags: ['networking', 'education'], href: '/demos/association/chapters' },
 ];
 
@@ -1669,6 +1763,60 @@ export const chapterDetailAnnouncements = [
 	{ date: 'May 14, 2026', title: 'Next chapter meeting announced', summary: 'The May meeting will focus on Lobby Day preparation and local advocacy priorities.' },
 	{ date: 'May 8, 2026', title: 'Volunteer roles opening in June', summary: 'Education Coordinator and Student Representative positions will be open for applications starting June 1.' },
 	{ date: 'May 2, 2026', title: 'Advocacy briefing recap available', summary: 'A summary of the April policy briefing, including SB-1247 talking points and member feedback, is available in the resource library.' },
+];
+
+// ── Chapter Detail: Bay Area ──
+
+export const chapterDetailBayArea = {
+	eyebrow: 'Local Chapter',
+	headline: 'Bay Area Chapter',
+	lead: 'A vibrant regional network for healthcare professionals across San Francisco, Oakland, San Jose, and the broader Bay Area.',
+	memberCount: '1,100+',
+	upcomingEvents: '10',
+	meetingFrequency: 'Biweekly meetings',
+	advocacyStatus: 'Advocacy active',
+	regionServed: 'San Francisco, Oakland, San Jose, and the broader Bay Area',
+	focusAreas: ['Leadership development', 'CE programming', 'Telehealth innovation', 'Legislative engagement'],
+	leadershipOpenings: 1,
+	studentActivity: 'Active student and new professional programming',
+	primaryCta: { text: 'Attend an Event', href: '#events' },
+	secondaryCta: { text: 'Contact Chapter Leaders', href: '/demos/association/contact' },
+	tertiaryLink: { text: '← Back to Chapters', href: '/demos/association/chapters' },
+} as const;
+
+export const chapterDetailBayAreaQuickFacts = [
+	{ label: 'Region', value: 'Bay Area' },
+	{ label: 'Meetings', value: 'Biweekly' },
+	{ label: 'Members', value: '1,100+' },
+	{ label: 'Focus', value: 'Leadership' },
+	{ label: 'Openings', value: '1 role' },
+	{ label: 'Students', value: 'Active' },
+];
+
+export const chapterDetailBayAreaEvents = [
+	{ date: 'June 3, 2026', type: 'CE Event', title: 'CE Dinner: Telehealth Documentation', location: 'San Francisco', summary: '1.0 CE credit dinner event covering telehealth documentation best practices and compliance updates.', href: '/demos/association/events' },
+	{ date: 'June 14, 2026', type: 'Networking', title: 'Bay Area Professionals Mixer', location: 'Oakland', summary: 'Evening networking event connecting healthcare professionals from across the Bay Area.', href: '/demos/association/events' },
+	{ date: 'June 28, 2026', type: 'Mentorship', title: 'Student & New Professional Peer Circle', location: 'San Jose', summary: 'Small-group professional support session for students and early-career professionals.', href: '/demos/association/events' },
+	{ date: 'July 9, 2026', type: 'Policy Briefing', title: 'Summer Legislative Update', location: 'San Francisco', summary: 'Review of legislative session progress, upcoming policy votes, and advocacy priorities for the Bay Area.', href: '/demos/association/advocacy' },
+];
+
+export const chapterDetailBayAreaLeaders = [
+	{ name: 'Dr. Lisa Chen', initials: 'LC', role: 'Chapter Chair', bio: 'Internal medicine NP with 15 years of practice in San Francisco. Focused on leadership development and interprofessional collaboration.' },
+	{ name: 'Michael Reyes', initials: 'MR', role: 'Education Coordinator', bio: 'PA-C specializing in telehealth innovation. Organizes CE dinners and clinical education programming for the Bay Area chapter.' },
+	{ name: 'Aisha Patel', initials: 'AP', role: 'Advocacy Liaison', bio: 'Health policy analyst coordinating Bay Area legislative outreach and connecting members to statewide advocacy campaigns.' },
+];
+
+export const chapterDetailBayAreaPriorities = [
+	{ title: 'Leadership pipeline development', description: 'Building structured pathways for clinical professionals to develop leadership skills through chapter roles and mentorship.' },
+	{ title: 'Telehealth and innovation', description: 'Hosting CE events and workshops focused on virtual care delivery, documentation, and technology integration.' },
+	{ title: 'Legislative engagement', description: 'Coordinating Bay Area legislative outreach, Lobby Day preparation, and policy briefings for local representatives.' },
+	{ title: 'Interprofessional networking', description: 'Creating opportunities for healthcare professionals across specialties to connect, learn, and collaborate.' },
+];
+
+export const chapterDetailBayAreaAnnouncements = [
+	{ date: 'May 18, 2026', title: 'Summer CE series announced', summary: 'Three CE dinners scheduled for June, July, and August covering telehealth, documentation, and reimbursement topics.' },
+	{ date: 'May 10, 2026', title: 'Education Coordinator opening', summary: 'The chapter is seeking a co-Education Coordinator to support growing CE programming demand. Applications open through June 15.' },
+	{ date: 'May 3, 2026', title: 'Lobby Day recap', summary: 'Bay Area chapter members met with 12 local legislators during the May Lobby Day. Full summary and next steps available in the chapter newsletter.' },
 ];
 
 // ── Career Center: Hero ──
@@ -1892,7 +2040,81 @@ export const careerJobRelatedResources = [
 ];
 
 export const careerRelatedJobs = [
-	{ title: 'Telehealth Clinical Lead', employer: 'Pacific Northwest Virtual Care', location: 'Remote', workType: 'Remote', salaryRange: '$118,000–$138,000', href: '/demos/association/career-center' },
+	{ title: 'Telehealth Clinical Lead', employer: 'Pacific Northwest Virtual Care', location: 'Remote', workType: 'Remote', salaryRange: '$118,000–$138,000', href: '/demos/association/career-center/telehealth-clinical-lead' },
+	{ title: 'Education Program Manager', employer: 'Redwood Health Education Center', location: 'San Francisco, CA', workType: 'On-site', salaryRange: '$95,000–$115,000', href: '/demos/association/career-center' },
+	{ title: 'Workforce Policy Specialist', employer: 'State Healthcare Workforce Commission', location: 'Sacramento, CA', workType: 'Hybrid', salaryRange: '$88,000–$105,000', href: '/demos/association/career-center' },
+];
+
+// ── Career Center: Job Detail – Telehealth Clinical Lead ──
+
+export const careerJobDetailTelehealth = {
+	eyebrow: 'Featured Role',
+	title: 'Telehealth Clinical Lead',
+	employer: 'Pacific Northwest Virtual Care',
+	lead: 'Lead a remote clinical team delivering virtual primary care, urgent care, and chronic disease management across three states.',
+	badges: ['Full-time', 'Remote', 'Pacific Northwest', 'Clinical Leadership', 'Posted May 6, 2026'],
+	salaryRange: '$118,000–$138,000',
+	primaryCta: { text: 'Apply Through Employer', href: '#application' },
+	secondaryCta: { text: 'Save Role', href: '#application' },
+	tertiaryLink: { text: '← Back to Career Center', href: '/demos/association/career-center' },
+	demoNote: 'This is a fictional job listing for demo purposes.',
+} as const;
+
+export const careerJobDetailTelehealthQuickFacts = [
+	{ label: 'Location', value: 'Remote' },
+	{ label: 'Work Type', value: 'Remote' },
+	{ label: 'Schedule', value: 'Full-time' },
+	{ label: 'Salary', value: '$118K–$138K' },
+	{ label: 'Experience', value: 'Mid-Senior' },
+	{ label: 'Posted', value: 'May 6, 2026' },
+];
+
+export const careerJobDetailTelehealthOverview = [
+	'Pacific Northwest Virtual Care is seeking a Telehealth Clinical Lead to oversee clinical operations for a growing virtual care platform serving patients in Washington, Oregon, and Idaho. This role combines direct patient care with clinical leadership, quality oversight, and team development.',
+	'The ideal candidate brings experience in telehealth delivery, clinical supervision, and quality improvement. You will lead a team of 12 remote clinicians, manage clinical protocols, and work closely with the medical director to ensure high-quality virtual care.',
+	'This is a fully remote position offering flexible scheduling, comprehensive benefits, and the opportunity to shape the clinical standards of a rapidly expanding virtual care organization.',
+];
+
+export const careerJobDetailTelehealthResponsibilities = [
+	'Provide direct patient care via telehealth for 60% of scheduled time',
+	'Supervise and mentor a team of 12 remote clinicians',
+	'Develop and maintain clinical protocols for virtual primary and urgent care',
+	'Lead quality improvement initiatives and clinical outcome tracking',
+	'Collaborate with technology team on platform usability and clinical workflow',
+	'Participate in hiring, onboarding, and performance review processes',
+];
+
+export const careerJobDetailTelehealthQualifications = {
+	required: [
+		'Active NP or PA-C license in at least one PNW state (WA, OR, or ID)',
+		'3+ years of clinical experience, including telehealth delivery',
+		'1+ year of clinical supervision or team leadership experience',
+		'Comfort with EHR systems and virtual care technology platforms',
+	],
+	preferred: [
+		'Multi-state licensure or willingness to obtain',
+		'Experience with clinical quality measurement and reporting',
+		'Background in chronic disease management programs',
+		'Familiarity with telehealth compliance and documentation standards',
+	],
+} as const;
+
+export const careerJobDetailTelehealthBenefits = [
+	{ title: 'Fully remote flexibility', description: 'Work from anywhere with a flexible schedule that supports clinical excellence and work-life balance.' },
+	{ title: 'Leadership development', description: 'Direct influence on clinical standards, team culture, and quality outcomes for a growing organization.' },
+	{ title: 'Multi-state practice', description: 'Expand your clinical reach across Washington, Oregon, and Idaho with supported multi-state licensing.' },
+	{ title: 'Professional growth', description: 'Annual CE budget, conference attendance support, and leadership development programming.' },
+];
+
+export const careerJobDetailTelehealthRelatedResources = [
+	{ title: 'Telehealth Documentation Checklist', type: 'Template', href: '/demos/association/resources' },
+	{ title: 'Professional Boundaries in Digital Care', type: 'CE Course', href: '/demos/association/resources' },
+	{ title: 'Resume Review Checklist', type: 'Checklist', href: '/demos/association/resources' },
+	{ title: 'Interview Preparation Guide', type: 'Guide', href: '/demos/association/resources' },
+];
+
+export const careerTelehealthRelatedJobs = [
+	{ title: 'Clinical Program Director', employer: 'Summit Valley Health Collaborative', location: 'Sacramento, CA', workType: 'Hybrid', salaryRange: '$142,000–$168,000', href: '/demos/association/career-center/clinical-program-director' },
 	{ title: 'Education Program Manager', employer: 'Redwood Health Education Center', location: 'San Francisco, CA', workType: 'On-site', salaryRange: '$95,000–$115,000', href: '/demos/association/career-center' },
 	{ title: 'Workforce Policy Specialist', employer: 'State Healthcare Workforce Commission', location: 'Sacramento, CA', workType: 'Hybrid', salaryRange: '$88,000–$105,000', href: '/demos/association/career-center' },
 ];
@@ -2001,10 +2223,10 @@ export const aboutPartners = {
 
 export const aboutFaqs = [
 	{ question: 'Is MHPA a real association?', answer: 'No. Meridian Health Professionals Association is a fictional professional association created by FutureSolutions to demonstrate a modern association website system. All content, data, leadership, partners, and organizations shown are entirely fictional.' },
-	{ question: 'What kind of real association could use this template?', answer: 'This template is designed for statewide or national professional associations — particularly those in healthcare, nursing, advanced practice, public health, or allied health fields that need membership, advocacy, events, CE, chapters, and career support.' },
+	{ question: 'What kind of real association could use this website system?', answer: 'This website system is designed for statewide or national professional associations — particularly those in healthcare, nursing, advanced practice, public health, or allied health fields that need membership, advocacy, events, CE, chapters, and career support.' },
 	{ question: 'How would this About page change for a real organization?', answer: 'A real implementation would replace fictional content with the organization\'s actual mission, leadership bios and photos, real milestones, audited metrics, verified partner logos, and governance documents. The structure and hierarchy are designed to be reusable.' },
 	{ question: 'Can this support board, staff, committees, and annual reports?', answer: 'Yes. The About page demonstrates board leadership, committee/council structure, governance transparency, timeline history, partner networks, and annual impact highlights — all common components of association credibility pages.' },
-	{ question: 'How does this template help build trust with members and partners?', answer: 'By presenting institutional scale, active governance, public voice, strategic priorities, and annual impact in a clean, accessible format — the kind of transparency that helps members, sponsors, employers, and policymakers take the association seriously.' },
+	{ question: 'How does this website system help build trust with members and partners?', answer: 'By presenting institutional scale, active governance, public voice, strategic priorities, and annual impact in a clean, accessible format — the kind of transparency that helps members, sponsors, employers, and policymakers take the association seriously.' },
 	{ question: 'How do chapters fit into the organization?', answer: 'Chapters are local extensions of the statewide association. They host events, mentorship, leadership development, and advocacy activity — all connected to the central MHPA system through the Chapter Council.' },
 ];
 
@@ -2209,13 +2431,42 @@ export const associationSearchIndex: SearchEntry[] = [
 	...advocacyEntries,
 ];
 
+// ── Events Hub ──
+
+export const eventsStats = [
+	{ value: '120+', label: 'CE hours available' },
+	{ value: '42', label: 'sessions at conference' },
+	{ value: '1,200+', label: 'conference attendees' },
+	{ value: '24', label: 'chapter event series' },
+	{ value: '35+', label: 'on-demand resources' },
+];
+
+export const upcomingEvents = [
+	{ date: 'May 22, 2026', type: 'Policy Briefing', title: 'Northern CA Policy Briefing Breakfast', location: 'Sacramento', chapter: 'Northern California', ce: false, href: '/demos/association/events' },
+	{ date: 'May 28, 2026', type: 'Networking', title: 'New Professional Meetup — Central Valley', location: 'Fresno', chapter: 'Central Valley', ce: false, href: '/demos/association/events' },
+	{ date: 'June 3, 2026', type: 'CE Event', title: 'CE Dinner: Telehealth Documentation', location: 'San Francisco', chapter: 'Bay Area', ce: true, ceHours: '1.0', href: '/demos/association/events' },
+	{ date: 'June 10, 2026', type: 'Advocacy', title: 'Advocacy Roundtable — Inland Empire', location: 'Riverside', chapter: 'Inland Empire & Desert', ce: false, href: '/demos/association/advocacy' },
+	{ date: 'June 15, 2026', type: 'Mentorship', title: 'Student Mentorship Night', location: 'Los Angeles', chapter: 'Southern California', ce: false, href: '/demos/association/events' },
+	{ date: 'June 20, 2026', type: 'Leadership', title: 'Leadership Coffee — Coastal Region', location: 'Santa Barbara', chapter: 'Coastal Region', ce: false, href: '/demos/association/events' },
+	{ date: 'July 12, 2026', type: 'Webinar', title: 'Webinar: Burnout Prevention and Team Resilience', location: 'Virtual', chapter: 'Statewide', ce: true, ceHours: '1.5', href: '/demos/association/resources' },
+	{ date: 'August 8, 2026', type: 'CE Event', title: 'Clinical Decision Support Workshop', location: 'Sacramento', chapter: 'Northern California', ce: true, ceHours: '2.0', href: '/demos/association/events' },
+];
+
+export const onDemandLearning = [
+	{ title: 'Annual Conference Session Archive', type: 'On-Demand', ce: '12+ CE hours', access: 'Member-only', summary: 'Recorded sessions from the 2025 MHPA Annual Conference, organized by topic and CE eligibility.', href: '/demos/association/resources' },
+	{ title: 'Leadership Roundtable Replay', type: 'On-Demand', ce: '1.25 CE hours', access: 'Member-only', summary: 'Recorded panel discussion on healthcare leadership, workforce strategy, and building resilient teams.', href: '/demos/association/resources' },
+	{ title: 'Legislative Update: What Passed in 2025', type: 'Webinar Replay', ce: '1.0 CE hour', access: 'Public', summary: 'A 60-minute overview of the legislative actions that may affect healthcare practice this year.', href: '/demos/association/resources' },
+];
+
+export const eventTypes = ['All Events', 'CE Event', 'Webinar', 'Advocacy', 'Networking', 'Mentorship', 'Leadership', 'Policy Briefing'] as const;
+
 // ── Future Route Metadata ──
 
 export const routeMetadata: Record<string, { title: string; description: string }> = {
 	'/demos/association': {
-		title: 'Meridian Health Professionals Association | Modern Professional Association Demo',
+		title: 'Meridian Health Professionals Association — Advocacy, Education, Career Support, and Community',
 		description:
-			'A modern professional association website template by FutureSolutions — designed for membership, advocacy, education, events, and career support.',
+			'The professional home for healthcare leaders — advocacy, continuing education, career tools, local chapters, and a community built around what matters most.',
 	},
 	'/demos/association/membership': {
 		title: 'Membership | MHPA',
@@ -2271,6 +2522,26 @@ export const routeMetadata: Record<string, { title: string; description: string 
 		title: 'Expanding Scope of Practice Access | MHPA Advocacy',
 		description:
 			'Learn about SB-1247, MHPA position on scope-of-practice reform, and how to take action to expand patient access.',
+	},
+	'/demos/association/resources/controlled-substance-documentation': {
+		title: 'Controlled Substance Documentation Guide | MHPA Resources',
+		description:
+			'Best practices for documenting controlled substance prescribing, monitoring agreements, and PDMP use.',
+	},
+	'/demos/association/resources/burnout-prevention-resilience': {
+		title: 'Burnout Prevention and Team Resilience | MHPA Resources',
+		description:
+			'Evidence-based strategies for individual resilience and team-level wellness in clinical settings.',
+	},
+	'/demos/association/career-center/telehealth-clinical-lead': {
+		title: 'Telehealth Clinical Lead | MHPA Career Center',
+		description:
+			'Lead virtual care delivery and clinical operations at Pacific Northwest Virtual Care. Remote position.',
+	},
+	'/demos/association/chapters/bay-area': {
+		title: 'Bay Area Chapter | MHPA',
+		description:
+			'Connect with healthcare professionals across San Francisco, Oakland, San Jose, and the broader Bay Area through the MHPA Bay Area Chapter.',
 	},
 	'/demos/association/about': {
 		title: 'About | MHPA',

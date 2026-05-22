@@ -1,10 +1,13 @@
 ---
 import AssociationLayout from '../../../../layouts/AssociationLayout.astro';
 import AssociationPageHero from '../../../../components/association/AssociationPageHero.astro';
+import AssociationFeaturedEvent from '../../../../components/association/AssociationFeaturedEvent.astro';
 import AssociationFinalCTA from '../../../../components/association/AssociationFinalCTA.astro';
-import { routeMetadata, resourcePreview } from '../../../../data/association';
+import { routeMetadata, eventsStats, upcomingEvents, onDemandLearning, resourcePreview, resourceLearningPathways } from '../../../../data/association';
 
 const meta = routeMetadata['/demos/association/events'];
+
+const ceResources = resourcePreview.filter((r) => r.category === 'CE Course' || r.category === 'Webinar');
 ---
 
 <AssociationLayout title={meta.title} description={meta.description}>
@@ -13,47 +16,64 @@ const meta = routeMetadata['/demos/association/events'];
 		headline="Learn from the best. Earn the credits you need."
 		lead="Browse accredited CE courses, on-demand webinars, specialty workshops, and the flagship Annual Clinical Leadership Conference."
 		primaryCta={{ text: 'Register for Conference', href: '/demos/association/events/annual-conference' }}
-		secondaryCta={{ text: 'Browse CE Courses', href: '/demos/association/events' }}
+		secondaryCta={{ text: 'Browse CE Courses', href: '#ce-learning' }}
 	/>
 
-	<!-- Featured: Annual Conference -->
-	<section class="assoc-section" aria-labelledby="events-featured-heading">
+	<!-- Stats -->
+	<section class="assoc-section assoc-section--warm" aria-label="Education and events by the numbers">
 		<div class="assoc-container">
-			<p class="assoc-eyebrow">Featured Event</p>
-			<div class="events-featured">
-				<div class="events-featured__content">
-					<h2 id="events-featured-heading">Clinical Leadership Conference 2026</h2>
-					<div class="events-featured__meta">
-						<span>October 15–17, 2026</span>
-						<span class="events-featured__dot" aria-hidden="true">·</span>
-						<span>Sacramento, CA</span>
-						<span class="events-featured__dot" aria-hidden="true">·</span>
-						<span>18 CE hours</span>
+			<div class="events-stat-strip">
+				{eventsStats.map((stat) => (
+					<div class="events-stat">
+						<span class="events-stat__value">{stat.value}</span>
+						<span class="events-stat__label">{stat.label}</span>
 					</div>
-					<p>Three days of keynotes, clinical workshops, advocacy briefings, networking, and career development — designed for healthcare professionals at every level.</p>
-					<div class="assoc-btn-row">
-						<a class="assoc-btn assoc-btn--primary" href="/demos/association/events/annual-conference">View Conference Details</a>
-						<a class="assoc-btn assoc-btn--secondary" href="/demos/association/events/annual-conference#register">Register Now</a>
-					</div>
-				</div>
-				<div class="events-featured__stats" aria-hidden="true">
-					<div class="events-featured__stat"><span>1,200+</span><small>attendees</small></div>
-					<div class="events-featured__stat"><span>42</span><small>sessions</small></div>
-					<div class="events-featured__stat"><span>65</span><small>speakers</small></div>
-					<div class="events-featured__stat"><span>30+</span><small>sponsors</small></div>
-				</div>
+				))}
 			</div>
 		</div>
 	</section>
 
-	<!-- Education preview -->
-	<section class="assoc-section assoc-section--warm" aria-labelledby="events-edu-heading">
+	<!-- Featured: Annual Conference -->
+	<AssociationFeaturedEvent />
+
+	<!-- Upcoming Events Calendar -->
+	<section class="assoc-section" aria-labelledby="events-calendar-heading">
+		<div class="assoc-container">
+			<p class="assoc-eyebrow">Upcoming Events</p>
+			<h2 id="events-calendar-heading">What's coming up across the state.</h2>
+			<p class="assoc-lead">Chapter meetups, CE events, advocacy briefings, and professional development — find what's happening near you.</p>
+			<div class="events-calendar">
+				{upcomingEvents.map((event) => (
+					<a href={event.href} class="events-cal-card assoc-card">
+						<div class="events-cal-card__date">
+							<span class="events-cal-card__month">{event.date.split(' ')[0]}</span>
+							<span class="events-cal-card__day">{event.date.split(' ')[1].replace(',', '')}</span>
+						</div>
+						<div class="events-cal-card__body">
+							<div class="events-cal-card__tags">
+								<span class="events-cal-card__type">{event.type}</span>
+								{event.ce && <span class="events-cal-card__ce">CE {event.ceHours}</span>}
+							</div>
+							<h3>{event.title}</h3>
+							<span class="events-cal-card__meta">{event.location} · {event.chapter}</span>
+						</div>
+					</a>
+				))}
+			</div>
+			<div class="assoc-btn-row" style="margin-top: 2rem;">
+				<a class="assoc-btn assoc-btn--secondary" href="/demos/association/chapters">Find Your Chapter's Events</a>
+			</div>
+		</div>
+	</section>
+
+	<!-- CE & On-Demand Learning -->
+	<section class="assoc-section assoc-section--warm" id="ce-learning" aria-labelledby="events-ce-heading">
 		<div class="assoc-container">
 			<p class="assoc-eyebrow">CE & On-Demand Learning</p>
-			<h2 id="events-edu-heading">Stay current between events.</h2>
+			<h2 id="events-ce-heading">Stay current between events.</h2>
 			<p class="assoc-lead">Access accredited CE courses, recorded webinars, and professional development modules year-round.</p>
 			<div class="events-edu-grid">
-				{resourcePreview.filter((r) => r.category === 'CE Course' || r.category === 'Webinar').map((item) => (
+				{ceResources.map((item) => (
 					<a href={item.href} class="assoc-card events-edu-card">
 						<span class="events-edu-card__cat">{item.category}</span>
 						<h3>{item.title}</h3>
@@ -65,12 +85,77 @@ const meta = routeMetadata['/demos/association/events'];
 		</div>
 	</section>
 
-	<!-- Placeholder for future -->
-	<section class="assoc-section">
-		<div class="assoc-container placeholder">
-			<div class="placeholder__badge">More Coming Soon</div>
-			<h2>Full event calendar, webinar archives, and CE catalog</h2>
-			<p class="assoc-lead">This section will expand with a filterable event calendar, on-demand webinar library, and complete CE course catalog as this demo system grows.</p>
+	<!-- On-Demand / Past Events -->
+	<section class="assoc-section" aria-labelledby="events-ondemand-heading">
+		<div class="assoc-container">
+			<p class="assoc-eyebrow">On-Demand & Past Events</p>
+			<h2 id="events-ondemand-heading">Missed an event? Watch it anytime.</h2>
+			<p class="assoc-lead">Recorded conferences, webinar replays, and on-demand CE modules — available whenever you're ready to learn.</p>
+			<div class="events-ondemand-grid">
+				{onDemandLearning.map((item) => (
+					<a href={item.href} class="assoc-card events-ondemand-card">
+						<div class="events-ondemand-card__header">
+							<span class="events-ondemand-card__type">{item.type}</span>
+							<span class="events-ondemand-card__access">{item.access}</span>
+						</div>
+						<h3>{item.title}</h3>
+						<p>{item.summary}</p>
+						<span class="events-ondemand-card__ce">{item.ce}</span>
+					</a>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- Learning Pathways -->
+	<section class="assoc-section assoc-section--warm" aria-labelledby="events-pathways-heading">
+		<div class="assoc-container">
+			<p class="assoc-eyebrow">Learning Pathways</p>
+			<h2 id="events-pathways-heading">Structured learning for every career stage.</h2>
+			<p class="assoc-lead">Curated tracks combining CE courses, webinars, and resources into guided professional development pathways.</p>
+			<div class="events-pathways">
+				{resourceLearningPathways.map((pathway) => (
+					<a href={pathway.href} class="assoc-card events-pathway-card">
+						<div class="events-pathway-card__top">
+							<h3>{pathway.title}</h3>
+							<div class="events-pathway-card__meta">
+								<span>{pathway.audience}</span>
+								<span class="events-pathway-card__dot" aria-hidden="true">·</span>
+								<span>{pathway.time}</span>
+							</div>
+						</div>
+						<ul class="events-pathway-card__modules">
+							{pathway.modules.map((mod) => (
+								<li>
+									<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+									{mod}
+								</li>
+							))}
+						</ul>
+					</a>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- CE Catalog Link -->
+	<section class="assoc-section" aria-labelledby="events-catalog-heading">
+		<div class="assoc-container events-catalog-inner">
+			<div class="events-catalog-content">
+				<p class="assoc-eyebrow">Full Resource Library</p>
+				<h2 id="events-catalog-heading">Browse the complete CE catalog and resource library.</h2>
+				<p class="assoc-lead">Filter by CE eligibility, topic, audience, and access level to find exactly what you need.</p>
+				<div class="assoc-btn-row">
+					<a class="assoc-btn assoc-btn--primary" href="/demos/association/resources">Browse Resource Library</a>
+					<a class="assoc-btn assoc-btn--secondary" href="/demos/association/membership">Unlock Member-Only Resources</a>
+				</div>
+			</div>
+			<div class="events-catalog-stats" aria-hidden="true">
+				<div class="events-catalog-stat"><span>35+</span><small>resources</small></div>
+				<div class="events-catalog-stat"><span>18</span><small>CE eligible</small></div>
+				<div class="events-catalog-stat"><span>6</span><small>topic areas</small></div>
+				<div class="events-catalog-stat"><span>3</span><small>learning tracks</small></div>
+			</div>
 		</div>
 	</section>
 
@@ -78,57 +163,114 @@ const meta = routeMetadata['/demos/association/events'];
 </AssociationLayout>
 
 <style>
-	/* Featured conference block */
-	.events-featured {
-		display: grid;
-		grid-template-columns: 1.2fr 0.8fr;
-		gap: clamp(2rem, 5vw, 4rem);
-		align-items: start;
-		margin-top: 0.5rem;
-	}
-	.events-featured__meta {
+	/* Stats strip */
+	.events-stat-strip {
 		display: flex;
+		justify-content: center;
+		gap: clamp(1.5rem, 4vw, 3rem);
 		flex-wrap: wrap;
-		gap: 0.4rem;
-		margin-bottom: 0.75rem;
-		font-size: 0.88rem;
-		font-weight: 600;
-		color: var(--assoc-slate);
 	}
-	.events-featured__dot { opacity: 0.35; }
-	.events-featured__content p {
-		font-size: 0.95rem;
-		line-height: 1.6;
-		max-width: 520px;
-	}
-	.events-featured__stats {
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		gap: 0.75rem;
-	}
-	.events-featured__stat {
+	.events-stat {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		text-align: center;
-		padding: 1rem;
-		border: 1px solid var(--assoc-border);
-		border-radius: var(--assoc-radius);
-		background: var(--assoc-white);
-		box-shadow: 0 2px 10px rgba(16, 42, 67, 0.04);
+		min-width: 100px;
 	}
-	.events-featured__stat span {
-		font-size: 1.5rem;
+	.events-stat__value {
+		font-size: 1.6rem;
 		font-weight: 800;
 		color: var(--assoc-navy);
 		letter-spacing: -0.02em;
 		line-height: 1;
 	}
-	.events-featured__stat small {
-		font-size: 0.72rem;
+	.events-stat__label {
+		font-size: 0.75rem;
 		font-weight: 600;
 		color: var(--assoc-slate);
-		margin-top: 0.2rem;
+		margin-top: 0.25rem;
+	}
+
+	/* Upcoming events calendar grid */
+	.events-calendar {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 1rem;
+		margin-top: 2rem;
+	}
+	.events-cal-card {
+		display: flex;
+		gap: 1.15rem;
+		padding: 1.25rem;
+		align-items: flex-start;
+	}
+	.events-cal-card:hover {
+		border-color: var(--assoc-teal);
+		transform: translateY(-1px);
+	}
+	.events-cal-card__date {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		min-width: 48px;
+		padding: 0.5rem 0.4rem 0.4rem;
+		border-radius: 8px;
+		background: var(--assoc-navy);
+		color: var(--assoc-white);
+		flex-shrink: 0;
+	}
+	.events-cal-card__month {
+		font-size: 0.6rem;
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		opacity: 0.85;
+	}
+	.events-cal-card__day {
+		font-size: 1.25rem;
+		font-weight: 800;
+		line-height: 1.1;
+	}
+	.events-cal-card__body {
+		flex: 1;
+		min-width: 0;
+	}
+	.events-cal-card__tags {
+		display: flex;
+		gap: 0.4rem;
+		margin-bottom: 0.4rem;
+	}
+	.events-cal-card__type {
+		display: inline-block;
+		padding: 0.15rem 0.45rem;
+		border-radius: 5px;
+		font-size: 0.65rem;
+		font-weight: 700;
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
+		background: var(--assoc-teal-light);
+		color: var(--assoc-teal);
+	}
+	.events-cal-card__ce {
+		display: inline-block;
+		padding: 0.15rem 0.45rem;
+		border-radius: 5px;
+		font-size: 0.65rem;
+		font-weight: 700;
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
+		background: color-mix(in srgb, var(--assoc-coral) 12%, var(--assoc-white));
+		color: var(--assoc-coral);
+	}
+	.events-cal-card h3 {
+		font-size: 0.98rem;
+		margin-bottom: 0.25rem;
+		line-height: 1.3;
+	}
+	.events-cal-card__meta {
+		font-size: 0.78rem;
+		font-weight: 500;
+		color: var(--assoc-slate);
 	}
 
 	/* Education cards */
@@ -172,24 +314,154 @@ const meta = routeMetadata['/demos/association/events'];
 		color: var(--assoc-teal);
 	}
 
-	/* Placeholder */
-	.placeholder { text-align: center; max-width: 600px; margin-inline: auto; }
-	.placeholder .assoc-lead { margin-inline: auto; }
-	.placeholder__badge {
+	/* On-Demand grid */
+	.events-ondemand-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 1rem;
+		margin-top: 2rem;
+	}
+	.events-ondemand-card {
+		display: flex;
+		flex-direction: column;
+		padding: 1.5rem;
+	}
+	.events-ondemand-card:hover {
+		border-color: var(--assoc-teal);
+		transform: translateY(-1px);
+	}
+	.events-ondemand-card__header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 0.65rem;
+	}
+	.events-ondemand-card__type {
 		display: inline-block;
-		margin-bottom: 1.5rem;
-		padding: 0.3rem 0.8rem;
-		border-radius: 999px;
-		background: var(--assoc-teal-light);
-		color: var(--assoc-teal);
-		font-size: 0.75rem;
+		padding: 0.15rem 0.5rem;
+		border-radius: 6px;
+		font-size: 0.68rem;
 		font-weight: 700;
-		letter-spacing: 0.06em;
+		letter-spacing: 0.05em;
 		text-transform: uppercase;
+		background: color-mix(in srgb, var(--assoc-navy) 8%, var(--assoc-white));
+		color: var(--assoc-navy);
+	}
+	.events-ondemand-card__access {
+		font-size: 0.68rem;
+		font-weight: 700;
+		color: var(--assoc-coral);
+	}
+	.events-ondemand-card h3 { font-size: 1.02rem; margin-bottom: 0.35rem; }
+	.events-ondemand-card p { font-size: 0.85rem; line-height: 1.5; flex: 1; }
+	.events-ondemand-card__ce {
+		display: block;
+		margin-top: 0.65rem;
+		padding-top: 0.6rem;
+		border-top: 1px solid var(--assoc-border);
+		font-size: 0.75rem;
+		font-weight: 600;
+		color: var(--assoc-teal);
+	}
+
+	/* Learning Pathways */
+	.events-pathways {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 1rem;
+		margin-top: 2rem;
+	}
+	.events-pathway-card {
+		display: flex;
+		flex-direction: column;
+		padding: 1.75rem;
+	}
+	.events-pathway-card:hover {
+		border-color: var(--assoc-teal);
+		transform: translateY(-1px);
+	}
+	.events-pathway-card h3 { font-size: 1.08rem; margin-bottom: 0.35rem; }
+	.events-pathway-card__meta {
+		display: flex;
+		gap: 0.35rem;
+		font-size: 0.8rem;
+		font-weight: 600;
+		color: var(--assoc-slate);
+		margin-bottom: 1rem;
+	}
+	.events-pathway-card__dot { opacity: 0.35; }
+	.events-pathway-card__modules {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: grid;
+		gap: 0.5rem;
+		padding-top: 1rem;
+		border-top: 1px solid var(--assoc-border);
+	}
+	.events-pathway-card__modules li {
+		display: flex;
+		align-items: flex-start;
+		gap: 0.5rem;
+		font-size: 0.85rem;
+		font-weight: 500;
+		color: var(--assoc-navy);
+		line-height: 1.35;
+	}
+	.events-pathway-card__modules li svg {
+		display: inline;
+		flex-shrink: 0;
+		margin-top: 0.1rem;
+		color: var(--assoc-teal);
+	}
+
+	/* CE Catalog CTA block */
+	.events-catalog-inner {
+		display: grid;
+		grid-template-columns: 1.2fr 0.8fr;
+		gap: clamp(2rem, 5vw, 4rem);
+		align-items: center;
+	}
+	.events-catalog-stats {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 0.75rem;
+	}
+	.events-catalog-stat {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+		padding: 1rem;
+		border: 1px solid var(--assoc-border);
+		border-radius: var(--assoc-radius);
+		background: var(--assoc-white);
+		box-shadow: 0 2px 10px rgba(16, 42, 67, 0.04);
+	}
+	.events-catalog-stat span {
+		font-size: 1.5rem;
+		font-weight: 800;
+		color: var(--assoc-navy);
+		letter-spacing: -0.02em;
+		line-height: 1;
+	}
+	.events-catalog-stat small {
+		font-size: 0.72rem;
+		font-weight: 600;
+		color: var(--assoc-slate);
+		margin-top: 0.2rem;
+	}
+
+	@media (max-width: 960px) {
+		.events-ondemand-grid { grid-template-columns: 1fr 1fr; }
+		.events-pathways { grid-template-columns: 1fr 1fr; }
 	}
 
 	@media (max-width: 768px) {
-		.events-featured { grid-template-columns: 1fr; }
+		.events-calendar { grid-template-columns: 1fr; }
 		.events-edu-grid { grid-template-columns: 1fr; }
+		.events-ondemand-grid { grid-template-columns: 1fr; }
+		.events-pathways { grid-template-columns: 1fr; }
+		.events-catalog-inner { grid-template-columns: 1fr; }
 	}
 </style>

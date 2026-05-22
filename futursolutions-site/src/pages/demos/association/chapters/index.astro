@@ -1,7 +1,7 @@
 ---
 import AssociationLayout from '../../../../layouts/AssociationLayout.astro';
 import AssociationChaptersHero from '../../../../components/association/AssociationChaptersHero.astro';
-import AssociationChapterStats from '../../../../components/association/AssociationChapterStats.astro';
+import AssociationStatStrip from '../../../../components/association/AssociationStatStrip.astro';
 import AssociationChapterFinder from '../../../../components/association/AssociationChapterFinder.astro';
 import AssociationChapterBenefits from '../../../../components/association/AssociationChapterBenefits.astro';
 import AssociationChapterEvents from '../../../../components/association/AssociationChapterEvents.astro';
@@ -10,16 +10,16 @@ import AssociationChapterMentorship from '../../../../components/association/Ass
 import AssociationChapterResources from '../../../../components/association/AssociationChapterResources.astro';
 import AssociationChapterStories from '../../../../components/association/AssociationChapterStories.astro';
 import AssociationChapterVolunteerCTA from '../../../../components/association/AssociationChapterVolunteerCTA.astro';
-import AssociationChapterFAQ from '../../../../components/association/AssociationChapterFAQ.astro';
+import AssociationFAQ from '../../../../components/association/AssociationFAQ.astro';
 import AssociationFinalCTA from '../../../../components/association/AssociationFinalCTA.astro';
-import { routeMetadata } from '../../../../data/association';
+import { routeMetadata, chapterStats, chapterFaqs } from '../../../../data/association';
 
 const meta = routeMetadata['/demos/association/chapters'];
 ---
 
 <AssociationLayout title={meta.title} description={meta.description}>
 	<AssociationChaptersHero />
-	<AssociationChapterStats />
+	<AssociationStatStrip stats={chapterStats} ariaLabel="Chapter network statistics" />
 	<AssociationChapterFinder />
 	<AssociationChapterBenefits />
 	<AssociationChapterEvents />
@@ -28,7 +28,7 @@ const meta = routeMetadata['/demos/association/chapters'];
 	<AssociationChapterResources />
 	<AssociationChapterStories />
 	<AssociationChapterVolunteerCTA />
-	<AssociationChapterFAQ />
+	<AssociationFAQ faqs={chapterFaqs} heading="Chapter questions, answered." />
 	<AssociationFinalCTA
 		headline="Find your local network inside MHPA."
 		subheadline="Join the association and connect with the chapter, mentors, events, and professional relationships closest to you."

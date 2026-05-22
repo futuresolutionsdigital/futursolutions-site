@@ -1,7 +1,7 @@
 ---
 import AssociationLayout from '../../../../layouts/AssociationLayout.astro';
 import AssociationJobDetailHero from '../../../../components/association/AssociationJobDetailHero.astro';
-import AssociationJobQuickFacts from '../../../../components/association/AssociationJobQuickFacts.astro';
+import AssociationQuickFacts from '../../../../components/association/AssociationQuickFacts.astro';
 import AssociationJobOverview from '../../../../components/association/AssociationJobOverview.astro';
 import AssociationJobResponsibilities from '../../../../components/association/AssociationJobResponsibilities.astro';
 import AssociationJobQualifications from '../../../../components/association/AssociationJobQualifications.astro';
@@ -10,14 +10,14 @@ import AssociationJobApplicationProcess from '../../../../components/association
 import AssociationJobRelatedResources from '../../../../components/association/AssociationJobRelatedResources.astro';
 import AssociationRelatedJobs from '../../../../components/association/AssociationRelatedJobs.astro';
 import AssociationFinalCTA from '../../../../components/association/AssociationFinalCTA.astro';
-import { routeMetadata } from '../../../../data/association';
+import { routeMetadata, careerJobDetailQuickFacts } from '../../../../data/association';
 
 const meta = routeMetadata['/demos/association/career-center/clinical-program-director'];
 ---
 
 <AssociationLayout title={meta.title} description={meta.description}>
 	<AssociationJobDetailHero />
-	<AssociationJobQuickFacts />
+	<AssociationQuickFacts facts={careerJobDetailQuickFacts} ariaLabel="Job quick facts" />
 	<AssociationJobOverview />
 	<AssociationJobResponsibilities />
 	<AssociationJobQualifications />

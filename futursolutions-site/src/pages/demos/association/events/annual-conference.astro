@@ -1,7 +1,8 @@
 ---
 import AssociationLayout from '../../../../layouts/AssociationLayout.astro';
 import AssociationConferenceHero from '../../../../components/association/AssociationConferenceHero.astro';
-import AssociationConferenceStats from '../../../../components/association/AssociationConferenceStats.astro';
+import AssociationFinalCTA from '../../../../components/association/AssociationFinalCTA.astro';
+import AssociationStatStrip from '../../../../components/association/AssociationStatStrip.astro';
 import AssociationConferenceReasons from '../../../../components/association/AssociationConferenceReasons.astro';
 import AssociationConferenceRegistration from '../../../../components/association/AssociationConferenceRegistration.astro';
 import AssociationConferenceTracks from '../../../../components/association/AssociationConferenceTracks.astro';
@@ -12,15 +13,15 @@ import AssociationConferenceSponsors from '../../../../components/association/As
 import AssociationConferenceVenue from '../../../../components/association/AssociationConferenceVenue.astro';
 import AssociationConferenceFirstTimer from '../../../../components/association/AssociationConferenceFirstTimer.astro';
 import AssociationConferenceDeadlines from '../../../../components/association/AssociationConferenceDeadlines.astro';
-import AssociationConferenceFAQ from '../../../../components/association/AssociationConferenceFAQ.astro';
-import { routeMetadata } from '../../../../data/association';
+import AssociationFAQ from '../../../../components/association/AssociationFAQ.astro';
+import { routeMetadata, annualConferenceStats, annualConferenceFaqs } from '../../../../data/association';
 
 const meta = routeMetadata['/demos/association/events/annual-conference'];
 ---
 
 <AssociationLayout title={meta.title} description={meta.description}>
 	<AssociationConferenceHero />
-	<AssociationConferenceStats />
+	<AssociationStatStrip stats={annualConferenceStats} ariaLabel="Conference quick facts" />
 	<AssociationConferenceReasons />
 	<AssociationConferenceRegistration />
 	<AssociationConferenceTracks />
@@ -31,55 +32,12 @@ const meta = routeMetadata['/demos/association/events/annual-conference'];
 	<AssociationConferenceVenue />
 	<AssociationConferenceFirstTimer />
 	<AssociationConferenceDeadlines />
-	<AssociationConferenceFAQ />
+	<AssociationFAQ faqs={annualConferenceFaqs} heading="Conference questions, answered." />
 
-	<!-- Final CTA -->
-	<section class="conf-final-cta" aria-labelledby="conf-final-heading">
-		<div class="assoc-container conf-final-cta__inner">
-			<h2 id="conf-final-heading">Join the professionals shaping what comes next.</h2>
-			<p class="assoc-lead">Register for three days of education, advocacy, leadership, and connection with the MHPA community.</p>
-			<div class="assoc-btn-row">
-				<a class="assoc-btn conf-final-cta__primary" href="#register">Register Now</a>
-				<a class="assoc-btn conf-final-cta__ghost" href="/demos/association/membership">Explore Membership</a>
-			</div>
-		</div>
-	</section>
+	<AssociationFinalCTA
+		headline="Join the professionals shaping what comes next."
+		subheadline="Register for three days of education, advocacy, leadership, and connection with the MHPA community."
+		primaryCta={{ text: 'Register Now', href: '#register' }}
+		secondaryCta={{ text: 'Explore Membership', href: '/demos/association/membership' }}
+	/>
 </AssociationLayout>
-
-<style>
-	.conf-final-cta {
-		padding-block: var(--assoc-section-spacing);
-		background: var(--assoc-navy);
-		color: var(--assoc-white);
-	}
-	.conf-final-cta__inner {
-		max-width: 680px;
-		text-align: center;
-		margin-inline: auto;
-	}
-	.conf-final-cta h2 {
-		color: var(--assoc-white);
-		text-wrap: balance;
-	}
-	.conf-final-cta .assoc-lead {
-		color: rgba(255, 255, 255, 0.6);
-		margin-inline: auto;
-	}
-	.conf-final-cta .assoc-btn-row { justify-content: center; }
-	.conf-final-cta__primary {
-		background: var(--assoc-teal) !important;
-		color: var(--assoc-white) !important;
-	}
-	.conf-final-cta__primary:hover {
-		background: color-mix(in srgb, var(--assoc-teal) 80%, var(--assoc-white)) !important;
-	}
-	.conf-final-cta__ghost {
-		border-color: rgba(255, 255, 255, 0.2) !important;
-		background: transparent !important;
-		color: var(--assoc-white) !important;
-	}
-	.conf-final-cta__ghost:hover {
-		border-color: rgba(255, 255, 255, 0.4) !important;
-		background: rgba(255, 255, 255, 0.06) !important;
-	}
-</style>

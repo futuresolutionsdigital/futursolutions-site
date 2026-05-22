@@ -14,9 +14,9 @@ import AssociationAboutAnnualReport from '../../../components/association/Associ
 import AssociationAboutTimeline from '../../../components/association/AssociationAboutTimeline.astro';
 import AssociationAboutPartners from '../../../components/association/AssociationAboutPartners.astro';
 import AssociationAboutRecognition from '../../../components/association/AssociationAboutRecognition.astro';
-import AssociationAboutFAQ from '../../../components/association/AssociationAboutFAQ.astro';
+import AssociationFAQ from '../../../components/association/AssociationFAQ.astro';
 import AssociationFinalCTA from '../../../components/association/AssociationFinalCTA.astro';
-import { routeMetadata } from '../../../data/association';
+import { routeMetadata, aboutFaqs } from '../../../data/association';
 
 const meta = routeMetadata['/demos/association/about'];
 ---
@@ -36,7 +36,7 @@ const meta = routeMetadata['/demos/association/about'];
 	<AssociationAboutTimeline />
 	<AssociationAboutPartners />
 	<AssociationAboutRecognition />
-	<AssociationAboutFAQ />
+	<AssociationFAQ faqs={aboutFaqs} heading="About MHPA — questions, answered." />
 	<AssociationFinalCTA
 		headline="A stronger association story builds stronger member trust."
 		subheadline="This demo shows how a professional association can present its mission, scale, leadership, history, and active work in a way that supports membership, advocacy, events, resources, chapters, and careers."

@@ -1,7 +1,7 @@
 ---
 import AssociationLayout from '../../../../layouts/AssociationLayout.astro';
 import AssociationCareerHero from '../../../../components/association/AssociationCareerHero.astro';
-import AssociationCareerStats from '../../../../components/association/AssociationCareerStats.astro';
+import AssociationStatStrip from '../../../../components/association/AssociationStatStrip.astro';
 import AssociationCareerJobBoard from '../../../../components/association/AssociationCareerJobBoard.astro';
 import AssociationCareerPathways from '../../../../components/association/AssociationCareerPathways.astro';
 import AssociationCareerSalaryInsights from '../../../../components/association/AssociationCareerSalaryInsights.astro';
@@ -10,16 +10,16 @@ import AssociationCareerResources from '../../../../components/association/Assoc
 import AssociationCareerEmployers from '../../../../components/association/AssociationCareerEmployers.astro';
 import AssociationCareerStudentSupport from '../../../../components/association/AssociationCareerStudentSupport.astro';
 import AssociationCareerStories from '../../../../components/association/AssociationCareerStories.astro';
-import AssociationCareerFAQ from '../../../../components/association/AssociationCareerFAQ.astro';
+import AssociationFAQ from '../../../../components/association/AssociationFAQ.astro';
 import AssociationFinalCTA from '../../../../components/association/AssociationFinalCTA.astro';
-import { routeMetadata } from '../../../../data/association';
+import { routeMetadata, careerStats, careerFaqs } from '../../../../data/association';
 
 const meta = routeMetadata['/demos/association/career-center'];
 ---
 
 <AssociationLayout title={meta.title} description={meta.description}>
 	<AssociationCareerHero />
-	<AssociationCareerStats />
+	<AssociationStatStrip stats={careerStats} ariaLabel="Career center statistics" />
 	<AssociationCareerJobBoard />
 	<AssociationCareerPathways />
 	<AssociationCareerSalaryInsights />
@@ -28,7 +28,7 @@ const meta = routeMetadata['/demos/association/career-center'];
 	<AssociationCareerEmployers />
 	<AssociationCareerStudentSupport />
 	<AssociationCareerStories />
-	<AssociationCareerFAQ />
+	<AssociationFAQ faqs={careerFaqs} heading="Career center questions, answered." />
 	<AssociationFinalCTA
 		headline="Build the next stage of your career with MHPA."
 		subheadline="Explore jobs, resources, mentors, salary insights, and professional connections designed for healthcare professionals."
