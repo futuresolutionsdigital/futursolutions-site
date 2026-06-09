@@ -178,6 +178,9 @@ for Association.
   app-chrome layout, "Preview Mode" banner, `noindex`. "Member Login" links now resolve here.
 - [x] **Portal-tied resources** — added a member-only, downloadable **Chapter Event Planning
   Toolkit** detail page (8-file kit) surfaced in the library and both dashboards.
+- [x] **Portal accessibility verified** — interactive chapter tools announce results via an
+  `aria-live` status region and move focus to the newly created event/announcement; `:focus-visible`
+  rings, `sr-only` utility, and a skip link are in place. Keeps the demo at the 5/5 a11y bar.
 - ⏸️ Deferred to client build (not demo blockers): real authentication/persistence, transactional
   checkout (join/register/apply), payments, live AMS/CRM sync, association staff/admin role,
   sub-nav/mega-menu, online community. These define the **client tier** and stay out of demo scope.
@@ -251,4 +254,5 @@ Append a dated line whenever a milestone lands, so trend is visible at a glance.
 | Jun 9, 2026 | Association demo flagship polish (4 sprints) committed | Association → reference standard (avg ~4.3) |
 | Jun 9, 2026 | Association demo forms made functional (contact, newsletter, advocacy composer) | Association avg ~4.3 → ~4.5; now a clickable, believable demo |
 | Jun 9, 2026 | Association **portal preview** shipped (member + chapter-leader) + toolkit resource | Demo-tier Operational → 5; Association avg ~4.5 → ~4.6; new reusable portfolio capability |
+| Jun 9, 2026 | Portal a11y closed (aria-live + focus management on interactive tools) | Association **demo-tier complete**; remaining gaps are master-infra or client-tier |
 | _next_ | _Sprint A: master launch blockers_ | _Target ~80% master readiness_ |

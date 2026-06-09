@@ -14,6 +14,8 @@ const meta = routeMetadata['/demos/association/portal/chapter'];
 ---
 
 <AssociationPortalLayout title={meta.title} description={meta.description} role="chapter" active="overview">
+	<p class="sr-only" role="status" aria-live="polite" id="chapter-status"></p>
+
 	<!-- Overview -->
 	<section class="portal-section" id="overview">
 		<div class="chapter-welcome">
@@ -170,6 +172,8 @@ const meta = routeMetadata['/demos/association/portal/chapter'];
 
 	<script is:inline define:vars={{ leaderName: c.leaderName }}>
 		(function () {
+			var statusEl = document.getElementById('chapter-status');
+			function announce(msg) { if (statusEl) { statusEl.textContent = ''; setTimeout(function () { statusEl.textContent = msg; }, 50); } }
 			function showErr(id, msg) {
 				var f = document.getElementById(id); if (f) f.setAttribute('aria-invalid', 'true');
 				var e = document.querySelector('[data-error-for="' + id + '"]'); if (e) { e.textContent = msg; e.hidden = false; }
@@ -201,8 +205,10 @@ const meta = routeMetadata['/demos/association/portal/chapter'];
 					var list = document.getElementById('event-list');
 					var li = document.createElement('li');
 					li.className = 'chapter-event chapter-event--new';
+					li.setAttribute('tabindex', '-1');
 					li.innerHTML = '<div><p class="chapter-event__title"></p><p class="chapter-event__meta"></p></div><span class="portal-badge portal-badge--muted">Draft</span>';
-					li.querySelector('.chapter-event__title').textContent = title.value.trim();
+					var evTitle = title.value.trim();
+					li.querySelector('.chapter-event__title').textContent = evTitle;
 					li.querySelector('.chapter-event__meta').textContent = fmtDate(date.value) + ' · 0 RSVPs · ' + type.value;
 					list.insertBefore(li, list.firstChild);
 
@@ -210,7 +216,8 @@ const meta = routeMetadata['/demos/association/portal/chapter'];
 					if (count) count.textContent = String(list.children.length);
 
 					evForm.reset();
-					title.focus();
+					announce('Event "' + evTitle + '" added as a draft.');
+					li.focus();
 				});
 			}
 
@@ -229,14 +236,17 @@ const meta = routeMetadata['/demos/association/portal/chapter'];
 					var feed = document.getElementById('ann-list');
 					var art = document.createElement('article');
 					art.className = 'portal-card chapter-ann chapter-ann--new';
+					art.setAttribute('tabindex', '-1');
 					art.innerHTML = '<p class="chapter-ann__title"></p><p class="chapter-ann__meta"></p><p class="chapter-ann__body"></p>';
-					art.querySelector('.chapter-ann__title').textContent = title.value.trim();
+					var annTitle = title.value.trim();
+					art.querySelector('.chapter-ann__title').textContent = annTitle;
 					art.querySelector('.chapter-ann__meta').textContent = leaderName + ' · Just now';
 					art.querySelector('.chapter-ann__body').textContent = body.value.trim();
 					feed.insertBefore(art, feed.firstChild);
 
 					annForm.reset();
-					title.focus();
+					announce('Announcement "' + annTitle + '" posted to the chapter feed.');
+					art.focus();
 				});
 			}
 		})();
@@ -265,6 +275,7 @@ const meta = routeMetadata['/demos/association/portal/chapter'];
 	.chapter-event__title { font-size: 0.9rem; font-weight: 700; }
 	.chapter-event__meta { font-size: 0.78rem; color: var(--assoc-slate); margin-top: 0.1rem; }
 	.chapter-event--new, .chapter-ann--new { animation: portalpop 0.4s ease; border-color: color-mix(in srgb, var(--assoc-teal) 45%, var(--assoc-border)); }
+	.chapter-event[tabindex]:focus-visible, .chapter-ann[tabindex]:focus-visible { outline: 2px solid var(--assoc-teal); outline-offset: 2px; }
 	@keyframes portalpop { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
 
 	.chapter-feed { display: grid; gap: 0.6rem; }
