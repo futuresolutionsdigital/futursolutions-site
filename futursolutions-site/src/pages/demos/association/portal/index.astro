@@ -1,0 +1,55 @@
+---
+import AssociationLayout from '../../../../layouts/AssociationLayout.astro';
+import { routeMetadata, portalRoles } from '../../../../data/association';
+
+const meta = routeMetadata['/demos/association/portal'];
+---
+
+<AssociationLayout title={meta.title} description={meta.description}>
+	<section class="assoc-section portal-landing-hero">
+		<div class="assoc-container">
+			<p class="assoc-eyebrow">Member &amp; Chapter Portal</p>
+			<h1>See the logged-in experience — no login required.</h1>
+			<p class="assoc-lead">This is a preview of what members and chapter leaders see after signing in. Choose a role below to explore the dashboards and tools. Everything here is a fictional demonstration — nothing is real or saved.</p>
+		</div>
+	</section>
+
+	<section class="assoc-section assoc-section--warm" aria-labelledby="portal-roles-heading">
+		<div class="assoc-container">
+			<h2 id="portal-roles-heading" class="portal-roles__title">Pick a role to preview</h2>
+			<div class="portal-roles">
+				{portalRoles.map((role) => (
+					<article class="portal-role-card">
+						<span class="portal-role-card__tag">{role.label}</span>
+						<h3>{role.name}</h3>
+						<p>{role.summary}</p>
+						<ul class="portal-role-card__list">
+							{role.highlights.map((h) => (
+								<li>{h}</li>
+							))}
+						</ul>
+						<a class="assoc-btn assoc-btn--primary" href={role.href}>Enter {role.label} view</a>
+					</article>
+				))}
+			</div>
+			<p class="portal-landing__note">A live build connects this experience to your real association management system (AMS/CRM), secure authentication, and member data. This preview shows the structure, flows, and tools — not real accounts.</p>
+		</div>
+	</section>
+</AssociationLayout>
+
+<style>
+	.portal-landing-hero { padding-bottom: 0; }
+	.portal-landing-hero h1 { font-size: clamp(1.8rem, 1.4rem + 2vw, 2.8rem); margin-block: 0.5rem 1rem; text-wrap: balance; }
+	.portal-roles__title { font-size: clamp(1.3rem, 1.1rem + 0.8vw, 1.7rem); margin-bottom: 1.5rem; }
+	.portal-roles { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+	.portal-role-card { display: flex; flex-direction: column; align-items: flex-start; gap: 0.6rem; padding: 1.75rem; background: var(--assoc-white); border: 1px solid var(--assoc-border); border-radius: var(--assoc-radius-lg); }
+	.portal-role-card__tag { padding: 0.2rem 0.65rem; border-radius: 999px; background: var(--assoc-teal-light); color: var(--assoc-teal); font-size: 0.68rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; }
+	.portal-role-card h3 { font-size: 1.25rem; }
+	.portal-role-card p { font-size: 0.9rem; line-height: 1.55; color: var(--assoc-slate); }
+	.portal-role-card__list { display: grid; gap: 0.4rem; margin: 0.25rem 0 0.75rem; padding: 0; list-style: none; }
+	.portal-role-card__list li { position: relative; padding-left: 1.35rem; font-size: 0.86rem; color: var(--assoc-navy); }
+	.portal-role-card__list li::before { content: '✓'; position: absolute; left: 0; color: var(--assoc-teal); font-weight: 800; }
+	.portal-role-card .assoc-btn { margin-top: auto; }
+	.portal-landing__note { margin-top: 1.5rem; font-size: 0.8rem; line-height: 1.55; color: var(--assoc-muted); max-width: 720px; }
+	@media (max-width: 768px) { .portal-roles { grid-template-columns: 1fr; } }
+</style>

@@ -1,0 +1,224 @@
+---
+import DemoBanner from '../components/DemoBanner.astro';
+import ChatWidget from '../components/ChatWidget.astro';
+import { portalRoles } from '../data/association';
+import '../styles/global.css';
+
+interface Props {
+	title: string;
+	description: string;
+	role: 'member' | 'chapter';
+	active?: string;
+}
+
+const { title, description, role, active = 'overview' } = Astro.props;
+
+const memberNav = [
+	{ id: 'overview', label: 'Dashboard', href: '#overview' },
+	{ id: 'learning', label: 'My Learning', href: '#learning' },
+	{ id: 'events', label: 'My Events', href: '#events' },
+	{ id: 'resources', label: 'My Resources', href: '#resources' },
+	{ id: 'chapter', label: 'My Chapter', href: '#chapter' },
+	{ id: 'profile', label: 'Profile', href: '#profile' },
+];
+
+const chapterNav = [
+	{ id: 'overview', label: 'Dashboard', href: '#overview' },
+	{ id: 'events', label: 'Manage Events', href: '#events' },
+	{ id: 'announcements', label: 'Announcements', href: '#announcements' },
+	{ id: 'roster', label: 'Members', href: '#roster' },
+	{ id: 'resources', label: 'Chapter Resources', href: '#resources' },
+];
+
+const nav = role === 'chapter' ? chapterNav : memberNav;
+const portalTitle = role === 'chapter' ? 'Chapter Leader Tools' : 'Member Portal';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="description" content={description} />
+		<meta name="robots" content="noindex" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+			rel="stylesheet"
+		/>
+		<title>{title}</title>
+	</head>
+	<body class="assoc-portal">
+		<a class="assoc-skip-link" href="#main-content">Skip to main content</a>
+		<DemoBanner customizeHref="/audit?template=association" />
+
+		<div class="portal-preview-bar">
+			<div class="portal-preview-bar__inner">
+				<span class="portal-preview-bar__badge">Preview Mode</span>
+				<span class="portal-preview-bar__text">You're previewing the logged-in experience. No login required — switch roles anytime. Nothing here is real or saved.</span>
+			</div>
+		</div>
+
+		<header class="portal-topbar">
+			<div class="portal-topbar__inner">
+				<a class="portal-brand" href="/demos/association/portal">
+					<span class="portal-brand__logo">MHPA</span>
+					<span class="portal-brand__name">{portalTitle}</span>
+				</a>
+				<nav class="portal-roleswitch" aria-label="Switch portal role">
+					<span class="portal-roleswitch__label">Viewing as:</span>
+					{portalRoles.map((r) => (
+						<a
+							href={r.href}
+							class:list={['portal-roleswitch__btn', { 'is-active': r.id === role }]}
+							aria-current={r.id === role ? 'true' : undefined}
+						>
+							{r.label}
+						</a>
+					))}
+				</nav>
+				<a class="portal-exit" href="/demos/association">Exit to public site</a>
+			</div>
+		</header>
+
+		<div class="portal-shell">
+			<aside class="portal-sidebar" aria-label="Portal navigation">
+				<nav class="portal-sidebar__nav">
+					{nav.map((item) => (
+						<a
+							href={item.href}
+							class:list={['portal-sidebar__link', { 'is-active': item.id === active }]}
+							aria-current={item.id === active ? 'page' : undefined}
+						>
+							{item.label}
+						</a>
+					))}
+				</nav>
+				<div class="portal-sidebar__note">
+					<p>This is a demonstration portal built by FutureSolutions. A live build connects to your real AMS/CRM, authentication, and member data.</p>
+				</div>
+			</aside>
+
+			<main class="portal-main" id="main-content">
+				<slot />
+			</main>
+		</div>
+
+		<ChatWidget />
+
+		<style is:global>
+			.assoc-portal {
+				--assoc-navy: #102A43;
+				--assoc-teal: #1F6F78;
+				--assoc-teal-light: #E6F2F3;
+				--assoc-sand: #F4EFE7;
+				--assoc-coral: #D96C4A;
+				--assoc-coral-text: #B5573A;
+				--assoc-coral-light: #FDF0EB;
+				--assoc-slate: #52616B;
+				--assoc-border: #E7EDF0;
+				--assoc-white: #FFFFFF;
+				--assoc-bg: #F4F6F8;
+				--assoc-muted: #6B7B8D;
+				--assoc-radius: 12px;
+				--assoc-radius-lg: 18px;
+				--assoc-font: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+				margin: 0;
+				min-width: 320px;
+				min-height: 100vh;
+				background: var(--assoc-bg);
+				color: var(--assoc-navy);
+				font-family: var(--assoc-font);
+				-webkit-font-smoothing: antialiased;
+				-moz-osx-font-smoothing: grayscale;
+			}
+
+			.assoc-portal *,
+			.assoc-portal *::before,
+			.assoc-portal *::after { box-sizing: border-box; }
+
+			.assoc-portal h1, .assoc-portal h2, .assoc-portal h3, .assoc-portal h4 { margin: 0; line-height: 1.25; color: var(--assoc-navy); }
+			.assoc-portal p { margin: 0; }
+			.assoc-portal svg { display: block; }
+			.assoc-portal a { color: inherit; text-decoration: none; }
+
+			.assoc-portal .assoc-skip-link {
+				position: absolute; top: -100%; left: 1rem; z-index: 10000;
+				padding: 0.75rem 1.25rem; border-radius: 8px;
+				background: var(--assoc-navy); color: var(--assoc-white);
+				font-size: 0.9rem; font-weight: 700;
+			}
+			.assoc-portal .assoc-skip-link:focus { top: 0.5rem; }
+
+			/* ── Preview bar ── */
+			.portal-preview-bar { background: var(--assoc-coral-light); border-bottom: 1px solid color-mix(in srgb, var(--assoc-coral) 18%, transparent); }
+			.portal-preview-bar__inner { width: min(100% - 2rem, 1320px); margin-inline: auto; display: flex; align-items: center; gap: 0.75rem; padding-block: 0.5rem; flex-wrap: wrap; }
+			.portal-preview-bar__badge { flex-shrink: 0; padding: 0.15rem 0.55rem; border-radius: 999px; background: var(--assoc-coral); color: var(--assoc-white); font-size: 0.66rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; }
+			.portal-preview-bar__text { font-size: 0.78rem; font-weight: 600; color: var(--assoc-coral-text); }
+
+			/* ── Topbar ── */
+			.portal-topbar { position: sticky; top: 0; z-index: 15; background: var(--assoc-navy); color: var(--assoc-white); }
+			.portal-topbar__inner { width: min(100% - 2rem, 1320px); margin-inline: auto; display: flex; align-items: center; gap: 1rem; padding-block: 0.7rem; }
+			.portal-brand { display: flex; align-items: center; gap: 0.6rem; }
+			.portal-brand__logo { display: inline-flex; align-items: center; justify-content: center; width: 2.1rem; height: 2.1rem; border-radius: 7px; background: rgba(255,255,255,0.12); color: var(--assoc-white); font-size: 0.62rem; font-weight: 800; letter-spacing: 0.04em; }
+			.portal-brand__name { font-size: 0.95rem; font-weight: 800; color: var(--assoc-white); }
+			.portal-roleswitch { display: flex; align-items: center; gap: 0.4rem; margin-left: auto; }
+			.portal-roleswitch__label { font-size: 0.72rem; font-weight: 600; color: rgba(255,255,255,0.6); margin-right: 0.2rem; }
+			.portal-roleswitch__btn { padding: 0.35rem 0.75rem; border-radius: 999px; border: 1px solid rgba(255,255,255,0.18); font-size: 0.78rem; font-weight: 700; color: rgba(255,255,255,0.8); }
+			.portal-roleswitch__btn:hover { border-color: rgba(255,255,255,0.4); color: var(--assoc-white); }
+			.portal-roleswitch__btn.is-active { background: var(--assoc-teal); border-color: var(--assoc-teal); color: var(--assoc-white); }
+			.portal-exit { font-size: 0.78rem; font-weight: 700; color: rgba(255,255,255,0.75); white-space: nowrap; }
+			.portal-exit:hover { color: var(--assoc-white); }
+
+			/* ── Shell ── */
+			.portal-shell { width: min(100% - 2rem, 1320px); margin-inline: auto; display: grid; grid-template-columns: 230px 1fr; gap: clamp(1.25rem, 3vw, 2.25rem); padding-block: clamp(1.5rem, 3vw, 2.5rem); align-items: start; }
+			.portal-sidebar { position: sticky; top: 4.5rem; display: grid; gap: 1rem; }
+			.portal-sidebar__nav { display: grid; gap: 0.15rem; padding: 0.5rem; background: var(--assoc-white); border: 1px solid var(--assoc-border); border-radius: var(--assoc-radius); }
+			.portal-sidebar__link { padding: 0.6rem 0.85rem; border-radius: 8px; font-size: 0.88rem; font-weight: 600; color: var(--assoc-slate); }
+			.portal-sidebar__link:hover { background: var(--assoc-bg); color: var(--assoc-navy); }
+			.portal-sidebar__link.is-active { background: var(--assoc-teal-light); color: var(--assoc-teal); font-weight: 700; }
+			.portal-sidebar__note { padding: 0.85rem 1rem; border: 1px dashed var(--assoc-border); border-radius: var(--assoc-radius); }
+			.portal-sidebar__note p { font-size: 0.72rem; line-height: 1.5; color: var(--assoc-muted); }
+
+			.portal-main { display: grid; gap: clamp(1.25rem, 2.5vw, 2rem); min-width: 0; }
+
+			/* ── Reusable portal building blocks ── */
+			.portal-section { scroll-margin-top: 5rem; }
+			.portal-section__head { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin-bottom: 1rem; flex-wrap: wrap; }
+			.portal-section__head h2 { font-size: 1.15rem; }
+			.portal-section__head a { font-size: 0.82rem; font-weight: 700; color: var(--assoc-teal); }
+			.portal-card { background: var(--assoc-white); border: 1px solid var(--assoc-border); border-radius: var(--assoc-radius); padding: 1.25rem; }
+			.portal-statgrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+			.portal-stat { background: var(--assoc-white); border: 1px solid var(--assoc-border); border-radius: var(--assoc-radius); padding: 1.1rem 1.25rem; }
+			.portal-stat__value { font-size: 1.6rem; font-weight: 800; color: var(--assoc-navy); line-height: 1.1; }
+			.portal-stat__label { font-size: 0.78rem; font-weight: 700; color: var(--assoc-slate); margin-top: 0.25rem; }
+			.portal-stat__note { font-size: 0.72rem; color: var(--assoc-muted); margin-top: 0.15rem; }
+			.portal-btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem; padding: 0.6rem 1rem; border-radius: 8px; border: 1px solid var(--assoc-border); background: var(--assoc-white); color: var(--assoc-navy); font-size: 0.85rem; font-weight: 700; font-family: inherit; cursor: pointer; }
+			.portal-btn:hover { border-color: var(--assoc-teal); color: var(--assoc-teal); }
+			.portal-btn--primary { background: var(--assoc-teal); border-color: var(--assoc-teal); color: var(--assoc-white); }
+			.portal-btn--primary:hover { background: color-mix(in srgb, var(--assoc-teal) 85%, var(--assoc-navy)); color: var(--assoc-white); }
+			.portal-badge { display: inline-block; padding: 0.12rem 0.5rem; border-radius: 999px; font-size: 0.66rem; font-weight: 700; letter-spacing: 0.03em; }
+			.portal-badge--active { background: color-mix(in srgb, var(--assoc-teal) 12%, var(--assoc-white)); color: var(--assoc-teal); }
+			.portal-badge--member { background: color-mix(in srgb, var(--assoc-coral) 10%, var(--assoc-white)); color: var(--assoc-coral-text); }
+			.portal-badge--muted { background: color-mix(in srgb, var(--assoc-slate) 10%, var(--assoc-white)); color: var(--assoc-slate); }
+
+			.assoc-portal .assoc-form-error { display: block; margin-top: 0.3rem; font-size: 0.74rem; font-weight: 600; color: var(--assoc-coral-text); }
+			.assoc-portal [aria-invalid='true'] { border-color: var(--assoc-coral) !important; outline-color: var(--assoc-coral) !important; }
+
+			@media (max-width: 860px) {
+				.portal-shell { grid-template-columns: 1fr; }
+				.portal-sidebar { position: static; }
+				.portal-sidebar__nav { grid-auto-flow: column; grid-auto-columns: max-content; overflow-x: auto; }
+				.portal-sidebar__note { display: none; }
+				.portal-statgrid { grid-template-columns: 1fr 1fr; }
+			}
+			@media (max-width: 560px) {
+				.portal-roleswitch__label { display: none; }
+				.portal-topbar__inner { flex-wrap: wrap; }
+			}
+		</style>
+	</body>
+</html>

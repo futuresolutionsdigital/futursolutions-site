@@ -1,0 +1,234 @@
+---
+import AssociationPortalLayout from '../../../../layouts/AssociationPortalLayout.astro';
+import {
+	routeMetadata,
+	portalMember as m,
+	portalMemberStats as stats,
+	portalMemberCE as ce,
+	portalMemberEvents as events,
+	portalMemberResources as resources,
+	portalMemberActions as actions,
+} from '../../../../data/association';
+
+const meta = routeMetadata['/demos/association/portal/member'];
+const cePct = Math.round((ce.earned / ce.required) * 100);
+---
+
+<AssociationPortalLayout title={meta.title} description={meta.description} role="member" active="overview">
+	<!-- Overview -->
+	<section class="portal-section" id="overview">
+		<div class="member-welcome">
+			<div class="member-welcome__avatar" aria-hidden="true">{m.avatarInitials}</div>
+			<div>
+				<p class="member-welcome__hello">Welcome back,</p>
+				<h1 class="member-welcome__name">{m.name}, {m.credential}</h1>
+				<p class="member-welcome__meta">{m.tier} Member · Since {m.memberSince} · {m.chapter}</p>
+			</div>
+			<span class="portal-badge portal-badge--active member-welcome__status">{m.status}</span>
+		</div>
+
+		<div class="portal-statgrid" style="margin-top: 1.5rem;">
+			{stats.map((s) => (
+				<div class="portal-stat">
+					<div class="portal-stat__value">{s.value}</div>
+					<div class="portal-stat__label">{s.label}</div>
+					<div class="portal-stat__note">{s.note}</div>
+				</div>
+			))}
+		</div>
+
+		<div class="member-actions">
+			{actions.map((a) => (
+				<a class="portal-btn" href={a.href}>{a.label}</a>
+			))}
+		</div>
+	</section>
+
+	<!-- Learning / CE -->
+	<section class="portal-section" id="learning">
+		<div class="portal-section__head">
+			<h2>My Learning &amp; CE</h2>
+			<a href="/demos/association/events">Browse CE catalog →</a>
+		</div>
+		<div class="portal-card">
+			<div class="ce-progress__top">
+				<div>
+					<p class="ce-progress__label">CE cycle progress</p>
+					<p class="ce-progress__value">{ce.earned} <span>of {ce.required} credits</span></p>
+				</div>
+				<p class="ce-progress__cycle">Cycle ends {ce.cycleEnds}</p>
+			</div>
+			<div class="ce-progress__bar" role="progressbar" aria-valuenow={ce.earned} aria-valuemin="0" aria-valuemax={ce.required} aria-label="CE credits earned">
+				<span style={`width: ${cePct}%`}></span>
+			</div>
+			<ul class="ce-list">
+				{ce.recent.map((c) => (
+					<li class="ce-list__item">
+						<div>
+							<p class="ce-list__title">{c.title}</p>
+							<p class="ce-list__meta">{c.credits} CE · {c.date}</p>
+						</div>
+						<div class="ce-list__right">
+							<span class:list={['portal-badge', c.status === 'Completed' ? 'portal-badge--active' : 'portal-badge--muted']}>{c.status}</span>
+							{c.certificate && <button type="button" class="portal-btn ce-list__cert" data-cert>Download certificate</button>}
+						</div>
+					</li>
+				))}
+			</ul>
+		</div>
+	</section>
+
+	<!-- Events -->
+	<section class="portal-section" id="events">
+		<div class="portal-section__head">
+			<h2>My Events</h2>
+			<a href="/demos/association/events">Find more events →</a>
+		</div>
+		<div class="member-events">
+			{events.map((e) => (
+				<div class="portal-card member-event">
+					<div>
+						<p class="member-event__title">{e.title}</p>
+						<p class="member-event__meta">{e.date} · {e.location} · {e.type}</p>
+					</div>
+					<span class:list={['portal-badge', e.status === 'Registered' ? 'portal-badge--active' : 'portal-badge--muted']}>{e.status}</span>
+				</div>
+			))}
+		</div>
+	</section>
+
+	<!-- Resources -->
+	<section class="portal-section" id="resources">
+		<div class="portal-section__head">
+			<h2>My Resources</h2>
+			<a href="/demos/association/resources">Full library →</a>
+		</div>
+		<div class="member-resources">
+			{resources.map((r) => (
+				<a class="portal-card member-resource" href={r.href}>
+					<div class="member-resource__top">
+						<span class="portal-badge portal-badge--muted">{r.type}</span>
+						<span class:list={['portal-badge', r.access === 'Member-only' ? 'portal-badge--member' : 'portal-badge--active']}>{r.access === 'Member-only' ? 'Unlocked · Member' : r.access}</span>
+					</div>
+					<p class="member-resource__title">{r.title}</p>
+					<span class="member-resource__cta">Open resource →</span>
+				</a>
+			))}
+		</div>
+	</section>
+
+	<!-- Chapter -->
+	<section class="portal-section" id="chapter">
+		<div class="portal-section__head">
+			<h2>My Chapter</h2>
+			<a href="/demos/association/chapters/bay-area">Chapter page →</a>
+		</div>
+		<div class="portal-card member-chapter">
+			<div>
+				<h3>{m.chapter}</h3>
+				<p class="member-chapter__text">You're connected to the {m.chapter}. Attend local events, find mentors, and get involved in regional advocacy.</p>
+				<a class="portal-btn portal-btn--primary" href="/demos/association/chapters/bay-area">View chapter events</a>
+			</div>
+		</div>
+	</section>
+
+	<!-- Profile -->
+	<section class="portal-section" id="profile">
+		<div class="portal-section__head">
+			<h2>Profile &amp; Membership</h2>
+		</div>
+		<div class="member-profile">
+			<div class="portal-card member-card">
+				<div class="member-card__top">
+					<span class="member-card__org">MHPA</span>
+					<span class="portal-badge portal-badge--active">{m.status}</span>
+				</div>
+				<p class="member-card__name">{m.name}, {m.credential}</p>
+				<dl class="member-card__details">
+					<div><dt>Member ID</dt><dd>{m.memberId}</dd></div>
+					<div><dt>Tier</dt><dd>{m.tier}</dd></div>
+					<div><dt>Member since</dt><dd>{m.memberSince}</dd></div>
+					<div><dt>Renews</dt><dd>{m.renewsOn}</dd></div>
+				</dl>
+			</div>
+			<div class="portal-card member-profile__actions">
+				<h3>Manage your account</h3>
+				<p>Update contact details, communication preferences, and payment information.</p>
+				<div class="member-profile__btns">
+					<a class="portal-btn portal-btn--primary" href="/demos/association/membership">Renew membership</a>
+					<a class="portal-btn" href="/demos/association/contact">Update details</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<script is:inline>
+		document.querySelectorAll('[data-cert]').forEach(function (btn) {
+			btn.addEventListener('click', function () {
+				var original = btn.textContent;
+				btn.textContent = 'Preparing… (demo)';
+				btn.disabled = true;
+				setTimeout(function () {
+					btn.textContent = 'Demo only — no file';
+					setTimeout(function () { btn.textContent = original; btn.disabled = false; }, 1800);
+				}, 700);
+			});
+		});
+	</script>
+</AssociationPortalLayout>
+
+<style>
+	.member-welcome { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+	.member-welcome__avatar { flex-shrink: 0; display: inline-flex; align-items: center; justify-content: center; width: 3.25rem; height: 3.25rem; border-radius: 50%; background: var(--assoc-teal); color: var(--assoc-white); font-size: 1.1rem; font-weight: 800; }
+	.member-welcome__hello { font-size: 0.85rem; color: var(--assoc-slate); }
+	.member-welcome__name { font-size: clamp(1.3rem, 1.1rem + 1vw, 1.7rem); }
+	.member-welcome__meta { font-size: 0.85rem; color: var(--assoc-slate); margin-top: 0.15rem; }
+	.member-welcome__status { margin-left: auto; }
+	.member-actions { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.25rem; }
+
+	.ce-progress__top { display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem; margin-bottom: 0.75rem; flex-wrap: wrap; }
+	.ce-progress__label { font-size: 0.8rem; font-weight: 700; color: var(--assoc-slate); }
+	.ce-progress__value { font-size: 1.5rem; font-weight: 800; color: var(--assoc-navy); }
+	.ce-progress__value span { font-size: 0.9rem; font-weight: 600; color: var(--assoc-slate); }
+	.ce-progress__cycle { font-size: 0.78rem; color: var(--assoc-muted); }
+	.ce-progress__bar { height: 0.6rem; border-radius: 999px; background: var(--assoc-bg); overflow: hidden; }
+	.ce-progress__bar span { display: block; height: 100%; border-radius: 999px; background: var(--assoc-teal); }
+	.ce-list { display: grid; gap: 0; margin: 1.25rem 0 0; padding: 0; list-style: none; }
+	.ce-list__item { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 0.85rem 0; border-top: 1px solid var(--assoc-border); flex-wrap: wrap; }
+	.ce-list__title { font-size: 0.9rem; font-weight: 700; }
+	.ce-list__meta { font-size: 0.78rem; color: var(--assoc-slate); margin-top: 0.1rem; }
+	.ce-list__right { display: flex; align-items: center; gap: 0.6rem; }
+	.ce-list__cert { padding: 0.4rem 0.7rem; font-size: 0.76rem; }
+
+	.member-events { display: grid; gap: 0.75rem; }
+	.member-event { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+	.member-event__title { font-size: 0.92rem; font-weight: 700; }
+	.member-event__meta { font-size: 0.8rem; color: var(--assoc-slate); margin-top: 0.15rem; }
+
+	.member-resources { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+	.member-resource { display: flex; flex-direction: column; gap: 0.5rem; transition: border-color 0.15s ease; }
+	.member-resource:hover { border-color: var(--assoc-teal); }
+	.member-resource__top { display: flex; gap: 0.4rem; }
+	.member-resource__title { font-size: 0.92rem; font-weight: 700; line-height: 1.35; }
+	.member-resource__cta { font-size: 0.8rem; font-weight: 700; color: var(--assoc-teal); margin-top: auto; }
+
+	.member-chapter h3 { font-size: 1.05rem; margin-bottom: 0.35rem; }
+	.member-chapter__text { font-size: 0.88rem; line-height: 1.55; color: var(--assoc-slate); margin-bottom: 1rem; max-width: 560px; }
+
+	.member-profile { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 1rem; }
+	.member-card { background: linear-gradient(135deg, var(--assoc-navy), color-mix(in srgb, var(--assoc-navy) 70%, var(--assoc-teal))); border-color: transparent; color: var(--assoc-white); }
+	.member-card__top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; }
+	.member-card__org { font-size: 0.85rem; font-weight: 800; letter-spacing: 0.08em; color: var(--assoc-white); }
+	.member-card__name { font-size: 1.05rem; font-weight: 800; color: var(--assoc-white); margin-bottom: 1rem; }
+	.member-card__details { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin: 0; }
+	.member-card__details dt { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.05em; color: rgba(255,255,255,0.6); }
+	.member-card__details dd { font-size: 0.88rem; font-weight: 700; color: var(--assoc-white); margin: 0.1rem 0 0; }
+	.member-profile__actions h3 { font-size: 1rem; margin-bottom: 0.4rem; }
+	.member-profile__actions p { font-size: 0.86rem; line-height: 1.5; color: var(--assoc-slate); margin-bottom: 1rem; }
+	.member-profile__btns { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+
+	@media (max-width: 768px) {
+		.member-resources { grid-template-columns: 1fr; }
+		.member-profile { grid-template-columns: 1fr; }
+	}
+</style>

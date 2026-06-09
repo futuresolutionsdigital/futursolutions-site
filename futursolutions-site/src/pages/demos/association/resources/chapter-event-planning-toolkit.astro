@@ -1,0 +1,185 @@
+---
+import AssociationLayout from '../../../../layouts/AssociationLayout.astro';
+import AssociationResourceAccessPanel from '../../../../components/association/AssociationResourceAccessPanel.astro';
+import AssociationFinalCTA from '../../../../components/association/AssociationFinalCTA.astro';
+import {
+	routeMetadata,
+	resourceDetailToolkit as d,
+	resourceDetailToolkitFacts as quickFacts,
+	resourceDetailToolkitContents as contents,
+	resourceDetailToolkitSteps as steps,
+	resourceDetailToolkitRelated as related,
+} from '../../../../data/association';
+
+const meta = routeMetadata['/demos/association/resources/chapter-event-planning-toolkit'];
+---
+
+<AssociationLayout title={meta.title} description={meta.description}>
+	<!-- Hero -->
+	<section class="rdetail-hero" aria-labelledby="rdetail-hero-heading">
+		<div class="assoc-container rdetail-hero__inner">
+			<a class="rdetail-hero__back" href={d.tertiaryLink.href}>{d.tertiaryLink.text}</a>
+			<p class="assoc-eyebrow">{d.eyebrow}</p>
+			<h1 id="rdetail-hero-heading">{d.headline}</h1>
+			<p class="rdetail-hero__lead">{d.lead}</p>
+			<div class="rdetail-hero__badges">
+				<span class="rdetail-hero__badge rdetail-hero__badge--access">{d.access}</span>
+				<span class="rdetail-hero__badge">{d.format}</span>
+				<span class="rdetail-hero__badge">Updated {d.updated}</span>
+				<span class="rdetail-hero__badge">{d.duration}</span>
+			</div>
+			<div class="assoc-btn-row">
+				<a class="assoc-btn assoc-btn--primary" href={d.primaryCta.href}>{d.primaryCta.text}</a>
+				<a class="assoc-btn assoc-btn--secondary" href={d.secondaryCta.href}>{d.secondaryCta.text}</a>
+			</div>
+			<p class="rdetail-hero__note">{d.disclaimer}</p>
+		</div>
+	</section>
+
+	<!-- Quick Facts -->
+	<section class="assoc-section" aria-label="Toolkit quick facts">
+		<div class="assoc-container">
+			<div class="rdetail-facts">
+				{quickFacts.map((f) => (
+					<div class="rdetail-facts__item">
+						<span class="rdetail-facts__label">{f.label}</span>
+						<span class="rdetail-facts__value">{f.value}</span>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- What's Inside -->
+	<section class="assoc-section assoc-section--warm" id="contents" aria-labelledby="tk-contents-heading">
+		<div class="assoc-container">
+			<p class="assoc-eyebrow">What's Inside</p>
+			<h2 id="tk-contents-heading">Eight ready-to-use files</h2>
+			<div class="tk-files">
+				{contents.map((file) => (
+					<div class="assoc-card tk-file">
+						<div class="tk-file__icon" aria-hidden="true">
+							<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+						</div>
+						<div class="tk-file__body">
+							<div class="tk-file__top">
+								<h3>{file.name}</h3>
+								<span class="tk-file__type">{file.type}</span>
+							</div>
+							<p>{file.desc}</p>
+						</div>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- How to Use -->
+	<section class="assoc-section" aria-labelledby="tk-steps-heading">
+		<div class="assoc-container">
+			<p class="assoc-eyebrow">How to Use It</p>
+			<h2 id="tk-steps-heading">From download to event day</h2>
+			<div class="tk-steps">
+				{steps.map((s, i) => (
+					<div class="tk-step">
+						<span class="tk-step__num">{i + 1}</span>
+						<div>
+							<h3>{s.title}</h3>
+							<p>{s.description}</p>
+						</div>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- Member Access -->
+	<AssociationResourceAccessPanel />
+
+	<!-- Related -->
+	<section class="assoc-section" aria-labelledby="rdetail-related-heading">
+		<div class="assoc-container">
+			<p class="assoc-eyebrow">Related</p>
+			<h2 id="rdetail-related-heading">Related resources</h2>
+			<div class="rdetail-related-grid">
+				{related.map((r) => (
+					<a href={r.href} class="assoc-card rdetail-related-card">
+						<div class="rdetail-related-card__tags">
+							<span class="rdetail-related-card__type">{r.type}</span>
+							<span class:list={['rdetail-related-card__access', { 'rdetail-related-card__access--member': r.access === 'Member-only' }]}>{r.access}</span>
+							{r.ce && <span class="rdetail-related-card__ce">{r.ce}</span>}
+						</div>
+						<h3>{r.title}</h3>
+						<span class="rdetail-related-card__link">View Resource →</span>
+					</a>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<AssociationFinalCTA />
+</AssociationLayout>
+
+<style>
+	/* Hero */
+	.rdetail-hero { padding-block: clamp(2.5rem, 5vw, 4rem); background: linear-gradient(175deg, var(--assoc-bg) 40%, color-mix(in srgb, var(--assoc-sand) 40%, var(--assoc-bg)) 100%); border-bottom: 1px solid var(--assoc-border); }
+	.rdetail-hero__inner { max-width: 720px; }
+	.rdetail-hero__back { display: inline-block; margin-bottom: 1rem; font-size: 0.82rem; font-weight: 700; color: var(--assoc-teal); }
+	.rdetail-hero__back:hover { color: var(--assoc-navy); }
+	.rdetail-hero h1 { text-wrap: balance; }
+	.rdetail-hero__lead { font-size: clamp(1rem, 0.98rem + 0.15vw, 1.1rem); line-height: 1.6; color: var(--assoc-slate); max-width: 620px; }
+	.rdetail-hero__badges { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.75rem; }
+	.rdetail-hero__badge { padding: 0.2rem 0.55rem; border-radius: 999px; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; background: color-mix(in srgb, var(--assoc-slate) 8%, var(--assoc-white)); color: var(--assoc-slate); }
+	.rdetail-hero__badge--access { background: color-mix(in srgb, var(--assoc-coral) 10%, var(--assoc-white)); color: var(--assoc-coral-text); }
+	.rdetail-hero__note { font-size: 0.72rem; color: var(--assoc-slate); opacity: 0.55; margin-top: 0.75rem; }
+
+	/* Quick Facts */
+	.rdetail-facts { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0; border: 1px solid var(--assoc-border); border-radius: var(--assoc-radius); background: var(--assoc-white); overflow: hidden; }
+	.rdetail-facts__item { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 1rem 0.5rem; border-right: 1px solid var(--assoc-border); }
+	.rdetail-facts__item:last-child { border-right: none; }
+	.rdetail-facts__label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--assoc-slate); margin-bottom: 0.2rem; }
+	.rdetail-facts__value { font-size: 0.92rem; font-weight: 800; color: var(--assoc-navy); }
+
+	/* Files */
+	.tk-files { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem; }
+	.tk-file { display: flex; gap: 0.85rem; align-items: flex-start; padding: 1.25rem; }
+	.tk-file__icon { flex-shrink: 0; display: inline-flex; align-items: center; justify-content: center; width: 2.4rem; height: 2.4rem; border-radius: 8px; background: var(--assoc-teal-light); color: var(--assoc-teal); }
+	.tk-file__icon svg { display: inline; }
+	.tk-file__top { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; margin-bottom: 0.25rem; }
+	.tk-file__top h3 { font-size: 0.95rem; }
+	.tk-file__type { flex-shrink: 0; padding: 0.1rem 0.45rem; border-radius: 4px; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; background: color-mix(in srgb, var(--assoc-navy) 8%, var(--assoc-white)); color: var(--assoc-navy); }
+	.tk-file p { font-size: 0.84rem; line-height: 1.5; margin: 0; color: var(--assoc-slate); }
+
+	/* Steps */
+	.tk-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 2rem; }
+	.tk-step { display: flex; gap: 0.75rem; align-items: flex-start; }
+	.tk-step__num { flex-shrink: 0; display: flex; align-items: center; justify-content: center; width: 2rem; height: 2rem; border-radius: 50%; background: var(--assoc-teal); color: var(--assoc-white); font-size: 0.85rem; font-weight: 800; }
+	.tk-step h3 { font-size: 0.92rem; margin-bottom: 0.15rem; }
+	.tk-step p { font-size: 0.82rem; line-height: 1.45; margin: 0; color: var(--assoc-slate); }
+
+	/* Related */
+	.rdetail-related-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 2rem; }
+	.rdetail-related-card { display: flex; flex-direction: column; padding: 1.25rem; }
+	.rdetail-related-card:hover { border-color: var(--assoc-teal); transform: translateY(-1px); }
+	.rdetail-related-card__tags { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-bottom: 0.65rem; }
+	.rdetail-related-card__type { padding: 0.12rem 0.4rem; border-radius: 4px; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; background: var(--assoc-teal-light); color: var(--assoc-teal); }
+	.rdetail-related-card__access { padding: 0.12rem 0.4rem; border-radius: 4px; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; background: color-mix(in srgb, var(--assoc-slate) 8%, var(--assoc-white)); color: var(--assoc-slate); }
+	.rdetail-related-card__access--member { background: color-mix(in srgb, var(--assoc-coral) 8%, var(--assoc-white)); color: var(--assoc-coral-text); }
+	.rdetail-related-card__ce { padding: 0.12rem 0.4rem; border-radius: 4px; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; background: color-mix(in srgb, var(--assoc-navy) 8%, var(--assoc-white)); color: var(--assoc-navy); }
+	.rdetail-related-card h3 { font-size: 0.92rem; margin-bottom: 0.25rem; flex: 1; line-height: 1.3; }
+	.rdetail-related-card__link { font-size: 0.78rem; font-weight: 700; color: var(--assoc-teal); }
+
+	@media (max-width: 768px) {
+		.rdetail-facts { grid-template-columns: repeat(3, 1fr); }
+		.rdetail-facts__item:nth-child(3) { border-right: none; }
+		.tk-files { grid-template-columns: 1fr; }
+		.tk-steps { grid-template-columns: 1fr 1fr; }
+		.rdetail-related-grid { grid-template-columns: 1fr 1fr; }
+	}
+	@media (max-width: 480px) {
+		.rdetail-facts { grid-template-columns: repeat(2, 1fr); }
+		.rdetail-facts__item:nth-child(even) { border-right: none; }
+		.tk-steps { grid-template-columns: 1fr; }
+		.rdetail-related-grid { grid-template-columns: 1fr; }
+	}
+</style>

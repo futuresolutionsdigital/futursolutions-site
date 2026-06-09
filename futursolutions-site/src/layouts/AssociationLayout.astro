@@ -179,6 +179,83 @@ const currentPath = Astro.url.pathname;
 				});
 			})();
 		</script>
+
+		<script is:inline>
+			/* Demo form engine — wires up any form[data-demo-form] with inline
+			   validation, a honeypot, and an accessible success state. No data
+			   leaves the browser; this mirrors how a live site would behave. */
+			(function () {
+				var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+				function showError(field, msg) {
+					field.setAttribute('aria-invalid', 'true');
+					var err = document.querySelector('[data-error-for="' + field.id + '"]');
+					if (err) { err.textContent = msg; err.hidden = false; }
+				}
+				function clearError(field) {
+					field.removeAttribute('aria-invalid');
+					var err = document.querySelector('[data-error-for="' + field.id + '"]');
+					if (err) { err.hidden = true; }
+				}
+
+				function validateField(field) {
+					var value = (field.value || '').trim();
+					if (field.type === 'checkbox') {
+						if (!field.checked) { showError(field, 'Please confirm to continue.'); return false; }
+						clearError(field); return true;
+					}
+					if (!value) { showError(field, 'This field is required.'); return false; }
+					if (field.type === 'email' && !EMAIL_RE.test(value)) {
+						showError(field, 'Please enter a valid email address.'); return false;
+					}
+					clearError(field); return true;
+				}
+
+				document.querySelectorAll('form[data-demo-form]').forEach(function (form) {
+					var success = form.querySelector('[data-demo-success]');
+					var fields = Array.prototype.slice.call(form.querySelectorAll('[data-required]'));
+					var honeypot = form.querySelector('[data-honeypot]');
+
+					fields.forEach(function (field) {
+						field.addEventListener('input', function () { if (field.getAttribute('aria-invalid')) validateField(field); });
+						field.addEventListener('change', function () { if (field.getAttribute('aria-invalid')) validateField(field); });
+					});
+
+					form.addEventListener('submit', function (e) {
+						e.preventDefault();
+						if (honeypot && honeypot.value) { return; } /* silent bot drop */
+
+						var firstInvalid = null;
+						fields.forEach(function (field) {
+							if (!validateField(field) && !firstInvalid) { firstInvalid = field; }
+						});
+						if (firstInvalid) { firstInvalid.focus(); return; }
+
+						var formEl = form.querySelector('[data-demo-fields]') || form;
+						if (success) {
+							if (formEl !== form) { formEl.hidden = true; }
+							success.hidden = false;
+							success.setAttribute('tabindex', '-1');
+							success.focus();
+							success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+						}
+					});
+
+					var resetBtn = form.querySelector('[data-demo-reset]');
+					if (resetBtn) {
+						resetBtn.addEventListener('click', function () {
+							form.reset();
+							fields.forEach(clearError);
+							if (success) success.hidden = true;
+							var formEl = form.querySelector('[data-demo-fields]');
+							if (formEl) { formEl.hidden = false; }
+							var first = form.querySelector('input, select, textarea');
+							if (first) first.focus();
+						});
+					}
+				});
+			})();
+		</script>
 		<ChatWidget />
 	</body>
 </html>
@@ -233,6 +310,80 @@ const currentPath = Astro.url.pathname;
 
 	.assoc-skip-link:focus {
 		top: 0.5rem;
+	}
+
+	/* ── Shared demo-form states (errors + success) ── */
+	.assoc-site [data-honeypot] {
+		position: absolute !important;
+		left: -9999px !important;
+		width: 1px;
+		height: 1px;
+		overflow: hidden;
+	}
+
+	.assoc-site .assoc-form-error {
+		display: block;
+		margin-top: 0.3rem;
+		font-size: 0.75rem;
+		font-weight: 600;
+		color: var(--assoc-coral-text);
+	}
+
+	.assoc-site [aria-invalid='true'] {
+		border-color: var(--assoc-coral) !important;
+		outline-color: var(--assoc-coral) !important;
+	}
+
+	.assoc-site .assoc-form-success {
+		padding: clamp(1.5rem, 3vw, 2rem);
+		border: 1px solid color-mix(in srgb, var(--assoc-teal) 35%, var(--assoc-border));
+		border-radius: var(--assoc-radius);
+		background: var(--assoc-teal-light);
+		outline: none;
+	}
+
+	.assoc-site .assoc-form-success__icon {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 2.5rem;
+		height: 2.5rem;
+		border-radius: 50%;
+		background: var(--assoc-teal);
+		color: var(--assoc-white);
+		margin-bottom: 0.85rem;
+	}
+
+	.assoc-site .assoc-form-success__icon svg {
+		display: inline;
+	}
+
+	.assoc-site .assoc-form-success h3 {
+		font-size: 1.15rem;
+		margin-bottom: 0.4rem;
+		color: var(--assoc-navy);
+	}
+
+	.assoc-site .assoc-form-success p {
+		font-size: 0.9rem;
+		line-height: 1.55;
+		color: var(--assoc-slate);
+		margin-bottom: 0.5rem;
+	}
+
+	.assoc-site .assoc-form-success__demo-note {
+		margin-top: 0.85rem;
+		padding: 0.65rem 0.85rem;
+		border-radius: 8px;
+		background: color-mix(in srgb, var(--assoc-navy) 5%, var(--assoc-white));
+		font-size: 0.78rem;
+		font-weight: 600;
+		color: var(--assoc-navy);
+		line-height: 1.5;
+	}
+
+	.assoc-site .assoc-form-success__reset {
+		margin-top: 1rem;
 	}
 
 	.assoc-site *,

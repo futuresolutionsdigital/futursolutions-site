@@ -1,0 +1,298 @@
+---
+import AssociationPortalLayout from '../../../../layouts/AssociationPortalLayout.astro';
+import {
+	routeMetadata,
+	portalChapter as c,
+	portalChapterStats as stats,
+	portalChapterEvents as chapterEvents,
+	portalChapterEventTypes as eventTypes,
+	portalChapterAnnouncements as announcements,
+	portalChapterRoster as roster,
+} from '../../../../data/association';
+
+const meta = routeMetadata['/demos/association/portal/chapter'];
+---
+
+<AssociationPortalLayout title={meta.title} description={meta.description} role="chapter" active="overview">
+	<!-- Overview -->
+	<section class="portal-section" id="overview">
+		<div class="chapter-welcome">
+			<div>
+				<p class="chapter-welcome__hello">Chapter Leader Tools</p>
+				<h1 class="chapter-welcome__name">{c.chapterName}</h1>
+				<p class="chapter-welcome__meta">{c.leaderName} · {c.leaderRole}</p>
+			</div>
+		</div>
+		<div class="portal-statgrid" style="margin-top: 1.5rem;">
+			{stats.map((s) => (
+				<div class="portal-stat">
+					<div class="portal-stat__value">{s.value}</div>
+					<div class="portal-stat__label">{s.label}</div>
+					<div class="portal-stat__note">{s.note}</div>
+				</div>
+			))}
+		</div>
+	</section>
+
+	<!-- Manage Events -->
+	<section class="portal-section" id="events">
+		<div class="portal-section__head">
+			<h2>Manage Events</h2>
+		</div>
+		<div class="chapter-tools">
+			<form class="portal-card chapter-create" id="event-create" novalidate>
+				<h3>Create an event</h3>
+				<p class="chapter-create__hint">Add a chapter event. In this preview it appears instantly in your list below.</p>
+				<div class="chapter-create__field">
+					<label for="ev-title">Event title</label>
+					<input type="text" id="ev-title" placeholder="e.g. Summer CE Mixer" />
+					<span class="assoc-form-error" data-error-for="ev-title" role="alert" hidden></span>
+				</div>
+				<div class="chapter-create__row">
+					<div class="chapter-create__field">
+						<label for="ev-date">Date</label>
+						<input type="date" id="ev-date" />
+						<span class="assoc-form-error" data-error-for="ev-date" role="alert" hidden></span>
+					</div>
+					<div class="chapter-create__field">
+						<label for="ev-type">Type</label>
+						<select id="ev-type">
+							{eventTypes.map((t) => <option value={t}>{t}</option>)}
+						</select>
+					</div>
+				</div>
+				<button type="submit" class="portal-btn portal-btn--primary">Add event</button>
+				<p class="chapter-create__note">Preview only — events are not saved and reset on reload.</p>
+			</form>
+
+			<div class="chapter-events">
+				<p class="chapter-events__count"><span id="event-count">{chapterEvents.length}</span> events</p>
+				<ul class="chapter-events__list" id="event-list">
+					{chapterEvents.map((e) => (
+						<li class="chapter-event">
+							<div>
+								<p class="chapter-event__title">{e.title}</p>
+								<p class="chapter-event__meta">{e.date} · {e.rsvps} RSVPs</p>
+							</div>
+							<span class:list={['portal-badge', e.status === 'Published' ? 'portal-badge--active' : 'portal-badge--muted']}>{e.status}</span>
+						</li>
+					))}
+				</ul>
+			</div>
+		</div>
+	</section>
+
+	<!-- Announcements -->
+	<section class="portal-section" id="announcements">
+		<div class="portal-section__head">
+			<h2>Announcements</h2>
+		</div>
+		<div class="chapter-tools">
+			<form class="portal-card chapter-create" id="ann-create" novalidate>
+				<h3>Post an announcement</h3>
+				<p class="chapter-create__hint">Share news with your chapter. It posts to the feed instantly in this preview.</p>
+				<div class="chapter-create__field">
+					<label for="ann-title">Headline</label>
+					<input type="text" id="ann-title" placeholder="e.g. July newsletter is live" />
+					<span class="assoc-form-error" data-error-for="ann-title" role="alert" hidden></span>
+				</div>
+				<div class="chapter-create__field">
+					<label for="ann-body">Message</label>
+					<textarea id="ann-body" rows="3" placeholder="What would you like to tell your members?"></textarea>
+					<span class="assoc-form-error" data-error-for="ann-body" role="alert" hidden></span>
+				</div>
+				<button type="submit" class="portal-btn portal-btn--primary">Post announcement</button>
+				<p class="chapter-create__note">Preview only — posts are not saved and reset on reload.</p>
+			</form>
+
+			<div class="chapter-feed" id="ann-list">
+				{announcements.map((a) => (
+					<article class="portal-card chapter-ann">
+						<p class="chapter-ann__title">{a.title}</p>
+						<p class="chapter-ann__meta">{a.author} · {a.date}</p>
+						<p class="chapter-ann__body">{a.body}</p>
+					</article>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- Roster -->
+	<section class="portal-section" id="roster">
+		<div class="portal-section__head">
+			<h2>Member Roster</h2>
+			<a href="/demos/association/contact">Export (demo) →</a>
+		</div>
+		<div class="portal-card chapter-roster">
+			<table class="roster-table">
+				<thead>
+					<tr><th scope="col">Name</th><th scope="col">Role</th><th scope="col">Tier</th><th scope="col">Joined</th><th scope="col">Status</th></tr>
+				</thead>
+				<tbody>
+					{roster.map((r) => (
+						<tr>
+							<td data-label="Name">{r.name}</td>
+							<td data-label="Role">{r.role}</td>
+							<td data-label="Tier">{r.tier}</td>
+							<td data-label="Joined">{r.joined}</td>
+							<td data-label="Status"><span class:list={['portal-badge', r.status === 'Active' ? 'portal-badge--active' : 'portal-badge--muted']}>{r.status}</span></td>
+						</tr>
+					))}
+				</tbody>
+			</table>
+		</div>
+	</section>
+
+	<!-- Chapter Resources -->
+	<section class="portal-section" id="resources">
+		<div class="portal-section__head">
+			<h2>Chapter Leader Resources</h2>
+			<a href="/demos/association/resources">Full library →</a>
+		</div>
+		<div class="chapter-res-grid">
+			<a class="portal-card chapter-res" href="/demos/association/resources/chapter-event-planning-toolkit">
+				<span class="portal-badge portal-badge--member">Toolkit</span>
+				<p class="chapter-res__title">Chapter Event Planning Toolkit</p>
+				<span class="chapter-res__cta">Open →</span>
+			</a>
+			<a class="portal-card chapter-res" href="/demos/association/resources">
+				<span class="portal-badge portal-badge--muted">Template</span>
+				<p class="chapter-res__title">Chapter Meeting Planning Template</p>
+				<span class="chapter-res__cta">Open →</span>
+			</a>
+			<a class="portal-card chapter-res" href="/demos/association/resources">
+				<span class="portal-badge portal-badge--muted">Guide</span>
+				<p class="chapter-res__title">New Member Welcome Script</p>
+				<span class="chapter-res__cta">Open →</span>
+			</a>
+		</div>
+	</section>
+
+	<script is:inline define:vars={{ leaderName: c.leaderName }}>
+		(function () {
+			function showErr(id, msg) {
+				var f = document.getElementById(id); if (f) f.setAttribute('aria-invalid', 'true');
+				var e = document.querySelector('[data-error-for="' + id + '"]'); if (e) { e.textContent = msg; e.hidden = false; }
+			}
+			function clearErr(id) {
+				var f = document.getElementById(id); if (f) f.removeAttribute('aria-invalid');
+				var e = document.querySelector('[data-error-for="' + id + '"]'); if (e) e.hidden = true;
+			}
+			function fmtDate(value) {
+				if (!value) return 'Date TBD';
+				var d = new Date(value + 'T00:00:00');
+				if (isNaN(d)) return value;
+				return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+			}
+
+			/* Create event */
+			var evForm = document.getElementById('event-create');
+			if (evForm) {
+				evForm.addEventListener('submit', function (e) {
+					e.preventDefault();
+					var title = document.getElementById('ev-title');
+					var date = document.getElementById('ev-date');
+					var type = document.getElementById('ev-type');
+					var ok = true;
+					if (!title.value.trim()) { showErr('ev-title', 'Add an event title.'); ok = false; } else clearErr('ev-title');
+					if (!date.value) { showErr('ev-date', 'Pick a date.'); ok = false; } else clearErr('ev-date');
+					if (!ok) { (title.value.trim() ? date : title).focus(); return; }
+
+					var list = document.getElementById('event-list');
+					var li = document.createElement('li');
+					li.className = 'chapter-event chapter-event--new';
+					li.innerHTML = '<div><p class="chapter-event__title"></p><p class="chapter-event__meta"></p></div><span class="portal-badge portal-badge--muted">Draft</span>';
+					li.querySelector('.chapter-event__title').textContent = title.value.trim();
+					li.querySelector('.chapter-event__meta').textContent = fmtDate(date.value) + ' · 0 RSVPs · ' + type.value;
+					list.insertBefore(li, list.firstChild);
+
+					var count = document.getElementById('event-count');
+					if (count) count.textContent = String(list.children.length);
+
+					evForm.reset();
+					title.focus();
+				});
+			}
+
+			/* Post announcement */
+			var annForm = document.getElementById('ann-create');
+			if (annForm) {
+				annForm.addEventListener('submit', function (e) {
+					e.preventDefault();
+					var title = document.getElementById('ann-title');
+					var body = document.getElementById('ann-body');
+					var ok = true;
+					if (!title.value.trim()) { showErr('ann-title', 'Add a headline.'); ok = false; } else clearErr('ann-title');
+					if (!body.value.trim()) { showErr('ann-body', 'Add a message.'); ok = false; } else clearErr('ann-body');
+					if (!ok) { (title.value.trim() ? body : title).focus(); return; }
+
+					var feed = document.getElementById('ann-list');
+					var art = document.createElement('article');
+					art.className = 'portal-card chapter-ann chapter-ann--new';
+					art.innerHTML = '<p class="chapter-ann__title"></p><p class="chapter-ann__meta"></p><p class="chapter-ann__body"></p>';
+					art.querySelector('.chapter-ann__title').textContent = title.value.trim();
+					art.querySelector('.chapter-ann__meta').textContent = leaderName + ' · Just now';
+					art.querySelector('.chapter-ann__body').textContent = body.value.trim();
+					feed.insertBefore(art, feed.firstChild);
+
+					annForm.reset();
+					title.focus();
+				});
+			}
+		})();
+	</script>
+</AssociationPortalLayout>
+
+<style>
+	.chapter-welcome__hello { font-size: 0.85rem; color: var(--assoc-slate); }
+	.chapter-welcome__name { font-size: clamp(1.3rem, 1.1rem + 1vw, 1.7rem); }
+	.chapter-welcome__meta { font-size: 0.85rem; color: var(--assoc-slate); margin-top: 0.15rem; }
+
+	.chapter-tools { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 1rem; align-items: start; }
+	.chapter-create h3 { font-size: 1rem; margin-bottom: 0.3rem; }
+	.chapter-create__hint { font-size: 0.8rem; color: var(--assoc-slate); line-height: 1.45; margin-bottom: 1rem; }
+	.chapter-create__field { margin-bottom: 0.75rem; }
+	.chapter-create__field label { display: block; font-size: 0.78rem; font-weight: 700; color: var(--assoc-navy); margin-bottom: 0.25rem; }
+	.chapter-create__row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+	.chapter-create input, .chapter-create select, .chapter-create textarea { width: 100%; padding: 0.55rem 0.7rem; border: 1px solid var(--assoc-border); border-radius: 8px; font-size: 0.85rem; font-family: inherit; background: var(--assoc-white); color: var(--assoc-navy); }
+	.chapter-create input:focus, .chapter-create select:focus, .chapter-create textarea:focus { outline: 2px solid var(--assoc-teal); outline-offset: -1px; border-color: var(--assoc-teal); }
+	.chapter-create textarea { resize: vertical; }
+	.chapter-create__note { font-size: 0.72rem; color: var(--assoc-muted); margin-top: 0.6rem; }
+
+	.chapter-events__count { font-size: 0.8rem; font-weight: 700; color: var(--assoc-slate); margin-bottom: 0.6rem; }
+	.chapter-events__list { display: grid; gap: 0.6rem; margin: 0; padding: 0; list-style: none; }
+	.chapter-event { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 0.85rem 1rem; background: var(--assoc-white); border: 1px solid var(--assoc-border); border-radius: var(--assoc-radius); }
+	.chapter-event__title { font-size: 0.9rem; font-weight: 700; }
+	.chapter-event__meta { font-size: 0.78rem; color: var(--assoc-slate); margin-top: 0.1rem; }
+	.chapter-event--new, .chapter-ann--new { animation: portalpop 0.4s ease; border-color: color-mix(in srgb, var(--assoc-teal) 45%, var(--assoc-border)); }
+	@keyframes portalpop { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
+
+	.chapter-feed { display: grid; gap: 0.6rem; }
+	.chapter-ann__title { font-size: 0.92rem; font-weight: 700; }
+	.chapter-ann__meta { font-size: 0.74rem; color: var(--assoc-muted); margin-top: 0.1rem; }
+	.chapter-ann__body { font-size: 0.85rem; line-height: 1.55; color: var(--assoc-slate); margin-top: 0.5rem; }
+
+	.chapter-roster { padding: 0; overflow-x: auto; }
+	.roster-table { width: 100%; border-collapse: collapse; }
+	.roster-table th { text-align: left; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--assoc-slate); padding: 0.85rem 1rem; border-bottom: 1px solid var(--assoc-border); }
+	.roster-table td { font-size: 0.85rem; padding: 0.8rem 1rem; border-bottom: 1px solid var(--assoc-border); color: var(--assoc-navy); }
+	.roster-table tbody tr:last-child td { border-bottom: none; }
+
+	.chapter-res-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; }
+	.chapter-res { display: flex; flex-direction: column; align-items: flex-start; gap: 0.5rem; transition: border-color 0.15s ease; }
+	.chapter-res:hover { border-color: var(--assoc-teal); }
+	.chapter-res__title { font-size: 0.9rem; font-weight: 700; line-height: 1.35; }
+	.chapter-res__cta { font-size: 0.8rem; font-weight: 700; color: var(--assoc-teal); margin-top: auto; }
+
+	@media (max-width: 768px) {
+		.chapter-tools { grid-template-columns: 1fr; }
+		.chapter-res-grid { grid-template-columns: 1fr; }
+	}
+	@media (max-width: 600px) {
+		.roster-table thead { display: none; }
+		.roster-table, .roster-table tbody, .roster-table tr, .roster-table td { display: block; width: 100%; }
+		.roster-table tr { padding: 0.5rem 0; border-bottom: 1px solid var(--assoc-border); }
+		.roster-table td { border: none; padding: 0.2rem 1rem; display: flex; justify-content: space-between; gap: 1rem; }
+		.roster-table td::before { content: attr(data-label); font-weight: 700; font-size: 0.72rem; color: var(--assoc-slate); text-transform: uppercase; letter-spacing: 0.04em; }
+	}
+</style>

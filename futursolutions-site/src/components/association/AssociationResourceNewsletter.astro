@@ -8,31 +8,46 @@
 			<h2 id="res-newsletter-heading">Get new resources when they are published.</h2>
 			<p class="assoc-lead">Receive curated resource updates, new CE course announcements, and professional development highlights directly in your inbox.</p>
 		</div>
-		<form class="res-newsletter__form" onsubmit="return false">
-			<div class="res-newsletter__field">
-				<label for="res-email">Email address</label>
-				<input type="email" id="res-email" class="res-newsletter__input" placeholder="you@example.com" />
+		<form class="res-newsletter__form" data-demo-form novalidate>
+			<div class="res-newsletter__fields" data-demo-fields>
+				<input type="text" name="company_url" tabindex="-1" autocomplete="off" aria-hidden="true" data-honeypot />
+				<div class="res-newsletter__field">
+					<label for="res-email">Email address</label>
+					<input type="email" id="res-email" class="res-newsletter__input" placeholder="you@example.com" autocomplete="email" data-required />
+					<span class="assoc-form-error" data-error-for="res-email" role="alert" hidden></span>
+				</div>
+				<div class="res-newsletter__field">
+					<label for="res-interest">Primary interest</label>
+					<select id="res-interest" class="res-newsletter__select" data-required>
+						<option value="">Select an area</option>
+						<option value="clinical">Clinical Practice</option>
+						<option value="advocacy">Advocacy & Policy</option>
+						<option value="career">Career Growth</option>
+						<option value="leadership">Leadership</option>
+						<option value="education">Education & CE</option>
+					</select>
+					<span class="assoc-form-error" data-error-for="res-interest" role="alert" hidden></span>
+				</div>
+				<button type="submit" class="assoc-btn assoc-btn--primary res-newsletter__submit">Subscribe</button>
+				<p class="res-newsletter__note">Demonstration form — nothing is sent or stored. In a live site this would add the subscriber to your email platform and tag their interests.</p>
 			</div>
-			<div class="res-newsletter__field">
-				<label for="res-interest">Primary interest</label>
-				<select id="res-interest" class="res-newsletter__select">
-					<option value="">Select an area</option>
-					<option value="clinical">Clinical Practice</option>
-					<option value="advocacy">Advocacy & Policy</option>
-					<option value="career">Career Growth</option>
-					<option value="leadership">Leadership</option>
-					<option value="education">Education & CE</option>
-				</select>
+
+			<div class="assoc-form-success" data-demo-success hidden>
+				<span class="assoc-form-success__icon" aria-hidden="true">
+					<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+				</span>
+				<h3>You're on the list — in the demo, at least.</h3>
+				<p>Your email passed validation and your interest was captured.</p>
+				<p class="assoc-form-success__demo-note">In your live site, this would subscribe the member to your email platform, tag their interest area for targeted sends, and kick off a welcome sequence automatically.</p>
+				<button type="button" class="assoc-btn assoc-btn--secondary assoc-form-success__reset" data-demo-reset>Try again</button>
 			</div>
-			<button type="button" class="assoc-btn assoc-btn--primary res-newsletter__submit">Subscribe</button>
-			<p class="res-newsletter__note">This demo form does not submit.</p>
 		</form>
 	</div>
 </section>
 
 <style>
 	.res-newsletter__inner { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 4rem); align-items: center; }
-	.res-newsletter__form { display: grid; gap: 0.75rem; }
+	.res-newsletter__fields { display: grid; gap: 0.75rem; }
 	.res-newsletter__field label { display: block; font-size: 0.78rem; font-weight: 700; color: var(--assoc-navy); margin-bottom: 0.3rem; }
 	.res-newsletter__input, .res-newsletter__select {
 		width: 100%; padding: 0.6rem 0.85rem; border: 1px solid var(--assoc-border); border-radius: 8px;

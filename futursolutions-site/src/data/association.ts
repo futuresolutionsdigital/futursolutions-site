@@ -26,7 +26,7 @@ export const assocBrand = {
 export const utilityLinks: UtilityLink[] = [
 	{ label: 'Join', href: '/demos/association/membership', accent: true },
 	{ label: 'Renew', href: '/demos/association/membership' },
-	{ label: 'Member Login', href: '/demos/association/membership' },
+	{ label: 'Member Login', href: '/demos/association/portal' },
 	{ label: 'Career Center', href: '/demos/association/career-center' },
 	{ label: 'Donate / PAC', href: '/demos/association/advocacy' },
 ];
@@ -308,7 +308,7 @@ export const footerNavGroups = [
 			{ label: 'Join', href: '/demos/association/membership' },
 			{ label: 'Renew', href: '/demos/association/membership' },
 			{ label: 'Member Benefits', href: '/demos/association/membership' },
-			{ label: 'Member Login', href: '/demos/association/membership' },
+			{ label: 'Member Login', href: '/demos/association/portal' },
 		],
 	},
 	{
@@ -1237,6 +1237,9 @@ export const advocacyIssueActions = {
 	],
 	primaryCta: { text: 'Send a Message', href: '/demos/association/contact' },
 	secondaryCta: { text: 'Download Talking Points', href: '#resources' },
+	recipient: 'Senate Health Committee',
+	messageTemplate:
+		'As a healthcare professional in your district, I urge you to support SB-1247. Reducing outdated practice barriers would expand access to care in our community, especially in rural and underserved areas where provider shortages are most acute. I have seen firsthand how these constraints delay care for patients who need it. Please vote yes on SB-1247.',
 } as const;
 
 export const advocacyIssueDates = [
@@ -1331,6 +1334,7 @@ export const resourceLibraryItems = [
 	{ title: 'Salary & Compensation Benchmarks', summary: 'Regional salary data, benefit benchmarks, and negotiation considerations for healthcare professionals.', type: 'Report', topic: 'Career Growth', audience: 'Practicing Professionals', access: 'Member-only', ce: 'No CE', duration: 'Report', date: 'April 2026', href: '/demos/association/resources', featured: true },
 	{ title: 'Telehealth Documentation Checklist', summary: 'Step-by-step documentation template for telehealth visits, consent, and follow-up.', type: 'Template', topic: 'Telehealth', audience: 'Practicing Professionals', access: 'Public', ce: 'No CE', duration: 'Template', date: 'March 2026', href: '/demos/association/resources', featured: false },
 	{ title: 'Preceptor Onboarding Toolkit', summary: 'Orientation materials, evaluation rubrics, and scheduling templates for new preceptors.', type: 'Toolkit', topic: 'Preceptorship', audience: 'Clinical Leaders', access: 'Member-only', ce: 'No CE', duration: 'Toolkit', date: 'February 2026', href: '/demos/association/resources', featured: false },
+	{ title: 'Chapter Event Planning Toolkit', summary: 'Templates, checklists, and budget tools to help chapter leaders plan, promote, and run successful local events.', type: 'Toolkit', topic: 'Chapter Tools', audience: 'Chapter Leaders', access: 'Member-only', ce: 'No CE', duration: '8 files', date: 'May 2026', href: '/demos/association/resources/chapter-event-planning-toolkit', featured: false },
 	{ title: 'Chapter Meeting Planning Template', summary: 'Agenda templates, speaker coordination guides, and logistics checklists for local chapter events.', type: 'Template', topic: 'Chapter Tools', audience: 'Chapter Leaders', access: 'Member-only', ce: 'No CE', duration: 'Template', date: 'January 2026', href: '/demos/association/resources', featured: false },
 	{ title: 'Reimbursement Basics for Clinical Services', summary: 'An introductory guide to billing codes, documentation requirements, and payer navigation.', type: 'Practice Guide', topic: 'Reimbursement', audience: 'New Professionals', access: 'Public', ce: 'CE eligible', duration: '45 min', date: 'April 2026', href: '/demos/association/resources', featured: false },
 	{ title: 'Burnout Prevention and Team Resilience', summary: 'Evidence-based strategies for individual resilience and team-level wellness in clinical settings.', type: 'Webinar', topic: 'Workforce', audience: 'Clinical Leaders', access: 'Public', ce: 'CE eligible', duration: '90 min', date: 'March 2026', href: '/demos/association/resources/burnout-prevention-resilience', featured: false },
@@ -2553,4 +2557,194 @@ export const routeMetadata: Record<string, { title: string; description: string 
 		description:
 			'Get in touch with MHPA — membership questions, event support, advocacy inquiries, and general contact.',
 	},
+	'/demos/association/resources/chapter-event-planning-toolkit': {
+		title: 'Chapter Event Planning Toolkit | MHPA Resources',
+		description:
+			'A downloadable kit of templates, checklists, and budget tools to help chapter leaders plan, promote, and run successful local events.',
+	},
+	'/demos/association/portal': {
+		title: 'Member & Chapter Portal Preview | MHPA',
+		description:
+			'Preview the MHPA member portal and chapter-leader tools — no login required. See how members access benefits and how chapter leaders manage events, announcements, and rosters.',
+	},
+	'/demos/association/portal/member': {
+		title: 'Member Dashboard Preview | MHPA Portal',
+		description:
+			'A preview of the MHPA member dashboard — membership status, CE credits, registered events, unlocked resources, and chapter connection.',
+	},
+	'/demos/association/portal/chapter': {
+		title: 'Chapter Leader Tools Preview | MHPA Portal',
+		description:
+			'A preview of the MHPA chapter-leader toolset — create events, post announcements, manage the member roster, and track chapter activity.',
+	},
 };
+
+// ════════════════════════════════════════════════════════════════════
+//  Portal Preview (member + chapter-leader dashboards)
+//  All fictional. No authentication, no persistence — a clickable preview
+//  of what a logged-in association experience would look like.
+// ════════════════════════════════════════════════════════════════════
+
+// ── Portal: role definitions for the /portal landing ──
+
+export const portalRoles = [
+	{
+		id: 'member',
+		label: 'Member',
+		name: 'Member Dashboard',
+		href: '/demos/association/portal/member',
+		summary: 'What a member sees after logging in: membership status, CE progress, registered events, unlocked resources, and their local chapter.',
+		highlights: ['Membership & renewal', 'CE credits & certificates', 'Member-only resources', 'My events & chapter'],
+	},
+	{
+		id: 'chapter',
+		label: 'Chapter Leader',
+		name: 'Chapter Leader Tools',
+		href: '/demos/association/portal/chapter',
+		summary: 'The admin toolset a volunteer chapter leader uses to run their region: create events, post announcements, manage the roster, and track activity.',
+		highlights: ['Create & manage events', 'Post announcements', 'Member roster', 'Chapter metrics'],
+	},
+] as const;
+
+// ── Portal: Member dashboard ──
+
+export const portalMember = {
+	name: 'Dr. Alyssa Chen',
+	credential: 'NP, MSN',
+	memberSince: '2019',
+	memberId: 'MHPA-024817',
+	tier: 'Professional',
+	status: 'Active',
+	renewsOn: 'March 14, 2027',
+	chapter: 'Bay Area Chapter',
+	avatarInitials: 'AC',
+};
+
+export const portalMemberStats = [
+	{ label: 'Membership', value: 'Active', note: 'Renews Mar 2027' },
+	{ label: 'CE Credits', value: '18.5', note: 'of 30 required' },
+	{ label: 'Events Registered', value: '3', note: 'next: Jun 3' },
+	{ label: 'Saved Resources', value: '12', note: '4 new this month' },
+];
+
+export const portalMemberCE = {
+	earned: 18.5,
+	required: 30,
+	cycleEnds: 'December 31, 2026',
+	recent: [
+		{ title: 'Pharmacology Update: 2026 Guidelines', credits: '2.5', date: 'May 2026', status: 'Completed', certificate: true },
+		{ title: 'Telehealth Documentation Essentials', credits: '1.0', date: 'Apr 2026', status: 'Completed', certificate: true },
+		{ title: 'Controlled Substance Documentation', credits: '1.5', date: 'In progress', status: 'In progress', certificate: false },
+	],
+};
+
+export const portalMemberEvents = [
+	{ title: 'CE Dinner: Telehealth Documentation', date: 'Jun 3, 2026', location: 'San Francisco', type: 'CE Event', status: 'Registered' },
+	{ title: 'Clinical Leadership Conference 2026', date: 'Sep 18–20, 2026', location: 'Sacramento', type: 'Conference', status: 'Registered' },
+	{ title: 'Bay Area New Professional Meetup', date: 'Jun 28, 2026', location: 'Oakland', type: 'Networking', status: 'Waitlist' },
+];
+
+export const portalMemberResources = [
+	{ title: 'Controlled Substance Documentation Guide', type: 'Practice Guide', access: 'Member-only', href: '/demos/association/resources/controlled-substance-documentation' },
+	{ title: 'Chapter Event Planning Toolkit', type: 'Toolkit', access: 'Member-only', href: '/demos/association/resources/chapter-event-planning-toolkit' },
+	{ title: 'Salary & Compensation Benchmarks', type: 'Report', access: 'Member-only', href: '/demos/association/resources' },
+	{ title: 'Burnout Prevention and Team Resilience', type: 'Webinar', access: 'Unlocked', href: '/demos/association/resources/burnout-prevention-resilience' },
+];
+
+export const portalMemberActions = [
+	{ label: 'Renew membership', href: '/demos/association/membership' },
+	{ label: 'Browse CE catalog', href: '/demos/association/events' },
+	{ label: 'Find chapter events', href: '/demos/association/chapters/bay-area' },
+	{ label: 'Update profile', href: '#profile' },
+];
+
+// ── Portal: Chapter Leader dashboard ──
+
+export const portalChapter = {
+	chapterName: 'Bay Area Chapter',
+	leaderName: 'Dr. Marcus Webb',
+	leaderRole: 'Chapter President',
+	region: 'Bay Area',
+};
+
+export const portalChapterStats = [
+	{ label: 'Active Members', value: '142', note: '+6 this quarter' },
+	{ label: 'Upcoming Events', value: '4', note: '1 awaiting approval' },
+	{ label: 'Event RSVPs', value: '87', note: 'across all events' },
+	{ label: 'Announcements', value: '9', note: 'posted in 2026' },
+];
+
+export const portalChapterEvents = [
+	{ title: 'CE Dinner: Telehealth Documentation', date: 'Jun 3, 2026', rsvps: 38, status: 'Published' },
+	{ title: 'New Professional Meetup', date: 'Jun 28, 2026', rsvps: 24, status: 'Published' },
+	{ title: 'Policy Briefing Breakfast', date: 'Jul 15, 2026', rsvps: 12, status: 'Draft' },
+	{ title: 'Leadership Coffee', date: 'Aug 9, 2026', rsvps: 13, status: 'Published' },
+];
+
+export const portalChapterEventTypes = ['CE Event', 'Networking', 'Advocacy', 'Mentorship', 'Leadership', 'Policy Briefing'] as const;
+
+export const portalChapterAnnouncements = [
+	{ title: 'June chapter newsletter is live', date: 'May 30, 2026', author: 'Dr. Marcus Webb', body: 'This month: telehealth CE recap, new member welcome, and a call for Lobby Day volunteers.' },
+	{ title: 'Volunteers needed for New Professional Meetup', date: 'May 22, 2026', author: 'Dr. Marcus Webb', body: 'We are looking for 3–4 experienced members to host table discussions at the June meetup in Oakland.' },
+	{ title: 'Welcome to our 6 newest members', date: 'May 10, 2026', author: 'Sofia Reyes', body: 'Please help us welcome the newest additions to the Bay Area Chapter at our next event.' },
+];
+
+export const portalChapterRoster = [
+	{ name: 'Dr. Alyssa Chen', role: 'Member', tier: 'Professional', joined: '2019', status: 'Active' },
+	{ name: 'James Okafor', role: 'Member', tier: 'New Professional', joined: '2024', status: 'Active' },
+	{ name: 'Sofia Reyes', role: 'Events Volunteer', tier: 'Professional', joined: '2021', status: 'Active' },
+	{ name: 'Dr. Priya Nair', role: 'Mentor', tier: 'Professional', joined: '2017', status: 'Active' },
+	{ name: 'Daniel Brooks', role: 'Member', tier: 'Student', joined: '2025', status: 'Pending' },
+	{ name: 'Dr. Rebecca Stone', role: 'Member', tier: 'Professional', joined: '2020', status: 'Active' },
+];
+
+// ── Resource Detail: Chapter Event Planning Toolkit (downloadable kit) ──
+
+export const resourceDetailToolkit = {
+	eyebrow: 'Toolkit · Chapter Tools',
+	headline: 'Chapter Event Planning Toolkit',
+	lead: 'Everything a chapter leader needs to plan, promote, and run a successful local event — templates, checklists, and budget tools in one downloadable kit.',
+	access: 'Member-only',
+	ce: 'No CE',
+	format: 'Toolkit',
+	updated: 'May 2026',
+	duration: '8 files',
+	tertiaryLink: { text: '← Back to Resources', href: '/demos/association/resources' },
+	primaryCta: { text: 'Download Toolkit (demo)', href: '#contents' },
+	secondaryCta: { text: 'Open in Chapter Tools', href: '/demos/association/portal/chapter' },
+	disclaimer: 'This is fictional demo content. No files are actually downloadable.',
+};
+
+export const resourceDetailToolkitFacts = [
+	{ label: 'Format', value: 'Toolkit' },
+	{ label: 'Files', value: '8 items' },
+	{ label: 'Access', value: 'Member-only' },
+	{ label: 'Audience', value: 'Chapter Leaders' },
+	{ label: 'Updated', value: 'May 2026' },
+	{ label: 'Topic', value: 'Chapter Tools' },
+];
+
+export const resourceDetailToolkitContents = [
+	{ name: 'Event Planning Checklist', type: 'PDF', desc: 'A 60/30/7-day timeline covering venue, speakers, catering, and promotion.' },
+	{ name: 'Budget & Sponsorship Tracker', type: 'Spreadsheet', desc: 'Track expenses, sponsorship revenue, and per-attendee cost.' },
+	{ name: 'Speaker Invitation Templates', type: 'Doc', desc: 'Email templates for inviting and confirming speakers.' },
+	{ name: 'Event Promotion Kit', type: 'Doc', desc: 'Social posts, email copy, and a flyer template for promoting your event.' },
+	{ name: 'Registration & Sign-In Sheet', type: 'PDF', desc: 'Printable check-in sheet plus a digital registration field guide.' },
+	{ name: 'Post-Event Survey Template', type: 'Doc', desc: 'A short evaluation form to capture attendee feedback and CE verification.' },
+	{ name: 'Vendor & Venue Comparison', type: 'Spreadsheet', desc: 'Side-by-side comparison worksheet for venues and vendors.' },
+	{ name: 'Day-of Run Sheet', type: 'Doc', desc: 'A minute-by-minute schedule template for event day.' },
+];
+
+export const resourceDetailToolkitSteps = [
+	{ title: 'Download the kit', description: 'Grab all eight files at once, or pick the ones you need.' },
+	{ title: 'Customize the templates', description: 'Swap in your chapter name, event details, and branding.' },
+	{ title: 'Plan with the checklist', description: 'Follow the 60/30/7-day timeline to stay on track.' },
+	{ title: 'Run it from Chapter Tools', description: 'Create the event in your chapter dashboard and track RSVPs.' },
+];
+
+export const resourceDetailToolkitRelated = [
+	{ title: 'Chapter Meeting Planning Template', type: 'Template', access: 'Member-only', ce: '', href: '/demos/association/resources' },
+	{ title: 'New Member Welcome Script', type: 'Guide', access: 'Public', ce: '', href: '/demos/association/resources' },
+	{ title: 'Controlled Substance Documentation Guide', type: 'Practice Guide', access: 'Member-only', ce: 'CE eligible', href: '/demos/association/resources/controlled-substance-documentation' },
+	{ title: 'Burnout Prevention and Team Resilience', type: 'Webinar', access: 'Public', ce: 'CE eligible', href: '/demos/association/resources/burnout-prevention-resilience' },
+];

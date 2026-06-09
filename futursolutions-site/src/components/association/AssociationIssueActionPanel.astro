@@ -20,10 +20,44 @@ const act = advocacyIssueActions;
 					</div>
 				))}
 			</div>
-			<div class="assoc-btn-row">
-				<a class="assoc-btn issue-action__btn-primary" href={act.primaryCta.href}>{act.primaryCta.text}</a>
-				<a class="assoc-btn assoc-btn--secondary" href={act.secondaryCta.href}>{act.secondaryCta.text}</a>
-			</div>
+			<form class="issue-compose" data-demo-form novalidate>
+				<div class="issue-compose__fields" data-demo-fields>
+					<input type="text" name="company_url" tabindex="-1" autocomplete="off" aria-hidden="true" data-honeypot />
+					<p class="issue-compose__to"><span>To:</span> {act.recipient}</p>
+					<div class="issue-compose__row">
+						<div class="issue-compose__field">
+							<label for="ia-name">Your name</label>
+							<input type="text" id="ia-name" placeholder="Your name" autocomplete="name" data-required />
+							<span class="assoc-form-error" data-error-for="ia-name" role="alert" hidden></span>
+						</div>
+						<div class="issue-compose__field">
+							<label for="ia-email">Your email</label>
+							<input type="email" id="ia-email" placeholder="you@example.com" autocomplete="email" data-required />
+							<span class="assoc-form-error" data-error-for="ia-email" role="alert" hidden></span>
+						</div>
+					</div>
+					<div class="issue-compose__field">
+						<label for="ia-message">Your message <span class="issue-compose__opt">(edit to personalize)</span></label>
+						<textarea id="ia-message" rows="5" data-required>{act.messageTemplate}</textarea>
+						<span class="assoc-form-error" data-error-for="ia-message" role="alert" hidden></span>
+					</div>
+					<div class="assoc-btn-row">
+						<button type="submit" class="assoc-btn issue-action__btn-primary">{act.primaryCta.text}</button>
+						<a class="assoc-btn assoc-btn--secondary" href={act.secondaryCta.href}>{act.secondaryCta.text}</a>
+					</div>
+					<p class="issue-compose__note">Demonstration only — no message is sent. In a live advocacy portal, this would route to the member's elected officials by district and count toward the campaign total.</p>
+				</div>
+
+				<div class="assoc-form-success" data-demo-success hidden>
+					<span class="assoc-form-success__icon" aria-hidden="true">
+						<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+					</span>
+					<h3>Your message is ready to make an impact.</h3>
+					<p>It passed validation and would be on its way to {act.recipient}.</p>
+					<p class="assoc-form-success__demo-note">In your live site, an advocacy portal like this matches each member to their elected officials by address, delivers the message, tracks how many members have taken action, and shows real-time campaign momentum — turning passive supporters into active advocates.</p>
+					<button type="button" class="assoc-btn assoc-btn--secondary assoc-form-success__reset" data-demo-reset>Compose another</button>
+				</div>
+			</form>
 		</div>
 		<div class="issue-action__sidebar">
 			<!-- Key dates -->
@@ -82,6 +116,21 @@ const act = advocacyIssueActions;
 	.issue-action__step p { font-size: 0.85rem; line-height: 1.5; margin: 0; }
 	.issue-action__btn-primary { background: var(--assoc-coral) !important; color: var(--assoc-white) !important; border-color: var(--assoc-coral) !important; }
 	.issue-action__btn-primary:hover { background: color-mix(in srgb, var(--assoc-coral) 85%, var(--assoc-navy)) !important; }
+
+	.issue-compose__fields { display: grid; gap: 0.85rem; padding: 1.25rem; border: 1px solid color-mix(in srgb, var(--assoc-coral) 18%, var(--assoc-border)); border-radius: var(--assoc-radius); background: var(--assoc-white); }
+	.issue-compose__to { font-size: 0.85rem; font-weight: 700; color: var(--assoc-navy); margin: 0; }
+	.issue-compose__to span { color: var(--assoc-slate); font-weight: 600; }
+	.issue-compose__row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem; }
+	.issue-compose__field label { display: block; font-size: 0.8rem; font-weight: 700; color: var(--assoc-navy); margin-bottom: 0.25rem; }
+	.issue-compose__opt { font-weight: 400; color: var(--assoc-slate); }
+	.issue-compose__field input,
+	.issue-compose__field textarea { width: 100%; padding: 0.55rem 0.75rem; border: 1px solid var(--assoc-border); border-radius: 8px; font-size: 0.88rem; font-family: inherit; background: var(--assoc-white); color: var(--assoc-navy); }
+	.issue-compose__field input:focus,
+	.issue-compose__field textarea:focus { outline: 2px solid var(--assoc-coral); outline-offset: -1px; border-color: var(--assoc-coral); }
+	.issue-compose__field textarea { resize: vertical; min-height: 110px; line-height: 1.55; }
+	.issue-compose__note { margin: 0; font-size: 0.72rem; font-weight: 600; color: var(--assoc-coral-text); line-height: 1.45; }
+
+	@media (max-width: 520px) { .issue-compose__row { grid-template-columns: 1fr; } }
 
 	.issue-action__sidebar { display: grid; gap: 1.5rem; }
 
