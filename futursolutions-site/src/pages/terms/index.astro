@@ -1,0 +1,144 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const pageTitle = 'Terms of Service | FutureSolutions';
+const pageDescription =
+	'The terms that govern your use of the FutureSolutions website, including acceptable use, intellectual property, and limitations of liability.';
+const canonicalUrl = 'https://futursolutions.io/terms/';
+
+// [PLACEHOLDER] Replace with your registered legal entity name and governing jurisdiction.
+const legalEntity = 'FutureSolutions';
+const jurisdiction = '[your state/country]';
+const contactEmail = 'hello@futursolutions.io';
+const effectiveDate = 'June 9, 2026';
+---
+
+<BaseLayout
+	title={pageTitle}
+	description={pageDescription}
+	canonicalUrl={canonicalUrl}
+	ogTitle={pageTitle}
+	ogDescription={pageDescription}
+	ogUrl={canonicalUrl}
+>
+	<section class="section legal-hero" aria-labelledby="legal-heading">
+		<div class="site-container legal__inner">
+			<p class="eyebrow">Terms</p>
+			<h1 id="legal-heading">Terms of Service</h1>
+			<p class="lead">
+				These terms govern your use of the {legalEntity} website. By using this site, you agree to them.
+			</p>
+			<p class="legal__meta">Effective {effectiveDate}</p>
+		</div>
+	</section>
+
+	<section class="section legal-body">
+		<div class="site-container legal__inner legal__prose">
+			<h2>Use of this website</h2>
+			<p>
+				You may use this website for lawful purposes and to learn about and request our services. You
+				agree not to misuse the site, attempt to disrupt it, access it through automated means without
+				permission, or use it in any way that violates applicable law.
+			</p>
+
+			<h2>Information and submissions</h2>
+			<p>
+				Information on this site is provided for general informational purposes and may change without
+				notice. When you submit a form, you confirm that the information you provide is accurate and
+				that you are authorized to share it. Please do not submit protected health information or other
+				sensitive personal data through public forms on this site.
+			</p>
+
+			<h2>No professional advice</h2>
+			<p>
+				Content on this site does not constitute legal, medical, financial, or other professional
+				advice. Demonstration websites ("demos" or "Foundations") shown on this site use fictional
+				brands, content, and data for illustration only.
+			</p>
+
+			<h2>Intellectual property</h2>
+			<p>
+				The site design, text, graphics, and other content are owned by {legalEntity} or its licensors
+				and are protected by intellectual property laws. You may not copy, reproduce, or redistribute
+				our content without permission, except as allowed by law.
+			</p>
+
+			<h2>Third-party links and services</h2>
+			<p>
+				This site may link to or rely on third-party services (such as hosting, CRM, scheduling, and
+				analytics providers). We are not responsible for the content or practices of third-party sites,
+				and your use of them is governed by their terms.
+			</p>
+
+			<h2>Disclaimers</h2>
+			<p>
+				The site is provided "as is" and "as available" without warranties of any kind, whether express
+				or implied, to the fullest extent permitted by law. We do not warrant that the site will be
+				uninterrupted, error-free, or secure.
+			</p>
+
+			<h2>Limitation of liability</h2>
+			<p>
+				To the fullest extent permitted by law, {legalEntity} will not be liable for any indirect,
+				incidental, special, consequential, or punitive damages arising from your use of this site.
+			</p>
+
+			<h2>Changes to these terms</h2>
+			<p>
+				We may update these terms from time to time. Continued use of the site after changes means you
+				accept the revised terms. The effective date above reflects the most recent revision.
+			</p>
+
+			<h2>Governing law</h2>
+			<p>These terms are governed by the laws of {jurisdiction}, without regard to conflict-of-law rules.</p>
+
+			<h2>Contact</h2>
+			<p>
+				Questions about these terms? Email us at <a href={`mailto:${contactEmail}`}>{contactEmail}</a>.
+			</p>
+
+			<p class="legal__disclaimer">
+				This page is provided for general information and does not constitute legal advice. Please have
+				counsel review it for your specific business and jurisdiction before launch.
+			</p>
+		</div>
+	</section>
+</BaseLayout>
+
+<style>
+	.legal-hero {
+		padding-block: clamp(4rem, 7vw, 6rem) clamp(1.5rem, 3vw, 2.5rem);
+		background: linear-gradient(180deg, var(--color-white) 0%, var(--color-bg) 100%);
+	}
+	.legal__inner { max-width: 760px; }
+	.legal-hero h1 { margin-block: 0.4rem 0.9rem; }
+	.legal__meta {
+		margin-top: 1rem;
+		font-size: 0.85rem;
+		font-weight: 700;
+		color: color-mix(in srgb, var(--color-text) 55%, transparent);
+	}
+	.legal-body { padding-top: clamp(1rem, 2vw, 1.5rem); }
+	.legal__prose h2 {
+		margin-top: 2.25rem;
+		margin-bottom: 0.6rem;
+		font-size: 1.2rem;
+		letter-spacing: -0.01em;
+	}
+	.legal__prose p,
+	.legal__prose li {
+		font-size: 0.95rem;
+		line-height: 1.7;
+		color: color-mix(in srgb, var(--color-text) 82%, transparent);
+	}
+	.legal__prose a { color: var(--color-accent-dark); font-weight: 700; }
+	.legal__disclaimer {
+		margin-top: 2.5rem;
+		padding: 0.9rem 1.1rem;
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-sm);
+		background: color-mix(in srgb, var(--color-white) 70%, transparent);
+		font-size: 0.85rem !important;
+		line-height: 1.6 !important;
+	}
+</style>

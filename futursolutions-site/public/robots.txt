@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /demos/association/portal
+
+Sitemap: https://futursolutions.io/sitemap-index.xml

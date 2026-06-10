@@ -4,7 +4,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 const pageTitle = 'Growth Systems & Backend Lead Systems | FutureSolutions';
 const pageDescription =
 	'FutureSolutions helps healthcare and high-trust service businesses connect website inquiries to lead capture, booking, follow-up, and pipeline systems.';
-const canonicalUrl = 'https://futursolutions.vercel.app/backend/';
+const canonicalUrl = 'https://futursolutions.io/backend/';
 
 const problems = [
 	{
@@ -158,6 +158,13 @@ const useCases = [
 					</article>
 				))}
 			</div>
+			<p class="backend-compliance">
+				<strong>On data handling:</strong> we structure forms, CRM workflows, and hosting
+				configurations with healthcare data privacy in mind. When protected health information is
+				involved, we support Business Associate Agreement (BAA) requirements and appropriate
+				safeguards as part of the engagement. We scope this per project rather than making blanket
+				compliance claims. See our <a href="/privacy">Privacy Policy</a> for how website form data is handled.
+			</p>
 		</div>
 	</section>
 
@@ -228,6 +235,22 @@ const useCases = [
 		display: grid;
 		gap: 1rem;
 		margin-top: clamp(2rem, 4vw, 3rem);
+	}
+
+	.backend-compliance {
+		max-width: 820px;
+		margin-top: 1.5rem;
+		padding: 1rem 1.2rem;
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-sm);
+		background: color-mix(in srgb, var(--color-white) 70%, transparent);
+		font-size: 0.875rem;
+		line-height: 1.6;
+	}
+
+	.backend-compliance a {
+		color: var(--color-accent-dark);
+		font-weight: 700;
 	}
 
 	.backend-grid--2 {
