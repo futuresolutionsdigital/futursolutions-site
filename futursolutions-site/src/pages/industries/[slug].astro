@@ -14,7 +14,7 @@ export function getStaticPaths() {
 
 const { industry } = Astro.props;
 const path = `/industries/${industry.slug}`;
-const canonicalUrl = `https://futursolutions.io${path}`;
+const canonicalUrl = `https://futuresolutions.io${path}`;
 
 const pageSchema = [
 	serviceSchema({
@@ -88,6 +88,24 @@ const pageSchema = [
 					</article>
 				))}
 			</div>
+		</div>
+	</section>
+
+	<section class:list={['section industry-path', `industry-path--${industry.lane}`]} aria-labelledby="industry-path-heading">
+		<div class="site-container">
+			<div class="industry-section__intro">
+				<p class="eyebrow">The conversion path</p>
+				<h2 id="industry-path-heading">{industry.conversionPathHeading}</h2>
+			</div>
+			<ol class="industry-path__steps">
+				{industry.conversionPath.map((step, index) => (
+					<li class="industry-path__step">
+						<span class="industry-path__num" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+						<h3 class="industry-path__label">{step.label}</h3>
+						<p class="industry-path__note">{step.note}</p>
+					</li>
+				))}
+			</ol>
 		</div>
 	</section>
 
@@ -209,6 +227,74 @@ const pageSchema = [
 		line-height: 1.6;
 	}
 
+	/* Per-vertical conversion path */
+	.industry-path {
+		--path-accent: var(--color-accent);
+	}
+	.industry-path--foundation { --path-accent: var(--lane-foundation, var(--color-accent)); }
+	.industry-path--custom     { --path-accent: var(--lane-custom, var(--color-accent)); }
+	.industry-path--growth     { --path-accent: var(--lane-growth, var(--color-accent)); }
+	.industry-path--audit      { --path-accent: var(--lane-audit, var(--color-accent)); }
+	.industry-path--care       { --path-accent: var(--lane-care, var(--color-accent)); }
+
+	.industry-path__steps {
+		list-style: none;
+		display: grid;
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+		gap: 1rem;
+		margin: clamp(2rem, 4vw, 3rem) 0 0 0;
+		padding: 0;
+		counter-reset: none;
+	}
+	.industry-path__step {
+		position: relative;
+		padding: 1.4rem 1.25rem;
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		background: var(--color-white);
+	}
+	.industry-path__step::before {
+		content: '';
+		position: absolute;
+		left: 0;
+		top: 1.4rem;
+		width: 3px;
+		height: 1.8rem;
+		border-radius: 0 3px 3px 0;
+		background: color-mix(in srgb, var(--path-accent) 70%, transparent);
+	}
+	/* Connector arrows between steps on wide screens */
+	.industry-path__step:not(:last-child)::after {
+		content: '';
+		position: absolute;
+		right: -0.66rem;
+		top: 50%;
+		width: 0.7rem;
+		height: 2px;
+		transform: translateY(-50%);
+		background: color-mix(in srgb, var(--path-accent) 45%, var(--color-border));
+		z-index: 1;
+	}
+	.industry-path__num {
+		display: inline-block;
+		margin-bottom: 0.6rem;
+		color: color-mix(in srgb, var(--path-accent) 78%, var(--color-text));
+		font-size: 0.78rem;
+		font-weight: 800;
+		letter-spacing: 0.12em;
+	}
+	.industry-path__label {
+		margin: 0 0 0.4rem 0;
+		font-size: 1.02rem;
+		letter-spacing: -0.02em;
+	}
+	.industry-path__note {
+		margin: 0;
+		color: var(--color-muted);
+		font-size: 0.88rem;
+		line-height: 1.55;
+	}
+
 	.industry-priorities__chips {
 		display: flex;
 		flex-wrap: wrap;
@@ -270,6 +356,12 @@ const pageSchema = [
 		.industry-approach__grid {
 			grid-template-columns: 1fr;
 		}
+		.industry-path__steps {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+		.industry-path__step:not(:last-child)::after {
+			display: none;
+		}
 	}
 	@media (max-width: 720px) {
 		.industry-pains__grid,
@@ -278,6 +370,11 @@ const pageSchema = [
 		}
 		.industry-final .button-row {
 			justify-content: flex-start;
+		}
+	}
+	@media (max-width: 520px) {
+		.industry-path__steps {
+			grid-template-columns: 1fr;
 		}
 	}
 </style>

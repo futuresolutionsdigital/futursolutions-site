@@ -5,11 +5,12 @@ import RelatedServicesSection from '../../components/RelatedServicesSection.astr
 import ServiceDetailHero from '../../components/ServiceDetailHero.astro';
 import ServiceFAQSection from '../../components/ServiceFAQSection.astro';
 import ServiceIncludedSection from '../../components/ServiceIncludedSection.astro';
+import OptimizationLoop from '../../components/OptimizationLoop.astro';
 import { serviceDetails } from '../../data/serviceDetails';
 import { serviceSchema, faqSchema, breadcrumbSchema } from '../../data/schema';
 
 const service = serviceDetails['ongoing-optimization'];
-const canonicalUrl = `https://futursolutions.io${service.canonicalPath}`;
+const canonicalUrl = `https://futuresolutions.io${service.canonicalPath}`;
 const pageSchema = [
 	serviceSchema({ name: service.eyebrow, description: service.description, path: service.canonicalPath }),
 	faqSchema(service.faqs),
@@ -61,6 +62,8 @@ const processSteps = [
 			</div>
 		</div>
 	</section>
+
+	<OptimizationLoop />
 
 	<ServiceIncludedSection heading="What’s included in ongoing optimization." items={service.included} variant="muted" />
 

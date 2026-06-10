@@ -1,0 +1,99 @@
+---
+import { testimonials } from '../data/testimonials';
+
+interface Props {
+	heading?: string;
+	eyebrow?: string;
+	variant?: 'default' | 'muted';
+}
+
+const {
+	heading = 'What clients say.',
+	eyebrow = 'Proof',
+	variant = 'default',
+} = Astro.props;
+
+// No fabricated proof: render nothing until a real testimonial exists.
+const entries = testimonials;
+---
+
+{entries.length > 0 && (
+	<section
+		class:list={['section testimonials', variant === 'muted' && 'section-muted']}
+		aria-labelledby="testimonials-heading"
+	>
+		<div class="site-container">
+			<div class="testimonials__intro">
+				<p class="eyebrow">{eyebrow}</p>
+				<h2 id="testimonials-heading">{heading}</h2>
+			</div>
+			<div class="testimonials__grid">
+				{entries.map((t) => (
+					<figure class="card testimonials__card">
+						<blockquote class="testimonials__quote">{t.quote}</blockquote>
+						<figcaption class="testimonials__cite">
+							<span class="testimonials__name">{t.name}</span>
+							<span class="testimonials__role">
+								{t.role}, {t.business}{t.location ? ` · ${t.location}` : ''}
+							</span>
+							{t.context && <span class="testimonials__context">{t.context}</span>}
+						</figcaption>
+					</figure>
+				))}
+			</div>
+		</div>
+	</section>
+)}
+
+<style>
+	.testimonials__intro {
+		max-width: 780px;
+	}
+	.testimonials__grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+		gap: 1rem;
+		margin-top: clamp(2rem, 4vw, 3rem);
+	}
+	.testimonials__card {
+		display: grid;
+		gap: 1rem;
+		padding: 1.75rem;
+	}
+	.testimonials__quote {
+		margin: 0;
+		color: var(--color-text);
+		font-size: 1.05rem;
+		line-height: 1.6;
+		letter-spacing: -0.01em;
+	}
+	.testimonials__quote::before {
+		content: '\201C';
+		color: var(--color-accent-dark);
+		font-weight: 800;
+	}
+	.testimonials__quote::after {
+		content: '\201D';
+		color: var(--color-accent-dark);
+		font-weight: 800;
+	}
+	.testimonials__cite {
+		display: grid;
+		gap: 0.2rem;
+	}
+	.testimonials__name {
+		color: var(--color-text);
+		font-size: 0.95rem;
+		font-weight: 800;
+	}
+	.testimonials__role {
+		color: var(--color-muted);
+		font-size: 0.85rem;
+	}
+	.testimonials__context {
+		margin-top: 0.35rem;
+		color: var(--color-accent-dark);
+		font-size: 0.82rem;
+		font-weight: 700;
+	}
+</style>

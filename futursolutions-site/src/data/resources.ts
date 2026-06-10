@@ -169,7 +169,64 @@ export const resources: ResourceEntry[] = [
 		relatedService: 'Website Foundations',
 		ctaLabel: 'Explore Live Demos',
 		ctaHref: '/templates',
-		status: 'Planned',
+		status: 'Published',
+		article: {
+			datePublished: '2026-02-04',
+			readingTime: '6 min read',
+			intro:
+				'Your homepage carries more weight than any other page on your site. It\u2019s where most first-time visitors land, form an impression, and silently decide whether to keep going. A strong health and wellness homepage isn\u2019t about cramming everything in — it\u2019s about a deliberate order that builds trust, creates clarity, and points to a next step. Here\u2019s the structure that consistently works.',
+			sections: [
+				{
+					heading: 'Open with trust, not a slideshow',
+					paragraphs: [
+						'The top of the page should answer the visitor\u2019s unspoken questions immediately: who you help, what you do, and why you\u2019re credible. A confident headline, a calm and professional first impression, and a clear primary action do far more than an auto-rotating image carousel that says nothing specific.',
+						'Resist the urge to lead with a generic slogan. "Your health is our priority" tells a visitor nothing. "Hormone and weight-loss care for men in Austin, with same-week appointments" tells them everything.',
+					],
+				},
+				{
+					heading: 'Make what you do unmistakable',
+					paragraphs: [
+						'Within the first screen or two, a visitor should be able to repeat back what you offer and who it\u2019s for. If they have to scroll and decode, many simply leave. State your core services plainly and let specificity do the persuading.',
+					],
+				},
+				{
+					heading: 'Give every core service a door',
+					paragraphs: [
+						'The homepage isn\u2019t where you explain every service in depth — it\u2019s where you route people to the right place. A clean section that names your main services and links to a dedicated page for each helps visitors self-select and helps search engines understand your practice.',
+					],
+					list: [
+						'Name each meaningful service clearly, not in marketing abstractions.',
+						'Link each one to its own focused page.',
+						'Order them by what most visitors are actually looking for.',
+					],
+				},
+				{
+					heading: 'Point to the next step — more than once',
+					paragraphs: [
+						'A homepage should make the next action obvious and repeat it. Whether that\u2019s booking a consult, requesting an appointment, or starting an audit, the path should appear in the header, after the key sections, and again at the bottom. Visitors decide to act at different moments; meet them wherever that happens.',
+					],
+				},
+				{
+					heading: 'Earn local relevance on the page itself',
+					paragraphs: [
+						'For most practices, patients are searching locally. Naming your city or region, your service area, and the specifics of how you work helps both human visitors and local search. It also reinforces that you\u2019re a real, established practice rooted in a place — another quiet trust signal.',
+					],
+				},
+				{
+					heading: 'A simple order that works',
+					paragraphs: [
+						'Put together, a reliable structure looks like this: a trust-building hero, a one-line statement of what you do, proof and credibility, a services overview that links out, a clear explanation of how to begin, local relevance, and a final call to action. It\u2019s not complicated — it\u2019s disciplined.',
+					],
+				},
+			],
+			keyTakeaways: [
+				'Lead with specific trust signals, not a vague slogan or carousel.',
+				'Make what you do and who it\u2019s for impossible to misread.',
+				'Use the homepage to route visitors to dedicated service pages.',
+				'Repeat a clear next step throughout the page.',
+				'Name your location and service area to support local search.',
+			],
+		},
 	},
 	{
 		slug: 'med-spa-website-bookings',
@@ -205,7 +262,64 @@ export const resources: ResourceEntry[] = [
 		relatedService: 'Local Visibility',
 		ctaLabel: 'Get a Website Audit',
 		ctaHref: '/audit',
-		status: 'Planned',
+		status: 'Published',
+		article: {
+			datePublished: '2026-02-11',
+			readingTime: '6 min read',
+			intro:
+				'Local SEO can feel like a black box, but for most medical and wellness practices it comes down to a few unglamorous fundamentals done consistently. You don\u2019t need tricks or a giant content operation — you need structure, clarity, and relevance. Here are the basics that actually move local visibility, in the order they matter.',
+			sections: [
+				{
+					heading: 'Local visibility starts with structure, not tricks',
+					paragraphs: [
+						'Search engines reward sites they can understand. A clear page architecture — a logical homepage, dedicated service pages, and location relevance — does more for local ranking than any clever shortcut. If a search engine can\u2019t tell what you offer and where, it can\u2019t confidently show you to nearby searchers.',
+					],
+				},
+				{
+					heading: 'Claim and complete your Google Business Profile',
+					paragraphs: [
+						'For local practices, your Google Business Profile is often the single highest-impact asset — it powers the map results and the panel many patients see first. Claim it, complete every field, choose accurate categories, and keep your hours, services, and photos current. This works hand in hand with your website, not instead of it.',
+					],
+				},
+				{
+					heading: 'Give each service and location its own page',
+					paragraphs: [
+						'A single page listing every service is hard for both patients and search engines to interpret. Dedicated pages let you target what people actually search for and demonstrate genuine depth on each topic.',
+					],
+					list: [
+						'One focused page per meaningful service.',
+						'A clear page for each location if you serve more than one.',
+						'Plain-language explanations of what the service is and who it helps.',
+						'Internal links between related services so the structure is navigable.',
+					],
+				},
+				{
+					heading: 'Write metadata humans and engines both read',
+					paragraphs: [
+						'Page titles and meta descriptions are the first thing a searcher sees in results. Write them for people first — specific, honest, and locally relevant — and they\u2019ll serve search engines well too. Generic titles like "Home" or "Services" waste your most valuable real estate.',
+					],
+				},
+				{
+					heading: 'Earn relevance with genuinely useful content',
+					paragraphs: [
+						'You don\u2019t need to publish constantly, but answering the real questions your patients ask — about treatments, process, cost, and what to expect — builds topical relevance and trust at the same time. Useful content is the rare thing that helps ranking and conversion together.',
+					],
+				},
+				{
+					heading: 'Stay consistent and let reviews compound',
+					paragraphs: [
+						'Keep your name, address, and phone number identical everywhere they appear, and make it easy for happy patients to leave honest reviews. Consistency signals legitimacy, and a steady stream of genuine reviews is one of the strongest local trust signals there is — within the privacy rules that govern healthcare.',
+					],
+				},
+			],
+			keyTakeaways: [
+				'Clear site structure beats shortcuts for local ranking.',
+				'A complete Google Business Profile is often the highest-impact step.',
+				'Dedicated service and location pages target real searches.',
+				'Write specific, locally relevant titles and descriptions.',
+				'Useful content and consistent, genuine reviews compound over time.',
+			],
+		},
 	},
 	{
 		slug: 'service-pages-local-seo',
@@ -229,7 +343,59 @@ export const resources: ResourceEntry[] = [
 		relatedService: 'Growth System Setup',
 		ctaLabel: 'View Services',
 		ctaHref: '/services',
-		status: 'Planned',
+		status: 'Published',
+		article: {
+			datePublished: '2026-02-18',
+			readingTime: '5 min read',
+			intro:
+				'A new inquiry is the most valuable thing your website produces — and it\u2019s also the easiest thing to waste. Plenty of practices invest in design and traffic, then let hard-won leads land in an inbox where they\u2019re missed during a busy week. What happens in the minutes and days after someone hits "submit" often matters more than the form itself. Here\u2019s what a converting practice does next.',
+			sections: [
+				{
+					heading: 'The moment most practices waste',
+					paragraphs: [
+						'For many sites, submitting a form does almost nothing: the visitor sees a vague "thank you," an email drops into a shared inbox, and that\u2019s it. No confirmation that sets expectations, no record beyond the email, and no system to make sure someone actually follows up. Every gap here is a prospect quietly lost.',
+					],
+				},
+				{
+					heading: 'Confirm instantly',
+					paragraphs: [
+						'The first thing a new lead needs is reassurance. An immediate confirmation — on-screen and by email — that their message was received, plus a clear note on when they\u2019ll hear back, prevents the anxious "did that go through?" feeling that pushes people to a competitor.',
+					],
+				},
+				{
+					heading: 'Capture, don\u2019t just notify',
+					paragraphs: [
+						'A notification email is not a system. Real lead capture means the inquiry is recorded somewhere durable — a CRM — with the details your team needs and a status you can track.',
+					],
+					list: [
+						'Every inquiry stored with name, contact, and what they asked about.',
+						'A clear owner responsible for responding.',
+						'A visible status so nothing sits untouched.',
+						'Context (which page, which service) carried along with the lead.',
+					],
+				},
+				{
+					heading: 'Follow up on a schedule, not a whim',
+					paragraphs: [
+						'Most people don\u2019t book on the first touch, and busy weeks make manual follow-up unreliable. A simple, scheduled sequence — a prompt first reply, then a thoughtful nudge or two — keeps interested patients engaged without depending on someone remembering. This is where a Growth System earns its keep.',
+					],
+				},
+				{
+					heading: 'Give one clear next step',
+					paragraphs: [
+						'Every follow-up should make the next action obvious: book a consult, confirm a time, or answer one quick question. Ending with a single, low-friction step removes the guesswork and turns interest into a scheduled appointment.',
+						'The website earns the lead. The system behind it is what keeps the lead from slipping away.',
+					],
+				},
+			],
+			keyTakeaways: [
+				'What happens after the form often matters more than the form.',
+				'Confirm receipt instantly and set expectations for a reply.',
+				'Capture leads into a CRM with an owner and a status, not just an inbox.',
+				'Use a scheduled follow-up sequence so no lead depends on memory.',
+				'End every follow-up with one clear, low-friction next step.',
+			],
+		},
 	},
 	{
 		slug: 'template-vs-custom-website',

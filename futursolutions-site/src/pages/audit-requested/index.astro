@@ -5,7 +5,7 @@ import { auditTemplateSlugToName } from '../../data/templates';
 const pageTitle = 'Audit Request Received | FutureSolutions';
 const pageDescription =
 	'Your FutureSolutions Website and Systems Audit request has been received. Learn what happens next and explore the Foundation library while you wait.';
-const canonicalUrl = 'https://futursolutions.io/audit-requested/';
+const canonicalUrl = 'https://futuresolutions.io/audit-requested/';
 
 const nextSteps = [
 	{
@@ -113,7 +113,7 @@ const templates = [
 					If you are still comparing options, walk through the live Foundations built for med spas, solo practices, men's health / TRT clinics, wellness clinics, and healthcare associations.
 				</p>
 			</div>
-			<div class="audit-requested__grid audit-requested__grid--3">
+			<div class="audit-requested__grid audit-requested__grid--cards">
 				{templates.map((template) => (
 					<article class="card audit-requested-card">
 						<h3>{template.name}</h3>
@@ -189,6 +189,13 @@ const templates = [
 
 	.audit-requested__grid--3 {
 		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+
+	/* Width-capped, centered columns so an odd count (5 demos) never leaves a
+	   stretched orphan row. */
+	.audit-requested__grid--cards {
+		grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 360px));
+		justify-content: center;
 	}
 
 	.audit-requested__grid--4 {

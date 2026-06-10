@@ -4,7 +4,7 @@
 > parent site) and the **sub-projects** (the five website template/demo systems).
 > Use this to recognize what is done, what remains, and where to point effort next.
 >
-> **Last updated:** June 10, 2026 (bespoke visuals pass — 7 section-specific graphics: before/after, visitor→booked journey, audit scorecard, service ecosystem, Foundation-vs-Custom matrix, local SEO map, homepage anatomy)
+> **Last updated:** June 10, 2026 (8-page attention pass — sitewide domain correction futursolutions.io→futuresolutions.io (canonicals/OG/SITE_URL/robots); Contact rebuilt with a working general-inquiry form + new `/api/contact` endpoint; Website Foundation + Care & Optimization given bespoke visuals (FoundationStack assembly diagram + OptimizationLoop cycle); per-vertical conversion-path added to all 5 industry detail pages; 3 more Resource articles published (3→6); About audience chips linked to industry pages; empty-by-default Testimonials component + `data/testimonials.ts` wired into home + About (no fabricated proof ships); audit-requested orphan grid fixed. Build passing. Remaining: About founder bio/photo (awaiting client details), GHL_WEBHOOK_URL config.)
 > **Companion docs (do not duplicate — link out):**
 > - `docs/strategy-reference.md` — positioning, offers, copy/CTA/compliance rules
 > - `docs/site-audit.md` — master-site scorecard + diagnosis
@@ -59,7 +59,7 @@
 | Dimension | Score | State | What closes the gap |
 |---|---|---|---|
 | Strategic alignment | 5/5 | ✅ | Done — transparent "from $" pricing anchors + audit-first single primary CTA + trimmed redundancy |
-| Visual design | 4.9/5 | ✅ | 7 bespoke, section-specific visuals (before/after, visitor→booked journey, audit scorecard, service ecosystem, Foundation-vs-Custom matrix, local SEO map, homepage anatomy) — all hand-built CSS/SVG, no stock imagery; each section now feels cultivated, not re-used |
+| Visual design | 5/5 | ✅ | 8 bespoke visuals, refined bigger/bolder: interactive drag-to-reveal before/after, leak-aware visitor journey w/ animated flow, 5-part service-system rail, animated Growth System hub, audit scorecard w/ current-vs-potential, enriched Foundation-vs-Custom matrix, animated local SEO map, hover-linked homepage anatomy — all hand-built CSS/SVG, accessible + reduced-motion safe |
 | Content structure | 5/5 | ✅ | Done — About, 5 industry pages, 3 published articles, FAQs everywhere + homepage FAQ |
 | Operational readiness | 3.5/5 | 🟡 | Form submits w/ validation + honeypot; **GHL/email delivery deferred** |
 | Legal / compliance | 4.5/5 | ✅ | Real entity (Future Solutions Digital LLC) + CA jurisdiction; optional counsel review |
@@ -276,4 +276,5 @@ Append a dated line whenever a milestone lands, so trend is visible at a glance.
 | Jun 9, 2026 | Portal a11y closed (aria-live + focus management on interactive tools) | Association **demo-tier complete**; remaining gaps are master-infra or client-tier |
 | Jun 10, 2026 | Conversion-first restructure (homepage trim, unified service URLs, pricing anchors, single CTA) | Master readiness ~88% → ~90% |
 | Jun 10, 2026 | **Bespoke visuals pass** — 7 section-specific CSS/SVG graphics across home, audit, services, local-visibility, custom | Visual design 4.7 → 4.9; readiness ~90% → ~91%; sections now feel cultivated, not re-used |
+| Jun 10, 2026 | **Visuals refinement pass** — rebuilt all 8 graphics bigger/bolder + interactive (slider, animated flows, hover-linking, current-vs-potential) | Visual design 4.9 → 5; each section fully fleshed out |
 | _next_ | _Integration layer (Sanity / GoHighLevel / analytics) + prod env_ | _Final ~9% to launch_ |

@@ -1,25 +1,27 @@
 ---
 const parts = [
-	{ n: 1, key: 'hero', title: 'Hero with one clear promise', text: 'Who you help and one obvious action — visible before anyone scrolls.' },
-	{ n: 2, key: 'trust', title: 'Immediate trust signals', text: 'Credentials, affiliations, and reassurance that you\u2019re the safe choice.' },
-	{ n: 3, key: 'services', title: 'Services framed for patients', text: 'Plain-language outcomes, not clinical jargon or a wall of text.' },
-	{ n: 4, key: 'proof', title: 'Proof that builds confidence', text: 'Reviews, results, and real stories placed where doubt creeps in.' },
-	{ n: 5, key: 'human', title: 'The humans behind the care', text: 'Faces and warmth — people book people, not anonymous clinics.' },
-	{ n: 6, key: 'cta', title: 'An unmissable next step', text: 'A final, friction-free invitation to book or get in touch.' },
+	{ n: 1, key: 'hero', tag: 'Hero', title: 'Hero with one clear promise', text: 'Who you help and one obvious action — visible before anyone scrolls.' },
+	{ n: 2, key: 'trust', tag: 'Trust bar', title: 'Immediate trust signals', text: 'Credentials, affiliations, and reassurance that you\u2019re the safe choice.' },
+	{ n: 3, key: 'services', tag: 'Services', title: 'Services framed for patients', text: 'Plain-language outcomes, not clinical jargon or a wall of text.' },
+	{ n: 4, key: 'proof', tag: 'Proof', title: 'Proof that builds confidence', text: 'Reviews, results, and real stories placed where doubt creeps in.' },
+	{ n: 5, key: 'human', tag: 'Your team', title: 'The humans behind the care', text: 'Faces and warmth — people book people, not anonymous clinics.' },
+	{ n: 6, key: 'cta', tag: 'Final CTA', title: 'An unmissable next step', text: 'A final, friction-free invitation to book or get in touch.' },
 ];
 ---
 
-<section class="anatomy section-ink" aria-labelledby="anatomy-heading">
+<section class="anatomy section-ink" aria-labelledby="anatomy-heading" data-anatomy>
 	<div class="dot-grid dot-grid--ink anatomy__dots" aria-hidden="true"></div>
 	<div class="site-container site-container--wide anatomy__inner">
 		<header class="anatomy__head">
-			<p class="eyebrow">The anatomy of a page that converts</p>
-			<h2 id="anatomy-heading" class="display-lg anatomy__headline">
-				Every section earns its place.
-			</h2>
+			<div class="anatomy__head-main">
+				<p class="eyebrow">The anatomy of a page that converts</p>
+				<h2 id="anatomy-heading" class="display-lg anatomy__headline">
+					Every section earns its place.
+				</h2>
+			</div>
 			<p class="lead anatomy__lead">
 				A high-converting healthcare homepage isn't decoration — it's a sequence that answers a visitor's
-				questions in the order they ask them. Here's how we structure yours.
+				questions in the order they ask them. Hover any layer to see how it fits the page.
 			</p>
 		</header>
 
@@ -27,13 +29,27 @@ const parts = [
 			<!-- Page mock -->
 			<figure class="anatomy__mock" aria-hidden="true">
 				<div class="anatomy__bar">
-					<span></span><span></span><span></span>
+					<span class="anatomy__bar-logo"></span>
+					<span class="anatomy__bar-dots"><i></i><i></i><i></i></span>
 				</div>
 				<div class="anatomy__page">
 					{parts.map((p) => (
-						<div class={`anatomy__block anatomy__block--${p.key}`}>
+						<div class={`anatomy__block anatomy__block--${p.key}`} data-block={p.n}>
 							<span class="anatomy__block-n">{p.n}</span>
-							<span class="anatomy__block-fill"></span>
+							<span class="anatomy__block-tag">{p.tag}</span>
+							<div class="anatomy__block-art">
+								{p.key === 'hero' && (<>
+									<span class="aa-line aa-line--eyebrow"></span>
+									<span class="aa-line aa-line--h"></span>
+									<span class="aa-line aa-line--h aa-line--short"></span>
+									<span class="aa-btn"></span>
+								</>)}
+								{p.key === 'trust' && (<span class="aa-badges"><i></i><i></i><i></i><i></i></span>)}
+								{p.key === 'services' && (<span class="aa-cards"><i></i><i></i><i></i></span>)}
+								{p.key === 'proof' && (<><span class="aa-stars">★★★★★</span><span class="aa-line aa-line--sub"></span></>)}
+								{p.key === 'human' && (<span class="aa-team"><i></i><i></i><i></i></span>)}
+								{p.key === 'cta' && (<span class="aa-cta-bar"><i></i></span>)}
+							</div>
 						</div>
 					))}
 				</div>
@@ -42,7 +58,7 @@ const parts = [
 			<!-- Legend -->
 			<ol class="anatomy__legend">
 				{parts.map((p) => (
-					<li class="anatomy__item">
+					<li class="anatomy__item" data-item={p.n} tabindex="0">
 						<span class="anatomy__item-n">{p.n}</span>
 						<div class="anatomy__item-body">
 							<h3 class="anatomy__item-title">{p.title}</h3>
@@ -73,17 +89,18 @@ const parts = [
 
 	.anatomy__head {
 		display: grid;
-		gap: 1.1rem;
-		max-width: 52rem;
+		grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+		align-items: end;
+		gap: clamp(1.5rem, 4vw, 3.5rem);
 		margin: 0 0 clamp(2.5rem, 5vw, 3.5rem);
 	}
 
 	.anatomy__headline { color: var(--color-white); }
-	.anatomy__lead { max-width: 48rem; color: var(--color-ink-muted); }
+	.anatomy__lead { max-width: 36rem; margin: 0; color: var(--color-ink-muted); }
 
 	.anatomy__layout {
 		display: grid;
-		grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+		grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
 		gap: clamp(2rem, 5vw, 4rem);
 		align-items: start;
 	}
@@ -95,18 +112,33 @@ const parts = [
 		border-radius: var(--radius-lg);
 		overflow: hidden;
 		background: var(--color-ink-soft);
-		box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+		box-shadow: 0 36px 70px rgba(0, 0, 0, 0.34);
+		position: sticky;
+		top: 5rem;
 	}
 
 	.anatomy__bar {
 		display: flex;
-		gap: 0.4rem;
-		padding: 0.7rem 0.9rem;
+		align-items: center;
+		justify-content: space-between;
+		padding: 0.8rem 1rem;
 		border-bottom: 1px solid var(--color-ink-line);
 		background: rgba(255, 255, 255, 0.03);
 	}
 
-	.anatomy__bar span {
+	.anatomy__bar-logo {
+		width: 1.6rem;
+		height: 1.6rem;
+		border-radius: 6px;
+		background: var(--lane-foundation);
+	}
+
+	.anatomy__bar-dots {
+		display: flex;
+		gap: 0.4rem;
+	}
+
+	.anatomy__bar-dots i {
 		width: 0.55rem;
 		height: 0.55rem;
 		border-radius: 999px;
@@ -115,51 +147,80 @@ const parts = [
 
 	.anatomy__page {
 		display: grid;
-		gap: 0.5rem;
-		padding: 0.75rem;
+		gap: 0.55rem;
+		padding: 0.85rem;
 	}
 
 	.anatomy__block {
 		position: relative;
 		display: flex;
-		align-items: center;
-		padding: 0 0.75rem;
+		flex-direction: column;
+		justify-content: center;
+		gap: 0.4rem;
+		padding: 0.85rem 0.9rem;
 		border-radius: 10px;
 		background: rgba(255, 255, 255, 0.04);
 		border: 1px solid var(--color-ink-line);
 		overflow: hidden;
-		transition: border-color var(--transition-base), background-color var(--transition-base);
+		transition: border-color var(--transition-base), background-color var(--transition-base), transform 280ms var(--ease-out-quart);
 	}
 
-	.anatomy__block--hero { min-height: 4.2rem; background: color-mix(in srgb, var(--lane-foundation) 18%, transparent); border-color: color-mix(in srgb, var(--lane-foundation) 40%, transparent); }
-	.anatomy__block--trust { min-height: 2.2rem; }
-	.anatomy__block--services { min-height: 3.4rem; }
-	.anatomy__block--proof { min-height: 3rem; }
-	.anatomy__block--human { min-height: 3rem; }
-	.anatomy__block--cta { min-height: 3.2rem; background: color-mix(in srgb, var(--lane-foundation) 22%, transparent); border-color: color-mix(in srgb, var(--lane-foundation) 45%, transparent); }
+	.anatomy__block--hero { background: color-mix(in srgb, var(--lane-foundation) 16%, transparent); border-color: color-mix(in srgb, var(--lane-foundation) 38%, transparent); }
+	.anatomy__block--cta { background: color-mix(in srgb, var(--lane-foundation) 20%, transparent); border-color: color-mix(in srgb, var(--lane-foundation) 42%, transparent); }
 
 	.anatomy__block-n {
+		position: absolute;
+		top: 0.6rem;
+		left: 0.7rem;
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
-		width: 1.5rem;
-		height: 1.5rem;
-		flex-shrink: 0;
+		width: 1.4rem;
+		height: 1.4rem;
 		border-radius: 999px;
 		background: var(--color-ink);
 		color: var(--color-ink-accent);
-		font-size: 0.75rem;
+		font-size: 0.7rem;
 		font-weight: 800;
 		border: 1px solid var(--color-ink-line-strong);
 	}
 
-	.anatomy__block-fill {
-		flex: 1;
-		height: 0.4rem;
-		margin-left: 0.75rem;
-		border-radius: 999px;
-		background: linear-gradient(90deg, rgba(255,255,255,0.22), rgba(255,255,255,0.05));
+	.anatomy__block-tag {
+		align-self: flex-end;
+		color: var(--color-ink-muted);
+		font-size: 0.62rem;
+		font-weight: 800;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
 	}
+
+	.anatomy__block-art {
+		display: flex;
+		flex-direction: column;
+		gap: 0.3rem;
+	}
+
+	/* faux content */
+	.aa-line { height: 0.4rem; border-radius: 999px; background: rgba(255,255,255,0.25); }
+	.aa-line--eyebrow { width: 3rem; height: 0.32rem; background: var(--lane-foundation); }
+	.aa-line--h { height: 0.7rem; width: 70%; background: rgba(255,255,255,0.55); }
+	.aa-line--short { width: 45%; }
+	.aa-line--sub { width: 80%; }
+	.aa-btn { width: 4.5rem; height: 1rem; border-radius: 6px; background: var(--lane-foundation); margin-top: 0.15rem; }
+
+	.aa-badges { display: flex; gap: 0.35rem; }
+	.aa-badges i { width: 2.4rem; height: 0.7rem; border-radius: 999px; background: rgba(255,255,255,0.14); border: 1px solid var(--color-ink-line-strong); }
+
+	.aa-cards { display: flex; gap: 0.4rem; }
+	.aa-cards i { flex: 1; height: 1.8rem; border-radius: 7px; background: rgba(255,255,255,0.08); border: 1px solid var(--color-ink-line); }
+
+	.aa-stars { color: var(--lane-audit); font-size: 0.85rem; letter-spacing: -0.04em; }
+
+	.aa-team { display: flex; gap: 0.4rem; }
+	.aa-team i { width: 1.6rem; height: 1.6rem; border-radius: 999px; background: rgba(255,255,255,0.12); border: 1px solid var(--color-ink-line-strong); }
+
+	.aa-cta-bar { display: flex; justify-content: center; }
+	.aa-cta-bar i { width: 6rem; height: 1.1rem; border-radius: 7px; background: var(--lane-foundation); }
 
 	/* Legend */
 	.anatomy__legend {
@@ -173,38 +234,52 @@ const parts = [
 
 	.anatomy__item {
 		display: grid;
-		grid-template-columns: 2rem 1fr;
-		gap: 0.9rem;
+		grid-template-columns: 2.25rem 1fr;
+		gap: 0.95rem;
 		align-items: start;
-		padding: 0.85rem 0.9rem;
+		padding: 0.95rem 1rem;
 		border-radius: var(--radius-md);
 		border: 1px solid transparent;
-		transition: background-color var(--transition-base), border-color var(--transition-base);
+		cursor: default;
+		transition: background-color var(--transition-base), border-color var(--transition-base), transform 220ms var(--ease-out-quart);
 	}
 
-	.anatomy__item:hover {
+	.anatomy__item:hover,
+	.anatomy__item:focus-visible,
+	.anatomy__item.is-active {
 		background: var(--color-ink-soft);
-		border-color: var(--color-ink-line);
+		border-color: color-mix(in srgb, var(--lane-foundation) 40%, var(--color-ink-line));
+		transform: translateX(3px);
+		outline: none;
 	}
 
 	.anatomy__item-n {
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
-		width: 2rem;
-		height: 2rem;
+		width: 2.25rem;
+		height: 2.25rem;
 		border-radius: 999px;
 		background: rgba(255, 255, 255, 0.05);
 		border: 1px solid var(--color-ink-line-strong);
 		color: var(--color-ink-accent);
-		font-size: 0.85rem;
+		font-size: 0.9rem;
 		font-weight: 800;
+		transition: background-color var(--transition-base), color var(--transition-base);
+	}
+
+	.anatomy__item:hover .anatomy__item-n,
+	.anatomy__item:focus-visible .anatomy__item-n,
+	.anatomy__item.is-active .anatomy__item-n {
+		background: var(--lane-foundation);
+		color: var(--color-white);
+		border-color: var(--lane-foundation);
 	}
 
 	.anatomy__item-title {
 		margin: 0 0 0.2rem;
 		color: var(--color-white);
-		font-size: 1.05rem;
+		font-size: 1.08rem;
 		font-weight: 700;
 		letter-spacing: -0.02em;
 	}
@@ -216,13 +291,51 @@ const parts = [
 		line-height: 1.55;
 	}
 
+	/* linked highlight on the mock */
+	.anatomy__block.is-active {
+		border-color: var(--lane-foundation);
+		background: color-mix(in srgb, var(--lane-foundation) 24%, transparent);
+		transform: scale(1.015);
+	}
+
 	@media (max-width: 860px) {
+		.anatomy__head {
+			grid-template-columns: 1fr;
+			align-items: start;
+		}
+
 		.anatomy__layout {
 			grid-template-columns: 1fr;
 		}
 
 		.anatomy__mock {
-			max-width: 26rem;
+			max-width: 28rem;
+			position: static;
 		}
 	}
 </style>
+
+<script>
+	(() => {
+		const sections = document.querySelectorAll('[data-anatomy]');
+		sections.forEach((section) => {
+			const items = section.querySelectorAll('[data-item]');
+			const blocks = section.querySelectorAll('[data-block]');
+			const setActive = (n, on) => {
+				items.forEach((el) => {
+					if (el.getAttribute('data-item') === n) el.classList.toggle('is-active', on);
+				});
+				blocks.forEach((el) => {
+					if (el.getAttribute('data-block') === n) el.classList.toggle('is-active', on);
+				});
+			};
+			items.forEach((item) => {
+				const n = item.getAttribute('data-item');
+				item.addEventListener('mouseenter', () => setActive(n, true));
+				item.addEventListener('mouseleave', () => setActive(n, false));
+				item.addEventListener('focus', () => setActive(n, true));
+				item.addEventListener('blur', () => setActive(n, false));
+			});
+		});
+	})();
+</script>

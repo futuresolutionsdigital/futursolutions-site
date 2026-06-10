@@ -5,7 +5,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://futursolutions.io',
+	site: 'https://futuresolutions.io',
 	adapter: vercel(),
 	redirects: {
 		'/seo': '/services/local-visibility',

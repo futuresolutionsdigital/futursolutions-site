@@ -1,4 +1,4 @@
-export const SITE_URL = 'https://futursolutions.io';
+export const SITE_URL = 'https://futuresolutions.io';
 export const ORG_NAME = 'FutureSolutions';
 
 export const ORG_LEGAL_NAME = 'Future Solutions Digital LLC';

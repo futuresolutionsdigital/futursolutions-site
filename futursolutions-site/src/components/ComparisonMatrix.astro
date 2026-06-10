@@ -1,11 +1,19 @@
 ---
 const rows = [
 	{ label: 'Starting investment', foundation: 'from $3,500', custom: 'from $12,000', emphasize: true },
-	{ label: 'Time to launch', foundation: 'Fastest — weeks', custom: 'Longer — strategy + design' },
+	{ label: 'Time to launch', foundation: 'Fastest — a matter of weeks', custom: 'Longer — strategy + design phase' },
 	{ label: 'Design', foundation: 'Healthcare Foundation, customized to your brand', custom: 'Fully bespoke, designed from scratch' },
 	{ label: 'Page structure', foundation: 'Proven structure, tailored to you', custom: 'Built around your exact service model' },
 	{ label: 'Content model', foundation: 'Standard healthcare pages', custom: 'Custom content architecture' },
+	{ label: 'Integrations', foundation: 'Core booking & forms', custom: 'Deeper, custom integrations' },
 	{ label: 'Best when', foundation: 'You need credible + converting, fast', custom: 'Your brand or services are unique or complex' },
+];
+
+const shared = [
+	'Premium, healthcare-aware design',
+	'Mobile-fast & accessible',
+	'Conversion-focused layout',
+	'Foundational on-page SEO',
 ];
 ---
 
@@ -18,6 +26,18 @@ const rows = [
 				Both are built by us, for healthcare, and both convert. The difference is speed and how bespoke you need it. Add a Growth System and Care to either.
 			</p>
 		</header>
+
+		<div class="matrix__shared">
+			<span class="matrix__shared-label">Both always include</span>
+			<ul class="matrix__shared-list">
+				{shared.map((item) => (
+					<li>
+						<svg aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.5 3.5L13 5" /></svg>
+						{item}
+					</li>
+				))}
+			</ul>
+		</div>
 
 		<div class="matrix__table" role="table" aria-label="Website Foundation compared with Signature Custom Website">
 			<div class="matrix__cols" role="row">
@@ -76,6 +96,50 @@ const rows = [
 
 	.matrix__lead {
 		max-width: 50rem;
+	}
+
+	.matrix__shared {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 0.75rem 1.5rem;
+		margin-bottom: 1rem;
+		padding: 1rem 1.35rem;
+		border: 1px solid color-mix(in srgb, var(--lane-foundation) 22%, var(--color-border));
+		border-radius: var(--radius-md);
+		background: var(--lane-foundation-tint);
+	}
+
+	.matrix__shared-label {
+		color: var(--lane-foundation-ink);
+		font-size: 0.74rem;
+		font-weight: 800;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+	}
+
+	.matrix__shared-list {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem 1.35rem;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.matrix__shared-list li {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.45rem;
+		color: var(--color-text);
+		font-size: 0.88rem;
+		font-weight: 650;
+	}
+
+	.matrix__shared-list svg {
+		width: 1rem;
+		height: 1rem;
+		color: var(--lane-foundation);
 	}
 
 	.matrix__table {

@@ -1,36 +1,54 @@
 ---
 const nodes = [
-	{ key: 'forms', label: 'Forms', detail: 'Every inquiry captured', pos: 'top' },
-	{ key: 'booking', label: 'Booking', detail: 'Consult requests routed', pos: 'right' },
-	{ key: 'crm', label: 'CRM', detail: 'Contacts organized', pos: 'bottom-right' },
-	{ key: 'followup', label: 'Follow-up', detail: 'Reminders & sequences', pos: 'bottom-left' },
-	{ key: 'pipeline', label: 'Pipeline', detail: 'Status on every lead', pos: 'left' },
+	{ key: 'forms', icon: 'form', label: 'Forms', detail: 'Every inquiry captured', pos: 'top' },
+	{ key: 'booking', icon: 'calendar', label: 'Booking', detail: 'Consult requests routed', pos: 'right' },
+	{ key: 'crm', icon: 'contact', label: 'CRM', detail: 'Contacts organized', pos: 'bottom-right' },
+	{ key: 'followup', icon: 'bell', label: 'Follow-up', detail: 'Reminders & sequences', pos: 'bottom-left' },
+	{ key: 'pipeline', icon: 'pipeline', label: 'Pipeline', detail: 'Status on every lead', pos: 'left' },
+];
+
+const flow = [
+	{ icon: 'cursor', title: 'Visitor lands', text: 'Someone arrives on a service or landing page.' },
+	{ icon: 'form', title: 'Inquiry captured', text: 'A form or booking request is submitted.' },
+	{ icon: 'contact', title: 'Routed & nurtured', text: 'CRM record created, follow-up kicks in automatically.' },
+	{ icon: 'pipeline', title: 'Tracked to booked', text: 'Pipeline shows status and the next step for every lead.' },
 ];
 ---
 
 <section class="growth-diagram" aria-labelledby="growth-diagram-heading">
 	<div class="site-container site-container--wide">
 		<header class="growth-diagram__head">
-			<p class="eyebrow">Website system</p>
-			<h2 id="growth-diagram-heading">Your website is the front door. The Growth System is what happens next.</h2>
+			<div class="growth-diagram__head-main">
+				<p class="eyebrow">Website system</p>
+				<h2 id="growth-diagram-heading">Your website is the front door. The Growth System is everything behind it.</h2>
+			</div>
 			<p class="lead growth-diagram__lead">
-				Every piece connects — so when someone inquires, you know who they are, what they need, and what happens next. No inbox roulette.
+				Every piece connects — so when someone inquires, you know who they are, what they need, and what happens next. No inbox roulette, no leads slipping through.
 			</p>
 		</header>
 
-		<div class="growth-diagram__stage" role="img" aria-label="Diagram showing website connected to forms, booking, CRM, follow-up, and pipeline">
-			<svg class="growth-diagram__lines" viewBox="0 0 600 420" aria-hidden="true">
-				<line x1="300" y1="210" x2="300" y2="72" />
-				<line x1="300" y1="210" x2="468" y2="130" />
-				<line x1="300" y1="210" x2="420" y2="310" />
-				<line x1="300" y1="210" x2="180" y2="310" />
-				<line x1="300" y1="210" x2="132" y2="130" />
+		<div class="growth-diagram__stage" role="img" aria-label="Diagram: your website connected to forms, booking, CRM, follow-up, and pipeline">
+			<svg class="growth-diagram__lines" viewBox="0 0 600 460" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
+				<g class="growth-diagram__line-group">
+					<line x1="300" y1="230" x2="300" y2="78" />
+					<line x1="300" y1="230" x2="498" y2="150" />
+					<line x1="300" y1="230" x2="430" y2="372" />
+					<line x1="300" y1="230" x2="170" y2="372" />
+					<line x1="300" y1="230" x2="102" y2="150" />
+				</g>
+				<g class="growth-diagram__pulse-group">
+					<circle r="4" cx="300" cy="230"><animate attributeName="cy" values="230;78" dur="2.6s" repeatCount="indefinite" /><animate attributeName="opacity" values="0;1;0" dur="2.6s" repeatCount="indefinite" /></circle>
+					<circle r="4" cx="300" cy="230"><animate attributeName="cx" values="300;498" dur="2.6s" begin="0.5s" repeatCount="indefinite" /><animate attributeName="cy" values="230;150" dur="2.6s" begin="0.5s" repeatCount="indefinite" /><animate attributeName="opacity" values="0;1;0" dur="2.6s" begin="0.5s" repeatCount="indefinite" /></circle>
+					<circle r="4" cx="300" cy="230"><animate attributeName="cx" values="300;430" dur="2.6s" begin="1s" repeatCount="indefinite" /><animate attributeName="cy" values="230;372" dur="2.6s" begin="1s" repeatCount="indefinite" /><animate attributeName="opacity" values="0;1;0" dur="2.6s" begin="1s" repeatCount="indefinite" /></circle>
+					<circle r="4" cx="300" cy="230"><animate attributeName="cx" values="300;170" dur="2.6s" begin="1.5s" repeatCount="indefinite" /><animate attributeName="cy" values="230;372" dur="2.6s" begin="1.5s" repeatCount="indefinite" /><animate attributeName="opacity" values="0;1;0" dur="2.6s" begin="1.5s" repeatCount="indefinite" /></circle>
+					<circle r="4" cx="300" cy="230"><animate attributeName="cx" values="300;102" dur="2.6s" begin="2s" repeatCount="indefinite" /><animate attributeName="cy" values="230;150" dur="2.6s" begin="2s" repeatCount="indefinite" /><animate attributeName="opacity" values="0;1;0" dur="2.6s" begin="2s" repeatCount="indefinite" /></circle>
+				</g>
 			</svg>
 
 			<div class="growth-diagram__core">
 				<span class="growth-diagram__core-icon" aria-hidden="true">
 					<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-						<rect x="3" y="4" width="18" height="14" rx="2" /><path d="M8 21h8M12 18v3" />
+						<rect x="3" y="4" width="18" height="14" rx="2" /><path d="M8 21h8M12 18v3M3 9h18" />
 					</svg>
 				</span>
 				<span class="growth-diagram__core-label">Your website</span>
@@ -39,6 +57,13 @@ const nodes = [
 
 			{nodes.map((node) => (
 				<div class={`growth-diagram__node growth-diagram__node--${node.pos}`}>
+					<span class="growth-diagram__node-icon" aria-hidden="true">
+						{node.icon === 'form' && (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2" /><path d="M8 8h8M8 12h8M8 16h5" /></svg>)}
+						{node.icon === 'calendar' && (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2" /><path d="M3 9h18M8 3v4M16 3v4" /></svg>)}
+						{node.icon === 'contact' && (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4" /><path d="M4 21c0-4 4-6 8-6s8 2 8 6" /></svg>)}
+						{node.icon === 'bell' && (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9M10.5 21a2 2 0 0 0 3 0" /></svg>)}
+						{node.icon === 'pipeline' && (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h10M4 18h6" /></svg>)}
+					</span>
 					<span class="growth-diagram__node-label">{node.label}</span>
 					<span class="growth-diagram__node-detail">{node.detail}</span>
 				</div>
@@ -46,10 +71,21 @@ const nodes = [
 		</div>
 
 		<ol class="growth-diagram__flow" aria-label="Lead path from visit to pipeline">
-			<li><span>01</span> Visitor lands on a service page</li>
-			<li><span>02</span> Form or booking captures the inquiry</li>
-			<li><span>03</span> CRM record + follow-up kicks in</li>
-			<li><span>04</span> Pipeline shows status and next step</li>
+			{flow.map((step, i) => (
+				<li class="growth-flow__step">
+					<span class="growth-flow__num">{String(i + 1).padStart(2, '0')}</span>
+					<span class="growth-flow__icon" aria-hidden="true">
+						{step.icon === 'cursor' && (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4l6 16 2.5-6.5L20 11z" /></svg>)}
+						{step.icon === 'form' && (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2" /><path d="M8 8h8M8 12h8M8 16h5" /></svg>)}
+						{step.icon === 'contact' && (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4" /><path d="M4 21c0-4 4-6 8-6s8 2 8 6" /></svg>)}
+						{step.icon === 'pipeline' && (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h10M4 18h6" /></svg>)}
+					</span>
+					<span class="growth-flow__body">
+						<span class="growth-flow__title">{step.title}</span>
+						<span class="growth-flow__text">{step.text}</span>
+					</span>
+				</li>
+			))}
 		</ol>
 	</div>
 </section>
@@ -63,21 +99,23 @@ const nodes = [
 
 	.growth-diagram__head {
 		display: grid;
-		gap: 1.1rem;
-		max-width: 52rem;
+		grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+		align-items: end;
+		gap: clamp(1.5rem, 4vw, 3.5rem);
 		margin: 0 0 clamp(2.5rem, 5vw, 3.5rem);
 	}
 
 	.growth-diagram__lead {
-		max-width: 48rem;
+		max-width: 36rem;
+		margin: 0;
 	}
 
 	.growth-diagram__stage {
 		position: relative;
-		max-width: 38rem;
+		max-width: 44rem;
 		margin-inline: auto;
-		aspect-ratio: 6 / 4.2;
-		min-height: 18rem;
+		aspect-ratio: 6 / 4.6;
+		min-height: 22rem;
 	}
 
 	.growth-diagram__lines {
@@ -88,10 +126,14 @@ const nodes = [
 		pointer-events: none;
 	}
 
-	.growth-diagram__lines line {
-		stroke: color-mix(in srgb, var(--lane-growth) 35%, var(--color-border));
+	.growth-diagram__line-group line {
+		stroke: color-mix(in srgb, var(--lane-growth) 38%, var(--color-border));
 		stroke-width: 2;
 		stroke-dasharray: 6 5;
+	}
+
+	.growth-diagram__pulse-group circle {
+		fill: var(--lane-growth);
 	}
 
 	.growth-diagram__core {
@@ -101,14 +143,14 @@ const nodes = [
 		transform: translate(-50%, -50%);
 		display: grid;
 		justify-items: center;
-		gap: 0.25rem;
-		width: 9.5rem;
-		padding: 1.35rem 1rem;
+		gap: 0.3rem;
+		width: 11rem;
+		padding: 1.6rem 1.1rem;
 		border-radius: var(--radius-lg);
 		background: var(--color-ink);
 		color: var(--color-white);
 		border: 1px solid var(--color-ink-line-strong);
-		box-shadow: 0 2px 4px rgba(15, 23, 42, 0.08), 0 24px 48px rgba(15, 23, 42, 0.14);
+		box-shadow: 0 2px 4px rgba(15, 23, 42, 0.08), 0 28px 56px rgba(15, 23, 42, 0.2);
 		z-index: 2;
 	}
 
@@ -116,131 +158,187 @@ const nodes = [
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
-		width: 2.5rem;
-		height: 2.5rem;
-		border-radius: 10px;
-		background: rgba(255, 255, 255, 0.08);
+		width: 3rem;
+		height: 3rem;
+		border-radius: 12px;
+		background: rgba(255, 255, 255, 0.09);
 		color: var(--color-ink-accent);
 	}
 
 	.growth-diagram__core-icon svg {
-		width: 1.35rem;
-		height: 1.35rem;
+		width: 1.6rem;
+		height: 1.6rem;
 	}
 
 	.growth-diagram__core-label {
-		font-size: 1rem;
+		font-size: 1.1rem;
 		font-weight: 800;
 		letter-spacing: -0.02em;
 	}
 
 	.growth-diagram__core-sub {
 		color: var(--color-ink-muted);
-		font-size: 0.78rem;
+		font-size: 0.8rem;
 		font-weight: 600;
 	}
 
 	.growth-diagram__node {
 		position: absolute;
 		display: grid;
-		gap: 0.15rem;
-		width: 8.5rem;
-		padding: 0.85rem 0.9rem;
-		border: 1px solid color-mix(in srgb, var(--lane-growth) 28%, var(--color-border));
+		justify-items: center;
+		gap: 0.25rem;
+		width: 9.5rem;
+		padding: 1rem 0.9rem;
+		border: 1px solid color-mix(in srgb, var(--lane-growth) 30%, var(--color-border));
 		border-radius: var(--radius-md);
-		background: var(--lane-growth-tint);
+		background: var(--color-white);
 		box-shadow: var(--shadow-card);
-		transition: transform 320ms var(--ease-out-quart), box-shadow var(--transition-base);
+		text-align: center;
+		transition: transform 320ms var(--ease-out-quart), box-shadow var(--transition-base), border-color var(--transition-base);
+		z-index: 1;
 	}
 
 	.growth-diagram__node:hover {
-		transform: translateY(-3px);
+		transform: translateY(-3px) scale(1.02);
 		box-shadow: var(--shadow-card-hover);
+		border-color: var(--lane-growth);
 	}
 
-	.growth-diagram__node--top { top: 0; left: 50%; transform: translateX(-50%); }
-	.growth-diagram__node--right { top: 22%; right: 0; }
-	.growth-diagram__node--bottom-right { bottom: 8%; right: 8%; }
-	.growth-diagram__node--bottom-left { bottom: 8%; left: 8%; }
-	.growth-diagram__node--left { top: 22%; left: 0; }
+	.growth-diagram__node-icon {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 2.3rem;
+		height: 2.3rem;
+		border-radius: 10px;
+		background: var(--lane-growth-tint);
+		color: var(--lane-growth-ink);
+	}
 
-	.growth-diagram__node--top:hover { transform: translateX(-50%) translateY(-3px); }
+	.growth-diagram__node-icon svg {
+		width: 1.25rem;
+		height: 1.25rem;
+	}
 
 	.growth-diagram__node-label {
 		color: var(--lane-growth-ink);
-		font-size: 0.88rem;
+		font-size: 0.92rem;
 		font-weight: 800;
 		letter-spacing: -0.01em;
 	}
 
 	.growth-diagram__node-detail {
 		color: var(--color-muted);
-		font-size: 0.78rem;
+		font-size: 0.76rem;
 		line-height: 1.4;
 	}
 
+	.growth-diagram__node--top { top: 0; left: 50%; transform: translateX(-50%); }
+	.growth-diagram__node--right { top: 24%; right: 0; }
+	.growth-diagram__node--bottom-right { bottom: 4%; right: 4%; }
+	.growth-diagram__node--bottom-left { bottom: 4%; left: 4%; }
+	.growth-diagram__node--left { top: 24%; left: 0; }
+
+	.growth-diagram__node--top:hover { transform: translateX(-50%) translateY(-3px) scale(1.02); }
+
+	/* Flow strip */
 	.growth-diagram__flow {
 		display: grid;
 		grid-template-columns: repeat(4, minmax(0, 1fr));
-		gap: 0.75rem;
+		gap: 0.85rem;
 		margin: clamp(2.5rem, 5vw, 3.5rem) 0 0;
 		padding: 0;
 		list-style: none;
 	}
 
-	.growth-diagram__flow li {
+	.growth-flow__step {
+		position: relative;
 		display: grid;
-		gap: 0.45rem;
-		padding: 1rem;
+		grid-template-columns: auto 1fr;
+		grid-template-areas: 'num icon' 'body body';
+		gap: 0.5rem 0.7rem;
+		padding: 1.1rem 1.15rem;
 		border: 1px solid var(--color-border);
 		border-radius: var(--radius-md);
 		background: var(--color-bg);
-		color: var(--color-text);
-		font-size: 0.88rem;
-		font-weight: 600;
-		line-height: 1.45;
 	}
 
-	.growth-diagram__flow li span {
+	.growth-flow__num {
+		grid-area: num;
+		align-self: center;
 		color: var(--lane-growth-ink);
 		font-size: 0.72rem;
 		font-weight: 800;
 		letter-spacing: 0.12em;
 	}
 
-	@media (max-width: 760px) {
-		.growth-diagram__stage {
-			aspect-ratio: auto;
-			min-height: 28rem;
-		}
+	.growth-flow__icon {
+		grid-area: icon;
+		justify-self: end;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 2rem;
+		height: 2rem;
+		border-radius: 8px;
+		background: var(--color-white);
+		border: 1px solid var(--color-border-soft);
+		color: var(--lane-growth-ink);
+	}
 
-		.growth-diagram__lines {
-			display: none;
-		}
+	.growth-flow__icon svg { width: 1.1rem; height: 1.1rem; }
 
-		.growth-diagram__core {
-			top: 42%;
-		}
+	.growth-flow__body {
+		grid-area: body;
+		display: grid;
+		gap: 0.2rem;
+	}
 
-		.growth-diagram__node {
-			width: 7.5rem;
-			padding: 0.65rem 0.75rem;
-		}
+	.growth-flow__title {
+		color: var(--color-text);
+		font-size: 0.95rem;
+		font-weight: 750;
+		letter-spacing: -0.01em;
+	}
 
-		.growth-diagram__node--top { top: 0; }
-		.growth-diagram__node--right { top: 14%; right: 0; }
-		.growth-diagram__node--left { top: 14%; left: 0; }
-		.growth-diagram__node--bottom-right { bottom: 0; right: 0; }
-		.growth-diagram__node--bottom-left { bottom: 0; left: 0; }
+	.growth-flow__text {
+		color: var(--color-muted);
+		font-size: 0.84rem;
+		line-height: 1.45;
+	}
+
+	@media (max-width: 860px) {
+		.growth-diagram__head {
+			grid-template-columns: 1fr;
+			align-items: start;
+		}
 
 		.growth-diagram__flow {
 			grid-template-columns: 1fr 1fr;
 		}
 	}
 
-	@media (max-width: 480px) {
-		.growth-diagram__flow {
-			grid-template-columns: 1fr;
+	@media (max-width: 680px) {
+		.growth-diagram__stage {
+			aspect-ratio: auto;
+			min-height: 32rem;
 		}
+
+		.growth-diagram__lines { display: none; }
+		.growth-diagram__core { top: 44%; width: 9.5rem; }
+		.growth-diagram__node { width: 8rem; padding: 0.7rem; }
+		.growth-diagram__node--top { top: 0; }
+		.growth-diagram__node--right { top: 16%; right: 0; }
+		.growth-diagram__node--left { top: 16%; left: 0; }
+		.growth-diagram__node--bottom-right { bottom: 0; right: 0; }
+		.growth-diagram__node--bottom-left { bottom: 0; left: 0; }
+	}
+
+	@media (max-width: 460px) {
+		.growth-diagram__flow { grid-template-columns: 1fr; }
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.growth-diagram__pulse-group { display: none; }
 	}
 </style>

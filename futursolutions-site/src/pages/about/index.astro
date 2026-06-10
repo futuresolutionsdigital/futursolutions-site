@@ -1,12 +1,13 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import FinalCTA from '../../components/FinalCTA.astro';
+import Testimonials from '../../components/Testimonials.astro';
 import { breadcrumbSchema } from '../../data/schema';
 
 const pageTitle = 'About | FutureSolutions';
 const pageDescription =
 	'FutureSolutions builds premium websites and connected Growth Systems for healthcare and high-trust service businesses — combining trust-first design with operational follow-through.';
-const canonicalUrl = 'https://futursolutions.io/about/';
+const canonicalUrl = 'https://futuresolutions.io/about/';
 
 const principles = [
 	{
@@ -46,12 +47,12 @@ const approach = [
 ];
 
 const audiences = [
-	'Med spas & aesthetics',
-	'Solo & private practices',
-	'Wellness & functional medicine',
-	'Hormone & TRT clinics',
-	'Healthcare associations',
-	'Treatment-based clinics',
+	{ label: 'Med spas & aesthetics', href: '/industries/med-spas' },
+	{ label: 'Solo & private practices', href: '/industries/solo-practices' },
+	{ label: 'Wellness & functional medicine', href: '/industries/wellness-functional-medicine' },
+	{ label: 'Hormone & TRT clinics', href: '/industries/hormone-trt-clinics' },
+	{ label: 'Healthcare associations', href: '/industries/healthcare-associations' },
+	{ label: 'Treatment-based clinics', href: '/industries' },
 ];
 
 const pageSchema = [
@@ -183,10 +184,12 @@ const pageSchema = [
 				<h2 id="about-audience-heading">Built for businesses where trust is the product.</h2>
 			</div>
 			<div class="about-audience__chips" aria-label="Industries we serve">
-				{audiences.map((audience) => <span>{audience}</span>)}
+				{audiences.map((audience) => <a href={audience.href}>{audience.label}</a>)}
 			</div>
 		</div>
 	</section>
+
+	<Testimonials />
 
 	<FinalCTA />
 </BaseLayout>
@@ -351,7 +354,7 @@ const pageSchema = [
 		gap: 0.7rem;
 		margin-top: 2rem;
 	}
-	.about-audience__chips span {
+	.about-audience__chips a {
 		display: inline-flex;
 		padding: 0.55rem 0.85rem;
 		border: 1px solid color-mix(in srgb, var(--color-accent) 28%, var(--color-border));
@@ -361,6 +364,12 @@ const pageSchema = [
 		font-size: 0.875rem;
 		font-weight: 700;
 		line-height: 1;
+		transition: transform var(--transition-base), border-color var(--transition-base), background var(--transition-base);
+	}
+	.about-audience__chips a:hover {
+		transform: translateY(-2px);
+		border-color: color-mix(in srgb, var(--color-accent) 48%, var(--color-border));
+		background: var(--color-accent-light);
 	}
 
 	@media (max-width: 860px) {

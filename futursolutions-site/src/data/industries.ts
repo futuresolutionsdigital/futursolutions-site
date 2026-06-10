@@ -21,6 +21,8 @@ export interface Industry {
 	pains: string[];
 	approachHeading: string;
 	approach: { title: string; text: string }[];
+	conversionPathHeading: string;
+	conversionPath: { label: string; note: string }[];
 	priorities: string[];
 	demo?: IndustryLink;
 	relatedServices: IndustryLink[];
@@ -62,6 +64,13 @@ export const industries: Industry[] = [
 				title: 'Booking at every step',
 				text: 'Repeated, obvious paths to book a consultation or appointment, wired into your scheduling and follow-up.',
 			},
+		],
+		conversionPathHeading: 'How a med spa visitor becomes a booked consult.',
+		conversionPath: [
+			{ label: 'Discover a treatment', note: 'Premium pages explain each service and who it\u2019s for.' },
+			{ label: 'Build confidence', note: 'Real results, reviews, and provider credibility remove hesitation.' },
+			{ label: 'Book a consult', note: 'Obvious booking prompts wired to your scheduler.' },
+			{ label: 'Show up & rebook', note: 'Follow-up recovers non-booked leads and prompts repeat visits.' },
 		],
 		priorities: [
 			'Treatment & service pages',
@@ -131,6 +140,13 @@ export const industries: Industry[] = [
 				text: 'One obvious, low-friction way to get in touch or request an appointment, with confirmation and follow-up built in.',
 			},
 		],
+		conversionPathHeading: 'How a new patient finds and chooses a solo provider.',
+		conversionPath: [
+			{ label: 'Find your practice', note: 'Local search and a clear provider story bring the right patients in.' },
+			{ label: 'Trust the provider', note: 'Your background, approach, and who you help build personal credibility.' },
+			{ label: 'Request an appointment', note: 'One low-friction inquiry path, with no dead ends.' },
+			{ label: 'Become a patient', note: 'Confirmation and follow-up so no request slips through.' },
+		],
 		priorities: [
 			'Provider story & credentials',
 			'Core service pages',
@@ -198,6 +214,13 @@ export const industries: Industry[] = [
 				title: 'Guided next steps',
 				text: 'A clear path toward a consultation or membership inquiry, supported by follow-up that keeps motivated patients engaged.',
 			},
+		],
+		conversionPathHeading: 'How a curious patient enters a membership model.',
+		conversionPath: [
+			{ label: 'Understand the model', note: 'Education-first content explains memberships, programs, and panels.' },
+			{ label: 'Explore the fit', note: 'Clear program pages show what\u2019s included and who it helps.' },
+			{ label: 'Book a discovery consult', note: 'A guided next step for motivated patients.' },
+			{ label: 'Enroll & stay engaged', note: 'Nurture supports longer decision cycles until they\u2019re ready.' },
 		],
 		priorities: [
 			'Program & membership clarity',
@@ -267,6 +290,13 @@ export const industries: Industry[] = [
 				text: 'A Growth System ensures every high-intent inquiry is captured, tracked, and followed up — not lost on a busy day.',
 			},
 		],
+		conversionPathHeading: 'How a high-intent patient moves from research to protocol.',
+		conversionPath: [
+			{ label: 'Research discreetly', note: 'Clear, private education on labs, protocols, and process.' },
+			{ label: 'Qualify & intake', note: 'Forms gather the right details and route serious patients.' },
+			{ label: 'Book the first appointment', note: 'A smooth path from inquiry to scheduled visit.' },
+			{ label: 'Stay on protocol', note: 'CRM follow-up and reminders keep patients on track.' },
+		],
 		priorities: [
 			'Process & protocol education',
 			'Qualification-focused intake forms',
@@ -334,6 +364,13 @@ export const industries: Industry[] = [
 				title: 'Member & chapter experience',
 				text: 'Portals and tools that serve members and give chapter leaders a practical way to run events and engage their community.',
 			},
+		],
+		conversionPathHeading: 'How a prospect becomes an engaged member.',
+		conversionPath: [
+			{ label: 'See member value', note: 'Benefits, tiers, and the join process made obvious.' },
+			{ label: 'Join', note: 'A clear enrollment path turns interest into membership.' },
+			{ label: 'Use events & resources', note: 'Organized listings and a library members actually use.' },
+			{ label: 'Renew & engage', note: 'Portals and ongoing content keep the community active.' },
 		],
 		priorities: [
 			'Membership value & enrollment',

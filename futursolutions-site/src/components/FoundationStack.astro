@@ -1,0 +1,267 @@
+---
+const layers = [
+	{
+		tag: 'Proven structure',
+		text: 'Pages, conversion paths, trust sections, and mobile behavior that already work — the parts most sites get wrong.',
+		fixed: true,
+	},
+	{
+		tag: 'Your brand',
+		text: 'Colors, typography, voice, photography, and tone applied throughout so it looks like you, not a template.',
+		fixed: false,
+	},
+	{
+		tag: 'Your services & proof',
+		text: 'Your treatments or programs, credentials, and trust signals — structured so the right patients self-select.',
+		fixed: false,
+	},
+];
+---
+
+<section class="section foundation-stack" aria-labelledby="foundation-stack-heading">
+	<div class="site-container foundation-stack__inner">
+		<div class="foundation-stack__copy">
+			<p class="eyebrow">Not a template</p>
+			<h2 id="foundation-stack-heading">A proven Foundation, made unmistakably yours.</h2>
+			<p class="lead">
+				You are not buying a generic theme. You start from a structure that already converts — then we
+				layer your brand, services, and proof on top so it reads as a site built for your practice.
+			</p>
+			<ul class="foundation-stack__legend">
+				<li><span class="foundation-stack__dot foundation-stack__dot--fixed" aria-hidden="true"></span>Proven and ready on day one</li>
+				<li><span class="foundation-stack__dot foundation-stack__dot--flex" aria-hidden="true"></span>Customized around your business</li>
+			</ul>
+		</div>
+
+		<div class="foundation-stack__diagram">
+			<ol class="foundation-stack__layers" aria-label="What goes into your Foundation">
+				{layers.map((layer) => (
+					<li class:list={['foundation-stack__layer', layer.fixed ? 'is-fixed' : 'is-flex']}>
+						<span class="foundation-stack__layer-tag">{layer.tag}</span>
+						<p>{layer.text}</p>
+					</li>
+				))}
+			</ol>
+
+			<div class="foundation-stack__arrow" aria-hidden="true">
+				<span>=</span>
+			</div>
+
+			<figure class="foundation-stack__result" aria-label="A launch-ready website">
+				<div class="foundation-stack__browser">
+					<div class="foundation-stack__bar">
+						<span></span><span></span><span></span>
+					</div>
+					<div class="foundation-stack__viewport">
+						<div class="foundation-stack__nav">
+							<span class="foundation-stack__logo"></span>
+							<span class="foundation-stack__links"></span>
+						</div>
+						<div class="foundation-stack__hero">
+							<span class="foundation-stack__h1"></span>
+							<span class="foundation-stack__h2"></span>
+							<span class="foundation-stack__cta"></span>
+						</div>
+						<div class="foundation-stack__cards">
+							<span></span><span></span><span></span>
+						</div>
+					</div>
+				</div>
+				<figcaption>Launch-ready in weeks, not months.</figcaption>
+			</figure>
+		</div>
+	</div>
+</section>
+
+<style>
+	.foundation-stack {
+		--fs-fixed: var(--lane-foundation, var(--color-accent));
+		--fs-flex: var(--color-accent-dark);
+	}
+	.foundation-stack__inner {
+		display: grid;
+		grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+		gap: clamp(2rem, 5vw, 4rem);
+		align-items: center;
+	}
+	.foundation-stack__copy {
+		max-width: 42ch;
+	}
+	.foundation-stack__copy .lead {
+		margin-top: 0.75rem;
+	}
+	.foundation-stack__legend {
+		display: grid;
+		gap: 0.6rem;
+		margin: 1.5rem 0 0 0;
+		padding: 0;
+		list-style: none;
+	}
+	.foundation-stack__legend li {
+		display: flex;
+		align-items: center;
+		gap: 0.55rem;
+		color: var(--color-muted);
+		font-size: 0.9rem;
+		font-weight: 600;
+	}
+	.foundation-stack__dot {
+		width: 0.7rem;
+		height: 0.7rem;
+		border-radius: 999px;
+		flex: none;
+	}
+	.foundation-stack__dot--fixed { background: var(--fs-fixed); }
+	.foundation-stack__dot--flex {
+		background: transparent;
+		border: 2px solid var(--fs-flex);
+	}
+
+	.foundation-stack__diagram {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) auto minmax(0, 0.95fr);
+		gap: clamp(1rem, 2.5vw, 1.75rem);
+		align-items: center;
+	}
+	.foundation-stack__layers {
+		display: grid;
+		gap: 0.7rem;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	.foundation-stack__layer {
+		padding: 0.9rem 1rem;
+		border: 1px solid var(--color-border);
+		border-left-width: 3px;
+		border-radius: var(--radius-sm);
+		background: var(--color-white);
+	}
+	.foundation-stack__layer.is-fixed { border-left-color: var(--fs-fixed); }
+	.foundation-stack__layer.is-flex {
+		border-left-color: var(--fs-flex);
+		border-left-style: dashed;
+	}
+	.foundation-stack__layer-tag {
+		display: block;
+		margin-bottom: 0.2rem;
+		color: var(--color-text);
+		font-size: 0.92rem;
+		font-weight: 800;
+		letter-spacing: -0.01em;
+	}
+	.foundation-stack__layer p {
+		margin: 0;
+		color: var(--color-muted);
+		font-size: 0.84rem;
+		line-height: 1.5;
+	}
+
+	.foundation-stack__arrow {
+		display: grid;
+		place-items: center;
+	}
+	.foundation-stack__arrow span {
+		display: grid;
+		place-items: center;
+		width: 2.4rem;
+		height: 2.4rem;
+		border-radius: 999px;
+		background: var(--color-accent-light);
+		color: var(--color-accent-dark);
+		font-size: 1.3rem;
+		font-weight: 800;
+	}
+
+	.foundation-stack__result {
+		margin: 0;
+	}
+	.foundation-stack__browser {
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		overflow: hidden;
+		background: var(--color-white);
+		box-shadow: 0 24px 56px rgba(15, 23, 42, 0.1);
+	}
+	.foundation-stack__bar {
+		display: flex;
+		gap: 0.4rem;
+		padding: 0.6rem 0.8rem;
+		background: var(--color-bg-secondary);
+		border-bottom: 1px solid var(--color-border-soft);
+	}
+	.foundation-stack__bar span {
+		width: 0.6rem;
+		height: 0.6rem;
+		border-radius: 999px;
+		background: color-mix(in srgb, var(--color-muted) 40%, var(--color-border));
+	}
+	.foundation-stack__viewport {
+		padding: 1rem;
+		display: grid;
+		gap: 0.9rem;
+	}
+	.foundation-stack__nav {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+	.foundation-stack__logo {
+		width: 28%;
+		height: 0.7rem;
+		border-radius: 4px;
+		background: var(--color-text);
+	}
+	.foundation-stack__links {
+		width: 42%;
+		height: 0.55rem;
+		border-radius: 4px;
+		background: color-mix(in srgb, var(--color-muted) 35%, var(--color-border));
+	}
+	.foundation-stack__hero {
+		display: grid;
+		gap: 0.5rem;
+		padding: 1rem;
+		border-radius: var(--radius-sm);
+		background: color-mix(in srgb, var(--fs-fixed) 10%, var(--color-bg-secondary));
+	}
+	.foundation-stack__h1 { width: 80%; height: 0.85rem; border-radius: 4px; background: var(--color-text); }
+	.foundation-stack__h2 { width: 60%; height: 0.6rem; border-radius: 4px; background: color-mix(in srgb, var(--color-muted) 45%, var(--color-border)); }
+	.foundation-stack__cta { width: 7rem; height: 1.4rem; margin-top: 0.3rem; border-radius: 6px; background: var(--color-accent-dark); }
+	.foundation-stack__cards {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 0.5rem;
+	}
+	.foundation-stack__cards span {
+		height: 2.6rem;
+		border-radius: 6px;
+		border: 1px solid var(--color-border-soft);
+		background: var(--color-bg-secondary);
+	}
+	.foundation-stack__result figcaption {
+		margin-top: 0.75rem;
+		text-align: center;
+		color: var(--color-muted);
+		font-size: 0.84rem;
+		font-weight: 600;
+	}
+
+	@media (max-width: 1040px) {
+		.foundation-stack__inner {
+			grid-template-columns: 1fr;
+		}
+		.foundation-stack__copy {
+			max-width: 60ch;
+		}
+	}
+	@media (max-width: 640px) {
+		.foundation-stack__diagram {
+			grid-template-columns: 1fr;
+			gap: 1rem;
+		}
+		.foundation-stack__arrow span {
+			transform: rotate(90deg);
+		}
+	}
+</style>

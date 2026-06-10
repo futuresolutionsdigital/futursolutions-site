@@ -2,102 +2,158 @@
 const contrasts = [
 	{
 		label: 'First impression',
-		before: 'Looks dated or generic — visitors hesitate',
-		after: 'Credible and modern in the first 3 seconds',
+		before: 'Looks dated or generic — visitors hesitate and bounce',
+		after: 'Credible and modern in the first three seconds',
 	},
 	{
 		label: 'What you offer',
-		before: 'Buried in dense paragraphs',
-		after: 'Clear services, framed around the patient',
+		before: 'Buried in dense paragraphs and clinical jargon',
+		after: 'Clear services, framed around the patient outcome',
 	},
 	{
-		label: 'Next step',
-		before: 'No obvious way to book or ask',
-		after: 'One obvious action on every screen',
+		label: 'The next step',
+		before: 'No obvious way to book — visitors hunt for a phone number',
+		after: 'One obvious action on every screen, above the fold',
+	},
+	{
+		label: 'Trust & proof',
+		before: 'Credentials and reviews hidden or missing',
+		after: 'Proof placed exactly where doubt creeps in',
 	},
 	{
 		label: 'After the form',
-		before: 'Lands in an inbox, easy to miss',
+		before: 'Lands in an inbox — easy to miss, slow to answer',
 		after: 'Captured, routed, and followed up automatically',
 	},
+];
+
+const chips = [
+	{ icon: 'eye', label: 'Credible in 3 seconds' },
+	{ icon: 'target', label: 'One clear next step' },
+	{ icon: 'bolt', label: 'Captured & followed up' },
 ];
 ---
 
 <section class="before-after" aria-labelledby="before-after-heading">
 	<div class="site-container site-container--wide">
 		<header class="before-after__head">
-			<p class="eyebrow">The transformation</p>
-			<h2 id="before-after-heading" class="display-lg">
-				The same practice. A completely different result.
-			</h2>
+			<div class="before-after__head-main">
+				<p class="eyebrow">The transformation</p>
+				<h2 id="before-after-heading" class="display-lg">
+					The same practice.
+					<span class="before-after__head-accent">A completely different result.</span>
+				</h2>
+			</div>
 			<p class="lead before-after__lead">
-				Most healthcare sites look fine and quietly leak patients. Here's what changes when the site is built as a system — designed for trust, clarity, and the next step.
+				Most healthcare sites look fine and quietly leak patients. Drag the handle to see what changes when the site is built as a system — engineered for trust, clarity, and the next step.
 			</p>
 		</header>
 
-		<div class="before-after__stage">
-			<!-- BEFORE -->
-			<figure class="ba-panel ba-panel--before">
-				<figcaption class="ba-panel__tag ba-panel__tag--before">
-					<span class="ba-panel__tag-dot" aria-hidden="true"></span>
-					Typical healthcare website
-				</figcaption>
-				<div class="ba-mock ba-mock--before" aria-hidden="true">
-					<div class="ba-mock__bar">
-						<span class="ba-mock__logo ba-mock__logo--dim"></span>
-						<span class="ba-mock__navline"></span>
-						<span class="ba-mock__navline"></span>
-						<span class="ba-mock__navline"></span>
+		<div class="ba-slider" data-ba-slider>
+			<!-- AFTER (base layer, full) -->
+			<div class="ba-frame ba-frame--after" aria-hidden="true">
+				<div class="ba-site ba-site--after">
+					<div class="ba-site__bar">
+						<span class="ba-site__logo"></span>
+						<span class="ba-site__nav"><i></i><i></i><i></i><i></i></span>
+						<span class="ba-site__btn">Book</span>
 					</div>
-					<div class="ba-mock__body">
-						<span class="ba-mock__line ba-mock__line--lg ba-mock__line--dim" style="width: 72%"></span>
-						<span class="ba-mock__line ba-mock__line--dim" style="width: 88%"></span>
-						<span class="ba-mock__line ba-mock__line--dim" style="width: 80%"></span>
-						<span class="ba-mock__line ba-mock__line--dim" style="width: 84%"></span>
-						<span class="ba-mock__cta ba-mock__cta--weak">Contact</span>
-						<div class="ba-mock__clutter">
-							<span></span><span></span><span></span>
+					<div class="ba-site__hero">
+						<div class="ba-site__hero-copy">
+							<span class="ba-site__eyebrow"></span>
+							<span class="ba-site__h ba-site__h--1"></span>
+							<span class="ba-site__h ba-site__h--2"></span>
+							<span class="ba-site__sub"></span>
+							<span class="ba-site__sub ba-site__sub--short"></span>
+							<span class="ba-site__cta">Book a consult →</span>
+							<div class="ba-site__trust"><i></i><i></i><i></i></div>
+						</div>
+						<div class="ba-site__hero-art">
+							<span class="ba-site__hero-badge"></span>
 						</div>
 					</div>
+					<div class="ba-site__cards">
+						<span class="ba-site__card"></span>
+						<span class="ba-site__card"></span>
+						<span class="ba-site__card"></span>
+					</div>
 				</div>
-			</figure>
-
-			<div class="before-after__arrow" aria-hidden="true">
-				<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-					<path d="M5 12h14M13 6l6 6-6 6" />
-				</svg>
 			</div>
 
-			<!-- AFTER -->
-			<figure class="ba-panel ba-panel--after">
-				<figcaption class="ba-panel__tag ba-panel__tag--after">
-					<span class="ba-panel__tag-dot" aria-hidden="true"></span>
-					Built by FutureSolutions
-				</figcaption>
-				<div class="ba-mock ba-mock--after" aria-hidden="true">
-					<div class="ba-mock__bar">
-						<span class="ba-mock__logo"></span>
-						<span class="ba-mock__navline"></span>
-						<span class="ba-mock__navline"></span>
-						<span class="ba-mock__pill">Book</span>
+			<!-- BEFORE (top layer, clipped) -->
+			<div class="ba-frame ba-frame--before" aria-hidden="true">
+				<div class="ba-site ba-site--before">
+					<div class="ba-site__bar">
+						<span class="ba-site__logo"></span>
+						<span class="ba-site__nav"><i></i><i></i><i></i><i></i><i></i></span>
+						<span class="ba-site__btn ba-site__btn--weak">Contact</span>
 					</div>
-					<div class="ba-mock__body">
-						<span class="ba-mock__eyebrow"></span>
-						<span class="ba-mock__line ba-mock__line--xl" style="width: 82%"></span>
-						<span class="ba-mock__line ba-mock__line--lg" style="width: 58%"></span>
-						<span class="ba-mock__cta ba-mock__cta--strong">Book a consult →</span>
-						<div class="ba-mock__trust">
-							<span></span><span></span><span></span>
+					<div class="ba-site__hero ba-site__hero--before">
+						<div class="ba-site__hero-copy">
+							<span class="ba-site__h ba-site__h--1"></span>
+							<span class="ba-site__sub"></span>
+							<span class="ba-site__sub"></span>
+							<span class="ba-site__sub"></span>
+							<span class="ba-site__sub ba-site__sub--short"></span>
 						</div>
-						<div class="ba-mock__cards">
-							<span></span><span></span><span></span>
-						</div>
+						<div class="ba-site__hero-art ba-site__hero-art--before"></div>
+					</div>
+					<div class="ba-site__clutter">
+						<span></span><span></span><span></span><span></span>
 					</div>
 				</div>
-			</figure>
+			</div>
+
+			<!-- Corner labels -->
+			<span class="ba-slider__tag ba-slider__tag--before">Before</span>
+			<span class="ba-slider__tag ba-slider__tag--after">After</span>
+
+			<!-- Handle -->
+			<div class="ba-slider__handle" data-ba-handle>
+				<span class="ba-slider__line"></span>
+				<span class="ba-slider__grip">
+					<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+						<path d="M9 6l-4 6 4 6M15 6l4 6-4 6" />
+					</svg>
+				</span>
+			</div>
+
+			<input
+				class="ba-slider__range"
+				type="range"
+				min="0"
+				max="100"
+				value="52"
+				aria-label="Reveal the before and after website"
+				data-ba-range
+			/>
 		</div>
 
+		<ul class="ba-chips" aria-label="What the rebuilt site delivers">
+			{chips.map((chip) => (
+				<li class="ba-chip">
+					<span class="ba-chip__icon" aria-hidden="true">
+						{chip.icon === 'eye' && (
+							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z" /><circle cx="12" cy="12" r="3" /></svg>
+						)}
+						{chip.icon === 'target' && (
+							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9" /><circle cx="12" cy="12" r="5" /><circle cx="12" cy="12" r="1.5" /></svg>
+						)}
+						{chip.icon === 'bolt' && (
+							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 9-12h-7z" /></svg>
+						)}
+					</span>
+					{chip.label}
+				</li>
+			))}
+		</ul>
+
 		<ul class="before-after__compare">
+			<li class="ba-row ba-row--head" aria-hidden="true">
+				<span class="ba-row__label"></span>
+				<span class="ba-row__col ba-row__col--before">Typical healthcare site</span>
+				<span class="ba-row__col ba-row__col--after">Built by FutureSolutions</span>
+			</li>
 			{contrasts.map((row) => (
 				<li class="ba-row">
 					<span class="ba-row__label">{row.label}</span>
@@ -127,213 +183,298 @@ const contrasts = [
 
 	.before-after__head {
 		display: grid;
-		gap: 1.1rem;
-		max-width: 56rem;
-		margin: 0 0 clamp(2.5rem, 5vw, 3.5rem);
+		grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.7fr);
+		align-items: end;
+		gap: clamp(1.5rem, 4vw, 3.5rem);
+		margin: 0 0 clamp(2.25rem, 4vw, 3rem);
 	}
 
-	.before-after__lead {
-		max-width: 52rem;
-	}
-
-	.before-after__stage {
-		display: grid;
-		grid-template-columns: 1fr auto 1fr;
-		align-items: center;
-		gap: clamp(1rem, 3vw, 2rem);
-	}
-
-	.ba-panel {
-		margin: 0;
-		display: grid;
-		gap: 0.85rem;
-	}
-
-	.ba-panel__tag {
-		display: inline-flex;
-		align-items: center;
-		gap: 0.5rem;
-		width: fit-content;
-		padding: 0.32rem 0.75rem;
-		border-radius: 999px;
-		font-size: 0.78rem;
-		font-weight: 700;
-		letter-spacing: 0.01em;
-	}
-
-	.ba-panel__tag--before {
-		background: var(--color-bg-secondary);
-		border: 1px solid var(--color-border);
-		color: var(--color-muted);
-	}
-
-	.ba-panel__tag--after {
-		background: var(--lane-foundation-tint);
-		border: 1px solid color-mix(in srgb, var(--lane-foundation) 30%, var(--color-border));
+	.before-after__head-accent {
+		display: block;
 		color: var(--lane-foundation-ink);
 	}
 
-	.ba-panel__tag-dot {
-		width: 7px;
-		height: 7px;
-		border-radius: 999px;
-		background: currentColor;
+	.before-after__lead {
+		max-width: 34rem;
+		margin: 0;
 	}
 
-	/* Browser-style mock frame */
-	.ba-mock {
-		border: 1px solid var(--color-border);
+	/* ---------- Interactive slider ---------- */
+	.ba-slider {
+		--pos: 52%;
+		position: relative;
+		aspect-ratio: 16 / 10;
+		max-height: 38rem;
 		border-radius: var(--radius-lg);
-		background: var(--color-white);
 		overflow: hidden;
-		transition: transform 360ms var(--ease-out-quart), box-shadow var(--transition-base);
+		border: 1px solid var(--color-border);
+		background: var(--color-bg);
+		box-shadow: 0 2px 4px rgba(15, 23, 42, 0.05), 0 40px 80px rgba(15, 23, 42, 0.14);
+		user-select: none;
+		touch-action: pan-y;
 	}
 
-	.ba-mock--before {
-		box-shadow: 0 6px 18px rgba(15, 23, 42, 0.04);
-		filter: saturate(0.6);
+	.ba-frame {
+		position: absolute;
+		inset: 0;
 	}
 
-	.ba-mock--after {
-		box-shadow: 0 2px 4px rgba(15, 23, 42, 0.05), 0 26px 60px rgba(79, 124, 76, 0.10);
-		border-color: color-mix(in srgb, var(--lane-foundation) 24%, var(--color-border));
+	.ba-frame--before {
+		clip-path: inset(0 calc(100% - var(--pos)) 0 0);
 	}
 
-	.ba-panel--after:hover .ba-mock--after {
-		transform: translateY(-4px);
+	.ba-site {
+		display: flex;
+		flex-direction: column;
+		gap: clamp(0.6rem, 1.5vw, 1rem);
+		width: 100%;
+		height: 100%;
+		padding: clamp(0.9rem, 2.2vw, 1.6rem);
 	}
 
-	.ba-mock__bar {
+	.ba-site--after {
+		background:
+			radial-gradient(ellipse 70% 50% at 80% 0%, var(--lane-foundation-tint), transparent 70%),
+			var(--color-white);
+	}
+
+	.ba-site--before {
+		background: #eceae5;
+		filter: saturate(0.55);
+	}
+
+	/* top bar */
+	.ba-site__bar {
 		display: flex;
 		align-items: center;
-		gap: 0.5rem;
-		padding: 0.7rem 0.9rem;
+		gap: 0.6rem;
+		padding-bottom: clamp(0.6rem, 1.5vw, 1rem);
 		border-bottom: 1px solid var(--color-border-soft);
-		background: var(--color-bg);
 	}
 
-	.ba-mock__logo {
-		width: 1.5rem;
-		height: 1.5rem;
-		border-radius: 6px;
-		background: var(--color-text);
+	.ba-site__logo {
+		width: 2rem;
+		height: 2rem;
+		border-radius: 7px;
+		background: var(--lane-foundation);
 	}
 
-	.ba-mock__logo--dim {
+	.ba-site--before .ba-site__logo {
 		background: var(--color-muted-soft);
-		opacity: 0.5;
+		border-radius: 4px;
 	}
 
-	.ba-mock__navline {
-		width: 1.6rem;
-		height: 0.4rem;
+	.ba-site__nav {
+		display: flex;
+		gap: 0.5rem;
+	}
+
+	.ba-site__nav i {
+		width: 1.7rem;
+		height: 0.42rem;
 		border-radius: 999px;
-		background: var(--color-border);
+		background: var(--color-text);
+		opacity: 0.7;
 	}
 
-	.ba-mock__pill {
+	.ba-site--before .ba-site__nav i {
+		background: var(--color-muted-soft);
+		width: 1.4rem;
+	}
+
+	.ba-site__btn {
 		margin-left: auto;
-		padding: 0.28rem 0.6rem;
+		padding: 0.4rem 0.85rem;
 		border-radius: 999px;
 		background: var(--lane-foundation);
 		color: var(--color-white);
-		font-size: 0.62rem;
-		font-weight: 700;
+		font-size: clamp(0.55rem, 1.4vw, 0.72rem);
+		font-weight: 800;
 		letter-spacing: 0.02em;
 	}
 
-	.ba-mock__body {
-		display: flex;
-		flex-direction: column;
-		gap: 0.55rem;
-		padding: 1.2rem 1.1rem 1.5rem;
-		min-height: 13rem;
+	.ba-site__btn--weak {
+		background: transparent;
+		border: 1px solid var(--color-muted-soft);
+		color: var(--color-muted);
+		font-weight: 600;
 	}
 
-	.ba-mock__eyebrow {
-		width: 4.5rem;
-		height: 0.45rem;
+	/* hero */
+	.ba-site__hero {
+		display: grid;
+		grid-template-columns: 1.2fr 1fr;
+		gap: clamp(0.8rem, 2vw, 1.5rem);
+		flex: 1;
+		min-height: 0;
+	}
+
+	.ba-site__hero--before {
+		grid-template-columns: 1fr 0.8fr;
+	}
+
+	.ba-site__hero-copy {
+		display: flex;
+		flex-direction: column;
+		gap: clamp(0.4rem, 1vw, 0.7rem);
+		justify-content: center;
+	}
+
+	.ba-site__eyebrow {
+		width: 5rem;
+		height: 0.5rem;
 		border-radius: 999px;
 		background: var(--lane-foundation);
 	}
 
-	.ba-mock__line {
-		height: 0.55rem;
-		border-radius: 999px;
+	.ba-site__h {
+		height: clamp(0.9rem, 2.4vw, 1.5rem);
+		border-radius: 6px;
 		background: var(--color-text);
 	}
 
-	.ba-mock__line--lg { height: 0.8rem; }
-	.ba-mock__line--xl { height: 1.15rem; }
+	.ba-site__h--1 { width: 90%; }
+	.ba-site__h--2 { width: 62%; }
 
-	.ba-mock__line--dim {
+	.ba-site--before .ba-site__h {
+		background: var(--color-muted);
+		height: clamp(0.7rem, 1.8vw, 1rem);
+	}
+
+	.ba-site__sub {
+		width: 100%;
+		height: 0.5rem;
+		border-radius: 999px;
 		background: var(--color-border);
 	}
 
-	.ba-mock__cta {
+	.ba-site__sub--short { width: 55%; }
+
+	.ba-site__cta {
 		margin-top: 0.4rem;
 		width: fit-content;
-		padding: 0.45rem 0.85rem;
+		padding: 0.5rem 1rem;
 		border-radius: 8px;
-		font-size: 0.7rem;
-		font-weight: 700;
-	}
-
-	.ba-mock__cta--weak {
-		background: transparent;
-		border: 1px solid var(--color-border);
-		color: var(--color-muted-soft);
-	}
-
-	.ba-mock__cta--strong {
 		background: var(--color-text);
 		color: var(--color-white);
-		box-shadow: 0 8px 18px rgba(15, 23, 42, 0.18);
+		font-size: clamp(0.55rem, 1.4vw, 0.74rem);
+		font-weight: 800;
+		box-shadow: 0 10px 22px rgba(15, 23, 42, 0.2);
 	}
 
-	.ba-mock__clutter {
-		display: flex;
-		gap: 0.4rem;
-		margin-top: 0.6rem;
-		opacity: 0.55;
-	}
-
-	.ba-mock__clutter span {
-		flex: 1;
-		height: 1.6rem;
-		border-radius: 6px;
-		background: repeating-linear-gradient(45deg, var(--color-bg-secondary), var(--color-bg-secondary) 4px, var(--color-border-soft) 4px, var(--color-border-soft) 8px);
-	}
-
-	.ba-mock__trust {
+	.ba-site__trust {
 		display: flex;
 		gap: 0.4rem;
 		margin-top: 0.5rem;
 	}
 
-	.ba-mock__trust span {
-		width: 2.2rem;
-		height: 0.5rem;
+	.ba-site__trust i {
+		width: 2.6rem;
+		height: 0.6rem;
 		border-radius: 999px;
 		background: var(--lane-foundation-tint);
-		border: 1px solid color-mix(in srgb, var(--lane-foundation) 22%, transparent);
+		border: 1px solid color-mix(in srgb, var(--lane-foundation) 25%, transparent);
 	}
 
-	.ba-mock__cards {
-		display: flex;
-		gap: 0.5rem;
-		margin-top: 0.5rem;
+	.ba-site__hero-art {
+		position: relative;
+		border-radius: 12px;
+		background:
+			linear-gradient(150deg, color-mix(in srgb, var(--lane-foundation) 35%, var(--color-white)), color-mix(in srgb, var(--lane-growth) 30%, var(--color-white)));
+		border: 1px solid color-mix(in srgb, var(--lane-foundation) 20%, var(--color-border));
 	}
 
-	.ba-mock__cards span {
-		flex: 1;
-		height: 2rem;
+	.ba-site__hero-art--before {
+		background: repeating-linear-gradient(45deg, #d9d6cf, #d9d6cf 6px, #cfccc4 6px, #cfccc4 12px);
+		border-color: var(--color-muted-soft);
+	}
+
+	.ba-site__hero-badge {
+		position: absolute;
+		bottom: 0.7rem;
+		left: 0.7rem;
+		right: 0.7rem;
+		height: 1.6rem;
 		border-radius: 8px;
-		background: var(--color-bg);
-		border: 1px solid var(--color-border-soft);
+		background: rgba(255, 255, 255, 0.85);
+		box-shadow: 0 6px 14px rgba(15, 23, 42, 0.12);
 	}
 
-	.before-after__arrow {
+	.ba-site__cards {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: clamp(0.5rem, 1.4vw, 0.9rem);
+	}
+
+	.ba-site__card {
+		height: clamp(2rem, 5vw, 3.2rem);
+		border-radius: 10px;
+		background: var(--color-white);
+		border: 1px solid var(--color-border-soft);
+		box-shadow: 0 6px 16px rgba(15, 23, 42, 0.05);
+	}
+
+	.ba-site__clutter {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 0.5rem;
+	}
+
+	.ba-site__clutter span {
+		height: clamp(2rem, 5vw, 3.2rem);
+		border-radius: 4px;
+		background: repeating-linear-gradient(45deg, #ddd9d2, #ddd9d2 5px, #d3cfc7 5px, #d3cfc7 10px);
+	}
+
+	/* corner tags */
+	.ba-slider__tag {
+		position: absolute;
+		top: 1rem;
+		z-index: 4;
+		padding: 0.35rem 0.8rem;
+		border-radius: 999px;
+		font-size: 0.74rem;
+		font-weight: 800;
+		letter-spacing: 0.04em;
+		backdrop-filter: blur(6px);
+	}
+
+	.ba-slider__tag--before {
+		left: 1rem;
+		background: rgba(60, 56, 50, 0.78);
+		color: #fff;
+	}
+
+	.ba-slider__tag--after {
+		right: 1rem;
+		background: color-mix(in srgb, var(--lane-foundation) 85%, black);
+		color: #fff;
+	}
+
+	/* handle */
+	.ba-slider__handle {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: var(--pos);
+		z-index: 5;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		transform: translateX(-50%);
+		pointer-events: none;
+	}
+
+	.ba-slider__line {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		width: 3px;
+		background: var(--color-white);
+		box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.12), 0 0 18px rgba(0,0,0,0.25);
+	}
+
+	.ba-slider__grip {
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -341,17 +482,64 @@ const contrasts = [
 		height: 2.75rem;
 		border-radius: 999px;
 		background: var(--color-white);
-		border: 1px solid var(--color-border);
 		color: var(--lane-foundation-ink);
-		box-shadow: var(--shadow-card);
+		box-shadow: 0 6px 18px rgba(15, 23, 42, 0.28);
 	}
 
-	.before-after__arrow svg {
+	.ba-slider__grip svg {
 		width: 1.3rem;
 		height: 1.3rem;
 	}
 
-	/* Comparison rows */
+	.ba-slider__range {
+		position: absolute;
+		inset: 0;
+		z-index: 6;
+		width: 100%;
+		height: 100%;
+		margin: 0;
+		opacity: 0;
+		cursor: ew-resize;
+	}
+
+	.ba-slider:focus-within .ba-slider__grip {
+		outline: 3px solid color-mix(in srgb, var(--lane-foundation) 55%, transparent);
+		outline-offset: 3px;
+	}
+
+	/* ---------- impact chips ---------- */
+	.ba-chips {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.75rem;
+		margin: 1.5rem 0 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.ba-chip {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.55rem;
+		padding: 0.6rem 1rem;
+		border-radius: 999px;
+		background: var(--lane-foundation-tint);
+		border: 1px solid color-mix(in srgb, var(--lane-foundation) 26%, var(--color-border));
+		color: var(--lane-foundation-ink);
+		font-size: 0.9rem;
+		font-weight: 700;
+	}
+
+	.ba-chip__icon {
+		display: inline-flex;
+	}
+
+	.ba-chip__icon svg {
+		width: 1.1rem;
+		height: 1.1rem;
+	}
+
+	/* ---------- comparison ---------- */
 	.before-after__compare {
 		display: grid;
 		gap: 0;
@@ -362,6 +550,7 @@ const contrasts = [
 		border-radius: var(--radius-lg);
 		overflow: hidden;
 		background: var(--color-white);
+		box-shadow: var(--shadow-card);
 	}
 
 	.ba-row {
@@ -369,19 +558,35 @@ const contrasts = [
 		grid-template-columns: 12rem 1fr 1fr;
 		align-items: center;
 		gap: 1rem;
-		padding: 1rem 1.25rem;
+		padding: 1.05rem 1.4rem;
 		border-top: 1px solid var(--color-border-soft);
 	}
 
-	.ba-row:first-child {
+	.ba-row--head {
 		border-top: none;
+		background: var(--color-bg);
+		padding-block: 0.85rem;
+	}
+
+	.ba-row__col {
+		font-size: 0.78rem;
+		font-weight: 800;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+	}
+
+	.ba-row__col--before { color: var(--color-muted); }
+	.ba-row__col--after { color: var(--lane-foundation-ink); }
+
+	.ba-row:not(.ba-row--head):nth-child(even) {
+		background: color-mix(in srgb, var(--color-bg) 45%, var(--color-white));
 	}
 
 	.ba-row__label {
 		color: var(--color-text);
 		font-size: 0.82rem;
 		font-weight: 800;
-		letter-spacing: 0.04em;
+		letter-spacing: 0.03em;
 		text-transform: uppercase;
 	}
 
@@ -389,14 +594,12 @@ const contrasts = [
 	.ba-row__after {
 		display: inline-flex;
 		align-items: flex-start;
-		gap: 0.5rem;
-		font-size: 0.92rem;
+		gap: 0.55rem;
+		font-size: 0.95rem;
 		line-height: 1.45;
 	}
 
-	.ba-row__before {
-		color: var(--color-muted);
-	}
+	.ba-row__before { color: var(--color-muted); }
 
 	.ba-row__after {
 		color: var(--color-text);
@@ -405,24 +608,34 @@ const contrasts = [
 
 	.ba-row__before svg,
 	.ba-row__after svg {
-		width: 1rem;
-		height: 1rem;
-		margin-top: 0.18rem;
+		width: 1.05rem;
+		height: 1.05rem;
+		margin-top: 0.16rem;
 		flex-shrink: 0;
 	}
 
 	.ba-row__before svg { color: var(--color-muted-soft); }
 	.ba-row__after svg { color: var(--lane-foundation); }
 
-	@media (max-width: 900px) {
-		.before-after__stage {
+	@media (max-width: 1080px) {
+		.before-after__head {
 			grid-template-columns: 1fr;
-			gap: 1.5rem;
+			align-items: start;
+		}
+	}
+
+	@media (max-width: 760px) {
+		.ba-slider {
+			aspect-ratio: 4 / 5;
+			max-height: none;
 		}
 
-		.before-after__arrow {
-			transform: rotate(90deg);
-			margin-inline: auto;
+		.ba-site__hero {
+			grid-template-columns: 1fr;
+		}
+
+		.ba-site__hero-art {
+			display: none;
 		}
 
 		.ba-row {
@@ -430,8 +643,35 @@ const contrasts = [
 			gap: 0.5rem;
 		}
 
-		.ba-row__label {
-			margin-bottom: 0.1rem;
+		.ba-row--head {
+			display: none;
+		}
+
+		.ba-row__before::before {
+			content: 'Before: ';
+			font-weight: 800;
+			color: var(--color-muted-soft);
+		}
+
+		.ba-row__after::before {
+			content: 'After: ';
+			font-weight: 800;
+			color: var(--lane-foundation-ink);
 		}
 	}
 </style>
+
+<script>
+	(() => {
+		const sliders = document.querySelectorAll('[data-ba-slider]');
+		sliders.forEach((slider) => {
+			const range = slider.querySelector('[data-ba-range]');
+			if (!(range instanceof HTMLInputElement)) return;
+			const setPos = (val) => {
+				slider.style.setProperty('--pos', `${val}%`);
+			};
+			setPos(range.value);
+			range.addEventListener('input', () => setPos(range.value));
+		});
+	})();
+</script>

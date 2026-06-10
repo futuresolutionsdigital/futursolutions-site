@@ -1,0 +1,193 @@
+---
+const phases = [
+	{ num: '01', area: 'top', title: 'Review', text: 'Spot the updates, content, SEO, and conversion gaps that matter most next.' },
+	{ num: '02', area: 'right', title: 'Prioritize', text: 'Rank improvements by business goals, seasonality, and new services.' },
+	{ num: '03', area: 'bottom', title: 'Improve', text: 'Ship updates, refine pages, add content, and hold technical quality.' },
+	{ num: '04', area: 'left', title: 'Refine', text: 'Keep strengthening as the business, audience, and service mix evolve.' },
+];
+---
+
+<section class="section optimization-loop" aria-labelledby="optimization-loop-heading">
+	<div class="site-container optimization-loop__inner">
+		<div class="optimization-loop__copy">
+			<p class="eyebrow">A loop, not a launch</p>
+			<h2 id="optimization-loop-heading">Most sites peak at launch. Yours keeps compounding.</h2>
+			<p class="lead">
+				A website is never &ldquo;done.&rdquo; Care and Optimization runs a steady cycle — review, prioritize,
+				improve, refine — so small, consistent gains add up instead of the site quietly going stale.
+			</p>
+			<ul class="optimization-loop__points">
+				<li>No big, disruptive redesigns — just steady forward motion.</li>
+				<li>Effort aimed at what actually moves trust and conversion.</li>
+				<li>The site grows with your services, not behind them.</li>
+			</ul>
+		</div>
+
+		<div class="optimization-loop__diagram" role="img" aria-label="A continuous four-phase optimization cycle: review, prioritize, improve, refine.">
+			<div class="optimization-loop__ring" aria-hidden="true"></div>
+			<div class="optimization-loop__hub">
+				<span class="optimization-loop__hub-label">Compounding</span>
+				<span class="optimization-loop__hub-sub">results</span>
+			</div>
+			{phases.map((phase) => (
+				<article class:list={['optimization-loop__phase', `optimization-loop__phase--${phase.area}`]}>
+					<span class="optimization-loop__num">{phase.num}</span>
+					<h3>{phase.title}</h3>
+					<p>{phase.text}</p>
+				</article>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+	.optimization-loop {
+		--ol-accent: var(--lane-care, var(--color-accent));
+	}
+	.optimization-loop__inner {
+		display: grid;
+		grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+		gap: clamp(2rem, 5vw, 4rem);
+		align-items: center;
+	}
+	.optimization-loop__copy {
+		max-width: 44ch;
+	}
+	.optimization-loop__copy .lead {
+		margin-top: 0.75rem;
+	}
+	.optimization-loop__points {
+		display: grid;
+		gap: 0.55rem;
+		margin: 1.5rem 0 0 0;
+		padding: 0;
+		list-style: none;
+	}
+	.optimization-loop__points li {
+		position: relative;
+		padding-left: 1.4rem;
+		color: var(--color-muted);
+		font-size: 0.92rem;
+		line-height: 1.55;
+	}
+	.optimization-loop__points li::before {
+		content: '';
+		position: absolute;
+		left: 0;
+		top: 0.5rem;
+		width: 0.6rem;
+		height: 0.6rem;
+		border-radius: 999px;
+		background: color-mix(in srgb, var(--ol-accent) 75%, transparent);
+	}
+
+	.optimization-loop__diagram {
+		position: relative;
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		grid-template-rows: repeat(3, auto);
+		gap: 0.8rem;
+		align-items: stretch;
+		grid-template-areas:
+			'. top .'
+			'left hub right'
+			'. bottom .';
+	}
+	.optimization-loop__ring {
+		position: absolute;
+		inset: 14% 22%;
+		border: 2px dashed color-mix(in srgb, var(--ol-accent) 45%, var(--color-border));
+		border-radius: 999px;
+		animation: optimization-spin 36s linear infinite;
+	}
+	@keyframes optimization-spin {
+		to { transform: rotate(360deg); }
+	}
+	@media (prefers-reduced-motion: reduce) {
+		.optimization-loop__ring { animation: none; }
+	}
+
+	.optimization-loop__hub {
+		grid-area: hub;
+		display: grid;
+		place-content: center;
+		text-align: center;
+		aspect-ratio: 1;
+		margin: auto;
+		width: clamp(6rem, 14vw, 8rem);
+		border-radius: 999px;
+		background: var(--color-text);
+		color: var(--color-white);
+		z-index: 1;
+	}
+	.optimization-loop__hub-label {
+		font-size: 0.95rem;
+		font-weight: 800;
+		letter-spacing: -0.02em;
+	}
+	.optimization-loop__hub-sub {
+		font-size: 0.78rem;
+		opacity: 0.75;
+	}
+
+	.optimization-loop__phase {
+		padding: 0.9rem 1rem;
+		border: 1px solid var(--color-border);
+		border-top: 3px solid var(--ol-accent);
+		border-radius: var(--radius-sm);
+		background: var(--color-white);
+		z-index: 1;
+	}
+	.optimization-loop__phase--top { grid-area: top; }
+	.optimization-loop__phase--right { grid-area: right; }
+	.optimization-loop__phase--bottom { grid-area: bottom; }
+	.optimization-loop__phase--left { grid-area: left; }
+	.optimization-loop__num {
+		display: block;
+		margin-bottom: 0.2rem;
+		color: color-mix(in srgb, var(--ol-accent) 80%, var(--color-text));
+		font-size: 0.75rem;
+		font-weight: 800;
+		letter-spacing: 0.12em;
+	}
+	.optimization-loop__phase h3 {
+		margin: 0 0 0.25rem 0;
+		font-size: 1rem;
+		letter-spacing: -0.02em;
+	}
+	.optimization-loop__phase p {
+		margin: 0;
+		color: var(--color-muted);
+		font-size: 0.82rem;
+		line-height: 1.5;
+	}
+
+	@media (max-width: 1040px) {
+		.optimization-loop__inner {
+			grid-template-columns: 1fr;
+		}
+		.optimization-loop__copy {
+			max-width: 60ch;
+		}
+	}
+	@media (max-width: 600px) {
+		.optimization-loop__diagram {
+			grid-template-columns: 1fr;
+			grid-template-areas:
+				'top'
+				'right'
+				'hub'
+				'bottom'
+				'left';
+		}
+		.optimization-loop__ring {
+			display: none;
+		}
+		.optimization-loop__hub {
+			width: 100%;
+			aspect-ratio: auto;
+			padding: 0.9rem;
+			border-radius: var(--radius-sm);
+		}
+	}
+</style>

@@ -8,13 +8,14 @@ import OfferOverview from '../components/OfferOverview.astro';
 import ProblemSection from '../components/ProblemSection.astro';
 import ProofStrip from '../components/ProofStrip.astro';
 import ServiceFAQSection from '../components/ServiceFAQSection.astro';
+import Testimonials from '../components/Testimonials.astro';
 import VisitorJourney from '../components/VisitorJourney.astro';
 import { organizationSchema, websiteSchema, faqSchema } from '../data/schema';
 
 const pageTitle = 'FutureSolutions — Premium healthcare websites and Growth Systems';
 const pageDescription =
 	'Premium websites, customizable Website Foundations, and CRM-connected Growth Systems for clinics, wellness brands, associations, and high-trust service businesses.';
-const canonicalUrl = 'https://futursolutions.io/';
+const canonicalUrl = 'https://futuresolutions.io/';
 
 const faqs = [
 	{
@@ -66,6 +67,7 @@ const faqs = [
 	<VisitorJourney />
 	<DemoLibraryPreview />
 	<ProofStrip />
+	<Testimonials variant="muted" />
 	<ServiceFAQSection faqs={faqs} />
 	<FinalCTA />
 </BaseLayout>
