@@ -69,8 +69,8 @@ export const serviceDetails: Record<string, ServiceDetail> = {
 		],
 		whoItsFor: ['Med spas', 'Solo practices', 'Wellness clinics', 'Functional medicine providers', 'New health brands'],
 		relatedServices: [
-			{ label: 'Local Visibility', href: '/seo' },
-			{ label: 'Growth System Setup', href: '/backend' },
+			{ label: 'Local Visibility', href: '/services/local-visibility' },
+			{ label: 'Growth System Setup', href: '/services/growth-systems' },
 			{ label: 'Care and Optimization', href: '/services/ongoing-optimization' },
 		],
 		faqs: [
@@ -141,8 +141,8 @@ export const serviceDetails: Record<string, ServiceDetail> = {
 			'Providers with complex offers',
 		],
 		relatedServices: [
-			{ label: 'Local Visibility', href: '/seo' },
-			{ label: 'Growth System Setup', href: '/backend' },
+			{ label: 'Local Visibility', href: '/services/local-visibility' },
+			{ label: 'Growth System Setup', href: '/services/growth-systems' },
 			{ label: 'Care and Optimization', href: '/services/ongoing-optimization' },
 			{ label: 'Website Foundations', href: '/services/template-setup' },
 		],
@@ -212,8 +212,8 @@ export const serviceDetails: Record<string, ServiceDetail> = {
 			'Businesses that want conversion improvements over time',
 		],
 		relatedServices: [
-			{ label: 'Local Visibility', href: '/seo' },
-			{ label: 'Growth System Setup', href: '/backend' },
+			{ label: 'Local Visibility', href: '/services/local-visibility' },
+			{ label: 'Growth System Setup', href: '/services/growth-systems' },
 			{ label: 'Signature Custom Website', href: '/services/custom-healthcare-websites' },
 			{ label: 'Website Foundations', href: '/services/template-setup' },
 		],

@@ -1,6 +1,5 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import ClientProof from '../components/ClientProof.astro';
 import DemoLibraryPreview from '../components/DemoLibraryPreview.astro';
 import FinalCTA from '../components/FinalCTA.astro';
 import HomeHero from '../components/HomeHero.astro';
@@ -8,9 +7,7 @@ import OfferOverview from '../components/OfferOverview.astro';
 import ProblemSection from '../components/ProblemSection.astro';
 import ProcessSection from '../components/ProcessSection.astro';
 import ProofStrip from '../components/ProofStrip.astro';
-import SeoVisibilitySection from '../components/SeoVisibilitySection.astro';
 import ServiceFAQSection from '../components/ServiceFAQSection.astro';
-import SystemDiagram from '../components/SystemDiagram.astro';
 import { organizationSchema, websiteSchema, faqSchema } from '../data/schema';
 
 const pageTitle = 'FutureSolutions — Premium healthcare websites and Growth Systems';
@@ -62,14 +59,11 @@ const faqs = [
 	schema={[organizationSchema, websiteSchema, faqSchema(faqs)]}
 >
 	<HomeHero />
-	<OfferOverview />
 	<ProblemSection />
-	<DemoLibraryPreview />
-	<SystemDiagram />
-	<SeoVisibilitySection />
+	<OfferOverview />
 	<ProcessSection />
+	<DemoLibraryPreview />
 	<ProofStrip />
-	<ClientProof />
 	<ServiceFAQSection faqs={faqs} />
 	<FinalCTA />
 </BaseLayout>

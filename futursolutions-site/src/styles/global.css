@@ -1,12 +1,12 @@
 :root {
 	/* Base surface tokens */
 	--color-bg: #FAFAFA;
-	--color-bg-secondary: #F5F7F9;
-	--color-text: #0F172A;
-	--color-muted: #4F5B6B;
-	--color-muted-soft: #6B7785;
-	--color-border: #E2E8F0;
-	--color-border-soft: #EDF1F5;
+	--color-bg-secondary: #F4F6F9;
+	--color-text: #0E1729;
+	--color-muted: #3D4A5C;
+	--color-muted-soft: #54606F;
+	--color-border: #D9E0EA;
+	--color-border-soft: #E6EBF1;
 	--color-white: #FFFFFF;
 
 	/* Brand accent (sage) — unchanged for demo compatibility */
@@ -18,11 +18,11 @@
 	--color-ink: #0A0E1A;
 	--color-deep-ink: var(--color-ink);
 	--color-ink-soft: #141A28;
-	--color-ink-line: rgba(255, 255, 255, 0.07);
-	--color-ink-line-strong: rgba(255, 255, 255, 0.14);
-	--color-ink-text: #E5E9F2;
-	--color-ink-muted: rgba(229, 233, 242, 0.78);
-	--color-ink-accent: #8FB8B3;
+	--color-ink-line: rgba(255, 255, 255, 0.09);
+	--color-ink-line-strong: rgba(255, 255, 255, 0.16);
+	--color-ink-text: #EEF1F7;
+	--color-ink-muted: rgba(233, 237, 245, 0.90);
+	--color-ink-accent: #A6CCC7;
 
 	/* Typography */
 	--font-family-base: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -46,9 +46,9 @@
 	--ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
 
 	/* Shadows */
-	--shadow-card: 0 18px 45px rgba(15, 23, 42, 0.05);
-	--shadow-card-hover: 0 28px 60px rgba(15, 23, 42, 0.08);
-	--shadow-lift: 0 36px 80px rgba(15, 23, 42, 0.10);
+	--shadow-card: 0 1px 2px rgba(15, 23, 42, 0.04), 0 14px 36px rgba(15, 23, 42, 0.07);
+	--shadow-card-hover: 0 2px 4px rgba(15, 23, 42, 0.05), 0 24px 54px rgba(15, 23, 42, 0.11);
+	--shadow-lift: 0 36px 80px rgba(15, 23, 42, 0.12);
 
 	/* Lane accents — used for color-coded offer categories.
 	   Sage = Foundations · Slate = Custom · Blue = Growth ·

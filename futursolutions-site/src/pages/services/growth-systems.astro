@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import FinalCTA from '../../components/FinalCTA.astro';
 import RelatedServicesSection from '../../components/RelatedServicesSection.astro';
 import ServiceFAQSection from '../../components/ServiceFAQSection.astro';
 import { serviceSchema, faqSchema, breadcrumbSchema } from '../../data/schema';
@@ -7,7 +8,7 @@ import { serviceSchema, faqSchema, breadcrumbSchema } from '../../data/schema';
 const pageTitle = 'Growth Systems & Backend Lead Systems | FutureSolutions';
 const pageDescription =
 	'FutureSolutions helps healthcare and high-trust service businesses connect website inquiries to lead capture, booking, follow-up, and pipeline systems.';
-const canonicalUrl = 'https://futursolutions.io/backend/';
+const canonicalUrl = 'https://futursolutions.io/services/growth-systems/';
 
 const faqs = [
 	{
@@ -35,7 +36,7 @@ const faqs = [
 const relatedServices = [
 	{ label: 'Website Foundations', href: '/services/template-setup' },
 	{ label: 'Signature Custom Websites', href: '/services/custom-healthcare-websites' },
-	{ label: 'Local Visibility', href: '/seo' },
+	{ label: 'Local Visibility', href: '/services/local-visibility' },
 	{ label: 'Care and Optimization', href: '/services/ongoing-optimization' },
 ];
 
@@ -43,13 +44,14 @@ const pageSchema = [
 	serviceSchema({
 		name: 'Growth Systems',
 		description: pageDescription,
-		path: '/backend',
+		path: '/services/growth-systems',
 		serviceType: 'Lead capture and CRM systems',
 	}),
 	faqSchema(faqs),
 	breadcrumbSchema([
 		{ name: 'Home', path: '/' },
-		{ name: 'Growth Systems', path: '/backend' },
+		{ name: 'Solutions', path: '/services' },
+		{ name: 'Growth Systems', path: '/services/growth-systems' },
 	]),
 ];
 
@@ -235,24 +237,7 @@ const useCases = [
 
 	<RelatedServicesSection services={relatedServices} />
 	<ServiceFAQSection faqs={faqs} />
-
-	<section class="section backend-final" aria-labelledby="backend-final-heading">
-		<div class="site-container">
-			<div class="backend-final__card">
-				<div>
-					<p class="eyebrow">Website and Systems Audit</p>
-					<h2 id="backend-final-heading">Want a website that does more after the form?</h2>
-					<p class="lead">
-						Request a Website and Systems Audit and get a recommendation for how your site could connect trust, lead capture, booking, and follow-up.
-					</p>
-				</div>
-				<div class="button-row">
-					<a class="button button-primary" href="/audit">Get a Website Audit</a>
-					<a class="button button-secondary" href="/services">View Services</a>
-				</div>
-			</div>
-		</div>
-	</section>
+	<FinalCTA />
 </BaseLayout>
 
 <style>
@@ -382,52 +367,6 @@ const useCases = [
 		line-height: 1.5;
 	}
 
-	.backend-final {
-		background: var(--color-accent-light);
-	}
-
-	.backend-final__card {
-		display: grid;
-		grid-template-columns: minmax(0, 1fr) auto;
-		gap: 2rem;
-		align-items: end;
-		padding: clamp(1.5rem, 4vw, 3rem);
-		border: 1px solid color-mix(in srgb, var(--color-accent) 24%, transparent);
-		border-radius: 20px;
-		background: var(--color-text);
-		box-shadow: 0 24px 60px rgba(15, 23, 42, 0.12);
-	}
-
-	.backend-final .eyebrow {
-		color: color-mix(in srgb, var(--color-accent-light) 84%, var(--color-white));
-	}
-
-	.backend-final h2,
-	.backend-final .lead {
-		color: var(--color-white);
-	}
-
-	.backend-final .lead {
-		opacity: 0.78;
-	}
-
-	.backend-final .button-row {
-		justify-content: flex-end;
-		margin-top: 0;
-	}
-
-	.backend-final .button-secondary {
-		background: transparent;
-		border-color: rgba(255, 255, 255, 0.22);
-		color: var(--color-white);
-	}
-
-	.backend-final .button-secondary:hover {
-		background: rgba(255, 255, 255, 0.08);
-		border-color: rgba(255, 255, 255, 0.38);
-		color: var(--color-white);
-	}
-
 	@media (max-width: 1120px) {
 		.backend-flow__grid {
 			grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -447,13 +386,8 @@ const useCases = [
 	@media (max-width: 720px) {
 		.backend-grid--2,
 		.backend-grid--4,
-		.backend-flow__grid,
-		.backend-final__card {
+		.backend-flow__grid {
 			grid-template-columns: 1fr;
-		}
-
-		.backend-final .button-row {
-			justify-content: flex-start;
 		}
 	}
 </style>

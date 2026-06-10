@@ -180,6 +180,12 @@ const preferredNextSteps = [
 		</label>
 
 		<div class="audit-form-shell__footer">
+			<ul class="audit-form-shell__trust" aria-label="What to expect">
+				<li>Free, no obligation</li>
+				<li>Reply within 2 business days</li>
+				<li>No sales pitch</li>
+				<li>Your details stay private</li>
+			</ul>
 			<button class="button button-primary" type="submit" id="audit-submit-btn">Request My Website Audit</button>
 			<p class="audit-form-shell__form-error" data-form-error role="alert" hidden></p>
 			<p>
@@ -579,6 +585,38 @@ const preferredNextSteps = [
 		display: grid;
 		gap: 0.8rem;
 		margin-top: 0.25rem;
+	}
+
+	.audit-form-shell__trust {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.4rem 1rem;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.audit-form-shell__trust li {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.4rem;
+		color: var(--color-text);
+		font-size: 0.82rem;
+		font-weight: 650;
+	}
+
+	.audit-form-shell__trust li::before {
+		content: '';
+		width: 0.95rem;
+		height: 0.95rem;
+		flex-shrink: 0;
+		border-radius: 999px;
+		background: var(--color-accent-light);
+		/* check mark */
+		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none' stroke='%234C7370' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='2,6 5,9 10,3'/%3E%3C/svg%3E");
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: 0.7rem;
 	}
 
 	.audit-form-shell__footer .button {

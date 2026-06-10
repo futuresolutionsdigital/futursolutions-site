@@ -81,10 +81,10 @@ ${buildResourcesBlock()}
 /services/template-setup — Website Foundations service detail
 /services/custom-healthcare-websites — Signature Custom Websites detail
 /services/ongoing-optimization — Care and Optimization detail
-/seo — Local Visibility service
-/backend — Growth System Setup
+/services/local-visibility — Local Visibility (SEO) service
+/services/growth-systems — Growth Systems (lead capture, booking, CRM, follow-up)
 /audit — Free Website and Systems Audit (main conversion path)
-/resources — Content roadmap (planned articles)
+/resources — Published guides on website strategy, trust, conversion, and visibility
 /demos/{slug} — Live demo sites (med-spa, solo-practice, association, premium-wellness-clinic, hormone-trt)
 
 === WEBSITE AND SYSTEMS AUDIT ===

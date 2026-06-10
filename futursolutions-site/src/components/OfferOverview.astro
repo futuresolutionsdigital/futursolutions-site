@@ -4,6 +4,7 @@ const offers = [
 		lane: 'foundation',
 		number: '01',
 		title: 'Website Foundations',
+		priceFrom: 'from $3,500',
 		summary:
 			'Launch from a polished healthcare-specific website built around a real business model — then customize the brand, services, and booking flow.',
 		bestFor: 'Solo and group practices, med spas, hormone clinics, wellness brands ready to launch fast without looking templated.',
@@ -19,6 +20,7 @@ const offers = [
 		lane: 'custom',
 		number: '02',
 		title: 'Signature Custom Websites',
+		priceFrom: 'from $12,000',
 		summary:
 			'A fully custom website system designed around a unique brand, service model, or organization — engineered for credibility, clarity, and conversion.',
 		bestFor: 'Clinics, associations, and service businesses with unique positioning, complex content, or larger teams.',
@@ -34,6 +36,7 @@ const offers = [
 		lane: 'growth',
 		number: '03',
 		title: 'Growth Systems',
+		priceFrom: 'from $1,500 setup + $300/mo',
 		summary:
 			'Connect the site to forms, calendars, CRM routing, follow-up, review requests, and reporting — so leads do not disappear after submitting a form.',
 		bestFor: 'Practices losing inquiries to slow follow-up, missed calls, or scattered tools — and teams that want one source of truth.',
@@ -43,7 +46,7 @@ const offers = [
 			'Plugs into Foundations or a Signature Custom Website',
 		],
 		ctaLabel: 'See how the system works',
-		ctaHref: '/backend',
+		ctaHref: '/services/growth-systems',
 	},
 ];
 ---
@@ -69,6 +72,8 @@ const offers = [
 							<span class={`lane-tag lane-tag--${offer.lane}`}>{offer.number}</span>
 							<h3 class="offer-overview__card-title">{offer.title}</h3>
 						</div>
+
+						<p class="offer-overview__price">{offer.priceFrom}</p>
 
 						<p class="offer-overview__card-summary">{offer.summary}</p>
 
@@ -211,6 +216,14 @@ const offers = [
 		font-weight: 700;
 		letter-spacing: -0.025em;
 		line-height: 1.25;
+	}
+
+	.offer-overview__price {
+		margin: -0.35rem 0 0;
+		color: var(--color-text);
+		font-size: 0.95rem;
+		font-weight: 750;
+		letter-spacing: -0.01em;
 	}
 
 	.offer-overview__card-summary {

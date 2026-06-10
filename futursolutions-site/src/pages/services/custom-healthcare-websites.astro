@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import FinalCTA from '../../components/FinalCTA.astro';
 import RelatedServicesSection from '../../components/RelatedServicesSection.astro';
 import ServiceDetailHero from '../../components/ServiceDetailHero.astro';
 import ServiceFAQSection from '../../components/ServiceFAQSection.astro';
@@ -95,22 +96,7 @@ const processSteps = [
 
 	<RelatedServicesSection services={service.relatedServices} />
 	<ServiceFAQSection faqs={service.faqs} />
-
-	<section class="section service-detail-final" aria-labelledby="service-final-heading">
-		<div class="site-container">
-			<div class="service-detail-final__card">
-				<div>
-					<p class="eyebrow">Next step</p>
-					<h2 id="service-final-heading">{service.finalHeading}</h2>
-					<p class="lead">{service.finalCopy}</p>
-				</div>
-				<div class="button-row">
-					<a class="button button-primary" href={service.finalPrimaryCta.href}>{service.finalPrimaryCta.label}</a>
-					<a class="button button-secondary" href={service.finalSecondaryCta.href}>{service.finalSecondaryCta.label}</a>
-				</div>
-			</div>
-		</div>
-	</section>
+	<FinalCTA />
 </BaseLayout>
 
 <style>
@@ -187,52 +173,6 @@ const processSteps = [
 		line-height: 1;
 	}
 
-	.service-detail-final {
-		background: var(--color-accent-light);
-	}
-
-	.service-detail-final__card {
-		display: grid;
-		grid-template-columns: minmax(0, 1fr) auto;
-		gap: 2rem;
-		align-items: end;
-		padding: clamp(1.5rem, 4vw, 3rem);
-		border: 1px solid color-mix(in srgb, var(--color-accent) 24%, transparent);
-		border-radius: 20px;
-		background: var(--color-text);
-		box-shadow: 0 24px 60px rgba(15, 23, 42, 0.12);
-	}
-
-	.service-detail-final .eyebrow {
-		color: color-mix(in srgb, var(--color-accent-light) 84%, var(--color-white));
-	}
-
-	.service-detail-final h2,
-	.service-detail-final .lead {
-		color: var(--color-white);
-	}
-
-	.service-detail-final .lead {
-		opacity: 0.78;
-	}
-
-	.service-detail-final .button-row {
-		justify-content: flex-end;
-		margin-top: 0;
-	}
-
-	.service-detail-final .button-secondary {
-		background: transparent;
-		border-color: rgba(255, 255, 255, 0.22);
-		color: var(--color-white);
-	}
-
-	.service-detail-final .button-secondary:hover {
-		background: rgba(255, 255, 255, 0.08);
-		border-color: rgba(255, 255, 255, 0.38);
-		color: var(--color-white);
-	}
-
 	@media (max-width: 1040px) {
 		.service-detail-grid--3,
 		.service-detail-grid--4 {
@@ -242,13 +182,8 @@ const processSteps = [
 
 	@media (max-width: 720px) {
 		.service-detail-grid--3,
-		.service-detail-grid--4,
-		.service-detail-final__card {
+		.service-detail-grid--4 {
 			grid-template-columns: 1fr;
-		}
-
-		.service-detail-final .button-row {
-			justify-content: flex-start;
 		}
 	}
 </style>

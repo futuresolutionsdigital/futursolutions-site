@@ -7,6 +7,10 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
 	site: 'https://futursolutions.io',
 	adapter: vercel(),
+	redirects: {
+		'/seo': '/services/local-visibility',
+		'/backend': '/services/growth-systems',
+	},
 	integrations: [
 		sitemap({
 			filter: (page) =>

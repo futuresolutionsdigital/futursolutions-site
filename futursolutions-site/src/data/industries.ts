@@ -74,8 +74,8 @@ export const industries: Industry[] = [
 		relatedServices: [
 			{ label: 'Website Foundations', href: '/services/template-setup' },
 			{ label: 'Signature Custom Websites', href: '/services/custom-healthcare-websites' },
-			{ label: 'Growth Systems', href: '/backend' },
-			{ label: 'Local Visibility', href: '/seo' },
+			{ label: 'Growth Systems', href: '/services/growth-systems' },
+			{ label: 'Local Visibility', href: '/services/local-visibility' },
 		],
 		faqs: [
 			{
@@ -141,8 +141,8 @@ export const industries: Industry[] = [
 		demo: { label: 'View the Solo Practice demo', href: '/templates/solo-practice' },
 		relatedServices: [
 			{ label: 'Website Foundations', href: '/services/template-setup' },
-			{ label: 'Local Visibility', href: '/seo' },
-			{ label: 'Growth Systems', href: '/backend' },
+			{ label: 'Local Visibility', href: '/services/local-visibility' },
+			{ label: 'Growth Systems', href: '/services/growth-systems' },
 			{ label: 'Care and Optimization', href: '/services/ongoing-optimization' },
 		],
 		faqs: [
@@ -209,8 +209,8 @@ export const industries: Industry[] = [
 		demo: { label: 'View the Wellness Clinic demo', href: '/templates/premium-wellness-clinic' },
 		relatedServices: [
 			{ label: 'Signature Custom Websites', href: '/services/custom-healthcare-websites' },
-			{ label: 'Growth Systems', href: '/backend' },
-			{ label: 'Local Visibility', href: '/seo' },
+			{ label: 'Growth Systems', href: '/services/growth-systems' },
+			{ label: 'Local Visibility', href: '/services/local-visibility' },
 			{ label: 'Care and Optimization', href: '/services/ongoing-optimization' },
 		],
 		faqs: [
@@ -276,9 +276,9 @@ export const industries: Industry[] = [
 		],
 		demo: { label: 'View the Hormone / TRT demo', href: '/templates/hormone-trt' },
 		relatedServices: [
-			{ label: 'Growth Systems', href: '/backend' },
+			{ label: 'Growth Systems', href: '/services/growth-systems' },
 			{ label: 'Signature Custom Websites', href: '/services/custom-healthcare-websites' },
-			{ label: 'Local Visibility', href: '/seo' },
+			{ label: 'Local Visibility', href: '/services/local-visibility' },
 			{ label: 'Website Foundations', href: '/services/template-setup' },
 		],
 		faqs: [
@@ -345,9 +345,9 @@ export const industries: Industry[] = [
 		demo: { label: 'View the Association demo', href: '/templates/association' },
 		relatedServices: [
 			{ label: 'Signature Custom Websites', href: '/services/custom-healthcare-websites' },
-			{ label: 'Growth Systems', href: '/backend' },
+			{ label: 'Growth Systems', href: '/services/growth-systems' },
 			{ label: 'Care and Optimization', href: '/services/ongoing-optimization' },
-			{ label: 'Local Visibility', href: '/seo' },
+			{ label: 'Local Visibility', href: '/services/local-visibility' },
 		],
 		faqs: [
 			{

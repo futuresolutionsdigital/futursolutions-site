@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import FinalCTA from '../../components/FinalCTA.astro';
 import RelatedServicesSection from '../../components/RelatedServicesSection.astro';
 import ServiceFAQSection from '../../components/ServiceFAQSection.astro';
 import { serviceSchema, faqSchema, breadcrumbSchema } from '../../data/schema';
@@ -7,7 +8,7 @@ import { serviceSchema, faqSchema, breadcrumbSchema } from '../../data/schema';
 const pageTitle = 'Local Visibility | FutureSolutions';
 const pageDescription =
 	'FutureSolutions helps healthcare and high-trust service businesses structure their websites for clearer services, better local visibility, and stronger conversion paths.';
-const canonicalUrl = 'https://futursolutions.io/seo/';
+const canonicalUrl = 'https://futursolutions.io/services/local-visibility/';
 
 const faqs = [
 	{
@@ -35,7 +36,7 @@ const faqs = [
 const relatedServices = [
 	{ label: 'Website Foundations', href: '/services/template-setup' },
 	{ label: 'Signature Custom Websites', href: '/services/custom-healthcare-websites' },
-	{ label: 'Growth Systems', href: '/backend' },
+	{ label: 'Growth Systems', href: '/services/growth-systems' },
 	{ label: 'Care and Optimization', href: '/services/ongoing-optimization' },
 ];
 
@@ -43,13 +44,14 @@ const pageSchema = [
 	serviceSchema({
 		name: 'Local Visibility',
 		description: pageDescription,
-		path: '/seo',
+		path: '/services/local-visibility',
 		serviceType: 'Local SEO for healthcare',
 	}),
 	faqSchema(faqs),
 	breadcrumbSchema([
 		{ name: 'Home', path: '/' },
-		{ name: 'Local Visibility', path: '/seo' },
+		{ name: 'Solutions', path: '/services' },
+		{ name: 'Local Visibility', path: '/services/local-visibility' },
 	]),
 ];
 
@@ -222,24 +224,7 @@ const processSteps = [
 
 	<RelatedServicesSection services={relatedServices} />
 	<ServiceFAQSection faqs={faqs} />
-
-	<section class="section differentiator-final" aria-labelledby="seo-final-heading">
-		<div class="site-container">
-			<div class="differentiator-final__card">
-				<div>
-					<p class="eyebrow">Website and Systems Audit</p>
-					<h2 id="seo-final-heading">Want to know what your site is missing?</h2>
-					<p class="lead">
-						Request a Website and Systems Audit and get a practical review of your site’s trust, visibility, service clarity, and conversion path.
-					</p>
-				</div>
-				<div class="button-row">
-					<a class="button button-primary" href="/audit">Get a Website Audit</a>
-					<a class="button button-secondary" href="/services">View Services</a>
-				</div>
-			</div>
-		</div>
-	</section>
+	<FinalCTA />
 </BaseLayout>
 
 <style>
@@ -344,52 +329,6 @@ const processSteps = [
 		padding: 0.35rem 0.52rem;
 	}
 
-	.differentiator-final {
-		background: var(--color-accent-light);
-	}
-
-	.differentiator-final__card {
-		display: grid;
-		grid-template-columns: minmax(0, 1fr) auto;
-		gap: 2rem;
-		align-items: end;
-		padding: clamp(1.5rem, 4vw, 3rem);
-		border: 1px solid color-mix(in srgb, var(--color-accent) 24%, transparent);
-		border-radius: 20px;
-		background: var(--color-text);
-		box-shadow: 0 24px 60px rgba(15, 23, 42, 0.12);
-	}
-
-	.differentiator-final .eyebrow {
-		color: color-mix(in srgb, var(--color-accent-light) 84%, var(--color-white));
-	}
-
-	.differentiator-final h2,
-	.differentiator-final .lead {
-		color: var(--color-white);
-	}
-
-	.differentiator-final .lead {
-		opacity: 0.78;
-	}
-
-	.differentiator-final .button-row {
-		justify-content: flex-end;
-		margin-top: 0;
-	}
-
-	.differentiator-final .button-secondary {
-		background: transparent;
-		border-color: rgba(255, 255, 255, 0.22);
-		color: var(--color-white);
-	}
-
-	.differentiator-final .button-secondary:hover {
-		background: rgba(255, 255, 255, 0.08);
-		border-color: rgba(255, 255, 255, 0.38);
-		color: var(--color-white);
-	}
-
 	@media (max-width: 1040px) {
 		.differentiator-grid--3,
 		.differentiator-grid--4 {
@@ -400,13 +339,8 @@ const processSteps = [
 	@media (max-width: 720px) {
 		.differentiator-grid--2,
 		.differentiator-grid--3,
-		.differentiator-grid--4,
-		.differentiator-final__card {
+		.differentiator-grid--4 {
 			grid-template-columns: 1fr;
-		}
-
-		.differentiator-final .button-row {
-			justify-content: flex-start;
 		}
 	}
 </style>

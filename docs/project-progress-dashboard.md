@@ -4,7 +4,7 @@
 > parent site) and the **sub-projects** (the five website template/demo systems).
 > Use this to recognize what is done, what remains, and where to point effort next.
 >
-> **Last updated:** June 10, 2026 (establishment pass — identity, contact, brand, trust polish)
+> **Last updated:** June 10, 2026 (conversion-first restructure — trimmed redundancy, unified service URLs, added pricing anchors, single primary CTA)
 > **Companion docs (do not duplicate — link out):**
 > - `docs/strategy-reference.md` — positioning, offers, copy/CTA/compliance rules
 > - `docs/site-audit.md` — master-site scorecard + diagnosis
@@ -50,16 +50,16 @@
 
 ## Part 1 — Master Project (FutureSolutions Parent Site)
 
-**One-line status:** Strategically, visually, and structurally strong; **content, SEO, trust, and identity infrastructure now in place.** Remaining gap to launch is **integrations only** (GHL lead delivery, analytics, prod env vars).
+**One-line status:** Strategically, visually, and structurally strong; **content, SEO, trust, and identity infrastructure in place** and **restructured for conversion** (trimmed redundancy, single primary CTA, unified service URLs, transparent pricing). Remaining gap to launch is **integrations only** (GHL lead delivery, analytics, prod env vars).
 
-**Overall launch readiness: ~88%** (all non-integration polish complete). Real business identity (Future Solutions Digital LLC, California), contact surface, and brand mark are now live. Remaining gap is **integration + prod env** — not design, content, structure, or trust.
+**Overall launch readiness: ~90%** (all non-integration polish + conversion restructure complete). Homepage trimmed 11→8 sections; `/seo`→`/services/local-visibility` and `/backend`→`/services/growth-systems` (with redirects); all 5 service pages + service detail pages now use one shared `FinalCTA`; "from $" pricing anchors added; Resources roadmap removed; thank-you page slimmed; header leads with a single audit CTA. Remaining gap is **integration + prod env** — not design, content, structure, or trust.
 
 ### Master scorecard
 
 | Dimension | Score | State | What closes the gap |
 |---|---|---|---|
-| Strategic alignment | 5/5 | ✅ | Done — pricing philosophy + Foundation-vs-Custom article shipped |
-| Visual design | 4.5/5 | ✅ | Optional: real photography/mockups, subtle motion |
+| Strategic alignment | 5/5 | ✅ | Done — transparent "from $" pricing anchors + audit-first single primary CTA + trimmed redundancy |
+| Visual design | 4.7/5 | ✅ | Contrast/readability tuned, crisper borders + card lift, brighter dark sections; optional: real photography/mockups |
 | Content structure | 5/5 | ✅ | Done — About, 5 industry pages, 3 published articles, FAQs everywhere + homepage FAQ |
 | Operational readiness | 3.5/5 | 🟡 | Form submits w/ validation + honeypot; **GHL/email delivery deferred** |
 | Legal / compliance | 4.5/5 | ✅ | Real entity (Future Solutions Digital LLC) + CA jurisdiction; optional counsel review |
@@ -70,8 +70,8 @@
 ### Master — what's DONE ✅
 - Three-lane offer model (Foundations / Custom / Growth Systems) + Local Visibility & Care layers
 - Audit positioned as the diagnostic entry point; lane accent color system consistent
-- Homepage hero, system map, industry ticker, demo preview, process, proof strip + **honest ClientProof section** (live-demo proof, engagement guarantees, testimonial scaffold)
-- Services page with decision-first architecture + 3 service detail pages + **pricing philosophy + FAQ**
+- Homepage trimmed to a focused 8-section narrative (hero → problem → offers → process → demo proof → proof strip → FAQ → FinalCTA); redundant SEO/system/duplicate-proof sections removed
+- Services hub with decision-first architecture + 5 service pages (URLs unified under `/services/*`) + **transparent "from $" pricing anchors + FAQ**; all service pages share one `FinalCTA`
 - Backend/Growth Systems page + SEO page — now with **FAQ + related services parity** with service detail pages
 - **About page** (`/about`) with studio identity (Future Solutions Digital LLC, California) + nav/footer wiring
 - **Contact page** (`/contact`) — email, region, response SLA, audit path; footer contact block on every page

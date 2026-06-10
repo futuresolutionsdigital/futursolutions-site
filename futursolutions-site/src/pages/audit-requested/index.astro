@@ -58,23 +58,6 @@ const templates = [
 	},
 ];
 
-const usefulLinks = [
-	{
-		title: 'View Services',
-		text: 'Understand the full lane ecosystem: Website Foundations, Signature Custom Websites, Local Visibility, Growth Systems, and Care and Optimization.',
-		href: '/services',
-	},
-	{
-		title: 'Explore Growth Systems',
-		text: 'See how website inquiries can connect to lead capture, booking, follow-up, and pipeline tracking.',
-		href: '/backend',
-	},
-	{
-		title: 'Read Resources',
-		text: 'Practical guides on website trust, conversion, local visibility, and Growth Systems.',
-		href: '/resources',
-	},
-];
 ---
 
 <BaseLayout
@@ -142,41 +125,6 @@ const usefulLinks = [
 		</div>
 	</section>
 
-	<section class="section section-muted audit-requested-links" aria-labelledby="audit-requested-links-heading">
-		<div class="site-container">
-			<div class="audit-requested__intro">
-				<p class="eyebrow">Useful links</p>
-				<h2 id="audit-requested-links-heading">Useful next steps.</h2>
-			</div>
-			<div class="audit-requested__grid audit-requested__grid--3">
-				{usefulLinks.map((link) => (
-					<a class="card audit-requested-link" href={link.href}>
-						<h3>{link.title}</h3>
-						<p>{link.text}</p>
-						<span>Explore</span>
-					</a>
-				))}
-			</div>
-		</div>
-	</section>
-
-	<section class="section audit-requested-final" aria-labelledby="audit-requested-final-heading">
-		<div class="site-container">
-			<div class="audit-requested-final__card">
-				<div>
-					<p class="eyebrow">Keep exploring</p>
-					<h2 id="audit-requested-final-heading">Want to keep exploring your options?</h2>
-					<p class="lead">
-						Walk through the live demo library or the service lanes while we prepare your recommendation.
-					</p>
-				</div>
-				<div class="button-row">
-					<a class="button button-primary" href="/templates">Explore Live Demos</a>
-					<a class="button button-secondary" href="/services">View Services</a>
-				</div>
-			</div>
-		</div>
-	</section>
 </BaseLayout>
 
 <script define:vars={{ templateLabels: auditTemplateSlugToName }}>
@@ -248,8 +196,7 @@ const usefulLinks = [
 	}
 
 	.audit-requested-step,
-	.audit-requested-card,
-	.audit-requested-link {
+	.audit-requested-card {
 		padding: 1.25rem;
 	}
 
@@ -268,21 +215,18 @@ const usefulLinks = [
 	}
 
 	.audit-requested-step h3,
-	.audit-requested-card h3,
-	.audit-requested-link h3 {
+	.audit-requested-card h3 {
 		font-size: 1.1rem;
 		letter-spacing: -0.02em;
 	}
 
 	.audit-requested-step p,
-	.audit-requested-card p,
-	.audit-requested-link p {
+	.audit-requested-card p {
 		font-size: 0.9375rem;
 		line-height: 1.6;
 	}
 
-	.audit-requested-card a,
-	.audit-requested-link span {
+	.audit-requested-card a {
 		display: inline-flex;
 		width: fit-content;
 		margin-top: 0.5rem;
@@ -291,67 +235,8 @@ const usefulLinks = [
 		font-weight: 800;
 	}
 
-	.audit-requested-card a:hover,
-	.audit-requested-link:hover span {
+	.audit-requested-card a:hover {
 		color: var(--color-accent-dark);
-	}
-
-	.audit-requested-link {
-		display: grid;
-		align-content: start;
-		transition: transform var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base);
-	}
-
-	.audit-requested-link:hover {
-		transform: translateY(-2px);
-		border-color: color-mix(in srgb, var(--color-accent) 34%, var(--color-border));
-		box-shadow: 0 20px 48px rgba(15, 23, 42, 0.06);
-	}
-
-	.audit-requested-final {
-		background: var(--color-accent-light);
-	}
-
-	.audit-requested-final__card {
-		display: grid;
-		grid-template-columns: minmax(0, 1fr) auto;
-		gap: 2rem;
-		align-items: end;
-		padding: clamp(1.5rem, 4vw, 3rem);
-		border: 1px solid color-mix(in srgb, var(--color-accent) 24%, transparent);
-		border-radius: 20px;
-		background: var(--color-text);
-		box-shadow: 0 24px 60px rgba(15, 23, 42, 0.12);
-	}
-
-	.audit-requested-final .eyebrow {
-		color: color-mix(in srgb, var(--color-accent-light) 84%, var(--color-white));
-	}
-
-	.audit-requested-final h2,
-	.audit-requested-final .lead {
-		color: var(--color-white);
-	}
-
-	.audit-requested-final .lead {
-		opacity: 0.78;
-	}
-
-	.audit-requested-final .button-row {
-		justify-content: flex-end;
-		margin-top: 0;
-	}
-
-	.audit-requested-final .button-secondary {
-		background: transparent;
-		border-color: rgba(255, 255, 255, 0.22);
-		color: var(--color-white);
-	}
-
-	.audit-requested-final .button-secondary:hover {
-		background: rgba(255, 255, 255, 0.08);
-		border-color: rgba(255, 255, 255, 0.38);
-		color: var(--color-white);
 	}
 
 	@media (max-width: 1040px) {
@@ -363,13 +248,8 @@ const usefulLinks = [
 
 	@media (max-width: 720px) {
 		.audit-requested__grid--3,
-		.audit-requested__grid--4,
-		.audit-requested-final__card {
+		.audit-requested__grid--4 {
 			grid-template-columns: 1fr;
-		}
-
-		.audit-requested-final .button-row {
-			justify-content: flex-start;
 		}
 	}
 </style>

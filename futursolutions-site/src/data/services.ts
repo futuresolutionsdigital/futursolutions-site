@@ -59,7 +59,7 @@ export const serviceOfferings: ServiceOffering[] = [
 		],
 		whyItMatters: 'Visibility starts with clear structure, useful pages, and search-aware content.',
 		ctaLabel: 'Improve Local Visibility',
-		ctaHref: '/seo',
+		ctaHref: '/services/local-visibility',
 	},
 	{
 		slug: 'backend-system-setup',
@@ -71,7 +71,7 @@ export const serviceOfferings: ServiceOffering[] = [
 		includes: ['Lead capture flow', 'Booking path', 'CRM contact creation', 'Follow-up sequence planning', 'Pipeline and reporting structure'],
 		whyItMatters: 'Most websites collect leads. A Growth System manages them — captured, routed, followed up with, and tracked.',
 		ctaLabel: 'See how a Growth System works',
-		ctaHref: '/backend',
+		ctaHref: '/services/growth-systems',
 	},
 	{
 		slug: 'ongoing-optimization',
