@@ -1,7 +1,16 @@
 import type { APIRoute } from 'astro';
 import OpenAI from 'openai';
 import { OPENAI_API_KEY } from 'astro:env/server';
-import { SYSTEM_PROMPT } from '../../lib/chatbot-system-prompt';
+import { buildSystemPrompt } from '../../lib/chatbot-system-prompt';
+import { chatbotContexts } from '../../lib/chatbot-contexts';
+
+function resolveContext(body: unknown): string {
+	if (body && typeof body === 'object') {
+		const { context } = body as { context?: unknown };
+		if (typeof context === 'string' && context in chatbotContexts) return context;
+	}
+	return 'base';
+}
 
 export const prerender = false;
 
@@ -93,18 +102,19 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
 		});
 	}
 
+	const context = resolveContext(body);
 	const openai = new OpenAI({ apiKey: OPENAI_API_KEY });
 
 	try {
 		const stream = await openai.chat.completions.create({
 			model: 'gpt-4o-mini',
 			messages: [
-				{ role: 'system', content: SYSTEM_PROMPT },
+				{ role: 'system', content: buildSystemPrompt(context) },
 				...messages,
 			],
 			stream: true,
-			max_tokens: 600,
-			temperature: 0.7,
+			max_tokens: 320,
+			temperature: 0.6,
 		});
 
 		const encoder = new TextEncoder();

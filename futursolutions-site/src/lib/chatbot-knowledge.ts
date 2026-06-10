@@ -56,6 +56,37 @@ function buildResourcesBlock(): string {
 		.join('\n\n');
 }
 
+/**
+ * A focused profile of a single demo, used when the assistant is embedded on
+ * that demo site so it can answer as the brand's concierge.
+ */
+export function buildDemoFocus(slug: string): string {
+	const t = templateSystems.find((tpl) => tpl.slug === slug);
+	if (!t) return '';
+	const lines = [
+		`Brand: ${t.name}`,
+		`Industry / audience: ${t.audience}`,
+		`What it is: ${t.shortDescription}`,
+		`Business types served: ${t.businessTypes.join(', ')}`,
+		`Primary visitor goals: ${t.goals.join(', ')}`,
+		`Pages on this demo site: ${t.includedPages.join(', ')}`,
+		`This demo's home: /demos/${t.slug}`,
+		`FutureSolutions Foundation detail (for "get one like this"): /templates/${t.slug}`,
+	];
+	if (t.atAGlance) {
+		lines.push(`Best for: ${t.atAGlance.bestFor}`);
+		lines.push(`Primary goal: ${t.atAGlance.primaryGoal}`);
+		lines.push(`Typical visitor path: ${t.atAGlance.typicalPath}`);
+	}
+	if (t.conversionFeatures?.length) {
+		lines.push(`Conversion features shown: ${t.conversionFeatures.join(', ')}`);
+	}
+	if (t.backendFeatures?.length) {
+		lines.push(`Backend / system features: ${t.backendFeatures.join(', ')}`);
+	}
+	return lines.join('\n');
+}
+
 export function buildKnowledgeContext(): string {
 	return `
 === WEBSITE FOUNDATIONS (5 available) ===
