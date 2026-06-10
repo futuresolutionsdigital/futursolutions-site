@@ -4,7 +4,7 @@
 > parent site) and the **sub-projects** (the five website template/demo systems).
 > Use this to recognize what is done, what remains, and where to point effort next.
 >
-> **Last updated:** June 9, 2026 (master polish pass — content, SEO infra, proof, industries)
+> **Last updated:** June 10, 2026 (establishment pass — identity, contact, brand, trust polish)
 > **Companion docs (do not duplicate — link out):**
 > - `docs/strategy-reference.md` — positioning, offers, copy/CTA/compliance rules
 > - `docs/site-audit.md` — master-site scorecard + diagnosis
@@ -50,9 +50,9 @@
 
 ## Part 1 — Master Project (FutureSolutions Parent Site)
 
-**One-line status:** Strategically, visually, and structurally strong; **content + SEO infrastructure now in place.** Remaining gap to launch is **integrations only** (GHL lead delivery, analytics, prod env vars) + real legal/business facts.
+**One-line status:** Strategically, visually, and structurally strong; **content, SEO, trust, and identity infrastructure now in place.** Remaining gap to launch is **integrations only** (GHL lead delivery, analytics, prod env vars).
 
-**Overall launch readiness: ~80%** (non-integration polish complete). The remaining gap is **integration, prod env, and a counsel/business-facts pass** — not design, content, or structure.
+**Overall launch readiness: ~88%** (all non-integration polish complete). Real business identity (Future Solutions Digital LLC, California), contact surface, and brand mark are now live. Remaining gap is **integration + prod env** — not design, content, structure, or trust.
 
 ### Master scorecard
 
@@ -60,10 +60,11 @@
 |---|---|---|---|
 | Strategic alignment | 5/5 | ✅ | Done — pricing philosophy + Foundation-vs-Custom article shipped |
 | Visual design | 4.5/5 | ✅ | Optional: real photography/mockups, subtle motion |
-| Content structure | 5/5 | ✅ | Done — About, 5 industry pages, 3 published articles, FAQs everywhere |
+| Content structure | 5/5 | ✅ | Done — About, 5 industry pages, 3 published articles, FAQs everywhere + homepage FAQ |
 | Operational readiness | 3.5/5 | 🟡 | Form submits w/ validation + honeypot; **GHL/email delivery deferred** |
-| Legal / compliance | 4/5 | 🟡 | Pages live; needs real entity/jurisdiction + counsel review |
-| SEO readiness | 4.5/5 | ✅ | robots, sitemap, canonicals, OG image, Twitter cards, JSON-LD schema done |
+| Legal / compliance | 4.5/5 | ✅ | Real entity (Future Solutions Digital LLC) + CA jurisdiction; optional counsel review |
+| SEO readiness | 4.5/5 | ✅ | robots, sitemap, canonicals, OG image, Twitter cards, JSON-LD (+ Org legalName/address/contactPoint) |
+| Trust / identity | 4.5/5 | ✅ | Contact page, footer contact block, brand favicon, studio identity, consistent SLA |
 | Accessibility | 4/5 | 🟡 | Strong; full WCAG 2.2 sweep of new routes recommended |
 
 ### Master — what's DONE ✅
@@ -72,7 +73,12 @@
 - Homepage hero, system map, industry ticker, demo preview, process, proof strip + **honest ClientProof section** (live-demo proof, engagement guarantees, testimonial scaffold)
 - Services page with decision-first architecture + 3 service detail pages + **pricing philosophy + FAQ**
 - Backend/Growth Systems page + SEO page — now with **FAQ + related services parity** with service detail pages
-- **About page** (`/about`) with founder/team placeholders + nav/footer wiring
+- **About page** (`/about`) with studio identity (Future Solutions Digital LLC, California) + nav/footer wiring
+- **Contact page** (`/contact`) — email, region, response SLA, audit path; footer contact block on every page
+- **Real business identity** — legal entity + California jurisdiction in legal pages, footer copyright, and Organization schema (legalName/address/contactPoint)
+- **Brand favicon/logomark** (diamond-in-square) replacing default Astro icon
+- **Homepage FAQ** (6 company-level Q&As) + FAQPage schema
+- **Consistency pass** — audit SLA standardized to 2 business days, unified "Get a Website Audit" CTA vocabulary, hero kicker reframed as demo, removed generator meta tell
 - **Industries** hub + 5 detail pages (`/industries/[slug]`: med spas, solo, wellness/functional, hormone/TRT, associations) tied to live demos + nav entry
 - **Resources**: 3 published articles + `resources/[slug]` route + roadmap reframed as "what's coming next"
 - **SEO infra**: robots.txt, `@astrojs/sitemap`, production canonicals, OG image (`/og/default.svg`), Twitter cards, JSON-LD (Organization, WebSite, Service, FAQPage, BreadcrumbList, Article)

@@ -1,15 +1,32 @@
 export const SITE_URL = 'https://futursolutions.io';
 export const ORG_NAME = 'FutureSolutions';
 
+export const ORG_LEGAL_NAME = 'Future Solutions Digital LLC';
+export const ORG_EMAIL = 'admin@futuresolutions.io';
+
 export const organizationSchema = {
 	'@context': 'https://schema.org',
 	'@type': 'Organization',
 	name: ORG_NAME,
+	legalName: ORG_LEGAL_NAME,
 	url: SITE_URL,
 	logo: `${SITE_URL}/favicon.svg`,
+	email: ORG_EMAIL,
 	description:
 		'Premium websites, customizable Website Foundations, and CRM-connected Growth Systems for clinics, wellness brands, associations, and high-trust service businesses.',
+	address: {
+		'@type': 'PostalAddress',
+		addressRegion: 'CA',
+		addressCountry: 'US',
+	},
 	areaServed: 'US',
+	contactPoint: {
+		'@type': 'ContactPoint',
+		contactType: 'sales',
+		email: ORG_EMAIL,
+		areaServed: 'US',
+		availableLanguage: 'English',
+	},
 	knowsAbout: [
 		'Healthcare website design',
 		'Medical practice marketing',

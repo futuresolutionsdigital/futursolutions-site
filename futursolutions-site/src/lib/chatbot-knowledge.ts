@@ -88,7 +88,7 @@ ${buildResourcesBlock()}
 /demos/{slug} — Live demo sites (med-spa, solo-practice, association, premium-wellness-clinic, hormone-trt)
 
 === WEBSITE AND SYSTEMS AUDIT ===
-The audit is free, takes ~5 business days, and is NOT a sales pitch. It reviews:
+The audit is free, takes ~2 business days, and is NOT a sales pitch. It reviews:
 - First-impression trust
 - Service clarity and structure
 - Booking/conversion path

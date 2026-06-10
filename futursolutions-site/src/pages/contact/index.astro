@@ -1,0 +1,225 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { breadcrumbSchema } from '../../data/schema';
+
+const pageTitle = 'Contact | FutureSolutions';
+const pageDescription =
+	'Get in touch with FutureSolutions. Email us directly, request a free Website and Systems Audit, or learn how we work with healthcare and high-trust businesses.';
+const canonicalUrl = 'https://futursolutions.io/contact/';
+
+const channels = [
+	{
+		label: 'Email',
+		value: 'admin@futuresolutions.io',
+		href: 'mailto:admin@futuresolutions.io',
+		note: 'The fastest way to reach a real person. We read every message.',
+	},
+	{
+		label: 'Free audit',
+		value: 'Request a Website & Systems Audit',
+		href: '/audit',
+		note: 'The best starting point — a structured review with a clear recommendation.',
+	},
+];
+
+const facts = [
+	{ label: 'Based in', value: 'California, USA' },
+	{ label: 'Working with', value: 'Clients across the United States' },
+	{ label: 'Typical reply', value: 'Within 2 business days' },
+	{ label: 'Best for', value: 'Healthcare & high-trust service businesses' },
+];
+
+const pageSchema = [
+	breadcrumbSchema([
+		{ name: 'Home', path: '/' },
+		{ name: 'Contact', path: '/contact' },
+	]),
+];
+---
+
+<BaseLayout
+	title={pageTitle}
+	description={pageDescription}
+	canonicalUrl={canonicalUrl}
+	ogTitle={pageTitle}
+	ogDescription={pageDescription}
+	ogUrl={canonicalUrl}
+	schema={pageSchema}
+>
+	<section class="section contact-hero" aria-labelledby="contact-heading">
+		<div class="site-container contact-hero__inner">
+			<p class="eyebrow">Contact</p>
+			<h1 id="contact-heading">Let's talk about your website.</h1>
+			<p class="lead">
+				Whether you have a specific project in mind or just want a clear read on your current site,
+				we'd be glad to hear from you. There's no pressure and no obligation — just a straight answer.
+			</p>
+		</div>
+	</section>
+
+	<section class="section contact-main" aria-labelledby="contact-main-heading">
+		<div class="site-container contact-main__inner">
+			<div class="contact-channels">
+				<h2 id="contact-main-heading" class="contact-channels__heading">Ways to reach us</h2>
+				{channels.map((channel) => (
+					<a class="card contact-channel" href={channel.href}>
+						<span class="contact-channel__label">{channel.label}</span>
+						<span class="contact-channel__value">{channel.value}</span>
+						<span class="contact-channel__note">{channel.note}</span>
+					</a>
+				))}
+				<p class="contact-channels__reassurance">
+					Prefer to see the work first? Every site in our <a href="/templates">live demo library</a> is a
+					real, clickable build — explore it any time, no form required.
+				</p>
+			</div>
+
+			<aside class="contact-facts" aria-label="How we work">
+				<p class="contact-facts__label">At a glance</p>
+				<dl class="contact-facts__list">
+					{facts.map((fact) => (
+						<div class="contact-facts__row">
+							<dt>{fact.label}</dt>
+							<dd>{fact.value}</dd>
+						</div>
+					))}
+				</dl>
+				<a class="button button-primary contact-facts__cta" href="/audit">Get a Website Audit</a>
+			</aside>
+		</div>
+	</section>
+</BaseLayout>
+
+<style>
+	.contact-hero {
+		position: relative;
+		overflow: hidden;
+		padding-block: clamp(4.5rem, 8vw, 7rem) clamp(2rem, 4vw, 3rem);
+	}
+	.contact-hero::before {
+		position: absolute;
+		inset: 0;
+		z-index: -1;
+		content: '';
+		background:
+			radial-gradient(circle at 80% 14%, color-mix(in srgb, var(--color-accent) 14%, transparent), transparent 32%),
+			linear-gradient(180deg, var(--color-white) 0%, var(--color-bg) 72%);
+	}
+	.contact-hero__inner {
+		max-width: 720px;
+	}
+	.contact-hero h1 {
+		margin-block: 0.4rem 1rem;
+	}
+	.contact-hero .lead {
+		max-width: 58ch;
+	}
+
+	.contact-main__inner {
+		display: grid;
+		grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.8fr);
+		gap: clamp(2rem, 5vw, 3.5rem);
+		align-items: start;
+	}
+
+	.contact-channels__heading {
+		font-size: 1.05rem;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		color: var(--color-muted);
+		margin-bottom: 1.25rem;
+	}
+	.contact-channel {
+		display: grid;
+		gap: 0.35rem;
+		padding: 1.5rem;
+		margin-bottom: 1rem;
+		transition: transform var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base);
+	}
+	.contact-channel:hover {
+		transform: translateY(-2px);
+		border-color: color-mix(in srgb, var(--color-accent) 32%, var(--color-border));
+		box-shadow: 0 20px 48px rgba(15, 23, 42, 0.06);
+	}
+	.contact-channel__label {
+		color: var(--color-accent-dark);
+		font-size: 0.72rem;
+		font-weight: 800;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+	}
+	.contact-channel__value {
+		color: var(--color-text);
+		font-size: 1.15rem;
+		font-weight: 800;
+		letter-spacing: -0.02em;
+	}
+	.contact-channel__note {
+		color: var(--color-muted);
+		font-size: 0.9rem;
+		line-height: 1.5;
+	}
+	.contact-channels__reassurance {
+		margin: 0.75rem 0 0 0;
+		color: var(--color-muted);
+		font-size: 0.92rem;
+		line-height: 1.6;
+	}
+	.contact-channels__reassurance a {
+		color: var(--color-accent-dark);
+		font-weight: 700;
+	}
+
+	.contact-facts {
+		padding: 1.75rem;
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		background: var(--color-bg-secondary);
+	}
+	.contact-facts__label {
+		margin: 0 0 1.1rem 0;
+		color: var(--color-accent-dark);
+		font-size: 0.74rem;
+		font-weight: 800;
+		letter-spacing: 0.14em;
+		text-transform: uppercase;
+	}
+	.contact-facts__list {
+		display: grid;
+		gap: 1rem;
+		margin: 0 0 1.5rem 0;
+	}
+	.contact-facts__row {
+		display: grid;
+		gap: 0.15rem;
+		padding-bottom: 1rem;
+		border-bottom: 1px solid var(--color-border-soft);
+	}
+	.contact-facts__row:last-child {
+		padding-bottom: 0;
+		border-bottom: none;
+	}
+	.contact-facts__row dt {
+		color: var(--color-muted-soft);
+		font-size: 0.72rem;
+		font-weight: 800;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+	}
+	.contact-facts__row dd {
+		margin: 0;
+		color: var(--color-text);
+		font-size: 0.96rem;
+		font-weight: 600;
+	}
+	.contact-facts__cta {
+		width: 100%;
+		justify-content: center;
+	}
+
+	@media (max-width: 860px) {
+		.contact-main__inner {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

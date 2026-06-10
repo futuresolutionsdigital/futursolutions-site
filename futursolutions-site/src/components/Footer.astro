@@ -27,7 +27,7 @@ const footerColumns = [
 			{ label: 'About', href: '/about' },
 			{ label: 'Industries', href: '/industries' },
 			{ label: 'Resources', href: '/resources' },
-			{ label: 'Local Visibility', href: '/seo' },
+			{ label: 'Contact', href: '/contact' },
 			{ label: 'Get a Website Audit', href: '/audit' },
 		],
 	},
@@ -40,6 +40,16 @@ const footerColumns = [
 			<div class="site-footer__company">
 				<a class="site-footer__brand" href="/">FutureSolutions</a>
 				<p>Premium web design and growth systems for clinics, associations, and high-trust service businesses.</p>
+				<ul class="site-footer__contact">
+					<li>
+						<span class="site-footer__contact-label">Email</span>
+						<a href="mailto:admin@futuresolutions.io">admin@futuresolutions.io</a>
+					</li>
+					<li>
+						<span class="site-footer__contact-label">Based in</span>
+						<span>California, USA · Serving the US</span>
+					</li>
+				</ul>
 			</div>
 
 			{footerColumns.map((column) => (
@@ -57,7 +67,7 @@ const footerColumns = [
 		</div>
 
 		<div class="site-footer__bottom">
-			<p>&copy; {new Date().getFullYear()} FutureSolutions. All rights reserved.</p>
+			<p>&copy; {new Date().getFullYear()} Future Solutions Digital LLC. All rights reserved.</p>
 			<nav class="site-footer__legal" aria-label="Legal links">
 				<a href="/privacy">Privacy Policy</a>
 				<a href="/terms">Terms of Service</a>
@@ -92,6 +102,37 @@ const footerColumns = [
 		max-width: 360px;
 		font-size: 0.9375rem;
 		line-height: 1.55;
+	}
+
+	.site-footer__contact {
+		display: grid;
+		gap: 0.6rem;
+		margin: 1.25rem 0 0 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.site-footer__contact li {
+		display: grid;
+		gap: 0.1rem;
+		font-size: 0.9rem;
+	}
+
+	.site-footer__contact-label {
+		color: var(--color-muted-soft);
+		font-size: 0.72rem;
+		font-weight: 800;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+	}
+
+	.site-footer__contact a {
+		color: var(--color-text);
+		font-weight: 600;
+	}
+
+	.site-footer__contact a:hover {
+		color: var(--color-accent-dark);
 	}
 
 	.site-footer__column h2 {
