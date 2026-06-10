@@ -133,6 +133,18 @@ const newDemoSlugs = new Set(['premium-wellness-clinic', 'hormone-trt']);
 								</div>
 								<h3 class="demo-card__title">{template.name}</h3>
 								<p class="demo-card__desc">{template.shortDescription}</p>
+								{template.atAGlance && (
+									<dl class="demo-card__facts">
+										<div class="demo-card__fact">
+											<dt>Goal</dt>
+											<dd>{template.atAGlance.primaryGoal}</dd>
+										</div>
+										<div class="demo-card__fact">
+											<dt>Best fit</dt>
+											<dd>{template.atAGlance.bestFor}</dd>
+										</div>
+									</dl>
+								)}
 								<ul class="demo-card__tags" aria-label={`${template.name} feature tags`}>
 									{template.features.slice(0, 3).map((feature) => (
 										<li>{feature}</li>
@@ -529,6 +541,39 @@ const newDemoSlugs = new Set(['premium-wellness-clinic', 'hormone-trt']);
 		color: var(--color-muted);
 		font-size: 0.93rem;
 		line-height: 1.55;
+	}
+
+	.demo-card__facts {
+		display: grid;
+		gap: 0.5rem;
+		margin: 0.5rem 0 0 0;
+		padding: 0.75rem 0.85rem;
+		border: 1px solid var(--color-border-soft);
+		border-radius: var(--radius-sm);
+		background: var(--color-bg);
+	}
+
+	.demo-card__fact {
+		display: grid;
+		grid-template-columns: 4.5rem 1fr;
+		gap: 0.55rem;
+		align-items: start;
+	}
+
+	.demo-card__fact dt {
+		color: var(--demo-ink, var(--color-muted));
+		font-size: 0.66rem;
+		font-weight: 800;
+		letter-spacing: 0.1em;
+		line-height: 1.45;
+		text-transform: uppercase;
+	}
+
+	.demo-card__fact dd {
+		margin: 0;
+		color: var(--color-text);
+		font-size: 0.83rem;
+		line-height: 1.45;
 	}
 
 	.demo-card__tags {

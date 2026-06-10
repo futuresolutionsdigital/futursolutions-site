@@ -11,12 +11,21 @@ const stages = [
 	},
 	{
 		lane: 'custom',
+		icon: 'page',
+		stage: 'Understands the offer',
+		question: 'Do they solve my problem?',
+		text: 'Clear services, framed around outcomes, tell them they are in the right place within seconds.',
+		leak: "Services buried or vague — they can't tell what you do.",
+		system: 'Service clarity',
+	},
+	{
+		lane: 'custom',
 		icon: 'shield',
 		stage: 'Trusts you',
 		question: 'Can I trust them?',
-		text: 'Premium design, clear services, and real proof earn confidence in the first few seconds.',
-		leak: 'Dated or confusing — they bounce in seconds.',
-		system: 'Website design',
+		text: 'Premium design, credentials, and real proof earn confidence before they commit.',
+		leak: 'Dated or thin proof — they quietly bounce.',
+		system: 'Trust + proof',
 	},
 	{
 		lane: 'audit',
@@ -64,6 +73,11 @@ const stages = [
 							{s.icon === 'search' && (
 								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
 									<circle cx="11" cy="11" r="7" /><path d="M16 16l5 5" />
+								</svg>
+							)}
+							{s.icon === 'page' && (
+								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+									<path d="M6 3h8l4 4v14H6z" /><path d="M14 3v4h4M9 13h6M9 17h6" />
 								</svg>
 							)}
 							{s.icon === 'shield' && (
@@ -165,8 +179,8 @@ const stages = [
 	.journey__track {
 		position: relative;
 		display: grid;
-		grid-template-columns: repeat(5, minmax(0, 1fr));
-		gap: 1rem;
+		grid-template-columns: repeat(6, minmax(0, 1fr));
+		gap: 0.85rem;
 		margin: 0;
 		padding: 0;
 		list-style: none;
@@ -176,8 +190,8 @@ const stages = [
 		position: relative;
 		display: flex;
 		flex-direction: column;
-		gap: 0.7rem;
-		padding: 1.6rem 1.35rem;
+		gap: 0.6rem;
+		padding: 1.35rem 1.1rem;
 		border: 1px solid var(--color-ink-line-strong);
 		border-radius: var(--radius-lg);
 		background: var(--color-ink-soft);
@@ -219,9 +233,10 @@ const stages = [
 		animation: journeyFlow 2.4s linear infinite;
 	}
 
-	.journey__node:nth-child(2) .journey__connector span { animation-delay: 0.5s; }
-	.journey__node:nth-child(3) .journey__connector span { animation-delay: 1s; }
-	.journey__node:nth-child(4) .journey__connector span { animation-delay: 1.5s; }
+	.journey__node:nth-child(2) .journey__connector span { animation-delay: 0.4s; }
+	.journey__node:nth-child(3) .journey__connector span { animation-delay: 0.8s; }
+	.journey__node:nth-child(4) .journey__connector span { animation-delay: 1.2s; }
+	.journey__node:nth-child(5) .journey__connector span { animation-delay: 1.6s; }
 
 	@keyframes journeyFlow {
 		0% { transform: translateX(-100%); }
@@ -395,15 +410,10 @@ const stages = [
 		transform: translateX(3px);
 	}
 
-	@media (max-width: 1100px) {
-		.journey__head {
-			grid-template-columns: 1fr;
-			align-items: start;
-		}
-
+	@media (max-width: 1280px) {
 		.journey__track {
-			grid-template-columns: repeat(2, minmax(0, 1fr));
-			gap: 1.2rem;
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+			gap: 1rem;
 		}
 
 		.journey__connector {
@@ -411,7 +421,21 @@ const stages = [
 		}
 	}
 
-	@media (max-width: 560px) {
+	@media (max-width: 1100px) {
+		.journey__head {
+			grid-template-columns: 1fr;
+			align-items: start;
+		}
+	}
+
+	@media (max-width: 760px) {
+		.journey__track {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			gap: 1rem;
+		}
+	}
+
+	@media (max-width: 520px) {
 		.journey__track {
 			grid-template-columns: 1fr;
 		}
