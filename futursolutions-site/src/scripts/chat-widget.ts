@@ -82,7 +82,7 @@ function initChatWidget(widget: HTMLElement) {
 				messages.forEach((m) => renderMessage(m.role, m.content));
 			} else {
 				renderMessage('assistant', greeting);
-				renderQuickReplies();
+				showNextSuggestions(4);
 			}
 		}
 		window.setTimeout(() => input.focus(), 60);
@@ -114,17 +114,28 @@ function initChatWidget(widget: HTMLElement) {
 		muteBtn.setAttribute('aria-label', muted ? 'Unmute notification sound' : 'Mute notification sound');
 	});
 
-	/* ── Quick replies ─────────────────────────────── */
-	function renderQuickReplies() {
-		if (!quickReplies.length) return;
+	/* ── Quick replies (revealed in batches for depth) ─ */
+	let suggestionIndex = 0;
+
+	function showNextSuggestions(count: number) {
+		if (suggestionIndex >= quickReplies.length) {
+			clearSuggestions();
+			return;
+		}
+		const batch = quickReplies.slice(suggestionIndex, suggestionIndex + count);
+		suggestionIndex += batch.length;
+		if (!batch.length) {
+			clearSuggestions();
+			return;
+		}
 		quickEl.innerHTML = '';
-		quickReplies.forEach((q) => {
+		batch.forEach((q) => {
 			const chip = document.createElement('button');
 			chip.type = 'button';
 			chip.className = 'chat-widget__quick-chip';
 			chip.textContent = q;
 			chip.addEventListener('click', () => {
-				clearQuickReplies();
+				clearSuggestions();
 				sendMessage(q);
 			});
 			quickEl.appendChild(chip);
@@ -132,7 +143,7 @@ function initChatWidget(widget: HTMLElement) {
 		quickEl.hidden = false;
 	}
 
-	function clearQuickReplies() {
+	function clearSuggestions() {
 		quickEl.innerHTML = '';
 		quickEl.hidden = true;
 	}
@@ -173,26 +184,76 @@ function initChatWidget(widget: HTMLElement) {
 			.replace(/\b\w/g, (c) => c.toUpperCase());
 	}
 
-	function formatContent(raw: string): string {
-		let html = escapeHtml(raw);
+	const ROUTE_SRC =
+		'\\/(?:audit|templates|services|resources|seo|backend|demos|contact|about|industries)(?:\\/[a-z0-9-]+)*(?:\\?[a-z0-9=&-]+)?';
+	const inlineRoute = new RegExp(`(${ROUTE_SRC})`, 'gi');
+	const standaloneRoute = new RegExp(`^(${ROUTE_SRC})[.!]?$`, 'i');
 
-		// Internal route paths → clean labeled link pills.
+	function linkSub(path: string): string {
+		const clean = path.split('?')[0];
+		const map: Record<string, string> = {
+			'/audit': 'Free, no-obligation review of your site & systems',
+			'/templates': 'Explore every live demo build',
+			'/services': 'See all the ways we can help',
+			'/services/growth-systems': 'Website + CRM, forms, follow-up & reporting',
+			'/services/custom-healthcare-websites': 'A premium, fully custom build',
+			'/services/local-visibility': 'Get found in local search',
+			'/services/template-setup': 'Launch on a strategic Foundation',
+			'/services/ongoing-optimization': 'Care, updates & ongoing improvements',
+			'/resources': 'Guides on websites, trust & conversion',
+			'/contact': 'Get in touch with the team',
+			'/about': 'Who we are',
+		};
+		if (map[clean]) return map[clean];
+		const seg = clean.split('/').filter(Boolean);
+		if (seg[0] === 'templates') return 'Explore the live demo & details';
+		if (seg[0] === 'demos') return 'Open the live demo';
+		return 'Open page';
+	}
+
+	function cardIcon(path: string): string {
+		const seg = path.split('?')[0].split('/').filter(Boolean);
+		const a = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">';
+		if (seg[0] === 'audit') return `${a}<path d="M9 4h6a1 1 0 0 1 1 1v1h2a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h2V5a1 1 0 0 1 1-1z"/><path d="M9 13l2 2 4-4"/></svg>`;
+		if (seg[0] === 'templates' || seg[0] === 'demos') return `${a}<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/></svg>`;
+		if (seg[0] === 'services') return `${a}<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>`;
+		if (seg[0] === 'resources') return `${a}<path d="M4 5a2 2 0 0 1 2-2h12v16H6a2 2 0 0 0-2 2z"/><path d="M4 19a2 2 0 0 1 2-2h12"/></svg>`;
+		return `${a}<path d="M5 12h14M13 6l6 6-6 6"/></svg>`;
+	}
+
+	function renderCard(path: string): string {
+		return `<a class="chat-msg__card" href="${path}"><span class="chat-msg__card-icon" aria-hidden="true">${cardIcon(path)}</span><span class="chat-msg__card-text"><span class="chat-msg__card-title">${escapeHtml(linkLabel(path))}</span><span class="chat-msg__card-sub">${escapeHtml(linkSub(path))}</span></span><span class="chat-msg__card-arrow" aria-hidden="true">→</span></a>`;
+	}
+
+	function formatBlock(block: string): string {
+		let html = escapeHtml(block);
 		html = html.replace(
-			/(\/(?:audit|templates|services|resources|seo|backend|demos|contact|about|industries)(?:\/[a-z0-9-]+)*(?:\?[a-z0-9=&-]+)?)/gi,
+			inlineRoute,
 			(m) => `<a href="${m}" class="chat-msg__link">${escapeHtml(linkLabel(m))}</a>`,
 		);
-
 		html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
-		html = html.replace(/^[-•]\s+(.+)$/gm, '<li>$1</li>');
-		html = html.replace(/(<li>.*<\/li>\n?)+/g, '<ul>$&</ul>');
 
-		html = html
+		if (/^[-•]\s+/m.test(html)) {
+			const items = html
+				.split('\n')
+				.map((l) => l.replace(/^[-•]\s+(.+)$/, '<li>$1</li>'))
+				.join('');
+			return `<ul>${items}</ul>`;
+		}
+
+		return `<p>${html.replace(/\n/g, '<br>')}</p>`;
+	}
+
+	function formatContent(raw: string): string {
+		return raw
 			.split('\n\n')
-			.filter((p) => p.trim())
-			.map((p) => (p.includes('<ul>') || p.includes('<li>') ? p : `<p>${p}</p>`))
+			.map((p) => p.trim())
+			.filter(Boolean)
+			.map((block) => {
+				const single = block.match(standaloneRoute);
+				return single ? renderCard(single[1]) : formatBlock(block);
+			})
 			.join('');
-
-		return html;
 	}
 
 	function renderMessage(role: Message['role'], content: string, el?: HTMLElement) {
@@ -300,6 +361,7 @@ function initChatWidget(widget: HTMLElement) {
 				renderMessage('assistant', fullResponse, streamBubble);
 				messages.push({ role: 'assistant', content: fullResponse });
 				saveMessages();
+				showNextSuggestions(3);
 			}
 		} catch {
 			streamBubble.classList.remove('chat-msg--streaming');
@@ -315,7 +377,7 @@ function initChatWidget(widget: HTMLElement) {
 		const text = input.value.trim();
 		if (!text || isStreaming) return;
 		input.value = '';
-		clearQuickReplies();
+		clearSuggestions();
 		sendMessage(text);
 	});
 
