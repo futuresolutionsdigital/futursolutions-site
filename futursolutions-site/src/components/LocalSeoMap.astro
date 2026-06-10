@@ -1,0 +1,325 @@
+---
+const pack = [
+	{ name: 'Your Practice', rating: '4.9', reviews: '128', you: true },
+	{ name: 'Nearby Clinic', rating: '4.4', reviews: '61', you: false },
+	{ name: 'Across Town Health', rating: '4.2', reviews: '39', you: false },
+];
+---
+
+<section class="seomap" aria-labelledby="seomap-heading">
+	<div class="site-container site-container--wide seomap__inner">
+		<div class="seomap__intro">
+			<p class="eyebrow">Local visibility</p>
+			<h2 id="seomap-heading">Be the obvious choice in your area.</h2>
+			<p class="lead">
+				When someone nearby searches for your service, you want to be the practice they see, trust, and tap first. We structure your site and local signals so you show up where decisions happen — the map and the local pack.
+			</p>
+			<ul class="seomap__points">
+				<li><span aria-hidden="true"></span> Service + location pages search engines understand</li>
+				<li><span aria-hidden="true"></span> Google Business Profile aligned with your site</li>
+				<li><span aria-hidden="true"></span> Reviews and trust signals working for you</li>
+			</ul>
+		</div>
+
+		<div class="seomap__visual">
+			<!-- Stylized map -->
+			<div class="seomap__map" aria-hidden="true">
+				<svg viewBox="0 0 320 260" class="seomap__map-svg" preserveAspectRatio="xMidYMid slice">
+					<!-- abstract streets -->
+					<g class="seomap__streets">
+						<path d="M-10 60 H330" /><path d="M-10 130 H330" /><path d="M-10 200 H330" />
+						<path d="M70 -10 V270" /><path d="M170 -10 V270" /><path d="M250 -10 V270" />
+						<path d="M-10 30 L120 270" /><path d="M330 40 L150 270" />
+					</g>
+					<!-- reach rings -->
+					<circle class="seomap__ring seomap__ring--3" cx="170" cy="130" r="96" />
+					<circle class="seomap__ring seomap__ring--2" cx="170" cy="130" r="64" />
+					<circle class="seomap__ring seomap__ring--1" cx="170" cy="130" r="34" />
+					<!-- competitor pins -->
+					<circle class="seomap__dot" cx="80" cy="70" r="5" />
+					<circle class="seomap__dot" cx="255" cy="90" r="5" />
+					<circle class="seomap__dot" cx="235" cy="195" r="5" />
+					<circle class="seomap__dot" cx="95" cy="200" r="5" />
+				</svg>
+				<!-- your pin -->
+				<span class="seomap__pin">
+					<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C7.6 2 4 5.6 4 10c0 5.4 7 11.5 7.3 11.7.4.4 1 .4 1.4 0C13 21.5 20 15.4 20 10c0-4.4-3.6-8-8-8zm0 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" /></svg>
+					<span class="seomap__pin-label">You</span>
+				</span>
+			</div>
+
+			<!-- Local pack mock -->
+			<div class="seomap__pack" role="img" aria-label="Illustrative local search results with your practice ranked first">
+				<div class="seomap__pack-head">
+					<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7" /><path d="M16 16l5 5" /></svg>
+					<span>“best [your service] near me”</span>
+				</div>
+				<ul class="seomap__pack-list">
+					{pack.map((item, i) => (
+						<li class={`seomap__pack-item${item.you ? ' seomap__pack-item--you' : ''}`}>
+							<span class="seomap__pack-rank">{i + 1}</span>
+							<span class="seomap__pack-body">
+								<span class="seomap__pack-name">{item.name}{item.you && <span class="seomap__pack-tag">You</span>}</span>
+								<span class="seomap__pack-meta">
+									<span class="seomap__pack-stars" aria-hidden="true">★★★★★</span>
+									{item.rating} · {item.reviews} reviews
+								</span>
+							</span>
+						</li>
+					))}
+				</ul>
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.seomap {
+		padding-block: var(--section-spacing);
+		background: var(--color-white);
+		border-block: 1px solid var(--color-border);
+	}
+
+	.seomap__inner {
+		display: grid;
+		grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+		align-items: center;
+		gap: clamp(2rem, 5vw, 4rem);
+	}
+
+	.seomap__intro {
+		max-width: 34rem;
+	}
+
+	.seomap__points {
+		display: grid;
+		gap: 0.7rem;
+		margin: 1.5rem 0 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.seomap__points li {
+		display: flex;
+		align-items: flex-start;
+		gap: 0.65rem;
+		color: var(--color-text);
+		font-size: 0.96rem;
+		font-weight: 600;
+		line-height: 1.5;
+	}
+
+	.seomap__points li span {
+		width: 1.1rem;
+		height: 1.1rem;
+		margin-top: 0.15rem;
+		flex-shrink: 0;
+		border-radius: 999px;
+		background: var(--lane-foundation-tint);
+		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none' stroke='%233F6764' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='2,6 5,9 10,3'/%3E%3C/svg%3E");
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: 0.7rem;
+	}
+
+	.seomap__visual {
+		display: grid;
+		grid-template-columns: 1.1fr 1fr;
+		gap: 1rem;
+		align-items: stretch;
+	}
+
+	/* Map */
+	.seomap__map {
+		position: relative;
+		aspect-ratio: 4 / 3.2;
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		overflow: hidden;
+		background: linear-gradient(160deg, var(--lane-foundation-tint), var(--color-bg));
+		box-shadow: var(--shadow-card);
+	}
+
+	.seomap__map-svg {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+	}
+
+	.seomap__streets path {
+		fill: none;
+		stroke: color-mix(in srgb, var(--lane-foundation) 22%, var(--color-white));
+		stroke-width: 6;
+		stroke-linecap: round;
+		opacity: 0.7;
+	}
+
+	.seomap__ring {
+		fill: none;
+		stroke: var(--lane-foundation);
+		stroke-width: 1.5;
+		opacity: 0.4;
+	}
+
+	.seomap__ring--1 { fill: color-mix(in srgb, var(--lane-foundation) 14%, transparent); }
+	.seomap__ring--2 { stroke-dasharray: 4 5; }
+	.seomap__ring--3 { stroke-dasharray: 2 6; opacity: 0.3; }
+
+	.seomap__dot {
+		fill: var(--color-white);
+		stroke: var(--color-muted-soft);
+		stroke-width: 2;
+	}
+
+	.seomap__pin {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -84%);
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		color: var(--lane-foundation);
+		filter: drop-shadow(0 8px 12px rgba(63, 103, 100, 0.35));
+	}
+
+	.seomap__pin svg {
+		width: 2.4rem;
+		height: 2.4rem;
+	}
+
+	.seomap__pin-label {
+		margin-top: -0.2rem;
+		padding: 0.1rem 0.5rem;
+		border-radius: 999px;
+		background: var(--color-text);
+		color: var(--color-white);
+		font-size: 0.62rem;
+		font-weight: 800;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+	}
+
+	/* Local pack */
+	.seomap__pack {
+		display: flex;
+		flex-direction: column;
+		gap: 0.6rem;
+		padding: 1rem;
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		background: var(--color-white);
+		box-shadow: var(--shadow-card);
+	}
+
+	.seomap__pack-head {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		padding: 0.5rem 0.65rem;
+		border: 1px solid var(--color-border-soft);
+		border-radius: 999px;
+		background: var(--color-bg);
+		color: var(--color-muted);
+		font-size: 0.8rem;
+		font-weight: 600;
+	}
+
+	.seomap__pack-head svg {
+		width: 0.95rem;
+		height: 0.95rem;
+		flex-shrink: 0;
+	}
+
+	.seomap__pack-list {
+		display: grid;
+		gap: 0.45rem;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.seomap__pack-item {
+		display: grid;
+		grid-template-columns: 1.5rem 1fr;
+		gap: 0.6rem;
+		align-items: center;
+		padding: 0.6rem 0.7rem;
+		border: 1px solid var(--color-border-soft);
+		border-radius: var(--radius-sm);
+		background: var(--color-white);
+	}
+
+	.seomap__pack-item--you {
+		border-color: color-mix(in srgb, var(--lane-foundation) 45%, var(--color-border));
+		background: var(--lane-foundation-tint);
+		box-shadow: 0 8px 20px rgba(63, 103, 100, 0.12);
+	}
+
+	.seomap__pack-rank {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 1.5rem;
+		height: 1.5rem;
+		border-radius: 999px;
+		background: var(--color-bg-secondary);
+		color: var(--color-muted);
+		font-size: 0.78rem;
+		font-weight: 800;
+	}
+
+	.seomap__pack-item--you .seomap__pack-rank {
+		background: var(--lane-foundation);
+		color: var(--color-white);
+	}
+
+	.seomap__pack-name {
+		display: flex;
+		align-items: center;
+		gap: 0.4rem;
+		color: var(--color-text);
+		font-size: 0.9rem;
+		font-weight: 700;
+		letter-spacing: -0.01em;
+	}
+
+	.seomap__pack-tag {
+		padding: 0.08rem 0.4rem;
+		border-radius: 999px;
+		background: var(--lane-foundation);
+		color: var(--color-white);
+		font-size: 0.58rem;
+		font-weight: 800;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+	}
+
+	.seomap__pack-meta {
+		display: flex;
+		align-items: center;
+		gap: 0.4rem;
+		margin-top: 0.1rem;
+		color: var(--color-muted);
+		font-size: 0.76rem;
+		font-weight: 600;
+	}
+
+	.seomap__pack-stars {
+		color: var(--lane-audit);
+		letter-spacing: -0.05em;
+	}
+
+	@media (max-width: 920px) {
+		.seomap__inner {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.seomap__visual {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

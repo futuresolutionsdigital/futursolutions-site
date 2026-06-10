@@ -1,0 +1,246 @@
+---
+const nodes = [
+	{ key: 'forms', label: 'Forms', detail: 'Every inquiry captured', pos: 'top' },
+	{ key: 'booking', label: 'Booking', detail: 'Consult requests routed', pos: 'right' },
+	{ key: 'crm', label: 'CRM', detail: 'Contacts organized', pos: 'bottom-right' },
+	{ key: 'followup', label: 'Follow-up', detail: 'Reminders & sequences', pos: 'bottom-left' },
+	{ key: 'pipeline', label: 'Pipeline', detail: 'Status on every lead', pos: 'left' },
+];
+---
+
+<section class="growth-diagram" aria-labelledby="growth-diagram-heading">
+	<div class="site-container site-container--wide">
+		<header class="growth-diagram__head">
+			<p class="eyebrow">Website system</p>
+			<h2 id="growth-diagram-heading">Your website is the front door. The Growth System is what happens next.</h2>
+			<p class="lead growth-diagram__lead">
+				Every piece connects — so when someone inquires, you know who they are, what they need, and what happens next. No inbox roulette.
+			</p>
+		</header>
+
+		<div class="growth-diagram__stage" role="img" aria-label="Diagram showing website connected to forms, booking, CRM, follow-up, and pipeline">
+			<svg class="growth-diagram__lines" viewBox="0 0 600 420" aria-hidden="true">
+				<line x1="300" y1="210" x2="300" y2="72" />
+				<line x1="300" y1="210" x2="468" y2="130" />
+				<line x1="300" y1="210" x2="420" y2="310" />
+				<line x1="300" y1="210" x2="180" y2="310" />
+				<line x1="300" y1="210" x2="132" y2="130" />
+			</svg>
+
+			<div class="growth-diagram__core">
+				<span class="growth-diagram__core-icon" aria-hidden="true">
+					<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+						<rect x="3" y="4" width="18" height="14" rx="2" /><path d="M8 21h8M12 18v3" />
+					</svg>
+				</span>
+				<span class="growth-diagram__core-label">Your website</span>
+				<span class="growth-diagram__core-sub">Where trust is built</span>
+			</div>
+
+			{nodes.map((node) => (
+				<div class={`growth-diagram__node growth-diagram__node--${node.pos}`}>
+					<span class="growth-diagram__node-label">{node.label}</span>
+					<span class="growth-diagram__node-detail">{node.detail}</span>
+				</div>
+			))}
+		</div>
+
+		<ol class="growth-diagram__flow" aria-label="Lead path from visit to pipeline">
+			<li><span>01</span> Visitor lands on a service page</li>
+			<li><span>02</span> Form or booking captures the inquiry</li>
+			<li><span>03</span> CRM record + follow-up kicks in</li>
+			<li><span>04</span> Pipeline shows status and next step</li>
+		</ol>
+	</div>
+</section>
+
+<style>
+	.growth-diagram {
+		padding-block: var(--section-spacing);
+		background: var(--color-white);
+		border-block: 1px solid var(--color-border);
+	}
+
+	.growth-diagram__head {
+		display: grid;
+		gap: 1.1rem;
+		max-width: 52rem;
+		margin: 0 0 clamp(2.5rem, 5vw, 3.5rem);
+	}
+
+	.growth-diagram__lead {
+		max-width: 48rem;
+	}
+
+	.growth-diagram__stage {
+		position: relative;
+		max-width: 38rem;
+		margin-inline: auto;
+		aspect-ratio: 6 / 4.2;
+		min-height: 18rem;
+	}
+
+	.growth-diagram__lines {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		pointer-events: none;
+	}
+
+	.growth-diagram__lines line {
+		stroke: color-mix(in srgb, var(--lane-growth) 35%, var(--color-border));
+		stroke-width: 2;
+		stroke-dasharray: 6 5;
+	}
+
+	.growth-diagram__core {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		display: grid;
+		justify-items: center;
+		gap: 0.25rem;
+		width: 9.5rem;
+		padding: 1.35rem 1rem;
+		border-radius: var(--radius-lg);
+		background: var(--color-ink);
+		color: var(--color-white);
+		border: 1px solid var(--color-ink-line-strong);
+		box-shadow: 0 2px 4px rgba(15, 23, 42, 0.08), 0 24px 48px rgba(15, 23, 42, 0.14);
+		z-index: 2;
+	}
+
+	.growth-diagram__core-icon {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 2.5rem;
+		height: 2.5rem;
+		border-radius: 10px;
+		background: rgba(255, 255, 255, 0.08);
+		color: var(--color-ink-accent);
+	}
+
+	.growth-diagram__core-icon svg {
+		width: 1.35rem;
+		height: 1.35rem;
+	}
+
+	.growth-diagram__core-label {
+		font-size: 1rem;
+		font-weight: 800;
+		letter-spacing: -0.02em;
+	}
+
+	.growth-diagram__core-sub {
+		color: var(--color-ink-muted);
+		font-size: 0.78rem;
+		font-weight: 600;
+	}
+
+	.growth-diagram__node {
+		position: absolute;
+		display: grid;
+		gap: 0.15rem;
+		width: 8.5rem;
+		padding: 0.85rem 0.9rem;
+		border: 1px solid color-mix(in srgb, var(--lane-growth) 28%, var(--color-border));
+		border-radius: var(--radius-md);
+		background: var(--lane-growth-tint);
+		box-shadow: var(--shadow-card);
+		transition: transform 320ms var(--ease-out-quart), box-shadow var(--transition-base);
+	}
+
+	.growth-diagram__node:hover {
+		transform: translateY(-3px);
+		box-shadow: var(--shadow-card-hover);
+	}
+
+	.growth-diagram__node--top { top: 0; left: 50%; transform: translateX(-50%); }
+	.growth-diagram__node--right { top: 22%; right: 0; }
+	.growth-diagram__node--bottom-right { bottom: 8%; right: 8%; }
+	.growth-diagram__node--bottom-left { bottom: 8%; left: 8%; }
+	.growth-diagram__node--left { top: 22%; left: 0; }
+
+	.growth-diagram__node--top:hover { transform: translateX(-50%) translateY(-3px); }
+
+	.growth-diagram__node-label {
+		color: var(--lane-growth-ink);
+		font-size: 0.88rem;
+		font-weight: 800;
+		letter-spacing: -0.01em;
+	}
+
+	.growth-diagram__node-detail {
+		color: var(--color-muted);
+		font-size: 0.78rem;
+		line-height: 1.4;
+	}
+
+	.growth-diagram__flow {
+		display: grid;
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+		gap: 0.75rem;
+		margin: clamp(2.5rem, 5vw, 3.5rem) 0 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.growth-diagram__flow li {
+		display: grid;
+		gap: 0.45rem;
+		padding: 1rem;
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-md);
+		background: var(--color-bg);
+		color: var(--color-text);
+		font-size: 0.88rem;
+		font-weight: 600;
+		line-height: 1.45;
+	}
+
+	.growth-diagram__flow li span {
+		color: var(--lane-growth-ink);
+		font-size: 0.72rem;
+		font-weight: 800;
+		letter-spacing: 0.12em;
+	}
+
+	@media (max-width: 760px) {
+		.growth-diagram__stage {
+			aspect-ratio: auto;
+			min-height: 28rem;
+		}
+
+		.growth-diagram__lines {
+			display: none;
+		}
+
+		.growth-diagram__core {
+			top: 42%;
+		}
+
+		.growth-diagram__node {
+			width: 7.5rem;
+			padding: 0.65rem 0.75rem;
+		}
+
+		.growth-diagram__node--top { top: 0; }
+		.growth-diagram__node--right { top: 14%; right: 0; }
+		.growth-diagram__node--left { top: 14%; left: 0; }
+		.growth-diagram__node--bottom-right { bottom: 0; right: 0; }
+		.growth-diagram__node--bottom-left { bottom: 0; left: 0; }
+
+		.growth-diagram__flow {
+			grid-template-columns: 1fr 1fr;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.growth-diagram__flow {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

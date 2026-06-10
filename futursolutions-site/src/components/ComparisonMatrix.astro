@@ -1,0 +1,287 @@
+---
+const rows = [
+	{ label: 'Starting investment', foundation: 'from $3,500', custom: 'from $12,000', emphasize: true },
+	{ label: 'Time to launch', foundation: 'Fastest — weeks', custom: 'Longer — strategy + design' },
+	{ label: 'Design', foundation: 'Healthcare Foundation, customized to your brand', custom: 'Fully bespoke, designed from scratch' },
+	{ label: 'Page structure', foundation: 'Proven structure, tailored to you', custom: 'Built around your exact service model' },
+	{ label: 'Content model', foundation: 'Standard healthcare pages', custom: 'Custom content architecture' },
+	{ label: 'Best when', foundation: 'You need credible + converting, fast', custom: 'Your brand or services are unique or complex' },
+];
+---
+
+<section class="matrix" aria-labelledby="matrix-heading">
+	<div class="site-container site-container--wide">
+		<header class="matrix__head">
+			<p class="eyebrow">Foundation vs Custom</p>
+			<h2 id="matrix-heading" class="display-lg">Two ways to get a premium site. Pick your starting point.</h2>
+			<p class="lead matrix__lead">
+				Both are built by us, for healthcare, and both convert. The difference is speed and how bespoke you need it. Add a Growth System and Care to either.
+			</p>
+		</header>
+
+		<div class="matrix__table" role="table" aria-label="Website Foundation compared with Signature Custom Website">
+			<div class="matrix__cols" role="row">
+				<span class="matrix__cols-spacer" role="columnheader"></span>
+				<span class="matrix__col matrix__col--foundation" role="columnheader">
+					<span class="matrix__col-tag">Most chosen</span>
+					<span class="matrix__col-name">Website Foundation</span>
+					<span class="matrix__col-price">from $3,500</span>
+					<a class="matrix__col-cta" href="/services/template-setup">Explore Foundations</a>
+				</span>
+				<span class="matrix__col matrix__col--custom" role="columnheader">
+					<span class="matrix__col-name">Signature Custom</span>
+					<span class="matrix__col-price">from $12,000</span>
+					<a class="matrix__col-cta matrix__col-cta--ghost" href="/services/custom-healthcare-websites">Explore Custom</a>
+				</span>
+			</div>
+
+			{rows.map((row) => (
+				<div class={`matrix__row${row.emphasize ? ' matrix__row--emphasize' : ''}`} role="row">
+					<span class="matrix__rowlabel" role="rowheader">{row.label}</span>
+					<span class="matrix__cell matrix__cell--foundation" role="cell">
+						<span class="matrix__celltag" aria-hidden="true">Foundation</span>
+						{row.foundation}
+					</span>
+					<span class="matrix__cell matrix__cell--custom" role="cell">
+						<span class="matrix__celltag" aria-hidden="true">Custom</span>
+						{row.custom}
+					</span>
+				</div>
+			))}
+		</div>
+
+		<p class="matrix__addons">
+			Add to either: <strong>Growth System</strong> from $1,500 setup + $300/mo · <strong>Care &amp; Optimization</strong> from $500/mo
+		</p>
+
+		<p class="matrix__note">
+			Not sure which fits? The free audit gives you a direct recommendation.
+			<a href="/audit">Get a Website Audit &rarr;</a>
+		</p>
+	</div>
+</section>
+
+<style>
+	.matrix {
+		padding-block: var(--section-spacing);
+		background: var(--color-white);
+	}
+
+	.matrix__head {
+		display: grid;
+		gap: 1.1rem;
+		max-width: 54rem;
+		margin: 0 0 clamp(2.25rem, 4vw, 3rem);
+	}
+
+	.matrix__lead {
+		max-width: 50rem;
+	}
+
+	.matrix__table {
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		overflow: hidden;
+		background: var(--color-white);
+		box-shadow: var(--shadow-card);
+	}
+
+	.matrix__cols,
+	.matrix__row {
+		display: grid;
+		grid-template-columns: 14rem 1fr 1fr;
+	}
+
+	.matrix__cols {
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	.matrix__cols-spacer {
+		background: var(--color-bg);
+	}
+
+	.matrix__col {
+		display: grid;
+		justify-items: center;
+		gap: 0.3rem;
+		padding: 1.5rem 1.25rem;
+		text-align: center;
+	}
+
+	.matrix__col--foundation {
+		background: var(--lane-foundation-tint);
+		border-left: 1px solid var(--color-border);
+	}
+
+	.matrix__col--custom {
+		background: var(--lane-custom-tint);
+		border-left: 1px solid var(--color-border);
+	}
+
+	.matrix__col-tag {
+		padding: 0.18rem 0.55rem;
+		border-radius: 999px;
+		background: var(--lane-foundation);
+		color: var(--color-white);
+		font-size: 0.64rem;
+		font-weight: 800;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+	}
+
+	.matrix__col-name {
+		color: var(--color-text);
+		font-size: 1.05rem;
+		font-weight: 750;
+		letter-spacing: -0.02em;
+	}
+
+	.matrix__col-price {
+		color: var(--color-text);
+		font-size: 1.15rem;
+		font-weight: 800;
+		letter-spacing: -0.02em;
+	}
+
+	.matrix__col--foundation .matrix__col-price { color: var(--lane-foundation-ink); }
+	.matrix__col--custom .matrix__col-price { color: var(--lane-custom-ink); }
+
+	.matrix__col-cta {
+		margin-top: 0.5rem;
+		padding: 0.45rem 0.9rem;
+		border-radius: var(--radius-sm);
+		background: var(--color-text);
+		color: var(--color-white);
+		font-size: 0.8rem;
+		font-weight: 700;
+		transition: transform 200ms var(--ease-out-quart), background-color var(--transition-base);
+	}
+
+	.matrix__col-cta:hover {
+		transform: translateY(-1px);
+		background: var(--color-ink);
+		color: var(--color-white);
+	}
+
+	.matrix__col-cta--ghost {
+		background: var(--color-white);
+		border: 1px solid var(--color-border);
+		color: var(--color-text);
+	}
+
+	.matrix__col-cta--ghost:hover {
+		background: var(--color-white);
+		border-color: color-mix(in srgb, var(--color-text) 35%, var(--color-border));
+		color: var(--color-text);
+	}
+
+	.matrix__row {
+		border-top: 1px solid var(--color-border-soft);
+	}
+
+	.matrix__row--emphasize {
+		background: var(--color-bg);
+	}
+
+	.matrix__rowlabel {
+		display: flex;
+		align-items: center;
+		padding: 1rem 1.25rem;
+		background: var(--color-bg);
+		color: var(--color-text);
+		font-size: 0.82rem;
+		font-weight: 800;
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
+	}
+
+	.matrix__cell {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		gap: 0.2rem;
+		padding: 1rem 1.25rem;
+		border-left: 1px solid var(--color-border-soft);
+		color: var(--color-text);
+		font-size: 0.94rem;
+		line-height: 1.45;
+	}
+
+	.matrix__row--emphasize .matrix__cell {
+		font-weight: 800;
+		font-size: 1.05rem;
+	}
+
+	.matrix__celltag {
+		display: none;
+		font-size: 0.66rem;
+		font-weight: 800;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		color: var(--color-muted);
+	}
+
+	.matrix__addons {
+		margin: 1.5rem 0 0;
+		padding: 0.85rem 1rem;
+		border: 1px dashed var(--color-border);
+		border-radius: var(--radius-sm);
+		background: var(--color-bg);
+		color: var(--color-muted);
+		font-size: 0.9rem;
+		text-align: center;
+		line-height: 1.5;
+	}
+
+	.matrix__addons strong {
+		color: var(--color-text);
+		font-weight: 750;
+	}
+
+	.matrix__note {
+		margin: 1rem 0 0;
+		color: var(--color-muted);
+		font-size: 0.95rem;
+		text-align: center;
+	}
+
+	.matrix__note a {
+		color: var(--color-text);
+		font-weight: 750;
+		white-space: nowrap;
+	}
+
+	.matrix__note a:hover {
+		color: var(--lane-foundation-ink);
+	}
+
+	@media (max-width: 760px) {
+		.matrix__cols {
+			display: none;
+		}
+
+		.matrix__row {
+			grid-template-columns: 1fr;
+			gap: 0;
+			padding: 0.5rem 0;
+		}
+
+		.matrix__rowlabel {
+			background: transparent;
+			padding-bottom: 0.4rem;
+		}
+
+		.matrix__cell {
+			border-left: none;
+			padding-block: 0.5rem;
+		}
+
+		.matrix__celltag {
+			display: block;
+			margin-bottom: 0.15rem;
+		}
+
+		.matrix__cell--foundation { background: var(--lane-foundation-tint); border-radius: var(--radius-sm); margin: 0 1rem; padding: 0.7rem 1rem; }
+		.matrix__cell--custom { background: var(--lane-custom-tint); border-radius: var(--radius-sm); margin: 0.4rem 1rem 0.6rem; padding: 0.7rem 1rem; }
+	}
+</style>

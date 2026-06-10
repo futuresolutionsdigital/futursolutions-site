@@ -1,0 +1,307 @@
+---
+const layers = [
+	{
+		lane: 'foundation',
+		phase: 'Attract',
+		title: 'Local Visibility',
+		text: 'Structure, content, and local signals bring the right patients to your door.',
+		href: '/services/local-visibility',
+	},
+	{
+		lane: 'growth',
+		phase: 'Capture & follow up',
+		title: 'Growth System',
+		text: 'Forms, booking, CRM, and automated follow-up so no inquiry is ever lost.',
+		href: '/services/growth-systems',
+	},
+];
+---
+
+<section class="ecosystem" aria-labelledby="ecosystem-heading">
+	<div class="site-container site-container--wide">
+		<header class="ecosystem__head">
+			<p class="eyebrow">One connected system</p>
+			<h2 id="ecosystem-heading" class="display-lg">Five services. One system that works together.</h2>
+			<p class="lead ecosystem__lead">
+				Each service is useful on its own — but they're designed to connect. Your website sits at the center; visibility brings people in, the Growth System captures them, and Care keeps it all improving.
+			</p>
+		</header>
+
+		<div class="ecosystem__diagram">
+			<!-- Attract -->
+			<a class={`eco-layer eco-layer--${layers[0].lane}`} href={layers[0].href}>
+				<span class="eco-layer__phase">{layers[0].phase}</span>
+				<span class="eco-layer__title">{layers[0].title}</span>
+				<span class="eco-layer__text">{layers[0].text}</span>
+			</a>
+
+			<div class="eco-flow" aria-hidden="true">
+				<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6" /></svg>
+			</div>
+
+			<!-- Core -->
+			<div class="eco-core">
+				<span class="eco-core__diamond" aria-hidden="true"></span>
+				<span class="eco-core__phase">The core</span>
+				<span class="eco-core__title">Your website</span>
+				<span class="eco-core__sub">Website Foundation or Signature Custom build</span>
+				<div class="eco-core__choices">
+					<a href="/services/template-setup">Foundation</a>
+					<span aria-hidden="true">/</span>
+					<a href="/services/custom-healthcare-websites">Custom</a>
+				</div>
+			</div>
+
+			<div class="eco-flow" aria-hidden="true">
+				<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6" /></svg>
+			</div>
+
+			<!-- Capture -->
+			<a class={`eco-layer eco-layer--${layers[1].lane}`} href={layers[1].href}>
+				<span class="eco-layer__phase">{layers[1].phase}</span>
+				<span class="eco-layer__title">{layers[1].title}</span>
+				<span class="eco-layer__text">{layers[1].text}</span>
+			</a>
+		</div>
+
+		<a class="eco-care" href="/services/ongoing-optimization">
+			<span class="eco-care__ring" aria-hidden="true">
+				<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7M21 4v4h-4" /></svg>
+			</span>
+			<span class="eco-care__text">
+				<strong>Care &amp; Optimization</strong> keeps the whole system improving — content, SEO, and conversion work, every month.
+			</span>
+			<span class="eco-care__arrow" aria-hidden="true">&rarr;</span>
+		</a>
+	</div>
+</section>
+
+<style>
+	.ecosystem {
+		padding-block: var(--section-spacing);
+		background: var(--color-bg);
+		border-block: 1px solid var(--color-border);
+	}
+
+	.ecosystem__head {
+		display: grid;
+		gap: 1.1rem;
+		max-width: 54rem;
+		margin: 0 0 clamp(2.5rem, 5vw, 3.5rem);
+	}
+
+	.ecosystem__lead {
+		max-width: 50rem;
+	}
+
+	.ecosystem__diagram {
+		display: grid;
+		justify-items: center;
+		gap: 0.5rem;
+		max-width: 44rem;
+		margin-inline: auto;
+	}
+
+	.eco-layer {
+		display: grid;
+		gap: 0.3rem;
+		width: 100%;
+		padding: 1.35rem 1.5rem;
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		background: var(--color-white);
+		box-shadow: var(--shadow-card);
+		text-align: center;
+		transition: transform 320ms var(--ease-out-quart), border-color var(--transition-base), box-shadow var(--transition-base);
+	}
+
+	.eco-layer:hover {
+		transform: translateY(-3px);
+		box-shadow: var(--shadow-card-hover);
+	}
+
+	.eco-layer--foundation { border-top: 4px solid var(--lane-foundation); }
+	.eco-layer--growth { border-top: 4px solid var(--lane-growth); }
+
+	.eco-layer__phase {
+		font-size: 0.72rem;
+		font-weight: 800;
+		letter-spacing: 0.14em;
+		text-transform: uppercase;
+	}
+
+	.eco-layer--foundation .eco-layer__phase { color: var(--lane-foundation-ink); }
+	.eco-layer--growth .eco-layer__phase { color: var(--lane-growth-ink); }
+
+	.eco-layer__title {
+		color: var(--color-text);
+		font-size: 1.15rem;
+		font-weight: 750;
+		letter-spacing: -0.02em;
+	}
+
+	.eco-layer__text {
+		color: var(--color-muted);
+		font-size: 0.92rem;
+		line-height: 1.5;
+	}
+
+	.eco-flow {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: var(--color-muted-soft);
+	}
+
+	.eco-flow svg {
+		width: 1.4rem;
+		height: 1.4rem;
+	}
+
+	/* Core */
+	.eco-core {
+		position: relative;
+		display: grid;
+		justify-items: center;
+		gap: 0.35rem;
+		width: 100%;
+		padding: 1.85rem 1.5rem;
+		border-radius: var(--radius-lg);
+		background: var(--color-ink);
+		color: var(--color-white);
+		overflow: hidden;
+		box-shadow: 0 2px 4px rgba(15, 23, 42, 0.06), 0 26px 56px rgba(15, 23, 42, 0.16);
+	}
+
+	.eco-core__diamond {
+		position: absolute;
+		top: -2.5rem;
+		right: -2.5rem;
+		width: 8rem;
+		height: 8rem;
+		background: color-mix(in srgb, var(--lane-foundation) 30%, transparent);
+		transform: rotate(45deg);
+		border-radius: 18px;
+		filter: blur(8px);
+		opacity: 0.5;
+	}
+
+	.eco-core__phase {
+		position: relative;
+		color: var(--color-ink-accent);
+		font-size: 0.72rem;
+		font-weight: 800;
+		letter-spacing: 0.16em;
+		text-transform: uppercase;
+	}
+
+	.eco-core__title {
+		position: relative;
+		font-size: 1.5rem;
+		font-weight: 800;
+		letter-spacing: -0.03em;
+	}
+
+	.eco-core__sub {
+		position: relative;
+		color: var(--color-ink-muted);
+		font-size: 0.9rem;
+	}
+
+	.eco-core__choices {
+		position: relative;
+		display: inline-flex;
+		gap: 0.6rem;
+		margin-top: 0.6rem;
+		padding: 0.4rem 0.9rem;
+		border: 1px solid var(--color-ink-line-strong);
+		border-radius: 999px;
+		background: rgba(255, 255, 255, 0.05);
+		font-size: 0.85rem;
+		font-weight: 700;
+	}
+
+	.eco-core__choices a {
+		color: var(--color-white);
+		text-decoration: underline;
+		text-decoration-color: color-mix(in srgb, var(--lane-foundation) 60%, transparent);
+		text-underline-offset: 0.2em;
+	}
+
+	.eco-core__choices a:hover {
+		color: var(--color-ink-accent);
+	}
+
+	.eco-core__choices span {
+		color: var(--color-ink-muted);
+	}
+
+	/* Care strip */
+	.eco-care {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+		max-width: 44rem;
+		margin: 1.25rem auto 0;
+		padding: 1.1rem 1.4rem;
+		border: 1px solid color-mix(in srgb, var(--lane-care) 30%, var(--color-border));
+		border-radius: var(--radius-lg);
+		background: var(--lane-care-tint);
+		transition: border-color var(--transition-base), transform 280ms var(--ease-out-quart);
+	}
+
+	.eco-care:hover {
+		transform: translateY(-2px);
+		border-color: color-mix(in srgb, var(--lane-care) 50%, var(--color-border));
+	}
+
+	.eco-care__ring {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 2.5rem;
+		height: 2.5rem;
+		flex-shrink: 0;
+		border-radius: 999px;
+		background: var(--color-white);
+		color: var(--lane-care-ink);
+		border: 1px solid color-mix(in srgb, var(--lane-care) 32%, var(--color-border));
+	}
+
+	.eco-care__ring svg {
+		width: 1.25rem;
+		height: 1.25rem;
+	}
+
+	.eco-care__text {
+		color: var(--color-text);
+		font-size: 0.95rem;
+		line-height: 1.5;
+	}
+
+	.eco-care__text strong {
+		color: var(--lane-care-ink);
+		font-weight: 800;
+	}
+
+	.eco-care__arrow {
+		margin-left: auto;
+		color: var(--lane-care-ink);
+		font-weight: 700;
+		transition: transform 220ms var(--ease-out-quart);
+	}
+
+	.eco-care:hover .eco-care__arrow {
+		transform: translateX(3px);
+	}
+
+	@media (max-width: 560px) {
+		.eco-care {
+			flex-wrap: wrap;
+		}
+
+		.eco-care__arrow {
+			margin-left: 0;
+		}
+	}
+</style>

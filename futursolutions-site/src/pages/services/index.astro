@@ -1,5 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import ComparisonMatrix from '../../components/ComparisonMatrix.astro';
+import ServiceEcosystem from '../../components/ServiceEcosystem.astro';
 import ServiceFAQSection from '../../components/ServiceFAQSection.astro';
 import { serviceOfferings } from '../../data/services';
 import { faqSchema, breadcrumbSchema } from '../../data/schema';
@@ -8,33 +10,6 @@ const pageTitle = 'Services | FutureSolutions';
 const pageDescription =
 	'Choose the level of system your business needs — Website Foundations, Signature Custom Websites, Growth Systems, Local Visibility, and Care and Optimization for healthcare and high-trust service businesses.';
 const canonicalUrl = 'https://futursolutions.io/services/';
-
-const pricingBands = [
-	{
-		lane: 'foundation',
-		name: 'Website Foundation',
-		price: 'from $3,500',
-		note: 'A healthcare-specific site, customized and launched.',
-	},
-	{
-		lane: 'custom',
-		name: 'Signature Custom Website',
-		price: 'from $12,000',
-		note: 'A fully bespoke build around your brand and services.',
-	},
-	{
-		lane: 'growth',
-		name: 'Growth System',
-		price: 'from $1,500 setup + from $300/mo',
-		note: 'Lead capture, booking, CRM, and follow-up wired together.',
-	},
-	{
-		lane: 'care',
-		name: 'Care & Optimization',
-		price: 'from $500/mo',
-		note: 'Ongoing improvements, content, and conversion work.',
-	},
-];
 
 const pricingPrinciples = [
 	{
@@ -343,6 +318,8 @@ const processSteps = [
 		</div>
 	</section>
 
+	<ServiceEcosystem />
+
 	<section class="section section-muted services-process" aria-labelledby="services-process-heading">
 		<div class="site-container">
 			<div class="services-process__intro">
@@ -361,30 +338,18 @@ const processSteps = [
 		</div>
 	</section>
 
-	<section class="section services-pricing" aria-labelledby="services-pricing-heading">
+	<ComparisonMatrix />
+
+	<section class="section section-muted services-pricing" aria-labelledby="services-pricing-heading">
 		<div class="site-container">
 			<div class="services-pricing__intro">
-				<p class="eyebrow">What to expect</p>
-				<h2 id="services-pricing-heading">Starting points, so you can plan.</h2>
+				<p class="eyebrow">How pricing works</p>
+				<h2 id="services-pricing-heading">Transparent, scoped, and audit-first.</h2>
 				<p class="lead">
-					Here's where each service typically begins. These are starting anchors — not quotes. Your
-					fixed price comes from the audit, scoped to your actual site and goals.
+					You've seen where each service starts. Final pricing is always a fixed, written proposal
+					after your free audit — scoped to your actual site and goals, with no hourly surprises.
 				</p>
 			</div>
-
-			<div class="services-pricing__bands">
-				{pricingBands.map((band) => (
-					<article class={`card services-price-band lane-accent-top lane-accent-top--${band.lane}`}>
-						<span class="services-price-band__name">{band.name}</span>
-						<span class="services-price-band__price">{band.price}</span>
-						<span class="services-price-band__note">{band.note}</span>
-					</article>
-				))}
-			</div>
-
-			<p class="services-pricing__disclaimer">
-				Final pricing is always a fixed, written proposal after your free audit. No hourly surprises.
-			</p>
 
 			<div class="services-pricing__grid">
 				{pricingPrinciples.map((item) => (
@@ -423,72 +388,11 @@ const processSteps = [
 		max-width: 780px;
 	}
 
-	.services-pricing__bands {
-		display: grid;
-		grid-template-columns: repeat(4, minmax(0, 1fr));
-		gap: 1rem;
-		margin-top: clamp(2rem, 4vw, 2.75rem);
-	}
-
-	.services-price-band {
-		position: relative;
-		display: flex;
-		flex-direction: column;
-		gap: 0.45rem;
-		padding: 1.4rem 1.35rem;
-	}
-
-	.services-price-band.lane-accent-top::before {
-		height: 4px;
-	}
-
-	.services-price-band__name {
-		color: var(--color-muted);
-		font-size: 0.78rem;
-		font-weight: 700;
-		letter-spacing: 0.04em;
-		text-transform: uppercase;
-	}
-
-	.services-price-band__price {
-		color: var(--color-text);
-		font-size: 1.18rem;
-		font-weight: 750;
-		letter-spacing: -0.02em;
-		line-height: 1.2;
-	}
-
-	.services-price-band__note {
-		color: var(--color-muted);
-		font-size: 0.875rem;
-		line-height: 1.5;
-	}
-
-	.services-pricing__disclaimer {
-		margin: 1.1rem 0 0;
-		color: var(--color-muted);
-		font-size: 0.875rem;
-		font-style: italic;
-		line-height: 1.5;
-	}
-
 	.services-pricing__grid {
 		display: grid;
 		grid-template-columns: repeat(3, minmax(0, 1fr));
 		gap: 1rem;
 		margin-top: clamp(2rem, 4vw, 3rem);
-	}
-
-	@media (max-width: 980px) {
-		.services-pricing__bands {
-			grid-template-columns: repeat(2, minmax(0, 1fr));
-		}
-	}
-
-	@media (max-width: 520px) {
-		.services-pricing__bands {
-			grid-template-columns: 1fr;
-		}
 	}
 
 	.services-pricing__card {

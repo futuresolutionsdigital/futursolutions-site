@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnatomyDiagram from '../../components/AnatomyDiagram.astro';
 import FinalCTA from '../../components/FinalCTA.astro';
 import RelatedServicesSection from '../../components/RelatedServicesSection.astro';
 import ServiceDetailHero from '../../components/ServiceDetailHero.astro';
@@ -63,6 +64,8 @@ const processSteps = [
 	</section>
 
 	<ServiceIncludedSection heading="What’s included in a custom website system." items={service.included} variant="muted" />
+
+	<AnatomyDiagram />
 
 	<section class="section service-detail-section" aria-labelledby="service-audience-heading">
 		<div class="site-container">

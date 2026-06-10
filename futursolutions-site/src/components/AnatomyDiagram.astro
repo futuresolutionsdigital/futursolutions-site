@@ -1,0 +1,228 @@
+---
+const parts = [
+	{ n: 1, key: 'hero', title: 'Hero with one clear promise', text: 'Who you help and one obvious action — visible before anyone scrolls.' },
+	{ n: 2, key: 'trust', title: 'Immediate trust signals', text: 'Credentials, affiliations, and reassurance that you\u2019re the safe choice.' },
+	{ n: 3, key: 'services', title: 'Services framed for patients', text: 'Plain-language outcomes, not clinical jargon or a wall of text.' },
+	{ n: 4, key: 'proof', title: 'Proof that builds confidence', text: 'Reviews, results, and real stories placed where doubt creeps in.' },
+	{ n: 5, key: 'human', title: 'The humans behind the care', text: 'Faces and warmth — people book people, not anonymous clinics.' },
+	{ n: 6, key: 'cta', title: 'An unmissable next step', text: 'A final, friction-free invitation to book or get in touch.' },
+];
+---
+
+<section class="anatomy section-ink" aria-labelledby="anatomy-heading">
+	<div class="dot-grid dot-grid--ink anatomy__dots" aria-hidden="true"></div>
+	<div class="site-container site-container--wide anatomy__inner">
+		<header class="anatomy__head">
+			<p class="eyebrow">The anatomy of a page that converts</p>
+			<h2 id="anatomy-heading" class="display-lg anatomy__headline">
+				Every section earns its place.
+			</h2>
+			<p class="lead anatomy__lead">
+				A high-converting healthcare homepage isn't decoration — it's a sequence that answers a visitor's
+				questions in the order they ask them. Here's how we structure yours.
+			</p>
+		</header>
+
+		<div class="anatomy__layout">
+			<!-- Page mock -->
+			<figure class="anatomy__mock" aria-hidden="true">
+				<div class="anatomy__bar">
+					<span></span><span></span><span></span>
+				</div>
+				<div class="anatomy__page">
+					{parts.map((p) => (
+						<div class={`anatomy__block anatomy__block--${p.key}`}>
+							<span class="anatomy__block-n">{p.n}</span>
+							<span class="anatomy__block-fill"></span>
+						</div>
+					))}
+				</div>
+			</figure>
+
+			<!-- Legend -->
+			<ol class="anatomy__legend">
+				{parts.map((p) => (
+					<li class="anatomy__item">
+						<span class="anatomy__item-n">{p.n}</span>
+						<div class="anatomy__item-body">
+							<h3 class="anatomy__item-title">{p.title}</h3>
+							<p class="anatomy__item-text">{p.text}</p>
+						</div>
+					</li>
+				))}
+			</ol>
+		</div>
+	</div>
+</section>
+
+<style>
+	.anatomy {
+		position: relative;
+		overflow: hidden;
+		padding-block: var(--section-spacing);
+	}
+
+	.anatomy__dots {
+		mask-image: radial-gradient(ellipse 80% 60% at 30% 20%, #000 30%, transparent 75%);
+		-webkit-mask-image: radial-gradient(ellipse 80% 60% at 30% 20%, #000 30%, transparent 75%);
+	}
+
+	.anatomy__inner {
+		position: relative;
+	}
+
+	.anatomy__head {
+		display: grid;
+		gap: 1.1rem;
+		max-width: 52rem;
+		margin: 0 0 clamp(2.5rem, 5vw, 3.5rem);
+	}
+
+	.anatomy__headline { color: var(--color-white); }
+	.anatomy__lead { max-width: 48rem; color: var(--color-ink-muted); }
+
+	.anatomy__layout {
+		display: grid;
+		grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+		gap: clamp(2rem, 5vw, 4rem);
+		align-items: start;
+	}
+
+	/* Mock */
+	.anatomy__mock {
+		margin: 0;
+		border: 1px solid var(--color-ink-line-strong);
+		border-radius: var(--radius-lg);
+		overflow: hidden;
+		background: var(--color-ink-soft);
+		box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+	}
+
+	.anatomy__bar {
+		display: flex;
+		gap: 0.4rem;
+		padding: 0.7rem 0.9rem;
+		border-bottom: 1px solid var(--color-ink-line);
+		background: rgba(255, 255, 255, 0.03);
+	}
+
+	.anatomy__bar span {
+		width: 0.55rem;
+		height: 0.55rem;
+		border-radius: 999px;
+		background: var(--color-ink-line-strong);
+	}
+
+	.anatomy__page {
+		display: grid;
+		gap: 0.5rem;
+		padding: 0.75rem;
+	}
+
+	.anatomy__block {
+		position: relative;
+		display: flex;
+		align-items: center;
+		padding: 0 0.75rem;
+		border-radius: 10px;
+		background: rgba(255, 255, 255, 0.04);
+		border: 1px solid var(--color-ink-line);
+		overflow: hidden;
+		transition: border-color var(--transition-base), background-color var(--transition-base);
+	}
+
+	.anatomy__block--hero { min-height: 4.2rem; background: color-mix(in srgb, var(--lane-foundation) 18%, transparent); border-color: color-mix(in srgb, var(--lane-foundation) 40%, transparent); }
+	.anatomy__block--trust { min-height: 2.2rem; }
+	.anatomy__block--services { min-height: 3.4rem; }
+	.anatomy__block--proof { min-height: 3rem; }
+	.anatomy__block--human { min-height: 3rem; }
+	.anatomy__block--cta { min-height: 3.2rem; background: color-mix(in srgb, var(--lane-foundation) 22%, transparent); border-color: color-mix(in srgb, var(--lane-foundation) 45%, transparent); }
+
+	.anatomy__block-n {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 1.5rem;
+		height: 1.5rem;
+		flex-shrink: 0;
+		border-radius: 999px;
+		background: var(--color-ink);
+		color: var(--color-ink-accent);
+		font-size: 0.75rem;
+		font-weight: 800;
+		border: 1px solid var(--color-ink-line-strong);
+	}
+
+	.anatomy__block-fill {
+		flex: 1;
+		height: 0.4rem;
+		margin-left: 0.75rem;
+		border-radius: 999px;
+		background: linear-gradient(90deg, rgba(255,255,255,0.22), rgba(255,255,255,0.05));
+	}
+
+	/* Legend */
+	.anatomy__legend {
+		display: grid;
+		gap: 0.4rem;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		counter-reset: none;
+	}
+
+	.anatomy__item {
+		display: grid;
+		grid-template-columns: 2rem 1fr;
+		gap: 0.9rem;
+		align-items: start;
+		padding: 0.85rem 0.9rem;
+		border-radius: var(--radius-md);
+		border: 1px solid transparent;
+		transition: background-color var(--transition-base), border-color var(--transition-base);
+	}
+
+	.anatomy__item:hover {
+		background: var(--color-ink-soft);
+		border-color: var(--color-ink-line);
+	}
+
+	.anatomy__item-n {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 2rem;
+		height: 2rem;
+		border-radius: 999px;
+		background: rgba(255, 255, 255, 0.05);
+		border: 1px solid var(--color-ink-line-strong);
+		color: var(--color-ink-accent);
+		font-size: 0.85rem;
+		font-weight: 800;
+	}
+
+	.anatomy__item-title {
+		margin: 0 0 0.2rem;
+		color: var(--color-white);
+		font-size: 1.05rem;
+		font-weight: 700;
+		letter-spacing: -0.02em;
+	}
+
+	.anatomy__item-text {
+		margin: 0;
+		color: var(--color-ink-muted);
+		font-size: 0.92rem;
+		line-height: 1.55;
+	}
+
+	@media (max-width: 860px) {
+		.anatomy__layout {
+			grid-template-columns: 1fr;
+		}
+
+		.anatomy__mock {
+			max-width: 26rem;
+		}
+	}
+</style>

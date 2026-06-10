@@ -1,0 +1,437 @@
+---
+const contrasts = [
+	{
+		label: 'First impression',
+		before: 'Looks dated or generic — visitors hesitate',
+		after: 'Credible and modern in the first 3 seconds',
+	},
+	{
+		label: 'What you offer',
+		before: 'Buried in dense paragraphs',
+		after: 'Clear services, framed around the patient',
+	},
+	{
+		label: 'Next step',
+		before: 'No obvious way to book or ask',
+		after: 'One obvious action on every screen',
+	},
+	{
+		label: 'After the form',
+		before: 'Lands in an inbox, easy to miss',
+		after: 'Captured, routed, and followed up automatically',
+	},
+];
+---
+
+<section class="before-after" aria-labelledby="before-after-heading">
+	<div class="site-container site-container--wide">
+		<header class="before-after__head">
+			<p class="eyebrow">The transformation</p>
+			<h2 id="before-after-heading" class="display-lg">
+				The same practice. A completely different result.
+			</h2>
+			<p class="lead before-after__lead">
+				Most healthcare sites look fine and quietly leak patients. Here's what changes when the site is built as a system — designed for trust, clarity, and the next step.
+			</p>
+		</header>
+
+		<div class="before-after__stage">
+			<!-- BEFORE -->
+			<figure class="ba-panel ba-panel--before">
+				<figcaption class="ba-panel__tag ba-panel__tag--before">
+					<span class="ba-panel__tag-dot" aria-hidden="true"></span>
+					Typical healthcare website
+				</figcaption>
+				<div class="ba-mock ba-mock--before" aria-hidden="true">
+					<div class="ba-mock__bar">
+						<span class="ba-mock__logo ba-mock__logo--dim"></span>
+						<span class="ba-mock__navline"></span>
+						<span class="ba-mock__navline"></span>
+						<span class="ba-mock__navline"></span>
+					</div>
+					<div class="ba-mock__body">
+						<span class="ba-mock__line ba-mock__line--lg ba-mock__line--dim" style="width: 72%"></span>
+						<span class="ba-mock__line ba-mock__line--dim" style="width: 88%"></span>
+						<span class="ba-mock__line ba-mock__line--dim" style="width: 80%"></span>
+						<span class="ba-mock__line ba-mock__line--dim" style="width: 84%"></span>
+						<span class="ba-mock__cta ba-mock__cta--weak">Contact</span>
+						<div class="ba-mock__clutter">
+							<span></span><span></span><span></span>
+						</div>
+					</div>
+				</div>
+			</figure>
+
+			<div class="before-after__arrow" aria-hidden="true">
+				<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+					<path d="M5 12h14M13 6l6 6-6 6" />
+				</svg>
+			</div>
+
+			<!-- AFTER -->
+			<figure class="ba-panel ba-panel--after">
+				<figcaption class="ba-panel__tag ba-panel__tag--after">
+					<span class="ba-panel__tag-dot" aria-hidden="true"></span>
+					Built by FutureSolutions
+				</figcaption>
+				<div class="ba-mock ba-mock--after" aria-hidden="true">
+					<div class="ba-mock__bar">
+						<span class="ba-mock__logo"></span>
+						<span class="ba-mock__navline"></span>
+						<span class="ba-mock__navline"></span>
+						<span class="ba-mock__pill">Book</span>
+					</div>
+					<div class="ba-mock__body">
+						<span class="ba-mock__eyebrow"></span>
+						<span class="ba-mock__line ba-mock__line--xl" style="width: 82%"></span>
+						<span class="ba-mock__line ba-mock__line--lg" style="width: 58%"></span>
+						<span class="ba-mock__cta ba-mock__cta--strong">Book a consult →</span>
+						<div class="ba-mock__trust">
+							<span></span><span></span><span></span>
+						</div>
+						<div class="ba-mock__cards">
+							<span></span><span></span><span></span>
+						</div>
+					</div>
+				</div>
+			</figure>
+		</div>
+
+		<ul class="before-after__compare">
+			{contrasts.map((row) => (
+				<li class="ba-row">
+					<span class="ba-row__label">{row.label}</span>
+					<span class="ba-row__before">
+						<svg aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+							<path d="M4 4l8 8M12 4l-8 8" />
+						</svg>
+						{row.before}
+					</span>
+					<span class="ba-row__after">
+						<svg aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+							<path d="M3 8.5l3.5 3.5L13 5" />
+						</svg>
+						{row.after}
+					</span>
+				</li>
+			))}
+		</ul>
+	</div>
+</section>
+
+<style>
+	.before-after {
+		padding-block: var(--section-spacing);
+		background: var(--color-white);
+	}
+
+	.before-after__head {
+		display: grid;
+		gap: 1.1rem;
+		max-width: 56rem;
+		margin: 0 0 clamp(2.5rem, 5vw, 3.5rem);
+	}
+
+	.before-after__lead {
+		max-width: 52rem;
+	}
+
+	.before-after__stage {
+		display: grid;
+		grid-template-columns: 1fr auto 1fr;
+		align-items: center;
+		gap: clamp(1rem, 3vw, 2rem);
+	}
+
+	.ba-panel {
+		margin: 0;
+		display: grid;
+		gap: 0.85rem;
+	}
+
+	.ba-panel__tag {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		width: fit-content;
+		padding: 0.32rem 0.75rem;
+		border-radius: 999px;
+		font-size: 0.78rem;
+		font-weight: 700;
+		letter-spacing: 0.01em;
+	}
+
+	.ba-panel__tag--before {
+		background: var(--color-bg-secondary);
+		border: 1px solid var(--color-border);
+		color: var(--color-muted);
+	}
+
+	.ba-panel__tag--after {
+		background: var(--lane-foundation-tint);
+		border: 1px solid color-mix(in srgb, var(--lane-foundation) 30%, var(--color-border));
+		color: var(--lane-foundation-ink);
+	}
+
+	.ba-panel__tag-dot {
+		width: 7px;
+		height: 7px;
+		border-radius: 999px;
+		background: currentColor;
+	}
+
+	/* Browser-style mock frame */
+	.ba-mock {
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		background: var(--color-white);
+		overflow: hidden;
+		transition: transform 360ms var(--ease-out-quart), box-shadow var(--transition-base);
+	}
+
+	.ba-mock--before {
+		box-shadow: 0 6px 18px rgba(15, 23, 42, 0.04);
+		filter: saturate(0.6);
+	}
+
+	.ba-mock--after {
+		box-shadow: 0 2px 4px rgba(15, 23, 42, 0.05), 0 26px 60px rgba(79, 124, 76, 0.10);
+		border-color: color-mix(in srgb, var(--lane-foundation) 24%, var(--color-border));
+	}
+
+	.ba-panel--after:hover .ba-mock--after {
+		transform: translateY(-4px);
+	}
+
+	.ba-mock__bar {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		padding: 0.7rem 0.9rem;
+		border-bottom: 1px solid var(--color-border-soft);
+		background: var(--color-bg);
+	}
+
+	.ba-mock__logo {
+		width: 1.5rem;
+		height: 1.5rem;
+		border-radius: 6px;
+		background: var(--color-text);
+	}
+
+	.ba-mock__logo--dim {
+		background: var(--color-muted-soft);
+		opacity: 0.5;
+	}
+
+	.ba-mock__navline {
+		width: 1.6rem;
+		height: 0.4rem;
+		border-radius: 999px;
+		background: var(--color-border);
+	}
+
+	.ba-mock__pill {
+		margin-left: auto;
+		padding: 0.28rem 0.6rem;
+		border-radius: 999px;
+		background: var(--lane-foundation);
+		color: var(--color-white);
+		font-size: 0.62rem;
+		font-weight: 700;
+		letter-spacing: 0.02em;
+	}
+
+	.ba-mock__body {
+		display: flex;
+		flex-direction: column;
+		gap: 0.55rem;
+		padding: 1.2rem 1.1rem 1.5rem;
+		min-height: 13rem;
+	}
+
+	.ba-mock__eyebrow {
+		width: 4.5rem;
+		height: 0.45rem;
+		border-radius: 999px;
+		background: var(--lane-foundation);
+	}
+
+	.ba-mock__line {
+		height: 0.55rem;
+		border-radius: 999px;
+		background: var(--color-text);
+	}
+
+	.ba-mock__line--lg { height: 0.8rem; }
+	.ba-mock__line--xl { height: 1.15rem; }
+
+	.ba-mock__line--dim {
+		background: var(--color-border);
+	}
+
+	.ba-mock__cta {
+		margin-top: 0.4rem;
+		width: fit-content;
+		padding: 0.45rem 0.85rem;
+		border-radius: 8px;
+		font-size: 0.7rem;
+		font-weight: 700;
+	}
+
+	.ba-mock__cta--weak {
+		background: transparent;
+		border: 1px solid var(--color-border);
+		color: var(--color-muted-soft);
+	}
+
+	.ba-mock__cta--strong {
+		background: var(--color-text);
+		color: var(--color-white);
+		box-shadow: 0 8px 18px rgba(15, 23, 42, 0.18);
+	}
+
+	.ba-mock__clutter {
+		display: flex;
+		gap: 0.4rem;
+		margin-top: 0.6rem;
+		opacity: 0.55;
+	}
+
+	.ba-mock__clutter span {
+		flex: 1;
+		height: 1.6rem;
+		border-radius: 6px;
+		background: repeating-linear-gradient(45deg, var(--color-bg-secondary), var(--color-bg-secondary) 4px, var(--color-border-soft) 4px, var(--color-border-soft) 8px);
+	}
+
+	.ba-mock__trust {
+		display: flex;
+		gap: 0.4rem;
+		margin-top: 0.5rem;
+	}
+
+	.ba-mock__trust span {
+		width: 2.2rem;
+		height: 0.5rem;
+		border-radius: 999px;
+		background: var(--lane-foundation-tint);
+		border: 1px solid color-mix(in srgb, var(--lane-foundation) 22%, transparent);
+	}
+
+	.ba-mock__cards {
+		display: flex;
+		gap: 0.5rem;
+		margin-top: 0.5rem;
+	}
+
+	.ba-mock__cards span {
+		flex: 1;
+		height: 2rem;
+		border-radius: 8px;
+		background: var(--color-bg);
+		border: 1px solid var(--color-border-soft);
+	}
+
+	.before-after__arrow {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 2.75rem;
+		height: 2.75rem;
+		border-radius: 999px;
+		background: var(--color-white);
+		border: 1px solid var(--color-border);
+		color: var(--lane-foundation-ink);
+		box-shadow: var(--shadow-card);
+	}
+
+	.before-after__arrow svg {
+		width: 1.3rem;
+		height: 1.3rem;
+	}
+
+	/* Comparison rows */
+	.before-after__compare {
+		display: grid;
+		gap: 0;
+		margin: clamp(2.5rem, 5vw, 3.5rem) 0 0;
+		padding: 0;
+		list-style: none;
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		overflow: hidden;
+		background: var(--color-white);
+	}
+
+	.ba-row {
+		display: grid;
+		grid-template-columns: 12rem 1fr 1fr;
+		align-items: center;
+		gap: 1rem;
+		padding: 1rem 1.25rem;
+		border-top: 1px solid var(--color-border-soft);
+	}
+
+	.ba-row:first-child {
+		border-top: none;
+	}
+
+	.ba-row__label {
+		color: var(--color-text);
+		font-size: 0.82rem;
+		font-weight: 800;
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
+	}
+
+	.ba-row__before,
+	.ba-row__after {
+		display: inline-flex;
+		align-items: flex-start;
+		gap: 0.5rem;
+		font-size: 0.92rem;
+		line-height: 1.45;
+	}
+
+	.ba-row__before {
+		color: var(--color-muted);
+	}
+
+	.ba-row__after {
+		color: var(--color-text);
+		font-weight: 600;
+	}
+
+	.ba-row__before svg,
+	.ba-row__after svg {
+		width: 1rem;
+		height: 1rem;
+		margin-top: 0.18rem;
+		flex-shrink: 0;
+	}
+
+	.ba-row__before svg { color: var(--color-muted-soft); }
+	.ba-row__after svg { color: var(--lane-foundation); }
+
+	@media (max-width: 900px) {
+		.before-after__stage {
+			grid-template-columns: 1fr;
+			gap: 1.5rem;
+		}
+
+		.before-after__arrow {
+			transform: rotate(90deg);
+			margin-inline: auto;
+		}
+
+		.ba-row {
+			grid-template-columns: 1fr;
+			gap: 0.5rem;
+		}
+
+		.ba-row__label {
+			margin-bottom: 0.1rem;
+		}
+	}
+</style>

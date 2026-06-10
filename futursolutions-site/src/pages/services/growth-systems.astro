@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import FinalCTA from '../../components/FinalCTA.astro';
+import GrowthSystemDiagram from '../../components/GrowthSystemDiagram.astro';
 import RelatedServicesSection from '../../components/RelatedServicesSection.astro';
 import ServiceFAQSection from '../../components/ServiceFAQSection.astro';
 import { serviceSchema, faqSchema, breadcrumbSchema } from '../../data/schema';
@@ -71,33 +72,6 @@ const problems = [
 	{
 		title: 'Disconnected booking flow',
 		text: 'The website, calendar, and CRM should work together.',
-	},
-];
-
-const flowSteps = [
-	{
-		title: 'Website Visit',
-		text: 'Visitor lands on a service or landing page.',
-	},
-	{
-		title: 'Form Submission',
-		text: 'Inquiry is captured from the website.',
-	},
-	{
-		title: 'CRM Contact',
-		text: 'Contact record is created or updated.',
-	},
-	{
-		title: 'Booking Request',
-		text: 'Visitor is routed toward a consultation or appointment.',
-	},
-	{
-		title: 'Follow-Up',
-		text: 'Emails, reminders, or tasks help prevent drop-off.',
-	},
-	{
-		title: 'Pipeline',
-		text: 'Each lead has a status and next step.',
 	},
 ];
 
@@ -173,23 +147,7 @@ const useCases = [
 		</div>
 	</section>
 
-	<section class="section backend-flow" aria-labelledby="backend-flow-heading">
-		<div class="site-container">
-			<div class="backend-intro">
-				<p class="eyebrow">Lead path</p>
-				<h2 id="backend-flow-heading">A clearer path from inquiry to next step.</h2>
-			</div>
-			<div class="backend-flow__grid" aria-label="Backend lead system flow">
-				{flowSteps.map((step, index) => (
-					<article class="card backend-flow__step">
-						<span>{String(index + 1).padStart(2, '0')}</span>
-						<h3>{step.title}</h3>
-						<p>{step.text}</p>
-					</article>
-				))}
-			</div>
-		</div>
-	</section>
+	<GrowthSystemDiagram />
 
 	<section class="section section-muted backend-support" aria-labelledby="backend-support-heading">
 		<div class="site-container">
@@ -301,40 +259,19 @@ const useCases = [
 		grid-template-columns: repeat(4, minmax(0, 1fr));
 	}
 
-	.backend-flow__grid {
-		grid-template-columns: repeat(6, minmax(0, 1fr));
-	}
-
 	.backend-card,
-	.backend-flow__step,
 	.backend-check {
 		padding: 1.25rem;
 	}
 
-	.backend-card h3,
-	.backend-flow__step h3 {
+	.backend-card h3 {
 		font-size: 1.1rem;
 		letter-spacing: -0.02em;
 	}
 
-	.backend-card p,
-	.backend-flow__step p {
+	.backend-card p {
 		font-size: 0.9375rem;
 		line-height: 1.6;
-	}
-
-	.backend-flow__step span {
-		display: inline-flex;
-		width: fit-content;
-		margin-bottom: 1.25rem;
-		padding: 0.35rem 0.52rem;
-		border: 1px solid color-mix(in srgb, var(--color-accent) 35%, var(--color-border));
-		border-radius: 999px;
-		background: var(--color-accent-light);
-		color: var(--color-accent-dark);
-		font-size: 0.72rem;
-		font-weight: 800;
-		line-height: 1;
 	}
 
 	.backend-check {
@@ -368,10 +305,6 @@ const useCases = [
 	}
 
 	@media (max-width: 1120px) {
-		.backend-flow__grid {
-			grid-template-columns: repeat(3, minmax(0, 1fr));
-		}
-
 		.backend-grid--4 {
 			grid-template-columns: repeat(2, minmax(0, 1fr));
 		}
@@ -385,8 +318,7 @@ const useCases = [
 
 	@media (max-width: 720px) {
 		.backend-grid--2,
-		.backend-grid--4,
-		.backend-flow__grid {
+		.backend-grid--4 {
 			grid-template-columns: 1fr;
 		}
 	}

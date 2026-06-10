@@ -4,7 +4,7 @@
 > parent site) and the **sub-projects** (the five website template/demo systems).
 > Use this to recognize what is done, what remains, and where to point effort next.
 >
-> **Last updated:** June 10, 2026 (conversion-first restructure — trimmed redundancy, unified service URLs, added pricing anchors, single primary CTA)
+> **Last updated:** June 10, 2026 (bespoke visuals pass — 7 section-specific graphics: before/after, visitor→booked journey, audit scorecard, service ecosystem, Foundation-vs-Custom matrix, local SEO map, homepage anatomy)
 > **Companion docs (do not duplicate — link out):**
 > - `docs/strategy-reference.md` — positioning, offers, copy/CTA/compliance rules
 > - `docs/site-audit.md` — master-site scorecard + diagnosis
@@ -52,14 +52,14 @@
 
 **One-line status:** Strategically, visually, and structurally strong; **content, SEO, trust, and identity infrastructure in place** and **restructured for conversion** (trimmed redundancy, single primary CTA, unified service URLs, transparent pricing). Remaining gap to launch is **integrations only** (GHL lead delivery, analytics, prod env vars).
 
-**Overall launch readiness: ~90%** (all non-integration polish + conversion restructure complete). Homepage trimmed 11→8 sections; `/seo`→`/services/local-visibility` and `/backend`→`/services/growth-systems` (with redirects); all 5 service pages + service detail pages now use one shared `FinalCTA`; "from $" pricing anchors added; Resources roadmap removed; thank-you page slimmed; header leads with a single audit CTA. Remaining gap is **integration + prod env** — not design, content, structure, or trust.
+**Overall launch readiness: ~91%** (all non-integration polish + conversion restructure + bespoke visuals complete). Homepage now carries a Before/After transformation and a "visitor→booked client" journey (the plain process timeline was retired); the audit page shows a sample scorecard; the services hub has a service-ecosystem diagram + a Foundation-vs-Custom comparison matrix (pricing folded in); the Local Visibility page has a stylized reach map + local-pack mock; the Custom page has an "anatomy of a high-converting homepage" diagram. All are hand-built CSS/SVG with a shared visual language. Earlier: homepage trimmed 11→8 sections; `/seo`→`/services/local-visibility` and `/backend`→`/services/growth-systems` (with redirects); shared `FinalCTA` across service pages; single audit CTA in header. Remaining gap is **integration + prod env** — not design, content, structure, or trust.
 
 ### Master scorecard
 
 | Dimension | Score | State | What closes the gap |
 |---|---|---|---|
 | Strategic alignment | 5/5 | ✅ | Done — transparent "from $" pricing anchors + audit-first single primary CTA + trimmed redundancy |
-| Visual design | 4.7/5 | ✅ | Contrast/readability tuned, crisper borders + card lift, brighter dark sections; optional: real photography/mockups |
+| Visual design | 4.9/5 | ✅ | 7 bespoke, section-specific visuals (before/after, visitor→booked journey, audit scorecard, service ecosystem, Foundation-vs-Custom matrix, local SEO map, homepage anatomy) — all hand-built CSS/SVG, no stock imagery; each section now feels cultivated, not re-used |
 | Content structure | 5/5 | ✅ | Done — About, 5 industry pages, 3 published articles, FAQs everywhere + homepage FAQ |
 | Operational readiness | 3.5/5 | 🟡 | Form submits w/ validation + honeypot; **GHL/email delivery deferred** |
 | Legal / compliance | 4.5/5 | ✅ | Real entity (Future Solutions Digital LLC) + CA jurisdiction; optional counsel review |
@@ -70,7 +70,7 @@
 ### Master — what's DONE ✅
 - Three-lane offer model (Foundations / Custom / Growth Systems) + Local Visibility & Care layers
 - Audit positioned as the diagnostic entry point; lane accent color system consistent
-- Homepage trimmed to a focused 8-section narrative (hero → problem → offers → process → demo proof → proof strip → FAQ → FinalCTA); redundant SEO/system/duplicate-proof sections removed
+- Homepage trimmed to a focused 8-section narrative (hero → problem → before/after → offers → visitor→booked journey → demo proof → proof strip → FAQ → FinalCTA); redundant SEO/system/duplicate-proof sections removed
 - Services hub with decision-first architecture + 5 service pages (URLs unified under `/services/*`) + **transparent "from $" pricing anchors + FAQ**; all service pages share one `FinalCTA`
 - Backend/Growth Systems page + SEO page — now with **FAQ + related services parity** with service detail pages
 - **About page** (`/about`) with studio identity (Future Solutions Digital LLC, California) + nav/footer wiring
@@ -274,4 +274,6 @@ Append a dated line whenever a milestone lands, so trend is visible at a glance.
 | Jun 9, 2026 | Association demo forms made functional (contact, newsletter, advocacy composer) | Association avg ~4.3 → ~4.5; now a clickable, believable demo |
 | Jun 9, 2026 | Association **portal preview** shipped (member + chapter-leader) + toolkit resource | Demo-tier Operational → 5; Association avg ~4.5 → ~4.6; new reusable portfolio capability |
 | Jun 9, 2026 | Portal a11y closed (aria-live + focus management on interactive tools) | Association **demo-tier complete**; remaining gaps are master-infra or client-tier |
-| _next_ | _Sprint A: master launch blockers_ | _Target ~80% master readiness_ |
+| Jun 10, 2026 | Conversion-first restructure (homepage trim, unified service URLs, pricing anchors, single CTA) | Master readiness ~88% → ~90% |
+| Jun 10, 2026 | **Bespoke visuals pass** — 7 section-specific CSS/SVG graphics across home, audit, services, local-visibility, custom | Visual design 4.7 → 4.9; readiness ~90% → ~91%; sections now feel cultivated, not re-used |
+| _next_ | _Integration layer (Sanity / GoHighLevel / analytics) + prod env_ | _Final ~9% to launch_ |

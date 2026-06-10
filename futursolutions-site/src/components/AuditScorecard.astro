@@ -1,0 +1,344 @@
+---
+const rows = [
+	{ label: 'First impression', score: 4, status: 'Strong', tone: 'good' },
+	{ label: 'Service clarity', score: 3, status: 'Needs work', tone: 'warn' },
+	{ label: 'Conversion path', score: 2, status: 'Gap', tone: 'gap' },
+	{ label: 'Local visibility', score: 3, status: 'Needs work', tone: 'warn' },
+	{ label: 'Mobile experience', score: 4, status: 'Strong', tone: 'good' },
+	{ label: 'Follow-up system', score: 1, status: 'Gap', tone: 'gap' },
+];
+
+const overall = Math.round((rows.reduce((sum, r) => sum + r.score, 0) / (rows.length * 5)) * 100);
+const dash = 2 * Math.PI * 52;
+const filled = (overall / 100) * dash;
+---
+
+<section class="scorecard" aria-labelledby="scorecard-heading">
+	<div class="site-container site-container--wide scorecard__inner">
+		<div class="scorecard__intro">
+			<p class="eyebrow">What you'll receive</p>
+			<h2 id="scorecard-heading">A clear scorecard — not a vague opinion.</h2>
+			<p class="lead">
+				Your audit comes back as a structured read on the six things that decide whether a healthcare site converts. You see exactly where you're strong, where you're leaking patients, and what to fix first.
+			</p>
+			<ul class="scorecard__points">
+				<li>
+					<svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9" /></svg>
+					Scored across six conversion dimensions
+				</li>
+				<li>
+					<svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9" /></svg>
+					Prioritized fixes — what moves the needle first
+				</li>
+				<li>
+					<svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9" /></svg>
+					A recommended next step, with no obligation
+				</li>
+			</ul>
+			<a class="button button-primary scorecard__cta" href="#audit-form">
+				Get your scorecard
+				<span aria-hidden="true">&rarr;</span>
+			</a>
+		</div>
+
+		<figure class="scorecard__card" aria-label="Illustrative example of an audit scorecard">
+			<figcaption class="scorecard__card-head">
+				<div>
+					<span class="scorecard__card-kicker">Website &amp; Systems Audit</span>
+					<span class="scorecard__card-title">Sample scorecard</span>
+				</div>
+				<span class="scorecard__badge">Illustrative</span>
+			</figcaption>
+
+			<div class="scorecard__overall">
+				<div class="scorecard__ring" role="img" aria-label={`Overall score ${overall} out of 100`}>
+					<svg viewBox="0 0 120 120">
+						<circle class="scorecard__ring-track" cx="60" cy="60" r="52" />
+						<circle
+							class="scorecard__ring-fill"
+							cx="60"
+							cy="60"
+							r="52"
+							style={`stroke-dasharray: ${filled} ${dash}; stroke-dashoffset: 0;`}
+						/>
+					</svg>
+					<div class="scorecard__ring-label">
+						<span class="scorecard__ring-num">{overall}</span>
+						<span class="scorecard__ring-unit">/ 100</span>
+					</div>
+				</div>
+				<div class="scorecard__overall-text">
+					<p class="scorecard__overall-title">3 priority fixes found</p>
+					<p class="scorecard__overall-sub">Solid foundation, but the conversion path and follow-up are leaking inquiries.</p>
+				</div>
+			</div>
+
+			<ul class="scorecard__rows">
+				{rows.map((row) => (
+					<li class="scorecard__row">
+						<span class="scorecard__row-label">{row.label}</span>
+						<span class="scorecard__meter" aria-hidden="true">
+							<span class={`scorecard__meter-fill scorecard__meter-fill--${row.tone}`} style={`width: ${row.score * 20}%`}></span>
+						</span>
+						<span class={`scorecard__status scorecard__status--${row.tone}`}>{row.status}</span>
+					</li>
+				))}
+			</ul>
+		</figure>
+	</div>
+</section>
+
+<style>
+	.scorecard {
+		padding-block: var(--section-spacing);
+		background: var(--color-bg);
+		border-block: 1px solid var(--color-border);
+	}
+
+	.scorecard__inner {
+		display: grid;
+		grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+		align-items: center;
+		gap: clamp(2rem, 5vw, 4rem);
+	}
+
+	.scorecard__intro {
+		max-width: 34rem;
+	}
+
+	.scorecard__points {
+		display: grid;
+		gap: 0.7rem;
+		margin: 1.75rem 0 2rem;
+		padding: 0;
+		list-style: none;
+	}
+
+	.scorecard__points li {
+		display: grid;
+		grid-template-columns: 1.15rem 1fr;
+		gap: 0.65rem;
+		align-items: start;
+		color: var(--color-text);
+		font-size: 0.96rem;
+		font-weight: 600;
+		line-height: 1.5;
+	}
+
+	.scorecard__points svg {
+		width: 1.15rem;
+		height: 1.15rem;
+		margin-top: 0.15rem;
+		color: var(--lane-foundation);
+	}
+
+	.scorecard__cta span {
+		display: inline-block;
+		transition: transform 220ms var(--ease-out-quart);
+	}
+
+	.scorecard__cta:hover span {
+		transform: translateX(3px);
+	}
+
+	/* The report card */
+	.scorecard__card {
+		margin: 0;
+		padding: clamp(1.5rem, 3vw, 2rem);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		background: var(--color-white);
+		box-shadow: 0 2px 4px rgba(15, 23, 42, 0.05), 0 30px 60px rgba(15, 23, 42, 0.10);
+	}
+
+	.scorecard__card-head {
+		display: flex;
+		align-items: flex-start;
+		justify-content: space-between;
+		gap: 1rem;
+		padding-bottom: 1.25rem;
+		border-bottom: 1px solid var(--color-border-soft);
+	}
+
+	.scorecard__card-kicker {
+		display: block;
+		color: var(--color-muted);
+		font-size: 0.72rem;
+		font-weight: 700;
+		letter-spacing: 0.14em;
+		text-transform: uppercase;
+	}
+
+	.scorecard__card-title {
+		display: block;
+		margin-top: 0.25rem;
+		color: var(--color-text);
+		font-size: 1.2rem;
+		font-weight: 750;
+		letter-spacing: -0.02em;
+	}
+
+	.scorecard__badge {
+		flex-shrink: 0;
+		padding: 0.28rem 0.6rem;
+		border-radius: 999px;
+		background: var(--lane-audit-tint);
+		border: 1px solid color-mix(in srgb, var(--lane-audit) 30%, transparent);
+		color: var(--lane-audit-ink);
+		font-size: 0.66rem;
+		font-weight: 800;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+	}
+
+	.scorecard__overall {
+		display: flex;
+		align-items: center;
+		gap: 1.25rem;
+		padding: 1.35rem 0;
+		border-bottom: 1px solid var(--color-border-soft);
+	}
+
+	.scorecard__ring {
+		position: relative;
+		width: 6rem;
+		height: 6rem;
+		flex-shrink: 0;
+	}
+
+	.scorecard__ring svg {
+		width: 100%;
+		height: 100%;
+		transform: rotate(-90deg);
+	}
+
+	.scorecard__ring-track {
+		fill: none;
+		stroke: var(--color-border);
+		stroke-width: 9;
+	}
+
+	.scorecard__ring-fill {
+		fill: none;
+		stroke: var(--lane-audit);
+		stroke-width: 9;
+		stroke-linecap: round;
+		transition: stroke-dasharray 900ms var(--ease-out-quart);
+	}
+
+	.scorecard__ring-label {
+		position: absolute;
+		inset: 0;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		line-height: 1;
+	}
+
+	.scorecard__ring-num {
+		color: var(--color-text);
+		font-size: 1.6rem;
+		font-weight: 800;
+		letter-spacing: -0.03em;
+	}
+
+	.scorecard__ring-unit {
+		margin-top: 0.15rem;
+		color: var(--color-muted);
+		font-size: 0.72rem;
+		font-weight: 700;
+	}
+
+	.scorecard__overall-title {
+		margin: 0 0 0.25rem;
+		color: var(--color-text);
+		font-size: 1.05rem;
+		font-weight: 750;
+		letter-spacing: -0.015em;
+	}
+
+	.scorecard__overall-sub {
+		margin: 0;
+		color: var(--color-muted);
+		font-size: 0.9rem;
+		line-height: 1.5;
+	}
+
+	.scorecard__rows {
+		display: grid;
+		gap: 0.85rem;
+		margin: 1.35rem 0 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.scorecard__row {
+		display: grid;
+		grid-template-columns: 9rem 1fr 5.5rem;
+		align-items: center;
+		gap: 0.9rem;
+	}
+
+	.scorecard__row-label {
+		color: var(--color-text);
+		font-size: 0.88rem;
+		font-weight: 600;
+	}
+
+	.scorecard__meter {
+		height: 0.5rem;
+		border-radius: 999px;
+		background: var(--color-bg-secondary);
+		overflow: hidden;
+	}
+
+	.scorecard__meter-fill {
+		display: block;
+		height: 100%;
+		border-radius: 999px;
+		transition: width 900ms var(--ease-out-quart);
+	}
+
+	.scorecard__meter-fill--good { background: var(--lane-foundation); }
+	.scorecard__meter-fill--warn { background: var(--lane-audit); }
+	.scorecard__meter-fill--gap  { background: #C2553F; }
+
+	.scorecard__status {
+		justify-self: end;
+		padding: 0.2rem 0.5rem;
+		border-radius: 999px;
+		font-size: 0.7rem;
+		font-weight: 800;
+		letter-spacing: 0.02em;
+	}
+
+	.scorecard__status--good { background: var(--lane-foundation-tint); color: var(--lane-foundation-ink); }
+	.scorecard__status--warn { background: var(--lane-audit-tint); color: var(--lane-audit-ink); }
+	.scorecard__status--gap  { background: #F7E4DF; color: #9B3D2A; }
+
+	@media (max-width: 920px) {
+		.scorecard__inner {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.scorecard__row {
+			grid-template-columns: 7rem 1fr;
+			gap: 0.5rem 0.7rem;
+		}
+
+		.scorecard__status {
+			grid-column: 2;
+			justify-self: start;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.scorecard__ring-fill,
+		.scorecard__meter-fill {
+			transition: none;
+		}
+	}
+</style>
