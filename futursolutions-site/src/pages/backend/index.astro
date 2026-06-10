@@ -1,10 +1,57 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import RelatedServicesSection from '../../components/RelatedServicesSection.astro';
+import ServiceFAQSection from '../../components/ServiceFAQSection.astro';
+import { serviceSchema, faqSchema, breadcrumbSchema } from '../../data/schema';
 
 const pageTitle = 'Growth Systems & Backend Lead Systems | FutureSolutions';
 const pageDescription =
 	'FutureSolutions helps healthcare and high-trust service businesses connect website inquiries to lead capture, booking, follow-up, and pipeline systems.';
 const canonicalUrl = 'https://futursolutions.io/backend/';
+
+const faqs = [
+	{
+		question: 'Do I have to use GoHighLevel?',
+		answer:
+			'No. GoHighLevel is the platform we know best and can set up end to end, but the same principles apply to other CRMs. The goal is one connected system — capture, booking, follow-up, and pipeline — not a specific brand of software.',
+	},
+	{
+		question: 'Can you connect to my existing booking or CRM tools?',
+		answer:
+			'In most cases, yes. We assess what you already use during the audit and recommend whether to connect, consolidate, or replace tools so your website, calendar, and CRM work together instead of in silos.',
+	},
+	{
+		question: 'Is a Growth System only for large practices?',
+		answer:
+			'No. Even solo practices benefit from never missing an inquiry and having consistent follow-up. We scope the system to your volume so it reduces manual work rather than adding complexity.',
+	},
+	{
+		question: 'How does this handle sensitive information?',
+		answer:
+			'We structure forms, CRM workflows, and hosting with healthcare data privacy in mind, and support Business Associate Agreement requirements when protected health information is involved. We scope safeguards per project rather than making blanket compliance claims.',
+	},
+];
+
+const relatedServices = [
+	{ label: 'Website Foundations', href: '/services/template-setup' },
+	{ label: 'Signature Custom Websites', href: '/services/custom-healthcare-websites' },
+	{ label: 'Local Visibility', href: '/seo' },
+	{ label: 'Care and Optimization', href: '/services/ongoing-optimization' },
+];
+
+const pageSchema = [
+	serviceSchema({
+		name: 'Growth Systems',
+		description: pageDescription,
+		path: '/backend',
+		serviceType: 'Lead capture and CRM systems',
+	}),
+	faqSchema(faqs),
+	breadcrumbSchema([
+		{ name: 'Home', path: '/' },
+		{ name: 'Growth Systems', path: '/backend' },
+	]),
+];
 
 const problems = [
 	{
@@ -88,6 +135,7 @@ const useCases = [
 	ogTitle={pageTitle}
 	ogDescription={pageDescription}
 	ogUrl={canonicalUrl}
+	schema={pageSchema}
 >
 	<section class="section backend-hero" aria-labelledby="backend-heading">
 		<div class="site-container backend-hero__inner">
@@ -184,6 +232,9 @@ const useCases = [
 			</div>
 		</div>
 	</section>
+
+	<RelatedServicesSection services={relatedServices} />
+	<ServiceFAQSection faqs={faqs} />
 
 	<section class="section backend-final" aria-labelledby="backend-final-heading">
 		<div class="site-container">

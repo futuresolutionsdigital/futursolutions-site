@@ -1,0 +1,211 @@
+---
+import { testimonials, hasRealTestimonials } from '../data/testimonials';
+
+const guarantees = [
+	'A fixed, written scope before any build begins',
+	'Direct access to the people building your site',
+	'Healthcare-aware structure, accessibility, and clean SEO by default',
+	'A site connected to capture and follow-up — not a dead launch',
+];
+
+const showReal = hasRealTestimonials();
+---
+
+<section class="section client-proof" aria-labelledby="client-proof-heading">
+	<div class="site-container">
+		<div class="client-proof__top">
+			<div class="client-proof__statement">
+				<p class="eyebrow">Proof you can check</p>
+				<h2 id="client-proof-heading">We publish live, working demos — not static screenshots.</h2>
+				<p class="lead">
+					Most agencies show you a gallery of finished pictures. We let you click through real,
+					functioning sites built for med spas, solo practices, wellness clinics, hormone clinics, and
+					associations — so you can judge the work before you ever hire us.
+				</p>
+				<div class="button-row">
+					<a class="button button-primary" href="/templates">Explore Live Demos</a>
+					<a class="button button-secondary" href="/audit">Get a Website Audit</a>
+				</div>
+			</div>
+
+			<aside class="client-proof__guarantees" aria-label="What every client gets">
+				<p class="client-proof__guarantees-label">What every client gets</p>
+				<ul>
+					{guarantees.map((item) => (
+						<li>
+							<span class="client-proof__check" aria-hidden="true">
+								<svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+									<polyline points="2,6 5,9 10,3" />
+								</svg>
+							</span>
+							{item}
+						</li>
+					))}
+				</ul>
+			</aside>
+		</div>
+
+		<div class="client-proof__voices">
+			{showReal ? (
+				<>
+					<p class="client-proof__voices-label">In their words</p>
+					<div class="client-proof__grid">
+						{testimonials.filter((t) => !t.isPlaceholder).map((t) => (
+							<figure class="client-proof__quote">
+								<blockquote>{t.quote}</blockquote>
+								<figcaption>
+									<span class="client-proof__quote-name">{t.name}</span>
+									<span class="client-proof__quote-role">{t.role}</span>
+								</figcaption>
+							</figure>
+						))}
+					</div>
+				</>
+			) : (
+				<div class="client-proof__invite">
+					<p class="client-proof__voices-label">Client stories</p>
+					<p class="client-proof__invite-text">
+						We're selective about who we partner with, and real client stories will appear here as
+						projects launch. Until then, the work itself is public — every demo above is a live build
+						you can explore end to end.
+					</p>
+				</div>
+			)}
+		</div>
+	</div>
+</section>
+
+<style>
+	.client-proof__top {
+		display: grid;
+		grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.85fr);
+		gap: clamp(2rem, 5vw, 4rem);
+		align-items: start;
+	}
+	.client-proof__statement h2 {
+		max-width: 18ch;
+		margin-block: 0.4rem 1rem;
+	}
+	.client-proof__statement .lead {
+		max-width: 56ch;
+		margin-bottom: 1.75rem;
+	}
+
+	.client-proof__guarantees {
+		padding: 1.75rem;
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		background: var(--color-bg-secondary);
+	}
+	.client-proof__guarantees-label {
+		margin: 0 0 1.1rem 0;
+		color: var(--color-accent-dark);
+		font-size: 0.74rem;
+		font-weight: 800;
+		letter-spacing: 0.14em;
+		text-transform: uppercase;
+	}
+	.client-proof__guarantees ul {
+		display: grid;
+		gap: 0.85rem;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	.client-proof__guarantees li {
+		display: grid;
+		grid-template-columns: auto 1fr;
+		gap: 0.7rem;
+		align-items: start;
+		color: var(--color-text);
+		font-size: 0.92rem;
+		font-weight: 600;
+		line-height: 1.45;
+	}
+	.client-proof__check {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 1.1rem;
+		height: 1.1rem;
+		margin-top: 0.15rem;
+		border-radius: 999px;
+		background: var(--color-accent);
+		color: var(--color-white);
+	}
+	.client-proof__check svg {
+		width: 0.7rem;
+		height: 0.7rem;
+	}
+
+	.client-proof__voices {
+		margin-top: clamp(2.5rem, 5vw, 4rem);
+		padding-top: clamp(2rem, 4vw, 2.75rem);
+		border-top: 1px solid var(--color-border-soft);
+	}
+	.client-proof__voices-label {
+		margin: 0 0 1.5rem 0;
+		color: var(--color-muted);
+		font-size: 0.74rem;
+		font-weight: 800;
+		letter-spacing: 0.14em;
+		text-transform: uppercase;
+	}
+	.client-proof__grid {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 1rem;
+	}
+	.client-proof__quote {
+		display: grid;
+		gap: 1rem;
+		margin: 0;
+		padding: 1.5rem;
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		background: var(--color-white);
+	}
+	.client-proof__quote blockquote {
+		margin: 0;
+		color: var(--color-text);
+		font-size: 0.96rem;
+		line-height: 1.6;
+	}
+	.client-proof__invite {
+		max-width: 70ch;
+		padding: 1.5rem 1.75rem;
+		border: 1px dashed color-mix(in srgb, var(--color-muted) 32%, var(--color-border));
+		border-radius: var(--radius-lg);
+		background: var(--color-bg-secondary);
+	}
+	.client-proof__invite-text {
+		margin: 0;
+		color: var(--color-muted);
+		font-size: 0.96rem;
+		line-height: 1.65;
+	}
+	.client-proof__quote figcaption {
+		display: grid;
+		gap: 0.15rem;
+		padding-top: 0.85rem;
+		border-top: 1px solid var(--color-border-soft);
+	}
+	.client-proof__quote-name {
+		color: var(--color-text);
+		font-size: 0.9rem;
+		font-weight: 800;
+	}
+	.client-proof__quote-role {
+		color: var(--color-muted);
+		font-size: 0.82rem;
+	}
+
+	@media (max-width: 920px) {
+		.client-proof__top {
+			grid-template-columns: 1fr;
+		}
+		.client-proof__grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

@@ -1,11 +1,69 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import ServiceFAQSection from '../../components/ServiceFAQSection.astro';
 import { serviceOfferings } from '../../data/services';
+import { faqSchema, breadcrumbSchema } from '../../data/schema';
 
 const pageTitle = 'Services | FutureSolutions';
 const pageDescription =
 	'Choose the level of system your business needs — Website Foundations, Signature Custom Websites, Growth Systems, Local Visibility, and Care and Optimization for healthcare and high-trust service businesses.';
 const canonicalUrl = 'https://futursolutions.io/services/';
+
+const pricingPrinciples = [
+	{
+		title: 'Audit first, quote second',
+		text: 'We start with a Website and Systems Audit so any recommendation is scoped to your actual site, goals, and gaps — not a generic package.',
+	},
+	{
+		title: 'Scoped, fixed proposals',
+		text: 'Once we understand the work, you get a clear written scope and a fixed price. No hourly surprises, no vague retainers you can\u2019t evaluate.',
+	},
+	{
+		title: 'Start where it makes sense',
+		text: 'A Foundation launch, a custom build, or a Growth System layer — you only pay for the level of system your business needs right now, and expand when ready.',
+	},
+];
+
+const faqs = [
+	{
+		question: 'How much does a project cost?',
+		answer:
+			'It depends on the level of system you need. A Website Foundation launch is a smaller, faster investment than a fully custom build, and a Growth System is scoped to your lead volume. We give you a fixed, written proposal after the audit so the number is grounded in your actual scope.',
+	},
+	{
+		question: 'Where should I start if I\u2019m not sure what I need?',
+		answer:
+			'Start with the Website and Systems Audit. It is the lowest-commitment way to get a clear recommendation, and it tells us both whether a Foundation, a custom site, or a Growth System is the right next step.',
+	},
+	{
+		question: 'Can I start small and expand later?',
+		answer:
+			'Yes — that is how most clients work with us. The five services build on each other. You can launch a Foundation now and add Local Visibility, a Growth System, or Care and Optimization as the business grows.',
+	},
+	{
+		question: 'Do you only work with healthcare businesses?',
+		answer:
+			'Our focus is healthcare and high-trust service businesses — clinics, wellness brands, associations, and similar. That focus is why the work fits these audiences so well, from compliance-aware forms to trust-first design.',
+	},
+	{
+		question: 'What makes a Foundation different from a generic template?',
+		answer:
+			'Foundations are healthcare-specific systems with the structure, trust signals, and conversion paths already planned, then customized around your brand. A generic template hands you a blank layout; a Foundation hands you a strategy.',
+	},
+	{
+		question: 'How long does a typical engagement take?',
+		answer:
+			'A Foundation launch is the fastest path to a credible site, while custom builds take longer because of the added strategy and design. We map realistic timelines during the strategy step so you know what to expect before work begins.',
+	},
+];
+
+const pageSchema = [
+	faqSchema(faqs),
+	breadcrumbSchema([
+		{ name: 'Home', path: '/' },
+		{ name: 'Services', path: '/services' },
+	]),
+];
 
 /**
  * Maps each service slug to a lane category, the decision-tree section label,
@@ -103,6 +161,7 @@ const processSteps = [
 	ogTitle={pageTitle}
 	ogDescription={pageDescription}
 	ogUrl={canonicalUrl}
+	schema={pageSchema}
 >
 	<section class="section services-hero" aria-labelledby="services-heading">
 		<div class="site-container services-hero__inner">
@@ -275,6 +334,29 @@ const processSteps = [
 		</div>
 	</section>
 
+	<section class="section services-pricing" aria-labelledby="services-pricing-heading">
+		<div class="site-container">
+			<div class="services-pricing__intro">
+				<p class="eyebrow">How pricing works</p>
+				<h2 id="services-pricing-heading">Transparent, scoped, and audit-first.</h2>
+				<p class="lead">
+					We don't publish one-size-fits-all package prices, because the right scope depends on your
+					site and goals. Here's how we keep pricing clear and fair.
+				</p>
+			</div>
+			<div class="services-pricing__grid">
+				{pricingPrinciples.map((item) => (
+					<article class="card services-pricing__card">
+						<h3>{item.title}</h3>
+						<p>{item.text}</p>
+					</article>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<ServiceFAQSection faqs={faqs} />
+
 	<section class="section services-final" aria-labelledby="services-final-heading">
 		<div class="site-container">
 			<div class="services-final__card">
@@ -295,6 +377,39 @@ const processSteps = [
 </BaseLayout>
 
 <style>
+	.services-pricing__intro {
+		max-width: 780px;
+	}
+
+	.services-pricing__grid {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 1rem;
+		margin-top: clamp(2rem, 4vw, 3rem);
+	}
+
+	.services-pricing__card {
+		padding: 1.5rem;
+	}
+
+	.services-pricing__card h3 {
+		font-size: 1.1rem;
+		letter-spacing: -0.02em;
+		margin-bottom: 0.4rem;
+	}
+
+	.services-pricing__card p {
+		font-size: 0.9375rem;
+		line-height: 1.6;
+		color: var(--color-muted);
+	}
+
+	@media (max-width: 860px) {
+		.services-pricing__grid {
+			grid-template-columns: 1fr;
+		}
+	}
+
 	.services-hero {
 		position: relative;
 		overflow: hidden;

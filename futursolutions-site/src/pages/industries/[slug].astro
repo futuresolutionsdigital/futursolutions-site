@@ -1,0 +1,283 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import RelatedServicesSection from '../../components/RelatedServicesSection.astro';
+import ServiceFAQSection from '../../components/ServiceFAQSection.astro';
+import { industries } from '../../data/industries';
+import { serviceSchema, faqSchema, breadcrumbSchema } from '../../data/schema';
+
+export function getStaticPaths() {
+	return industries.map((industry) => ({
+		params: { slug: industry.slug },
+		props: { industry },
+	}));
+}
+
+const { industry } = Astro.props;
+const path = `/industries/${industry.slug}`;
+const canonicalUrl = `https://futursolutions.io${path}`;
+
+const pageSchema = [
+	serviceSchema({
+		name: `${industry.name} Websites`,
+		description: industry.metaDescription,
+		path,
+		serviceType: `Web design for ${industry.name}`,
+	}),
+	faqSchema(industry.faqs),
+	breadcrumbSchema([
+		{ name: 'Home', path: '/' },
+		{ name: 'Industries', path: '/industries' },
+		{ name: industry.name, path },
+	]),
+];
+---
+
+<BaseLayout
+	title={industry.metaTitle}
+	description={industry.metaDescription}
+	canonicalUrl={canonicalUrl}
+	ogTitle={industry.metaTitle}
+	ogDescription={industry.metaDescription}
+	ogUrl={canonicalUrl}
+	schema={pageSchema}
+>
+	<section class:list={['section industry-hero', `industry-hero--${industry.lane}`]} aria-labelledby="industry-heading">
+		<div class="site-container industry-hero__inner">
+			<nav class="industry-hero__crumbs" aria-label="Breadcrumb">
+				<a href="/industries">Industries</a>
+				<span aria-hidden="true">/</span>
+				<span>{industry.navLabel}</span>
+			</nav>
+			<p class="eyebrow">{industry.eyebrow}</p>
+			<h1 id="industry-heading">{industry.heading}</h1>
+			<p class="lead">{industry.intro}</p>
+			<div class="button-row">
+				<a class="button button-primary" href="/audit">Get a Website Audit</a>
+				{industry.demo && <a class="button button-secondary" href={industry.demo.href}>{industry.demo.label}</a>}
+			</div>
+		</div>
+	</section>
+
+	<section class="section section-muted industry-pains" aria-labelledby="industry-pains-heading">
+		<div class="site-container">
+			<div class="industry-section__intro">
+				<p class="eyebrow">The problem</p>
+				<h2 id="industry-pains-heading">{industry.painsHeading}</h2>
+			</div>
+			<div class="industry-pains__grid">
+				{industry.pains.map((pain) => (
+					<article class="card industry-pain__card">
+						<p>{pain}</p>
+					</article>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<section class="section industry-approach" aria-labelledby="industry-approach-heading">
+		<div class="site-container">
+			<div class="industry-section__intro">
+				<p class="eyebrow">Our approach</p>
+				<h2 id="industry-approach-heading">{industry.approachHeading}</h2>
+			</div>
+			<div class="industry-approach__grid">
+				{industry.approach.map((item) => (
+					<article class="card industry-approach__card">
+						<h3>{item.title}</h3>
+						<p>{item.text}</p>
+					</article>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<section class="section section-muted industry-priorities" aria-labelledby="industry-priorities-heading">
+		<div class="site-container">
+			<div class="industry-section__intro">
+				<p class="eyebrow">What we prioritize</p>
+				<h2 id="industry-priorities-heading">Where the work focuses for {industry.navLabel.toLowerCase()}.</h2>
+			</div>
+			<div class="industry-priorities__chips">
+				{industry.priorities.map((priority) => <span>{priority}</span>)}
+			</div>
+		</div>
+	</section>
+
+	<RelatedServicesSection services={industry.relatedServices} />
+	<ServiceFAQSection faqs={industry.faqs} />
+
+	<section class="section industry-final" aria-labelledby="industry-final-heading">
+		<div class="site-container">
+			<div class="industry-final__card">
+				<div>
+					<p class="eyebrow">Next step</p>
+					<h2 id="industry-final-heading">See what your {industry.navLabel.toLowerCase()} site could be.</h2>
+					<p class="lead">
+						Start with a free Website and Systems Audit, or walk through a live demo built for this world.
+					</p>
+				</div>
+				<div class="button-row">
+					<a class="button button-primary" href="/audit">Get a Website Audit</a>
+					{industry.demo && <a class="button button-secondary" href={industry.demo.href}>{industry.demo.label}</a>}
+				</div>
+			</div>
+		</div>
+	</section>
+</BaseLayout>
+
+<style>
+	.industry-hero {
+		position: relative;
+		overflow: hidden;
+		padding-block: clamp(4rem, 7vw, 7rem);
+	}
+	.industry-hero::before {
+		position: absolute;
+		inset: 0;
+		z-index: -1;
+		content: '';
+		background: linear-gradient(180deg, var(--color-white) 0%, var(--color-bg) 74%);
+	}
+	.industry-hero--foundation::before { background: linear-gradient(180deg, var(--lane-foundation-tint) 0%, var(--color-bg) 72%); }
+	.industry-hero--custom::before     { background: linear-gradient(180deg, var(--lane-custom-tint) 0%, var(--color-bg) 72%); }
+	.industry-hero--growth::before     { background: linear-gradient(180deg, var(--lane-growth-tint) 0%, var(--color-bg) 72%); }
+	.industry-hero--audit::before      { background: linear-gradient(180deg, var(--lane-audit-tint) 0%, var(--color-bg) 72%); }
+	.industry-hero--care::before       { background: linear-gradient(180deg, var(--lane-care-tint) 0%, var(--color-bg) 72%); }
+
+	.industry-hero__inner {
+		max-width: 820px;
+	}
+	.industry-hero__crumbs {
+		display: flex;
+		gap: 0.5rem;
+		align-items: center;
+		margin-bottom: 1rem;
+		color: var(--color-muted);
+		font-size: 0.82rem;
+		font-weight: 600;
+	}
+	.industry-hero__crumbs a {
+		color: var(--color-accent-dark);
+	}
+	.industry-hero h1 {
+		max-width: 20ch;
+		margin-block: 0.3rem 1rem;
+	}
+	.industry-hero .lead {
+		max-width: 62ch;
+	}
+
+	.industry-section__intro {
+		max-width: 780px;
+	}
+
+	.industry-pains__grid {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 1rem;
+		margin-top: clamp(2rem, 4vw, 3rem);
+	}
+	.industry-pain__card {
+		padding: 1.25rem;
+	}
+	.industry-pain__card p {
+		margin: 0;
+		color: var(--color-text);
+		font-size: 0.95rem;
+		font-weight: 600;
+		line-height: 1.55;
+	}
+
+	.industry-approach__grid {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 1rem;
+		margin-top: clamp(2rem, 4vw, 3rem);
+	}
+	.industry-approach__card {
+		padding: 1.5rem;
+	}
+	.industry-approach__card h3 {
+		font-size: 1.1rem;
+		letter-spacing: -0.02em;
+		margin-bottom: 0.4rem;
+	}
+	.industry-approach__card p {
+		margin: 0;
+		color: var(--color-muted);
+		font-size: 0.92rem;
+		line-height: 1.6;
+	}
+
+	.industry-priorities__chips {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.7rem;
+		margin-top: 2rem;
+	}
+	.industry-priorities__chips span {
+		display: inline-flex;
+		padding: 0.55rem 0.85rem;
+		border: 1px solid color-mix(in srgb, var(--color-accent) 28%, var(--color-border));
+		border-radius: 999px;
+		background: var(--color-white);
+		color: var(--color-accent-dark);
+		font-size: 0.875rem;
+		font-weight: 700;
+		line-height: 1;
+	}
+
+	.industry-final {
+		background: var(--color-accent-light);
+	}
+	.industry-final__card {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) auto;
+		gap: 2rem;
+		align-items: end;
+		padding: clamp(1.5rem, 4vw, 3rem);
+		border: 1px solid color-mix(in srgb, var(--color-accent) 24%, transparent);
+		border-radius: 20px;
+		background: var(--color-text);
+		box-shadow: 0 24px 60px rgba(15, 23, 42, 0.12);
+	}
+	.industry-final .eyebrow {
+		color: color-mix(in srgb, var(--color-accent-light) 84%, var(--color-white));
+	}
+	.industry-final h2,
+	.industry-final .lead {
+		color: var(--color-white);
+	}
+	.industry-final .lead {
+		opacity: 0.78;
+	}
+	.industry-final .button-row {
+		justify-content: flex-end;
+		margin-top: 0;
+	}
+	.industry-final .button-secondary {
+		background: transparent;
+		border-color: rgba(255, 255, 255, 0.22);
+		color: var(--color-white);
+	}
+	.industry-final .button-secondary:hover {
+		background: rgba(255, 255, 255, 0.08);
+		border-color: rgba(255, 255, 255, 0.38);
+		color: var(--color-white);
+	}
+
+	@media (max-width: 900px) {
+		.industry-approach__grid {
+			grid-template-columns: 1fr;
+		}
+	}
+	@media (max-width: 720px) {
+		.industry-pains__grid,
+		.industry-final__card {
+			grid-template-columns: 1fr;
+		}
+		.industry-final .button-row {
+			justify-content: flex-start;
+		}
+	}
+</style>

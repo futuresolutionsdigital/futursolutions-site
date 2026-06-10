@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import ClientProof from '../components/ClientProof.astro';
 import DemoLibraryPreview from '../components/DemoLibraryPreview.astro';
 import FinalCTA from '../components/FinalCTA.astro';
 import HomeHero from '../components/HomeHero.astro';
@@ -9,6 +10,7 @@ import ProcessSection from '../components/ProcessSection.astro';
 import ProofStrip from '../components/ProofStrip.astro';
 import SeoVisibilitySection from '../components/SeoVisibilitySection.astro';
 import SystemDiagram from '../components/SystemDiagram.astro';
+import { organizationSchema, websiteSchema } from '../data/schema';
 
 const pageTitle = 'FutureSolutions — Premium healthcare websites and Growth Systems';
 const pageDescription =
@@ -23,6 +25,7 @@ const canonicalUrl = 'https://futursolutions.io/';
 	ogTitle={pageTitle}
 	ogDescription={pageDescription}
 	ogUrl={canonicalUrl}
+	schema={[organizationSchema, websiteSchema]}
 >
 	<HomeHero />
 	<OfferOverview />
@@ -32,6 +35,7 @@ const canonicalUrl = 'https://futursolutions.io/';
 	<SeoVisibilitySection />
 	<ProcessSection />
 	<ProofStrip />
+	<ClientProof />
 	<FinalCTA />
 </BaseLayout>
 

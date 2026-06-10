@@ -1,7 +1,5 @@
 ---
 const currentPath = Astro.url.pathname;
-// Industries and Work nav entries are intentionally omitted until Phase 4 builds
-// /industries/[slug] and /work routes. They will be reintroduced then.
 const navItems = [
 	{
 		label: 'Demos',
@@ -14,9 +12,19 @@ const navItems = [
 		isActive: currentPath === '/services' || currentPath.startsWith('/services/'),
 	},
 	{
+		label: 'Industries',
+		href: '/industries',
+		isActive: currentPath === '/industries' || currentPath.startsWith('/industries/'),
+	},
+	{
 		label: 'Resources',
 		href: '/resources',
 		isActive: currentPath === '/resources' || currentPath.startsWith('/resources/'),
+	},
+	{
+		label: 'About',
+		href: '/about',
+		isActive: currentPath === '/about' || currentPath.startsWith('/about'),
 	},
 	{
 		label: 'Audit',

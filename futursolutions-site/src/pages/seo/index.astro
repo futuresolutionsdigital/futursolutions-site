@@ -1,10 +1,57 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import RelatedServicesSection from '../../components/RelatedServicesSection.astro';
+import ServiceFAQSection from '../../components/ServiceFAQSection.astro';
+import { serviceSchema, faqSchema, breadcrumbSchema } from '../../data/schema';
 
 const pageTitle = 'Local Visibility | FutureSolutions';
 const pageDescription =
 	'FutureSolutions helps healthcare and high-trust service businesses structure their websites for clearer services, better local visibility, and stronger conversion paths.';
 const canonicalUrl = 'https://futursolutions.io/seo/';
+
+const faqs = [
+	{
+		question: 'Do you guarantee first-page rankings?',
+		answer:
+			'No one credible can guarantee specific rankings. What we can do is build the structural foundation search engines reward — clear service pages, clean metadata, internal linking, and local relevance — so your site is positioned to compete and improve over time.',
+	},
+	{
+		question: 'How is this different from a typical SEO agency?',
+		answer:
+			'We focus on the website foundation first: structure, service pages, content hierarchy, and conversion paths. Many SEO retainers spend on tactics while the underlying site stays unclear. We make the site itself easier for patients and search engines to understand.',
+	},
+	{
+		question: 'Do I need ongoing SEO, or is this a one-time setup?',
+		answer:
+			'Both are valid. The Local Visibility foundation is a structural setup. Ongoing content and refinement (through Care and Optimization) compound results, but the foundation delivers value on its own.',
+	},
+	{
+		question: 'Will this work with my Google Business Profile?',
+		answer:
+			'Yes. We align your website structure and local signals with your Google Business Profile so they reinforce each other rather than sending mixed signals.',
+	},
+];
+
+const relatedServices = [
+	{ label: 'Website Foundations', href: '/services/template-setup' },
+	{ label: 'Signature Custom Websites', href: '/services/custom-healthcare-websites' },
+	{ label: 'Growth Systems', href: '/backend' },
+	{ label: 'Care and Optimization', href: '/services/ongoing-optimization' },
+];
+
+const pageSchema = [
+	serviceSchema({
+		name: 'Local Visibility',
+		description: pageDescription,
+		path: '/seo',
+		serviceType: 'Local SEO for healthcare',
+	}),
+	faqSchema(faqs),
+	breadcrumbSchema([
+		{ name: 'Home', path: '/' },
+		{ name: 'Local Visibility', path: '/seo' },
+	]),
+];
 
 const problems = [
 	{
@@ -82,6 +129,7 @@ const processSteps = [
 	ogTitle={pageTitle}
 	ogDescription={pageDescription}
 	ogUrl={canonicalUrl}
+	schema={pageSchema}
 >
 	<section class="section differentiator-hero" aria-labelledby="seo-heading">
 		<div class="site-container differentiator-hero__inner">
@@ -171,6 +219,9 @@ const processSteps = [
 			</div>
 		</div>
 	</section>
+
+	<RelatedServicesSection services={relatedServices} />
+	<ServiceFAQSection faqs={faqs} />
 
 	<section class="section differentiator-final" aria-labelledby="seo-final-heading">
 		<div class="site-container">

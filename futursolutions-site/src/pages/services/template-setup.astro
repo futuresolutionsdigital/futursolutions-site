@@ -5,9 +5,19 @@ import ServiceDetailHero from '../../components/ServiceDetailHero.astro';
 import ServiceFAQSection from '../../components/ServiceFAQSection.astro';
 import ServiceIncludedSection from '../../components/ServiceIncludedSection.astro';
 import { serviceDetails } from '../../data/serviceDetails';
+import { serviceSchema, faqSchema, breadcrumbSchema } from '../../data/schema';
 
 const service = serviceDetails['template-setup'];
 const canonicalUrl = `https://futursolutions.io${service.canonicalPath}`;
+const pageSchema = [
+	serviceSchema({ name: service.eyebrow, description: service.description, path: service.canonicalPath }),
+	faqSchema(service.faqs),
+	breadcrumbSchema([
+		{ name: 'Home', path: '/' },
+		{ name: 'Services', path: '/services' },
+		{ name: service.eyebrow, path: service.canonicalPath },
+	]),
+];
 const processSteps = [
 	{ step: '01', title: 'Choose the Foundation', text: 'Start with the Website Foundation that best matches your practice, audience, and service model.' },
 	{ step: '02', title: 'Customize the Foundation', text: 'Adjust brand, content, imagery, services, and trust sections around your business.' },
@@ -16,7 +26,7 @@ const processSteps = [
 ];
 ---
 
-<BaseLayout title={service.title} description={service.description} canonicalUrl={canonicalUrl} ogTitle={service.title} ogDescription={service.description} ogUrl={canonicalUrl}>
+<BaseLayout title={service.title} description={service.description} canonicalUrl={canonicalUrl} ogTitle={service.title} ogDescription={service.description} ogUrl={canonicalUrl} schema={pageSchema}>
 	<ServiceDetailHero
 		eyebrow={service.eyebrow}
 		heading={service.heading}

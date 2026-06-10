@@ -4,7 +4,7 @@
 > parent site) and the **sub-projects** (the five website template/demo systems).
 > Use this to recognize what is done, what remains, and where to point effort next.
 >
-> **Last updated:** June 9, 2026 (portal preview)
+> **Last updated:** June 9, 2026 (master polish pass — content, SEO infra, proof, industries)
 > **Companion docs (do not duplicate — link out):**
 > - `docs/strategy-reference.md` — positioning, offers, copy/CTA/compliance rules
 > - `docs/site-audit.md` — master-site scorecard + diagnosis
@@ -50,28 +50,34 @@
 
 ## Part 1 — Master Project (FutureSolutions Parent Site)
 
-**One-line status:** Strategically and visually strong; **not yet launch-safe** because operational, legal, and SEO infrastructure is missing.
+**One-line status:** Strategically, visually, and structurally strong; **content + SEO infrastructure now in place.** Remaining gap to launch is **integrations only** (GHL lead delivery, analytics, prod env vars) + real legal/business facts.
 
-**Overall launch readiness: ~58%** (per `site-audit.md`). The gap is **not strategy** — it is integration, legal, and QA wiring.
+**Overall launch readiness: ~80%** (non-integration polish complete). The remaining gap is **integration, prod env, and a counsel/business-facts pass** — not design, content, or structure.
 
 ### Master scorecard
 
 | Dimension | Score | State | What closes the gap |
 |---|---|---|---|
-| Strategic alignment | 4.5/5 | ✅ | Add Foundation-vs-Custom comparison + pricing visibility |
-| Visual design | 4/5 | ✅ | Real photography/mockups, subtle motion |
-| Content structure | 4/5 | 🟡 | About page, industry pages, published resource articles |
-| Operational readiness | 2/5 | 🔴 | **Audit form does not submit** — wire to GHL/email + confirmation redirect |
-| Legal / compliance | 1/5 | 🔴 | Privacy policy, terms, footer links, scoped data/HIPAA language |
-| SEO readiness | 2/5 | 🔴 | robots.txt, sitemap, production canonicals, OG images, schema, alt text |
-| Accessibility | 3.5/5 | 🟡 | Full WCAG 2.2 pass across parent routes (association demo is the model) |
+| Strategic alignment | 5/5 | ✅ | Done — pricing philosophy + Foundation-vs-Custom article shipped |
+| Visual design | 4.5/5 | ✅ | Optional: real photography/mockups, subtle motion |
+| Content structure | 5/5 | ✅ | Done — About, 5 industry pages, 3 published articles, FAQs everywhere |
+| Operational readiness | 3.5/5 | 🟡 | Form submits w/ validation + honeypot; **GHL/email delivery deferred** |
+| Legal / compliance | 4/5 | 🟡 | Pages live; needs real entity/jurisdiction + counsel review |
+| SEO readiness | 4.5/5 | ✅ | robots, sitemap, canonicals, OG image, Twitter cards, JSON-LD schema done |
+| Accessibility | 4/5 | 🟡 | Strong; full WCAG 2.2 sweep of new routes recommended |
 
 ### Master — what's DONE ✅
 - Three-lane offer model (Foundations / Custom / Growth Systems) + Local Visibility & Care layers
 - Audit positioned as the diagnostic entry point; lane accent color system consistent
-- Homepage hero, system map, industry ticker, demo preview, process, proof strip
-- Services page with decision-first architecture + 3 service detail pages
-- Backend/Growth Systems page with flow diagram; SEO page; resources roadmap page
+- Homepage hero, system map, industry ticker, demo preview, process, proof strip + **honest ClientProof section** (live-demo proof, engagement guarantees, testimonial scaffold)
+- Services page with decision-first architecture + 3 service detail pages + **pricing philosophy + FAQ**
+- Backend/Growth Systems page + SEO page — now with **FAQ + related services parity** with service detail pages
+- **About page** (`/about`) with founder/team placeholders + nav/footer wiring
+- **Industries** hub + 5 detail pages (`/industries/[slug]`: med spas, solo, wellness/functional, hormone/TRT, associations) tied to live demos + nav entry
+- **Resources**: 3 published articles + `resources/[slug]` route + roadmap reframed as "what's coming next"
+- **SEO infra**: robots.txt, `@astrojs/sitemap`, production canonicals, OG image (`/og/default.svg`), Twitter cards, JSON-LD (Organization, WebSite, Service, FAQPage, BreadcrumbList, Article)
+- **Custom branded 404** + async font loading + favicon reference fix
+- Legal pages (`/privacy`, `/terms`) + footer links; functional audit form (validation + honeypot)
 - 5 live demos linked + 5 Foundation detail pages (`/templates/[slug]`)
 - Fit Assistant chatbot deployed across all layouts (streaming, rate-limited, scoped)
 - Clean build (zero warnings), all routes prerender
@@ -88,14 +94,21 @@
 - [ ] Add scoped healthcare/data-handling language (no blanket HIPAA claims)
 
 **P1 — launch critical**
-- [ ] Analytics (GA4 + Vercel) with audit-submit conversion event
-- [ ] OG images + Twitter card meta + `favicon.ico`
-- [ ] Custom 404 page
-- [ ] Form spam protection (honeypot min.)
-- [ ] Verify `OPENAI_API_KEY` on Vercel (chatbot prod)
-- [ ] Image alt-text audit
+- [x] OG image + Twitter card meta + favicon reference fixed
+- [x] Custom 404 page
+- [x] Form spam protection (honeypot)
+- [x] JSON-LD schema (Organization, WebSite, Service, FAQ, Breadcrumb, Article)
+- [ ] Analytics (GA4 + Vercel) with audit-submit conversion event — **deferred (integration)**
+- [ ] Verify `OPENAI_API_KEY` on Vercel (chatbot prod) — **deferred (integration)**
 
-**P2/P3 — after launch / future:** About page, industry pages, schema, pricing visibility, Foundation-vs-Custom section, resource articles, case studies, testimonials, lead magnets, Sanity expansion. (See checklist.)
+**P2/P3 — now DONE (this pass):** About page ✅, industry pages ✅, schema ✅, pricing philosophy ✅, Foundation-vs-Custom article ✅, resource articles (3) ✅, honest proof structure + testimonial scaffold ✅, FAQ depth parity ✅.
+
+**Remaining before launch (all integration / business facts):**
+- [ ] Wire audit form to GHL/email delivery (`GHL_WEBHOOK_URL`) + analytics conversion event
+- [ ] Replace `[PLACEHOLDER]` legal entity/jurisdiction + counsel review (privacy/terms)
+- [ ] Replace About founder facts + collect real testimonials (`src/data/testimonials.ts`)
+- [ ] Optional: rasterize `/og/default.svg` to PNG for broadest social-preview support
+- [ ] Full WCAG 2.2 sweep of new routes (about, industries, articles)
 
 ---
 

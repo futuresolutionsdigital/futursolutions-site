@@ -1,0 +1,163 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import FinalCTA from '../../components/FinalCTA.astro';
+import { industries } from '../../data/industries';
+import { breadcrumbSchema } from '../../data/schema';
+
+const pageTitle = 'Industries We Serve | FutureSolutions';
+const pageDescription =
+	'FutureSolutions builds premium websites and Growth Systems for med spas, solo practices, wellness and functional medicine, hormone and TRT clinics, and healthcare associations.';
+const canonicalUrl = 'https://futursolutions.io/industries/';
+
+const pageSchema = [
+	breadcrumbSchema([
+		{ name: 'Home', path: '/' },
+		{ name: 'Industries', path: '/industries' },
+	]),
+];
+---
+
+<BaseLayout
+	title={pageTitle}
+	description={pageDescription}
+	canonicalUrl={canonicalUrl}
+	ogTitle={pageTitle}
+	ogDescription={pageDescription}
+	ogUrl={canonicalUrl}
+	schema={pageSchema}
+>
+	<section class="section industries-hero" aria-labelledby="industries-heading">
+		<div class="site-container industries-hero__inner">
+			<p class="eyebrow">Industries</p>
+			<h1 id="industries-heading">Built for the businesses where trust is everything.</h1>
+			<p class="lead">
+				We focus on healthcare and high-trust service businesses. That focus is why our defaults —
+				trust-first design, clear services, compliance-aware forms, and connected follow-up — are
+				already right for your world.
+			</p>
+			<div class="button-row">
+				<a class="button button-primary" href="/audit">Get a Website Audit</a>
+				<a class="button button-secondary" href="/templates">Explore Live Demos</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="section industries-grid-section" aria-labelledby="industries-grid-heading">
+		<div class="site-container">
+			<div class="industries-grid-section__intro">
+				<p class="eyebrow">Who we work with</p>
+				<h2 id="industries-grid-heading">Five worlds we know well.</h2>
+			</div>
+			<div class="industries-grid">
+				{industries.map((industry) => (
+					<a
+						class:list={['card industries-card', `lane-accent-top lane-accent-top--${industry.lane}`]}
+						href={`/industries/${industry.slug}`}
+					>
+						<header class="industries-card__head">
+							<span class={`lane-tag lane-tag--${industry.lane}`}>{industry.navLabel}</span>
+						</header>
+						<h3>{industry.name}</h3>
+						<p>{industry.cardSummary}</p>
+						<span class="industries-card__link">
+							Explore
+							<span aria-hidden="true">&rarr;</span>
+						</span>
+					</a>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<FinalCTA />
+</BaseLayout>
+
+<style>
+	.industries-hero {
+		position: relative;
+		overflow: hidden;
+		padding-block: clamp(5rem, 8vw, 8rem);
+	}
+	.industries-hero::before {
+		position: absolute;
+		inset: 0;
+		z-index: -1;
+		background:
+			radial-gradient(circle at 80% 14%, color-mix(in srgb, var(--color-accent) 14%, transparent), transparent 32%),
+			linear-gradient(180deg, var(--color-white) 0%, var(--color-bg) 72%);
+		content: '';
+	}
+	.industries-hero__inner {
+		max-width: 880px;
+	}
+	.industries-hero h1 {
+		max-width: 20ch;
+		margin-block: 0.4rem 1rem;
+	}
+	.industries-hero .lead {
+		max-width: 64ch;
+	}
+
+	.industries-grid-section__intro {
+		max-width: 780px;
+	}
+	.industries-grid {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 1rem;
+		margin-top: clamp(2rem, 4vw, 3rem);
+	}
+	.industries-card {
+		display: grid;
+		grid-template-rows: auto auto 1fr auto;
+		gap: 0.7rem;
+		padding: 1.5rem;
+		transition: transform 280ms var(--ease-out-quart), border-color var(--transition-base), box-shadow var(--transition-base);
+	}
+	.industries-card:hover {
+		transform: translateY(-3px);
+		border-color: color-mix(in srgb, var(--color-accent) 32%, var(--color-border));
+		box-shadow: 0 24px 52px rgba(15, 23, 42, 0.08);
+	}
+	.industries-card__head {
+		display: flex;
+	}
+	.industries-card h3 {
+		margin: 0;
+		font-size: 1.2rem;
+		letter-spacing: -0.02em;
+	}
+	.industries-card p {
+		margin: 0;
+		color: var(--color-muted);
+		font-size: 0.92rem;
+		line-height: 1.6;
+	}
+	.industries-card__link {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.35rem;
+		margin-top: 0.35rem;
+		color: var(--color-accent-dark);
+		font-size: 0.85rem;
+		font-weight: 800;
+	}
+	.industries-card__link span {
+		display: inline-block;
+		transition: transform 220ms var(--ease-out-quart);
+	}
+	.industries-card:hover .industries-card__link span {
+		transform: translateX(3px);
+	}
+
+	@media (max-width: 900px) {
+		.industries-grid {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+	@media (max-width: 600px) {
+		.industries-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

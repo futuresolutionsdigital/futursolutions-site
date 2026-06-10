@@ -1,0 +1,91 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const pageTitle = 'Page Not Found | FutureSolutions';
+const pageDescription = 'The page you are looking for could not be found. Explore our services, live demos, or request a website audit.';
+
+const helpfulLinks = [
+	{ label: 'Home', href: '/', text: 'Start from the top.' },
+	{ label: 'Live Demos', href: '/templates', text: 'Walk through the Foundation library.' },
+	{ label: 'Services', href: '/services', text: 'See how we work across websites and growth.' },
+	{ label: 'Get a Website Audit', href: '/audit', text: 'The best first step for most businesses.' },
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+	<section class="section notfound" aria-labelledby="notfound-heading">
+		<div class="site-container notfound__inner">
+			<p class="display-num notfound__code" aria-hidden="true">404</p>
+			<p class="eyebrow">Page not found</p>
+			<h1 id="notfound-heading">This page took a wrong turn.</h1>
+			<p class="lead">
+				The page you are looking for may have moved or never existed. Here are a few good places to pick
+				back up.
+			</p>
+			<div class="button-row">
+				<a class="button button-primary" href="/">Back to Home</a>
+				<a class="button button-secondary" href="/audit">Get a Website Audit</a>
+			</div>
+
+			<div class="notfound__grid">
+				{helpfulLinks.map((link) => (
+					<a class="card notfound__link" href={link.href}>
+						<span>{link.label}</span>
+						<small>{link.text}</small>
+					</a>
+				))}
+			</div>
+		</div>
+	</section>
+</BaseLayout>
+
+<style>
+	.notfound {
+		padding-block: clamp(4rem, 9vw, 8rem);
+	}
+	.notfound__inner {
+		max-width: 720px;
+	}
+	.notfound__code {
+		color: color-mix(in srgb, var(--color-accent) 55%, var(--color-border));
+		line-height: 1;
+		margin-bottom: 0.75rem;
+	}
+	.notfound h1 {
+		margin-block: 0.4rem 0.9rem;
+	}
+	.notfound .lead {
+		max-width: 56ch;
+	}
+	.notfound__grid {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 1rem;
+		margin-top: clamp(2.25rem, 4vw, 3rem);
+	}
+	.notfound__link {
+		display: grid;
+		gap: 0.4rem;
+		padding: 1.15rem 1.25rem;
+		transition: transform var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base);
+	}
+	.notfound__link:hover {
+		transform: translateY(-2px);
+		border-color: color-mix(in srgb, var(--color-accent) 34%, var(--color-border));
+		box-shadow: 0 20px 48px rgba(15, 23, 42, 0.06);
+	}
+	.notfound__link span {
+		color: var(--color-text);
+		font-size: 1rem;
+		font-weight: 800;
+	}
+	.notfound__link small {
+		color: var(--color-muted);
+		font-size: 0.875rem;
+	}
+	@media (max-width: 620px) {
+		.notfound__grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

@@ -1,11 +1,49 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import AuditFormShell from '../../components/AuditFormShell.astro';
+import ServiceFAQSection from '../../components/ServiceFAQSection.astro';
+import { faqSchema, breadcrumbSchema } from '../../data/schema';
 
 const pageTitle = 'Website and Systems Audit | FutureSolutions';
 const pageDescription =
 	'Request a Website and Systems Audit for your healthcare or high-trust service business — site, content, conversion, lead capture, and visibility, reviewed and reported.';
 const canonicalUrl = 'https://futursolutions.io/audit/';
+
+const faqs = [
+	{
+		question: 'Is the audit really free?',
+		answer:
+			'Yes. The Website and Systems Audit is free and comes with no obligation. We send you a structured review with a recommended next step — even if that step is "you don\u2019t need us right now."',
+	},
+	{
+		question: 'How long does it take to get my audit back?',
+		answer:
+			'We typically deliver written notes or a Loom walkthrough within five business days of receiving your details. Busier weeks may take slightly longer, and we\u2019ll let you know if so.',
+	},
+	{
+		question: 'What if I don\u2019t have a website yet?',
+		answer:
+			'That\u2019s fine. If you\u2019re starting fresh, we\u2019ll focus on your goals, audience, and service model, and recommend the right starting point — usually a Website Foundation.',
+	},
+	{
+		question: 'Will this turn into a sales pitch?',
+		answer:
+			'No. The audit is meant to give you clarity. If there\u2019s a fit, we\u2019ll outline a scope; if there isn\u2019t, we\u2019ll tell you. Either way, the review is yours to keep.',
+	},
+	{
+		question: 'What do you need from me to start?',
+		answer:
+			'Just the short form on this page — your current website (if any), business type, services, and your main goal. The more context you share, the more specific the recommendation.',
+	},
+];
+
+const pageSchema = [
+	faqSchema(faqs),
+	breadcrumbSchema([
+		{ name: 'Home', path: '/' },
+		{ name: 'Website and Systems Audit', path: '/audit' },
+	]),
+];
 
 const expectations = [
 	'First-impression trust review',
@@ -76,6 +114,7 @@ const processSteps = [
 	ogTitle={pageTitle}
 	ogDescription={pageDescription}
 	ogUrl={canonicalUrl}
+	schema={pageSchema}
 >
 	<section class="section audit-hero" aria-labelledby="audit-heading">
 		<div class="site-container audit-hero__inner">
@@ -162,6 +201,8 @@ const processSteps = [
 			</div>
 		</div>
 	</section>
+
+	<ServiceFAQSection faqs={faqs} />
 
 	<section class="section audit-final" aria-labelledby="audit-final-heading">
 		<div class="site-container">

@@ -1,0 +1,321 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { resources, publishedResources } from '../../data/resources';
+import { articleSchema, breadcrumbSchema } from '../../data/schema';
+
+export function getStaticPaths() {
+	return publishedResources().map((entry) => ({
+		params: { slug: entry.slug },
+		props: { entry },
+	}));
+}
+
+const { entry } = Astro.props;
+const article = entry.article!;
+const path = `/resources/${entry.slug}`;
+const canonicalUrl = `https://futursolutions.io${path}`;
+const pageTitle = `${entry.title} | FutureSolutions`;
+
+const dateLabel = new Date(article.datePublished).toLocaleDateString('en-US', {
+	year: 'numeric',
+	month: 'long',
+	day: 'numeric',
+});
+
+const moreArticles = publishedResources()
+	.filter((r) => r.slug !== entry.slug)
+	.slice(0, 2);
+
+const pageSchema = [
+	articleSchema({
+		title: entry.title,
+		description: entry.excerpt,
+		path,
+		datePublished: article.datePublished,
+	}),
+	breadcrumbSchema([
+		{ name: 'Home', path: '/' },
+		{ name: 'Resources', path: '/resources' },
+		{ name: entry.title, path },
+	]),
+];
+---
+
+<BaseLayout
+	title={pageTitle}
+	description={entry.excerpt}
+	canonicalUrl={canonicalUrl}
+	ogTitle={pageTitle}
+	ogDescription={entry.excerpt}
+	ogUrl={canonicalUrl}
+	schema={pageSchema}
+>
+	<article class="article">
+		<header class="section article__head">
+			<div class="site-container article__head-inner">
+				<nav class="article__crumbs" aria-label="Breadcrumb">
+					<a href="/resources">Resources</a>
+					<span aria-hidden="true">/</span>
+					<span>{entry.category}</span>
+				</nav>
+				<h1 id="article-heading">{entry.title}</h1>
+				<p class="lead article__excerpt">{entry.excerpt}</p>
+				<p class="article__meta">
+					<span>{dateLabel}</span>
+					<span aria-hidden="true">·</span>
+					<span>{article.readingTime}</span>
+					<span aria-hidden="true">·</span>
+					<span>For {entry.audience}</span>
+				</p>
+			</div>
+		</header>
+
+		<div class="section article__body">
+			<div class="site-container article__body-inner">
+				<p class="article__intro">{article.intro}</p>
+
+				{article.sections.map((section) => (
+					<section class="article__section">
+						<h2>{section.heading}</h2>
+						{section.paragraphs?.map((p) => <p>{p}</p>)}
+						{section.list && (
+							<ul class="article__list">
+								{section.list.map((item) => <li>{item}</li>)}
+							</ul>
+						)}
+					</section>
+				))}
+
+				<aside class="article__takeaways" aria-labelledby="takeaways-heading">
+					<h2 id="takeaways-heading">Key takeaways</h2>
+					<ul>
+						{article.keyTakeaways.map((item) => <li>{item}</li>)}
+					</ul>
+				</aside>
+
+				<div class="article__cta">
+					<div>
+						<p class="eyebrow">Related: {entry.relatedService}</p>
+						<h2>{entry.ctaLabel === 'Explore Live Demos' ? 'See these ideas in a live build.' : 'Want this looked at for your own site?'}</h2>
+						<p>
+							A free Website and Systems Audit turns this advice into specific recommendations for your
+							practice — trust, structure, visibility, and follow-up.
+						</p>
+					</div>
+					<div class="button-row">
+						<a class="button button-primary" href="/audit">Get a Website Audit</a>
+						<a class="button button-secondary" href={entry.ctaHref}>{entry.ctaLabel}</a>
+					</div>
+				</div>
+
+				{moreArticles.length > 0 && (
+					<section class="article__more" aria-labelledby="more-heading">
+						<h2 id="more-heading">Keep reading</h2>
+						<div class="article__more-grid">
+							{moreArticles.map((more) => (
+								<a class="card article__more-card" href={`/resources/${more.slug}`}>
+									<span class="article__more-cat">{more.category}</span>
+									<span class="article__more-title">{more.title}</span>
+									<small>{more.article?.readingTime}</small>
+								</a>
+							))}
+						</div>
+					</section>
+				)}
+			</div>
+		</div>
+	</article>
+</BaseLayout>
+
+<style>
+	.article__head {
+		position: relative;
+		overflow: hidden;
+		padding-block: clamp(3.5rem, 7vw, 6rem) clamp(2rem, 4vw, 3rem);
+	}
+	.article__head::before {
+		position: absolute;
+		inset: 0;
+		z-index: -1;
+		background: linear-gradient(180deg, var(--color-accent-light) 0%, var(--color-bg) 80%);
+		content: '';
+	}
+	.article__head-inner {
+		max-width: 760px;
+	}
+	.article__crumbs {
+		display: flex;
+		gap: 0.5rem;
+		align-items: center;
+		margin-bottom: 1rem;
+		color: var(--color-muted);
+		font-size: 0.82rem;
+		font-weight: 600;
+	}
+	.article__crumbs a {
+		color: var(--color-accent-dark);
+	}
+	.article__head h1 {
+		max-width: 22ch;
+		font-size: clamp(1.9rem, 4vw, 2.85rem);
+		letter-spacing: -0.03em;
+		line-height: 1.1;
+	}
+	.article__excerpt {
+		margin-top: 1rem;
+		max-width: 60ch;
+	}
+	.article__meta {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.6rem;
+		align-items: center;
+		margin-top: 1.25rem;
+		color: var(--color-muted-soft);
+		font-size: 0.85rem;
+		font-weight: 600;
+	}
+
+	.article__body-inner {
+		max-width: 720px;
+	}
+	.article__intro {
+		font-size: 1.15rem;
+		line-height: 1.7;
+		color: var(--color-text);
+		margin: 0 0 2.5rem 0;
+		padding-bottom: 2rem;
+		border-bottom: 1px solid var(--color-border-soft);
+	}
+	.article__section {
+		margin-bottom: 2.25rem;
+	}
+	.article__section h2 {
+		font-size: 1.35rem;
+		letter-spacing: -0.02em;
+		margin-bottom: 0.75rem;
+	}
+	.article__section p {
+		color: var(--color-muted);
+		line-height: 1.75;
+		margin: 0 0 1rem 0;
+	}
+	.article__list {
+		display: grid;
+		gap: 0.6rem;
+		margin: 0.5rem 0 0 0;
+		padding-left: 1.1rem;
+	}
+	.article__list li {
+		color: var(--color-muted);
+		line-height: 1.6;
+	}
+
+	.article__takeaways {
+		margin: 2.5rem 0;
+		padding: 1.75rem;
+		border: 1px solid color-mix(in srgb, var(--color-accent) 24%, var(--color-border));
+		border-radius: var(--radius-lg);
+		background: var(--color-accent-light);
+	}
+	.article__takeaways h2 {
+		font-size: 1.05rem;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		color: var(--color-accent-dark);
+		margin-bottom: 1rem;
+	}
+	.article__takeaways ul {
+		display: grid;
+		gap: 0.7rem;
+		margin: 0;
+		padding-left: 1.1rem;
+	}
+	.article__takeaways li {
+		color: var(--color-text);
+		font-weight: 600;
+		line-height: 1.55;
+	}
+
+	.article__cta {
+		display: grid;
+		gap: 1.5rem;
+		margin: 3rem 0;
+		padding: clamp(1.75rem, 4vw, 2.5rem);
+		border-radius: var(--radius-lg);
+		background: var(--color-text);
+		color: var(--color-white);
+	}
+	.article__cta .eyebrow {
+		color: color-mix(in srgb, var(--color-accent-light) 84%, var(--color-white));
+	}
+	.article__cta h2 {
+		color: var(--color-white);
+		font-size: 1.4rem;
+		letter-spacing: -0.02em;
+		margin: 0.3rem 0 0.6rem 0;
+	}
+	.article__cta p {
+		color: rgba(255, 255, 255, 0.78);
+		margin: 0;
+		line-height: 1.6;
+	}
+	.article__cta .button-row {
+		margin-top: 0;
+	}
+	.article__cta .button-secondary {
+		background: transparent;
+		border-color: rgba(255, 255, 255, 0.22);
+		color: var(--color-white);
+	}
+	.article__cta .button-secondary:hover {
+		background: rgba(255, 255, 255, 0.08);
+		border-color: rgba(255, 255, 255, 0.38);
+		color: var(--color-white);
+	}
+
+	.article__more h2 {
+		font-size: 1.1rem;
+		letter-spacing: -0.02em;
+		margin-bottom: 1rem;
+	}
+	.article__more-grid {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 1rem;
+	}
+	.article__more-card {
+		display: grid;
+		gap: 0.45rem;
+		padding: 1.25rem;
+		transition: transform var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base);
+	}
+	.article__more-card:hover {
+		transform: translateY(-2px);
+		border-color: color-mix(in srgb, var(--color-accent) 34%, var(--color-border));
+		box-shadow: 0 20px 48px rgba(15, 23, 42, 0.06);
+	}
+	.article__more-cat {
+		color: var(--color-accent-dark);
+		font-size: 0.72rem;
+		font-weight: 800;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+	}
+	.article__more-title {
+		color: var(--color-text);
+		font-size: 1rem;
+		font-weight: 800;
+		line-height: 1.35;
+	}
+	.article__more-card small {
+		color: var(--color-muted);
+		font-size: 0.8rem;
+	}
+
+	@media (max-width: 620px) {
+		.article__more-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>
