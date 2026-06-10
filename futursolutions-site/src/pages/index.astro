@@ -5,9 +5,11 @@ import BeforeAfter from '../components/BeforeAfter.astro';
 import DemoLibraryPreview from '../components/DemoLibraryPreview.astro';
 import FinalCTA from '../components/FinalCTA.astro';
 import HomeHero from '../components/HomeHero.astro';
+import MarketingSystems from '../components/MarketingSystems.astro';
 import OfferOverview from '../components/OfferOverview.astro';
 import ProblemSection from '../components/ProblemSection.astro';
 import ProofStrip from '../components/ProofStrip.astro';
+import SectionBridge from '../components/SectionBridge.astro';
 import ServiceFAQSection from '../components/ServiceFAQSection.astro';
 import Testimonials from '../components/Testimonials.astro';
 import VisitorJourney from '../components/VisitorJourney.astro';
@@ -25,14 +27,9 @@ const faqs = [
 			'We design and build premium websites for healthcare and high-trust service businesses, and connect them to the systems behind the scenes — lead capture, booking, and follow-up. You can start with a customizable Website Foundation, a fully custom build, or add a Growth System to a site you already have.',
 	},
 	{
-		question: 'Who do you work with?',
+		question: 'Do I need a custom website or a website foundation?',
 		answer:
-			'Clinics, med spas, solo and private practices, wellness and functional medicine, hormone and TRT clinics, and healthcare associations — businesses where trust is the product. We work with clients across the United States.',
-	},
-	{
-		question: 'Where do I start?',
-		answer:
-			'A free Website and Systems Audit. We review your current site, visibility, and follow-up, then send a structured recommendation — with no obligation. It tells us both whether a Foundation, a custom build, or a Growth System is the right next step.',
+			'It depends on your stage. A Website Foundation is the fastest, more affordable path to a credible, converting site and fits most clinics and wellness brands. A Signature Custom build makes sense when you have unique positioning, complex content, or a larger team. The free audit makes a clear recommendation either way — no pressure toward the larger option.',
 	},
 	{
 		question: 'Can you work with my existing website?',
@@ -40,34 +37,39 @@ const faqs = [
 			'Often, yes. If your current site has a solid foundation, we can restructure key pages, fix the conversion path, and connect follow-up systems without a full rebuild. If it is holding you back, the audit will say so plainly — and a Website Foundation or custom build may be the better investment.',
 	},
 	{
-		question: 'Do you only build websites?',
-		answer:
-			'No. The website is the front end of a larger system. We also build the lead capture, booking, CRM routing, follow-up, and reporting behind it through our Growth Systems — so inquiries turn into booked consultations instead of disappearing into an inbox.',
-	},
-	{
-		question: 'Can you connect forms, CRM, and follow-up?',
+		question: 'Can you connect my website to GoHighLevel or another CRM?',
 		answer:
 			'Yes. Forms, calendars, and lead routing connect into GoHighLevel (or a similar CRM), with automated follow-up, review requests, and basic reporting. This can be wired in at launch or added to a site you already have.',
 	},
 	{
-		question: 'What happens after launch?',
+		question: 'Do you write the copy and structure the service pages?',
 		answer:
-			'Launch is the start, not the finish. Our Care & Optimization plans handle updates, monitoring, and a steady cycle of small improvements so the site keeps converting — you are never left to maintain it alone.',
+			'Yes. Conversion-focused copy and service-page structure are part of the build — pages are organized around how your visitors actually decide, not filled with placeholder text. You stay involved so every detail is accurate to your practice.',
 	},
 	{
-		question: 'How much does it cost?',
+		question: 'Do you only work with healthcare businesses?',
 		answer:
-			'It depends on the level of system you need. A Website Foundation is a smaller, faster investment than a fully custom build, and a Growth System is scoped to your lead volume. After the audit, you get a fixed, written proposal grounded in your actual scope — no hourly surprises.',
+			'We focus on healthcare, wellness, and high-trust, appointment-based businesses — clinics, med spas, private practices, hormone and TRT clinics, wellness brands, and associations. If trust and booked appointments drive your business, you are a good fit, even just outside strict clinical care.',
 	},
 	{
-		question: 'How long does it take?',
+		question: 'Can you help with SEO or paid ads after launch?',
 		answer:
-			'A Website Foundation is the fastest path to a credible, converting site; custom builds take longer because of the added strategy and design. We map a realistic timeline during the strategy step so you know what to expect before any work begins.',
+			'Sites are built SEO-aware and campaign-ready, and our Care & Optimization plans support ongoing SEO structure and landing pages for paid traffic. We focus on the website and system side, and we are clear about what we do and do not run so nothing falls through the cracks.',
 	},
 	{
-		question: 'Can I see examples of your work?',
+		question: 'What happens after I request an audit?',
 		answer:
-			'Yes — our demo library is full of real, clickable websites built for each industry we serve. Rather than static screenshots, you can explore complete, functioning sites end to end before you ever reach out.',
+			'We review your site, visibility, and follow-up by hand, then send a structured written breakdown of what is working and what to fix first — with a recommendation. No obligation and no sales pitch.',
+	},
+	{
+		question: 'How is this different from hiring a normal web designer?',
+		answer:
+			'Most designers stop at how the pages look. We plan around your offer, the visitor journey, and the system behind the form — service clarity, conversion path, CRM, follow-up, and tracking — so the site actually generates and handles leads instead of just looking nice.',
+	},
+	{
+		question: 'How long does a build usually take?',
+		answer:
+			'A Website Foundation is the fastest path to launch; custom builds take longer because of the added strategy and design. We map a realistic timeline during the strategy step so you know what to expect before any work begins.',
 	},
 ];
 ---
@@ -83,11 +85,16 @@ const faqs = [
 >
 	<HomeHero />
 	<ProblemSection />
+	<SectionBridge text="Once you see where leads are leaking, the next step is rebuilding the path visitors actually follow." />
 	<BeforeAfter />
 	<OfferOverview />
+	<SectionBridge text="Whatever starting point you choose, the goal is the same: guide every visitor through a clearer path." />
 	<VisitorJourney />
+	<SectionBridge text="The easiest way to understand the system is to walk through one." />
 	<DemoLibraryPreview />
 	<ProofStrip />
+	<MarketingSystems />
+	<SectionBridge text="Before recommending a build, we look for the gaps that are costing clarity, trust, and follow-up." />
 	<AuditScope />
 	<Testimonials variant="muted" />
 	<ServiceFAQSection faqs={faqs} />

@@ -1,0 +1,458 @@
+---
+// Aspirational hero visual: a premium healthcare website preview (browser
+// mockup) with floating "system" panels around it, communicating the two-part
+// promise — a beautiful site that earns trust + a connected backend that
+// captures and follows up on the lead. Pure CSS/SVG, no JS, no dependencies.
+interface Props {
+	class?: string;
+}
+const { class: className } = Astro.props;
+---
+
+<div class:list={['hsm', className]} aria-hidden="true">
+	<div class="hsm__browser">
+		<div class="hsm__chrome">
+			<span class="hsm__dot"></span>
+			<span class="hsm__dot"></span>
+			<span class="hsm__dot"></span>
+			<span class="hsm__url">northoak-health.com</span>
+			<span class="hsm__live"><span class="hsm__live-dot"></span>Live</span>
+		</div>
+		<div class="hsm__viewport">
+			<div class="hsm__nav">
+				<span class="hsm__logo"></span>
+				<span class="hsm__navlinks"><i></i><i></i><i></i></span>
+				<span class="hsm__navbtn">Book</span>
+			</div>
+
+			<div class="hsm__hero">
+				<span class="hsm__eyebrow">Primary &amp; preventive care</span>
+				<span class="hsm__h1">Personalized care, clearer next steps.</span>
+				<span class="hsm__sub"></span>
+				<span class="hsm__sub hsm__sub--short"></span>
+				<span class="hsm__cta">Book a consultation &rarr;</span>
+				<span class="hsm__trust">
+					<span class="hsm__stars">
+						<svg viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M6 1l1.5 3 3.3.3-2.5 2.2.8 3.2L6 8.2 2.9 9.9l.8-3.2L1.2 4.5 4.5 4z"/></svg>
+						<svg viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M6 1l1.5 3 3.3.3-2.5 2.2.8 3.2L6 8.2 2.9 9.9l.8-3.2L1.2 4.5 4.5 4z"/></svg>
+						<svg viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M6 1l1.5 3 3.3.3-2.5 2.2.8 3.2L6 8.2 2.9 9.9l.8-3.2L1.2 4.5 4.5 4z"/></svg>
+						<svg viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M6 1l1.5 3 3.3.3-2.5 2.2.8 3.2L6 8.2 2.9 9.9l.8-3.2L1.2 4.5 4.5 4z"/></svg>
+						<svg viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M6 1l1.5 3 3.3.3-2.5 2.2.8 3.2L6 8.2 2.9 9.9l.8-3.2L1.2 4.5 4.5 4z"/></svg>
+					</span>
+					<span class="hsm__trust-text">Trusted by local patients</span>
+				</span>
+			</div>
+
+			<div class="hsm__services">
+				<span class="hsm__service"><span class="hsm__service-ico"></span><i></i><i class="hsm__service-line--short"></i></span>
+				<span class="hsm__service"><span class="hsm__service-ico"></span><i></i><i class="hsm__service-line--short"></i></span>
+				<span class="hsm__service"><span class="hsm__service-ico"></span><i></i><i class="hsm__service-line--short"></i></span>
+			</div>
+		</div>
+	</div>
+
+	<div class="hsm__float hsm__float--inquiry">
+		<span class="hsm__float-ico">
+			<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v12H7l-3 3z"/><path d="M8 10h8M8 13h5"/></svg>
+		</span>
+		<span class="hsm__float-text">
+			<span class="hsm__float-label">New inquiry captured</span>
+			<span class="hsm__float-sub">Routed to CRM</span>
+		</span>
+	</div>
+
+	<div class="hsm__float hsm__float--followup">
+		<span class="hsm__float-ico">
+			<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 4v4h-4"/></svg>
+		</span>
+		<span class="hsm__float-text">
+			<span class="hsm__float-label">Follow-up reminder</span>
+			<span class="hsm__float-sub">Sent automatically</span>
+		</span>
+	</div>
+
+	<div class="hsm__float hsm__float--consult">
+		<span class="hsm__float-ico">
+			<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16" rx="2"/><path d="M3 9h18M8 3v3M16 3v3M8.5 14l2.5 2.5 4.5-4.5"/></svg>
+		</span>
+		<span class="hsm__float-text">
+			<span class="hsm__float-label">Consultation requested</span>
+			<span class="hsm__float-sub">On the calendar</span>
+		</span>
+	</div>
+</div>
+
+<style>
+	.hsm {
+		position: relative;
+		width: 100%;
+		padding: 1.5rem 0.5rem 1rem;
+	}
+
+	/* ── Browser mockup ───────────────────────────────── */
+	.hsm__browser {
+		position: relative;
+		z-index: 2;
+		border: 1px solid var(--color-border);
+		border-radius: 16px;
+		background: var(--color-white);
+		box-shadow: var(--shadow-lift);
+		overflow: hidden;
+	}
+
+	.hsm__chrome {
+		display: flex;
+		align-items: center;
+		gap: 0.4rem;
+		padding: 0.7rem 0.9rem;
+		background: var(--color-bg);
+		border-bottom: 1px solid var(--color-border-soft);
+	}
+
+	.hsm__dot {
+		width: 0.55rem;
+		height: 0.55rem;
+		border-radius: 999px;
+		background: color-mix(in srgb, var(--color-muted) 28%, var(--color-white));
+	}
+
+	.hsm__url {
+		margin-left: 0.6rem;
+		padding: 0.25rem 0.7rem;
+		border-radius: 999px;
+		background: var(--color-white);
+		border: 1px solid var(--color-border-soft);
+		color: var(--color-muted);
+		font-size: 0.66rem;
+		font-weight: 600;
+		letter-spacing: -0.005em;
+	}
+
+	.hsm__live {
+		margin-left: auto;
+		display: inline-flex;
+		align-items: center;
+		gap: 0.3rem;
+		color: var(--lane-foundation-ink);
+		font-size: 0.62rem;
+		font-weight: 800;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+	}
+
+	.hsm__live-dot {
+		width: 0.4rem;
+		height: 0.4rem;
+		border-radius: 999px;
+		background: var(--lane-foundation);
+		box-shadow: 0 0 0 3px color-mix(in srgb, var(--lane-foundation) 22%, transparent);
+		animation: hsm-pulse 2.6s ease-in-out infinite;
+	}
+
+	.hsm__viewport {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		padding: 1.15rem;
+		background:
+			radial-gradient(ellipse 80% 60% at 80% 0%, var(--lane-foundation-tint), transparent 70%),
+			var(--color-white);
+	}
+
+	.hsm__nav {
+		display: flex;
+		align-items: center;
+		gap: 0.6rem;
+	}
+
+	.hsm__logo {
+		width: 2rem;
+		height: 0.65rem;
+		border-radius: 999px;
+		background: var(--lane-foundation);
+	}
+
+	.hsm__navlinks {
+		display: inline-flex;
+		gap: 0.5rem;
+		margin-left: 0.4rem;
+	}
+
+	.hsm__navlinks i {
+		width: 1.4rem;
+		height: 0.4rem;
+		border-radius: 999px;
+		background: color-mix(in srgb, var(--color-text) 16%, var(--color-border));
+	}
+
+	.hsm__navbtn {
+		margin-left: auto;
+		padding: 0.3rem 0.7rem;
+		border-radius: 7px;
+		background: var(--color-text);
+		color: var(--color-white);
+		font-size: 0.6rem;
+		font-weight: 700;
+	}
+
+	.hsm__hero {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+		padding: 0.5rem 0 0.25rem;
+	}
+
+	.hsm__eyebrow {
+		width: fit-content;
+		padding: 0.2rem 0.5rem;
+		border-radius: 999px;
+		background: var(--lane-foundation-tint);
+		color: var(--lane-foundation-ink);
+		font-size: 0.58rem;
+		font-weight: 800;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+	}
+
+	.hsm__h1 {
+		max-width: 14ch;
+		color: var(--color-text);
+		font-size: clamp(1.15rem, 0.9rem + 1vw, 1.6rem);
+		font-weight: 750;
+		letter-spacing: -0.03em;
+		line-height: 1.1;
+	}
+
+	.hsm__sub {
+		display: block;
+		width: 88%;
+		height: 0.5rem;
+		border-radius: 999px;
+		background: color-mix(in srgb, var(--color-text) 14%, var(--color-border));
+	}
+
+	.hsm__sub--short {
+		width: 62%;
+	}
+
+	.hsm__cta {
+		width: fit-content;
+		margin-top: 0.35rem;
+		padding: 0.5rem 0.9rem;
+		border-radius: 9px;
+		background: var(--lane-foundation);
+		color: var(--color-white);
+		font-size: 0.72rem;
+		font-weight: 700;
+		letter-spacing: -0.005em;
+		box-shadow: 0 8px 18px color-mix(in srgb, var(--lane-foundation) 30%, transparent);
+	}
+
+	.hsm__trust {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.45rem;
+		margin-top: 0.35rem;
+	}
+
+	.hsm__stars {
+		display: inline-flex;
+		gap: 0.1rem;
+		color: var(--lane-audit);
+	}
+
+	.hsm__stars svg {
+		width: 0.7rem;
+		height: 0.7rem;
+	}
+
+	.hsm__trust-text {
+		color: var(--color-muted);
+		font-size: 0.64rem;
+		font-weight: 600;
+	}
+
+	.hsm__services {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 0.6rem;
+	}
+
+	.hsm__service {
+		display: flex;
+		flex-direction: column;
+		gap: 0.4rem;
+		padding: 0.7rem;
+		border: 1px solid var(--color-border-soft);
+		border-radius: 10px;
+		background: var(--color-white);
+	}
+
+	.hsm__service-ico {
+		width: 1.3rem;
+		height: 1.3rem;
+		border-radius: 7px;
+		background: var(--lane-foundation-tint);
+	}
+
+	.hsm__service i {
+		display: block;
+		width: 90%;
+		height: 0.38rem;
+		border-radius: 999px;
+		background: color-mix(in srgb, var(--color-text) 60%, transparent);
+	}
+
+	.hsm__service-line--short {
+		width: 55%;
+		background: color-mix(in srgb, var(--color-text) 18%, var(--color-border)) !important;
+	}
+
+	/* ── Floating system panels ───────────────────────── */
+	.hsm__float {
+		position: absolute;
+		z-index: 3;
+		display: inline-flex;
+		align-items: center;
+		gap: 0.55rem;
+		padding: 0.6rem 0.8rem;
+		border: 1px solid var(--color-border);
+		border-radius: 12px;
+		background: rgba(255, 255, 255, 0.92);
+		backdrop-filter: blur(8px);
+		box-shadow: var(--shadow-card-hover);
+		animation: hsm-float 6s ease-in-out infinite;
+	}
+
+	.hsm__float-ico {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 1.85rem;
+		height: 1.85rem;
+		border-radius: 9px;
+		flex-shrink: 0;
+	}
+
+	.hsm__float-ico svg {
+		width: 1.05rem;
+		height: 1.05rem;
+	}
+
+	.hsm__float-text {
+		display: flex;
+		flex-direction: column;
+		gap: 0.05rem;
+	}
+
+	.hsm__float-label {
+		color: var(--color-text);
+		font-size: 0.74rem;
+		font-weight: 700;
+		letter-spacing: -0.01em;
+		line-height: 1.15;
+	}
+
+	.hsm__float-sub {
+		color: var(--color-muted);
+		font-size: 0.66rem;
+		font-weight: 500;
+		line-height: 1.2;
+	}
+
+	.hsm__float--inquiry {
+		top: 1.2rem;
+		right: -0.75rem;
+		animation-delay: 0s;
+	}
+
+	.hsm__float--inquiry .hsm__float-ico {
+		background: var(--lane-growth-tint);
+		color: var(--lane-growth-ink);
+	}
+
+	.hsm__float--followup {
+		top: 47%;
+		left: -1.25rem;
+		animation-delay: 1.5s;
+	}
+
+	.hsm__float--followup .hsm__float-ico {
+		background: var(--lane-audit-tint);
+		color: var(--lane-audit-ink);
+	}
+
+	.hsm__float--consult {
+		bottom: 0.4rem;
+		right: 0.6rem;
+		animation-delay: 3s;
+	}
+
+	.hsm__float--consult .hsm__float-ico {
+		background: var(--lane-foundation-tint);
+		color: var(--lane-foundation-ink);
+	}
+
+	@keyframes hsm-float {
+		0%, 100% { transform: translateY(0); }
+		50% { transform: translateY(-6px); }
+	}
+
+	@keyframes hsm-pulse {
+		0%, 100% { opacity: 1; box-shadow: 0 0 0 3px color-mix(in srgb, var(--lane-foundation) 22%, transparent); }
+		50% { opacity: 0.7; box-shadow: 0 0 0 5px color-mix(in srgb, var(--lane-foundation) 8%, transparent); }
+	}
+
+	@media (max-width: 1080px) {
+		.hsm {
+			max-width: 34rem;
+			margin-inline: auto;
+		}
+	}
+
+	/* On small screens, dock the floating panels inline-ish and shrink so they
+	   never overflow the viewport or cover the mockup illegibly. */
+	@media (max-width: 600px) {
+		.hsm {
+			padding: 0.5rem 0;
+		}
+
+		.hsm__float {
+			padding: 0.45rem 0.6rem;
+			animation: none;
+		}
+
+		.hsm__float-sub {
+			display: none;
+		}
+
+		.hsm__float--inquiry {
+			top: 2.6rem;
+			right: 0;
+		}
+
+		.hsm__float--followup {
+			top: auto;
+			bottom: 3.4rem;
+			left: 0;
+		}
+
+		.hsm__float--consult {
+			bottom: 0;
+			right: 0;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.hsm__float--followup {
+			display: none;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.hsm__float,
+		.hsm__live-dot {
+			animation: none;
+		}
+	}
+</style>

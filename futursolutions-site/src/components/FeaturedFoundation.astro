@@ -1,0 +1,485 @@
+---
+import { getTemplateBySlug, foundationPalette } from '../data/templates';
+
+interface Props {
+	slug?: string;
+}
+const { slug = 'premium-wellness-clinic' } = Astro.props;
+
+const template = getTemplateBySlug(slug);
+const palette = template ? foundationPalette[template.slug] : undefined;
+const styleVars = palette
+	? `--demo-accent:${palette.accent};--demo-tint:${palette.tint};--demo-ink:${palette.ink};`
+	: undefined;
+
+const tags = template?.features.slice(0, 5) ?? [];
+---
+
+{template && (
+	<div class="ff" style={styleVars}>
+		<a class="ff__link" href={template.detailUrl} aria-label={`View details for the ${template.name} Foundation`}></a>
+
+		<div class="ff__preview" aria-hidden="true">
+			<div class="ff__browser">
+				<div class="ff__chrome">
+					<span class="ff__dot"></span>
+					<span class="ff__dot"></span>
+					<span class="ff__dot"></span>
+					<span class="ff__url">lumenhealthhouse.com</span>
+					<span class="ff__live"><span class="ff__live-dot"></span>Live</span>
+				</div>
+				<div class="ff__screen">
+					<div class="ff__nav">
+						<span class="ff__logo"></span>
+						<span class="ff__navlinks"><i></i><i></i><i></i><i></i></span>
+						<span class="ff__navbtn">Book</span>
+					</div>
+					<div class="ff__hero">
+						<span class="ff__eyebrow">Wellness &amp; longevity</span>
+						<span class="ff__h1">Feel better, backed by data.</span>
+						<span class="ff__line"></span>
+						<span class="ff__line ff__line--short"></span>
+						<span class="ff__cta">Book a consultation &rarr;</span>
+					</div>
+					<div class="ff__tiles">
+						<span class="ff__tile"><span class="ff__tile-ico"></span><i></i><i class="ff__tile--short"></i></span>
+						<span class="ff__tile"><span class="ff__tile-ico"></span><i></i><i class="ff__tile--short"></i></span>
+						<span class="ff__tile"><span class="ff__tile-ico"></span><i></i><i class="ff__tile--short"></i></span>
+						<span class="ff__tile"><span class="ff__tile-ico"></span><i></i><i class="ff__tile--short"></i></span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="ff__body">
+			<p class="ff__kicker">Featured Website Foundation</p>
+			<h3 class="ff__title">{template.name}</h3>
+			<p class="ff__desc">{template.shortDescription}</p>
+
+			<dl class="ff__facts">
+				{template.atAGlance && (
+					<>
+						<div class="ff__fact">
+							<dt>Primary goal</dt>
+							<dd>{template.atAGlance.primaryGoal}</dd>
+						</div>
+						<div class="ff__fact">
+							<dt>Best fit</dt>
+							<dd>{template.atAGlance.bestFor}</dd>
+						</div>
+					</>
+				)}
+			</dl>
+
+			<ul class="ff__tags" aria-label={`${template.name} highlights`}>
+				{tags.map((t) => <li>{t}</li>)}
+			</ul>
+
+			<div class="ff__actions">
+				{template.demoUrl && (
+					<a class="ff__primary" href={template.demoUrl}>
+						View Live Demo
+						<span aria-hidden="true">&rarr;</span>
+					</a>
+				)}
+				<a class="ff__secondary" href={template.detailUrl}>See Foundation details</a>
+			</div>
+		</div>
+	</div>
+)}
+
+<style>
+	.ff {
+		position: relative;
+		display: grid;
+		grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+		align-items: stretch;
+		gap: 0;
+		margin-bottom: 1.5rem;
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-xl);
+		background: var(--color-white);
+		box-shadow: var(--shadow-card);
+		overflow: hidden;
+		transition: border-color var(--transition-base), box-shadow var(--transition-base);
+	}
+
+	.ff:hover {
+		border-color: color-mix(in srgb, var(--demo-accent, var(--color-text)) 38%, var(--color-border));
+		box-shadow: var(--shadow-card-hover);
+	}
+
+	.ff__link {
+		position: absolute;
+		inset: 0;
+		z-index: 1;
+	}
+
+	/* ── Preview side ───────────────────────────────── */
+	.ff__preview {
+		position: relative;
+		z-index: 0;
+		display: flex;
+		align-items: center;
+		padding: clamp(1.5rem, 3vw, 2.5rem);
+		background:
+			radial-gradient(ellipse 70% 80% at 20% 0%, color-mix(in srgb, var(--demo-tint, var(--lane-foundation-tint)) 70%, transparent), transparent 70%),
+			color-mix(in srgb, var(--demo-tint, var(--lane-foundation-tint)) 28%, var(--color-bg));
+		border-right: 1px solid var(--color-border-soft);
+	}
+
+	.ff__browser {
+		width: 100%;
+		border: 1px solid var(--color-border);
+		border-radius: 12px;
+		background: var(--color-white);
+		box-shadow: var(--shadow-card-hover);
+		overflow: hidden;
+		transition: transform 360ms var(--ease-out-quart);
+	}
+
+	.ff:hover .ff__browser {
+		transform: translateY(-4px);
+	}
+
+	.ff__chrome {
+		display: flex;
+		align-items: center;
+		gap: 0.35rem;
+		padding: 0.55rem 0.75rem;
+		background: var(--color-bg);
+		border-bottom: 1px solid var(--color-border-soft);
+	}
+
+	.ff__dot {
+		width: 0.45rem;
+		height: 0.45rem;
+		border-radius: 999px;
+		background: color-mix(in srgb, var(--color-muted) 28%, var(--color-white));
+	}
+
+	.ff__url {
+		margin-left: 0.5rem;
+		padding: 0.18rem 0.55rem;
+		border-radius: 999px;
+		background: var(--color-white);
+		border: 1px solid var(--color-border-soft);
+		color: var(--color-muted);
+		font-size: 0.6rem;
+		font-weight: 600;
+	}
+
+	.ff__live {
+		margin-left: auto;
+		display: inline-flex;
+		align-items: center;
+		gap: 0.28rem;
+		color: var(--demo-ink, var(--lane-foundation-ink));
+		font-size: 0.56rem;
+		font-weight: 800;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+	}
+
+	.ff__live-dot {
+		width: 0.36rem;
+		height: 0.36rem;
+		border-radius: 999px;
+		background: var(--demo-accent, var(--lane-foundation));
+		box-shadow: 0 0 0 3px color-mix(in srgb, var(--demo-accent, var(--lane-foundation)) 22%, transparent);
+	}
+
+	.ff__screen {
+		display: flex;
+		flex-direction: column;
+		gap: 0.85rem;
+		padding: 1rem;
+		background:
+			radial-gradient(ellipse 80% 60% at 85% 0%, color-mix(in srgb, var(--demo-tint, var(--lane-foundation-tint)) 65%, transparent), transparent 70%),
+			var(--color-white);
+	}
+
+	.ff__nav {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+	}
+
+	.ff__logo {
+		width: 1.8rem;
+		height: 0.55rem;
+		border-radius: 999px;
+		background: var(--demo-accent, var(--lane-foundation));
+	}
+
+	.ff__navlinks {
+		display: inline-flex;
+		gap: 0.4rem;
+		margin-left: 0.3rem;
+	}
+
+	.ff__navlinks i {
+		width: 1.2rem;
+		height: 0.34rem;
+		border-radius: 999px;
+		background: color-mix(in srgb, var(--color-text) 16%, var(--color-border));
+	}
+
+	.ff__navbtn {
+		margin-left: auto;
+		padding: 0.25rem 0.6rem;
+		border-radius: 6px;
+		background: var(--color-text);
+		color: var(--color-white);
+		font-size: 0.55rem;
+		font-weight: 700;
+	}
+
+	.ff__hero {
+		display: flex;
+		flex-direction: column;
+		gap: 0.45rem;
+	}
+
+	.ff__eyebrow {
+		width: fit-content;
+		padding: 0.18rem 0.45rem;
+		border-radius: 999px;
+		background: color-mix(in srgb, var(--demo-tint, var(--lane-foundation-tint)) 80%, var(--color-white));
+		color: var(--demo-ink, var(--lane-foundation-ink));
+		font-size: 0.54rem;
+		font-weight: 800;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+	}
+
+	.ff__h1 {
+		color: var(--color-text);
+		font-size: clamp(1.05rem, 0.85rem + 0.9vw, 1.45rem);
+		font-weight: 750;
+		letter-spacing: -0.03em;
+		line-height: 1.1;
+	}
+
+	.ff__line {
+		display: block;
+		width: 85%;
+		height: 0.45rem;
+		border-radius: 999px;
+		background: color-mix(in srgb, var(--color-text) 14%, var(--color-border));
+	}
+
+	.ff__line--short {
+		width: 58%;
+	}
+
+	.ff__cta {
+		width: fit-content;
+		margin-top: 0.3rem;
+		padding: 0.45rem 0.8rem;
+		border-radius: 8px;
+		background: var(--demo-accent, var(--lane-foundation));
+		color: var(--color-white);
+		font-size: 0.66rem;
+		font-weight: 700;
+		box-shadow: 0 8px 16px color-mix(in srgb, var(--demo-accent, var(--lane-foundation)) 28%, transparent);
+	}
+
+	.ff__tiles {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 0.5rem;
+	}
+
+	.ff__tile {
+		display: flex;
+		flex-direction: column;
+		gap: 0.3rem;
+		padding: 0.5rem;
+		border: 1px solid var(--color-border-soft);
+		border-radius: 8px;
+		background: var(--color-white);
+	}
+
+	.ff__tile-ico {
+		width: 1rem;
+		height: 1rem;
+		border-radius: 5px;
+		background: color-mix(in srgb, var(--demo-tint, var(--lane-foundation-tint)) 75%, var(--color-white));
+	}
+
+	.ff__tile i {
+		display: block;
+		width: 90%;
+		height: 0.3rem;
+		border-radius: 999px;
+		background: color-mix(in srgb, var(--color-text) 45%, transparent);
+	}
+
+	.ff__tile--short {
+		width: 55%;
+		background: color-mix(in srgb, var(--color-text) 16%, var(--color-border)) !important;
+	}
+
+	/* ── Body side ───────────────────────────────────── */
+	.ff__body {
+		position: relative;
+		z-index: 2;
+		display: flex;
+		flex-direction: column;
+		gap: 0.7rem;
+		padding: clamp(1.75rem, 3vw, 2.75rem);
+	}
+
+	.ff__kicker {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.4rem;
+		margin: 0;
+		color: var(--demo-ink, var(--lane-foundation-ink));
+		font-size: 0.72rem;
+		font-weight: 800;
+		letter-spacing: 0.14em;
+		text-transform: uppercase;
+	}
+
+	.ff__kicker::before {
+		content: '';
+		width: 1.5rem;
+		height: 2px;
+		border-radius: 2px;
+		background: var(--demo-accent, var(--lane-foundation));
+	}
+
+	.ff__title {
+		margin: 0;
+		font-size: clamp(1.4rem, 1.15rem + 0.9vw, 1.85rem);
+		font-weight: 750;
+		letter-spacing: -0.03em;
+		line-height: 1.15;
+	}
+
+	.ff__desc {
+		margin: 0;
+		color: var(--color-muted);
+		font-size: 0.98rem;
+		line-height: 1.6;
+	}
+
+	.ff__facts {
+		display: grid;
+		gap: 0.5rem;
+		margin: 0.2rem 0 0;
+		padding: 0.85rem 1rem;
+		border: 1px solid var(--color-border-soft);
+		border-radius: var(--radius-sm);
+		background: var(--color-bg);
+	}
+
+	.ff__fact {
+		display: grid;
+		grid-template-columns: 6rem 1fr;
+		gap: 0.6rem;
+		align-items: start;
+	}
+
+	.ff__fact dt {
+		color: var(--demo-ink, var(--color-muted));
+		font-size: 0.66rem;
+		font-weight: 800;
+		letter-spacing: 0.1em;
+		line-height: 1.5;
+		text-transform: uppercase;
+	}
+
+	.ff__fact dd {
+		margin: 0;
+		color: var(--color-text);
+		font-size: 0.86rem;
+		line-height: 1.5;
+	}
+
+	.ff__tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.4rem;
+		margin: 0.1rem 0 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.ff__tags li {
+		padding: 0.3rem 0.6rem;
+		border: 1px solid var(--color-border-soft);
+		border-radius: 999px;
+		background: var(--color-white);
+		color: var(--color-muted);
+		font-size: 0.74rem;
+		font-weight: 500;
+		line-height: 1;
+	}
+
+	.ff__actions {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 0.8rem 1.1rem;
+		margin-top: 0.4rem;
+	}
+
+	.ff__primary {
+		position: relative;
+		z-index: 2;
+		display: inline-flex;
+		align-items: center;
+		gap: 0.45rem;
+		min-height: 2.75rem;
+		padding: 0.75rem 1.3rem;
+		border-radius: var(--radius-sm);
+		background: var(--color-text);
+		color: var(--color-white);
+		font-size: 0.95rem;
+		font-weight: 700;
+		transition: gap var(--transition-base), background var(--transition-base), box-shadow var(--transition-base);
+	}
+
+	.ff__primary:hover {
+		gap: 0.65rem;
+		background: var(--color-ink);
+		color: var(--color-white);
+		box-shadow: 0 8px 20px color-mix(in srgb, var(--color-ink) 24%, transparent);
+	}
+
+	.ff__primary span {
+		display: inline-block;
+		transition: transform 220ms var(--ease-out-quart);
+	}
+
+	.ff__primary:hover span {
+		transform: translateX(3px);
+	}
+
+	.ff__secondary {
+		position: relative;
+		z-index: 2;
+		color: var(--color-muted);
+		font-size: 0.9rem;
+		font-weight: 650;
+		transition: color var(--transition-base);
+	}
+
+	.ff__secondary:hover {
+		color: var(--demo-ink, var(--color-text));
+	}
+
+	@media (max-width: 900px) {
+		.ff {
+			grid-template-columns: 1fr;
+		}
+
+		.ff__preview {
+			border-right: none;
+			border-bottom: 1px solid var(--color-border-soft);
+		}
+	}
+</style>

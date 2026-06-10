@@ -1,7 +1,9 @@
 ---
 import { templateSystems, foundationPalette } from '../data/templates';
+import FeaturedFoundation from './FeaturedFoundation.astro';
 
-const featuredDemos = templateSystems;
+const featuredSlug = 'premium-wellness-clinic';
+const featuredDemos = templateSystems.filter((t) => t.slug !== featuredSlug);
 const newDemoSlugs = new Set(['premium-wellness-clinic', 'hormone-trt']);
 ---
 
@@ -11,7 +13,7 @@ const newDemoSlugs = new Set(['premium-wellness-clinic', 'hormone-trt']);
 			<div class="demo-library__head-left">
 				<p class="eyebrow">Website Foundations · Live demos</p>
 				<h2 id="demo-library-heading" class="display-lg">
-					Walk through live website Foundations built for real healthcare business&nbsp;models.
+					See the kind of website foundation your practice could start&nbsp;from.
 				</h2>
 			</div>
 			<div class="demo-library__head-right">
@@ -39,6 +41,8 @@ const newDemoSlugs = new Set(['premium-wellness-clinic', 'hormone-trt']);
 				<span><strong>Customizable for your brand.</strong> Services, content, booking, branding.</span>
 			</li>
 		</ul>
+
+		<FeaturedFoundation slug={featuredSlug} />
 
 		<div class="demo-library__grid">
 			{
@@ -134,16 +138,10 @@ const newDemoSlugs = new Set(['premium-wellness-clinic', 'hormone-trt']);
 								<h3 class="demo-card__title">{template.name}</h3>
 								<p class="demo-card__desc">{template.shortDescription}</p>
 								{template.atAGlance && (
-									<dl class="demo-card__facts">
-										<div class="demo-card__fact">
-											<dt>Goal</dt>
-											<dd>{template.atAGlance.primaryGoal}</dd>
-										</div>
-										<div class="demo-card__fact">
-											<dt>Best fit</dt>
-											<dd>{template.atAGlance.bestFor}</dd>
-										</div>
-									</dl>
+									<p class="demo-card__goal">
+										<span class="demo-card__goal-label">Goal</span>
+										{template.atAGlance.primaryGoal}
+									</p>
 								)}
 								<ul class="demo-card__tags" aria-label={`${template.name} feature tags`}>
 									{template.features.slice(0, 3).map((feature) => (
@@ -541,39 +539,31 @@ const newDemoSlugs = new Set(['premium-wellness-clinic', 'hormone-trt']);
 		color: var(--color-muted);
 		font-size: 0.93rem;
 		line-height: 1.55;
+		display: -webkit-box;
+		-webkit-line-clamp: 2;
+		line-clamp: 2;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
 	}
 
-	.demo-card__facts {
-		display: grid;
+	.demo-card__goal {
+		display: flex;
+		align-items: baseline;
 		gap: 0.5rem;
-		margin: 0.5rem 0 0 0;
-		padding: 0.75rem 0.85rem;
-		border: 1px solid var(--color-border-soft);
-		border-radius: var(--radius-sm);
-		background: var(--color-bg);
+		margin: 0.15rem 0 0 0;
+		color: var(--color-text);
+		font-size: 0.82rem;
+		font-weight: 600;
+		line-height: 1.4;
 	}
 
-	.demo-card__fact {
-		display: grid;
-		grid-template-columns: 4.5rem 1fr;
-		gap: 0.55rem;
-		align-items: start;
-	}
-
-	.demo-card__fact dt {
+	.demo-card__goal-label {
+		flex-shrink: 0;
 		color: var(--demo-ink, var(--color-muted));
-		font-size: 0.66rem;
+		font-size: 0.62rem;
 		font-weight: 800;
 		letter-spacing: 0.1em;
-		line-height: 1.45;
 		text-transform: uppercase;
-	}
-
-	.demo-card__fact dd {
-		margin: 0;
-		color: var(--color-text);
-		font-size: 0.83rem;
-		line-height: 1.45;
 	}
 
 	.demo-card__tags {

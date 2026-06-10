@@ -26,7 +26,7 @@ const methods = [
 	},
 ];
 
-const processSteps = ['Audit', 'Strategy', 'Design', 'Build', 'Connect', 'Launch', 'Improve'];
+const processSteps = ['Diagnose', 'Clarify', 'Design', 'Connect', 'Launch', 'Improve'];
 
 const stack = ['Astro', 'TypeScript', 'GoHighLevel', 'Vercel', 'Sanity', 'Cal.com'];
 ---
@@ -37,8 +37,12 @@ const stack = ['Astro', 'TypeScript', 'GoHighLevel', 'Vercel', 'Sanity', 'Cal.co
 			<p class="eyebrow">The build method</p>
 			<h2 id="proof-strip-heading" class="proof-strip__headline">
 				No theme reskins. No&nbsp;junior handoff. No&nbsp;dead launch.
-				<span class="proof-strip__headline-soft">A FutureSolutions site is planned around how visitors actually convert — not just how the pages look.</span>
+				<span class="proof-strip__headline-soft">A FutureSolutions site is planned around your offer, your visitor journey, and the system behind the form — not just how the pages look.</span>
 			</h2>
+			<p class="proof-strip__callout">
+				<span class="proof-strip__callout-mark" aria-hidden="true">!</span>
+				A pretty website is not enough if the offer is unclear, the CTA is buried, and the lead goes nowhere after submitting a form.
+			</p>
 		</div>
 
 		<ol class="proof-strip__grid" aria-label="How we build">
@@ -120,6 +124,38 @@ const stack = ['Astro', 'TypeScript', 'GoHighLevel', 'Vercel', 'Sanity', 'Cal.co
 	.proof-strip__statement {
 		max-width: 64ch;
 		margin-bottom: clamp(2.5rem, 4vw, 3.5rem);
+	}
+
+	.proof-strip__callout {
+		display: flex;
+		align-items: flex-start;
+		gap: 0.7rem;
+		max-width: 60ch;
+		margin: 1.5rem 0 0;
+		padding: 0.95rem 1.15rem;
+		border: 1px solid color-mix(in srgb, var(--lane-audit) 40%, transparent);
+		border-left-width: 3px;
+		border-radius: var(--radius-sm);
+		background: color-mix(in srgb, var(--lane-audit) 12%, transparent);
+		color: color-mix(in srgb, var(--color-white) 92%, transparent);
+		font-size: 0.98rem;
+		font-weight: 500;
+		line-height: 1.5;
+	}
+
+	.proof-strip__callout-mark {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		flex-shrink: 0;
+		width: 1.35rem;
+		height: 1.35rem;
+		margin-top: 0.05rem;
+		border-radius: 999px;
+		background: var(--lane-audit);
+		color: var(--lane-custom-ink);
+		font-size: 0.85rem;
+		font-weight: 800;
 	}
 
 	.proof-strip__headline {

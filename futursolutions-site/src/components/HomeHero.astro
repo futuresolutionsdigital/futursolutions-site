@@ -1,11 +1,14 @@
 ---
 import ConversionPathVisual from './ConversionPathVisual.astro';
+import HeroSystemMockup from './HeroSystemMockup.astro';
 
 const capabilities = [
 	'Healthcare websites',
+	'Service page strategy',
 	'Local SEO',
 	'Booking flows',
 	'CRM + follow-up',
+	'Analytics',
 ];
 
 const tickerItems = [
@@ -30,29 +33,37 @@ const tickerItems = [
 			<span class="home-hero__kicker-arrow" aria-hidden="true">&rarr;</span>
 		</a>
 
-		<p class="eyebrow home-hero__eyebrow">Healthcare websites + growth systems</p>
+		<div class="home-hero__grid">
+			<div class="home-hero__copy">
+				<p class="eyebrow home-hero__eyebrow">Healthcare websites + growth systems</p>
 
-		<h1 id="homepage-heading" class="display-xl home-hero__headline">
-			Premium websites and
-			<span class="home-hero__headline-accent">Growth Systems</span>
-			for healthcare brands.
-		</h1>
+				<h1 id="homepage-heading" class="display-xl home-hero__headline">
+					Premium websites and
+					<span class="home-hero__headline-accent">Growth Systems</span>
+					for healthcare brands.
+				</h1>
 
-		<p class="lead home-hero__lead">
-			We design practice websites that clarify your services, guide visitors toward the right next step, and connect the backend systems that help turn interest into booked consultations.
-		</p>
+				<p class="lead home-hero__lead">
+					We design practice websites that clarify your services, guide visitors toward the right next step, and connect the backend systems that help turn interest into booked consultations.
+				</p>
 
-		<div class="home-hero__cta-row">
-			<a class="button button-primary home-hero__cta-primary" href="/audit">
-				Get a Website Audit
-				<span aria-hidden="true">&rarr;</span>
-			</a>
-			<a class="button button-secondary" href="/templates">Explore Live Demos</a>
+				<div class="home-hero__cta-row">
+					<a class="button button-primary home-hero__cta-primary" href="/audit">
+						Get a Website Audit
+						<span aria-hidden="true">&rarr;</span>
+					</a>
+					<a class="button button-secondary" href="/templates">Explore Live Demos</a>
+				</div>
+
+				<ul class="home-hero__chips" aria-label="What we work on">
+					{capabilities.map((c) => <li class="home-hero__chip">{c}</li>)}
+				</ul>
+			</div>
+
+			<div class="home-hero__visual">
+				<HeroSystemMockup />
+			</div>
 		</div>
-
-		<ul class="home-hero__chips" aria-label="What we work on">
-			{capabilities.map((c) => <li class="home-hero__chip">{c}</li>)}
-		</ul>
 
 		<ConversionPathVisual class="home-hero__path" />
 	</div>
@@ -107,6 +118,31 @@ const tickerItems = [
 		display: grid;
 		justify-items: start;
 		padding-bottom: clamp(3.5rem, 6vw, 5.25rem);
+	}
+
+	.home-hero__grid {
+		display: grid;
+		grid-template-columns: minmax(0, 1.02fr) minmax(0, 0.98fr);
+		align-items: center;
+		gap: clamp(2rem, 5vw, 4.5rem);
+		width: 100%;
+		margin-bottom: clamp(2.5rem, 5vw, 3.5rem);
+	}
+
+	.home-hero__copy {
+		display: grid;
+		justify-items: start;
+	}
+
+	.home-hero__visual {
+		min-width: 0;
+	}
+
+	@media (max-width: 1080px) {
+		.home-hero__grid {
+			grid-template-columns: 1fr;
+			gap: clamp(2.25rem, 6vw, 3rem);
+		}
 	}
 
 	.home-hero__kicker {
@@ -177,7 +213,8 @@ const tickerItems = [
 
 	.home-hero__headline {
 		margin-bottom: 1.5rem;
-		max-width: 22ch;
+		max-width: 16ch;
+		font-size: clamp(2.5rem, 1.8rem + 2.4vw, 3.7rem);
 	}
 
 	.home-hero__headline-accent {
@@ -215,7 +252,8 @@ const tickerItems = [
 		display: flex;
 		flex-wrap: wrap;
 		gap: 0.5rem;
-		margin: 0 0 3rem 0;
+		max-width: 34rem;
+		margin: 0;
 		padding: 0;
 		list-style: none;
 	}

@@ -1,16 +1,35 @@
 ---
-// "What your website audit looks at" — a diagnostic checklist, not a fake
-// automated score. Each category mirrors a stage of the visitor path so the
-// audit feels like the natural diagnostic for everything above it.
-const categories = [
-	{ n: '01', title: 'Positioning clarity', text: 'Can visitors quickly understand who you help and what you offer?' },
-	{ n: '02', title: 'Service page structure', text: 'Are your services organized around visitor intent?' },
-	{ n: '03', title: 'Trust signals', text: 'Are reviews, credentials, FAQs, and proof visible where decisions happen?' },
-	{ n: '04', title: 'Conversion path', text: 'Are CTAs clear, consistent, and easy to act on?' },
-	{ n: '05', title: 'Local SEO foundation', text: 'Are pages structured to support relevant local discovery?' },
-	{ n: '06', title: 'Mobile experience', text: 'Does the site feel fast, readable, and easy to use on mobile?' },
-	{ n: '07', title: 'Follow-up system', text: 'Are inquiries routed into a clear next step or CRM process?' },
-	{ n: '08', title: 'Tracking and reporting', text: 'Can the business see what is actually working?' },
+// "What we check before recommending anything" — a diagnostic checklist
+// grouped into three buckets (Clarity / Conversion / Systems). No fake scores
+// or percentages; it reads like the report a visitor will actually receive.
+const buckets = [
+	{
+		lane: 'foundation',
+		name: 'Clarity',
+		items: [
+			{ title: 'Positioning', text: 'Can visitors quickly understand who you help and what you offer?' },
+			{ title: 'Service structure', text: 'Are services organized around visitor intent, not internal categories?' },
+			{ title: 'Messaging', text: 'Does the copy explain benefits, objections, and next steps clearly?' },
+		],
+	},
+	{
+		lane: 'growth',
+		name: 'Conversion',
+		items: [
+			{ title: 'CTA path', text: 'Are calls-to-action visible, consistent, and easy to act on?' },
+			{ title: 'Trust signals', text: 'Are reviews, credentials, FAQs, and proof placed near decisions?' },
+			{ title: 'Mobile experience', text: 'Is the experience fast, readable, and easy to use on mobile?' },
+		],
+	},
+	{
+		lane: 'audit',
+		name: 'Systems',
+		items: [
+			{ title: 'Local visibility', text: 'Does the site support service-area search and relevant local discovery?' },
+			{ title: 'Forms & CRM', text: 'Do inquiries route into a clear lead-handling process?' },
+			{ title: 'Tracking & reporting', text: 'Can the business see what is working?' },
+		],
+	},
 ];
 ---
 
@@ -19,40 +38,46 @@ const categories = [
 		<header class="audit-scope__head">
 			<div class="audit-scope__head-left">
 				<p class="eyebrow">The audit</p>
-				<h2 id="audit-scope-heading" class="display-lg">What your website audit looks at.</h2>
+				<h2 id="audit-scope-heading" class="display-lg">What we check before recommending anything.</h2>
 			</div>
 			<p class="audit-scope__head-copy">
-				We review the parts of your site that most directly affect clarity, trust, conversion, local visibility, and follow-up — then show you what to fix first.
+				The audit reviews the parts of your website that most directly affect clarity, trust, conversion, local visibility, and follow-up — then shows you what to fix first.
 			</p>
 		</header>
 
-		<ul class="audit-scope__grid" aria-label="What the audit reviews">
+		<div class="audit-scope__buckets" aria-label="What the audit reviews, grouped into three areas">
 			{
-				categories.map((c) => (
-					<li class="audit-scope__card">
-						<span class="audit-scope__check" aria-hidden="true">
-							<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-								<polyline points="3,8.5 6.5,12 13,4" />
-							</svg>
-						</span>
-						<div class="audit-scope__card-body">
-							<div class="audit-scope__card-top">
-								<span class="audit-scope__num">{c.n}</span>
-								<h3 class="audit-scope__card-title">{c.title}</h3>
-							</div>
-							<p class="audit-scope__card-text">{c.text}</p>
+				buckets.map((bucket) => (
+					<div class={`audit-scope__bucket lane-accent-top lane-accent-top--${bucket.lane}`}>
+						<div class="audit-scope__bucket-head">
+							<span class={`lane-tag lane-tag--${bucket.lane}`}>{bucket.name}</span>
 						</div>
-					</li>
+						<ul class="audit-scope__list">
+							{bucket.items.map((item) => (
+								<li class="audit-scope__item">
+									<span class="audit-scope__check" aria-hidden="true">
+										<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+											<polyline points="3,8.5 6.5,12 13,4" />
+										</svg>
+									</span>
+									<div class="audit-scope__item-body">
+										<span class="audit-scope__item-title">{item.title}</span>
+										<span class="audit-scope__item-text">{item.text}</span>
+									</div>
+								</li>
+							))}
+						</ul>
+					</div>
 				))
 			}
-		</ul>
+		</div>
 
 		<div class="audit-scope__cta">
 			<p class="audit-scope__cta-text">
 				Every audit is reviewed by hand — no automated score, just a written breakdown of where the most value is.
 			</p>
 			<a class="button button-primary audit-scope__cta-button" href="/audit">
-				Get a Website Audit
+				Request My Website Audit
 				<span aria-hidden="true">&rarr;</span>
 			</a>
 		</div>
@@ -92,30 +117,45 @@ const categories = [
 		line-height: 1.6;
 	}
 
-	.audit-scope__grid {
+	.audit-scope__buckets {
 		display: grid;
-		grid-template-columns: repeat(4, minmax(0, 1fr));
-		gap: 1rem;
-		margin: 0 0 clamp(2rem, 4vw, 2.75rem);
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 1.1rem;
+		margin-bottom: clamp(2rem, 4vw, 2.75rem);
+	}
+
+	.audit-scope__bucket {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		gap: 1.1rem;
+		padding: 1.6rem 1.5rem;
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		background: var(--color-white);
+		box-shadow: var(--shadow-card);
+	}
+
+	.audit-scope__bucket.lane-accent-top::before {
+		height: 4px;
+	}
+
+	.audit-scope__bucket-head {
+		display: flex;
+		align-items: center;
+	}
+
+	.audit-scope__list {
+		display: grid;
+		gap: 1.1rem;
+		margin: 0;
 		padding: 0;
 		list-style: none;
 	}
 
-	.audit-scope__card {
+	.audit-scope__item {
 		display: flex;
-		gap: 0.85rem;
-		padding: 1.35rem;
-		border: 1px solid var(--color-border);
-		border-radius: var(--radius-md);
-		background: var(--color-white);
-		box-shadow: var(--shadow-card);
-		transition: transform 320ms var(--ease-out-quart), border-color var(--transition-base), box-shadow var(--transition-base);
-	}
-
-	.audit-scope__card:hover {
-		transform: translateY(-2px);
-		border-color: color-mix(in srgb, var(--lane-audit) 30%, var(--color-border));
-		box-shadow: var(--shadow-card-hover);
+		gap: 0.75rem;
 	}
 
 	.audit-scope__check {
@@ -123,51 +163,36 @@ const categories = [
 		align-items: center;
 		justify-content: center;
 		flex-shrink: 0;
-		width: 1.7rem;
-		height: 1.7rem;
+		width: 1.6rem;
+		height: 1.6rem;
 		border-radius: 999px;
 		background: var(--lane-audit-tint);
 		color: var(--lane-audit-ink);
 	}
 
 	.audit-scope__check svg {
-		width: 0.95rem;
-		height: 0.95rem;
+		width: 0.9rem;
+		height: 0.9rem;
 	}
 
-	.audit-scope__card-body {
+	.audit-scope__item-body {
 		display: grid;
-		gap: 0.4rem;
+		gap: 0.2rem;
 		min-width: 0;
 	}
 
-	.audit-scope__card-top {
-		display: flex;
-		align-items: baseline;
-		gap: 0.55rem;
-	}
-
-	.audit-scope__num {
-		color: var(--lane-audit-ink);
-		font-size: 0.72rem;
-		font-weight: 800;
-		font-variant-numeric: tabular-nums;
-		letter-spacing: 0.08em;
-	}
-
-	.audit-scope__card-title {
-		margin: 0;
-		font-size: 1.02rem;
+	.audit-scope__item-title {
+		color: var(--color-text);
+		font-size: 0.98rem;
 		font-weight: 700;
-		letter-spacing: -0.02em;
+		letter-spacing: -0.015em;
 		line-height: 1.2;
 	}
 
-	.audit-scope__card-text {
-		margin: 0;
+	.audit-scope__item-text {
 		color: var(--color-muted);
-		font-size: 0.88rem;
-		line-height: 1.5;
+		font-size: 0.86rem;
+		line-height: 1.45;
 	}
 
 	.audit-scope__cta {
@@ -207,16 +232,12 @@ const categories = [
 			align-items: start;
 		}
 
-		.audit-scope__grid {
-			grid-template-columns: repeat(2, minmax(0, 1fr));
+		.audit-scope__buckets {
+			grid-template-columns: 1fr;
 		}
 	}
 
 	@media (max-width: 560px) {
-		.audit-scope__grid {
-			grid-template-columns: 1fr;
-		}
-
 		.audit-scope__cta-button {
 			width: 100%;
 		}
