@@ -1,26 +1,32 @@
 ---
-const promises = [
+const methods = [
 	{
-		icon: 'shield',
-		title: 'Healthcare-aware',
-		text: 'Pages designed around HIPAA-aware practices, accessibility, and the regulatory tone clinical buyers expect.',
+		step: '01',
+		icon: 'strategy',
+		title: 'Strategy before design',
+		text: 'We clarify the offer, audience, service structure, and conversion path before a pixel is designed.',
 	},
 	{
+		step: '02',
 		icon: 'target',
-		title: 'Conversion-first',
-		text: 'Every page is structured around the questions visitors actually need answered before they book.',
+		title: 'Conversion-first build',
+		text: 'Each section has a job: clarify, build trust, answer objections, or move the visitor forward.',
 	},
 	{
+		step: '03',
+		icon: 'cms',
+		title: 'CMS-connected where it matters',
+		text: 'Content stays manageable, scalable, and ready for the pages and resources you add next.',
+	},
+	{
+		step: '04',
 		icon: 'link',
-		title: 'CRM-connected',
-		text: 'Forms, calendars, and follow-up are wired into your GoHighLevel system on launch day — not bolted on later.',
-	},
-	{
-		icon: 'gauge',
-		title: 'Lighthouse-grade',
-		text: 'Static-first Astro builds with strong performance, semantic markup, and clean SEO scaffolding by default.',
+		title: 'Systems-ready launch',
+		text: 'Forms, tracking, CRM, and follow-up paths are wired and tested before traffic is sent.',
 	},
 ];
+
+const processSteps = ['Audit', 'Strategy', 'Design', 'Build', 'Connect', 'Launch', 'Improve'];
 
 const stack = ['Astro', 'TypeScript', 'GoHighLevel', 'Vercel', 'Sanity', 'Cal.com'];
 ---
@@ -28,51 +34,66 @@ const stack = ['Astro', 'TypeScript', 'GoHighLevel', 'Vercel', 'Sanity', 'Cal.co
 <section class="section-tight proof-strip" aria-labelledby="proof-strip-heading">
 	<div class="site-container site-container--wide">
 		<div class="proof-strip__statement">
-			<p class="eyebrow">What you can expect</p>
+			<p class="eyebrow">The build method</p>
 			<h2 id="proof-strip-heading" class="proof-strip__headline">
-				No theme reskins. No&nbsp;handoff to a&nbsp;junior. No&nbsp;dead launch.
-				<span class="proof-strip__headline-soft">A studio that ships premium, healthcare-aware websites that actually convert — and stays with you after launch.</span>
+				No theme reskins. No&nbsp;junior handoff. No&nbsp;dead launch.
+				<span class="proof-strip__headline-soft">A FutureSolutions site is planned around how visitors actually convert — not just how the pages look.</span>
 			</h2>
 		</div>
 
-		<ul class="proof-strip__grid" aria-label="What you can expect from a FutureSolutions engagement">
+		<ol class="proof-strip__grid" aria-label="How we build">
 			{
-				promises.map((p) => (
+				methods.map((p) => (
 					<li class="proof-card">
-						<div class="proof-card__icon" aria-hidden="true">
-							{p.icon === 'shield' && (
-								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
-									<path d="M12 3l8 3v6a10 10 0 0 1-8 9 10 10 0 0 1-8-9V6z" />
-									<path d="M9 12l2 2 4-4" />
-								</svg>
-							)}
-							{p.icon === 'target' && (
-								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
-									<circle cx="12" cy="12" r="9" />
-									<circle cx="12" cy="12" r="5" />
-									<circle cx="12" cy="12" r="1.5" fill="currentColor" />
-								</svg>
-							)}
-							{p.icon === 'link' && (
-								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
-									<path d="M10 14a4 4 0 0 0 5.66 0l3-3a4 4 0 0 0-5.66-5.66l-1.5 1.5" />
-									<path d="M14 10a4 4 0 0 0-5.66 0l-3 3a4 4 0 0 0 5.66 5.66l1.5-1.5" />
-								</svg>
-							)}
-							{p.icon === 'gauge' && (
-								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
-									<path d="M4 19a8 8 0 1 1 16 0" />
-									<path d="M12 19l4-6" />
-									<circle cx="12" cy="19" r="1.5" fill="currentColor" stroke="none" />
-								</svg>
-							)}
+						<div class="proof-card__head">
+							<div class="proof-card__icon" aria-hidden="true">
+								{p.icon === 'strategy' && (
+									<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+										<circle cx="12" cy="12" r="9" />
+										<path d="M15.5 8.5l-2 5-5 2 2-5z" />
+									</svg>
+								)}
+								{p.icon === 'target' && (
+									<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+										<circle cx="12" cy="12" r="9" />
+										<circle cx="12" cy="12" r="5" />
+										<circle cx="12" cy="12" r="1.5" fill="currentColor" />
+									</svg>
+								)}
+								{p.icon === 'cms' && (
+									<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+										<ellipse cx="12" cy="6" rx="7" ry="3" />
+										<path d="M5 6v6c0 1.66 3.13 3 7 3s7-1.34 7-3V6M5 12v6c0 1.66 3.13 3 7 3s7-1.34 7-3v-6" />
+									</svg>
+								)}
+								{p.icon === 'link' && (
+									<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+										<path d="M10 14a4 4 0 0 0 5.66 0l3-3a4 4 0 0 0-5.66-5.66l-1.5 1.5" />
+										<path d="M14 10a4 4 0 0 0-5.66 0l-3 3a4 4 0 0 0 5.66 5.66l1.5-1.5" />
+									</svg>
+								)}
+							</div>
+							<span class="proof-card__step">Step {p.step}</span>
 						</div>
 						<h3 class="proof-card__title">{p.title}</h3>
 						<p class="proof-card__text">{p.text}</p>
 					</li>
 				))
 			}
-		</ul>
+		</ol>
+
+		<div class="proof-process" aria-label="Our end-to-end process">
+			<ol class="proof-process__track">
+				{processSteps.map((s, i) => (
+					<>
+						<li class="proof-process__step">{s}</li>
+						{i < processSteps.length - 1 && (
+							<li class="proof-process__arrow" aria-hidden="true">&rarr;</li>
+						)}
+					</>
+				))}
+			</ol>
+		</div>
 
 		<div class="proof-strip__stack" aria-label="Technology and tooling we build with">
 			<span class="proof-strip__stack-label">Built on</span>
@@ -147,13 +168,28 @@ const stack = ['Astro', 'TypeScript', 'GoHighLevel', 'Vercel', 'Sanity', 'Cal.co
 		background: color-mix(in srgb, var(--color-white) 14%, transparent);
 	}
 
+	.proof-card__head {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 0.75rem;
+		margin-bottom: 0.55rem;
+	}
+
+	.proof-card__step {
+		color: color-mix(in srgb, var(--lane-audit-tint) 84%, var(--color-white));
+		font-size: 0.68rem;
+		font-weight: 800;
+		letter-spacing: 0.14em;
+		text-transform: uppercase;
+	}
+
 	.proof-card__icon {
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
 		width: 2.4rem;
 		height: 2.4rem;
-		margin-bottom: 0.55rem;
 		border: 1px solid color-mix(in srgb, var(--lane-audit) 38%, transparent);
 		border-radius: 10px;
 		background: color-mix(in srgb, var(--lane-audit) 14%, transparent);
@@ -178,6 +214,51 @@ const stack = ['Astro', 'TypeScript', 'GoHighLevel', 'Vercel', 'Sanity', 'Cal.co
 		color: color-mix(in srgb, var(--color-white) 92%, transparent);
 		font-size: 0.92rem;
 		line-height: 1.6;
+	}
+
+	.proof-process {
+		margin: 0 0 clamp(2.5rem, 4vw, 3.5rem) 0;
+	}
+
+	.proof-process__track {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 0.5rem 0.4rem;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		counter-reset: process;
+	}
+
+	.proof-process__step {
+		counter-increment: process;
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		padding: 0.5rem 0.95rem;
+		border: 1px solid color-mix(in srgb, var(--color-white) 18%, transparent);
+		border-radius: 999px;
+		background: color-mix(in srgb, var(--color-white) 7%, transparent);
+		color: var(--color-white);
+		font-size: 0.85rem;
+		font-weight: 650;
+		letter-spacing: -0.005em;
+		white-space: nowrap;
+	}
+
+	.proof-process__step::before {
+		content: counter(process, decimal-leading-zero);
+		color: color-mix(in srgb, var(--lane-audit-tint) 85%, var(--color-white));
+		font-size: 0.7rem;
+		font-weight: 800;
+		font-variant-numeric: tabular-nums;
+	}
+
+	.proof-process__arrow {
+		color: color-mix(in srgb, var(--color-white) 45%, transparent);
+		font-size: 0.9rem;
+		font-weight: 700;
 	}
 
 	.proof-strip__stack {

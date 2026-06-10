@@ -1,0 +1,224 @@
+---
+// "What your website audit looks at" — a diagnostic checklist, not a fake
+// automated score. Each category mirrors a stage of the visitor path so the
+// audit feels like the natural diagnostic for everything above it.
+const categories = [
+	{ n: '01', title: 'Positioning clarity', text: 'Can visitors quickly understand who you help and what you offer?' },
+	{ n: '02', title: 'Service page structure', text: 'Are your services organized around visitor intent?' },
+	{ n: '03', title: 'Trust signals', text: 'Are reviews, credentials, FAQs, and proof visible where decisions happen?' },
+	{ n: '04', title: 'Conversion path', text: 'Are CTAs clear, consistent, and easy to act on?' },
+	{ n: '05', title: 'Local SEO foundation', text: 'Are pages structured to support relevant local discovery?' },
+	{ n: '06', title: 'Mobile experience', text: 'Does the site feel fast, readable, and easy to use on mobile?' },
+	{ n: '07', title: 'Follow-up system', text: 'Are inquiries routed into a clear next step or CRM process?' },
+	{ n: '08', title: 'Tracking and reporting', text: 'Can the business see what is actually working?' },
+];
+---
+
+<section class="section audit-scope" aria-labelledby="audit-scope-heading">
+	<div class="site-container site-container--wide">
+		<header class="audit-scope__head">
+			<div class="audit-scope__head-left">
+				<p class="eyebrow">The audit</p>
+				<h2 id="audit-scope-heading" class="display-lg">What your website audit looks at.</h2>
+			</div>
+			<p class="audit-scope__head-copy">
+				We review the parts of your site that most directly affect clarity, trust, conversion, local visibility, and follow-up — then show you what to fix first.
+			</p>
+		</header>
+
+		<ul class="audit-scope__grid" aria-label="What the audit reviews">
+			{
+				categories.map((c) => (
+					<li class="audit-scope__card">
+						<span class="audit-scope__check" aria-hidden="true">
+							<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+								<polyline points="3,8.5 6.5,12 13,4" />
+							</svg>
+						</span>
+						<div class="audit-scope__card-body">
+							<div class="audit-scope__card-top">
+								<span class="audit-scope__num">{c.n}</span>
+								<h3 class="audit-scope__card-title">{c.title}</h3>
+							</div>
+							<p class="audit-scope__card-text">{c.text}</p>
+						</div>
+					</li>
+				))
+			}
+		</ul>
+
+		<div class="audit-scope__cta">
+			<p class="audit-scope__cta-text">
+				Every audit is reviewed by hand — no automated score, just a written breakdown of where the most value is.
+			</p>
+			<a class="button button-primary audit-scope__cta-button" href="/audit">
+				Get a Website Audit
+				<span aria-hidden="true">&rarr;</span>
+			</a>
+		</div>
+	</div>
+</section>
+
+<style>
+	.audit-scope {
+		background:
+			radial-gradient(ellipse 70% 60% at 100% 0%, color-mix(in srgb, var(--lane-audit-tint) 55%, transparent), transparent 72%),
+			var(--color-bg);
+		border-block: 1px solid var(--color-border-soft);
+	}
+
+	.audit-scope__head {
+		display: grid;
+		grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+		gap: clamp(2rem, 5vw, 4rem);
+		align-items: end;
+		margin-bottom: clamp(2.5rem, 4vw, 3.25rem);
+	}
+
+	.audit-scope__head .eyebrow {
+		color: var(--lane-audit-ink);
+	}
+
+	.audit-scope__head h2 {
+		max-width: 18ch;
+		margin-bottom: 0;
+	}
+
+	.audit-scope__head-copy {
+		max-width: 38ch;
+		margin: 0;
+		color: var(--color-muted);
+		font-size: 1rem;
+		line-height: 1.6;
+	}
+
+	.audit-scope__grid {
+		display: grid;
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+		gap: 1rem;
+		margin: 0 0 clamp(2rem, 4vw, 2.75rem);
+		padding: 0;
+		list-style: none;
+	}
+
+	.audit-scope__card {
+		display: flex;
+		gap: 0.85rem;
+		padding: 1.35rem;
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-md);
+		background: var(--color-white);
+		box-shadow: var(--shadow-card);
+		transition: transform 320ms var(--ease-out-quart), border-color var(--transition-base), box-shadow var(--transition-base);
+	}
+
+	.audit-scope__card:hover {
+		transform: translateY(-2px);
+		border-color: color-mix(in srgb, var(--lane-audit) 30%, var(--color-border));
+		box-shadow: var(--shadow-card-hover);
+	}
+
+	.audit-scope__check {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		flex-shrink: 0;
+		width: 1.7rem;
+		height: 1.7rem;
+		border-radius: 999px;
+		background: var(--lane-audit-tint);
+		color: var(--lane-audit-ink);
+	}
+
+	.audit-scope__check svg {
+		width: 0.95rem;
+		height: 0.95rem;
+	}
+
+	.audit-scope__card-body {
+		display: grid;
+		gap: 0.4rem;
+		min-width: 0;
+	}
+
+	.audit-scope__card-top {
+		display: flex;
+		align-items: baseline;
+		gap: 0.55rem;
+	}
+
+	.audit-scope__num {
+		color: var(--lane-audit-ink);
+		font-size: 0.72rem;
+		font-weight: 800;
+		font-variant-numeric: tabular-nums;
+		letter-spacing: 0.08em;
+	}
+
+	.audit-scope__card-title {
+		margin: 0;
+		font-size: 1.02rem;
+		font-weight: 700;
+		letter-spacing: -0.02em;
+		line-height: 1.2;
+	}
+
+	.audit-scope__card-text {
+		margin: 0;
+		color: var(--color-muted);
+		font-size: 0.88rem;
+		line-height: 1.5;
+	}
+
+	.audit-scope__cta {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1.25rem 2rem;
+		padding: clamp(1.5rem, 3vw, 2rem);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		background: linear-gradient(135deg, var(--color-white) 0%, var(--lane-audit-tint) 130%);
+		box-shadow: var(--shadow-card);
+	}
+
+	.audit-scope__cta-text {
+		max-width: 44ch;
+		margin: 0;
+		color: var(--color-text);
+		font-size: 1rem;
+		font-weight: 500;
+		line-height: 1.55;
+	}
+
+	.audit-scope__cta-button span {
+		display: inline-block;
+		transition: transform 220ms var(--ease-out-quart);
+	}
+
+	.audit-scope__cta-button:hover span {
+		transform: translateX(2px);
+	}
+
+	@media (max-width: 1080px) {
+		.audit-scope__head {
+			grid-template-columns: 1fr;
+			align-items: start;
+		}
+
+		.audit-scope__grid {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+
+	@media (max-width: 560px) {
+		.audit-scope__grid {
+			grid-template-columns: 1fr;
+		}
+
+		.audit-scope__cta-button {
+			width: 100%;
+		}
+	}
+</style>

@@ -7,14 +7,16 @@ const offers = [
 		priceFrom: 'from $3,500',
 		summary:
 			'Launch from a polished healthcare-specific website built around a real business model — then customize the brand, services, and booking flow.',
+		fixes: 'Outdated design, unclear services, weak mobile experience, poor first impression.',
 		bestFor: 'Solo and group practices, med spas, hormone clinics, wellness brands ready to launch fast without looking templated.',
 		bullets: [
 			'Curated demo library — every Foundation is a live, clickable site',
 			'Customizable brand, services, page structure, and booking flow',
 			'Faster path to launch than a fully custom build',
 		],
-		ctaLabel: 'Explore Live Demos',
+		ctaLabel: 'Explore Website Foundations',
 		ctaHref: '/templates',
+		recommended: false,
 	},
 	{
 		lane: 'custom',
@@ -23,14 +25,16 @@ const offers = [
 		priceFrom: 'from $12,000',
 		summary:
 			'A fully custom website system designed around a unique brand, service model, or organization — engineered for credibility, clarity, and conversion.',
+		fixes: 'Generic positioning, inconsistent visuals, confusing service structure, weak authority.',
 		bestFor: 'Clinics, associations, and service businesses with unique positioning, complex content, or larger teams.',
 		bullets: [
 			'Custom design system, page architecture, and content model',
 			'Built around your services, audience, and operational workflow',
 			'Deeper integrations and content strategy where it matters',
 		],
-		ctaLabel: 'See Custom Website service',
+		ctaLabel: 'Plan a Custom Build',
 		ctaHref: '/services/custom-healthcare-websites',
+		recommended: false,
 	},
 	{
 		lane: 'growth',
@@ -39,35 +43,44 @@ const offers = [
 		priceFrom: 'from $1,500 setup + $300/mo',
 		summary:
 			'Connect the site to forms, calendars, CRM routing, follow-up, review requests, and reporting — so leads do not disappear after submitting a form.',
+		fixes: 'Lost inquiries, inconsistent follow-up, poor pipeline visibility, disconnected marketing.',
 		bestFor: 'Practices losing inquiries to slow follow-up, missed calls, or scattered tools — and teams that want one source of truth.',
 		bullets: [
 			'Form, booking, and CRM routing wired end-to-end',
 			'Automated follow-up, review requests, and reporting',
 			'Plugs into Foundations or a Signature Custom Website',
 		],
-		ctaLabel: 'See how the system works',
+		ctaLabel: 'Build a Growth System',
 		ctaHref: '/services/growth-systems',
+		recommended: true,
 	},
+];
+
+const stackLayers = [
+	{ lane: 'foundation', name: 'Website Foundations', formula: 'Website' },
+	{ lane: 'custom', name: 'Signature Custom', formula: 'Brand + Website' },
+	{ lane: 'growth', name: 'Growth Systems', formula: 'Website + CRM + Follow-up + Reporting' },
 ];
 ---
 
 <section class="offer-overview" aria-labelledby="offer-overview-heading">
 	<div class="site-container site-container--wide">
 		<header class="offer-overview__head">
-			<p class="eyebrow">What FutureSolutions provides</p>
+			<p class="eyebrow">Your starting point</p>
 			<h2 id="offer-overview-heading" class="display-lg">
 				Three offers. One diagnostic.
 				<span class="offer-overview__head-soft">Pick the right starting point.</span>
 			</h2>
 			<p class="lead offer-overview__lead">
-				We design the website, build a library of customizable Foundations, and ship the Growth Systems behind both. If you're not sure where to start, request a free Website and Systems Audit and we'll recommend the right path.
+				We align the build to where your practice is now — whether you need a stronger website foundation, a premium custom presence, or a full website-to-follow-up growth system. Not sure? Start with a free audit and we'll recommend the right path.
 			</p>
 		</header>
 
 		<ul class="offer-overview__grid">
 			{
 				offers.map((offer) => (
-					<li class={`offer-overview__card lane-accent-top lane-accent-top--${offer.lane}`}>
+					<li class:list={[`offer-overview__card lane-accent-top lane-accent-top--${offer.lane}`, { 'offer-overview__card--recommended': offer.recommended }]}>
+						{offer.recommended && <span class="offer-overview__flag">Most complete</span>}
 						<div class="offer-overview__card-head">
 							<span class={`lane-tag lane-tag--${offer.lane}`}>{offer.number}</span>
 							<h3 class="offer-overview__card-title">{offer.title}</h3>
@@ -76,6 +89,11 @@ const offers = [
 						<p class="offer-overview__price">{offer.priceFrom}</p>
 
 						<p class="offer-overview__card-summary">{offer.summary}</p>
+
+						<div class="offer-overview__fixes">
+							<span class="offer-overview__fixes-label">Fixes</span>
+							<p>{offer.fixes}</p>
+						</div>
 
 						<ul class="offer-overview__bullets">
 							{offer.bullets.map((b) => (
@@ -109,6 +127,19 @@ const offers = [
 				))
 			}
 		</ul>
+
+		<div class="offer-overview__stack" aria-label="How the offers build on one another">
+			<p class="offer-overview__stack-label">Each offer adds another layer of the system</p>
+			<ol class="offer-overview__stack-track">
+				{stackLayers.map((layer, i) => (
+					<li class={`offer-overview__stack-item offer-overview__stack-item--${layer.lane}`}>
+						<span class="offer-overview__stack-name">{layer.name}</span>
+						<span class="offer-overview__stack-eq" aria-hidden="true">=</span>
+						<span class="offer-overview__stack-formula">{layer.formula}</span>
+					</li>
+				))}
+			</ol>
+		</div>
 
 		<aside class="offer-overview__audit lane-accent-top lane-accent-top--audit" aria-label="Website and Systems Audit">
 			<div class="offer-overview__audit-main">
@@ -202,6 +233,118 @@ const offers = [
 	.offer-overview__card.lane-accent-top--foundation .offer-overview__bullets svg { color: var(--lane-foundation); }
 	.offer-overview__card.lane-accent-top--custom     .offer-overview__bullets svg { color: var(--lane-custom); }
 	.offer-overview__card.lane-accent-top--growth     .offer-overview__bullets svg { color: var(--lane-growth); }
+
+	.offer-overview__card--recommended {
+		border-color: color-mix(in srgb, var(--lane-growth) 40%, var(--color-border));
+		box-shadow: 0 0 0 1px color-mix(in srgb, var(--lane-growth) 22%, transparent), var(--shadow-card);
+	}
+
+	.offer-overview__flag {
+		position: absolute;
+		top: 0;
+		right: 1.25rem;
+		transform: translateY(-50%);
+		padding: 0.28rem 0.6rem;
+		border-radius: 999px;
+		background: var(--lane-growth);
+		color: var(--color-white);
+		font-size: 0.66rem;
+		font-weight: 800;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		box-shadow: 0 4px 12px color-mix(in srgb, var(--lane-growth) 30%, transparent);
+	}
+
+	.offer-overview__fixes {
+		display: grid;
+		gap: 0.3rem;
+		padding: 0.75rem 0.9rem;
+		border-radius: var(--radius-sm);
+		background: color-mix(in srgb, var(--lane-audit-tint) 45%, var(--color-bg));
+		border: 1px solid color-mix(in srgb, var(--lane-audit) 16%, var(--color-border-soft));
+	}
+
+	.offer-overview__fixes-label {
+		color: var(--lane-audit-ink);
+		font-size: 0.68rem;
+		font-weight: 800;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+	}
+
+	.offer-overview__fixes p {
+		margin: 0;
+		color: var(--color-muted);
+		font-size: 0.85rem;
+		line-height: 1.45;
+	}
+
+	.offer-overview__stack {
+		margin: 0 0 1.5rem;
+		padding: 1.25rem 1.5rem 1.4rem;
+		border: 1px solid var(--color-border-soft);
+		border-radius: var(--radius-lg);
+		background: var(--color-bg);
+	}
+
+	.offer-overview__stack-label {
+		margin: 0 0 1rem;
+		color: var(--color-text);
+		font-size: 0.74rem;
+		font-weight: 800;
+		letter-spacing: 0.14em;
+		text-transform: uppercase;
+	}
+
+	.offer-overview__stack-track {
+		display: grid;
+		gap: 0.6rem;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		counter-reset: stack;
+	}
+
+	.offer-overview__stack-item {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 0.6rem 0.9rem;
+		padding: 0.85rem 1.1rem;
+		border: 1px solid var(--color-border-soft);
+		border-left-width: 4px;
+		border-radius: var(--radius-sm);
+		background: var(--color-white);
+	}
+
+	.offer-overview__stack-item--foundation { border-left-color: var(--lane-foundation); }
+	.offer-overview__stack-item--custom     { border-left-color: var(--lane-custom); }
+	.offer-overview__stack-item--growth      { border-left-color: var(--lane-growth); }
+
+	.offer-overview__stack-name {
+		min-width: 12rem;
+		color: var(--color-text);
+		font-size: 0.95rem;
+		font-weight: 700;
+		letter-spacing: -0.01em;
+	}
+
+	.offer-overview__stack-eq {
+		color: var(--color-muted);
+		font-weight: 700;
+	}
+
+	.offer-overview__stack-formula {
+		color: var(--color-muted);
+		font-size: 0.92rem;
+		font-weight: 600;
+		letter-spacing: -0.005em;
+	}
+
+	.offer-overview__stack-item--growth .offer-overview__stack-formula {
+		color: var(--lane-growth-ink);
+		font-weight: 700;
+	}
 
 	.offer-overview__card-head {
 		display: flex;

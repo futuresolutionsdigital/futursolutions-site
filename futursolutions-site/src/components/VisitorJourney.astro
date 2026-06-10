@@ -4,6 +4,7 @@ const stages = [
 		lane: 'foundation',
 		icon: 'search',
 		stage: 'Discovers you',
+		question: 'Is this relevant to me?',
 		text: 'Found through local search, a referral, or an ad — and your site loads fast and looks the part.',
 		leak: 'Slow, invisible, or generic — they never arrive.',
 		system: 'Local Visibility',
@@ -12,6 +13,7 @@ const stages = [
 		lane: 'custom',
 		icon: 'shield',
 		stage: 'Trusts you',
+		question: 'Can I trust them?',
 		text: 'Premium design, clear services, and real proof earn confidence in the first few seconds.',
 		leak: 'Dated or confusing — they bounce in seconds.',
 		system: 'Website design',
@@ -20,6 +22,7 @@ const stages = [
 		lane: 'audit',
 		icon: 'cursor',
 		stage: 'Takes the step',
+		question: 'What do I do next?',
 		text: 'One obvious next action — book or inquire — with no friction or dead ends.',
 		leak: 'No clear path — they leave to "think about it."',
 		system: 'Conversion paths',
@@ -28,6 +31,7 @@ const stages = [
 		lane: 'growth',
 		icon: 'flow',
 		stage: 'Gets followed up',
+		question: 'Did they respond clearly?',
 		text: 'The inquiry is captured, routed, and nurtured automatically — nothing slips through.',
 		leak: 'Sits in an inbox — answered too late, if at all.',
 		system: 'Growth System',
@@ -81,6 +85,7 @@ const stages = [
 						<span class="journey__step">Step {i + 1}</span>
 					</div>
 					<h3 class="journey__stage">{s.stage}</h3>
+					<p class="journey__question"><span class="journey__question-label">They're asking</span>&ldquo;{s.question}&rdquo;</p>
 					<p class="journey__text">{s.text}</p>
 					<p class="journey__leak">
 						<svg aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4v5M8 11.5v.5" /><circle cx="8" cy="8" r="6.5" /></svg>
@@ -101,6 +106,7 @@ const stages = [
 					<span class="journey__step journey__step--final">Result</span>
 				</div>
 				<h3 class="journey__stage">Booked client</h3>
+				<p class="journey__question"><span class="journey__question-label">They decide</span>&ldquo;I'm ready to move forward.&rdquo;</p>
 				<p class="journey__text">A new patient on the calendar — not a lead lost to a slow inbox or a confusing page.</p>
 				<span class="journey__system journey__system--booked">The whole point</span>
 			</li>
@@ -281,6 +287,27 @@ const stages = [
 		font-weight: 700;
 		letter-spacing: -0.02em;
 		line-height: 1.2;
+	}
+
+	.journey__question {
+		display: flex;
+		flex-direction: column;
+		gap: 0.2rem;
+		margin: 0;
+		color: var(--color-white);
+		font-size: 0.92rem;
+		font-style: italic;
+		font-weight: 500;
+		line-height: 1.35;
+	}
+
+	.journey__question-label {
+		font-size: 0.62rem;
+		font-style: normal;
+		font-weight: 800;
+		letter-spacing: 0.14em;
+		text-transform: uppercase;
+		color: var(--color-ink-accent);
 	}
 
 	.journey__text {

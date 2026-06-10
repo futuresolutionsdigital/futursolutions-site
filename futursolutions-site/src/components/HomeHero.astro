@@ -1,29 +1,11 @@
 ---
-const systemMap = [
-	{
-		lane: 'foundation',
-		label: 'Website Foundation',
-		sub: 'Customizable starting point',
-		icon: 'layers',
-	},
-	{
-		lane: 'custom',
-		label: 'Signature Custom Website',
-		sub: 'Built around your brand',
-		icon: 'sparkle',
-	},
-	{
-		lane: 'growth',
-		label: 'Growth System',
-		sub: 'Forms · Booking · Follow-up',
-		icon: 'flow',
-	},
-	{
-		lane: 'audit',
-		label: 'Website + Systems Audit',
-		sub: 'Free diagnostic',
-		icon: 'scope',
-	},
+import ConversionPathVisual from './ConversionPathVisual.astro';
+
+const capabilities = [
+	'Healthcare websites',
+	'Local SEO',
+	'Booking flows',
+	'CRM + follow-up',
 ];
 
 const tickerItems = [
@@ -57,7 +39,7 @@ const tickerItems = [
 		</h1>
 
 		<p class="lead home-hero__lead">
-			We design premium websites — and the lead capture and follow-up systems behind them — so more of the right patients find you, trust you, and book. Built for clinics, wellness brands, and high-trust practices.
+			We design practice websites that clarify your services, guide visitors toward the right next step, and connect the backend systems that help turn interest into booked consultations.
 		</p>
 
 		<div class="home-hero__cta-row">
@@ -68,53 +50,11 @@ const tickerItems = [
 			<a class="button button-secondary" href="/templates">Explore Live Demos</a>
 		</div>
 
-		<div class="home-hero__system" aria-label="What FutureSolutions builds">
-			<div class="home-hero__system-head">
-				<p class="home-hero__system-label">What we build</p>
-				<span class="home-hero__system-divider" aria-hidden="true"></span>
-				<p class="home-hero__system-meta">3 offers · 1 diagnostic</p>
-			</div>
-			<ul class="home-hero__system-grid">
-				{
-					systemMap.map((item) => (
-						<li class={`home-hero__system-card lane-accent-top lane-accent-top--${item.lane}`}>
-							<span class={`lane-icon lane-icon--${item.lane}`} aria-hidden="true">
-								{item.icon === 'layers' && (
-									<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round">
-										<path d="M12 3l9 5-9 5-9-5z" />
-										<path d="M3 13l9 5 9-5M3 18l9 5 9-5" />
-									</svg>
-								)}
-								{item.icon === 'sparkle' && (
-									<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round">
-										<path d="M12 3v6M12 15v6M3 12h6M15 12h6" />
-										<path d="M6 6l3 3M15 15l3 3M18 6l-3 3M9 15l-3 3" />
-									</svg>
-								)}
-								{item.icon === 'flow' && (
-									<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round">
-										<rect x="3" y="4" width="6" height="6" rx="1.5" />
-										<rect x="15" y="4" width="6" height="6" rx="1.5" />
-										<rect x="9" y="14" width="6" height="6" rx="1.5" />
-										<path d="M6 10v2h6M18 10v2h-6" />
-									</svg>
-								)}
-								{item.icon === 'scope' && (
-									<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round">
-										<circle cx="11" cy="11" r="6" />
-										<path d="M16 16l5 5" />
-									</svg>
-								)}
-							</span>
-							<div class="home-hero__system-text">
-								<p class="home-hero__system-label-inner">{item.label}</p>
-								<p class="home-hero__system-sub">{item.sub}</p>
-							</div>
-						</li>
-					))
-				}
-			</ul>
-		</div>
+		<ul class="home-hero__chips" aria-label="What we work on">
+			{capabilities.map((c) => <li class="home-hero__chip">{c}</li>)}
+		</ul>
+
+		<ConversionPathVisual class="home-hero__path" />
 	</div>
 
 	<div class="home-hero__ticker" aria-label="Industries we serve">
@@ -259,7 +199,7 @@ const tickerItems = [
 		flex-wrap: wrap;
 		gap: 0.85rem;
 		align-items: center;
-		margin-bottom: 3.5rem;
+		margin-bottom: 1.5rem;
 	}
 
 	.home-hero__cta-primary span {
@@ -271,117 +211,29 @@ const tickerItems = [
 		transform: translateX(2px);
 	}
 
-	.home-hero__system {
-		width: 100%;
-		margin: 0;
-		padding-top: 0.5rem;
-	}
-
-	.home-hero__system-head {
+	.home-hero__chips {
 		display: flex;
-		align-items: center;
-		gap: 0.85rem;
-		margin: 0 0 1.1rem 0;
-	}
-
-	.home-hero__system-label {
-		margin: 0;
-		color: var(--color-text);
-		font-size: 0.78rem;
-		font-weight: 800;
-		letter-spacing: 0.18em;
-		text-transform: uppercase;
-	}
-
-	.home-hero__system-divider {
-		flex: 1;
-		min-width: 1.5rem;
-		max-width: 14rem;
-		height: 1px;
-		background: linear-gradient(90deg, var(--color-border), transparent);
-	}
-
-	.home-hero__system-meta {
-		margin: 0;
-		color: var(--color-muted);
-		font-size: 0.78rem;
-		font-weight: 600;
-		letter-spacing: 0.04em;
-	}
-
-	.home-hero__system-grid {
-		display: grid;
-		grid-template-columns: repeat(4, minmax(0, 1fr));
-		gap: 1rem;
-		margin: 0;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		margin: 0 0 3rem 0;
 		padding: 0;
 		list-style: none;
 	}
 
-	.home-hero__system-card {
-		position: relative;
-		display: grid;
-		grid-template-columns: auto minmax(0, 1fr);
-		align-items: center;
-		gap: 0.95rem;
-		padding: 1.2rem 1.25rem;
+	.home-hero__chip {
+		padding: 0.4rem 0.8rem;
 		border: 1px solid var(--color-border);
-		border-radius: var(--radius-md);
+		border-radius: 999px;
 		background: var(--color-white);
-		box-shadow: var(--shadow-card);
-		transition: transform 320ms var(--ease-out-quart),
-			border-color var(--transition-base),
-			box-shadow var(--transition-base);
-	}
-
-	.home-hero__system-card.lane-accent-top::before {
-		height: 4px;
-	}
-
-	.home-hero__system-card:hover {
-		transform: translateY(-2px);
-		box-shadow: var(--shadow-card-hover);
-	}
-
-	.home-hero__system-card.lane-accent-top--foundation:hover { border-color: color-mix(in srgb, var(--lane-foundation) 36%, var(--color-border)); }
-	.home-hero__system-card.lane-accent-top--custom:hover     { border-color: color-mix(in srgb, var(--lane-custom) 32%, var(--color-border)); }
-	.home-hero__system-card.lane-accent-top--growth:hover     { border-color: color-mix(in srgb, var(--lane-growth) 36%, var(--color-border)); }
-	.home-hero__system-card.lane-accent-top--audit:hover      { border-color: color-mix(in srgb, var(--lane-audit) 38%, var(--color-border)); }
-
-	.home-hero__system-card .lane-icon {
-		width: 2.75rem;
-		height: 2.75rem;
-		border-radius: 12px;
-	}
-
-	.home-hero__system-card .lane-icon svg {
-		width: 1.3rem;
-		height: 1.3rem;
-		stroke-width: 1.7;
-	}
-
-	.home-hero__system-text {
-		display: grid;
-		gap: 0.2rem;
-		min-width: 0;
-	}
-
-	.home-hero__system-label-inner {
-		margin: 0;
-		color: var(--color-text);
-		font-size: 1rem;
-		font-weight: 700;
-		letter-spacing: -0.018em;
-		line-height: 1.2;
-	}
-
-	.home-hero__system-sub {
-		margin: 0;
 		color: var(--color-muted);
-		font-size: 0.82rem;
-		font-weight: 500;
+		font-size: 0.8rem;
+		font-weight: 600;
 		letter-spacing: -0.005em;
-		line-height: 1.4;
+		line-height: 1;
+	}
+
+	.home-hero__path {
+		width: 100%;
 	}
 
 	.home-hero__ticker {
@@ -449,12 +301,6 @@ const tickerItems = [
 		}
 	}
 
-	@media (max-width: 1080px) {
-		.home-hero__system-grid {
-			grid-template-columns: repeat(2, minmax(0, 1fr));
-		}
-	}
-
 	@media (max-width: 720px) {
 		.home-hero {
 			padding-top: 3.5rem;
@@ -462,12 +308,6 @@ const tickerItems = [
 
 		.home-hero__kicker-text {
 			display: none;
-		}
-	}
-
-	@media (max-width: 520px) {
-		.home-hero__system-grid {
-			grid-template-columns: 1fr;
 		}
 	}
 

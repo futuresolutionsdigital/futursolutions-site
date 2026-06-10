@@ -1,24 +1,33 @@
 ---
+const leakStages = [
+	{ label: 'Traffic arrives', leak: null },
+	{ label: 'Scans the page', leak: 'Unclear positioning' },
+	{ label: 'Compares services', leak: 'Weak service clarity' },
+	{ label: 'Looks for trust', leak: 'Low trust signals' },
+	{ label: 'Considers booking', leak: 'Buried CTA' },
+	{ label: 'Leaves — or books', leak: 'No follow-up' },
+];
+
 const problems = [
 	{
 		number: '01',
 		title: 'Unclear positioning',
-		text: 'Visitors cannot quickly tell who you help, what you offer, or why your practice is the right fit.',
+		text: 'Visitors cannot quickly tell who you help, what you offer, or why they should choose you.',
 	},
 	{
 		number: '02',
-		title: 'Weak conversion paths',
-		text: 'Calls-to-action are buried, inconsistent, or disconnected from how patients actually make decisions.',
+		title: 'Weak-converting paths',
+		text: 'Pages look polished, but visitors are not guided toward a clear next step.',
 	},
 	{
 		number: '03',
 		title: 'Poor local visibility',
-		text: 'Search engines lack the service, location, and metadata signals needed to understand your business.',
+		text: 'The site does not fully support service-area search, local intent, or location-based discovery.',
 	},
 	{
 		number: '04',
-		title: 'No backend follow-up',
-		text: 'New inquiries land in an inbox instead of a system that qualifies, reminds, and moves people toward booking.',
+		title: 'Disconnected follow-up',
+		text: 'Inquiries are captured inconsistently — not connected to reminders, nurture, or pipeline tracking.',
 	},
 ];
 ---
@@ -27,17 +36,38 @@ const problems = [
 	<div class="site-container site-container--wide">
 		<header class="problem-section__head">
 			<div class="problem-section__head-left">
-				<p class="eyebrow">The hidden gap</p>
+				<p class="eyebrow">The hidden problem</p>
 				<h2 id="problem-heading" class="display-lg">
 					Most healthcare websites look fine — and quietly leak leads anyway.
 				</h2>
 			</div>
 			<div class="problem-section__head-right">
 				<p>
-					Even modern, well-designed sites lose patients to four predictable gaps. We design around all four.
+					Generic design, unclear services, weak trust signals, and disconnected follow-up can quietly cost leads before anyone notices. We design around all four.
 				</p>
 			</div>
 		</header>
+
+		<div class="leak-map" role="img" aria-label="A visitor's path through a typical healthcare website, showing where leads commonly leak: after traffic arrives, unclear positioning, weak service clarity, low trust signals, a buried call-to-action, and no follow-up each cause drop-off before the visitor books.">
+			<div class="leak-map__head" aria-hidden="true">
+				<span class="leak-map__head-label">Where leads leak</span>
+				<span class="leak-map__head-legend"><span class="leak-map__head-dot"></span>Common leak point</span>
+			</div>
+			<ol class="leak-map__track">
+				{leakStages.map((s, i) => (
+					<li class:list={['leak-map__node', { 'leak-map__node--leak': s.leak, 'leak-map__node--end': i === leakStages.length - 1 }]}>
+						<span class="leak-map__index">{i + 1}</span>
+						<span class="leak-map__label">{s.label}</span>
+						{s.leak && (
+							<span class="leak-map__leak">
+								<span class="leak-map__leak-dot" aria-hidden="true"></span>
+								{s.leak}
+							</span>
+						)}
+					</li>
+				))}
+			</ol>
+		</div>
 
 		<ul class="problem-section__grid" aria-label="Common gaps in healthcare websites">
 			{
@@ -88,6 +118,143 @@ const problems = [
 		color: var(--color-muted);
 		font-size: 1rem;
 		line-height: 1.6;
+	}
+
+	.leak-map {
+		margin-bottom: clamp(2rem, 3.5vw, 2.75rem);
+		padding: 1.4rem 1.5rem 1.6rem;
+		border: 1px solid color-mix(in srgb, var(--lane-audit) 20%, var(--color-border));
+		border-radius: var(--radius-lg);
+		background: var(--color-white);
+		box-shadow: var(--shadow-card);
+	}
+
+	.leak-map__head {
+		display: flex;
+		align-items: baseline;
+		justify-content: space-between;
+		gap: 1rem;
+		margin-bottom: 1.25rem;
+	}
+
+	.leak-map__head-label {
+		color: var(--color-text);
+		font-size: 0.74rem;
+		font-weight: 800;
+		letter-spacing: 0.16em;
+		text-transform: uppercase;
+	}
+
+	.leak-map__head-legend {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.45rem;
+		color: var(--lane-audit-ink);
+		font-size: 0.76rem;
+		font-weight: 600;
+	}
+
+	.leak-map__head-dot {
+		width: 0.55rem;
+		height: 0.55rem;
+		border-radius: 999px;
+		background: var(--lane-audit);
+		box-shadow: 0 0 0 3px color-mix(in srgb, var(--lane-audit) 22%, transparent);
+	}
+
+	.leak-map__track {
+		display: grid;
+		grid-template-columns: repeat(6, minmax(0, 1fr));
+		gap: 0.5rem;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.leak-map__node {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 0.55rem;
+		padding: 0.9rem 0.85rem 1rem;
+		border: 1px solid var(--color-border-soft);
+		border-radius: var(--radius-md);
+		background: var(--color-bg);
+	}
+
+	.leak-map__node:not(:last-child)::after {
+		content: '';
+		position: absolute;
+		top: 1.55rem;
+		right: calc(-0.25rem - 1px);
+		width: 0.45rem;
+		height: 0.45rem;
+		border-top: 2px solid var(--color-border);
+		border-right: 2px solid var(--color-border);
+		transform: translate(50%, -50%) rotate(45deg);
+		z-index: 2;
+	}
+
+	.leak-map__index {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 1.5rem;
+		height: 1.5rem;
+		border-radius: 8px;
+		background: var(--color-white);
+		border: 1px solid var(--color-border);
+		color: var(--color-muted);
+		font-size: 0.72rem;
+		font-weight: 800;
+		font-variant-numeric: tabular-nums;
+	}
+
+	.leak-map__label {
+		color: var(--color-text);
+		font-size: 0.85rem;
+		font-weight: 650;
+		letter-spacing: -0.01em;
+		line-height: 1.2;
+	}
+
+	.leak-map__leak {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.35rem;
+		margin-top: auto;
+		padding: 0.28rem 0.5rem;
+		border: 1px solid color-mix(in srgb, var(--lane-audit) 32%, transparent);
+		border-radius: 999px;
+		background: var(--lane-audit-tint);
+		color: var(--lane-audit-ink);
+		font-size: 0.7rem;
+		font-weight: 700;
+		line-height: 1.1;
+	}
+
+	.leak-map__leak-dot {
+		width: 0.4rem;
+		height: 0.4rem;
+		border-radius: 999px;
+		background: var(--lane-audit);
+	}
+
+	.leak-map__node--leak {
+		border-color: color-mix(in srgb, var(--lane-audit) 28%, var(--color-border-soft));
+		background: color-mix(in srgb, var(--lane-audit-tint) 40%, var(--color-white));
+	}
+
+	.leak-map__node--end {
+		border-color: color-mix(in srgb, var(--color-text) 22%, var(--color-border));
+		background: var(--color-white);
+	}
+
+	.leak-map__node--end .leak-map__index {
+		background: var(--color-text);
+		border-color: var(--color-text);
+		color: var(--color-white);
 	}
 
 	.problem-section__grid {
@@ -164,11 +331,49 @@ const problems = [
 		.problem-section__grid {
 			grid-template-columns: repeat(2, minmax(0, 1fr));
 		}
+
+		.leak-map__track {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+			gap: 0.6rem;
+		}
+
+		.leak-map__node:nth-child(3)::after {
+			display: none;
+		}
 	}
 
 	@media (max-width: 560px) {
 		.problem-section__grid {
 			grid-template-columns: 1fr;
+		}
+
+		.leak-map__track {
+			grid-template-columns: 1fr;
+			gap: 0.95rem;
+		}
+
+		.leak-map__node {
+			flex-direction: row;
+			flex-wrap: wrap;
+			align-items: center;
+			gap: 0.6rem 0.7rem;
+		}
+
+		.leak-map__leak {
+			margin-top: 0;
+			margin-left: auto;
+		}
+
+		.leak-map__node:not(:last-child)::after {
+			top: auto;
+			right: auto;
+			bottom: calc(-0.7rem - 1px);
+			left: 1.65rem;
+			transform: translate(-50%, 50%) rotate(135deg);
+		}
+
+		.leak-map__node:nth-child(3)::after {
+			display: block;
 		}
 	}
 </style>

@@ -1,0 +1,232 @@
+---
+// Reusable hero motif: the path a healthcare visitor takes from first touch to
+// a booked consultation. Pure CSS/SVG — no JS, no dependencies. The same visual
+// language (nodes + connectors) is echoed in the lead-leak, journey, and method
+// sections so the homepage reads as one guided system.
+interface Props {
+	class?: string;
+}
+const { class: className } = Astro.props;
+
+const nodes = [
+	{ icon: 'search', label: 'Local search', sub: 'They find you' },
+	{ icon: 'page', label: 'Service page', sub: 'They see the offer' },
+	{ icon: 'trust', label: 'Trust signals', sub: 'They believe you' },
+	{ icon: 'cta', label: 'Booking CTA', sub: 'They take the step' },
+	{ icon: 'followup', label: 'Follow-up', sub: 'You stay in touch' },
+	{ icon: 'booked', label: 'Consultation', sub: 'Booked', end: true },
+];
+---
+
+<div class:list={['cpath', className]} role="img" aria-label="The path a healthcare visitor takes from first touch to a booked consultation: local search, service page, trust signals, booking CTA, follow-up, and consultation.">
+	<div class="cpath__head" aria-hidden="true">
+		<span class="cpath__head-label">The visitor path</span>
+		<span class="cpath__head-meta">First touch &rarr; booked consultation</span>
+	</div>
+	<ol class="cpath__track">
+		{nodes.map((n, i) => (
+			<li class:list={['cpath__node', { 'cpath__node--end': n.end }]}>
+				<span class="cpath__icon" aria-hidden="true">
+					{n.icon === 'search' && (
+						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7" /><path d="M16 16l5 5" /></svg>
+					)}
+					{n.icon === 'page' && (
+						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h8l4 4v14H6z" /><path d="M14 3v4h4M9 13h6M9 17h6" /></svg>
+					)}
+					{n.icon === 'trust' && (
+						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z" /><path d="M9 12l2 2 4-4" /></svg>
+					)}
+					{n.icon === 'cta' && (
+						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4l6 16 2.5-6.5L20 11z" /></svg>
+					)}
+					{n.icon === 'followup' && (
+						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7" /><path d="M21 4v4h-4" /></svg>
+					)}
+					{n.icon === 'booked' && (
+						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16" rx="2" /><path d="M3 9h18M8 3v3M16 3v3M8.5 14l2.5 2.5 4.5-4.5" /></svg>
+					)}
+				</span>
+				<span class="cpath__node-text">
+					<span class="cpath__label">{n.label}</span>
+					<span class="cpath__sub">{n.sub}</span>
+				</span>
+			</li>
+		))}
+	</ol>
+</div>
+
+<style>
+	.cpath {
+		width: 100%;
+		padding: 1.25rem 1.35rem 1.4rem;
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		background:
+			radial-gradient(ellipse 60% 80% at 100% 0%, color-mix(in srgb, var(--lane-foundation-tint) 60%, transparent), transparent 70%),
+			var(--color-white);
+		box-shadow: var(--shadow-card);
+	}
+
+	.cpath__head {
+		display: flex;
+		align-items: baseline;
+		justify-content: space-between;
+		gap: 1rem;
+		margin-bottom: 1.1rem;
+	}
+
+	.cpath__head-label {
+		color: var(--color-text);
+		font-size: 0.74rem;
+		font-weight: 800;
+		letter-spacing: 0.16em;
+		text-transform: uppercase;
+	}
+
+	.cpath__head-meta {
+		color: var(--color-muted);
+		font-size: 0.78rem;
+		font-weight: 600;
+	}
+
+	.cpath__track {
+		display: grid;
+		grid-template-columns: repeat(6, minmax(0, 1fr));
+		gap: 0.5rem;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.cpath__node {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0.55rem;
+		padding: 0.9rem 0.5rem;
+		border: 1px solid var(--color-border-soft);
+		border-radius: var(--radius-md);
+		background: var(--color-white);
+		text-align: center;
+		transition: transform 320ms var(--ease-out-quart), border-color var(--transition-base), box-shadow var(--transition-base);
+	}
+
+	.cpath__node:hover {
+		transform: translateY(-2px);
+		border-color: color-mix(in srgb, var(--lane-foundation) 32%, var(--color-border));
+		box-shadow: var(--shadow-card);
+	}
+
+	/* Connector arrow between nodes */
+	.cpath__node:not(:last-child)::after {
+		content: '';
+		position: absolute;
+		top: 50%;
+		right: calc(-0.25rem - 1px);
+		width: 0.5rem;
+		height: 0.5rem;
+		border-top: 2px solid color-mix(in srgb, var(--lane-foundation) 55%, var(--color-border));
+		border-right: 2px solid color-mix(in srgb, var(--lane-foundation) 55%, var(--color-border));
+		transform: translate(50%, -50%) rotate(45deg);
+		z-index: 2;
+	}
+
+	.cpath__icon {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 2.4rem;
+		height: 2.4rem;
+		border-radius: 12px;
+		background: var(--lane-foundation-tint);
+		color: var(--lane-foundation-ink);
+	}
+
+	.cpath__icon svg {
+		width: 1.2rem;
+		height: 1.2rem;
+	}
+
+	.cpath__node-text {
+		display: flex;
+		flex-direction: column;
+		gap: 0.15rem;
+		min-width: 0;
+	}
+
+	.cpath__label {
+		color: var(--color-text);
+		font-size: 0.84rem;
+		font-weight: 700;
+		letter-spacing: -0.01em;
+		line-height: 1.15;
+	}
+
+	.cpath__sub {
+		color: var(--color-muted);
+		font-size: 0.72rem;
+		font-weight: 500;
+		line-height: 1.3;
+	}
+
+	/* Endpoint emphasis */
+	.cpath__node--end {
+		border-color: color-mix(in srgb, var(--lane-foundation) 45%, var(--color-border));
+		background: color-mix(in srgb, var(--lane-foundation-tint) 60%, var(--color-white));
+	}
+
+	.cpath__node--end .cpath__icon {
+		background: var(--lane-foundation);
+		color: var(--color-white);
+	}
+
+	.cpath__node--end .cpath__sub {
+		color: var(--lane-foundation-ink);
+		font-weight: 700;
+	}
+
+	/* Tablet: two rows of three */
+	@media (max-width: 860px) {
+		.cpath__track {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+			gap: 0.6rem 0.5rem;
+		}
+		.cpath__node:nth-child(3)::after {
+			display: none;
+		}
+	}
+
+	/* Mobile: vertical stack with downward connectors */
+	@media (max-width: 540px) {
+		.cpath__track {
+			grid-template-columns: 1fr;
+			gap: 1.1rem;
+		}
+		.cpath__node {
+			flex-direction: row;
+			gap: 0.85rem;
+			text-align: left;
+			padding: 0.85rem 1rem;
+		}
+		.cpath__node-text {
+			align-items: flex-start;
+		}
+		.cpath__node:not(:last-child)::after {
+			top: auto;
+			right: auto;
+			bottom: calc(-0.8rem - 1px);
+			left: 1.95rem;
+			transform: translate(-50%, 50%) rotate(135deg);
+		}
+		.cpath__node:nth-child(3)::after {
+			display: block;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.cpath__node {
+			transition: none;
+		}
+	}
+</style>
