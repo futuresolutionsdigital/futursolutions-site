@@ -34,8 +34,8 @@ function initChatWidget(widget: HTMLElement) {
 
 	const STORE_KEY = `fs-chat-msgs-${context}`;
 	const NUDGE_KEY = `fs-chat-nudged-${context}`;
+	const NOTIFY_KEY = `fs-chat-notify-${context}`;
 	const MUTE_KEY = 'fs-chat-muted';
-	const STREAM_RENDER_INTERVAL = 55;
 
 	const messages: Message[] = loadMessages();
 	let isStreaming = false;
@@ -43,6 +43,7 @@ function initChatWidget(widget: HTMLElement) {
 	let audioCtx: AudioContext | null = null;
 	let audioReady = false;
 	let nudgeTimer: number | undefined;
+	let notifyTimer: number | undefined;
 
 	let muted = localStorage.getItem(MUTE_KEY) === '1';
 	if (muted) widget.classList.add('is-muted');
@@ -71,6 +72,7 @@ function initChatWidget(widget: HTMLElement) {
 	function open() {
 		if (widget.classList.contains('is-open')) return;
 		if (nudgeTimer) window.clearTimeout(nudgeTimer);
+		if (notifyTimer) window.clearTimeout(notifyTimer);
 		widget.classList.add('is-open');
 		widget.classList.remove('has-unread');
 		toggleBtn.setAttribute('aria-expanded', 'true');
@@ -214,11 +216,15 @@ function initChatWidget(widget: HTMLElement) {
 	function cardIcon(path: string): string {
 		const seg = path.split('?')[0].split('/').filter(Boolean);
 		const a = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">';
-		if (seg[0] === 'audit') return `${a}<path d="M9 4h6a1 1 0 0 1 1 1v1h2a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h2V5a1 1 0 0 1 1-1z"/><path d="M9 13l2 2 4-4"/></svg>`;
-		if (seg[0] === 'templates' || seg[0] === 'demos') return `${a}<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/></svg>`;
-		if (seg[0] === 'services') return `${a}<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>`;
-		if (seg[0] === 'resources') return `${a}<path d="M4 5a2 2 0 0 1 2-2h12v16H6a2 2 0 0 0-2 2z"/><path d="M4 19a2 2 0 0 1 2-2h12"/></svg>`;
-		return `${a}<path d="M5 12h14M13 6l6 6-6 6"/></svg>`;
+		if (seg[0] === 'audit')
+			return `${a}<rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/></svg>`;
+		if (seg[0] === 'templates' || seg[0] === 'demos')
+			return `${a}<rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 8h20"/></svg>`;
+		if (seg[0] === 'services')
+			return `${a}<rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></svg>`;
+		if (seg[0] === 'resources')
+			return `${a}<path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>`;
+		return `${a}<path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>`;
 	}
 
 	function renderCard(path: string): string {
@@ -292,22 +298,9 @@ function initChatWidget(widget: HTMLElement) {
 		messagesEl.appendChild(streamBubble);
 		scrollToBottom();
 
+		// We intentionally keep the typing indicator visible for the whole
+		// response and only render the finished message — no fast token reveal.
 		let fullResponse = '';
-		let renderQueued = false;
-		let lastRender = 0;
-
-		function queueStreamRender() {
-			if (renderQueued) return;
-			const now = performance.now();
-			const wait = Math.max(0, STREAM_RENDER_INTERVAL - (now - lastRender));
-			renderQueued = true;
-			setTimeout(() => {
-				renderQueued = false;
-				lastRender = performance.now();
-				streamBubble.innerHTML = `<div class="chat-msg__body">${escapeHtml(fullResponse)}</div>`;
-				scrollToBottom();
-			}, wait);
-		}
 
 		try {
 			const res = await fetch('/api/chat', {
@@ -349,7 +342,7 @@ function initChatWidget(widget: HTMLElement) {
 							return;
 						}
 						fullResponse += t;
-						queueStreamRender();
+						scrollToBottom();
 					} catch {
 						/* skip malformed chunk */
 					}
@@ -361,6 +354,7 @@ function initChatWidget(widget: HTMLElement) {
 				renderMessage('assistant', fullResponse, streamBubble);
 				messages.push({ role: 'assistant', content: fullResponse });
 				saveMessages();
+				playReceive();
 				showNextSuggestions(3);
 			}
 		} catch {
@@ -396,29 +390,38 @@ function initChatWidget(widget: HTMLElement) {
 	window.addEventListener('pointerdown', primeAudio, { once: true });
 	window.addEventListener('keydown', primeAudio, { once: true });
 
-	function playPing() {
+	function playTones(freqs: number[], peak: number) {
 		if (muted || !audioCtx) return;
 		try {
 			if (audioCtx.state === 'suspended') void audioCtx.resume();
 			const now = audioCtx.currentTime;
-			const notes = [660, 880];
-			notes.forEach((freq, i) => {
+			freqs.forEach((freq, i) => {
 				const osc = audioCtx!.createOscillator();
 				const gain = audioCtx!.createGain();
 				osc.type = 'sine';
 				osc.frequency.value = freq;
-				const start = now + i * 0.09;
+				const start = now + i * 0.1;
 				gain.gain.setValueAtTime(0, start);
-				gain.gain.linearRampToValueAtTime(0.05, start + 0.02);
-				gain.gain.exponentialRampToValueAtTime(0.0001, start + 0.3);
+				gain.gain.linearRampToValueAtTime(peak, start + 0.02);
+				gain.gain.exponentialRampToValueAtTime(0.0001, start + 0.35);
 				osc.connect(gain);
 				gain.connect(audioCtx!.destination);
 				osc.start(start);
-				osc.stop(start + 0.32);
+				osc.stop(start + 0.37);
 			});
 		} catch {
 			/* ignore audio errors */
 		}
+	}
+
+	// Clear, gentle ascending ding when a reply arrives.
+	function playReceive() {
+		playTones([587.33, 880], 0.07);
+	}
+
+	// Softer two-note chime for the proactive nudge.
+	function playNudge() {
+		playTones([660, 880], 0.05);
 	}
 
 	function showNudge() {
@@ -431,7 +434,7 @@ function initChatWidget(widget: HTMLElement) {
 		requestAnimationFrame(() => {
 			nudge.classList.add('is-visible');
 			widget.classList.add('has-unread');
-			playPing();
+			playNudge();
 		});
 	}
 
@@ -452,6 +455,14 @@ function initChatWidget(widget: HTMLElement) {
 		e.stopPropagation();
 		hideNudge();
 	});
+
+	// Red notification dot appears early to draw the eye, once per session.
+	if (sessionStorage.getItem(NOTIFY_KEY) !== '1') {
+		notifyTimer = window.setTimeout(() => {
+			sessionStorage.setItem(NOTIFY_KEY, '1');
+			if (!widget.classList.contains('is-open')) widget.classList.add('has-unread');
+		}, 2800);
+	}
 
 	if (nudge && sessionStorage.getItem(NUDGE_KEY) !== '1') {
 		nudgeTimer = window.setTimeout(showNudge, 9000);
