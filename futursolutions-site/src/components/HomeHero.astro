@@ -71,8 +71,8 @@ const tickerItems = [
 	<div class="home-hero__ticker" aria-label="Industries we serve">
 		<div class="home-hero__ticker-track">
 			{
-				[...tickerItems, ...tickerItems].map((item, i) => (
-					<span class="home-hero__ticker-item">
+				[...tickerItems, ...tickerItems, ...tickerItems, ...tickerItems].map((item, i) => (
+					<span class="home-hero__ticker-item" aria-hidden={i >= tickerItems.length ? 'true' : undefined}>
 						<span class="home-hero__ticker-bullet" aria-hidden="true">&bull;</span>
 						{item}
 					</span>
@@ -312,15 +312,16 @@ const tickerItems = [
 	.home-hero__ticker-track {
 		display: flex;
 		align-items: center;
-		gap: 2.5rem;
 		width: max-content;
-		animation: ticker-slide 38s linear infinite;
+		animation: ticker-slide 76s linear infinite;
+		will-change: transform;
 	}
 
 	.home-hero__ticker-item {
 		display: inline-flex;
 		align-items: center;
 		gap: 0.9rem;
+		margin-right: 2.5rem;
 		color: var(--color-muted);
 		font-size: 0.875rem;
 		font-weight: 500;
