@@ -59,7 +59,7 @@ const contrasts = [
 				</h2>
 			</div>
 			<p class="lead ba__lead">
-				Most healthcare websites are built like digital brochures. We structure them like guided decision paths — helping visitors understand the offer, trust the provider, and take the next step.
+				Most healthcare websites are built like digital brochures. We structure them like guided decision paths — so visitors understand the offer, see the proof, and know exactly how to take the next step.
 			</p>
 		</header>
 
@@ -71,6 +71,7 @@ const contrasts = [
 					<span class="ba__side-name">Generic healthcare website</span>
 				</div>
 
+				{/* Future-ready: swap this CSS browser mockup for an approved "before" image asset when available (keep the .ba-mock wrapper for sizing/shadow). */}
 				<div class="ba-mock ba-mock--before" aria-hidden="true">
 					<div class="ba-mock__bar">
 						<span class="ba-mock__dots"><i></i><i></i><i></i></span>
@@ -114,6 +115,7 @@ const contrasts = [
 				<span class="ba__transform-badge">
 					<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M13 6l6 6-6 6" /></svg>
 				</span>
+				<span class="ba__transform-label">Rebuild the path</span>
 				<span class="ba__transform-line"></span>
 			</div>
 
@@ -124,6 +126,7 @@ const contrasts = [
 					<span class="ba__side-name">FutureSolutions website system</span>
 				</div>
 
+				{/* Future-ready: swap this CSS browser mockup for an approved "after" image asset when available (keep the .ba-mock wrapper for sizing/shadow). */}
 				<div class="ba-mock ba-mock--after" aria-hidden="true">
 					<div class="ba-mock__bar ba-mock__bar--after">
 						<span class="ba-mock__dots"><i></i><i></i><i></i></span>
@@ -142,14 +145,10 @@ const contrasts = [
 							<div class="ba-mock__cta-row">
 								<span class="ba-mock__cta">Book Consultation &rarr;</span>
 								<span class="ba-mock__trust">
-									<span class="ba-mock__stars">
-										<svg viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M6 1l1.5 3 3.3.3-2.5 2.2.8 3.2L6 8.2 2.9 9.9l.8-3.2L1.2 4.5 4.5 4z"/></svg>
-										<svg viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M6 1l1.5 3 3.3.3-2.5 2.2.8 3.2L6 8.2 2.9 9.9l.8-3.2L1.2 4.5 4.5 4z"/></svg>
-										<svg viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M6 1l1.5 3 3.3.3-2.5 2.2.8 3.2L6 8.2 2.9 9.9l.8-3.2L1.2 4.5 4.5 4z"/></svg>
-										<svg viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M6 1l1.5 3 3.3.3-2.5 2.2.8 3.2L6 8.2 2.9 9.9l.8-3.2L1.2 4.5 4.5 4z"/></svg>
-										<svg viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M6 1l1.5 3 3.3.3-2.5 2.2.8 3.2L6 8.2 2.9 9.9l.8-3.2L1.2 4.5 4.5 4z"/></svg>
+									<span class="ba-mock__trust-ico">
+										<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 4.4-3 7.3-7 8.5-4-1.2-7-4.1-7-8.5V6z" /><path d="M9 11.5l2 2 4-4" /></svg>
 									</span>
-									<span class="ba-mock__trust-text">Trusted by local patients</span>
+									<span class="ba-mock__trust-text">Trusted care &middot; clear next steps</span>
 								</span>
 							</div>
 						</div>
@@ -313,6 +312,16 @@ const contrasts = [
 	.ba__transform-badge svg {
 		width: 1.4rem;
 		height: 1.4rem;
+	}
+
+	.ba__transform-label {
+		color: var(--lane-foundation-ink);
+		font-size: 0.6rem;
+		font-weight: 800;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		text-align: center;
+		white-space: nowrap;
 	}
 
 	/* ── Browser mockup (shared) ──────────────────────── */
@@ -532,15 +541,16 @@ const contrasts = [
 		gap: 0.35rem;
 	}
 
-	.ba-mock__stars {
+	.ba-mock__trust-ico {
 		display: inline-flex;
-		gap: 0.05rem;
-		color: var(--lane-audit);
+		align-items: center;
+		justify-content: center;
+		color: var(--lane-foundation-ink);
 	}
 
-	.ba-mock__stars svg {
-		width: 0.62rem;
-		height: 0.62rem;
+	.ba-mock__trust-ico svg {
+		width: 0.85rem;
+		height: 0.85rem;
 	}
 
 	.ba-mock__trust-text {
@@ -746,14 +756,26 @@ const contrasts = [
 
 	.ba-row__before svg,
 	.ba-row__after svg {
-		width: 1.05rem;
-		height: 1.05rem;
-		margin-top: 0.16rem;
+		width: 1.3rem;
+		height: 1.3rem;
+		padding: 0.24rem;
+		border-radius: 999px;
+		box-sizing: border-box;
+		margin-top: 0.02rem;
 		flex-shrink: 0;
 	}
 
-	.ba-row__before svg { color: var(--color-muted-soft); }
-	.ba-row__after svg { color: var(--lane-foundation); }
+	.ba-row__before svg {
+		color: var(--color-muted);
+		background: var(--color-bg);
+		border: 1px solid var(--color-border-soft);
+	}
+
+	.ba-row__after svg {
+		color: var(--lane-foundation-ink);
+		background: var(--lane-foundation-tint);
+		border: 1px solid color-mix(in srgb, var(--lane-foundation) 22%, transparent);
+	}
 
 	/* ── responsive ───────────────────────────────────── */
 	@media (max-width: 1080px) {
