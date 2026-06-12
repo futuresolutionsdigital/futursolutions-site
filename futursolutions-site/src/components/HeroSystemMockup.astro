@@ -478,9 +478,11 @@ const { class: className } = Astro.props;
 			left: 0;
 		}
 
+		/* Hidden on small screens so it never covers the booking form bar at
+		   the bottom of the mockup; the inquiry card still carries the
+		   "website + system" idea. */
 		.hsm__float--consult {
-			bottom: 0;
-			right: 0;
+			display: none;
 		}
 	}
 
