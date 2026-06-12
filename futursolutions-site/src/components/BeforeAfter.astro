@@ -75,7 +75,11 @@ const contrasts = [
 				<div class="ba-mock ba-mock--before" aria-hidden="true">
 					<div class="ba-mock__bar">
 						<span class="ba-mock__dots"><i></i><i></i><i></i></span>
-						<span class="ba-mock__url">yourpractice.com</span>
+						<span class="ba-mock__chrome" aria-hidden="true">
+							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6" /></svg>
+							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6" /></svg>
+						</span>
+						<span class="ba-mock__url"><svg class="ba-mock__lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2" /><path d="M8 11V8a4 4 0 0 1 8 0v3" /></svg>yourpractice.com</span>
 					</div>
 					<div class="ba-mock__body">
 						<div class="ba-mock__nav">
@@ -130,7 +134,11 @@ const contrasts = [
 				<div class="ba-mock ba-mock--after" aria-hidden="true">
 					<div class="ba-mock__bar ba-mock__bar--after">
 						<span class="ba-mock__dots"><i></i><i></i><i></i></span>
-						<span class="ba-mock__url ba-mock__url--after">northoak-health.com</span>
+						<span class="ba-mock__chrome" aria-hidden="true">
+							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6" /></svg>
+							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6" /></svg>
+						</span>
+						<span class="ba-mock__url ba-mock__url--after"><svg class="ba-mock__lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2" /><path d="M8 11V8a4 4 0 0 1 8 0v3" /></svg>northoak-health.com</span>
 						<span class="ba-mock__live"><span class="ba-mock__live-dot"></span>Live</span>
 					</div>
 					<div class="ba-mock__body ba-mock__body--after">
@@ -363,8 +371,22 @@ const contrasts = [
 		background: color-mix(in srgb, var(--color-muted) 30%, var(--color-white));
 	}
 
+	.ba-mock__chrome {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.05rem;
+		color: var(--color-muted-soft);
+	}
+
+	.ba-mock__chrome svg {
+		width: 0.72rem;
+		height: 0.72rem;
+	}
+
 	.ba-mock__url {
-		margin-left: 0.4rem;
+		display: inline-flex;
+		align-items: center;
+		gap: 0.28rem;
 		padding: 0.18rem 0.6rem;
 		border-radius: 999px;
 		background: var(--color-white);
@@ -372,6 +394,13 @@ const contrasts = [
 		color: var(--color-muted);
 		font-size: 0.62rem;
 		font-weight: 600;
+	}
+
+	.ba-mock__lock {
+		width: 0.58rem;
+		height: 0.58rem;
+		flex-shrink: 0;
+		color: var(--color-muted-soft);
 	}
 
 	.ba-mock__live {
