@@ -186,6 +186,18 @@ const stages = [
 		list-style: none;
 	}
 
+	/* Continuous rail threading the stages together (single-row desktop). */
+	.journey__track::before {
+		content: '';
+		position: absolute;
+		left: 1.5rem;
+		right: 1.5rem;
+		top: 2.85rem;
+		height: 2px;
+		background: linear-gradient(90deg, transparent, var(--color-ink-line-strong) 8%, var(--color-ink-line-strong) 92%, transparent);
+		z-index: 0;
+	}
+
 	.journey__node {
 		position: relative;
 		display: flex;
@@ -213,16 +225,15 @@ const stages = [
 		box-shadow: 0 0 0 1px color-mix(in srgb, var(--lane-foundation) 25%, transparent), 0 24px 50px rgba(79, 124, 76, 0.18);
 	}
 
-	/* animated flowing connector */
+	/* animated flowing connector + directional arrow in each gap */
 	.journey__connector {
 		position: absolute;
-		top: 3rem;
-		right: -1rem;
-		width: 1rem;
+		top: 2.85rem;
+		right: -0.95rem;
+		width: 0.95rem;
 		height: 2px;
 		background: var(--color-ink-line-strong);
 		z-index: 2;
-		overflow: hidden;
 	}
 
 	.journey__connector span {
@@ -231,6 +242,18 @@ const stages = [
 		background: linear-gradient(90deg, transparent, var(--color-ink-accent), transparent);
 		transform: translateX(-100%);
 		animation: journeyFlow 2.4s linear infinite;
+	}
+
+	.journey__connector::after {
+		content: '';
+		position: absolute;
+		right: -1px;
+		top: 50%;
+		width: 6px;
+		height: 6px;
+		border-top: 2px solid var(--color-ink-accent);
+		border-right: 2px solid var(--color-ink-accent);
+		transform: translateY(-50%) rotate(45deg);
 	}
 
 	.journey__node:nth-child(2) .journey__connector span { animation-delay: 0.4s; }
@@ -416,6 +439,10 @@ const stages = [
 			gap: 1rem;
 		}
 
+		.journey__track::before {
+			display: none;
+		}
+
 		.journey__connector {
 			display: none;
 		}
@@ -438,6 +465,30 @@ const stages = [
 	@media (max-width: 520px) {
 		.journey__track {
 			grid-template-columns: 1fr;
+			gap: 1.6rem;
+		}
+
+		/* vertical connector between stacked stages */
+		.journey__connector {
+			display: block;
+			top: auto;
+			right: auto;
+			bottom: -1.6rem;
+			left: 2.6rem;
+			width: 2px;
+			height: 1.6rem;
+		}
+
+		.journey__connector::after {
+			right: auto;
+			left: 50%;
+			top: auto;
+			bottom: -1px;
+			transform: translateX(-50%) rotate(135deg);
+		}
+
+		.journey__node:last-child .journey__connector {
+			display: none;
 		}
 	}
 

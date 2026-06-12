@@ -39,14 +39,14 @@ const { class: className } = Astro.props;
 						<svg viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M6 1l1.5 3 3.3.3-2.5 2.2.8 3.2L6 8.2 2.9 9.9l.8-3.2L1.2 4.5 4.5 4z"/></svg>
 						<svg viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M6 1l1.5 3 3.3.3-2.5 2.2.8 3.2L6 8.2 2.9 9.9l.8-3.2L1.2 4.5 4.5 4z"/></svg>
 					</span>
-					<span class="hsm__trust-text">Trusted by local patients</span>
+					<span class="hsm__trust-text"><strong>4.9</strong> · Trusted by local patients</span>
 				</span>
 			</div>
 
 			<div class="hsm__services">
-				<span class="hsm__service"><span class="hsm__service-ico"></span><i></i><i class="hsm__service-line--short"></i></span>
-				<span class="hsm__service"><span class="hsm__service-ico"></span><i></i><i class="hsm__service-line--short"></i></span>
-				<span class="hsm__service"><span class="hsm__service-ico"></span><i></i><i class="hsm__service-line--short"></i></span>
+				<span class="hsm__service"><span class="hsm__service-ico"></span><span class="hsm__service-name">Weight Loss</span></span>
+				<span class="hsm__service"><span class="hsm__service-ico"></span><span class="hsm__service-name">Hormone Support</span></span>
+				<span class="hsm__service"><span class="hsm__service-ico"></span><span class="hsm__service-name">Aesthetics</span></span>
 			</div>
 		</div>
 	</div>
@@ -272,6 +272,11 @@ const { class: className } = Astro.props;
 		font-weight: 600;
 	}
 
+	.hsm__trust-text strong {
+		color: var(--color-text);
+		font-weight: 800;
+	}
+
 	.hsm__services {
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
@@ -295,17 +300,12 @@ const { class: className } = Astro.props;
 		background: var(--lane-foundation-tint);
 	}
 
-	.hsm__service i {
-		display: block;
-		width: 90%;
-		height: 0.38rem;
-		border-radius: 999px;
-		background: color-mix(in srgb, var(--color-text) 60%, transparent);
-	}
-
-	.hsm__service-line--short {
-		width: 55%;
-		background: color-mix(in srgb, var(--color-text) 18%, var(--color-border)) !important;
+	.hsm__service-name {
+		color: var(--color-text);
+		font-size: 0.66rem;
+		font-weight: 750;
+		letter-spacing: -0.015em;
+		line-height: 1.15;
 	}
 
 	/* ── Floating system panels ───────────────────────── */

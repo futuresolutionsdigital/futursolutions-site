@@ -4,6 +4,7 @@ const offers = [
 		lane: 'foundation',
 		number: '01',
 		title: 'Website Foundations',
+		state: 'Starting out or replacing an outdated site',
 		priceFrom: 'from $3,500',
 		summary:
 			'Launch from a polished healthcare-specific website built around a real business model — then customize the brand, services, and booking flow.',
@@ -22,6 +23,7 @@ const offers = [
 		lane: 'custom',
 		number: '02',
 		title: 'Signature Custom Websites',
+		state: 'Established practice needing a premium presence',
 		priceFrom: 'from $12,000',
 		summary:
 			'A fully custom website system designed around a unique brand, service model, or organization — engineered for credibility, clarity, and conversion.',
@@ -40,6 +42,7 @@ const offers = [
 		lane: 'growth',
 		number: '03',
 		title: 'Growth Systems',
+		state: 'Ready to connect website, CRM, and follow-up',
 		priceFrom: 'from $1,500 setup + $300/mo',
 		summary:
 			'Connect the site to forms, calendars, CRM routing, follow-up, review requests, and reporting — so leads do not disappear after submitting a form.',
@@ -81,10 +84,24 @@ const stackLayers = [
 				offers.map((offer) => (
 					<li class:list={[`offer-overview__card lane-accent-top lane-accent-top--${offer.lane}`, { 'offer-overview__card--recommended': offer.recommended }]}>
 						{offer.recommended && <span class="offer-overview__flag">Most complete</span>}
-						<div class="offer-overview__card-head">
+						<div class="offer-overview__card-top">
 							<span class={`lane-tag lane-tag--${offer.lane}`}>{offer.number}</span>
-							<h3 class="offer-overview__card-title">{offer.title}</h3>
+							<span class={`offer-overview__motif offer-overview__motif--${offer.lane}`} aria-hidden="true">
+								{offer.lane === 'foundation' && (
+									<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="4" rx="1" /><rect x="4" y="11" width="16" height="4" rx="1" /><rect x="4" y="17" width="10" height="2.5" rx="1" /></svg>
+								)}
+								{offer.lane === 'custom' && (
+									<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2" /><path d="M3 9h18M9 9v11" /></svg>
+								)}
+								{offer.lane === 'growth' && (
+									<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="12" r="2" /><circle cx="19" cy="6" r="2" /><circle cx="19" cy="18" r="2" /><path d="M7 12h6M13 12l4-5M13 12l4 5" /></svg>
+								)}
+							</span>
 						</div>
+
+						<span class={`offer-overview__state offer-overview__state--${offer.lane}`}>{offer.state}</span>
+
+						<h3 class="offer-overview__card-title">{offer.title}</h3>
 
 						<p class="offer-overview__price">{offer.priceFrom}</p>
 
@@ -346,12 +363,48 @@ const stackLayers = [
 		font-weight: 700;
 	}
 
-	.offer-overview__card-head {
+	.offer-overview__card-top {
 		display: flex;
-		flex-direction: column;
-		align-items: flex-start;
+		align-items: center;
+		justify-content: space-between;
 		gap: 0.75rem;
 	}
+
+	.offer-overview__motif {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 2.4rem;
+		height: 2.4rem;
+		border-radius: 11px;
+		border: 1px solid var(--color-border-soft);
+		background: var(--color-bg);
+	}
+
+	.offer-overview__motif svg {
+		width: 1.3rem;
+		height: 1.3rem;
+	}
+
+	.offer-overview__motif--foundation { color: var(--lane-foundation-ink); background: var(--lane-foundation-tint); border-color: color-mix(in srgb, var(--lane-foundation) 18%, var(--color-border-soft)); }
+	.offer-overview__motif--custom     { color: var(--lane-custom-ink); background: var(--lane-custom-tint); border-color: color-mix(in srgb, var(--lane-custom) 14%, var(--color-border-soft)); }
+	.offer-overview__motif--growth     { color: var(--lane-growth-ink); background: var(--lane-growth-tint); border-color: color-mix(in srgb, var(--lane-growth) 18%, var(--color-border-soft)); }
+
+	.offer-overview__state {
+		display: inline-flex;
+		align-items: center;
+		width: fit-content;
+		padding: 0.32rem 0.7rem;
+		border-radius: 999px;
+		font-size: 0.74rem;
+		font-weight: 750;
+		letter-spacing: -0.005em;
+		line-height: 1.2;
+	}
+
+	.offer-overview__state--foundation { background: var(--lane-foundation-tint); color: var(--lane-foundation-ink); }
+	.offer-overview__state--custom     { background: var(--lane-custom-tint); color: var(--lane-custom-ink); }
+	.offer-overview__state--growth     { background: var(--lane-growth-tint); color: var(--lane-growth-ink); }
 
 	.offer-overview__card-title {
 		margin: 0;
