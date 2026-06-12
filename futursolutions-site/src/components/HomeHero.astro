@@ -167,6 +167,11 @@ const tickerItems = [
 		background: var(--color-white);
 	}
 
+	.home-hero__kicker:focus-visible {
+		outline: 2px solid var(--color-accent);
+		outline-offset: 3px;
+	}
+
 	.home-hero__kicker-dot {
 		display: inline-block;
 		width: 0.5rem;
@@ -336,6 +341,16 @@ const tickerItems = [
 	@media (prefers-reduced-motion: reduce) {
 		.home-hero__ticker-track {
 			animation: none;
+		}
+
+		.home-hero__cta-primary span,
+		.home-hero__kicker-arrow {
+			transition: none;
+		}
+
+		.home-hero__cta-primary:hover span,
+		.home-hero__kicker:hover .home-hero__kicker-arrow {
+			transform: none;
 		}
 	}
 
