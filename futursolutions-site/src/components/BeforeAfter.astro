@@ -68,35 +68,42 @@ const contrasts = [
 			<article class="ba__side ba__side--before">
 				<div class="ba__side-head">
 					<span class="ba__side-tag ba__side-tag--before">Before</span>
-					<span class="ba__side-name">Generic healthcare website</span>
+					<span class="ba__side-name">Brochure-style website</span>
 				</div>
 
 				{/* Future-ready: swap this CSS browser mockup for an approved "before" image asset when available (keep the .ba-mock wrapper for sizing/shadow). */}
 				<div class="ba-mock ba-mock--before" aria-hidden="true">
 					<div class="ba-mock__bar">
 						<span class="ba-mock__dots"><i></i><i></i><i></i></span>
-						<span class="ba-mock__url">yourpractice.com</span>
+						<span class="ba-mock__url">northoak-health.com</span>
 					</div>
 					<div class="ba-mock__body">
 						<div class="ba-mock__nav">
-							<span class="ba-mock__brand">Your Practice</span>
+							<span class="ba-mock__brand">Northoak Health</span>
 							<span class="ba-mock__links"><i></i><i></i><i></i><i></i></span>
 							<span class="ba-mock__nav-weak">Contact</span>
 						</div>
 						<div class="ba-mock__hero ba-mock__hero--before">
-							<p class="ba-mock__h ba-mock__h--vague">Welcome to our practice</p>
+							<p class="ba-mock__h ba-mock__h--vague">Welcome to Northoak Health</p>
 							<span class="ba-mock__line"></span>
 							<span class="ba-mock__line"></span>
 							<span class="ba-mock__line ba-mock__line--short"></span>
 						</div>
 						<p class="ba-mock__sectlabel">Our Services</p>
 						<ul class="ba-mock__list">
-							<li>General consultation</li>
-							<li>Treatments</li>
-							<li>Insurance &amp; billing</li>
+							<li>Weight loss</li>
+							<li>Hormone support</li>
+							<li>Aesthetics</li>
 							<li>About the team</li>
 						</ul>
-						<span class="ba-mock__weaklink">Contact us &raquo;</span>
+						<div class="ba-mock__form">
+							<span class="ba-mock__form-field"></span>
+							<span class="ba-mock__form-btn">Submit</span>
+						</div>
+						<span class="ba-mock__deadend">
+							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="M3 8l9 6 9-6" /></svg>
+							Goes to an inbox
+						</div>
 					</div>
 				</div>
 
@@ -140,7 +147,7 @@ const contrasts = [
 							<span class="ba-mock__book">Book</span>
 						</div>
 						<div class="ba-mock__hero ba-mock__hero--after">
-							<span class="ba-mock__eyebrow">Primary &amp; preventive care</span>
+							<span class="ba-mock__eyebrow">Wellness &amp; aesthetics</span>
 							<p class="ba-mock__h ba-mock__h--clear">Personalized care with a clearer path forward.</p>
 							<div class="ba-mock__cta-row">
 								<span class="ba-mock__cta">Book Consultation &rarr;</span>
@@ -581,12 +588,49 @@ const contrasts = [
 		line-height: 1.3;
 	}
 
-	.ba-mock__weaklink {
+	/* before: a lonely contact form that just dumps into an inbox */
+	.ba-mock__form {
 		margin-top: auto;
+		display: flex;
+		align-items: center;
+		gap: 0.4rem;
+	}
+
+	.ba-mock__form-field {
+		flex: 1;
+		height: 1.4rem;
+		border-radius: 6px;
+		background: var(--color-white);
+		border: 1px solid var(--color-border-soft);
+	}
+
+	.ba-mock__form-btn {
+		padding: 0.32rem 0.6rem;
+		border-radius: 6px;
+		background: var(--color-muted-soft);
+		color: var(--color-white);
+		font-size: 0.6rem;
+		font-weight: 700;
+	}
+
+	.ba-mock__deadend {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.4rem;
+		width: fit-content;
+		padding: 0.34rem 0.55rem;
+		border-radius: 8px;
+		background: var(--color-bg);
+		border: 1px dashed var(--color-border);
 		color: var(--color-muted-soft);
 		font-size: 0.62rem;
-		font-weight: 600;
-		text-decoration: underline;
+		font-weight: 650;
+	}
+
+	.ba-mock__deadend svg {
+		width: 0.85rem;
+		height: 0.85rem;
+		flex-shrink: 0;
 	}
 
 	/* after service cards */
