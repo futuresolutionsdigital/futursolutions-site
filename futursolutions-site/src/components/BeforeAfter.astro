@@ -473,8 +473,23 @@ const contrasts = [
 		background: color-mix(in srgb, var(--color-text) 14%, var(--color-border));
 	}
 
+	/* varied widths so the nav reads like real links of different lengths */
+	.ba-mock__links i:nth-child(1) { width: 1rem; }
+	.ba-mock__links i:nth-child(2) { width: 1.5rem; }
+	.ba-mock__links i:nth-child(3) { width: 1.1rem; }
+	.ba-mock__links i:nth-child(4) { width: 1.35rem; }
+
 	.ba-mock--before .ba-mock__links i {
 		background: var(--color-muted-soft);
+	}
+
+	/* active page indicator: bland on the before side, confident teal on the after */
+	.ba-mock--before .ba-mock__links i:first-child {
+		background: var(--color-muted);
+	}
+
+	.ba-mock--after .ba-mock__links i:first-child {
+		background: var(--lane-foundation);
 	}
 
 	.ba-mock__nav-weak {
