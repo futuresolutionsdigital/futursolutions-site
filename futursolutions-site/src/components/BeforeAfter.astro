@@ -90,8 +90,10 @@ const contrasts = [
 						<div class="ba-mock__hero ba-mock__hero--before">
 							<p class="ba-mock__h ba-mock__h--vague">Welcome to our practice</p>
 							<span class="ba-mock__line"></span>
-							<span class="ba-mock__line"></span>
 							<span class="ba-mock__line ba-mock__line--short"></span>
+							<span class="ba-mock__hero-img ba-mock__hero-img--before">
+								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2" /><circle cx="8.5" cy="9.5" r="1.5" /><path d="M21 16l-5-5L5 20" /></svg>
+							</span>
 						</div>
 						<p class="ba-mock__sectlabel">Our Services</p>
 						<ul class="ba-mock__list">
@@ -163,6 +165,7 @@ const contrasts = [
 									<span class="ba-mock__trust-text">Trusted care &middot; clear next steps</span>
 								</span>
 							</div>
+							<span class="ba-mock__hero-img ba-mock__hero-img--after"></span>
 						</div>
 						<div class="ba-mock__services">
 							<span class="ba-mock__service"><span class="ba-mock__service-ico"></span>Weight Loss</span>
@@ -569,6 +572,33 @@ const contrasts = [
 	}
 
 	.ba-mock__line--short { width: 55%; }
+
+	/* hero visual block — bland stock placeholder (before) vs polished branded image (after) */
+	.ba-mock__hero-img {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+		height: 2.6rem;
+		margin-top: 0.5rem;
+		border-radius: 8px;
+	}
+
+	.ba-mock__hero-img--before {
+		background: #e3e0db;
+		border: 1px solid var(--color-border-soft);
+		color: var(--color-muted-soft);
+	}
+
+	.ba-mock__hero-img--before svg {
+		width: 1.3rem;
+		height: 1.3rem;
+	}
+
+	.ba-mock__hero-img--after {
+		background: linear-gradient(120deg, color-mix(in srgb, var(--lane-foundation) 24%, var(--color-white)), color-mix(in srgb, var(--lane-foundation-tint) 70%, var(--color-white)));
+		border: 1px solid color-mix(in srgb, var(--lane-foundation) 18%, var(--color-border-soft));
+	}
 
 	.ba-mock__cta-row {
 		display: flex;
