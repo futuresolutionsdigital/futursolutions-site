@@ -48,6 +48,14 @@ const { class: className } = Astro.props;
 				<span class="hsm__service"><span class="hsm__service-ico"></span><span class="hsm__service-name">Hormone Support</span></span>
 				<span class="hsm__service"><span class="hsm__service-ico"></span><span class="hsm__service-name">Aesthetics</span></span>
 			</div>
+
+			<div class="hsm__form">
+				<span class="hsm__form-ico">
+					<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16" rx="2"/><path d="M3 9h18M8 3v3M16 3v3"/></svg>
+				</span>
+				<span class="hsm__form-field"></span>
+				<span class="hsm__form-btn">Book</span>
+			</div>
 		</div>
 	</div>
 
@@ -306,6 +314,54 @@ const { class: className } = Astro.props;
 		font-weight: 750;
 		letter-spacing: -0.015em;
 		line-height: 1.15;
+	}
+
+	/* inline lead-capture bar */
+	.hsm__form {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		padding: 0.5rem 0.55rem;
+		border: 1px solid var(--color-border-soft);
+		border-radius: 10px;
+		background: var(--color-white);
+		box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+	}
+
+	.hsm__form-ico {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		flex-shrink: 0;
+		width: 1.5rem;
+		height: 1.5rem;
+		border-radius: 7px;
+		background: var(--lane-growth-tint);
+		color: var(--lane-growth-ink);
+	}
+
+	.hsm__form-ico svg {
+		width: 0.9rem;
+		height: 0.9rem;
+	}
+
+	.hsm__form-field {
+		flex: 1;
+		height: 0.9rem;
+		border-radius: 5px;
+		background: var(--color-bg);
+		border: 1px solid var(--color-border-soft);
+	}
+
+	.hsm__form-btn {
+		flex-shrink: 0;
+		padding: 0.34rem 0.75rem;
+		border-radius: 7px;
+		background: var(--lane-foundation);
+		color: var(--color-white);
+		font-size: 0.62rem;
+		font-weight: 800;
+		letter-spacing: -0.005em;
 	}
 
 	/* ── Floating system panels ───────────────────────── */
