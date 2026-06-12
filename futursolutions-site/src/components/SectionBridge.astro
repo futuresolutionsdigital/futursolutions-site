@@ -10,13 +10,14 @@ interface Props {
 const { text, tone = 'default', label } = Astro.props;
 ---
 
-<div class:list={['section-bridge', { 'section-bridge--ink': tone === 'ink' }]}>
+<div class:list={['section-bridge', { 'section-bridge--ink': tone === 'ink', 'section-bridge--stepped': !!label }]}>
 	<div class="site-container">
-		<p class="section-bridge__line">
+		<div class="section-bridge__line">
 			<span class="section-bridge__connector" aria-hidden="true"></span>
 			{label && <span class="section-bridge__label">{label}</span>}
-			<span class="section-bridge__text">{text}</span>
-		</p>
+			<p class="section-bridge__text">{text}</p>
+			{label && <span class="section-bridge__chevron" aria-hidden="true"></span>}
+		</div>
 	</div>
 </div>
 
@@ -51,14 +52,22 @@ const { text, tone = 'default', label } = Astro.props;
 	}
 
 	.section-bridge__label {
+		display: inline-flex;
+		align-items: center;
+		padding: 0.32rem 0.72rem;
+		border-radius: 999px;
+		border: 1px solid color-mix(in srgb, var(--lane-audit) 26%, var(--color-border));
+		background: var(--lane-audit-tint);
 		color: var(--lane-audit-ink);
-		font-size: 0.7rem;
+		font-size: 0.68rem;
 		font-weight: 800;
-		letter-spacing: 0.16em;
+		letter-spacing: 0.14em;
 		text-transform: uppercase;
 	}
 
 	.section-bridge--ink .section-bridge__label {
+		border-color: var(--color-ink-line-strong);
+		background: color-mix(in srgb, var(--color-ink-accent) 14%, transparent);
 		color: var(--color-ink-accent);
 	}
 
@@ -67,9 +76,37 @@ const { text, tone = 'default', label } = Astro.props;
 		font-size: clamp(1rem, 0.95rem + 0.25vw, 1.12rem);
 		font-weight: 500;
 		line-height: 1.5;
+		margin: 0;
+	}
+
+	/* Labeled "stage" bridge — a more deliberate chapter break */
+	.section-bridge--stepped .section-bridge__text {
+		max-width: 48ch;
+		color: var(--color-text);
+		font-size: clamp(1.08rem, 1rem + 0.4vw, 1.28rem);
+		font-weight: 500;
+		line-height: 1.45;
+		letter-spacing: -0.01em;
 	}
 
 	.section-bridge--ink .section-bridge__text {
 		color: var(--color-ink-muted);
+	}
+
+	.section-bridge--ink.section-bridge--stepped .section-bridge__text {
+		color: var(--color-ink-soft, #fff);
+	}
+
+	.section-bridge__chevron {
+		width: 0.58rem;
+		height: 0.58rem;
+		margin-top: 0.15rem;
+		border-right: 2px solid color-mix(in srgb, var(--lane-audit) 55%, var(--color-border));
+		border-bottom: 2px solid color-mix(in srgb, var(--lane-audit) 55%, var(--color-border));
+		transform: rotate(45deg);
+	}
+
+	.section-bridge--ink .section-bridge__chevron {
+		border-color: var(--color-ink-accent);
 	}
 </style>
