@@ -726,6 +726,28 @@ const contrasts = [
 	.ba-row__col--before { color: var(--color-muted); }
 	.ba-row__col--after { color: var(--lane-foundation-ink); }
 
+	/* Faint teal wash marking the FutureSolutions column as the winning lane.
+	   Uses a padding/negative-margin bleed so the tint fills full row height and
+	   reaches the table's right edge. Reset on mobile (see ≤640 query). */
+	.ba-row__after,
+	.ba-row__col--after {
+		background: color-mix(in srgb, var(--lane-foundation-tint) 50%, transparent);
+		margin-left: -0.85rem;
+		padding-left: 0.85rem;
+		margin-right: -1.4rem;
+		padding-right: 1.4rem;
+	}
+
+	.ba-row__after {
+		margin-block: -1.05rem;
+		padding-block: 1.05rem;
+	}
+
+	.ba-row__col--after {
+		margin-block: -0.85rem;
+		padding-block: 0.85rem;
+	}
+
 	.ba-row:not(.ba-row--head):nth-child(even) {
 		background: color-mix(in srgb, var(--color-bg) 45%, var(--color-white));
 	}
@@ -819,6 +841,13 @@ const contrasts = [
 
 		.ba-row--head {
 			display: none;
+		}
+
+		/* Drop the column wash bleed when rows stack vertically */
+		.ba-row__after {
+			margin: 0;
+			padding: 0;
+			background: transparent;
 		}
 
 		.ba-row__before::before {
