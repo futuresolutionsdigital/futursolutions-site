@@ -3,12 +3,12 @@
 // into a calm (easy-on-the-eyes) red at the drop-off. Color reinforces the
 // idea that a series of small failures compounds into a lost visitor.
 const leakStages = [
-	{ label: 'Traffic arrives', tag: 'Starting point', type: 'start', accent: '#3a9e72' },
-	{ label: 'Scans the page', tag: 'Unclear positioning', type: 'leak', accent: '#8a9b44' },
-	{ label: 'Compares services', tag: 'Weak service clarity', type: 'leak', accent: '#c39a2e' },
-	{ label: 'Looks for trust', tag: 'Low trust signals', type: 'leak', accent: '#cd8133' },
-	{ label: 'Considers booking', tag: 'Buried CTA', type: 'leak', accent: '#c66a3c' },
-	{ label: 'Leaves without booking', tag: 'No follow-up', type: 'lost', accent: '#bd5644' },
+	{ label: 'Traffic arrives', tag: 'Starting point', type: 'start', accent: '#6aa98e' },
+	{ label: 'Scans the page', tag: 'Unclear positioning', type: 'leak', accent: '#9ba874' },
+	{ label: 'Compares services', tag: 'Weak service clarity', type: 'leak', accent: '#c7ab72' },
+	{ label: 'Looks for trust', tag: 'Low trust signals', type: 'leak', accent: '#cd9b72' },
+	{ label: 'Considers booking', tag: 'Buried CTA', type: 'leak', accent: '#c98873' },
+	{ label: 'Leaves without booking', tag: 'No follow-up', type: 'lost', accent: '#c2766a' },
 ];
 
 const problems = [
@@ -58,7 +58,6 @@ const problems = [
 		<div class="leak-map" role="img" aria-label="A visitor's path through a typical healthcare website. Traffic arrives as the starting point, then leads commonly leak through unclear positioning, weak service clarity, low trust signals, a buried call-to-action, and no follow-up — until the visitor leaves without booking.">
 			<div class="leak-map__head" aria-hidden="true">
 				<span class="leak-map__head-label">Where leads leak</span>
-				<span class="leak-map__head-legend"><span class="leak-map__head-scale"></span>Healthy → lost</span>
 			</div>
 			<ol class="leak-map__track">
 				{leakStages.map((s, i) => (
@@ -152,22 +151,6 @@ const problems = [
 		text-transform: uppercase;
 	}
 
-	.leak-map__head-legend {
-		display: inline-flex;
-		align-items: center;
-		gap: 0.5rem;
-		color: var(--color-muted);
-		font-size: 0.76rem;
-		font-weight: 600;
-	}
-
-	.leak-map__head-scale {
-		width: 3rem;
-		height: 0.45rem;
-		border-radius: 999px;
-		background: linear-gradient(90deg, #3a9e72 0%, #c39a2e 50%, #bd5644 100%);
-	}
-
 	.leak-map__track {
 		display: grid;
 		grid-template-columns: repeat(6, minmax(0, 1fr));
@@ -188,19 +171,6 @@ const problems = [
 		border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--color-border-soft));
 		border-radius: var(--radius-md);
 		background: color-mix(in srgb, var(--accent) 9%, var(--color-white));
-	}
-
-	.leak-map__node:not(:last-child)::after {
-		content: '';
-		position: absolute;
-		top: 1.55rem;
-		right: calc(-0.25rem - 1px);
-		width: 0.45rem;
-		height: 0.45rem;
-		border-top: 2px solid color-mix(in srgb, var(--accent) 50%, var(--color-border));
-		border-right: 2px solid color-mix(in srgb, var(--accent) 50%, var(--color-border));
-		transform: translate(50%, -50%) rotate(45deg);
-		z-index: 2;
 	}
 
 	.leak-map__index {
@@ -369,10 +339,6 @@ const problems = [
 			grid-template-columns: repeat(3, minmax(0, 1fr));
 			gap: 0.6rem;
 		}
-
-		.leak-map__node:nth-child(3)::after {
-			display: none;
-		}
 	}
 
 	@media (max-width: 560px) {
@@ -397,18 +363,6 @@ const problems = [
 		.leak-map__lost {
 			margin-top: 0;
 			margin-left: auto;
-		}
-
-		.leak-map__node:not(:last-child)::after {
-			top: auto;
-			right: auto;
-			bottom: calc(-0.7rem - 1px);
-			left: 1.65rem;
-			transform: translate(-50%, 50%) rotate(135deg);
-		}
-
-		.leak-map__node:nth-child(3)::after {
-			display: block;
 		}
 	}
 </style>
