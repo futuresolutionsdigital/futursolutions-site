@@ -5,7 +5,7 @@ const leakStages = [
 	{ label: 'Compares services', tag: 'Weak service clarity', type: 'leak' },
 	{ label: 'Looks for trust', tag: 'Low trust signals', type: 'leak' },
 	{ label: 'Considers booking', tag: 'Buried CTA', type: 'leak' },
-	{ label: 'Leaves without booking', tag: 'No follow-up', type: 'leak' },
+	{ label: 'Leaves without booking', tag: 'No follow-up', type: 'lost' },
 ];
 
 const problems = [
@@ -59,17 +59,17 @@ const problems = [
 			</div>
 			<ol class="leak-map__track">
 				{leakStages.map((s, i) => (
-					<li class:list={['leak-map__node', { 'leak-map__node--leak': s.type === 'leak', 'leak-map__node--start': s.type === 'start', 'leak-map__node--end': i === leakStages.length - 1 }]}>
+					<li class:list={['leak-map__node', { 'leak-map__node--leak': s.type === 'leak', 'leak-map__node--start': s.type === 'start', 'leak-map__node--end': s.type === 'lost' }]}>
 						<span class="leak-map__index">{i + 1}</span>
 						<span class="leak-map__label">{s.label}</span>
-						{s.type === 'leak' ? (
+						{s.type === 'leak' && (
 							<span class="leak-map__leak">
 								<span class="leak-map__leak-dot" aria-hidden="true"></span>
 								{s.tag}
 							</span>
-						) : (
-							<span class="leak-map__start">{s.tag}</span>
 						)}
+						{s.type === 'start' && <span class="leak-map__start">{s.tag}</span>}
+						{s.type === 'lost' && <span class="leak-map__lost">{s.tag}</span>}
 					</li>
 				))}
 			</ol>
@@ -81,7 +81,6 @@ const problems = [
 					<li class="problem-card">
 						<header class="problem-card__header">
 							<span class="problem-card__number">{problem.number}</span>
-							<span class="problem-card__indicator" aria-hidden="true" />
 						</header>
 						<span class="problem-card__category">{problem.category}</span>
 						<h3 class="problem-card__title">{problem.title}</h3>
@@ -96,10 +95,8 @@ const problems = [
 <style>
 	.problem-section {
 		position: relative;
-		background:
-			radial-gradient(ellipse 80% 60% at 20% 0%, color-mix(in srgb, var(--lane-audit-tint) 70%, transparent), transparent 70%),
-			linear-gradient(180deg, var(--color-bg) 0%, color-mix(in srgb, var(--lane-audit-tint) 55%, var(--color-bg)) 100%);
-		border-block: 1px solid color-mix(in srgb, var(--lane-audit) 18%, var(--color-border-soft));
+		background: linear-gradient(180deg, var(--color-bg) 0%, color-mix(in srgb, var(--color-border-soft) 35%, var(--color-bg)) 100%);
+		border-block: 1px solid var(--color-border-soft);
 	}
 
 	.problem-section__head .eyebrow {
@@ -248,26 +245,55 @@ const problems = [
 		background: var(--lane-audit);
 	}
 
-	/* Neutral starting-point tag — visually distinct from amber leak tags */
+	/* Entry tag (teal) — the visitor arrives; this part works */
 	.leak-map__start {
 		display: inline-flex;
 		align-items: center;
 		margin-top: auto;
 		padding: 0.28rem 0.5rem;
-		border: 1px solid var(--color-border);
+		border: 1px solid color-mix(in srgb, var(--lane-foundation) 26%, var(--color-border));
 		border-radius: 999px;
-		background: var(--color-white);
-		color: var(--color-muted);
+		background: var(--lane-foundation-tint);
+		color: var(--lane-foundation-ink);
 		font-size: 0.7rem;
 		font-weight: 700;
 		line-height: 1.1;
 	}
 
+	/* Lost tag (charcoal) — the terminal outcome: the lead is gone */
+	.leak-map__lost {
+		display: inline-flex;
+		align-items: center;
+		margin-top: auto;
+		padding: 0.28rem 0.5rem;
+		border: 1px solid var(--color-text);
+		border-radius: 999px;
+		background: var(--color-text);
+		color: var(--color-white);
+		font-size: 0.7rem;
+		font-weight: 700;
+		line-height: 1.1;
+	}
+
+	/* Entry node (teal) — healthy starting point */
+	.leak-map__node--start {
+		border-color: color-mix(in srgb, var(--lane-foundation) 20%, var(--color-border-soft));
+		background: color-mix(in srgb, var(--lane-foundation-tint) 45%, var(--color-white));
+	}
+
+	.leak-map__node--start .leak-map__index {
+		background: var(--lane-foundation-tint);
+		border-color: color-mix(in srgb, var(--lane-foundation) 28%, var(--color-border));
+		color: var(--lane-foundation-ink);
+	}
+
+	/* Leak nodes (amber) — where leads commonly slip away */
 	.leak-map__node--leak {
 		border-color: color-mix(in srgb, var(--lane-audit) 28%, var(--color-border-soft));
 		background: color-mix(in srgb, var(--lane-audit-tint) 40%, var(--color-white));
 	}
 
+	/* Lost node (charcoal-edged) — the cost if the leaks go unfixed */
 	.leak-map__node--end {
 		border-color: color-mix(in srgb, var(--color-text) 22%, var(--color-border));
 		background: var(--color-white);
@@ -310,8 +336,7 @@ const problems = [
 	.problem-card__header {
 		display: flex;
 		align-items: center;
-		justify-content: space-between;
-		margin-bottom: 0.9rem;
+		margin-bottom: 0.85rem;
 	}
 
 	.problem-card__category {
@@ -325,20 +350,11 @@ const problems = [
 	}
 
 	.problem-card__number {
-		color: var(--lane-audit-ink);
+		color: var(--color-muted);
 		font-size: 0.74rem;
 		font-weight: 800;
 		font-variant-numeric: tabular-nums;
 		letter-spacing: 0.14em;
-	}
-
-	.problem-card__indicator {
-		display: inline-block;
-		width: 8px;
-		height: 8px;
-		border-radius: 2px;
-		background: var(--lane-audit);
-		transform: rotate(45deg);
 	}
 
 	.problem-card__title {
@@ -393,7 +409,8 @@ const problems = [
 		}
 
 		.leak-map__leak,
-		.leak-map__start {
+		.leak-map__start,
+		.leak-map__lost {
 			margin-top: 0;
 			margin-left: auto;
 		}
