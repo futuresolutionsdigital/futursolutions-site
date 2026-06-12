@@ -101,6 +101,10 @@ const contrasts = [
 							<li>About the team</li>
 						</ul>
 						<span class="ba-mock__weaklink">Contact us &raquo;</span>
+						<div class="ba-mock__footer">
+							<span class="ba-mock__foot-links"><i></i><i></i><i></i></span>
+							<span class="ba-mock__foot-copy"></span>
+						</div>
 					</div>
 				</div>
 
@@ -170,6 +174,11 @@ const contrasts = [
 								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6" /></svg>
 							</span>
 							<span class="ba-mock__crm-text">Lead routed to follow-up</span>
+						</div>
+						<div class="ba-mock__footer ba-mock__footer--after">
+							<span class="ba-mock__foot-brand"></span>
+							<span class="ba-mock__foot-links"><i></i><i></i><i></i><i></i></span>
+							<span class="ba-mock__foot-copy"></span>
 						</div>
 					</div>
 				</div>
@@ -686,6 +695,47 @@ const contrasts = [
 	.ba-mock__crm-ico svg {
 		width: 100%;
 		height: 100%;
+	}
+
+	/* footer hint — both sides get a thin footer; the after side is subtly stronger */
+	.ba-mock__footer {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		margin-top: 0.7rem;
+		padding-top: 0.6rem;
+		border-top: 1px solid var(--color-border-soft);
+	}
+
+	.ba-mock__footer--after {
+		border-top-color: color-mix(in srgb, var(--lane-foundation) 22%, var(--color-border-soft));
+	}
+
+	.ba-mock__foot-brand {
+		width: 1.1rem;
+		height: 0.4rem;
+		border-radius: 999px;
+		background: var(--lane-foundation);
+	}
+
+	.ba-mock__foot-links {
+		display: inline-flex;
+		gap: 0.35rem;
+	}
+
+	.ba-mock__foot-links i {
+		width: 1rem;
+		height: 0.26rem;
+		border-radius: 999px;
+		background: var(--color-muted-soft);
+	}
+
+	.ba-mock__foot-copy {
+		margin-left: auto;
+		width: 2.2rem;
+		height: 0.26rem;
+		border-radius: 999px;
+		background: var(--color-border);
 	}
 
 	/* ── callout notes ────────────────────────────────── */
