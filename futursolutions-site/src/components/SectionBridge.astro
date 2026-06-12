@@ -5,14 +5,16 @@
 interface Props {
 	text: string;
 	tone?: 'default' | 'ink';
+	label?: string;
 }
-const { text, tone = 'default' } = Astro.props;
+const { text, tone = 'default', label } = Astro.props;
 ---
 
 <div class:list={['section-bridge', { 'section-bridge--ink': tone === 'ink' }]}>
 	<div class="site-container">
 		<p class="section-bridge__line">
 			<span class="section-bridge__connector" aria-hidden="true"></span>
+			{label && <span class="section-bridge__label">{label}</span>}
 			<span class="section-bridge__text">{text}</span>
 		</p>
 	</div>
@@ -46,6 +48,18 @@ const { text, tone = 'default' } = Astro.props;
 
 	.section-bridge--ink .section-bridge__connector {
 		background: linear-gradient(180deg, transparent, var(--color-ink-line-strong));
+	}
+
+	.section-bridge__label {
+		color: var(--lane-audit-ink);
+		font-size: 0.7rem;
+		font-weight: 800;
+		letter-spacing: 0.16em;
+		text-transform: uppercase;
+	}
+
+	.section-bridge--ink .section-bridge__label {
+		color: var(--color-ink-accent);
 	}
 
 	.section-bridge__text {

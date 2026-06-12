@@ -1,31 +1,35 @@
 ---
 const leakStages = [
-	{ label: 'Traffic arrives', leak: null },
-	{ label: 'Scans the page', leak: 'Unclear positioning' },
-	{ label: 'Compares services', leak: 'Weak service clarity' },
-	{ label: 'Looks for trust', leak: 'Low trust signals' },
-	{ label: 'Considers booking', leak: 'Buried CTA' },
-	{ label: 'Leaves — or books', leak: 'No follow-up' },
+	{ label: 'Traffic arrives', tag: 'Starting point', type: 'start' },
+	{ label: 'Scans the page', tag: 'Unclear positioning', type: 'leak' },
+	{ label: 'Compares services', tag: 'Weak service clarity', type: 'leak' },
+	{ label: 'Looks for trust', tag: 'Low trust signals', type: 'leak' },
+	{ label: 'Considers booking', tag: 'Buried CTA', type: 'leak' },
+	{ label: 'Leaves without booking', tag: 'No follow-up', type: 'leak' },
 ];
 
 const problems = [
 	{
 		number: '01',
+		category: 'Message clarity',
 		title: 'Unclear positioning',
 		text: 'Visitors cannot quickly tell who you help, what you offer, or why they should choose you.',
 	},
 	{
 		number: '02',
+		category: 'Conversion flow',
 		title: 'Weak-converting paths',
 		text: 'Pages look polished, but visitors are not guided toward a clear next step.',
 	},
 	{
 		number: '03',
+		category: 'Local visibility',
 		title: 'Poor local visibility',
 		text: 'The site does not fully support service-area search, local intent, or location-based discovery.',
 	},
 	{
 		number: '04',
+		category: 'Lead handling',
 		title: 'Disconnected follow-up',
 		text: 'Inquiries are captured inconsistently — not connected to reminders, nurture, or pipeline tracking.',
 	},
@@ -43,26 +47,28 @@ const problems = [
 			</div>
 			<div class="problem-section__head-right">
 				<p>
-					Generic design, unclear services, weak trust signals, and disconnected follow-up can quietly cost leads before anyone notices. We design around all four.
+					A website can look polished and still lose visitors at each decision point — before they understand your services, trust your expertise, or take the next step. We design around those gaps.
 				</p>
 			</div>
 		</header>
 
-		<div class="leak-map" role="img" aria-label="A visitor's path through a typical healthcare website, showing where leads commonly leak: after traffic arrives, unclear positioning, weak service clarity, low trust signals, a buried call-to-action, and no follow-up each cause drop-off before the visitor books.">
+		<div class="leak-map" role="img" aria-label="A visitor's path through a typical healthcare website. Traffic arrives as the starting point, then leads commonly leak through unclear positioning, weak service clarity, low trust signals, a buried call-to-action, and no follow-up — until the visitor leaves without booking.">
 			<div class="leak-map__head" aria-hidden="true">
 				<span class="leak-map__head-label">Where leads leak</span>
 				<span class="leak-map__head-legend"><span class="leak-map__head-dot"></span>Common leak point</span>
 			</div>
 			<ol class="leak-map__track">
 				{leakStages.map((s, i) => (
-					<li class:list={['leak-map__node', { 'leak-map__node--leak': s.leak, 'leak-map__node--end': i === leakStages.length - 1 }]}>
+					<li class:list={['leak-map__node', { 'leak-map__node--leak': s.type === 'leak', 'leak-map__node--start': s.type === 'start', 'leak-map__node--end': i === leakStages.length - 1 }]}>
 						<span class="leak-map__index">{i + 1}</span>
 						<span class="leak-map__label">{s.label}</span>
-						{s.leak && (
+						{s.type === 'leak' ? (
 							<span class="leak-map__leak">
 								<span class="leak-map__leak-dot" aria-hidden="true"></span>
-								{s.leak}
+								{s.tag}
 							</span>
+						) : (
+							<span class="leak-map__start">{s.tag}</span>
 						)}
 					</li>
 				))}
@@ -77,6 +83,7 @@ const problems = [
 							<span class="problem-card__number">{problem.number}</span>
 							<span class="problem-card__indicator" aria-hidden="true" />
 						</header>
+						<span class="problem-card__category">{problem.category}</span>
 						<h3 class="problem-card__title">{problem.title}</h3>
 						<p class="problem-card__text">{problem.text}</p>
 					</li>
@@ -190,8 +197,8 @@ const problems = [
 		right: calc(-0.25rem - 1px);
 		width: 0.45rem;
 		height: 0.45rem;
-		border-top: 2px solid var(--color-border);
-		border-right: 2px solid var(--color-border);
+		border-top: 2px solid color-mix(in srgb, var(--lane-audit) 38%, var(--color-border));
+		border-right: 2px solid color-mix(in srgb, var(--lane-audit) 38%, var(--color-border));
 		transform: translate(50%, -50%) rotate(45deg);
 		z-index: 2;
 	}
@@ -241,6 +248,21 @@ const problems = [
 		background: var(--lane-audit);
 	}
 
+	/* Neutral starting-point tag — visually distinct from amber leak tags */
+	.leak-map__start {
+		display: inline-flex;
+		align-items: center;
+		margin-top: auto;
+		padding: 0.28rem 0.5rem;
+		border: 1px solid var(--color-border);
+		border-radius: 999px;
+		background: var(--color-white);
+		color: var(--color-muted);
+		font-size: 0.7rem;
+		font-weight: 700;
+		line-height: 1.1;
+	}
+
 	.leak-map__node--leak {
 		border-color: color-mix(in srgb, var(--lane-audit) 28%, var(--color-border-soft));
 		background: color-mix(in srgb, var(--lane-audit-tint) 40%, var(--color-white));
@@ -249,6 +271,7 @@ const problems = [
 	.leak-map__node--end {
 		border-color: color-mix(in srgb, var(--color-text) 22%, var(--color-border));
 		background: var(--color-white);
+		box-shadow: var(--shadow-card);
 	}
 
 	.leak-map__node--end .leak-map__index {
@@ -288,7 +311,17 @@ const problems = [
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		margin-bottom: 1.25rem;
+		margin-bottom: 0.9rem;
+	}
+
+	.problem-card__category {
+		display: block;
+		margin-bottom: 0.4rem;
+		color: var(--lane-audit-ink);
+		font-size: 0.66rem;
+		font-weight: 800;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
 	}
 
 	.problem-card__number {
@@ -359,7 +392,8 @@ const problems = [
 			gap: 0.6rem 0.7rem;
 		}
 
-		.leak-map__leak {
+		.leak-map__leak,
+		.leak-map__start {
 			margin-top: 0;
 			margin-left: auto;
 		}
