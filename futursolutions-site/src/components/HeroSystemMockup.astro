@@ -32,14 +32,8 @@ const { class: className } = Astro.props;
 				<span class="hsm__sub hsm__sub--short"></span>
 				<span class="hsm__cta">Book a consultation &rarr;</span>
 				<span class="hsm__trust">
-					<span class="hsm__stars">
-						<svg viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M6 1l1.5 3 3.3.3-2.5 2.2.8 3.2L6 8.2 2.9 9.9l.8-3.2L1.2 4.5 4.5 4z"/></svg>
-						<svg viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M6 1l1.5 3 3.3.3-2.5 2.2.8 3.2L6 8.2 2.9 9.9l.8-3.2L1.2 4.5 4.5 4z"/></svg>
-						<svg viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M6 1l1.5 3 3.3.3-2.5 2.2.8 3.2L6 8.2 2.9 9.9l.8-3.2L1.2 4.5 4.5 4z"/></svg>
-						<svg viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M6 1l1.5 3 3.3.3-2.5 2.2.8 3.2L6 8.2 2.9 9.9l.8-3.2L1.2 4.5 4.5 4z"/></svg>
-						<svg viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M6 1l1.5 3 3.3.3-2.5 2.2.8 3.2L6 8.2 2.9 9.9l.8-3.2L1.2 4.5 4.5 4z"/></svg>
-					</span>
-					<span class="hsm__trust-text"><strong>4.9</strong> · Trusted by local patients</span>
+					<span class="hsm__trust-pill">Personalized consultation</span>
+					<span class="hsm__trust-pill">Clear next steps</span>
 				</span>
 			</div>
 
@@ -258,31 +252,21 @@ const { class: className } = Astro.props;
 
 	.hsm__trust {
 		display: inline-flex;
+		flex-wrap: wrap;
 		align-items: center;
-		gap: 0.45rem;
+		gap: 0.35rem;
 		margin-top: 0.35rem;
 	}
 
-	.hsm__stars {
-		display: inline-flex;
-		gap: 0.1rem;
-		color: var(--lane-audit);
-	}
-
-	.hsm__stars svg {
-		width: 0.7rem;
-		height: 0.7rem;
-	}
-
-	.hsm__trust-text {
+	.hsm__trust-pill {
+		padding: 0.2rem 0.5rem;
+		border-radius: 999px;
+		background: var(--color-bg);
+		border: 1px solid var(--color-border-soft);
 		color: var(--color-muted);
-		font-size: 0.64rem;
-		font-weight: 600;
-	}
-
-	.hsm__trust-text strong {
-		color: var(--color-text);
-		font-weight: 800;
+		font-size: 0.58rem;
+		font-weight: 700;
+		letter-spacing: -0.005em;
 	}
 
 	.hsm__services {

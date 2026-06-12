@@ -4,7 +4,7 @@ const offers = [
 		lane: 'foundation',
 		number: '01',
 		title: 'Website Foundations',
-		state: 'Starting out or replacing an outdated site',
+		state: 'For outdated sites or fast professional launches',
 		priceFrom: 'from $3,500',
 		summary:
 			'Launch a stronger website foundation without starting from a blank page.',
@@ -23,7 +23,7 @@ const offers = [
 		lane: 'custom',
 		number: '02',
 		title: 'Signature Custom Websites',
-		state: 'Established practice needing a premium presence',
+		state: 'For established practices needing a premium presence',
 		priceFrom: 'from $12,000',
 		summary:
 			'Create a tailored website experience around your offer, brand, and visitor journey.',
@@ -42,7 +42,7 @@ const offers = [
 		lane: 'growth',
 		number: '03',
 		title: 'Growth Systems',
-		state: 'Ready to connect website, CRM, and follow-up',
+		state: 'For teams ready to connect website, CRM, and follow-up',
 		priceFrom: 'from $1,500 setup + $300/mo',
 		summary:
 			'Turn your website into a connected lead-handling system.',
@@ -106,11 +106,6 @@ const stackLayers = [
 						<p class="offer-overview__price">{offer.priceFrom}</p>
 
 						<p class="offer-overview__card-summary">{offer.summary}</p>
-
-						<div class="offer-overview__fixes">
-							<span class="offer-overview__fixes-label">Fixes</span>
-							<p>{offer.fixes}</p>
-						</div>
 
 						<ul class="offer-overview__bullets">
 							{offer.bullets.map((b) => (
@@ -270,30 +265,6 @@ const stackLayers = [
 		letter-spacing: 0.08em;
 		text-transform: uppercase;
 		box-shadow: 0 4px 12px color-mix(in srgb, var(--lane-growth) 30%, transparent);
-	}
-
-	.offer-overview__fixes {
-		display: grid;
-		gap: 0.3rem;
-		padding: 0.75rem 0.9rem;
-		border-radius: var(--radius-sm);
-		background: color-mix(in srgb, var(--lane-audit-tint) 45%, var(--color-bg));
-		border: 1px solid color-mix(in srgb, var(--lane-audit) 16%, var(--color-border-soft));
-	}
-
-	.offer-overview__fixes-label {
-		color: var(--lane-audit-ink);
-		font-size: 0.68rem;
-		font-weight: 800;
-		letter-spacing: 0.12em;
-		text-transform: uppercase;
-	}
-
-	.offer-overview__fixes p {
-		margin: 0;
-		color: var(--color-muted);
-		font-size: 0.85rem;
-		line-height: 1.45;
 	}
 
 	.offer-overview__stack {

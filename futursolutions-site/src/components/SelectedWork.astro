@@ -1,0 +1,477 @@
+---
+// PROOF-READY "Selected Work" snapshots.
+// ────────────────────────────────────────────────────────────────────────
+// PLACEHOLDER CONTENT — replace each card below with approved, real client
+// details (titles, screenshots, links, and outcomes) as they become
+// available. Keep the public-facing copy neutral until then: NO fake client
+// names, NO fake metrics, NO fake testimonials, NO fake logos. The `outcome`
+// field is intentionally qualitative, not a number. Add a `link` to a card to
+// surface a "View project notes" action once a real route exists.
+const snapshots = [
+	{
+		visual: 'website',
+		label: 'Project snapshot',
+		title: 'Healthcare / wellness website rebuild',
+		problem:
+			'The site needed clearer service structure, stronger trust placement, and a more direct consultation path.',
+		workIncluded: [
+			'Homepage and service-page architecture',
+			'Clearer CTA hierarchy',
+			'Trust and FAQ placement',
+			'Mobile-first page structure',
+			'Analytics-ready foundation',
+		],
+		outcome: 'Built to make services easier to understand and the next step easier to take.',
+		tags: ['Service Pages', 'Booking Flow', 'Local SEO'],
+		// link: '/work/wellness-rebuild',
+	},
+	{
+		visual: 'funnel',
+		label: 'Project snapshot',
+		title: 'Appointment-based service funnel',
+		problem:
+			'Visitors needed a clearer path from first visit to inquiry, with less friction between interest and action.',
+		workIncluded: [
+			'Landing-page structure',
+			'Conversion-focused sections',
+			'Form and CTA placement',
+			'Lead-routing considerations',
+			'Follow-up readiness',
+		],
+		outcome: 'Structured around a more focused visitor path from traffic to inquiry.',
+		tags: ['Landing Page', 'Conversion', 'Follow-Up'],
+	},
+	{
+		visual: 'system',
+		label: 'System snapshot',
+		title: 'Website + CRM follow-up foundation',
+		problem:
+			'The website needed to connect more clearly with lead capture, follow-up, and reporting workflows.',
+		workIncluded: [
+			'Form strategy',
+			'CRM and follow-up planning',
+			'Lead status visibility',
+			'Tracking and reporting foundation',
+			'Post-inquiry next-step flow',
+		],
+		outcome: 'Created a clearer bridge between website activity and lead-handling.',
+		tags: ['Forms', 'CRM', 'Analytics'],
+	},
+];
+---
+
+<section class="selected-work" aria-labelledby="selected-work-heading">
+	<div class="site-container site-container--wide">
+		<header class="selected-work__head">
+			<div class="selected-work__head-left">
+				<p class="eyebrow">Selected work</p>
+				<h2 id="selected-work-heading" class="display-lg">Proof-ready project snapshots.</h2>
+			</div>
+			<p class="selected-work__head-copy">
+				A few examples of the kind of structure, clarity, and backend thinking we bring into website projects — from service-page architecture to the lead-handling process behind the form.
+			</p>
+		</header>
+
+		<ul class="selected-work__grid">
+			{
+				snapshots.map((s) => (
+					<li class="sw-card">
+						<div class={`sw-viz sw-viz--${s.visual}`} aria-hidden="true">
+							<div class="sw-viz__chrome">
+								<span></span><span></span><span></span>
+							</div>
+							{s.visual === 'website' && (
+								<div class="sw-viz__screen">
+									<span class="sw-viz__eyebrow"></span>
+									<span class="sw-viz__title"></span>
+									<span class="sw-viz__sub"></span>
+									<div class="sw-viz__tiles"><span /><span /><span /></div>
+									<span class="sw-viz__cta">Book Consultation</span>
+								</div>
+							)}
+							{s.visual === 'funnel' && (
+								<div class="sw-viz__flow">
+									<span class="sw-viz__node">Visit</span>
+									<span class="sw-viz__arrow">&rarr;</span>
+									<span class="sw-viz__node">Service</span>
+									<span class="sw-viz__arrow">&rarr;</span>
+									<span class="sw-viz__node sw-viz__node--end">Inquiry</span>
+								</div>
+							)}
+							{s.visual === 'system' && (
+								<div class="sw-viz__system">
+									<div class="sw-viz__chips">
+										<span class="sw-viz__chip">Form</span>
+										<span class="sw-viz__arrow">&rarr;</span>
+										<span class="sw-viz__chip">CRM</span>
+										<span class="sw-viz__arrow">&rarr;</span>
+										<span class="sw-viz__chip sw-viz__chip--end">Follow-up</span>
+									</div>
+									<div class="sw-viz__bars"><i style="height:45%" /><i style="height:72%" /><i style="height:58%" /><i style="height:88%" /></div>
+								</div>
+							)}
+						</div>
+
+						<div class="sw-card__body">
+							<span class="sw-card__label">{s.label}</span>
+							<h3 class="sw-card__title">{s.title}</h3>
+							<p class="sw-card__problem">{s.problem}</p>
+
+							<p class="sw-card__work-label">Work included</p>
+							<ul class="sw-card__work">
+								{s.workIncluded.map((w) => (
+									<li>
+										<svg aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.5 3.5L13 5" /></svg>
+										{w}
+									</li>
+								))}
+							</ul>
+
+							<p class="sw-card__outcome">{s.outcome}</p>
+
+							<ul class="sw-card__tags" aria-label={`${s.title} focus areas`}>
+								{s.tags.map((t) => <li>{t}</li>)}
+							</ul>
+						</div>
+					</li>
+				))
+			}
+		</ul>
+	</div>
+</section>
+
+<style>
+	.selected-work {
+		padding-block: var(--section-spacing);
+		background: var(--color-white);
+	}
+
+	.selected-work__head {
+		display: grid;
+		grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+		gap: clamp(2rem, 5vw, 4rem);
+		align-items: end;
+		margin-bottom: clamp(2rem, 4vw, 3rem);
+	}
+
+	.selected-work__head .eyebrow {
+		color: var(--lane-audit-ink);
+	}
+
+	.selected-work__head h2 {
+		max-width: 16ch;
+		margin-bottom: 0;
+	}
+
+	.selected-work__head-copy {
+		max-width: 42ch;
+		margin: 0;
+		color: var(--color-muted);
+		font-size: 1.02rem;
+		line-height: 1.6;
+	}
+
+	.selected-work__grid {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 1.25rem;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.sw-card {
+		display: flex;
+		flex-direction: column;
+		overflow: hidden;
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		background: var(--color-white);
+		box-shadow: var(--shadow-card);
+		transition: transform 320ms var(--ease-out-quart), border-color var(--transition-base), box-shadow var(--transition-base);
+	}
+
+	.sw-card:hover {
+		transform: translateY(-3px);
+		border-color: color-mix(in srgb, var(--color-text) 18%, var(--color-border));
+		box-shadow: var(--shadow-card-hover);
+	}
+
+	/* ── visual snapshot panels ───────────────────────── */
+	.sw-viz {
+		display: flex;
+		flex-direction: column;
+		min-height: 9.5rem;
+		border-bottom: 1px solid var(--color-border);
+		background:
+			radial-gradient(ellipse 80% 70% at 80% 0%, var(--lane-foundation-tint), transparent 70%),
+			var(--color-bg);
+	}
+
+	.sw-viz--funnel {
+		background:
+			radial-gradient(ellipse 80% 70% at 20% 0%, var(--lane-growth-tint), transparent 70%),
+			var(--color-bg);
+	}
+
+	.sw-viz--system {
+		background:
+			radial-gradient(ellipse 80% 70% at 50% 0%, var(--lane-audit-tint), transparent 70%),
+			var(--color-bg);
+	}
+
+	.sw-viz__chrome {
+		display: flex;
+		gap: 0.3rem;
+		padding: 0.55rem 0.7rem;
+		border-bottom: 1px solid var(--color-border-soft);
+		background: var(--color-white);
+	}
+
+	.sw-viz__chrome span {
+		width: 0.42rem;
+		height: 0.42rem;
+		border-radius: 999px;
+		background: color-mix(in srgb, var(--color-muted) 30%, var(--color-white));
+	}
+
+	/* website variant */
+	.sw-viz__screen {
+		display: flex;
+		flex-direction: column;
+		gap: 0.4rem;
+		padding: 0.85rem;
+	}
+
+	.sw-viz__eyebrow {
+		width: 4rem;
+		height: 0.4rem;
+		border-radius: 999px;
+		background: var(--lane-foundation);
+	}
+
+	.sw-viz__title {
+		width: 80%;
+		height: 0.7rem;
+		border-radius: 4px;
+		background: color-mix(in srgb, var(--color-text) 70%, transparent);
+	}
+
+	.sw-viz__sub {
+		width: 55%;
+		height: 0.45rem;
+		border-radius: 999px;
+		background: color-mix(in srgb, var(--color-text) 22%, var(--color-border));
+	}
+
+	.sw-viz__tiles {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 0.4rem;
+		margin-top: 0.15rem;
+	}
+
+	.sw-viz__tiles span {
+		height: 1.6rem;
+		border-radius: 7px;
+		border: 1px solid var(--color-border-soft);
+		background: var(--color-white);
+	}
+
+	.sw-viz__cta {
+		width: fit-content;
+		margin-top: 0.15rem;
+		padding: 0.32rem 0.65rem;
+		border-radius: 6px;
+		background: var(--lane-foundation);
+		color: var(--color-white);
+		font-size: 0.58rem;
+		font-weight: 800;
+	}
+
+	/* funnel variant */
+	.sw-viz__flow,
+	.sw-viz__system {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 0.4rem;
+		padding: 1rem 0.85rem;
+		flex: 1;
+	}
+
+	.sw-viz__system {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 0.7rem;
+	}
+
+	.sw-viz__node,
+	.sw-viz__chip {
+		padding: 0.4rem 0.65rem;
+		border-radius: 8px;
+		border: 1px solid var(--color-border-soft);
+		background: var(--color-white);
+		color: var(--color-text);
+		font-size: 0.66rem;
+		font-weight: 700;
+		letter-spacing: -0.01em;
+	}
+
+	.sw-viz__node--end {
+		background: var(--lane-growth);
+		border-color: var(--lane-growth);
+		color: var(--color-white);
+	}
+
+	.sw-viz__chip--end {
+		background: var(--lane-audit);
+		border-color: var(--lane-audit);
+		color: var(--color-white);
+	}
+
+	.sw-viz__arrow {
+		color: var(--color-muted);
+		font-weight: 700;
+	}
+
+	.sw-viz__chips {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 0.4rem;
+	}
+
+	.sw-viz__bars {
+		display: flex;
+		align-items: flex-end;
+		gap: 0.35rem;
+		width: 100%;
+		height: 2.6rem;
+		padding: 0.4rem 0.5rem;
+		border-radius: 8px;
+		border: 1px solid var(--color-border-soft);
+		background: var(--color-white);
+	}
+
+	.sw-viz__bars i {
+		flex: 1;
+		border-radius: 3px 3px 0 0;
+		background: color-mix(in srgb, var(--lane-audit) 55%, var(--color-border));
+	}
+
+	/* ── card body ────────────────────────────────────── */
+	.sw-card__body {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+		padding: 1.35rem;
+	}
+
+	.sw-card__label {
+		width: fit-content;
+		padding: 0.2rem 0.55rem;
+		border-radius: 999px;
+		background: var(--color-bg);
+		border: 1px solid var(--color-border-soft);
+		color: var(--color-muted);
+		font-size: 0.64rem;
+		font-weight: 800;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+	}
+
+	.sw-card__title {
+		margin: 0;
+		font-size: 1.18rem;
+		font-weight: 700;
+		letter-spacing: -0.025em;
+		line-height: 1.2;
+	}
+
+	.sw-card__problem {
+		margin: 0;
+		color: var(--color-muted);
+		font-size: 0.9rem;
+		line-height: 1.55;
+	}
+
+	.sw-card__work-label {
+		margin: 0.3rem 0 0;
+		color: var(--color-text);
+		font-size: 0.66rem;
+		font-weight: 800;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+	}
+
+	.sw-card__work {
+		display: grid;
+		gap: 0.35rem;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.sw-card__work li {
+		display: grid;
+		grid-template-columns: 1rem 1fr;
+		gap: 0.5rem;
+		align-items: start;
+		color: var(--color-text);
+		font-size: 0.86rem;
+		line-height: 1.45;
+	}
+
+	.sw-card__work svg {
+		width: 0.95rem;
+		height: 0.95rem;
+		margin-top: 0.22rem;
+		color: var(--lane-foundation);
+	}
+
+	.sw-card__outcome {
+		margin: 0.3rem 0 0;
+		padding: 0.7rem 0.85rem;
+		border-radius: var(--radius-sm);
+		background: var(--color-bg);
+		border: 1px solid var(--color-border-soft);
+		color: var(--color-text);
+		font-size: 0.88rem;
+		font-weight: 600;
+		font-style: italic;
+		line-height: 1.45;
+	}
+
+	.sw-card__tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.4rem;
+		margin: 0.5rem 0 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.sw-card__tags li {
+		padding: 0.28rem 0.55rem;
+		border: 1px solid var(--color-border-soft);
+		border-radius: 999px;
+		background: var(--color-bg);
+		color: var(--color-muted);
+		font-size: 0.72rem;
+		font-weight: 600;
+		line-height: 1;
+	}
+
+	@media (max-width: 1040px) {
+		.selected-work__head {
+			grid-template-columns: 1fr;
+			align-items: start;
+		}
+
+		.selected-work__grid {
+			grid-template-columns: 1fr;
+			gap: 1.25rem;
+		}
+	}
+</style>
