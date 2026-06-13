@@ -180,7 +180,7 @@ const contrasts = [
 							<span class="ba-mock__service">
 								<span class="ba-mock__service-top">
 									<span class="ba-mock__service-ico"></span>
-									<svg class="ba-mock__service-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6" /></svg>
+									<svg class="ba-mock__service-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6" /></svg>
 								</span>
 								<span class="ba-mock__service-title">Weight Loss</span>
 								<span class="ba-mock__service-sub">Consultation path</span>
@@ -188,7 +188,7 @@ const contrasts = [
 							<span class="ba-mock__service">
 								<span class="ba-mock__service-top">
 									<span class="ba-mock__service-ico"></span>
-									<svg class="ba-mock__service-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6" /></svg>
+									<svg class="ba-mock__service-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6" /></svg>
 								</span>
 								<span class="ba-mock__service-title">Hormone Support</span>
 								<span class="ba-mock__service-sub">Service details</span>
@@ -196,7 +196,7 @@ const contrasts = [
 							<span class="ba-mock__service">
 								<span class="ba-mock__service-top">
 									<span class="ba-mock__service-ico"></span>
-									<svg class="ba-mock__service-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6" /></svg>
+									<svg class="ba-mock__service-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6" /></svg>
 								</span>
 								<span class="ba-mock__service-title">Aesthetics</span>
 								<span class="ba-mock__service-sub">Bookable treatment</span>
@@ -638,11 +638,11 @@ const contrasts = [
 	.ba-mock__support {
 		display: flex;
 		align-items: center;
-		gap: 0.5rem;
-		padding: 0.5rem 0.6rem;
-		border-radius: 8px;
-		background: linear-gradient(120deg, color-mix(in srgb, var(--lane-foundation) 12%, var(--color-white)), color-mix(in srgb, var(--lane-foundation-tint) 55%, var(--color-white)));
-		border: 1px solid color-mix(in srgb, var(--lane-foundation) 20%, var(--color-border-soft));
+		gap: 0.6rem;
+		padding: 0.6rem 0.7rem;
+		border-radius: 9px;
+		background: linear-gradient(120deg, color-mix(in srgb, var(--lane-foundation) 10%, var(--color-white)), color-mix(in srgb, var(--lane-foundation-tint) 48%, var(--color-white)));
+		border: 1px solid color-mix(in srgb, var(--lane-foundation) 18%, var(--color-border-soft));
 	}
 
 	.ba-mock__support-ico {
@@ -667,20 +667,20 @@ const contrasts = [
 		display: flex;
 		flex: 1;
 		flex-direction: column;
-		gap: 0.1rem;
+		gap: 0.16rem;
 		min-width: 0;
 	}
 
 	.ba-mock__support-main {
 		color: var(--color-text);
-		font-size: 0.62rem;
-		font-weight: 750;
+		font-size: 0.63rem;
+		font-weight: 800;
 		letter-spacing: -0.01em;
 		line-height: 1.15;
 	}
 
 	.ba-mock__support-sub {
-		color: var(--color-muted);
+		color: var(--color-muted-soft);
 		font-size: 0.52rem;
 		font-weight: 600;
 		line-height: 1.1;
@@ -688,14 +688,14 @@ const contrasts = [
 
 	.ba-mock__support-pill {
 		flex-shrink: 0;
-		padding: 0.2rem 0.45rem;
+		padding: 0.22rem 0.5rem;
 		border-radius: 999px;
 		background: var(--color-white);
-		border: 1px solid color-mix(in srgb, var(--lane-foundation) 24%, var(--color-border-soft));
+		border: 1px solid color-mix(in srgb, var(--lane-foundation) 22%, var(--color-border-soft));
 		color: var(--lane-foundation-ink);
-		font-size: 0.5rem;
+		font-size: 0.48rem;
 		font-weight: 800;
-		letter-spacing: 0.04em;
+		letter-spacing: 0.05em;
 		text-transform: uppercase;
 		white-space: nowrap;
 	}
@@ -806,10 +806,10 @@ const contrasts = [
 	}
 
 	.ba-mock__service-arrow {
-		width: 0.7rem;
-		height: 0.7rem;
+		width: 0.58rem;
+		height: 0.58rem;
 		flex-shrink: 0;
-		color: color-mix(in srgb, var(--lane-foundation) 55%, var(--color-muted));
+		color: color-mix(in srgb, var(--lane-foundation) 32%, var(--color-muted-soft));
 	}
 
 	.ba-mock__service-title {
@@ -867,28 +867,33 @@ const contrasts = [
 	.ba-mock__crm-flow {
 		display: flex;
 		align-items: center;
-		gap: 0.28rem;
+		gap: 0.3rem;
 		flex-wrap: wrap;
 	}
 
 	.ba-mock__crm-flow span {
-		padding: 0.12rem 0.4rem;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-width: 2.6rem;
+		padding: 0.16rem 0.45rem;
 		border-radius: 999px;
-		background: color-mix(in srgb, var(--color-white) 70%, var(--lane-growth-tint));
-		border: 1px solid color-mix(in srgb, var(--lane-growth) 24%, transparent);
+		background: color-mix(in srgb, var(--color-white) 72%, var(--lane-growth-tint));
+		border: 1px solid color-mix(in srgb, var(--lane-growth) 22%, transparent);
 		color: var(--lane-growth-ink);
 		font-size: 0.5rem;
 		font-weight: 800;
 		letter-spacing: 0.03em;
+		line-height: 1;
 		text-transform: uppercase;
 		white-space: nowrap;
 	}
 
 	.ba-mock__crm-flow svg {
-		width: 0.62rem;
-		height: 0.62rem;
+		width: 0.58rem;
+		height: 0.58rem;
 		flex-shrink: 0;
-		color: color-mix(in srgb, var(--lane-growth) 60%, var(--color-muted));
+		color: color-mix(in srgb, var(--lane-growth) 48%, var(--color-muted-soft));
 	}
 
 	/* footer hint — both sides get a thin footer; the after side is subtly stronger */
