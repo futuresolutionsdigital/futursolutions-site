@@ -145,7 +145,7 @@ const contrasts = [
 							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6" /></svg>
 						</span>
 						<span class="ba-mock__url ba-mock__url--after"><svg class="ba-mock__lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2" /><path d="M8 11V8a4 4 0 0 1 8 0v3" /></svg>northoak-health.com</span>
-						<span class="ba-mock__live"><span class="ba-mock__live-dot"></span>Live</span>
+						<span class="ba-mock__live"><span class="ba-mock__live-dot"></span>Connected</span>
 					</div>
 					<div class="ba-mock__body ba-mock__body--after">
 						<div class="ba-mock__nav">
@@ -162,15 +162,31 @@ const contrasts = [
 									<span class="ba-mock__trust-ico">
 										<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 4.4-3 7.3-7 8.5-4-1.2-7-4.1-7-8.5V6z" /><path d="M9 11.5l2 2 4-4" /></svg>
 									</span>
-									<span class="ba-mock__trust-text">Trusted care &middot; clear next steps</span>
+									<span class="ba-mock__trust-text">Trust signals visible before the CTA</span>
 								</span>
 							</div>
-							<span class="ba-mock__hero-img ba-mock__hero-img--after"></span>
+							<span class="ba-mock__hero-img ba-mock__hero-img--after">
+								<span class="ba-mock__support-ico"></span>
+								<span class="ba-mock__support-lines"><span></span><span></span></span>
+								<span class="ba-mock__support-chip"></span>
+							</span>
 						</div>
 						<div class="ba-mock__services">
-							<span class="ba-mock__service"><span class="ba-mock__service-ico"></span>Weight Loss</span>
-							<span class="ba-mock__service"><span class="ba-mock__service-ico"></span>Hormone Support</span>
-							<span class="ba-mock__service"><span class="ba-mock__service-ico"></span>Aesthetics</span>
+							<span class="ba-mock__service">
+								<span class="ba-mock__service-ico"></span>
+								<span class="ba-mock__service-title">Weight Loss</span>
+								<span class="ba-mock__service-sub">Consultation path</span>
+							</span>
+							<span class="ba-mock__service">
+								<span class="ba-mock__service-ico"></span>
+								<span class="ba-mock__service-title">Hormone Support</span>
+								<span class="ba-mock__service-sub">Service details</span>
+							</span>
+							<span class="ba-mock__service">
+								<span class="ba-mock__service-ico"></span>
+								<span class="ba-mock__service-title">Aesthetics</span>
+								<span class="ba-mock__service-sub">Bookable treatment</span>
+							</span>
 						</div>
 						<div class="ba-mock__crm">
 							<span class="ba-mock__crm-ico">
@@ -596,8 +612,47 @@ const contrasts = [
 	}
 
 	.ba-mock__hero-img--after {
-		background: linear-gradient(120deg, color-mix(in srgb, var(--lane-foundation) 24%, var(--color-white)), color-mix(in srgb, var(--lane-foundation-tint) 70%, var(--color-white)));
+		justify-content: flex-start;
+		gap: 0.5rem;
+		padding: 0 0.55rem;
+		background: linear-gradient(120deg, color-mix(in srgb, var(--lane-foundation) 18%, var(--color-white)), color-mix(in srgb, var(--lane-foundation-tint) 65%, var(--color-white)));
 		border: 1px solid color-mix(in srgb, var(--lane-foundation) 18%, var(--color-border-soft));
+	}
+
+	/* subtle trust/support band content so the after block reads as intentional, not empty */
+	.ba-mock__support-ico {
+		flex-shrink: 0;
+		width: 1.35rem;
+		height: 1.35rem;
+		border-radius: 6px;
+		background: color-mix(in srgb, var(--color-white) 65%, var(--lane-foundation-tint));
+		border: 1px solid color-mix(in srgb, var(--lane-foundation) 20%, transparent);
+	}
+
+	.ba-mock__support-lines {
+		display: flex;
+		flex: 1;
+		flex-direction: column;
+		gap: 0.26rem;
+		min-width: 0;
+	}
+
+	.ba-mock__support-lines span {
+		height: 0.3rem;
+		border-radius: 999px;
+		background: color-mix(in srgb, var(--lane-foundation) 28%, var(--color-white));
+	}
+
+	.ba-mock__support-lines span:first-child { width: 78%; }
+	.ba-mock__support-lines span:last-child { width: 52%; }
+
+	.ba-mock__support-chip {
+		flex-shrink: 0;
+		width: 1.7rem;
+		height: 0.72rem;
+		border-radius: 999px;
+		background: var(--color-white);
+		border: 1px solid color-mix(in srgb, var(--lane-foundation) 22%, var(--color-border-soft));
 	}
 
 	.ba-mock__cta-row {
@@ -682,22 +737,37 @@ const contrasts = [
 	.ba-mock__service {
 		display: flex;
 		flex-direction: column;
-		gap: 0.3rem;
-		padding: 0.5rem 0.55rem;
-		border: 1px solid var(--color-border-soft);
+		gap: 0.28rem;
+		padding: 0.55rem 0.55rem 0.6rem;
+		border: 1px solid color-mix(in srgb, var(--lane-foundation) 16%, var(--color-border-soft));
 		border-radius: 8px;
 		background: var(--color-white);
-		color: var(--color-text);
-		font-size: 0.6rem;
-		font-weight: 700;
-		letter-spacing: -0.01em;
+		box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
 	}
 
 	.ba-mock__service-ico {
-		width: 1.1rem;
-		height: 1.1rem;
+		width: 1.15rem;
+		height: 1.15rem;
 		border-radius: 6px;
 		background: var(--lane-foundation-tint);
+		border: 1px solid color-mix(in srgb, var(--lane-foundation) 18%, transparent);
+	}
+
+	.ba-mock__service-title {
+		margin-top: 0.05rem;
+		color: var(--color-text);
+		font-size: 0.6rem;
+		font-weight: 750;
+		letter-spacing: -0.01em;
+		line-height: 1.15;
+	}
+
+	.ba-mock__service-sub {
+		color: var(--color-muted);
+		font-size: 0.5rem;
+		font-weight: 600;
+		letter-spacing: 0.005em;
+		line-height: 1.1;
 	}
 
 	.ba-mock__crm {
