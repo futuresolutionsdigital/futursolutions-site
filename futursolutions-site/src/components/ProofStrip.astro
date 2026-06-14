@@ -15,20 +15,20 @@ const methods = [
 	{
 		step: '03',
 		icon: 'cms',
-		title: 'CMS-connected where it matters',
-		text: 'Content stays manageable, scalable, and ready for the pages and resources you add next.',
+		title: 'Editable where it matters',
+		text: 'Key content areas stay manageable, scalable, and ready for the pages and resources you add next.',
 	},
 	{
 		step: '04',
 		icon: 'link',
 		title: 'Systems-ready launch',
-		text: 'Forms, tracking, CRM, and follow-up paths are wired and tested before traffic is sent.',
+		text: 'Forms, tracking, CRM, and follow-up paths are wired and tested before launch — and before campaigns send traffic.',
 	},
 ];
 
 const processSteps = ['Diagnose', 'Clarify', 'Design', 'Connect', 'Launch', 'Improve'];
 
-const stack = ['Astro', 'TypeScript', 'GoHighLevel', 'Vercel', 'Sanity', 'Cal.com'];
+const stack = ['Astro', 'TypeScript', 'Vercel', 'Sanity', 'GoHighLevel'];
 ---
 
 <section class="section-tight proof-strip" aria-labelledby="proof-strip-heading">
@@ -36,12 +36,12 @@ const stack = ['Astro', 'TypeScript', 'GoHighLevel', 'Vercel', 'Sanity', 'Cal.co
 		<div class="proof-strip__statement">
 			<p class="eyebrow">The build method</p>
 			<h2 id="proof-strip-heading" class="proof-strip__headline">
-				No theme reskins. No&nbsp;junior handoff. No&nbsp;dead launch.
-				<span class="proof-strip__headline-soft">A FutureSolutions site is planned around your offer, your visitor journey, and the system behind the form — not just how the pages look.</span>
+				No theme reskins. No&nbsp;black-box handoff. No&nbsp;dead launch.
+				<span class="proof-strip__headline-soft">A FutureSolutions site is planned around your offer, your visitor journey, and the system behind the form — so launch day is not where the strategy ends.</span>
 			</h2>
 			<p class="proof-strip__callout">
 				<span class="proof-strip__callout-mark" aria-hidden="true">!</span>
-				A pretty website is not enough if the offer is unclear, the CTA is buried, and the lead goes nowhere after submitting a form.
+				A pretty website is not enough if the offer is unclear, the CTA is buried, or the lead goes nowhere after submitting a form.
 			</p>
 		</div>
 
@@ -77,7 +77,7 @@ const stack = ['Astro', 'TypeScript', 'GoHighLevel', 'Vercel', 'Sanity', 'Cal.co
 									</svg>
 								)}
 							</div>
-							<span class="proof-card__step">Step {p.step}</span>
+							<span class="proof-card__step">Method {p.step}</span>
 						</div>
 						<h3 class="proof-card__title">{p.title}</h3>
 						<p class="proof-card__text">{p.text}</p>
@@ -86,7 +86,8 @@ const stack = ['Astro', 'TypeScript', 'GoHighLevel', 'Vercel', 'Sanity', 'Cal.co
 			}
 		</ol>
 
-		<div class="proof-process" aria-label="Our end-to-end process">
+		<div class="proof-process" aria-label="Our end-to-end delivery flow">
+			<p class="proof-process__label">The delivery flow</p>
 			<ol class="proof-process__track">
 				{processSteps.map((s, i) => (
 					<>
@@ -100,7 +101,7 @@ const stack = ['Astro', 'TypeScript', 'GoHighLevel', 'Vercel', 'Sanity', 'Cal.co
 		</div>
 
 		<div class="proof-strip__stack" aria-label="Technology and tooling we build with">
-			<span class="proof-strip__stack-label">Built on</span>
+			<span class="proof-strip__stack-label">Built with</span>
 			<ul class="proof-strip__stack-list">
 				{stack.map((s) => <li>{s}</li>)}
 			</ul>
@@ -254,6 +255,15 @@ const stack = ['Astro', 'TypeScript', 'GoHighLevel', 'Vercel', 'Sanity', 'Cal.co
 
 	.proof-process {
 		margin: 0 0 clamp(2.5rem, 4vw, 3.5rem) 0;
+	}
+
+	.proof-process__label {
+		margin: 0 0 0.9rem;
+		color: color-mix(in srgb, var(--lane-audit-tint) 84%, var(--color-white));
+		font-size: 0.74rem;
+		font-weight: 700;
+		letter-spacing: 0.16em;
+		text-transform: uppercase;
 	}
 
 	.proof-process__track {
