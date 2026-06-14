@@ -191,7 +191,7 @@ const stages = [
 		border: 1px solid var(--color-ink-line-strong);
 		border-radius: var(--radius-lg);
 		background: var(--color-ink-soft);
-		transition: transform 340ms var(--ease-out-quart), border-color var(--transition-base), box-shadow var(--transition-base);
+		transition: border-color var(--transition-base), box-shadow var(--transition-base);
 	}
 
 	/* Route line that runs through each node at the icon's center, bleeding to the
@@ -221,7 +221,6 @@ const stages = [
 	}
 
 	.journey__node:hover {
-		transform: translateY(-5px);
 		box-shadow: 0 24px 50px rgba(0, 0, 0, 0.28);
 	}
 
@@ -516,11 +515,11 @@ const stages = [
 	}
 
 	@media (prefers-reduced-motion: reduce) {
-		.journey__node {
-			transition: border-color var(--transition-base), box-shadow var(--transition-base);
+		.journey__cta span {
+			transition: none;
 		}
 
-		.journey__node:hover {
+		.journey__cta:hover span {
 			transform: none;
 		}
 	}
