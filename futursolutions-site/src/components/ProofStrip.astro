@@ -22,7 +22,7 @@ const methods = [
 		step: '04',
 		icon: 'link',
 		title: 'Systems-ready launch',
-		text: 'Forms, tracking, CRM, and follow-up paths are wired and tested before launch — and before campaigns send traffic.',
+		text: 'Forms, tracking, CRM, and follow-up paths are wired before launch — so leads do not disappear after the form.',
 	},
 ];
 
@@ -36,7 +36,9 @@ const stack = ['Astro', 'TypeScript', 'Vercel', 'Sanity', 'GoHighLevel'];
 		<div class="proof-strip__statement">
 			<p class="eyebrow">The build method</p>
 			<h2 id="proof-strip-heading" class="proof-strip__headline">
-				No theme reskins. No&nbsp;black-box handoff. No&nbsp;dead launch.
+				<span class="proof-strip__headline-line">No theme reskins.</span>
+				<span class="proof-strip__headline-line">No black-box&nbsp;handoff.</span>
+				<span class="proof-strip__headline-line">No dead launch.</span>
 				<span class="proof-strip__headline-soft">A FutureSolutions site is planned around your offer, your visitor journey, and the system behind the form — so launch day is not where the strategy ends.</span>
 			</h2>
 			<p class="proof-strip__callout">
@@ -99,6 +101,8 @@ const stack = ['Astro', 'TypeScript', 'Vercel', 'Sanity', 'GoHighLevel'];
 				))}
 			</ol>
 		</div>
+
+		<p class="proof-strip__closing">Built to launch cleanly, stay editable, and improve after traffic starts.</p>
 
 		<div class="proof-strip__stack" aria-label="Technology and tooling we build with">
 			<span class="proof-strip__stack-label">Built with</span>
@@ -166,6 +170,10 @@ const stack = ['Astro', 'TypeScript', 'Vercel', 'Sanity', 'GoHighLevel'];
 		font-weight: 700;
 		letter-spacing: -0.035em;
 		line-height: 1.18;
+	}
+
+	.proof-strip__headline-line {
+		display: block;
 	}
 
 	.proof-strip__headline-soft {
@@ -305,6 +313,15 @@ const stack = ['Astro', 'TypeScript', 'Vercel', 'Sanity', 'GoHighLevel'];
 		color: color-mix(in srgb, var(--color-white) 45%, transparent);
 		font-size: 0.9rem;
 		font-weight: 700;
+	}
+
+	.proof-strip__closing {
+		max-width: 60ch;
+		margin: 0 0 1.5rem;
+		color: color-mix(in srgb, var(--color-white) 68%, transparent);
+		font-size: 0.95rem;
+		font-weight: 500;
+		line-height: 1.55;
 	}
 
 	.proof-strip__stack {
