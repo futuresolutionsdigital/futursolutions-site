@@ -63,8 +63,22 @@ const newDemoSlugs = new Set(['premium-wellness-clinic', 'hormone-trt']);
 						>
 							<a class="demo-card__link" href={template.detailUrl} aria-label={`View details for the ${template.name} Foundation`} />
 
-							<div class="demo-card__media" aria-hidden="true">
-								{template.slug === 'hormone-trt' ? (
+						<div
+							class:list={['demo-card__media', { 'demo-card__media--shot': template.previewImage }]}
+							aria-hidden={template.previewImage ? undefined : 'true'}
+						>
+							{template.previewImage ? (
+								<div class="demo-card__shot">
+									<img
+										src={template.previewImage}
+										alt={template.previewAlt ?? `${template.name} website foundation preview`}
+										loading="lazy"
+										decoding="async"
+										width="1280"
+										height="800"
+									/>
+								</div>
+							) : template.slug === 'hormone-trt' ? (
 									<div class="vt-prev">
 										<div class="vt-prev__chrome">
 											<span class="vt-prev__dot" />
@@ -136,13 +150,21 @@ const newDemoSlugs = new Set(['premium-wellness-clinic', 'hormone-trt']);
 									)}
 								</div>
 								<h3 class="demo-card__title">{template.name}</h3>
-								<p class="demo-card__desc">{template.shortDescription}</p>
-								{template.atAGlance && (
-									<p class="demo-card__goal">
-										<span class="demo-card__goal-label">Goal</span>
-										{template.atAGlance.primaryGoal}
-									</p>
-								)}
+								<p class="demo-card__desc">{template.demoCardSummary ?? template.shortDescription}</p>
+								<div class="demo-card__specs">
+									{template.atAGlance && (
+										<p class="demo-card__spec">
+											<span class="demo-card__spec-label">Goal</span>
+											<span class="demo-card__spec-value">{template.atAGlance.primaryGoal}</span>
+										</p>
+									)}
+									{template.demoBestFit && (
+										<p class="demo-card__spec">
+											<span class="demo-card__spec-label">Best fit</span>
+											<span class="demo-card__spec-value">{template.demoBestFit}</span>
+										</p>
+									)}
+								</div>
 								<ul class="demo-card__tags" aria-label={`${template.name} feature tags`}>
 									{template.features.slice(0, 3).map((feature) => (
 										<li>{feature}</li>
@@ -150,15 +172,15 @@ const newDemoSlugs = new Set(['premium-wellness-clinic', 'hormone-trt']);
 								</ul>
 								<div class="demo-card__actions">
 									{template.demoUrl ? (
-										<a class="demo-card__primary" href={template.demoUrl}>
+										<a class="demo-card__primary" href={template.demoUrl} aria-label={`View live demo for the ${template.name} Foundation`}>
 											View Live Demo
 											<span aria-hidden="true">&rarr;</span>
 										</a>
 									) : (
 										<span class="demo-card__pending">Demo coming soon</span>
 									)}
-									<a class="demo-card__secondary" href={template.detailUrl}>See Foundation Details</a>
-									<a class="demo-card__tertiary" href={template.auditUrl}>
+									<a class="demo-card__secondary" href={template.detailUrl} aria-label={`See Foundation details for the ${template.name} Foundation`}>See Foundation Details</a>
+									<a class="demo-card__tertiary" href={template.auditUrl} aria-label={`Get the ${template.name} Foundation customized`}>
 										Get This Foundation Customized
 										<span aria-hidden="true">&rarr;</span>
 									</a>
@@ -326,6 +348,24 @@ const newDemoSlugs = new Set(['premium-wellness-clinic', 'hormone-trt']);
 		border: 1px solid var(--color-border);
 		border-radius: 12px 12px 0 0;
 		background: var(--color-bg);
+	}
+
+	/* Real-screenshot slot. Dormant until a previewImage is set on the data —
+	   keeps a fixed aspect ratio so swapping in a screenshot causes no layout shift. */
+	.demo-card__shot {
+		overflow: hidden;
+		aspect-ratio: 16 / 10;
+		border: 1px solid var(--color-border);
+		border-radius: 12px 12px 0 0;
+		background: var(--color-bg);
+	}
+
+	.demo-card__shot img {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: top center;
 	}
 
 	.demo-card__topbar {
@@ -546,24 +586,38 @@ const newDemoSlugs = new Set(['premium-wellness-clinic', 'hormone-trt']);
 		overflow: hidden;
 	}
 
-	.demo-card__goal {
-		display: flex;
-		align-items: baseline;
-		gap: 0.5rem;
+	.demo-card__specs {
+		display: grid;
+		gap: 0.4rem;
 		margin: 0.15rem 0 0 0;
+		padding: 0.7rem 0.8rem;
+		border: 1px solid var(--color-border-soft);
+		border-radius: var(--radius-sm);
+		background: var(--color-bg);
+	}
+
+	.demo-card__spec {
+		display: grid;
+		grid-template-columns: 3.6rem 1fr;
+		gap: 0.55rem;
+		align-items: baseline;
+		margin: 0;
+	}
+
+	.demo-card__spec-label {
+		color: var(--demo-ink, var(--color-muted));
+		font-size: 0.6rem;
+		font-weight: 800;
+		letter-spacing: 0.1em;
+		line-height: 1.45;
+		text-transform: uppercase;
+	}
+
+	.demo-card__spec-value {
 		color: var(--color-text);
 		font-size: 0.82rem;
 		font-weight: 600;
 		line-height: 1.4;
-	}
-
-	.demo-card__goal-label {
-		flex-shrink: 0;
-		color: var(--demo-ink, var(--color-muted));
-		font-size: 0.62rem;
-		font-weight: 800;
-		letter-spacing: 0.1em;
-		text-transform: uppercase;
 	}
 
 	.demo-card__tags {

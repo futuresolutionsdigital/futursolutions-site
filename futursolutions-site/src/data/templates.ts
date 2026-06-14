@@ -18,6 +18,15 @@ export interface TemplateSystem {
 	demoUrl: string | null;
 	auditUrl: string;
 	featured: boolean;
+	/** Optional real screenshot for the homepage demo preview. When absent, the
+	 *  CSS/browser wireframe placeholder is rendered as a fallback. */
+	previewImage?: string;
+	previewAlt?: string;
+	/** Shorter, outcome-oriented description shown only on the homepage demo card
+	 *  (keeps the fuller shortDescription for /templates and detail pages). */
+	demoCardSummary?: string;
+	/** Compact "best fit" cue shown on the homepage demo card for quick self-identification. */
+	demoBestFit?: string;
 	whyDifferent?: { title: string; text: string }[];
 	/** Optional richer detail used by [slug].astro when present (migrated from per-template static pages). */
 	audienceDetails?: { label: string; desc: string }[];
@@ -158,6 +167,9 @@ export const templateSystems: TemplateSystem[] = [
 		demoUrl: '/demos/med-spa',
 		auditUrl: '/audit?template=med-spa',
 		featured: true,
+		demoCardSummary:
+			'For aesthetic clinics that need treatment education, provider trust, and a clear consultation path.',
+		demoBestFit: 'Aesthetic clinics and med spas',
 		atAGlance: {
 			bestFor: 'Med spas, injectables studios, laser clinics, and aesthetic dermatology practices.',
 			primaryGoal: 'Educate on treatments responsibly and drive consultation bookings.',
@@ -253,6 +265,9 @@ export const templateSystems: TemplateSystem[] = [
 		demoUrl: '/demos/solo-practice',
 		auditUrl: '/audit?template=solo-practice',
 		featured: true,
+		demoCardSummary:
+			'For solo NPs, private primary care, and concierge practices that need provider trust and clear service navigation.',
+		demoBestFit: 'Solo NPs and private practices',
 		atAGlance: {
 			bestFor: 'Solo NPs, private primary care, DPC, concierge medicine, and cash-pay practices.',
 			primaryGoal: 'Build provider trust and drive consultation bookings.',
@@ -351,6 +366,9 @@ export const templateSystems: TemplateSystem[] = [
 		demoUrl: '/demos/association',
 		auditUrl: '/audit?template=association',
 		featured: true,
+		demoCardSummary:
+			'For associations that need to grow membership, promote events, activate advocacy, and organize resources.',
+		demoBestFit: 'Associations and member organizations',
 		atAGlance: {
 			bestFor: 'Statewide or national professional associations in healthcare, nursing, or allied health.',
 			primaryGoal: 'Grow membership, promote events, and activate advocacy.',
@@ -511,6 +529,9 @@ export const templateSystems: TemplateSystem[] = [
 		demoUrl: '/demos/hormone-trt',
 		auditUrl: '/audit?template=hormone-trt',
 		featured: true,
+		demoCardSummary:
+			"For men's health and TRT clinics that need a bold, direct-response path from assessment to consultation.",
+		demoBestFit: "Men's health, TRT, and hormone clinics",
 		salesFaqs: [
 			{ q: 'Is this a real TRT clinic?', a: 'No — VANTAGE is a fictional demo created by FutureSolutions to demonstrate how a men\'s health clinic Foundation can look and function. All provider names, lab data, pricing, and patient references are entirely invented.' },
 			{ q: 'Can this be customized for my clinic?', a: 'Yes. The brand, services, pricing tiers, provider bios, assessment flow, and copy are all replaced with your real clinic details. The dark design direction can also be adjusted to match your brand aesthetic.' },

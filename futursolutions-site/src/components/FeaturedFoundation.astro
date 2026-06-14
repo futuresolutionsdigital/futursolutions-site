@@ -19,7 +19,7 @@ const tags = template?.features.slice(0, 5) ?? [];
 	<div class="ff" style={styleVars}>
 		<a class="ff__link" href={template.detailUrl} aria-label={`View details for the ${template.name} Foundation`}></a>
 
-		<div class="ff__preview" aria-hidden="true">
+		<div class="ff__preview" aria-hidden={template.previewImage ? undefined : 'true'}>
 			<div class="ff__browser">
 				<div class="ff__chrome">
 					<span class="ff__dot"></span>
@@ -28,6 +28,18 @@ const tags = template?.features.slice(0, 5) ?? [];
 					<span class="ff__url">lumenhealthhouse.com</span>
 					<span class="ff__live"><span class="ff__live-dot"></span>Live</span>
 				</div>
+				{template.previewImage ? (
+					<div class="ff__shot">
+						<img
+							src={template.previewImage}
+							alt={template.previewAlt ?? `${template.name} website foundation preview`}
+							loading="lazy"
+							decoding="async"
+							width="1280"
+							height="800"
+						/>
+					</div>
+				) : (
 				<div class="ff__screen">
 					<div class="ff__nav">
 						<span class="ff__logo"></span>
@@ -48,6 +60,7 @@ const tags = template?.features.slice(0, 5) ?? [];
 						<span class="ff__tile"><span class="ff__tile-ico"></span><i></i><i class="ff__tile--short"></i></span>
 					</div>
 				</div>
+				)}
 			</div>
 		</div>
 
@@ -77,12 +90,12 @@ const tags = template?.features.slice(0, 5) ?? [];
 
 			<div class="ff__actions">
 				{template.demoUrl && (
-					<a class="ff__primary" href={template.demoUrl}>
+					<a class="ff__primary" href={template.demoUrl} aria-label={`View live demo for the ${template.name} Foundation`}>
 						View Live Demo
 						<span aria-hidden="true">&rarr;</span>
 					</a>
 				)}
-				<a class="ff__secondary" href={template.detailUrl}>See Foundation details</a>
+				<a class="ff__secondary" href={template.detailUrl} aria-label={`See Foundation details for the ${template.name} Foundation`}>See Foundation details</a>
 			</div>
 		</div>
 	</div>
@@ -140,6 +153,22 @@ const tags = template?.features.slice(0, 5) ?? [];
 
 	.ff:hover .ff__browser {
 		transform: translateY(-4px);
+	}
+
+	/* Real-screenshot slot for the featured preview. Dormant until a previewImage
+	   is set; fixed aspect ratio prevents layout shift when a screenshot loads. */
+	.ff__shot {
+		overflow: hidden;
+		aspect-ratio: 16 / 10;
+		background: var(--color-bg);
+	}
+
+	.ff__shot img {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: top center;
 	}
 
 	.ff__chrome {
