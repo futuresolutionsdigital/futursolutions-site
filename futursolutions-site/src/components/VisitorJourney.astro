@@ -70,7 +70,7 @@ const stages = [
 		<ol class="journey__track" aria-label="The path from visitor to booked client">
 			{stages.map((s, i) => (
 				<li class={`journey__node journey__node--${s.lane}`}>
-					<div class="journey__connector" aria-hidden="true"><span></span></div>
+					<div class="journey__connector" aria-hidden="true"></div>
 					<div class="journey__node-top">
 						<span class={`journey__icon journey__icon--${s.lane}`} aria-hidden="true">
 							{s.icon === 'search' && (
@@ -208,6 +208,11 @@ const stages = [
 		z-index: 0;
 	}
 
+	/* The path begins at the Discover node — start the rail at the icon, no stub off the left edge */
+	.journey__node:first-child .journey__node-top::before {
+		left: 1.55rem;
+	}
+
 	/* The path terminates inside the Book node — stop the rail at the check node */
 	.journey__node:last-child .journey__node-top::before {
 		right: auto;
@@ -230,7 +235,7 @@ const stages = [
 		box-shadow: 0 0 0 1px color-mix(in srgb, var(--lane-foundation) 25%, transparent), 0 24px 50px rgba(79, 124, 76, 0.18);
 	}
 
-	/* connector bridging the rail across each gap, with a clear directional chevron */
+	/* static connector bridging the rail across each gap, with a clear directional chevron */
 	.journey__connector {
 		position: absolute;
 		top: 2.9rem;
@@ -240,14 +245,6 @@ const stages = [
 		transform: translateY(-50%);
 		background: var(--journey-rail);
 		z-index: 2;
-	}
-
-	.journey__connector span {
-		position: absolute;
-		inset: 0;
-		background: linear-gradient(90deg, transparent, var(--journey-rail-accent), transparent);
-		transform: translateX(-100%);
-		animation: journeyFlow 2.4s linear infinite;
 	}
 
 	.journey__connector::after {
@@ -267,16 +264,6 @@ const stages = [
 	.journey__node:nth-child(5) .journey__connector::after {
 		border-color: var(--lane-foundation);
 		background-color: color-mix(in srgb, var(--lane-foundation) 60%, var(--journey-rail));
-	}
-
-	.journey__node:nth-child(2) .journey__connector span { animation-delay: 0.4s; }
-	.journey__node:nth-child(3) .journey__connector span { animation-delay: 0.8s; }
-	.journey__node:nth-child(4) .journey__connector span { animation-delay: 1.2s; }
-	.journey__node:nth-child(5) .journey__connector span { animation-delay: 1.6s; }
-
-	@keyframes journeyFlow {
-		0% { transform: translateX(-100%); }
-		60%, 100% { transform: translateX(100%); }
 	}
 
 	.journey__node:last-child .journey__connector {
@@ -515,10 +502,6 @@ const stages = [
 			background: var(--journey-rail);
 		}
 
-		.journey__connector span {
-			display: none;
-		}
-
 		.journey__connector::after {
 			right: auto;
 			left: 50%;
@@ -533,10 +516,12 @@ const stages = [
 	}
 
 	@media (prefers-reduced-motion: reduce) {
-		.journey__connector span {
-			animation: none;
-			transform: translateX(0);
-			opacity: 0.5;
+		.journey__node {
+			transition: border-color var(--transition-base), box-shadow var(--transition-base);
+		}
+
+		.journey__node:hover {
+			transform: none;
 		}
 	}
 </style>
