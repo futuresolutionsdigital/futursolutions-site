@@ -7,62 +7,65 @@ const offers = [
 		state: 'For outdated sites or fast professional launches',
 		priceFrom: 'from $3,500',
 		summary:
-			'Launch a stronger website foundation without starting from a blank page.',
-		fixes: 'Outdated design, unclear services, weak mobile experience, poor first impression.',
-		bestFor: 'Solo and group practices, med spas, hormone clinics, wellness brands ready to launch fast without looking templated.',
+			'Launch a premium website from a proven FutureSolutions foundation, customized around your brand, services, pages, and lead path.',
+		bestFor: 'Solo practices, med spas, wellness brands, clinics, consultants, and service businesses that need a stronger site without a fully custom process.',
 		bullets: [
-			'Curated demo library — every Foundation is a live, clickable site',
-			'Customizable brand, services, page structure, and booking flow',
-			'Faster path to launch than a fully custom build',
+			'Curated demo framework customized to your business',
+			'Core pages, service structure, and conversion path',
+			'Accessible editing layer for ongoing content updates',
 		],
 		ctaLabel: 'Explore Website Foundations',
 		ctaHref: '/templates',
-		recommended: false,
+		flag: 'Most popular',
+		flagStyle: 'popular',
+		emphasized: true,
 	},
 	{
 		lane: 'custom',
 		number: '02',
 		title: 'Signature Custom Websites',
-		state: 'For established practices needing a premium presence',
+		state: 'For established businesses needing a premium custom presence',
 		priceFrom: 'from $12,000',
 		summary:
-			'Create a tailored website experience around your offer, brand, and visitor journey.',
-		fixes: 'Generic positioning, inconsistent visuals, confusing service structure, weak authority.',
-		bestFor: 'Clinics, associations, and service businesses with unique positioning, complex content, or larger teams.',
+			'Create a fully custom website experience around your brand, services, content structure, and customer journey.',
+		bestFor: 'Established clinics, associations, professional service businesses, and organizations with unique positioning or more complex content needs.',
 		bullets: [
-			'Custom design system, page architecture, and content model',
-			'Built around your services, audience, and operational workflow',
-			'Deeper integrations and content strategy where it matters',
+			'Custom design direction and page architecture',
+			'Deeper brand, messaging, and content strategy',
+			'Built around complex services, audiences, or workflows',
 		],
 		ctaLabel: 'Plan a Custom Build',
 		ctaHref: '/services/custom-healthcare-websites',
-		recommended: false,
+		emphasized: false,
 	},
 	{
 		lane: 'growth',
 		number: '03',
 		title: 'Growth Systems',
 		state: 'For teams ready to connect website, CRM, and follow-up',
-		priceFrom: 'from $1,500 setup + $300/mo',
+		priceFrom: 'from $2,500 setup + $500/mo',
 		summary:
-			'Turn your website into a connected lead-handling system.',
-		fixes: 'Lost inquiries, inconsistent follow-up, poor pipeline visibility, disconnected marketing.',
-		bestFor: 'Practices losing inquiries to slow follow-up, missed calls, or scattered tools — and teams that want one source of truth.',
+			'Connect your website to a backend system for lead capture, booking, CRM routing, follow-up, review requests, and reporting.',
+		bestFor: 'Businesses that receive inquiries, miss follow-ups, run ads, or need a more organized path from website visitor to booked lead.',
 		bullets: [
-			'Form, booking, and CRM routing wired end-to-end',
-			'Automated follow-up, review requests, and reporting',
-			'Plugs into Foundations or a Signature Custom Website',
+			'Forms, booking, and CRM pipeline setup',
+			'Automated follow-up and lead notifications',
+			'Review requests, reporting, and system support',
 		],
-		ctaLabel: 'Build a Growth System',
+		note: 'Can be added to a new FutureSolutions website or connected to an existing site.',
+		ctaLabel: 'Add a Growth System',
 		ctaHref: '/services/growth-systems',
-		recommended: true,
+		flag: 'Growth layer',
+		flagStyle: 'layer',
+		emphasized: false,
 	},
 ];
 
 const stackLayers = [
-	{ lane: 'foundation', name: 'Website Foundations', formula: 'Website' },
-	{ lane: 'custom', name: 'Signature Custom', formula: 'Brand + Website' },
-	{ lane: 'growth', name: 'Growth Systems', formula: 'Website + CRM + Follow-up + Reporting' },
+	{ lane: 'foundation', name: 'Website Foundations', formula: 'Premium website foundation' },
+	{ lane: 'custom', name: 'Signature Custom', formula: 'Custom strategy + custom website' },
+	{ lane: 'growth', name: 'Growth Systems', formula: 'CRM + booking + follow-up + reporting' },
+	{ lane: 'complete', name: 'Complete Growth Build', formula: 'Website + CRM + follow-up + management' },
 ];
 ---
 
@@ -71,19 +74,19 @@ const stackLayers = [
 		<header class="offer-overview__head">
 			<p class="eyebrow">Your starting point</p>
 			<h2 id="offer-overview-heading" class="display-lg">
-				Three offers. One diagnostic.
-				<span class="offer-overview__head-soft">Pick the right starting point.</span>
+				Start with the right website.
+				<span class="offer-overview__head-soft">Add the systems when you're ready to grow.</span>
 			</h2>
 			<p class="lead offer-overview__lead">
-				We align the build to where your practice is now — whether you need a stronger website foundation, a premium custom presence, or a full website-to-follow-up growth system. Not sure? Start with a free audit and we'll recommend the right path.
+				Most clients start with a customized Website Foundation — a premium site built from a proven FutureSolutions framework and tailored to their brand, services, and customer journey. For more complex needs, we offer fully custom builds. For businesses ready to improve lead handling, we connect the website to CRM, booking, follow-up, and reporting.
 			</p>
 		</header>
 
 		<ul class="offer-overview__grid">
 			{
 				offers.map((offer) => (
-					<li class:list={[`offer-overview__card lane-accent-top lane-accent-top--${offer.lane}`, { 'offer-overview__card--recommended': offer.recommended }]}>
-						{offer.recommended && <span class="offer-overview__flag">Most complete</span>}
+					<li class:list={[`offer-overview__card lane-accent-top lane-accent-top--${offer.lane}`, { 'offer-overview__card--emphasized': offer.emphasized }]}>
+						{offer.flag && <span class:list={['offer-overview__flag', `offer-overview__flag--${offer.flagStyle}`]}>{offer.flag}</span>}
 						<div class="offer-overview__card-top">
 							<span class={`lane-tag lane-tag--${offer.lane}`}>{offer.number}</span>
 							<span class={`offer-overview__motif offer-overview__motif--${offer.lane}`} aria-hidden="true">
@@ -126,6 +129,8 @@ const stackLayers = [
 							))}
 						</ul>
 
+						{offer.note && <p class="offer-overview__note">{offer.note}</p>}
+
 						<div class="offer-overview__best">
 							<span class="offer-overview__best-label">Best for</span>
 							<p>{offer.bestFor}</p>
@@ -153,21 +158,21 @@ const stackLayers = [
 			</ol>
 		</div>
 
-		<aside class="offer-overview__audit lane-accent-top lane-accent-top--audit" aria-label="Website and Systems Audit">
+		<aside class="offer-overview__audit lane-accent-top lane-accent-top--audit" aria-label="Free Website and Lead Flow Snapshot">
 			<div class="offer-overview__audit-main">
-				<span class="lane-tag lane-tag--audit">04 · Diagnostic</span>
-				<h3 class="offer-overview__audit-title">Not sure what you need?</h3>
+				<span class="lane-tag lane-tag--audit">04 · Free snapshot</span>
+				<h3 class="offer-overview__audit-title">Not sure where your website is leaking leads?</h3>
 				<p class="offer-overview__audit-copy">
-					Start with a <strong>Website and Systems Audit</strong>. We review your site, services, booking path, and follow-up workflow, then send a written recommendation — Foundation, Custom, Growth System, Care plan, or none of the above.
+					Start with a free <strong>Website &amp; Lead Flow Snapshot</strong>. I'll review your site, message clarity, lead path, and follow-up flow, then send a short Loom with the biggest opportunities I see and the best starting point.
 				</p>
 			</div>
 
 			<div class="offer-overview__audit-cta">
 				<a class="button button-primary" href="/audit">
-					Get a Website Audit
+					Get a Free Snapshot
 					<span aria-hidden="true">&rarr;</span>
 				</a>
-				<p class="offer-overview__audit-note">Free · No sales pitch · Practical recommendation</p>
+				<p class="offer-overview__audit-note">Free Loom review · Clear recommendation · No pressure</p>
 			</div>
 		</aside>
 	</div>
@@ -246,9 +251,9 @@ const stackLayers = [
 	.offer-overview__card.lane-accent-top--custom     .offer-overview__bullets svg { color: var(--lane-custom); }
 	.offer-overview__card.lane-accent-top--growth     .offer-overview__bullets svg { color: var(--lane-growth); }
 
-	.offer-overview__card--recommended {
-		border-color: color-mix(in srgb, var(--lane-growth) 40%, var(--color-border));
-		box-shadow: 0 0 0 1px color-mix(in srgb, var(--lane-growth) 22%, transparent), var(--shadow-card);
+	.offer-overview__card--emphasized {
+		border-color: color-mix(in srgb, var(--lane-foundation) 42%, var(--color-border));
+		box-shadow: 0 0 0 1px color-mix(in srgb, var(--lane-foundation) 24%, transparent), var(--shadow-card);
 	}
 
 	.offer-overview__flag {
@@ -258,13 +263,34 @@ const stackLayers = [
 		transform: translateY(-50%);
 		padding: 0.28rem 0.6rem;
 		border-radius: 999px;
-		background: var(--lane-growth);
-		color: var(--color-white);
 		font-size: 0.66rem;
 		font-weight: 800;
 		letter-spacing: 0.08em;
 		text-transform: uppercase;
-		box-shadow: 0 4px 12px color-mix(in srgb, var(--lane-growth) 30%, transparent);
+	}
+
+	/* Primary/default emphasis — solid Foundation accent */
+	.offer-overview__flag--popular {
+		background: var(--lane-foundation);
+		color: var(--color-white);
+		box-shadow: 0 4px 12px color-mix(in srgb, var(--lane-foundation) 30%, transparent);
+	}
+
+	/* Add-on/system layer — subtler tinted pill so it reads as supporting, not dominant */
+	.offer-overview__flag--layer {
+		background: var(--lane-growth-tint);
+		color: var(--lane-growth-ink);
+		border: 1px solid color-mix(in srgb, var(--lane-growth) 32%, transparent);
+	}
+
+	.offer-overview__note {
+		margin: -0.25rem 0 0;
+		padding-left: 0.85rem;
+		border-left: 2px solid color-mix(in srgb, var(--lane-growth) 35%, var(--color-border-soft));
+		color: var(--color-muted);
+		font-size: 0.82rem;
+		font-style: italic;
+		line-height: 1.5;
 	}
 
 	.offer-overview__stack {
@@ -308,6 +334,7 @@ const stackLayers = [
 	.offer-overview__stack-item--foundation { border-left-color: var(--lane-foundation); }
 	.offer-overview__stack-item--custom     { border-left-color: var(--lane-custom); }
 	.offer-overview__stack-item--growth      { border-left-color: var(--lane-growth); }
+	.offer-overview__stack-item--complete    { border-left-color: var(--lane-audit); background: color-mix(in srgb, var(--lane-audit-tint) 45%, var(--color-white)); }
 
 	.offer-overview__stack-name {
 		min-width: 12rem;
@@ -331,6 +358,11 @@ const stackLayers = [
 
 	.offer-overview__stack-item--growth .offer-overview__stack-formula {
 		color: var(--lane-growth-ink);
+		font-weight: 700;
+	}
+
+	.offer-overview__stack-item--complete .offer-overview__stack-formula {
+		color: var(--lane-audit-ink);
 		font-weight: 700;
 	}
 
