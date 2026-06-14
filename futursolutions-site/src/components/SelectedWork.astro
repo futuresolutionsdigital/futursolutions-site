@@ -10,7 +10,7 @@
 const snapshots = [
 	{
 		visual: 'website',
-		label: 'Project snapshot',
+		label: 'Website foundation snapshot',
 		title: 'Healthcare / wellness website rebuild',
 		problem:
 			'The site needed clearer service structure, stronger trust placement, and a more direct consultation path.',
@@ -27,7 +27,7 @@ const snapshots = [
 	},
 	{
 		visual: 'funnel',
-		label: 'Project snapshot',
+		label: 'Conversion path snapshot',
 		title: 'Appointment-based service funnel',
 		problem:
 			'Visitors needed a clearer path from first visit to inquiry, with less friction between interest and action.',
@@ -43,7 +43,7 @@ const snapshots = [
 	},
 	{
 		visual: 'system',
-		label: 'System snapshot',
+		label: 'Growth system snapshot',
 		title: 'Website + CRM follow-up foundation',
 		problem:
 			'The website needed to connect more clearly with lead capture, follow-up, and reporting workflows.',
@@ -65,10 +65,10 @@ const snapshots = [
 		<header class="selected-work__head">
 			<div class="selected-work__head-left">
 				<p class="eyebrow">Selected work</p>
-				<h2 id="selected-work-heading" class="display-lg">Proof-ready project snapshots.</h2>
+				<h2 id="selected-work-heading" class="display-lg">Selected website and growth system snapshots.</h2>
 			</div>
 			<p class="selected-work__head-copy">
-				A few examples of the kind of structure, clarity, and backend thinking we bring into website projects — from service-page architecture to the lead-handling process behind the form.
+				A few examples of how FutureSolutions improves the full path from website structure to lead capture, follow-up, and reporting — not just the visual layer of the site.
 			</p>
 		</header>
 
@@ -137,6 +137,24 @@ const snapshots = [
 				))
 			}
 		</ul>
+
+		{/* Routes to the existing /audit page (the Free Website & Lead Flow Snapshot).
+		    TODO: point to a dedicated /snapshot route if one is added later. */}
+		<div class="selected-work__cta">
+			<div class="selected-work__cta-text">
+				<p class="selected-work__cta-kicker">Want this kind of review for your site?</p>
+				<p class="selected-work__cta-body">
+					Start with a free Website &amp; Lead Flow Snapshot. I'll review your website, message clarity, lead path, and follow-up flow, then send a short Loom with the biggest opportunities I see.
+				</p>
+			</div>
+			<div class="selected-work__cta-action">
+				<a class="button button-primary" href="/audit">
+					Get a Free Snapshot
+					<span aria-hidden="true">&rarr;</span>
+				</a>
+				<p class="selected-work__cta-note">Free Loom review · Clear recommendation · No pressure</p>
+			</div>
+		</div>
 	</div>
 </section>
 
@@ -159,7 +177,7 @@ const snapshots = [
 	}
 
 	.selected-work__head h2 {
-		max-width: 16ch;
+		max-width: 18ch;
 		margin-bottom: 0;
 	}
 
@@ -370,14 +388,15 @@ const snapshots = [
 
 	.sw-card__label {
 		width: fit-content;
+		max-width: 100%;
 		padding: 0.2rem 0.55rem;
 		border-radius: 999px;
 		background: var(--color-bg);
 		border: 1px solid var(--color-border-soft);
 		color: var(--color-muted);
-		font-size: 0.64rem;
+		font-size: 0.62rem;
 		font-weight: 800;
-		letter-spacing: 0.1em;
+		letter-spacing: 0.08em;
 		text-transform: uppercase;
 	}
 
@@ -463,6 +482,52 @@ const snapshots = [
 		line-height: 1;
 	}
 
+	/* ── Snapshot CTA (Free Website & Lead Flow Snapshot) ─── */
+	.selected-work__cta {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) auto;
+		align-items: center;
+		gap: clamp(1.25rem, 3vw, 2.75rem);
+		margin-top: clamp(1.75rem, 3vw, 2.5rem);
+		padding: clamp(1.5rem, 3vw, 2rem) clamp(1.5rem, 3vw, 2.25rem);
+		border: 1px solid var(--color-border-soft);
+		border-radius: var(--radius-lg);
+		background:
+			radial-gradient(ellipse 60% 130% at 0% 0%, var(--lane-audit-tint), transparent 70%),
+			var(--color-bg);
+	}
+
+	.selected-work__cta-kicker {
+		margin: 0 0 0.4rem;
+		color: var(--color-text);
+		font-size: 1.05rem;
+		font-weight: 700;
+		letter-spacing: -0.01em;
+		line-height: 1.3;
+	}
+
+	.selected-work__cta-body {
+		margin: 0;
+		max-width: 58ch;
+		color: var(--color-muted);
+		font-size: 0.95rem;
+		line-height: 1.6;
+	}
+
+	.selected-work__cta-action {
+		display: grid;
+		gap: 0.65rem;
+		justify-items: start;
+	}
+
+	.selected-work__cta-note {
+		margin: 0;
+		color: var(--color-muted);
+		font-size: 0.78rem;
+		font-weight: 600;
+		letter-spacing: -0.005em;
+	}
+
 	@media (max-width: 1040px) {
 		.selected-work__head {
 			grid-template-columns: 1fr;
@@ -472,6 +537,13 @@ const snapshots = [
 		.selected-work__grid {
 			grid-template-columns: 1fr;
 			gap: 1.25rem;
+		}
+	}
+
+	@media (max-width: 760px) {
+		.selected-work__cta {
+			grid-template-columns: 1fr;
+			align-items: start;
 		}
 	}
 </style>
