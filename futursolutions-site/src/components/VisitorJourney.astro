@@ -133,6 +133,9 @@ const stages = [
 		position: relative;
 		overflow: hidden;
 		padding-block: var(--section-spacing);
+		/* Muted teal-gray route line that threads the whole journey */
+		--journey-rail: color-mix(in srgb, var(--lane-foundation) 34%, var(--color-ink-line-strong));
+		--journey-rail-accent: color-mix(in srgb, var(--lane-foundation) 70%, white);
 	}
 
 	.journey__dots {
@@ -178,28 +181,38 @@ const stages = [
 		list-style: none;
 	}
 
-	/* Continuous rail threading the stages together (single-row desktop). */
-	.journey__track::before {
-		content: '';
-		position: absolute;
-		left: 1.5rem;
-		right: 1.5rem;
-		top: 2.85rem;
-		height: 2px;
-		background: linear-gradient(90deg, transparent, var(--color-ink-line-strong) 8%, var(--color-ink-line-strong) 92%, transparent);
-		z-index: 0;
-	}
-
 	.journey__node {
+		--node-pad: 1.1rem;
 		position: relative;
 		display: flex;
 		flex-direction: column;
 		gap: 0.6rem;
-		padding: 1.35rem 1.1rem;
+		padding: 1.35rem var(--node-pad);
 		border: 1px solid var(--color-ink-line-strong);
 		border-radius: var(--radius-lg);
 		background: var(--color-ink-soft);
 		transition: transform 340ms var(--ease-out-quart), border-color var(--transition-base), box-shadow var(--transition-base);
+	}
+
+	/* Route line that runs through each node at the icon's center, bleeding to the
+	   card edges so it visibly connects to the gap connectors on either side. */
+	.journey__node-top::before {
+		content: '';
+		position: absolute;
+		top: 1.55rem;
+		left: calc(-1 * var(--node-pad));
+		right: calc(-1 * var(--node-pad));
+		height: 2px;
+		transform: translateY(-50%);
+		background: var(--journey-rail);
+		z-index: 0;
+	}
+
+	/* The path terminates inside the Book node — stop the rail at the check node */
+	.journey__node:last-child .journey__node-top::before {
+		right: auto;
+		width: calc(var(--node-pad) + 3.1rem);
+		background: linear-gradient(90deg, var(--journey-rail), var(--journey-rail-accent));
 	}
 
 	.journey__node:hover {
@@ -217,21 +230,22 @@ const stages = [
 		box-shadow: 0 0 0 1px color-mix(in srgb, var(--lane-foundation) 25%, transparent), 0 24px 50px rgba(79, 124, 76, 0.18);
 	}
 
-	/* animated flowing connector + directional arrow in each gap */
+	/* connector bridging the rail across each gap, with a clear directional chevron */
 	.journey__connector {
 		position: absolute;
-		top: 2.85rem;
+		top: 2.9rem;
 		right: -0.95rem;
 		width: 0.95rem;
 		height: 2px;
-		background: var(--color-ink-line-strong);
+		transform: translateY(-50%);
+		background: var(--journey-rail);
 		z-index: 2;
 	}
 
 	.journey__connector span {
 		position: absolute;
 		inset: 0;
-		background: linear-gradient(90deg, transparent, var(--color-ink-accent), transparent);
+		background: linear-gradient(90deg, transparent, var(--journey-rail-accent), transparent);
 		transform: translateX(-100%);
 		animation: journeyFlow 2.4s linear infinite;
 	}
@@ -239,13 +253,20 @@ const stages = [
 	.journey__connector::after {
 		content: '';
 		position: absolute;
-		right: -1px;
+		right: -2px;
 		top: 50%;
-		width: 6px;
-		height: 6px;
-		border-top: 2px solid var(--color-ink-accent);
-		border-right: 2px solid var(--color-ink-accent);
+		width: 9px;
+		height: 9px;
+		border-top: 2px solid var(--journey-rail-accent);
+		border-right: 2px solid var(--journey-rail-accent);
 		transform: translateY(-50%) rotate(45deg);
+	}
+
+	/* the last hop lands into the Book outcome — make it read as the arrival */
+	.journey__node:nth-child(5) .journey__connector,
+	.journey__node:nth-child(5) .journey__connector::after {
+		border-color: var(--lane-foundation);
+		background-color: color-mix(in srgb, var(--lane-foundation) 60%, var(--journey-rail));
 	}
 
 	.journey__node:nth-child(2) .journey__connector span { animation-delay: 0.4s; }
@@ -263,13 +284,16 @@ const stages = [
 	}
 
 	.journey__node-top {
+		position: relative;
 		display: flex;
-		align-items: center;
+		align-items: flex-start;
 		justify-content: space-between;
 		gap: 0.5rem;
 	}
 
 	.journey__step {
+		position: relative;
+		z-index: 1;
 		font-size: 0.7rem;
 		font-weight: 800;
 		letter-spacing: 0.14em;
@@ -285,14 +309,16 @@ const stages = [
 	}
 
 	.journey__icon {
+		position: relative;
+		z-index: 1;
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
 		width: 3.1rem;
 		height: 3.1rem;
 		border-radius: 14px;
-		background: rgba(255, 255, 255, 0.07);
-		border: 1px solid var(--color-ink-line-strong);
+		background: color-mix(in srgb, var(--color-white) 7%, var(--color-ink-soft));
+		border: 1px solid color-mix(in srgb, var(--journey-rail) 70%, var(--color-ink-line-strong));
 		color: var(--color-white);
 	}
 
@@ -434,7 +460,7 @@ const stages = [
 		}
 
 		.journey__node {
-			padding-inline: 0.85rem;
+			--node-pad: 0.85rem;
 		}
 
 		.journey__stage {
@@ -443,11 +469,6 @@ const stages = [
 
 		.journey__question {
 			font-size: 0.86rem;
-		}
-
-		.journey__track::before {
-			left: 1.2rem;
-			right: 1.2rem;
 		}
 
 		.journey__connector {
@@ -472,16 +493,16 @@ const stages = [
 			margin-inline: auto;
 		}
 
-		/* horizontal rail off; the vertical connectors carry the path */
-		.journey__track::before {
+		.journey__node {
+			--node-pad: 1.35rem;
+		}
+
+		/* horizontal node rail off; the vertical connectors carry the path */
+		.journey__node-top::before {
 			display: none;
 		}
 
-		.journey__node {
-			padding-inline: 1.35rem;
-		}
-
-		/* vertical segment dropping from each node into the next */
+		/* vertical segment dropping from each node's icon into the next */
 		.journey__connector {
 			display: block;
 			top: auto;
@@ -490,7 +511,8 @@ const stages = [
 			left: 2.9rem;
 			width: 2px;
 			height: 1.9rem;
-			background: var(--color-ink-line-strong);
+			transform: none;
+			background: var(--journey-rail);
 		}
 
 		.journey__connector span {
