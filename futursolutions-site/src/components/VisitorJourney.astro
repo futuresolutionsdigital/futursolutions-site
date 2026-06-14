@@ -5,48 +5,48 @@ const stages = [
 		icon: 'search',
 		stage: 'Discover',
 		question: 'Is this relevant to me?',
-		risk: 'Weak local visibility or mismatched traffic.',
-		fix: 'Search-ready structure and clearer entry points.',
+		risk: 'Weak local visibility',
+		fix: 'Search-ready entry points',
 	},
 	{
 		lane: 'custom',
 		icon: 'page',
 		stage: 'Understand',
 		question: 'Do they solve my problem?',
-		risk: 'Services feel generic or hard to compare.',
-		fix: 'Service pages organized around visitor intent.',
+		risk: 'Services feel generic',
+		fix: 'Pages organized by intent',
 	},
 	{
 		lane: 'custom',
 		icon: 'shield',
 		stage: 'Trust',
 		question: 'Can I trust this provider?',
-		risk: 'Reviews, credentials, FAQs, and proof are hidden.',
-		fix: 'Trust signals placed near decision points.',
+		risk: 'Proof is hidden',
+		fix: 'Trust near decision points',
 	},
 	{
 		lane: 'audit',
 		icon: 'cursor',
 		stage: 'Act',
 		question: 'What do I do next?',
-		risk: 'CTA is buried, vague, or inconsistent.',
-		fix: 'Clear booking, call, and form paths.',
+		risk: 'CTA is buried',
+		fix: 'Clear booking, call, and form paths',
 	},
 	{
 		lane: 'growth',
 		icon: 'flow',
 		stage: 'Follow-Up',
 		question: 'Did they respond clearly?',
-		risk: 'Form leads sit in an inbox with no process.',
-		fix: 'CRM routing, reminders, and nurture.',
+		risk: 'Leads sit in an inbox',
+		fix: 'CRM routing and nurture',
 	},
 	{
 		lane: 'booked',
 		icon: 'check',
 		stage: 'Book',
 		question: 'Am I ready to move forward?',
-		risk: 'Too much friction before the appointment.',
-		fix: 'Clear confirmation and a next-step experience.',
+		risk: 'Too much friction',
+		fix: 'Clear confirmation and next step',
 	},
 ];
 ---
@@ -63,7 +63,7 @@ const stages = [
 				</h2>
 			</div>
 			<p class="lead journey__lead">
-				A website isn't one moment — it's a journey from "who is this?" to "I'm booked." Each stage is a place visitors quietly drop off. We design every one of them, end to end.
+				A website isn't one moment — it's a journey from "who is this?" to "I'm booked." Each stage is a place visitors can quietly drop off. We design the path end to end.
 			</p>
 		</header>
 
@@ -278,7 +278,10 @@ const stages = [
 	}
 
 	.journey__step--final {
-		color: var(--lane-foundation);
+		padding: 0.2rem 0.5rem;
+		border-radius: 999px;
+		background: color-mix(in srgb, var(--lane-foundation) 26%, transparent);
+		color: color-mix(in srgb, var(--lane-foundation) 55%, white);
 	}
 
 	.journey__icon {
@@ -358,7 +361,11 @@ const stages = [
 	}
 
 	.journey__rf-tag {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
 		flex-shrink: 0;
+		min-width: 2.4rem;
 		margin-top: 0.05rem;
 		padding: 0.12rem 0.4rem;
 		border-radius: 5px;
@@ -420,18 +427,32 @@ const stages = [
 		transform: translateX(3px);
 	}
 
+	/* Laptops/desktops: keep the single-row horizontal path, just tighten spacing so it never feels cramped */
 	@media (max-width: 1280px) {
 		.journey__track {
-			grid-template-columns: repeat(3, minmax(0, 1fr));
-			gap: 1rem;
+			gap: 0.6rem;
+		}
+
+		.journey__node {
+			padding-inline: 0.85rem;
+		}
+
+		.journey__stage {
+			font-size: 1.05rem;
+		}
+
+		.journey__question {
+			font-size: 0.86rem;
 		}
 
 		.journey__track::before {
-			display: none;
+			left: 1.2rem;
+			right: 1.2rem;
 		}
 
 		.journey__connector {
-			display: none;
+			right: -0.65rem;
+			width: 0.65rem;
 		}
 	}
 
@@ -442,28 +463,38 @@ const stages = [
 		}
 	}
 
-	@media (max-width: 760px) {
-		.journey__track {
-			grid-template-columns: repeat(2, minmax(0, 1fr));
-			gap: 1rem;
-		}
-	}
-
-	@media (max-width: 520px) {
+	/* Tablet + mobile: one centered vertical timeline so the path always reads as a connected journey, never scattered cards */
+	@media (max-width: 1024px) {
 		.journey__track {
 			grid-template-columns: 1fr;
-			gap: 1.6rem;
+			gap: 1.9rem;
+			max-width: 40rem;
+			margin-inline: auto;
 		}
 
-		/* vertical connector between stacked stages */
+		/* horizontal rail off; the vertical connectors carry the path */
+		.journey__track::before {
+			display: none;
+		}
+
+		.journey__node {
+			padding-inline: 1.35rem;
+		}
+
+		/* vertical segment dropping from each node into the next */
 		.journey__connector {
 			display: block;
 			top: auto;
 			right: auto;
-			bottom: -1.6rem;
-			left: 2.6rem;
+			bottom: -1.9rem;
+			left: 2.9rem;
 			width: 2px;
-			height: 1.6rem;
+			height: 1.9rem;
+			background: var(--color-ink-line-strong);
+		}
+
+		.journey__connector span {
+			display: none;
 		}
 
 		.journey__connector::after {
