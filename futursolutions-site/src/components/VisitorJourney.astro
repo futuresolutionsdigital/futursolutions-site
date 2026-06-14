@@ -134,8 +134,8 @@ const stages = [
 		overflow: hidden;
 		padding-block: var(--section-spacing);
 		/* Muted teal-gray route line that threads the whole journey */
-		--journey-rail: color-mix(in srgb, var(--lane-foundation) 34%, var(--color-ink-line-strong));
-		--journey-rail-accent: color-mix(in srgb, var(--lane-foundation) 70%, white);
+		--journey-rail: color-mix(in srgb, var(--lane-foundation) 30%, var(--color-ink-line));
+		--journey-rail-accent: color-mix(in srgb, var(--lane-foundation) 64%, white);
 	}
 
 	.journey__dots {
@@ -306,6 +306,9 @@ const stages = [
 		background: color-mix(in srgb, var(--color-white) 7%, var(--color-ink-soft));
 		border: 1px solid color-mix(in srgb, var(--journey-rail) 70%, var(--color-ink-line-strong));
 		color: var(--color-white);
+		/* card-colored ring interrupts the rail so each node reads as placed on the path,
+		   plus a faint teal halo so the path is strongest at the nodes */
+		box-shadow: 0 0 0 5px var(--color-ink-soft), 0 0 16px 1px color-mix(in srgb, var(--lane-foundation) 13%, transparent);
 	}
 
 	.journey__icon svg {
@@ -406,6 +409,7 @@ const stages = [
 	}
 
 	.journey__foot {
+		position: relative;
 		display: flex;
 		flex-wrap: wrap;
 		align-items: center;
@@ -414,6 +418,18 @@ const stages = [
 		margin-top: clamp(2.25rem, 4vw, 3rem);
 		padding-top: clamp(1.75rem, 3vw, 2.25rem);
 		border-top: 1px solid var(--color-ink-line);
+	}
+
+	/* faint continuation: the journey rail drops into the diagnostic CTA divider */
+	.journey__foot::before {
+		content: '';
+		position: absolute;
+		top: calc(-1 * clamp(2.25rem, 4vw, 3rem));
+		left: 0;
+		width: 2px;
+		height: clamp(2.25rem, 4vw, 3rem);
+		background: linear-gradient(180deg, transparent, var(--journey-rail));
+		opacity: 0.7;
 	}
 
 	.journey__foot-text {
