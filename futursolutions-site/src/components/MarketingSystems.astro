@@ -28,13 +28,13 @@ const buckets = [
 	},
 	{
 		icon: 'chart',
-		title: 'Analytics & tracking',
-		text: 'The business can see what is working and what needs improvement.',
+		title: 'Tracking & visibility',
+		text: 'The business can see what is working, where leads come from, and what needs improvement.',
 	},
 	{
 		icon: 'heart',
-		title: 'Healthcare & wellness context',
-		text: 'Messaging, trust signals, and structure fit how healthcare and wellness visitors decide.',
+		title: 'Health, wellness & service context',
+		text: 'Messaging, trust signals, and structure fit how high-trust service buyers evaluate their options.',
 	},
 ];
 ---
@@ -43,11 +43,11 @@ const buckets = [
 	<div class="site-container site-container--wide">
 		<header class="msys__head">
 			<div class="msys__head-left">
-				<p class="eyebrow">The thinking behind the build</p>
+				<p class="eyebrow">Strategy behind the build</p>
 				<h2 id="msys-heading" class="display-lg">Built by a marketer, not just a designer.</h2>
 			</div>
 			<p class="msys__head-copy">
-				FutureSolutions websites are shaped by the same things that drive real lead generation: service clarity, SEO structure, paid-traffic readiness, booking flow, analytics, and follow-up.
+				FutureSolutions websites are shaped around the full path from first visit to booked lead: service clarity, SEO structure, paid-traffic readiness, booking flow, analytics, and follow-up.
 			</p>
 		</header>
 
@@ -60,7 +60,7 @@ const buckets = [
 					</>
 				))}
 			</ol>
-			<p class="msys__stack-note">The website is the hub — every other channel either feeds it or runs off it.</p>
+			<p class="msys__stack-note">The website is the hub — every channel either feeds it, captures through it, or follows up from it.</p>
 		</div>
 
 		<ul class="msys__grid" aria-label="How marketing thinking shapes the build">
@@ -145,7 +145,7 @@ const buckets = [
 		flex-wrap: wrap;
 		align-items: center;
 		gap: 0.5rem 0.4rem;
-		margin: 0 0 0.85rem;
+		margin: 0 0 1.1rem;
 		padding: 0;
 		list-style: none;
 	}
@@ -177,9 +177,11 @@ const buckets = [
 
 	.msys__stack-note {
 		margin: 0;
-		color: var(--color-muted);
-		font-size: 0.9rem;
-		font-weight: 500;
+		padding-top: 1rem;
+		border-top: 1px solid color-mix(in srgb, var(--lane-growth) 14%, var(--color-border-soft));
+		color: var(--color-text);
+		font-size: 0.95rem;
+		font-weight: 600;
 		line-height: 1.5;
 	}
 
