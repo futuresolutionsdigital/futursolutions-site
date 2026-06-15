@@ -759,13 +759,17 @@ const newDemoSlugs = new Set(['premium-wellness-clinic', 'hormone-trt']);
 	}
 
 	.demo-card--vt .demo-card__media {
-		padding: 0;
-		border-bottom: none;
+		padding: 0.85rem 0.85rem 0;
+		border-bottom: 1px solid var(--color-border);
 	}
 
+	/* Frame the VANTAGE preview like the other grid mockups so it reads as part
+	   of the same product family — bold dark/red screen, consistent card frame. */
 	.vt-prev {
+		overflow: hidden;
 		background: #111;
-		border-radius: 0;
+		border: 1px solid rgba(200, 30, 30, 0.3);
+		border-radius: 12px 12px 0 0;
 	}
 
 	.vt-prev__chrome {
