@@ -1,11 +1,20 @@
 ---
 import type { ServiceFAQ } from '../data/serviceDetails';
 
-interface Props {
-	faqs: ServiceFAQ[];
+interface FAQCta {
+	heading: string;
+	body: string;
+	buttonLabel: string;
+	href: string;
+	micro?: string;
 }
 
-const { faqs } = Astro.props;
+interface Props {
+	faqs: ServiceFAQ[];
+	cta?: FAQCta;
+}
+
+const { faqs, cta } = Astro.props;
 ---
 
 <section class="section section-muted service-faq" aria-labelledby="service-faq-heading">
@@ -22,6 +31,20 @@ const { faqs } = Astro.props;
 				</article>
 			))}
 		</div>
+
+		{cta && (
+			<div class="service-faq__cta">
+				<div class="service-faq__cta-copy">
+					<h3 class="service-faq__cta-heading">{cta.heading}</h3>
+					<p class="service-faq__cta-body">{cta.body}</p>
+					{cta.micro && <p class="service-faq__cta-micro">{cta.micro}</p>}
+				</div>
+				<a class="button button-primary service-faq__cta-button" href={cta.href}>
+					{cta.buttonLabel}
+					<span aria-hidden="true">&rarr;</span>
+				</a>
+			</div>
+		)}
 	</div>
 </section>
 
@@ -51,9 +74,64 @@ const { faqs } = Astro.props;
 		line-height: 1.6;
 	}
 
+	.service-faq__cta {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1.25rem 2rem;
+		margin-top: clamp(1.75rem, 3vw, 2.5rem);
+		padding: clamp(1.5rem, 3vw, 2rem);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		background: linear-gradient(135deg, var(--color-white) 0%, var(--lane-audit-tint) 130%);
+		box-shadow: var(--shadow-card);
+	}
+
+	.service-faq__cta-copy {
+		max-width: 52ch;
+	}
+
+	.service-faq__cta-heading {
+		margin: 0 0 0.4rem;
+		font-size: 1.18rem;
+		letter-spacing: -0.02em;
+	}
+
+	.service-faq__cta-body {
+		margin: 0;
+		color: var(--color-text);
+		font-size: 0.95rem;
+		font-weight: 500;
+		line-height: 1.55;
+	}
+
+	.service-faq__cta-micro {
+		margin: 0.5rem 0 0;
+		color: var(--color-muted);
+		font-size: 0.82rem;
+		font-weight: 600;
+		letter-spacing: 0.01em;
+	}
+
+	.service-faq__cta-button span {
+		display: inline-block;
+		transition: transform 220ms var(--ease-out-quart);
+	}
+
+	.service-faq__cta-button:hover span {
+		transform: translateX(2px);
+	}
+
 	@media (max-width: 720px) {
 		.service-faq__grid {
 			grid-template-columns: 1fr;
+		}
+	}
+
+	@media (max-width: 560px) {
+		.service-faq__cta-button {
+			width: 100%;
 		}
 	}
 </style>

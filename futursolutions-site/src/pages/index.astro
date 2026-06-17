@@ -25,52 +25,52 @@ const faqs = [
 	{
 		question: 'What does FutureSolutions actually do?',
 		answer:
-			'We design and build premium websites for healthcare and high-trust service businesses, and connect them to the systems behind the scenes — lead capture, booking, and follow-up. You can start with a customizable Website Foundation, a fully custom build, or add a Growth System to a site you already have.',
+			'We design and build premium websites for health, wellness, and high-trust service businesses, then connect them to the systems behind the scenes — lead capture, booking, CRM, follow-up, and reporting. You can start with a customizable Website Foundation, a Signature Custom Website, or add a Growth System to a site you already have.',
 	},
 	{
 		question: 'Do I need a custom website or a website foundation?',
 		answer:
-			'It depends on your stage. A Website Foundation is the fastest, more affordable path to a credible, converting site and fits most clinics and wellness brands. A Signature Custom build makes sense when you have unique positioning, complex content, or a larger team. The free audit makes a clear recommendation either way — no pressure toward the larger option.',
+			'It depends on your stage. A Website Foundation is the fastest, more accessible path to a credible, conversion-ready site. A Signature Custom Website makes sense when you have unique positioning, complex content, or a larger team. The Free Website & Lead Flow Snapshot helps recommend the right path without pushing you toward the larger option.',
 	},
 	{
 		question: 'Can you work with my existing website?',
 		answer:
-			'Often, yes. If your current site has a solid foundation, we can restructure key pages, fix the conversion path, and connect follow-up systems without a full rebuild. If it is holding you back, the audit will say so plainly — and a Website Foundation or custom build may be the better investment.',
+			'Often, yes. If your current site has a solid foundation, we can restructure key pages, improve the conversion path, and connect follow-up systems without a full rebuild. If the site is holding you back, the Snapshot will show whether a Website Foundation or custom build is the better investment.',
 	},
 	{
 		question: 'Can you connect my website to GoHighLevel or another CRM?',
 		answer:
-			'Yes. Forms, calendars, and lead routing connect into GoHighLevel (or a similar CRM), with automated follow-up, review requests, and basic reporting. This can be wired in at launch or added to a site you already have.',
+			'Yes. Forms, calendars, and lead routing can connect into GoHighLevel or a similar CRM, with automated follow-up, review requests, and basic reporting. This can be wired in at launch or added to a site you already have.',
 	},
 	{
 		question: 'Do you write the copy and structure the service pages?',
 		answer:
-			'Yes. Conversion-focused copy and service-page structure are part of the build — pages are organized around how your visitors actually decide, not filled with placeholder text. You stay involved so every detail is accurate to your practice.',
+			'Yes. Conversion-focused copy and service-page structure are part of the build — pages are organized around how visitors actually decide, not filled with placeholder text. You stay involved so every detail is accurate to your business.',
 	},
 	{
 		question: 'Do you only work with healthcare businesses?',
 		answer:
-			'We focus on healthcare, wellness, and high-trust, appointment-based businesses — clinics, med spas, private practices, hormone and TRT clinics, wellness brands, and associations. If trust and booked appointments drive your business, you are a good fit, even just outside strict clinical care.',
+			'We focus on health, wellness, and high-trust service businesses — including clinics, med spas, private practices, hormone/TRT clinics, wellness brands, associations, consultants, and appointment-based service businesses. If trust and booked inquiries drive your business, you may be a good fit.',
 	},
 	{
-		question: 'Can you help with SEO or paid ads after launch?',
+		question: 'Can you support SEO, landing pages, or paid traffic after launch?',
 		answer:
-			'Sites are built SEO-aware and campaign-ready, and our Care & Optimization plans support ongoing SEO structure and landing pages for paid traffic. We focus on the website and system side, and we are clear about what we do and do not run so nothing falls through the cracks.',
+			'Yes. Sites are built SEO-aware and campaign-ready from the start. Ongoing plans can support content structure, landing pages, tracking, and conversion improvements. If paid traffic is involved, we make sure the website and lead-handling system are ready before traffic is sent.',
 	},
 	{
-		question: 'What happens after I request an audit?',
+		question: 'What happens after I request a Free Snapshot?',
 		answer:
-			'We review your site, visibility, and follow-up by hand, then send a structured written breakdown of what is working and what to fix first — with a recommendation. No obligation and no sales pitch.',
+			'We review your site, visibility, and follow-up flow by hand, then send a short Loom review with a clear written recommendation on where to start. No automated score, no pressure — just the biggest opportunities we see.',
 	},
 	{
 		question: 'How is this different from hiring a normal web designer?',
 		answer:
-			'Most designers stop at how the pages look. We plan around your offer, the visitor journey, and the system behind the form — service clarity, conversion path, CRM, follow-up, and tracking — so the site actually generates and handles leads instead of just looking nice.',
+			'Most designers stop at how the pages look. We plan around your offer, the visitor journey, and the system behind the form — service clarity, conversion path, CRM, follow-up, and tracking — so the site can generate and handle leads instead of just looking nice.',
 	},
 	{
 		question: 'How long does a build usually take?',
 		answer:
-			'A Website Foundation is the fastest path to launch; custom builds take longer because of the added strategy and design. We map a realistic timeline during the strategy step so you know what to expect before any work begins.',
+			'A Website Foundation is usually the fastest path to launch; custom builds take longer because of the added strategy, design, and content planning. We map a realistic timeline during the strategy step so you know what to expect before work begins.',
 	},
 ];
 ---
@@ -99,7 +99,16 @@ const faqs = [
 	<SectionBridge label="Next: the free snapshot" text="You've seen the strategy behind the build — before we recommend yours, the free snapshot finds the gaps costing you clarity, trust, and follow-up." />
 	<AuditScope />
 	<Testimonials variant="muted" />
-	<ServiceFAQSection faqs={faqs} />
+	<ServiceFAQSection
+		faqs={faqs}
+		cta={{
+			heading: 'Still not sure where to start?',
+			body: "Get a free Website & Lead Flow Snapshot. I'll review your site, lead path, and follow-up flow, then send a short Loom with the clearest opportunities and the best starting point.",
+			buttonLabel: 'Get My Free Snapshot',
+			href: '/audit',
+			micro: 'Free Loom review · Clear recommendation · No pressure',
+		}}
+	/>
 	<FinalCTA />
 </BaseLayout>
 
