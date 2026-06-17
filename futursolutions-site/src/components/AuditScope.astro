@@ -1,13 +1,14 @@
 ---
-// "What we check before recommending anything" — a diagnostic checklist
-// grouped into three buckets (Clarity / Conversion / Systems). No fake scores
-// or percentages; it reads like the report a visitor will actually receive.
+// "What we check before recommending anything" — the free Website & Lead Flow
+// Snapshot, presented as a diagnostic checklist grouped into three buckets
+// (Clarity / Conversion / Visibility & Systems). No fake scores or percentages;
+// it reads like the short, hand-reviewed report a visitor will actually receive.
 const buckets = [
 	{
 		lane: 'foundation',
 		name: 'Clarity',
 		items: [
-			{ title: 'Positioning', text: 'Can visitors quickly understand who you help and what you offer?' },
+			{ title: 'Positioning', text: 'Can visitors quickly understand who you help, what you offer, and why it matters?' },
 			{ title: 'Service structure', text: 'Are services organized around visitor intent, not internal categories?' },
 			{ title: 'Messaging', text: 'Does the copy explain benefits, objections, and next steps clearly?' },
 		],
@@ -23,7 +24,8 @@ const buckets = [
 	},
 	{
 		lane: 'audit',
-		name: 'Systems',
+		name: 'Visibility & Systems',
+		isLong: true,
 		items: [
 			{ title: 'Local visibility', text: 'Does the site support service-area search and relevant local discovery?' },
 			{ title: 'Forms & CRM', text: 'Do inquiries route into a clear lead-handling process?' },
@@ -37,20 +39,20 @@ const buckets = [
 	<div class="site-container site-container--wide">
 		<header class="audit-scope__head">
 			<div class="audit-scope__head-left">
-				<p class="eyebrow">The audit</p>
+				<p class="eyebrow">The free snapshot</p>
 				<h2 id="audit-scope-heading" class="display-lg">What we check before recommending anything.</h2>
 			</div>
 			<p class="audit-scope__head-copy">
-				The audit reviews the parts of your website that most directly affect clarity, trust, conversion, local visibility, and follow-up — then shows you what to fix first.
+				The free Website &amp; Lead Flow Snapshot reviews the parts of your site that most directly affect clarity, trust, conversion, local visibility, and follow-up — then shows you the best starting point.
 			</p>
 		</header>
 
-		<div class="audit-scope__buckets" aria-label="What the audit reviews, grouped into three areas">
+		<div class="audit-scope__buckets" aria-label="What the free snapshot reviews, grouped into three areas">
 			{
 				buckets.map((bucket) => (
 					<div class={`audit-scope__bucket lane-accent-top lane-accent-top--${bucket.lane}`}>
 						<div class="audit-scope__bucket-head">
-							<span class={`lane-tag lane-tag--${bucket.lane}`}>{bucket.name}</span>
+							<span class:list={[`lane-tag lane-tag--${bucket.lane}`, { 'audit-scope__tag--long': bucket.isLong }]}>{bucket.name}</span>
 						</div>
 						<ul class="audit-scope__list">
 							{bucket.items.map((item) => (
@@ -73,11 +75,14 @@ const buckets = [
 		</div>
 
 		<div class="audit-scope__cta">
-			<p class="audit-scope__cta-text">
-				Every audit is reviewed by hand — no automated score, just a written breakdown of where the most value is.
-			</p>
+			<div class="audit-scope__cta-copy">
+				<p class="audit-scope__cta-text">
+					Every snapshot is reviewed by hand — no automated score, just a short Loom review and a clear recommendation on where to start.
+				</p>
+				<p class="audit-scope__cta-micro">Free Loom review · Clear recommendation · No pressure</p>
+			</div>
 			<a class="button button-primary audit-scope__cta-button" href="/audit">
-				Request My Website Audit
+				Get My Free Snapshot
 				<span aria-hidden="true">&rarr;</span>
 			</a>
 		</div>
@@ -145,6 +150,12 @@ const buckets = [
 		align-items: center;
 	}
 
+	/* Keep the longer "Visibility & Systems" label balanced against the
+	   shorter labels so it does not visually overpower them. */
+	.audit-scope__tag--long {
+		letter-spacing: 0.06em;
+	}
+
 	.audit-scope__list {
 		display: grid;
 		gap: 1.1rem;
@@ -208,13 +219,24 @@ const buckets = [
 		box-shadow: var(--shadow-card);
 	}
 
+	.audit-scope__cta-copy {
+		max-width: 46ch;
+	}
+
 	.audit-scope__cta-text {
-		max-width: 44ch;
 		margin: 0;
 		color: var(--color-text);
 		font-size: 1rem;
 		font-weight: 500;
 		line-height: 1.55;
+	}
+
+	.audit-scope__cta-micro {
+		margin: 0.5rem 0 0;
+		color: var(--color-muted);
+		font-size: 0.82rem;
+		font-weight: 600;
+		letter-spacing: 0.01em;
 	}
 
 	.audit-scope__cta-button span {
