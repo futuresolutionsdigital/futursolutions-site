@@ -6,149 +6,189 @@ import { templateSystems, templateBrowseFilterDefs } from '../../data/templates'
 
 const pageTitle = 'Website Foundations | FutureSolutions';
 const pageDescription =
-	'Premium, customizable website Foundations for health, wellness, and high-trust service businesses — launched in weeks, built with the care of a custom site, and ready to connect to a Growth System.';
+	'A premium website foundation, customized around your business. Start from a proven FutureSolutions framework and shape it around your brand, services, and lead path — the smart middle path between cheap templates and fully custom.';
 const canonicalUrl = 'https://futuresolutions.io/templates/';
 
 const heroChips = [
-	'Launch in weeks, not months',
 	'Customized around your brand',
+	'Faster than fully custom',
 	'Conversion-ready',
 	'Growth-System ready',
 ];
 
-const explainerItems = [
-	{
-		lane: 'foundation',
-		label: 'Live demo',
-		text: 'A real, clickable website you can walk through. Same pages, same flow, same system a launched project would use.',
-	},
-	{
-		lane: 'custom',
-		label: 'Website Foundation',
-		text: 'The structure behind that demo — page architecture, content patterns, forms, and conversion paths — ready to be customized around your brand, services, and booking flow.',
-	},
-	{
-		lane: 'growth',
-		label: 'Your customized site',
-		text: 'What you actually get: your brand applied, your services written in, your booking path wired up. A real website, not a template install.',
-	},
+// "What is a Website Foundation" — a not-this / this contrast keeps the offer
+// from reading like a cheap template.
+const notThis = [
+	'A generic theme reskin',
+	'Placeholder page structure',
+	'A pretty design with no lead path',
+	'Content locked away from you',
+];
+const insteadThis = [
+	'A proven structure customized to your business',
+	'Service pages built around visitor intent',
+	'A clear call-to-action and booking path',
+	'Editable content where it matters',
 ];
 
-const qualityPillars = [
-	{
-		title: 'Strategy-first structure',
-		text: 'Every page is laid out around how real visitors decide — clear services, trust, and a path to booking — not around a generic theme grid.',
-	},
-	{
-		title: 'Designed to feel premium',
-		text: 'Typography, spacing, and visual hierarchy are tuned so the site signals the same quality and care your business delivers in person.',
-	},
-	{
-		title: 'Real, written content',
-		text: 'Foundations come with genuine, conversion-focused copy and section structure — never lorem ipsum placeholders you have to fix later.',
-	},
-	{
-		title: 'Accessible and fast',
-		text: 'Semantic markup, strong contrast, keyboard support, and lightweight responsive builds that load quickly on every device.',
-	},
-	{
-		title: 'Built for local visibility',
-		text: 'Service clarity, metadata readiness, internal links, and location-aware structure give search engines a clean, organized site to understand.',
-	},
-	{
-		title: 'Growth-System ready',
-		text: 'Forms and conversion paths are prepared to connect to CRM, booking, follow-up, and reporting whenever you are ready.',
-	},
+const bestForCards = [
+	'Outdated sites that need a professional rebuild',
+	'Wellness clinics and med spas',
+	'Solo practices and consultants',
+	'Hormone / TRT and high-trust health brands',
+	'Local and appointment-based service businesses',
+	'Teams that need a clearer path from visitor to inquiry',
 ];
 
-const includedItems = [
-	'A customized homepage that frames your offer',
-	'Services overview and individual service pages',
-	'An about / provider page that builds trust',
-	'A contact or booking page wired for inquiries',
-	'Your brand, colors, imagery, and voice applied throughout',
-	'Conversion-focused copy and section structure',
-	'Mobile optimization across every page',
-	'Basic SEO and metadata setup',
-	'Launch support so going live is smooth',
-	'Optional Growth System integration',
+const includeCategories = [
+	{
+		title: 'Strategy & structure',
+		items: ['Offer clarity', 'Page map', 'Visitor journey', 'Service-page planning'],
+	},
+	{
+		title: 'Design customization',
+		items: ['Brand adaptation', 'Section styling', 'Imagery direction', 'Mobile-first layout'],
+	},
+	{
+		title: 'Core pages',
+		items: ['Homepage', 'Service pages', 'About', 'Contact / booking', 'FAQs & trust sections', 'Optional resources structure'],
+	},
+	{
+		title: 'Lead path',
+		items: ['CTA hierarchy', 'Inquiry / booking path', 'Form placement', 'Follow-up readiness'],
+	},
+	{
+		title: 'SEO & tracking foundation',
+		items: ['SEO-aware structure', 'Metadata basics', 'Local visibility', 'GA4 / GSC / GTM readiness'],
+	},
+	{
+		title: 'Editable content',
+		items: ['Sanity CMS where useful', 'Key content stays manageable after launch'],
+	},
+	{
+		title: 'Launch support',
+		items: ['Responsive QA', 'Form testing', 'Deployment', 'Post-launch walkthrough'],
+	},
 ];
 
 const processSteps = [
-	{
-		step: '01',
-		title: 'Start with a Free Snapshot',
-		text: 'We review your business, your current site or starting point, and your goals, then recommend the Foundation that fits best — no pressure.',
-	},
-	{
-		step: '02',
-		title: 'Customize around your brand',
-		text: 'Your brand, services, content, imagery, and booking path are applied so the Foundation becomes genuinely yours.',
-	},
-	{
-		step: '03',
-		title: 'Prepare for a clean launch',
-		text: 'Core pages, mobile behavior, SEO basics, and conversion paths are finished and checked before you go live.',
-	},
-	{
-		step: '04',
-		title: 'Improve after launch',
-		text: 'Add content, refine visibility, and connect Growth Systems as your business grows.',
-	},
+	{ step: '01', title: 'Free Snapshot & discovery', text: 'We review your current site, lead path, and goals — and confirm a Foundation is the right fit.' },
+	{ step: '02', title: 'Foundation direction', text: 'We choose the strongest starting framework for your business, audience, and service model.' },
+	{ step: '03', title: 'Structure & content', text: 'We map the pages, service structure, and conversion path, then shape the copy around how visitors decide.' },
+	{ step: '04', title: 'Design customization', text: 'We adapt the look, sections, imagery, and messaging to your brand so it feels genuinely custom.' },
+	{ step: '05', title: 'Build & connect', text: 'We build the site, connect forms and tracking, and prepare the lead and booking path.' },
+	{ step: '06', title: 'Launch & improve', text: 'We test, launch, and recommend next improvements or ongoing management support.' },
 ];
 
-const offerComparison = [
+const comparison = [
 	{
 		lane: 'foundation',
 		name: 'Website Foundation',
-		bestFor: 'You want a premium site fast, built on a proven structure',
-		notFor: 'Highly unique positioning or complex content models',
-		outcome: 'A customized launch built on a real, proven Foundation',
-		complexity: 'Starter · Growth',
+		tag: 'Core offer',
+		points: [
+			'Faster path to launch',
+			'Starts from a proven framework',
+			'Customized around your brand and services',
+			'Best for common high-trust service-business needs',
+			'Lower starting investment',
+			'Ideal when you need a professional site without a full custom process',
+		],
 	},
 	{
 		lane: 'custom',
 		name: 'Signature Custom Website',
-		bestFor: 'A unique brand, complex services, or a larger organization',
-		notFor: 'Businesses that would benefit from a faster Foundation launch',
-		outcome: 'A fully bespoke design system and page architecture',
-		complexity: 'Advanced',
+		tag: 'Premium path',
+		points: [
+			'Deeper strategy and design',
+			'Custom page architecture',
+			'Custom content model',
+			'Best for complex organizations or unique positioning',
+			'Higher investment',
+			'Ideal when a framework approach would be too limiting',
+		],
+	},
+];
+
+const growthAddItems = [
+	'CRM pipeline',
+	'Booking / calendar routing',
+	'Form notifications',
+	'Email / SMS follow-up',
+	'Review request flow',
+	'Reporting and lead visibility',
+];
+
+const pricingTiers = [
+	{
+		name: 'Foundation Starter',
+		price: 'From $3,500',
+		text: 'A focused site foundation for a clean, professional launch.',
+		featured: false,
 	},
 	{
-		lane: 'growth',
-		name: 'Growth System',
-		bestFor: 'Your site is fine but leads disappear after the form',
-		notFor: 'You also need the website itself rebuilt or restructured',
-		outcome: 'Lead capture, booking, follow-up, and reporting wired end-to-end',
-		complexity: 'Add-on · Standalone',
+		name: 'Foundation Plus',
+		price: 'Typically $5,000–$6,500',
+		text: 'More pages, deeper service structure, stronger content support, and added launch preparation.',
+		featured: true,
+	},
+	{
+		name: 'Foundation + Growth System',
+		price: 'Quoted after your Snapshot',
+		text: 'Your Website Foundation plus CRM, booking, follow-up, and reporting setup.',
+		featured: false,
 	},
 ];
 
 const foundationFaqs = [
 	{
-		question: 'Is this just a generic website template?',
+		question: 'Is this just a template?',
 		answer:
-			'No. A Website Foundation starts from a strategic, industry-aware structure built around trust, services, conversion flow, and local visibility — then it is customized into a real site for your business.',
+			'No. A Website Foundation starts from a proven framework, then we customize the structure, content, and design around your business. The result is a real, conversion-ready site — not a prebuilt theme you have to force your business into.',
 	},
 	{
-		question: 'Can the Foundation be customized to my brand?',
+		question: 'What can be customized?',
 		answer:
-			'Yes. The structure stays strategic, while colors, content, services, imagery, and page details are tailored to your business so the result feels genuinely custom.',
+			'Your brand, colors, imagery, services, page structure, copy, and lead path. The strategic structure stays intact while everything that makes the site yours is tailored.',
 	},
 	{
-		question: 'What if I do not have a website yet?',
+		question: 'Can I edit the site myself?',
 		answer:
-			'That is a great time to start. A Foundation gives you a professional, conversion-ready site without building from a blank page, and the Free Snapshot maps the clearest starting point for you.',
+			'Yes, where it matters. Key content areas are set up in an editable CMS (such as Sanity) so you can update text and content after launch without breaking the design.',
 	},
 	{
-		question: 'Can it connect to booking, CRM, or follow-up later?',
+		question: 'What pages are included?',
 		answer:
-			'Yes. Forms and conversion paths are prepared so booking, CRM, follow-up, and reporting can be connected as a Growth System whenever you are ready.',
+			'Typically a homepage, a services overview and individual service pages, an about page, and a contact or booking page, plus trust and FAQ sections. Final page count depends on your business and is confirmed during the Snapshot.',
 	},
 	{
-		question: 'How fast can it launch?',
+		question: 'Do you write the copy?',
 		answer:
-			'Because the structure is already planned, Foundations typically launch in weeks rather than months — without sacrificing the quality and care of a custom build.',
+			'Yes. Conversion-focused copy and service-page structure are part of the build, organized around how your visitors actually decide. You stay involved so everything is accurate to your business.',
+	},
+	{
+		question: 'Can you connect it to GoHighLevel or another CRM?',
+		answer:
+			'Yes. Forms, booking, and lead routing can connect to GoHighLevel or a similar CRM as a Growth System — at launch or later.',
+	},
+	{
+		question: 'What if I need something fully custom?',
+		answer:
+			'Then a Signature Custom Website is the better path. If a Foundation would be too limiting, we will say so in your Snapshot and recommend the custom route.',
+	},
+	{
+		question: 'How long does it take?',
+		answer:
+			'Because the structure is already proven, Foundations typically launch in weeks rather than months. We map a realistic timeline during the Snapshot before any work begins.',
+	},
+	{
+		question: 'What happens after launch?',
+		answer:
+			'You can manage editable content yourself, or add an ongoing management plan for updates, content, SEO structure, reporting, and continued optimization.',
+	},
+	{
+		question: 'Do I need a Free Snapshot first?',
+		answer:
+			'It is the best starting point. The free Website & Lead Flow Snapshot reviews your situation and recommends whether a Foundation, a custom build, or something simpler fits — with no pressure.',
 	},
 ];
 ---
@@ -161,50 +201,154 @@ const foundationFaqs = [
 	ogDescription={pageDescription}
 	ogUrl={canonicalUrl}
 >
+	<!-- SECTION 1 — HERO -->
 	<section class="section templates-hero" aria-labelledby="templates-heading">
 		<div class="site-container templates-hero__inner">
 			<p class="eyebrow">Website Foundations</p>
-			<h1 id="templates-heading">Premium websites for health, wellness, and high-trust service businesses.</h1>
+			<h1 id="templates-heading">A premium website foundation, customized around your business.</h1>
 			<p class="lead">
-				A Website Foundation is a real, proven site structure we customize into your website — your brand, your services, your booking path. You get the speed of a starting point with the quality and care of a custom build.
+				Start with a proven FutureSolutions framework, then shape it around your brand, services, audience, and lead path — so you can launch faster without settling for a generic template.
 			</p>
 			<ul class="templates-hero__chips" aria-label="What a Website Foundation gives you">
-				{heroChips.map((chip) => (
-					<li>{chip}</li>
-				))}
+				{heroChips.map((chip) => <li>{chip}</li>)}
 			</ul>
 			<div class="button-row">
 				<a class="button button-primary" href="/audit">Get My Free Snapshot</a>
-				<a class="button button-secondary" href="#featured-templates">Explore the Foundations</a>
+				<a class="button button-secondary" href="#featured-templates">Explore Foundation Examples</a>
 			</div>
 		</div>
 	</section>
 
-	<section class="section section-tight templates-explainer" aria-labelledby="templates-explainer-heading">
-		<div class="site-container">
-			<div class="templates-explainer__head">
-				<p class="eyebrow">Am I buying a template?</p>
-				<h2 id="templates-explainer-heading">No. You start from a strategic Foundation and we adapt it into a real business website.</h2>
-				<p class="lead">Three terms get used together, so here is the difference.</p>
+	<!-- SECTION 2 — WHAT A WEBSITE FOUNDATION IS -->
+	<section class="section templates-define" aria-labelledby="templates-define-heading">
+		<div class="site-container templates-define__inner">
+			<div class="templates-define__copy">
+				<p class="eyebrow">The middle path</p>
+				<h2 id="templates-define-heading">What is a Website Foundation?</h2>
+				<p class="lead">
+					A Website Foundation is a premium, customizable website built from a proven FutureSolutions framework — then tailored around your brand, services, service pages, content needs, and lead path.
+				</p>
+				<p>
+					It is not a theme reskin or a generic template swap. The structure is planned around the pieces most high-trust service businesses actually need: clarity, trust, mobile experience, service-page strategy, lead capture, and editable content.
+				</p>
 			</div>
-			<ul class="templates-explainer__grid">
-				{explainerItems.map((item) => (
-					<li class={`templates-explainer__card lane-accent-top lane-accent-top--${item.lane}`}>
-						<span class={`lane-tag lane-tag--${item.lane}`}>{item.label}</span>
-						<p>{item.text}</p>
+			<div class="templates-define__compare" role="group" aria-label="What a Website Foundation is not, versus what it is">
+				<div class="templates-define__col templates-define__col--not">
+					<p class="templates-define__col-label">Not this</p>
+					<ul>
+						{notThis.map((item) => (
+							<li>
+								<span class="templates-define__icon templates-define__icon--x" aria-hidden="true">
+									<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="4" x2="12" y2="12" /><line x1="12" y1="4" x2="4" y2="12" /></svg>
+								</span>
+								{item}
+							</li>
+						))}
+					</ul>
+				</div>
+				<div class="templates-define__col templates-define__col--yes">
+					<p class="templates-define__col-label">Instead</p>
+					<ul>
+						{insteadThis.map((item) => (
+							<li>
+								<span class="templates-define__icon templates-define__icon--check" aria-hidden="true">
+									<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3,8.5 6.5,12 13,4" /></svg>
+								</span>
+								{item}
+							</li>
+						))}
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- SECTION 3 — BEST FOR -->
+	<section class="section section-muted templates-bestfor" aria-labelledby="templates-bestfor-heading">
+		<div class="site-container">
+			<div class="templates-bestfor__intro">
+				<p class="eyebrow">Best fit</p>
+				<h2 id="templates-bestfor-heading">Built for businesses that need a stronger site without a fully custom process.</h2>
+			</div>
+			<ul class="templates-bestfor__grid">
+				{bestForCards.map((item) => (
+					<li class="card templates-bestfor__card">
+						<span class="templates-bestfor__check" aria-hidden="true">
+							<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3,8.5 6.5,12 13,4" /></svg>
+						</span>
+						<span>{item}</span>
 					</li>
 				))}
 			</ul>
+			<div class="templates-bestfor__note">
+				<p class="templates-bestfor__note-label">Better fit for a custom build</p>
+				<p>
+					A Foundation may not be the right fit for complex membership portals, large associations with legacy AMS/CMS constraints, heavy custom integrations, large content libraries, or deeply custom brand systems. When that is the case, we will point you toward a
+					<a href="/services/custom-healthcare-websites">Signature Custom Website</a>
+					<!-- TODO: link "Web & Business Systems Consulting" once a dedicated /services/web-business-systems-consulting page exists -->
+					or business systems consulting instead.
+				</p>
+			</div>
 		</div>
 	</section>
 
-	<section id="featured-templates" class="section section-muted featured-templates" aria-labelledby="featured-templates-heading">
+	<!-- SECTION 4 — WHAT IS INCLUDED -->
+	<section class="section templates-include" aria-labelledby="templates-include-heading">
 		<div class="site-container">
-			<div class="featured-templates__intro">
-				<p class="eyebrow">Featured Foundations</p>
-				<h2 id="featured-templates-heading">Choose the Foundation that matches your business.</h2>
+			<div class="templates-include__intro">
+				<p class="eyebrow">What you get</p>
+				<h2 id="templates-include-heading">What your Foundation can include.</h2>
+				<p class="lead">You are not handed a theme to figure out. You get a complete, launch-ready website with your content in place and a clear path for visitors to take the next step.</p>
+			</div>
+			<div class="templates-include__grid">
+				{includeCategories.map((cat) => (
+					<article class="card templates-include__card">
+						<h3>{cat.title}</h3>
+						<ul>
+							{cat.items.map((item) => (
+								<li>
+									<span class="templates-include__check" aria-hidden="true">
+										<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3,8.5 6.5,12 13,4" /></svg>
+									</span>
+									{item}
+								</li>
+							))}
+						</ul>
+					</article>
+				))}
+			</div>
+			<p class="templates-include__note">Final scope depends on page count, content needs, integrations, and whether a Growth System is included.</p>
+		</div>
+	</section>
+
+	<!-- SECTION 5 — HOW IT WORKS -->
+	<section class="section section-muted templates-process" aria-labelledby="templates-process-heading">
+		<div class="site-container">
+			<div class="templates-process__intro">
+				<p class="eyebrow">How it works</p>
+				<h2 id="templates-process-heading">How a Website Foundation comes together.</h2>
+				<p class="lead">A clear, low-pressure path from first conversation to a launched site you can keep improving.</p>
+			</div>
+			<ol class="templates-process__grid">
+				{processSteps.map((step) => (
+					<li class="card templates-process__card">
+						<span class="templates-process__step">{step.step}</span>
+						<h3>{step.title}</h3>
+						<p>{step.text}</p>
+					</li>
+				))}
+			</ol>
+		</div>
+	</section>
+
+	<!-- SECTION 6 — FOUNDATION EXAMPLES / DEMOS -->
+	<section id="featured-templates" class="section templates-examples" aria-labelledby="templates-examples-heading">
+		<div class="site-container">
+			<div class="templates-examples__intro">
+				<p class="eyebrow">Foundation examples</p>
+				<h2 id="templates-examples-heading">Explore foundation starting points.</h2>
 				<p class="lead">
-					Each FutureSolutions Foundation is a live, clickable website structured around the pages, trust signals, local visibility, and conversion paths your industry actually needs. Walk through any of them as a real site.
+					These examples are not one-size-fits-all templates. They are real, clickable starting points — structured around the pages, trust signals, and conversion paths an industry needs — that we customize around your brand, services, content, and lead path.
 				</p>
 			</div>
 			<div
@@ -227,7 +371,7 @@ const foundationFaqs = [
 					</button>
 				))}
 			</div>
-			<div id="featured-templates-grid" class="featured-templates__grid">
+			<div id="featured-templates-grid" class="templates-examples__grid">
 				{templateSystems.map((template, index) => <TemplateCard template={template} priority={index + 1} />)}
 			</div>
 		</div>
@@ -265,128 +409,108 @@ const foundationFaqs = [
 		})();
 	</script>
 
-	<section class="section template-quality" aria-labelledby="template-quality-heading">
+	<!-- SECTION 7 — FOUNDATION VS CUSTOM -->
+	<section class="section section-muted templates-vs" aria-labelledby="templates-vs-heading">
 		<div class="site-container">
-			<div class="template-quality__intro">
-				<p class="eyebrow">Built with care</p>
-				<h2 id="template-quality-heading">The care of a custom build, without starting from a blank page.</h2>
-				<p class="lead">
-					A Foundation is fast because the hard thinking is already done — not because corners are cut. Every one is held to the same standards we would apply to a fully custom site.
-				</p>
+			<div class="templates-vs__intro">
+				<p class="eyebrow">Foundation or fully custom?</p>
+				<h2 id="templates-vs-heading">Which path fits your business?</h2>
+				<p class="lead">Most businesses are well served by a Foundation. A Signature Custom Website makes sense when the framework approach would be too limiting.</p>
 			</div>
-			<div class="template-quality__grid">
-				{qualityPillars.map((pillar) => (
-					<article class="card template-quality__card">
-						<span class="template-quality__check" aria-hidden="true">
-							<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-								<polyline points="3,8.5 6.5,12 13,4" />
-							</svg>
-						</span>
-						<h3>{pillar.title}</h3>
-						<p>{pillar.text}</p>
+			<div class="templates-vs__grid">
+				{comparison.map((col) => (
+					<article class={`card templates-vs__card lane-accent-top lane-accent-top--${col.lane}`}>
+						<span class={`lane-tag lane-tag--${col.lane}`}>{col.tag}</span>
+						<h3>{col.name}</h3>
+						<ul>
+							{col.points.map((point) => (
+								<li>
+									<span class="templates-vs__check" aria-hidden="true">
+										<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3,8.5 6.5,12 13,4" /></svg>
+									</span>
+									{point}
+								</li>
+							))}
+						</ul>
 					</article>
 				))}
 			</div>
-		</div>
-	</section>
-
-	<section class="section section-muted template-included" aria-labelledby="template-included-heading">
-		<div class="site-container template-included__inner">
-			<div class="template-included__intro">
-				<p class="eyebrow">What you get</p>
-				<h2 id="template-included-heading">Everything a customized Foundation includes.</h2>
-				<p class="lead">
-					You are not handed a theme to figure out. You get a complete, launch-ready website with your content in place and a clear path for visitors to take the next step.
-				</p>
-				<div class="template-included__cta">
-					<a class="button button-primary" href="/audit">Get My Free Snapshot</a>
-				</div>
-			</div>
-			<ul class="template-included__list">
-				{includedItems.map((item) => (
-					<li>
-						<span class="template-included__check" aria-hidden="true">
-							<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-								<polyline points="3,8.5 6.5,12 13,4" />
-							</svg>
-						</span>
-						<span>{item}</span>
-					</li>
-				))}
-			</ul>
-		</div>
-	</section>
-
-	<section class="section template-process" aria-labelledby="template-process-heading">
-		<div class="site-container">
-			<div class="template-process__intro">
-				<p class="eyebrow">How it works</p>
-				<h2 id="template-process-heading">How a Foundation becomes your website.</h2>
-				<p class="lead">A clear, low-pressure path from first conversation to a launched site you can keep improving.</p>
-			</div>
-			<ol class="template-process__grid">
-				{processSteps.map((step) => (
-					<li class="card template-process__card">
-						<span class="template-process__step">{step.step}</span>
-						<h3>{step.title}</h3>
-						<p>{step.text}</p>
-					</li>
-				))}
-			</ol>
-		</div>
-	</section>
-
-	<section class="section section-muted template-comparison" aria-labelledby="template-comparison-heading">
-		<div class="site-container">
-			<div class="template-comparison__intro">
-				<p class="eyebrow">Foundation · Custom · Growth System</p>
-				<h2 id="template-comparison-heading">Which level fits your business?</h2>
-				<p class="lead">A Foundation is the fastest path to a launched site. A Signature Custom build fits larger or uniquely positioned organizations. A Growth System is the lead and booking workflow behind either one.</p>
-			</div>
-			<div class="template-comparison__grid">
-				{offerComparison.map((item) => (
-					<article class={`card template-comparison__card lane-accent-top lane-accent-top--${item.lane}`}>
-						<span class={`lane-tag lane-tag--${item.lane}`}>{item.complexity}</span>
-						<h3>{item.name}</h3>
-						<dl>
-							<div>
-								<dt>Best for</dt>
-								<dd>{item.bestFor}</dd>
-							</div>
-							<div>
-								<dt>Not the right fit if</dt>
-								<dd>{item.notFor}</dd>
-							</div>
-							<div>
-								<dt>What you get</dt>
-								<dd>{item.outcome}</dd>
-							</div>
-						</dl>
-					</article>
-				))}
-			</div>
-			<div class="template-comparison__cta">
+			<div class="templates-vs__cta">
 				<a class="button button-primary" href="/audit">Get My Free Snapshot</a>
-				<p class="template-comparison__cta-note">Not sure which one? The free snapshot recommends the right path.</p>
+				<p class="templates-vs__cta-note">Not sure which path fits? The free snapshot makes a clear recommendation.</p>
 			</div>
 		</div>
 	</section>
 
+	<!-- SECTION 8 — OPTIONAL GROWTH SYSTEM ADD-ON -->
+	<section class="section templates-growth" aria-labelledby="templates-growth-heading">
+		<div class="site-container">
+			<div class="templates-growth__card">
+				<div class="templates-growth__copy">
+					<p class="eyebrow">Optional add-on</p>
+					<h2 id="templates-growth-heading">Add a Growth System when your site needs more than a form.</h2>
+					<p class="lead">
+						If your website also needs to connect to CRM, booking, automated follow-up, review requests, and reporting, a Growth System can be added to your Website Foundation — at launch or after it is live.
+					</p>
+					<a class="button button-primary templates-growth__btn" href="/services/growth-systems">Add a Growth System</a>
+				</div>
+				<ul class="templates-growth__list">
+					{growthAddItems.map((item) => (
+						<li>
+							<span class="templates-growth__check" aria-hidden="true">
+								<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3,8.5 6.5,12 13,4" /></svg>
+							</span>
+							{item}
+						</li>
+					))}
+				</ul>
+			</div>
+		</div>
+	</section>
+
+	<!-- SECTION 9 — PRICING / STARTING POINT -->
+	<section class="section section-muted templates-pricing" aria-labelledby="templates-pricing-heading">
+		<div class="site-container">
+			<div class="templates-pricing__intro">
+				<p class="eyebrow">Starting point</p>
+				<h2 id="templates-pricing-heading">Website Foundations start at $3,500.</h2>
+				<p class="lead">Final scope depends on page count, content needs, integrations, and whether a Growth System or ongoing management plan is included.</p>
+			</div>
+			<div class="templates-pricing__grid">
+				{pricingTiers.map((tier) => (
+					<article class:list={['card', 'templates-pricing__card', { 'is-featured': tier.featured }]}>
+						{tier.featured && <span class="templates-pricing__badge">Most popular</span>}
+						<h3>{tier.name}</h3>
+						<p class="templates-pricing__price">{tier.price}</p>
+						<p class="templates-pricing__text">{tier.text}</p>
+					</article>
+				))}
+			</div>
+			<div class="templates-pricing__cta">
+				<a class="button button-primary" href="/audit">Get My Free Snapshot</a>
+				<p class="templates-pricing__cta-note">Your Snapshot includes a clear recommendation and starting point — no pressure.</p>
+			</div>
+		</div>
+	</section>
+
+	<!-- SECTION 10 — FAQ -->
 	<ServiceFAQSection faqs={foundationFaqs} />
 
+	<!-- SECTION 11 — FINAL CTA -->
 	<section class="section templates-final" aria-labelledby="templates-final-heading">
 		<div class="site-container">
 			<div class="templates-final__card">
-				<div>
-					<p class="eyebrow">Guidance</p>
-					<h2 id="templates-final-heading">Want help choosing the right Foundation?</h2>
+				<div class="templates-final__copy">
+					<p class="eyebrow">Start with a free snapshot</p>
+					<h2 id="templates-final-heading">Not sure if a Website Foundation fits?</h2>
 					<p class="lead">
-						Get a free Website &amp; Lead Flow Snapshot. We will review your business, your current site or starting point, and your goals, then send a short Loom with a clear recommendation — whether that is a Foundation, a custom build, or something simpler.
+						I'll review your site, lead path, and follow-up flow, then send a short Loom with the clearest opportunities and the best starting point.
 					</p>
+					<p class="templates-final__micro">Free Loom review · Clear recommendation · No pressure</p>
 				</div>
 				<div class="button-row">
 					<a class="button button-primary" href="/audit">Get My Free Snapshot</a>
-					<a class="button button-secondary" href="/services">View Solutions</a>
+					<a class="button button-secondary" href="#featured-templates">Explore Foundation Examples</a>
 				</div>
 			</div>
 		</div>
@@ -394,6 +518,7 @@ const foundationFaqs = [
 </BaseLayout>
 
 <style>
+	/* ═══ Hero ═══ */
 	.templates-hero {
 		position: relative;
 		overflow: hidden;
@@ -411,15 +536,17 @@ const foundationFaqs = [
 	}
 
 	.templates-hero__inner,
-	.featured-templates__intro,
-	.template-quality__intro,
-	.template-process__intro,
-	.template-comparison__intro {
+	.templates-bestfor__intro,
+	.templates-include__intro,
+	.templates-process__intro,
+	.templates-examples__intro,
+	.templates-vs__intro,
+	.templates-pricing__intro {
 		max-width: 820px;
 	}
 
 	.templates-hero h1 {
-		max-width: 820px;
+		max-width: 880px;
 	}
 
 	.templates-hero__chips {
@@ -448,17 +575,263 @@ const foundationFaqs = [
 		margin-top: 2rem;
 	}
 
-	.featured-templates__grid,
-	.template-quality__grid,
-	.template-process__grid,
-	.template-comparison__grid {
+	/* ═══ Define / not-this-this ═══ */
+	.templates-define__inner {
 		display: grid;
+		grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+		gap: clamp(2rem, 5vw, 4rem);
+		align-items: center;
+	}
+
+	.templates-define__copy p:not(.eyebrow):not(.lead) {
+		margin-top: 1rem;
+		color: var(--color-muted);
+		font-size: 1rem;
+		line-height: 1.6;
+	}
+
+	.templates-define__compare {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 1rem;
+	}
+
+	.templates-define__col {
+		padding: 1.5rem;
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		background: var(--color-white);
+		box-shadow: var(--shadow-card);
+	}
+
+	.templates-define__col--not {
+		background: color-mix(in srgb, var(--color-bg) 70%, var(--color-white));
+	}
+
+	.templates-define__col-label {
+		margin: 0 0 0.85rem;
+		font-size: 0.72rem;
+		font-weight: 800;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		color: var(--color-muted);
+	}
+
+	.templates-define__col--yes .templates-define__col-label {
+		color: var(--color-accent-dark);
+	}
+
+	.templates-define__col ul {
+		display: grid;
+		gap: 0.7rem;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.templates-define__col li {
+		display: grid;
+		grid-template-columns: auto 1fr;
+		gap: 0.6rem;
+		align-items: start;
+		color: var(--color-text);
+		font-size: 0.9375rem;
+		line-height: 1.45;
+	}
+
+	.templates-define__icon {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 1.4rem;
+		height: 1.4rem;
+		border-radius: 999px;
+	}
+
+	.templates-define__icon svg {
+		width: 0.8rem;
+		height: 0.8rem;
+	}
+
+	.templates-define__icon--x {
+		background: color-mix(in srgb, var(--color-muted) 16%, transparent);
+		color: var(--color-muted);
+	}
+
+	.templates-define__icon--check {
+		background: var(--color-accent-light);
+		color: var(--color-accent-dark);
+	}
+
+	/* ═══ Best for ═══ */
+	.templates-bestfor__grid {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 1rem;
+		margin: clamp(2rem, 4vw, 3rem) 0 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.templates-bestfor__card {
+		display: grid;
+		grid-template-columns: auto 1fr;
+		gap: 0.7rem;
+		align-items: center;
+		padding: 1.15rem 1.25rem;
+		font-size: 0.95rem;
+		font-weight: 600;
+		color: var(--color-text);
+		line-height: 1.4;
+	}
+
+	.templates-bestfor__check,
+	.templates-include__check,
+	.templates-vs__check,
+	.templates-growth__check {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		flex-shrink: 0;
+		width: 1.5rem;
+		height: 1.5rem;
+		border-radius: 999px;
+		background: var(--color-accent-light);
+		color: var(--color-accent-dark);
+	}
+
+	.templates-bestfor__check svg,
+	.templates-include__check svg,
+	.templates-vs__check svg,
+	.templates-growth__check svg {
+		width: 0.85rem;
+		height: 0.85rem;
+	}
+
+	.templates-bestfor__note {
+		margin-top: 1.5rem;
+		padding: 1.35rem 1.5rem;
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		background: var(--color-white);
+	}
+
+	.templates-bestfor__note-label {
+		margin: 0 0 0.4rem;
+		font-size: 0.72rem;
+		font-weight: 800;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		color: var(--color-muted);
+	}
+
+	.templates-bestfor__note p:last-child {
+		margin: 0;
+		color: var(--color-muted);
+		font-size: 0.95rem;
+		line-height: 1.6;
+	}
+
+	.templates-bestfor__note a {
+		color: var(--color-accent-dark);
+		font-weight: 700;
+		text-decoration: underline;
+		text-underline-offset: 2px;
+	}
+
+	/* ═══ Included ═══ */
+	.templates-include__grid {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
 		gap: 1rem;
 		margin-top: clamp(2rem, 4vw, 3rem);
 	}
 
-	.featured-templates__grid {
+	.templates-include__card {
+		padding: 1.5rem;
+		align-content: start;
+	}
+
+	.templates-include__card h3 {
+		margin-bottom: 1rem;
+		font-size: 1.05rem;
+		letter-spacing: -0.02em;
+	}
+
+	.templates-include__card ul {
+		display: grid;
+		gap: 0.6rem;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.templates-include__card li {
+		display: grid;
+		grid-template-columns: auto 1fr;
+		gap: 0.6rem;
+		align-items: start;
+		color: var(--color-muted);
+		font-size: 0.9rem;
+		line-height: 1.45;
+	}
+
+	.templates-include__note {
+		margin: 1.5rem 0 0;
+		color: var(--color-muted);
+		font-size: 0.9rem;
+		font-style: italic;
+	}
+
+	/* ═══ Process ═══ */
+	.templates-process__grid {
+		display: grid;
 		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 1.25rem;
+		margin: clamp(2rem, 4vw, 3rem) 0 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.templates-process__card {
+		display: grid;
+		gap: 0.55rem;
+		align-content: start;
+		padding: 1.5rem;
+	}
+
+	.templates-process__step {
+		display: inline-flex;
+		width: fit-content;
+		margin-bottom: 0.7rem;
+		padding: 0.35rem 0.52rem;
+		border: 1px solid color-mix(in srgb, var(--color-accent) 35%, var(--color-border));
+		border-radius: 999px;
+		background: var(--color-accent-light);
+		color: var(--color-accent-dark);
+		font-size: 0.72rem;
+		font-weight: 800;
+		line-height: 1;
+	}
+
+	.templates-process__card h3 {
+		font-size: 1.05rem;
+		letter-spacing: -0.02em;
+	}
+
+	.templates-process__card p {
+		margin: 0;
+		color: var(--color-muted);
+		font-size: 0.9375rem;
+		line-height: 1.6;
+	}
+
+	/* ═══ Examples ═══ */
+	.templates-examples__grid {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 1rem;
+		margin-top: clamp(2rem, 4vw, 3rem);
 	}
 
 	.template-browse-filters {
@@ -483,10 +856,7 @@ const foundationFaqs = [
 		font-weight: 700;
 		line-height: 1;
 		cursor: pointer;
-		transition:
-			border-color 0.12s ease,
-			background-color 0.12s ease,
-			color 0.12s ease;
+		transition: border-color 0.12s ease, background-color 0.12s ease, color 0.12s ease;
 	}
 
 	.template-browse-filters__chip:hover {
@@ -507,185 +877,45 @@ const foundationFaqs = [
 		box-shadow: 0 0 0 1px color-mix(in srgb, var(--color-accent) 22%, transparent);
 	}
 
-	/* ═══ Quality pillars ═══ */
-	.template-quality__grid {
-		grid-template-columns: repeat(3, minmax(0, 1fr));
-		gap: 1.25rem;
-	}
-
-	.template-quality__card {
+	/* ═══ Foundation vs Custom ═══ */
+	.templates-vs__grid {
 		display: grid;
-		gap: 0.6rem;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 1.25rem;
+		margin-top: clamp(2rem, 4vw, 3rem);
+	}
+
+	.templates-vs__card {
+		display: grid;
+		gap: 0.85rem;
 		align-content: start;
-		padding: 1.5rem;
+		padding: 1.75rem;
 	}
 
-	.template-quality__check {
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		width: 2rem;
-		height: 2rem;
-		margin-bottom: 0.3rem;
-		border-radius: 999px;
-		background: var(--color-accent-light);
-		color: var(--color-accent-dark);
-	}
-
-	.template-quality__check svg {
-		width: 1.05rem;
-		height: 1.05rem;
-	}
-
-	.template-quality__card h3 {
-		font-size: 1.08rem;
+	.templates-vs__card h3 {
+		font-size: 1.2rem;
 		letter-spacing: -0.02em;
 	}
 
-	.template-quality__card p {
-		margin: 0;
-		color: var(--color-muted);
-		font-size: 0.9375rem;
-		line-height: 1.6;
-	}
-
-	/* ═══ Included checklist ═══ */
-	.template-included__inner {
+	.templates-vs__card ul {
 		display: grid;
-		grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
-		gap: clamp(2rem, 5vw, 4rem);
-		align-items: start;
-	}
-
-	.template-included__intro .lead {
-		color: var(--color-muted);
-	}
-
-	.template-included__cta {
-		margin-top: 1.75rem;
-	}
-
-	.template-included__list {
-		display: grid;
-		grid-template-columns: repeat(2, minmax(0, 1fr));
-		gap: 0.85rem 1.5rem;
+		gap: 0.7rem;
 		margin: 0.4rem 0 0;
 		padding: 0;
 		list-style: none;
 	}
 
-	.template-included__list li {
+	.templates-vs__card li {
 		display: grid;
 		grid-template-columns: auto 1fr;
-		gap: 0.7rem;
+		gap: 0.6rem;
 		align-items: start;
-		color: var(--color-text);
-		font-size: 0.9375rem;
-		line-height: 1.45;
-	}
-
-	.template-included__check {
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		flex-shrink: 0;
-		width: 1.5rem;
-		height: 1.5rem;
-		border-radius: 999px;
-		background: var(--color-accent-light);
-		color: var(--color-accent-dark);
-	}
-
-	.template-included__check svg {
-		width: 0.85rem;
-		height: 0.85rem;
-	}
-
-	/* ═══ Process ═══ */
-	.template-process__grid {
-		grid-template-columns: repeat(4, minmax(0, 1fr));
-		gap: 1.25rem;
-		counter-reset: none;
-	}
-
-	.template-process__card {
-		display: grid;
-		gap: 0.55rem;
-		align-content: start;
-		padding: 1.5rem;
-	}
-
-	.template-process__step {
-		display: inline-flex;
-		width: fit-content;
-		margin-bottom: 0.7rem;
-		padding: 0.35rem 0.52rem;
-		border: 1px solid color-mix(in srgb, var(--color-accent) 35%, var(--color-border));
-		border-radius: 999px;
-		background: var(--color-accent-light);
-		color: var(--color-accent-dark);
-		font-size: 0.72rem;
-		font-weight: 800;
-		line-height: 1;
-	}
-
-	.template-process__card h3 {
-		font-size: 1.08rem;
-		letter-spacing: -0.02em;
-	}
-
-	.template-process__card p {
-		margin: 0;
-		color: var(--color-muted);
-		font-size: 0.9375rem;
-		line-height: 1.6;
-	}
-
-	/* ═══ Comparison ═══ */
-	.template-comparison__grid {
-		grid-template-columns: repeat(3, minmax(0, 1fr));
-		gap: 1.25rem;
-	}
-
-	.template-comparison__card {
-		display: grid;
-		gap: 0.85rem;
-		align-content: start;
-		padding: 1.5rem;
-	}
-
-	.template-comparison__card h3 {
-		font-size: 1.1rem;
-		letter-spacing: -0.02em;
-	}
-
-	.template-comparison__card dl {
-		display: grid;
-		gap: 1rem;
-		margin: 1rem 0 0;
-	}
-
-	.template-comparison__card div {
-		display: grid;
-		gap: 0.25rem;
-	}
-
-	.template-comparison__card dt {
-		color: var(--color-accent-dark);
-		font-size: 0.75rem;
-		font-weight: 800;
-		letter-spacing: 0.08em;
-		text-transform: uppercase;
-	}
-
-	.template-comparison__card dd {
-		margin: 0;
 		color: var(--color-muted);
 		font-size: 0.9375rem;
 		line-height: 1.5;
 	}
 
-	.template-comparison__cta {
+	.templates-vs__cta {
 		display: flex;
 		flex-wrap: wrap;
 		align-items: center;
@@ -693,73 +923,149 @@ const foundationFaqs = [
 		margin-top: 2rem;
 	}
 
-	.template-comparison__cta-note {
+	.templates-vs__cta-note {
 		margin: 0;
 		color: var(--color-muted);
 		font-size: 0.9rem;
 		font-weight: 500;
 	}
 
-	/* ═══ Explainer ═══ */
-	.templates-explainer {
-		background: var(--color-white);
-	}
-
-	.templates-explainer__head {
-		max-width: 760px;
-		margin-bottom: clamp(2rem, 4vw, 2.75rem);
-	}
-
-	.templates-explainer__head h2 {
-		max-width: 40ch;
-		margin-bottom: 0.85rem;
-	}
-
-	.templates-explainer__head .lead {
-		color: var(--color-muted);
-	}
-
-	.templates-explainer__grid {
+	/* ═══ Growth add-on ═══ */
+	.templates-growth__card {
 		display: grid;
-		grid-template-columns: repeat(3, minmax(0, 1fr));
-		gap: 1rem;
+		grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+		gap: clamp(2rem, 5vw, 3.5rem);
+		align-items: center;
+		padding: clamp(1.75rem, 4vw, 3rem);
+		border: 1px solid var(--color-ink-line-strong);
+		border-radius: 20px;
+		background: var(--color-ink);
+		box-shadow: 0 24px 60px rgba(15, 23, 42, 0.18);
+	}
+
+	.templates-growth__copy .eyebrow {
+		color: var(--color-ink-accent);
+	}
+
+	.templates-growth__copy h2,
+	.templates-growth__copy .lead {
+		color: var(--color-white);
+	}
+
+	.templates-growth__copy .lead {
+		opacity: 0.82;
+	}
+
+	.templates-growth__btn {
+		margin-top: 1.5rem;
+	}
+
+	.templates-growth__list {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 0.85rem 1.25rem;
 		margin: 0;
 		padding: 0;
 		list-style: none;
 	}
 
-	.templates-explainer__card {
+	.templates-growth__list li {
 		display: grid;
-		gap: 0.85rem;
-		padding: 1.5rem;
-		border: 1px solid var(--color-border);
-		border-radius: var(--radius-lg);
-		background: var(--color-white);
-		box-shadow: var(--shadow-card);
+		grid-template-columns: auto 1fr;
+		gap: 0.6rem;
+		align-items: center;
+		color: var(--color-ink-text);
+		font-size: 0.92rem;
+		line-height: 1.4;
 	}
 
-	.templates-explainer__card p {
+	.templates-growth__check {
+		width: 1.4rem;
+		height: 1.4rem;
+		background: var(--color-ink-accent);
+		color: var(--color-ink);
+	}
+
+	/* ═══ Pricing ═══ */
+	.templates-pricing__grid {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 1.25rem;
+		margin-top: clamp(2rem, 4vw, 3rem);
+	}
+
+	.templates-pricing__card {
+		position: relative;
+		display: grid;
+		gap: 0.5rem;
+		align-content: start;
+		padding: 1.75rem;
+	}
+
+	.templates-pricing__card.is-featured {
+		border-color: color-mix(in srgb, var(--color-accent) 50%, var(--color-border));
+		box-shadow: 0 0 0 1px color-mix(in srgb, var(--color-accent) 26%, transparent), var(--shadow-card);
+	}
+
+	.templates-pricing__badge {
+		position: absolute;
+		top: -0.7rem;
+		left: 1.75rem;
+		padding: 0.3rem 0.6rem;
+		border-radius: 999px;
+		background: var(--color-accent-dark);
+		color: var(--color-white);
+		font-size: 0.68rem;
+		font-weight: 800;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+	}
+
+	.templates-pricing__card h3 {
+		font-size: 1.1rem;
+		letter-spacing: -0.02em;
+	}
+
+	.templates-pricing__price {
 		margin: 0;
-		color: var(--color-text);
-		font-size: 0.95rem;
-		line-height: 1.6;
+		color: var(--color-accent-dark);
+		font-size: 1.15rem;
+		font-weight: 800;
+		letter-spacing: -0.01em;
+	}
+
+	.templates-pricing__text {
+		margin: 0.25rem 0 0;
+		color: var(--color-muted);
+		font-size: 0.9375rem;
+		line-height: 1.55;
+	}
+
+	.templates-pricing__cta {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 1.25rem;
+		margin-top: 2rem;
+	}
+
+	.templates-pricing__cta-note {
+		margin: 0;
+		color: var(--color-muted);
+		font-size: 0.9rem;
+		font-weight: 500;
 	}
 
 	/* ═══ Final CTA ═══ */
-	.templates-final {
-		background: var(--color-accent-light);
-	}
-
 	.templates-final__card {
 		display: grid;
 		grid-template-columns: minmax(0, 1fr) auto;
 		gap: 2rem;
 		align-items: end;
-		padding: clamp(1.5rem, 4vw, 3rem);
-		border: 1px solid color-mix(in srgb, var(--color-accent) 24%, transparent);
+		padding: clamp(1.75rem, 4vw, 3rem);
 		border-radius: 20px;
 		background: var(--color-text);
-		box-shadow: 0 24px 60px rgba(15, 23, 42, 0.12);
+		box-shadow: 0 24px 60px rgba(15, 23, 42, 0.16);
 	}
 
 	.templates-final .eyebrow {
@@ -772,7 +1078,14 @@ const foundationFaqs = [
 	}
 
 	.templates-final .lead {
-		opacity: 0.78;
+		opacity: 0.8;
+	}
+
+	.templates-final__micro {
+		margin: 0.85rem 0 0;
+		color: color-mix(in srgb, var(--color-accent-light) 80%, var(--color-white));
+		font-size: 0.85rem;
+		font-weight: 600;
 	}
 
 	.templates-final .button-row {
@@ -792,28 +1105,34 @@ const foundationFaqs = [
 		color: var(--color-white);
 	}
 
+	/* ═══ Responsive ═══ */
 	@media (max-width: 1040px) {
-		.featured-templates__grid,
-		.template-quality__grid,
-		.template-process__grid,
-		.template-comparison__grid,
-		.templates-explainer__grid {
+		.templates-define__inner {
+			grid-template-columns: 1fr;
+		}
+
+		.templates-bestfor__grid,
+		.templates-include__grid,
+		.templates-process__grid,
+		.templates-examples__grid,
+		.templates-pricing__grid {
 			grid-template-columns: repeat(2, minmax(0, 1fr));
 		}
 
-		.template-included__inner {
+		.templates-growth__card {
 			grid-template-columns: 1fr;
-			gap: 2rem;
+			gap: 1.75rem;
 		}
 	}
 
 	@media (max-width: 720px) {
-		.featured-templates__grid,
-		.template-quality__grid,
-		.template-process__grid,
-		.template-comparison__grid,
-		.templates-explainer__grid,
-		.template-included__list,
+		.templates-bestfor__grid,
+		.templates-include__grid,
+		.templates-process__grid,
+		.templates-examples__grid,
+		.templates-vs__grid,
+		.templates-pricing__grid,
+		.templates-growth__list,
 		.templates-final__card {
 			grid-template-columns: 1fr;
 		}
