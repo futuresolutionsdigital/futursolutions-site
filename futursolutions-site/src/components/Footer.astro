@@ -6,13 +6,23 @@ const footerColumns = [
 			{ label: 'Website Foundations', href: '/services/template-setup' },
 			{ label: 'Signature Custom Websites', href: '/services/custom-healthcare-websites' },
 			{ label: 'Growth Systems', href: '/services/growth-systems' },
+			{ label: 'Website Management', href: '/services/ongoing-optimization' },
 			{ label: 'Local Visibility', href: '/services/local-visibility' },
-			{ label: 'Care and Optimization', href: '/services/ongoing-optimization' },
-			{ label: 'Website and Systems Audit', href: '/audit' },
 		],
 	},
 	{
-		title: 'Live demos',
+		title: 'Industries',
+		links: [
+			{ label: 'Health & Wellness', href: '/industries/wellness-functional-medicine' },
+			{ label: 'Med Spas', href: '/industries/med-spas' },
+			{ label: 'Hormone / TRT Clinics', href: '/industries/hormone-trt-clinics' },
+			{ label: 'Solo Practices', href: '/industries/solo-practices' },
+			{ label: 'Associations', href: '/industries/healthcare-associations' },
+			{ label: 'All Industries', href: '/industries' },
+		],
+	},
+	{
+		title: 'Website Foundations',
 		links: [
 			{ label: 'Med Spa', href: '/templates/med-spa' },
 			{ label: 'Solo Practice', href: '/templates/solo-practice' },
@@ -26,10 +36,9 @@ const footerColumns = [
 		title: 'Company',
 		links: [
 			{ label: 'About', href: '/about' },
-			{ label: 'Industries', href: '/industries' },
 			{ label: 'Resources', href: '/resources' },
 			{ label: 'Contact', href: '/contact' },
-			{ label: 'Get a Website Audit', href: '/audit' },
+			{ label: 'Free Website & Lead Flow Snapshot', href: '/audit' },
 		],
 	},
 ];
@@ -40,7 +49,11 @@ const footerColumns = [
 		<div class="site-footer__grid">
 			<div class="site-footer__company">
 				<a class="site-footer__brand" href="/">FutureSolutions</a>
-				<p>Premium web design and growth systems for clinics, associations, and high-trust service businesses.</p>
+				<p>Premium website foundations and growth systems for health, wellness, and high-trust service businesses.</p>
+				<a class="button button-primary site-footer__cta" href="/audit">
+					Get My Free Snapshot
+					<span aria-hidden="true">&rarr;</span>
+				</a>
 				<ul class="site-footer__contact">
 					<li>
 						<span class="site-footer__contact-label">Email</span>
@@ -85,8 +98,8 @@ const footerColumns = [
 
 	.site-footer__grid {
 		display: grid;
-		grid-template-columns: minmax(240px, 1.4fr) repeat(3, minmax(0, 1fr));
-		gap: clamp(2rem, 5vw, 4rem);
+		grid-template-columns: minmax(220px, 1.5fr) repeat(4, minmax(0, 1fr));
+		gap: clamp(1.75rem, 3.5vw, 3.25rem);
 		padding-block: clamp(3rem, 6vw, 4.5rem);
 	}
 
@@ -97,6 +110,20 @@ const footerColumns = [
 		font-size: 1.05rem;
 		font-weight: 700;
 		letter-spacing: -0.035em;
+	}
+
+	.site-footer__cta {
+		margin-top: 1.25rem;
+		gap: 0.4rem;
+	}
+
+	.site-footer__cta span {
+		display: inline-block;
+		transition: transform 220ms var(--ease-out-quart);
+	}
+
+	.site-footer__cta:hover span {
+		transform: translateX(2px);
 	}
 
 	.site-footer p {
@@ -197,16 +224,30 @@ const footerColumns = [
 		color: var(--color-text);
 	}
 
-	@media (max-width: 900px) {
+	@media (max-width: 1100px) {
 		.site-footer__grid {
-			grid-template-columns: repeat(2, minmax(0, 1fr));
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+		}
+
+		.site-footer__company {
+			grid-column: 1 / -1;
 		}
 	}
 
-	@media (max-width: 620px) {
+	@media (max-width: 720px) {
+		.site-footer__grid {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			gap: 2rem;
+		}
+	}
+
+	@media (max-width: 480px) {
 		.site-footer__grid {
 			grid-template-columns: 1fr;
-			gap: 2rem;
+		}
+
+		.site-footer__company {
+			grid-column: auto;
 		}
 	}
 </style>

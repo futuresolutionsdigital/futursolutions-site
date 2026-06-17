@@ -10,6 +10,7 @@ export default defineConfig({
 	redirects: {
 		'/seo': '/services/local-visibility',
 		'/backend': '/services/growth-systems',
+		'/snapshot': '/audit',
 	},
 	integrations: [
 		sitemap({

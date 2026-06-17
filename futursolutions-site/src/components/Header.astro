@@ -1,32 +1,75 @@
 ---
 const currentPath = Astro.url.pathname;
-const navItems = [
-	{
-		label: 'Demos',
-		href: '/templates',
-		isActive: currentPath === '/templates' || currentPath.startsWith('/templates/'),
-	},
+
+type NavChild = { label: string; href: string; description?: string };
+type NavItem = { label: string; href: string; children?: NavChild[] };
+
+// Website Foundations is the core sell, so it gets a direct top-level link
+// (to the live, clickable Foundation library) rather than being buried. The
+// remaining depth lives in dropdowns so the offer ladder and industry pages
+// are discoverable without crowding the bar.
+const navItems: NavItem[] = [
+	{ label: 'Website Foundations', href: '/templates' },
 	{
 		label: 'Solutions',
 		href: '/services',
-		isActive: currentPath === '/services' || currentPath.startsWith('/services/'),
+		children: [
+			{
+				label: 'Website Foundations',
+				href: '/services/template-setup',
+				description: 'Premium customized website foundations built from proven frameworks.',
+			},
+			{
+				label: 'Signature Custom Websites',
+				href: '/services/custom-healthcare-websites',
+				description: 'Custom strategy, architecture, design, and build for more complex brands.',
+			},
+			{
+				label: 'Growth Systems',
+				href: '/services/growth-systems',
+				description: 'CRM, booking, follow-up, reporting, and lead routing.',
+			},
+			{
+				label: 'Website Management',
+				href: '/services/ongoing-optimization',
+				description: 'Ongoing updates, optimization, reporting, and system support.',
+			},
+			{
+				label: 'Local Visibility',
+				href: '/services/local-visibility',
+				description: 'Service structure, metadata, and content for local discovery.',
+			},
+			{ label: 'All Solutions', href: '/services' },
+		],
 	},
 	{
 		label: 'Industries',
 		href: '/industries',
-		isActive: currentPath === '/industries' || currentPath.startsWith('/industries/'),
+		children: [
+			{ label: 'Health & Wellness', href: '/industries/wellness-functional-medicine' },
+			{ label: 'Med Spas', href: '/industries/med-spas' },
+			{ label: 'Hormone / TRT Clinics', href: '/industries/hormone-trt-clinics' },
+			{ label: 'Solo Practices', href: '/industries/solo-practices' },
+			{ label: 'Professional Associations', href: '/industries/healthcare-associations' },
+			{ label: 'All Industries', href: '/industries' },
+		],
 	},
 	{
 		label: 'Resources',
 		href: '/resources',
-		isActive: currentPath === '/resources' || currentPath.startsWith('/resources/'),
+		children: [
+			{ label: 'All Resources', href: '/resources' },
+			{ label: 'SEO & Local Visibility', href: '/services/local-visibility' },
+			{ label: 'Free Website & Lead Flow Snapshot', href: '/audit' },
+		],
 	},
-	{
-		label: 'About',
-		href: '/about',
-		isActive: currentPath === '/about' || currentPath.startsWith('/about'),
-	},
+	{ label: 'About', href: '/about' },
 ];
+
+const isItemActive = (item: NavItem): boolean => {
+	const hrefs = [item.href, ...(item.children?.map((c) => c.href) ?? [])];
+	return hrefs.some((h) => currentPath === h || currentPath.startsWith(`${h}/`));
+};
 ---
 
 <header class="site-header" data-header>
@@ -39,20 +82,47 @@ const navItems = [
 		</a>
 		<nav class="site-header__nav" aria-label="Main navigation">
 			{
-				navItems.map((item) => (
-					<a
-						href={item.href}
-						class:list={{ 'is-active': item.isActive }}
-						aria-current={item.isActive ? 'page' : undefined}
-					>
-						{item.label}
-					</a>
-				))
+				navItems.map((item) =>
+					item.children ? (
+						<div class="site-header__navitem" data-dropdown>
+							<button
+								type="button"
+								class:list={['site-header__navlink site-header__navtrigger', { 'is-active': isItemActive(item) }]}
+								aria-expanded="false"
+								aria-haspopup="true"
+								data-dropdown-trigger
+							>
+								{item.label}
+								<span class="site-header__caret" aria-hidden="true" />
+							</button>
+							<div class="site-header__dropdown" data-dropdown-panel>
+								<div class="site-header__dropdown-inner">
+									{item.children.map((child) => (
+										<a href={child.href} class="site-header__dropdown-link">
+											<span class="site-header__dropdown-title">{child.label}</span>
+											{child.description && (
+												<span class="site-header__dropdown-desc">{child.description}</span>
+											)}
+										</a>
+									))}
+								</div>
+							</div>
+						</div>
+					) : (
+						<a
+							href={item.href}
+							class:list={['site-header__navlink', { 'is-active': isItemActive(item) }]}
+							aria-current={isItemActive(item) ? 'page' : undefined}
+						>
+							{item.label}
+						</a>
+					)
+				)
 			}
 		</nav>
 		<div class="site-header__actions">
 			<a class="site-header__cta" href="/audit">
-				Get a Website Audit
+				Get My Free Snapshot
 				<span class="site-header__cta-arrow" aria-hidden="true">&rarr;</span>
 			</a>
 		</div>
@@ -73,20 +143,41 @@ const navItems = [
 	<div class="site-header__mobile-panel" id="mobile-nav" data-mobile-panel>
 		<nav class="site-header__mobile-nav" aria-label="Mobile navigation">
 			{
-				navItems.map((item) => (
-					<a
-						href={item.href}
-						class:list={{ 'is-active': item.isActive }}
-						aria-current={item.isActive ? 'page' : undefined}
-					>
-						{item.label}
-					</a>
-				))
+				navItems.map((item) =>
+					item.children ? (
+						<div class="site-header__mobile-group" data-accordion>
+							<button
+								type="button"
+								class="site-header__mobile-acc-trigger"
+								aria-expanded="false"
+								data-accordion-trigger
+							>
+								{item.label}
+								<span class="site-header__caret" aria-hidden="true" />
+							</button>
+							<div class="site-header__mobile-acc-panel" data-accordion-panel>
+								{item.children.map((child) => (
+									<a href={child.href} class="site-header__mobile-sublink">
+										{child.label}
+									</a>
+								))}
+							</div>
+						</div>
+					) : (
+						<a
+							href={item.href}
+							class:list={{ 'is-active': isItemActive(item) }}
+							aria-current={isItemActive(item) ? 'page' : undefined}
+						>
+							{item.label}
+						</a>
+					)
+				)
 			}
 		</nav>
 		<div class="site-header__mobile-actions">
-			<a class="button button-secondary site-header__mobile-btn" href="/templates">Explore Live Demos</a>
-			<a class="button button-primary site-header__mobile-btn" href="/audit">Get a Website Audit</a>
+			<a class="button button-secondary site-header__mobile-btn" href="/templates">Explore Website Foundations</a>
+			<a class="button button-primary site-header__mobile-btn" href="/audit">Get My Free Snapshot</a>
 		</div>
 	</div>
 </header>
@@ -95,11 +186,14 @@ const navItems = [
 	const header = document.querySelector('[data-header]');
 	const burger = document.querySelector('[data-burger]');
 	const panel = document.querySelector('[data-mobile-panel]');
+
 	if (burger && panel && header) {
 		burger.addEventListener('click', () => {
 			const open = header.classList.toggle('is-mobile-open');
 			burger.setAttribute('aria-expanded', String(open));
 		});
+		// Navigating via a real link closes the mobile panel; accordion toggle
+		// buttons are <button>s, so they are intentionally excluded here.
 		panel.querySelectorAll('a').forEach((link) => {
 			link.addEventListener('click', () => {
 				header.classList.remove('is-mobile-open');
@@ -107,6 +201,44 @@ const navItems = [
 			});
 		});
 	}
+
+	// Desktop dropdowns: hover is handled in CSS; click + keyboard drive
+	// aria-expanded for accessibility.
+	const dropdowns = Array.from(document.querySelectorAll('[data-dropdown]'));
+	const closeAllDropdowns = () => {
+		dropdowns.forEach((dd) => {
+			const trigger = dd.querySelector('[data-dropdown-trigger]');
+			if (trigger) trigger.setAttribute('aria-expanded', 'false');
+		});
+	};
+	dropdowns.forEach((dd) => {
+		const trigger = dd.querySelector('[data-dropdown-trigger]');
+		if (!trigger) return;
+		trigger.addEventListener('click', () => {
+			const isOpen = trigger.getAttribute('aria-expanded') === 'true';
+			closeAllDropdowns();
+			trigger.setAttribute('aria-expanded', String(!isOpen));
+		});
+	});
+	document.addEventListener('click', (event) => {
+		const target = event.target;
+		if (target instanceof Element && !target.closest('[data-dropdown]')) {
+			closeAllDropdowns();
+		}
+	});
+	document.addEventListener('keydown', (event) => {
+		if (event.key === 'Escape') closeAllDropdowns();
+	});
+
+	// Mobile accordions.
+	document.querySelectorAll('[data-accordion]').forEach((acc) => {
+		const trigger = acc.querySelector('[data-accordion-trigger]');
+		if (!trigger) return;
+		trigger.addEventListener('click', () => {
+			const isOpen = acc.classList.toggle('is-open');
+			trigger.setAttribute('aria-expanded', String(isOpen));
+		});
+	});
 </script>
 
 <style>
@@ -176,7 +308,7 @@ const navItems = [
 		display: flex;
 		align-items: center;
 		justify-content: flex-end;
-		gap: 1.5rem;
+		gap: 1.35rem;
 		margin-left: auto;
 		color: var(--color-muted);
 		font-size: 0.9rem;
@@ -184,19 +316,38 @@ const navItems = [
 		letter-spacing: -0.005em;
 	}
 
-	.site-header__nav a {
+	.site-header__navitem {
 		position: relative;
+		display: inline-flex;
+	}
+
+	.site-header__navlink {
+		position: relative;
+		display: inline-flex;
+		align-items: center;
+		gap: 0.32rem;
 		padding-block: 0.35rem;
+		color: var(--color-muted);
+		font-family: inherit;
+		font-size: inherit;
+		font-weight: inherit;
+		letter-spacing: inherit;
 		white-space: nowrap;
 		transition: color var(--transition-base);
 	}
 
-	.site-header__nav a:hover,
-	.site-header__nav a.is-active {
+	.site-header__navtrigger {
+		border: none;
+		background: none;
+		cursor: pointer;
+	}
+
+	.site-header__navlink:hover,
+	.site-header__navlink.is-active {
 		color: var(--color-text);
 	}
 
-	.site-header__nav a.is-active::after {
+	.site-header__navlink.is-active::after {
 		position: absolute;
 		right: 0;
 		bottom: -2px;
@@ -207,24 +358,91 @@ const navItems = [
 		content: '';
 	}
 
+	.site-header__caret {
+		display: inline-block;
+		width: 0.4rem;
+		height: 0.4rem;
+		border-right: 1.5px solid currentColor;
+		border-bottom: 1.5px solid currentColor;
+		transform: translateY(-1px) rotate(45deg);
+		opacity: 0.65;
+		transition: transform 200ms var(--ease-out-quart);
+	}
+
+	/* ═══ Desktop dropdown ═══ */
+	.site-header__dropdown {
+		position: absolute;
+		top: 100%;
+		left: 50%;
+		transform: translateX(-50%);
+		padding-top: 0.55rem;
+		min-width: 19rem;
+		opacity: 0;
+		visibility: hidden;
+		pointer-events: none;
+		transition: opacity 180ms var(--ease-out-quart);
+		z-index: 20;
+	}
+
+	.site-header__dropdown-inner {
+		display: grid;
+		gap: 0.1rem;
+		padding: 0.5rem;
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		background: var(--color-white);
+		box-shadow: 0 14px 36px rgba(15, 23, 42, 0.13), 0 2px 8px rgba(15, 23, 42, 0.06);
+		transform: translateY(-6px);
+		transition: transform 180ms var(--ease-out-quart);
+	}
+
+	.site-header__navitem:hover .site-header__dropdown,
+	.site-header__navitem:focus-within .site-header__dropdown,
+	.site-header__navtrigger[aria-expanded='true'] + .site-header__dropdown {
+		opacity: 1;
+		visibility: visible;
+		pointer-events: auto;
+	}
+
+	.site-header__navitem:hover .site-header__dropdown-inner,
+	.site-header__navitem:focus-within .site-header__dropdown-inner,
+	.site-header__navtrigger[aria-expanded='true'] + .site-header__dropdown .site-header__dropdown-inner {
+		transform: translateY(0);
+	}
+
+	.site-header__navtrigger[aria-expanded='true'] .site-header__caret {
+		transform: translateY(1px) rotate(-135deg);
+	}
+
+	.site-header__dropdown-link {
+		display: grid;
+		gap: 0.12rem;
+		padding: 0.6rem 0.7rem;
+		border-radius: var(--radius-sm);
+		transition: background var(--transition-base);
+	}
+
+	.site-header__dropdown-link:hover {
+		background: color-mix(in srgb, var(--color-text) 5%, transparent);
+	}
+
+	.site-header__dropdown-title {
+		color: var(--color-text);
+		font-size: 0.9rem;
+		font-weight: 600;
+		letter-spacing: -0.01em;
+	}
+
+	.site-header__dropdown-desc {
+		color: var(--color-muted);
+		font-size: 0.8rem;
+		line-height: 1.4;
+	}
+
 	.site-header__actions {
 		display: flex;
 		align-items: center;
 		gap: 1.1rem;
-	}
-
-	.site-header__audit-link {
-		display: inline-flex;
-		align-items: center;
-		color: var(--color-muted);
-		font-size: 0.86rem;
-		font-weight: 500;
-		white-space: nowrap;
-		transition: color var(--transition-base);
-	}
-
-	.site-header__audit-link:hover {
-		color: var(--color-text);
 	}
 
 	.site-header__cta {
@@ -308,6 +526,8 @@ const navItems = [
 		padding: 1.25rem var(--container-pad, 1.25rem) 1.75rem;
 		border-top: 1px solid var(--color-border-soft);
 		background: color-mix(in srgb, var(--color-bg) 96%, transparent);
+		max-height: calc(100vh - 4.5rem);
+		overflow-y: auto;
 	}
 
 	.is-mobile-open .site-header__mobile-panel {
@@ -320,7 +540,7 @@ const navItems = [
 		gap: 0.15rem;
 	}
 
-	.site-header__mobile-nav a {
+	.site-header__mobile-nav > a {
 		display: block;
 		padding: 0.65rem 0.75rem;
 		border-radius: var(--radius-sm);
@@ -330,14 +550,63 @@ const navItems = [
 		transition: background var(--transition-base);
 	}
 
-	.site-header__mobile-nav a:hover,
-	.site-header__mobile-nav a.is-active {
+	.site-header__mobile-nav > a:hover,
+	.site-header__mobile-nav > a.is-active {
 		background: color-mix(in srgb, var(--color-text) 5%, transparent);
 	}
 
-	.site-header__mobile-nav a.is-active {
-		color: var(--color-text);
+	.site-header__mobile-nav > a.is-active {
 		font-weight: 700;
+	}
+
+	.site-header__mobile-acc-trigger {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		width: 100%;
+		padding: 0.65rem 0.75rem;
+		border: none;
+		border-radius: var(--radius-sm);
+		background: transparent;
+		color: var(--color-text);
+		font-family: inherit;
+		font-size: 1rem;
+		font-weight: 600;
+		cursor: pointer;
+		transition: background var(--transition-base);
+	}
+
+	.site-header__mobile-acc-trigger:hover {
+		background: color-mix(in srgb, var(--color-text) 5%, transparent);
+	}
+
+	.site-header__mobile-group.is-open .site-header__mobile-acc-trigger .site-header__caret {
+		transform: translateY(1px) rotate(-135deg);
+	}
+
+	.site-header__mobile-acc-panel {
+		display: none;
+		flex-direction: column;
+		padding: 0.1rem 0 0.4rem 0.5rem;
+	}
+
+	.site-header__mobile-group.is-open .site-header__mobile-acc-panel {
+		display: flex;
+	}
+
+	.site-header__mobile-sublink {
+		display: block;
+		padding: 0.5rem 0.75rem;
+		border-radius: var(--radius-sm);
+		color: var(--color-muted);
+		font-size: 0.95rem;
+		font-weight: 500;
+		transition: background var(--transition-base), color var(--transition-base);
+	}
+
+	.site-header__mobile-sublink:hover {
+		background: color-mix(in srgb, var(--color-text) 5%, transparent);
+		color: var(--color-text);
 	}
 
 	.site-header__mobile-actions {
@@ -356,22 +625,12 @@ const navItems = [
 		}
 
 		.site-header__nav {
-			gap: 1.15rem;
+			gap: 1.05rem;
 			font-size: 0.86rem;
 		}
-
-		.site-header__audit-link {
-			font-size: 0.82rem;
-		}
 	}
 
-	@media (max-width: 980px) {
-		.site-header__audit-link {
-			display: none;
-		}
-	}
-
-	@media (max-width: 860px) {
+	@media (max-width: 920px) {
 		.site-header__nav {
 			display: none;
 		}
