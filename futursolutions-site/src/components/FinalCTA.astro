@@ -15,26 +15,27 @@ const includes = [
 
 	<div class="site-container site-container--wide final-cta__inner">
 		<div class="final-cta__main">
-			<p class="eyebrow">Start with the audit</p>
+			<p class="eyebrow">Start with a free snapshot</p>
 			<h2 id="final-cta-heading" class="display-lg final-cta__headline">
-				Get a clear diagnosis of your website
-				<span class="final-cta__headline-soft">and growth system.</span>
+				Get a clear snapshot of your website
+				<span class="final-cta__headline-soft">and lead flow.</span>
 			</h2>
 			<p class="lead final-cta__lead">
-				We'll review your positioning, service pages, conversion path, local visibility, and follow-up flow — then show you what should be fixed first. Free, and no sales pitch.
+				I'll review your positioning, service pages, conversion path, local visibility, and follow-up flow — then send a short Loom with the clearest opportunities and best starting point.
 			</p>
+			<p class="final-cta__microline">Free Loom review. Clear recommendation. No pressure.</p>
 
 			<div class="final-cta__actions">
 				<a class="button button-on-ink final-cta__primary" href="/audit">
-					Request Website + Growth Audit
+					Get My Free Snapshot
 					<span aria-hidden="true">&rarr;</span>
 				</a>
-				<a class="button button-on-ink-secondary" href="/templates">Explore Live Demos</a>
+				<a class="button button-on-ink-secondary" href="/templates">Explore Website Foundations</a>
 			</div>
 		</div>
 
-		<aside class="final-cta__side" aria-label="What's included in the audit">
-			<p class="final-cta__side-label">Website Diagnostic</p>
+		<aside class="final-cta__side" aria-label="What I'll review in your free snapshot">
+			<p class="final-cta__side-label">What I'll review</p>
 			<ul class="final-cta__side-list">
 				{
 					includes.map((item) => (
@@ -49,7 +50,7 @@ const includes = [
 					))
 				}
 			</ul>
-			<p class="final-cta__side-note">A clear next-step review before you commit to a build.</p>
+			<p class="final-cta__side-note">A clear recommendation before you commit to a build.</p>
 		</aside>
 	</div>
 </section>
@@ -102,7 +103,16 @@ const includes = [
 
 	.final-cta__lead {
 		max-width: 60ch;
+		margin: 0 0 0.85rem 0;
+	}
+
+	.final-cta__microline {
+		max-width: 60ch;
 		margin: 0 0 2rem 0;
+		color: var(--color-ink-accent);
+		font-size: 0.92rem;
+		font-weight: 600;
+		letter-spacing: 0.005em;
 	}
 
 	.final-cta__actions {
