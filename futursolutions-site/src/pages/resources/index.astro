@@ -446,6 +446,9 @@ const fmt = (d?: string) =>
 		border-left-width: 3px;
 		transition: transform 280ms var(--ease-out-quart), border-color var(--transition-base), box-shadow var(--transition-base);
 	}
+	.resources-card[hidden] {
+		display: none;
+	}
 	.resources-card--foundation { border-left-color: var(--lane-foundation); }
 	.resources-card--custom     { border-left-color: var(--lane-custom); }
 	.resources-card--growth     { border-left-color: var(--lane-growth); }
