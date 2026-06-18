@@ -22,13 +22,14 @@ const notThis = [
 	'A generic theme reskin',
 	'Placeholder page structure',
 	'A pretty design with no lead path',
-	'Content locked away from you',
+	'Important content locked behind a developer',
 ];
 const insteadThis = [
 	'A proven structure customized to your business',
 	'Service pages built around visitor intent',
 	'A clear call-to-action and booking path',
 	'Editable content where it matters',
+	'Forms, tracking, and follow-up readiness',
 ];
 
 const bestForCards = [
@@ -284,36 +285,42 @@ const foundationFaqs = [
 				<p class="lead">
 					A Website Foundation is a premium, customizable website built from a proven FutureSolutions framework — then tailored around your brand, services, service pages, content needs, and lead path.
 				</p>
-				<p>
-					It is not a theme reskin or a generic template swap. The structure is planned around the pieces most high-trust service businesses actually need: clarity, trust, mobile experience, service-page strategy, lead capture, and editable content.
+				<p class="templates-define__support">
+					It is not a theme reskin or generic template swap. The structure is planned around what high-trust service businesses actually need: clear services, trust signals, mobile usability, lead capture, and editable content.
 				</p>
 			</div>
-			<div class="templates-define__compare" role="group" aria-label="What a Website Foundation is not, versus what it is">
-				<div class="templates-define__col templates-define__col--not">
-					<p class="templates-define__col-label">Not this</p>
-					<ul>
-						{notThis.map((item) => (
-							<li>
-								<span class="templates-define__icon templates-define__icon--x" aria-hidden="true">
-									<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="4" x2="12" y2="12" /><line x1="12" y1="4" x2="4" y2="12" /></svg>
-								</span>
-								{item}
-							</li>
-						))}
-					</ul>
-				</div>
-				<div class="templates-define__col templates-define__col--yes">
-					<p class="templates-define__col-label">Instead</p>
-					<ul>
-						{insteadThis.map((item) => (
-							<li>
-								<span class="templates-define__icon templates-define__icon--check" aria-hidden="true">
-									<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3,8.5 6.5,12 13,4" /></svg>
-								</span>
-								{item}
-							</li>
-						))}
-					</ul>
+			<div class="templates-define__compare">
+				<p class="templates-define__compare-label">Built to avoid the usual website shortcuts.</p>
+				<div class="templates-define__cards" role="group" aria-label="What a Website Foundation is not, versus what it is">
+					<div class="templates-define__col templates-define__col--not">
+						<p class="templates-define__col-label">Not this</p>
+						<ul>
+							{notThis.map((item) => (
+								<li>
+									<span class="templates-define__icon templates-define__icon--x" aria-hidden="true">
+										<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="4" x2="12" y2="12" /><line x1="12" y1="4" x2="4" y2="12" /></svg>
+									</span>
+									{item}
+								</li>
+							))}
+						</ul>
+					</div>
+					<div class="templates-define__col templates-define__col--yes">
+						<p class="templates-define__col-label">
+							Instead
+							<span class="templates-define__col-badge">Recommended</span>
+						</p>
+						<ul>
+							{insteadThis.map((item) => (
+								<li>
+									<span class="templates-define__icon templates-define__icon--check" aria-hidden="true">
+										<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3,8.5 6.5,12 13,4" /></svg>
+									</span>
+									{item}
+								</li>
+							))}
+						</ul>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -929,20 +936,36 @@ const foundationFaqs = [
 		align-items: center;
 	}
 
-	.templates-define__copy p:not(.eyebrow):not(.lead) {
-		margin-top: 1rem;
-		color: var(--color-muted);
-		font-size: 1rem;
-		line-height: 1.6;
+	.templates-define__copy .lead {
+		font-size: clamp(1.12rem, 1.7vw, 1.3rem);
 	}
 
-	.templates-define__compare {
+	.templates-define__support {
+		margin-top: 1.1rem;
+		color: var(--color-muted);
+		font-size: 0.975rem;
+		line-height: 1.6;
+		max-width: 46ch;
+	}
+
+	.templates-define__compare-label {
+		margin: 0 0 0.9rem;
+		font-size: 0.74rem;
+		font-weight: 800;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		color: var(--color-muted);
+	}
+
+	.templates-define__cards {
 		display: grid;
 		grid-template-columns: 1fr;
-		gap: 1rem;
+		gap: 1.1rem;
 	}
 
 	.templates-define__col {
+		position: relative;
+		overflow: hidden;
 		padding: 1.5rem;
 		border: 1px solid var(--color-border);
 		border-radius: var(--radius-lg);
@@ -950,11 +973,38 @@ const foundationFaqs = [
 		box-shadow: var(--shadow-card);
 	}
 
+	/* top accent bar distinguishes avoid vs recommended */
+	.templates-define__col::before {
+		content: '';
+		position: absolute;
+		inset: 0 0 auto 0;
+		height: 3px;
+	}
+
 	.templates-define__col--not {
-		background: color-mix(in srgb, var(--color-bg) 70%, var(--color-white));
+		background: color-mix(in srgb, var(--color-bg) 72%, var(--color-white));
+		border-color: var(--color-border-soft);
+	}
+
+	.templates-define__col--not::before {
+		background: color-mix(in srgb, var(--color-muted) 28%, var(--color-border));
+	}
+
+	.templates-define__col--yes {
+		background:
+			linear-gradient(180deg, color-mix(in srgb, var(--color-accent-light) 60%, var(--color-white)) 0%, var(--color-white) 60%);
+		border-color: color-mix(in srgb, var(--color-accent) 42%, var(--color-border));
+		box-shadow: 0 0 0 1px color-mix(in srgb, var(--color-accent) 18%, transparent), var(--shadow-card-hover);
+	}
+
+	.templates-define__col--yes::before {
+		background: var(--color-accent-dark);
 	}
 
 	.templates-define__col-label {
+		display: flex;
+		align-items: center;
+		gap: 0.55rem;
 		margin: 0 0 0.85rem;
 		font-size: 0.72rem;
 		font-weight: 800;
@@ -965,6 +1015,16 @@ const foundationFaqs = [
 
 	.templates-define__col--yes .templates-define__col-label {
 		color: var(--color-accent-dark);
+	}
+
+	.templates-define__col-badge {
+		padding: 0.22rem 0.5rem;
+		border-radius: 999px;
+		background: var(--color-accent-dark);
+		color: var(--color-white);
+		font-size: 0.6rem;
+		font-weight: 800;
+		letter-spacing: 0.06em;
 	}
 
 	.templates-define__col ul {
@@ -980,17 +1040,27 @@ const foundationFaqs = [
 		grid-template-columns: auto 1fr;
 		gap: 0.6rem;
 		align-items: start;
-		color: var(--color-text);
 		font-size: 0.9375rem;
 		line-height: 1.45;
+	}
+
+	.templates-define__col--not li {
+		color: var(--color-muted);
+	}
+
+	.templates-define__col--yes li {
+		color: var(--color-text);
+		font-weight: 500;
 	}
 
 	.templates-define__icon {
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
+		flex-shrink: 0;
 		width: 1.4rem;
 		height: 1.4rem;
+		margin-top: 0.02rem;
 		border-radius: 999px;
 	}
 
@@ -1000,13 +1070,13 @@ const foundationFaqs = [
 	}
 
 	.templates-define__icon--x {
-		background: color-mix(in srgb, var(--color-muted) 16%, transparent);
+		background: color-mix(in srgb, var(--color-muted) 14%, transparent);
 		color: var(--color-muted);
 	}
 
 	.templates-define__icon--check {
-		background: var(--color-accent-light);
-		color: var(--color-accent-dark);
+		background: var(--color-accent-dark);
+		color: var(--color-white);
 	}
 
 	/* ═══ Best for ═══ */
