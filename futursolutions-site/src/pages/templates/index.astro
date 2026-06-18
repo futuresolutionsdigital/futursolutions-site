@@ -10,10 +10,10 @@ const pageDescription =
 const canonicalUrl = 'https://futuresolutions.io/templates/';
 
 const heroChips = [
-	'Customized around your brand',
+	'From $3,500',
+	'Customized framework',
 	'Faster than fully custom',
-	'Conversion-ready',
-	'Growth-System ready',
+	'Growth-system ready',
 ];
 
 // "What is a Website Foundation" — a not-this / this contrast keeps the offer
@@ -209,13 +209,16 @@ const foundationFaqs = [
 			<p class="lead">
 				Start with a proven FutureSolutions framework, then shape it around your brand, services, audience, and lead path — so you can launch faster without settling for a generic template.
 			</p>
-			<ul class="templates-hero__chips" aria-label="What a Website Foundation gives you">
-				{heroChips.map((chip) => <li>{chip}</li>)}
+			<ul class="templates-hero__chips" aria-label="Website Foundation highlights">
+				{heroChips.map((chip, i) => (
+					<li class:list={[{ 'is-accent': i === 0 }]}>{chip}</li>
+				))}
 			</ul>
 			<div class="button-row">
 				<a class="button button-primary" href="/audit">Get My Free Snapshot</a>
-				<a class="button button-secondary" href="#featured-templates">Explore Foundation Examples</a>
+				<a class="button button-secondary" href="#foundation-examples">Explore Foundation Examples</a>
 			</div>
+			<p class="templates-hero__micro">Free Loom review · Clear recommendation · No pressure</p>
 		</div>
 	</section>
 
@@ -342,7 +345,7 @@ const foundationFaqs = [
 	</section>
 
 	<!-- SECTION 6 — FOUNDATION EXAMPLES / DEMOS -->
-	<section id="featured-templates" class="section templates-examples" aria-labelledby="templates-examples-heading">
+	<section id="foundation-examples" class="section templates-examples" aria-labelledby="templates-examples-heading">
 		<div class="site-container">
 			<div class="templates-examples__intro">
 				<p class="eyebrow">Foundation examples</p>
@@ -510,7 +513,7 @@ const foundationFaqs = [
 				</div>
 				<div class="button-row">
 					<a class="button button-primary" href="/audit">Get My Free Snapshot</a>
-					<a class="button button-secondary" href="#featured-templates">Explore Foundation Examples</a>
+					<a class="button button-secondary" href="#foundation-examples">Explore Foundation Examples</a>
 				</div>
 			</div>
 		</div>
@@ -546,7 +549,15 @@ const foundationFaqs = [
 	}
 
 	.templates-hero h1 {
-		max-width: 880px;
+		max-width: 940px;
+		font-size: clamp(2.4rem, 4.6vw, 3.5rem);
+		letter-spacing: -0.03em;
+		line-height: 1.04;
+	}
+
+	.templates-hero .lead {
+		max-width: 660px;
+		margin-top: 1.4rem;
 	}
 
 	.templates-hero__chips {
@@ -571,8 +582,22 @@ const foundationFaqs = [
 		line-height: 1;
 	}
 
+	.templates-hero__chips li.is-accent {
+		border-color: transparent;
+		background: var(--color-accent-dark);
+		color: var(--color-white);
+	}
+
 	.templates-hero .button-row {
 		margin-top: 2rem;
+	}
+
+	.templates-hero__micro {
+		margin: 1.05rem 0 0;
+		color: var(--color-muted);
+		font-size: 0.85rem;
+		font-weight: 600;
+		letter-spacing: 0.01em;
 	}
 
 	/* ═══ Define / not-this-this ═══ */
