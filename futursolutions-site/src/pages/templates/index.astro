@@ -61,6 +61,16 @@ const bestForCards = [
 	'Teams that need a clearer path from visitor to inquiry',
 ];
 
+// Cases where a Signature Custom Website is the better path — framed as honest
+// routing, not a rejection.
+const customFitCards = [
+	'Complex membership portals',
+	'Large associations with legacy CMS / AMS constraints',
+	'Heavy custom integrations',
+	'Large content libraries',
+	'Deeply custom brand systems',
+];
+
 const includeCategories = [
 	{
 		title: 'Strategy & structure',
@@ -106,12 +116,12 @@ const comparison = [
 		lane: 'foundation',
 		name: 'Website Foundation',
 		tag: 'Core offer',
+		price: 'from $3,500',
 		points: [
 			'Faster path to launch',
 			'Starts from a proven framework',
 			'Customized around your brand and services',
 			'Best for common high-trust service-business needs',
-			'Lower starting investment',
 			'Ideal when you need a professional site without a full custom process',
 		],
 	},
@@ -119,12 +129,12 @@ const comparison = [
 		lane: 'custom',
 		name: 'Signature Custom Website',
 		tag: 'Premium path',
+		price: 'from $12,000',
 		points: [
 			'Deeper strategy and design',
 			'Custom page architecture',
 			'Custom content model',
 			'Best for complex organizations or unique positioning',
-			'Higher investment',
 			'Ideal when a framework approach would be too limiting',
 		],
 	},
@@ -142,20 +152,23 @@ const growthAddItems = [
 const pricingTiers = [
 	{
 		name: 'Foundation Starter',
-		price: 'From $3,500',
-		text: 'A focused site foundation for a clean, professional launch.',
+		price: 'from $3,500',
+		text: 'Focused website foundation for a clean, professional launch.',
+		bestFor: 'Smaller sites, clear service offers, and businesses that need a stronger presence without a fully custom process.',
 		featured: false,
 	},
 	{
 		name: 'Foundation Plus',
-		price: 'Typically $5,000–$6,500',
-		text: 'More pages, deeper service structure, stronger content support, and added launch preparation.',
+		price: 'typically $5,000–$6,500',
+		text: 'More pages, deeper service structure, stronger content support, and more complete launch preparation.',
+		bestFor: 'Businesses with multiple services, more complex content needs, or a stronger launch plan.',
 		featured: true,
 	},
 	{
 		name: 'Foundation + Growth System',
-		price: 'Quoted after your Snapshot',
-		text: 'Your Website Foundation plus CRM, booking, follow-up, and reporting setup.',
+		price: 'custom scoped after Snapshot',
+		text: 'Website Foundation plus CRM, booking, follow-up, and reporting setup.',
+		bestFor: 'Businesses that need the website and the lead-handling system connected from the start.',
 		featured: false,
 	},
 ];
@@ -365,11 +378,14 @@ const foundationFaqs = [
 			</ul>
 			<div class="templates-bestfor__note">
 				<p class="templates-bestfor__note-label">Better fit for a custom build</p>
-				<p>
-					A Foundation may not be the right fit for complex membership portals, large associations with legacy AMS/CMS constraints, heavy custom integrations, large content libraries, or deeply custom brand systems. When that is the case, we will point you toward a
-					<a href="/services/custom-healthcare-websites">Signature Custom Website</a>
-					<!-- TODO: link "Web & Business Systems Consulting" once a dedicated /services/web-business-systems-consulting page exists -->
-					or business systems consulting instead.
+				<ul class="templates-bestfor__note-list">
+					{customFitCards.map((item) => (
+						<li>{item}</li>
+					))}
+				</ul>
+				<p class="templates-bestfor__route">
+					When a Foundation would be too limiting, we say so in your Snapshot and point you toward a
+					<a href="/services/custom-healthcare-websites">Signature Custom Website</a> instead.
 				</p>
 			</div>
 		</div>
@@ -494,7 +510,6 @@ const foundationFaqs = [
 							))}
 						</div>
 					</div>
-					<p class="fsys__note">Final scope depends on page count, content needs, integrations, and whether a Growth System is included.</p>
 				</article>
 
 				<!-- Chapter 02 — How it comes together -->
@@ -526,24 +541,27 @@ const foundationFaqs = [
 					<div class="fsys__head">
 						<p class="fsys__kicker">How it compares</p>
 						<h3 class="fsys__title">The premium middle path.</h3>
-						<p class="fsys__text">A Foundation sits between a cheap template and a fully custom build: the quality and strategy of custom, with a faster, more practical path.</p>
+						<p class="fsys__text">A Foundation sits between a generic template and a fully custom build: the quality and strategy of custom, with a faster, more practical path.</p>
 					</div>
 					<div class="fsys__body">
-						<div class="fsys-scale" role="img" aria-label="A Website Foundation sits between a cheap template and a fully custom website.">
+						<div class="fsys-scale" role="img" aria-label="A Website Foundation sits between a generic template and a fully custom website.">
 							<div class="fsys-scale__track" aria-hidden="true"></div>
 							<div class="fsys-scale__stop">
 								<span class="fsys-scale__dot"></span>
-								<span class="fsys-scale__label">Cheap template</span>
+								<span class="fsys-scale__label">Generic template</span>
+								<span class="fsys-scale__price">Low cost</span>
 							</div>
 							<div class="fsys-scale__stop fsys-scale__stop--active">
 								<span class="fsys-scale__dot">
 									<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3,8.5 6.5,12 13,4" /></svg>
 								</span>
 								<span class="fsys-scale__label">Website Foundation</span>
+								<span class="fsys-scale__price">from $3,500</span>
 							</div>
 							<div class="fsys-scale__stop">
 								<span class="fsys-scale__dot"></span>
 								<span class="fsys-scale__label">Fully custom</span>
+								<span class="fsys-scale__price">from $12,000</span>
 							</div>
 						</div>
 						<div class="fsys-vs">
@@ -551,6 +569,7 @@ const foundationFaqs = [
 								<article class={`card fsys-vs__card lane-accent-top lane-accent-top--${col.lane}`}>
 									<span class={`lane-tag lane-tag--${col.lane}`}>{col.tag}</span>
 									<h4>{col.name}</h4>
+									<p class="fsys-vs__price">{col.price}</p>
 									<ul>
 										{col.points.map((point) => (
 											<li>
@@ -617,9 +636,14 @@ const foundationFaqs = [
 									<h4>{tier.name}</h4>
 									<p class="fsys-pricing__price">{tier.price}</p>
 									<p class="fsys-pricing__text">{tier.text}</p>
+									<p class="fsys-pricing__bestfor">
+										<span class="fsys-pricing__bestfor-label">Best for</span>
+										{tier.bestFor}
+									</p>
 								</article>
 							))}
 						</div>
+						<p class="fsys-pricing__note">Growth Systems can also be added later, and typically start at $2,500 setup + $500/mo.</p>
 					</div>
 				</article>
 
@@ -630,7 +654,7 @@ const foundationFaqs = [
 					</div>
 					<div class="fsys__end-card">
 						<p>Every path starts the same way: a free, no-pressure snapshot with a clear recommendation.</p>
-						<a class="button button-primary" href="/audit">Get My Free Snapshot</a>
+						<a class="button button-primary" href="/audit">Get My Free Snapshot →</a>
 					</div>
 				</div>
 			</div>
@@ -653,7 +677,7 @@ const foundationFaqs = [
 					<p class="templates-final__micro">Free Loom review · Clear recommendation · No pressure</p>
 				</div>
 				<div class="button-row">
-					<a class="button button-primary" href="/audit">Get My Free Snapshot</a>
+					<a class="button button-primary" href="/audit">Get My Free Snapshot →</a>
 					<a class="button button-secondary" href="#foundation-examples">Explore Foundation Examples</a>
 				</div>
 			</div>
@@ -1205,7 +1229,7 @@ const foundationFaqs = [
 	}
 
 	.templates-bestfor__note-label {
-		margin: 0 0 0.4rem;
+		margin: 0 0 0.7rem;
 		font-size: 0.72rem;
 		font-weight: 800;
 		letter-spacing: 0.12em;
@@ -1213,7 +1237,27 @@ const foundationFaqs = [
 		color: var(--color-muted);
 	}
 
-	.templates-bestfor__note p:last-child {
+	.templates-bestfor__note-list {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		margin: 0 0 1rem;
+		padding: 0;
+		list-style: none;
+	}
+
+	.templates-bestfor__note-list li {
+		padding: 0.4rem 0.7rem;
+		border: 1px solid var(--color-border);
+		border-radius: 999px;
+		background: var(--color-bg);
+		color: var(--color-text);
+		font-size: 0.82rem;
+		font-weight: 600;
+		line-height: 1;
+	}
+
+	.templates-bestfor__route {
 		margin: 0;
 		color: var(--color-muted);
 		font-size: 0.95rem;
@@ -1360,13 +1404,6 @@ const foundationFaqs = [
 		color: var(--color-muted);
 		font-size: 1rem;
 		line-height: 1.6;
-	}
-
-	.fsys__note {
-		margin: 1.25rem 0 0;
-		color: var(--color-muted);
-		font-size: 0.9rem;
-		font-style: italic;
 	}
 
 	.fsys__body--split {
@@ -1609,6 +1646,17 @@ const foundationFaqs = [
 		font-weight: 800;
 	}
 
+	.fsys-scale__price {
+		font-size: 0.72rem;
+		font-weight: 600;
+		color: var(--color-muted);
+	}
+
+	.fsys-scale__stop--active .fsys-scale__price {
+		color: var(--color-accent-dark);
+		font-weight: 800;
+	}
+
 	/* Chapter 03 — comparison cards */
 	.fsys-vs {
 		display: grid;
@@ -1626,6 +1674,14 @@ const foundationFaqs = [
 	.fsys-vs__card h4 {
 		font-size: 1.15rem;
 		letter-spacing: -0.02em;
+	}
+
+	.fsys-vs__price {
+		margin: -0.35rem 0 0;
+		color: var(--color-accent-dark);
+		font-size: 0.95rem;
+		font-weight: 800;
+		letter-spacing: -0.01em;
 	}
 
 	.fsys-vs__card ul {
@@ -1766,6 +1822,32 @@ const foundationFaqs = [
 		margin: 0.25rem 0 0;
 		color: var(--color-muted);
 		font-size: 0.9375rem;
+		line-height: 1.55;
+	}
+
+	.fsys-pricing__bestfor {
+		margin: 0.85rem 0 0;
+		padding-top: 0.85rem;
+		border-top: 1px solid var(--color-border-soft);
+		color: var(--color-muted);
+		font-size: 0.85rem;
+		line-height: 1.5;
+	}
+
+	.fsys-pricing__bestfor-label {
+		display: block;
+		margin-bottom: 0.2rem;
+		color: var(--color-text);
+		font-size: 0.66rem;
+		font-weight: 800;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+	}
+
+	.fsys-pricing__note {
+		margin: 1.25rem 0 0;
+		color: var(--color-muted);
+		font-size: 0.9rem;
 		line-height: 1.55;
 	}
 
