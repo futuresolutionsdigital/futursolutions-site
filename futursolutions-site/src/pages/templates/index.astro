@@ -203,22 +203,75 @@ const foundationFaqs = [
 >
 	<!-- SECTION 1 — HERO -->
 	<section class="section templates-hero" aria-labelledby="templates-heading">
-		<div class="site-container templates-hero__inner">
-			<p class="eyebrow">Website Foundations</p>
-			<h1 id="templates-heading">A premium website foundation, customized around your business.</h1>
-			<p class="lead">
-				Start with a proven FutureSolutions framework, then shape it around your brand, services, audience, and lead path — so you can launch faster without settling for a generic template.
-			</p>
-			<ul class="templates-hero__chips" aria-label="Website Foundation highlights">
-				{heroChips.map((chip, i) => (
-					<li class:list={[{ 'is-accent': i === 0 }]}>{chip}</li>
-				))}
-			</ul>
-			<div class="button-row">
-				<a class="button button-primary" href="/audit">Get My Free Snapshot</a>
-				<a class="button button-secondary" href="#foundation-examples">Explore Foundation Examples</a>
+		<div class="site-container templates-hero__grid">
+			<div class="templates-hero__copy">
+				<p class="eyebrow">Website Foundations</p>
+				<h1 id="templates-heading">A premium website foundation, customized around your business.</h1>
+				<p class="lead">
+					Start with a proven FutureSolutions framework, then shape it around your brand, services, audience, and lead path — so you can launch faster without starting from a blank page or settling for a generic template.
+				</p>
+				<ul class="templates-hero__chips" aria-label="Website Foundation highlights">
+					{heroChips.map((chip, i) => (
+						<li class:list={[{ 'is-accent': i === 0 }]}>{chip}</li>
+					))}
+				</ul>
+				<div class="button-row">
+					<a class="button button-primary" href="/audit">Get My Free Snapshot →</a>
+					<a class="button button-secondary" href="#foundation-examples">Explore Foundation Examples</a>
+				</div>
+				<p class="templates-hero__micro">Free Loom review · Clear recommendation · No pressure</p>
 			</div>
-			<p class="templates-hero__micro">Free Loom review · Clear recommendation · No pressure</p>
+
+			<div class="templates-hero__media">
+				<div class="foundation-visual" aria-hidden="true">
+					<span class="fv-deco fv-deco--back"></span>
+					<span class="fv-deco fv-deco--mid"></span>
+					<div class="fv-browser">
+						<div class="fv-browser__bar">
+							<span class="fv-browser__dot"></span>
+							<span class="fv-browser__dot"></span>
+							<span class="fv-browser__dot"></span>
+							<span class="fv-browser__url">yourpractice.com</span>
+						</div>
+						<div class="fv-screen">
+							<div class="fv-screen__hero">
+								<span class="fv-pill">Trusted local care</span>
+								<span class="fv-bar fv-bar--title"></span>
+								<span class="fv-bar fv-bar--title fv-bar--title-2"></span>
+								<span class="fv-bar fv-bar--text"></span>
+								<div class="fv-screen__cta">
+									<span class="fv-btn">Book a visit</span>
+									<span class="fv-tag">Conversion-ready</span>
+								</div>
+							</div>
+							<div class="fv-services">
+								<div class="fv-card">
+									<span class="fv-card__icon"></span>
+									<span class="fv-bar fv-bar--sm"></span>
+									<span class="fv-bar fv-bar--xs"></span>
+								</div>
+								<div class="fv-card">
+									<span class="fv-card__icon"></span>
+									<span class="fv-bar fv-bar--sm"></span>
+									<span class="fv-bar fv-bar--xs"></span>
+								</div>
+								<div class="fv-card">
+									<span class="fv-card__icon"></span>
+									<span class="fv-bar fv-bar--sm"></span>
+									<span class="fv-bar fv-bar--xs"></span>
+								</div>
+							</div>
+							<div class="fv-trust">
+								<span class="fv-stars">★★★★★</span>
+								<span class="fv-bar fv-bar--trust"></span>
+							</div>
+						</div>
+					</div>
+					<span class="fv-callout fv-callout--lead">Lead path</span>
+					<span class="fv-callout fv-callout--edit">Editable content</span>
+					<span class="fv-callout fv-callout--growth">Growth ready</span>
+				</div>
+			</div>
 		</div>
 	</section>
 
@@ -538,7 +591,6 @@ const foundationFaqs = [
 		content: '';
 	}
 
-	.templates-hero__inner,
 	.templates-bestfor__intro,
 	.templates-include__intro,
 	.templates-process__intro,
@@ -548,15 +600,24 @@ const foundationFaqs = [
 		max-width: 820px;
 	}
 
+	.templates-hero__grid {
+		display: grid;
+		grid-template-columns: minmax(0, 1.02fr) minmax(0, 0.98fr);
+		gap: clamp(2.5rem, 5vw, 4.5rem);
+		align-items: center;
+	}
+
+	.templates-hero__copy {
+		max-width: 560px;
+	}
+
 	.templates-hero h1 {
-		max-width: 940px;
-		font-size: clamp(2.4rem, 4.6vw, 3.5rem);
+		font-size: clamp(2.3rem, 3.7vw, 3.2rem);
 		letter-spacing: -0.03em;
-		line-height: 1.04;
+		line-height: 1.05;
 	}
 
 	.templates-hero .lead {
-		max-width: 660px;
 		margin-top: 1.4rem;
 	}
 
@@ -598,6 +659,266 @@ const foundationFaqs = [
 		font-size: 0.85rem;
 		font-weight: 600;
 		letter-spacing: 0.01em;
+	}
+
+	/* ═══ Hero visual — Foundation Preview ═══ */
+	.templates-hero__media {
+		display: flex;
+		justify-content: center;
+	}
+
+	.foundation-visual {
+		position: relative;
+		width: min(100%, 440px);
+		padding: 2.25rem 1.75rem;
+	}
+
+	/* decorative layered cards behind the preview = "foundation" depth */
+	.fv-deco {
+		position: absolute;
+		inset: 2.25rem 1.75rem;
+		border-radius: 16px;
+		background: var(--color-white);
+		border: 1px solid var(--color-border-soft);
+	}
+
+	.fv-deco--back {
+		transform: translate(22px, -26px) rotate(2.4deg);
+		opacity: 0.55;
+		box-shadow: var(--shadow-card);
+	}
+
+	.fv-deco--mid {
+		transform: translate(11px, -13px) rotate(1.2deg);
+		opacity: 0.8;
+		box-shadow: var(--shadow-card);
+	}
+
+	.fv-browser {
+		position: relative;
+		border-radius: 16px;
+		overflow: hidden;
+		background: var(--color-white);
+		border: 1px solid var(--color-border);
+		box-shadow: var(--shadow-card-hover);
+	}
+
+	.fv-browser__bar {
+		display: flex;
+		align-items: center;
+		gap: 0.4rem;
+		padding: 0.6rem 0.85rem;
+		background: color-mix(in srgb, var(--color-bg) 65%, var(--color-white));
+		border-bottom: 1px solid var(--color-border-soft);
+	}
+
+	.fv-browser__dot {
+		width: 0.5rem;
+		height: 0.5rem;
+		border-radius: 999px;
+		background: var(--color-border);
+	}
+
+	.fv-browser__url {
+		margin-left: 0.5rem;
+		padding: 0.18rem 0.6rem;
+		border-radius: 999px;
+		background: var(--color-white);
+		border: 1px solid var(--color-border-soft);
+		color: var(--color-muted);
+		font-size: 0.6rem;
+		font-weight: 600;
+		letter-spacing: 0.01em;
+	}
+
+	.fv-screen {
+		display: grid;
+		gap: 0.85rem;
+		padding: 1.1rem;
+	}
+
+	.fv-screen__hero {
+		display: grid;
+		gap: 0.5rem;
+		padding: 1rem;
+		border-radius: 12px;
+		background:
+			radial-gradient(circle at 88% 8%, color-mix(in srgb, var(--color-accent) 16%, transparent), transparent 42%),
+			color-mix(in srgb, var(--color-accent-light) 55%, var(--color-white));
+		border: 1px solid var(--color-border-soft);
+	}
+
+	.fv-pill {
+		justify-self: start;
+		padding: 0.22rem 0.55rem;
+		border-radius: 999px;
+		background: var(--color-white);
+		color: var(--color-accent-dark);
+		font-size: 0.58rem;
+		font-weight: 800;
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
+	}
+
+	.fv-bar {
+		display: block;
+		height: 0.55rem;
+		border-radius: 999px;
+		background: color-mix(in srgb, var(--color-muted) 22%, var(--color-border-soft));
+	}
+
+	.fv-bar--title {
+		height: 0.72rem;
+		width: 82%;
+		background: color-mix(in srgb, var(--color-text) 70%, var(--color-border));
+	}
+
+	.fv-bar--title-2 {
+		width: 58%;
+	}
+
+	.fv-bar--text {
+		width: 70%;
+		height: 0.42rem;
+		margin-top: 0.1rem;
+	}
+
+	.fv-screen__cta {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		margin-top: 0.35rem;
+	}
+
+	.fv-btn {
+		padding: 0.4rem 0.7rem;
+		border-radius: 8px;
+		background: var(--color-text);
+		color: var(--color-white);
+		font-size: 0.62rem;
+		font-weight: 700;
+	}
+
+	.fv-tag {
+		padding: 0.28rem 0.5rem;
+		border-radius: 999px;
+		background: var(--color-white);
+		border: 1px dashed color-mix(in srgb, var(--color-accent) 45%, var(--color-border));
+		color: var(--color-accent-dark);
+		font-size: 0.55rem;
+		font-weight: 700;
+	}
+
+	.fv-services {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 0.6rem;
+	}
+
+	.fv-card {
+		display: grid;
+		gap: 0.35rem;
+		padding: 0.65rem;
+		border-radius: 10px;
+		background: var(--color-white);
+		border: 1px solid var(--color-border-soft);
+	}
+
+	.fv-card__icon {
+		width: 1.15rem;
+		height: 1.15rem;
+		border-radius: 7px;
+		background: var(--color-accent-light);
+		border: 1px solid color-mix(in srgb, var(--color-accent) 32%, var(--color-border));
+	}
+
+	.fv-bar--sm {
+		width: 90%;
+		height: 0.42rem;
+	}
+
+	.fv-bar--xs {
+		width: 60%;
+		height: 0.35rem;
+	}
+
+	.fv-trust {
+		display: flex;
+		align-items: center;
+		gap: 0.55rem;
+		padding: 0.6rem 0.75rem;
+		border-radius: 10px;
+		background: color-mix(in srgb, var(--color-bg) 60%, var(--color-white));
+		border: 1px solid var(--color-border-soft);
+	}
+
+	.fv-stars {
+		color: var(--color-accent-dark);
+		font-size: 0.72rem;
+		letter-spacing: 0.06em;
+	}
+
+	.fv-bar--trust {
+		flex: 1;
+		width: auto;
+		height: 0.4rem;
+	}
+
+	/* floating strategic callouts annotating the less-visible foundation layers */
+	.fv-callout {
+		position: absolute;
+		display: inline-flex;
+		align-items: center;
+		gap: 0.35rem;
+		padding: 0.4rem 0.7rem;
+		border-radius: 999px;
+		background: var(--color-white);
+		border: 1px solid var(--color-border);
+		color: var(--color-text);
+		font-size: 0.72rem;
+		font-weight: 700;
+		white-space: nowrap;
+		box-shadow: var(--shadow-card);
+	}
+
+	.fv-callout::before {
+		content: '';
+		width: 0.42rem;
+		height: 0.42rem;
+		border-radius: 999px;
+		background: var(--color-accent-dark);
+	}
+
+	.fv-callout--lead {
+		top: 0.6rem;
+		right: -0.4rem;
+	}
+
+	.fv-callout--edit {
+		bottom: 3.1rem;
+		left: -0.6rem;
+	}
+
+	.fv-callout--growth {
+		bottom: 0.4rem;
+		right: 0.6rem;
+	}
+
+	@media (prefers-reduced-motion: no-preference) {
+		.foundation-visual {
+			animation: fv-rise 0.7s ease both;
+		}
+	}
+
+	@keyframes fv-rise {
+		from {
+			opacity: 0;
+			transform: translateY(12px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
 	}
 
 	/* ═══ Define / not-this-this ═══ */
@@ -1132,6 +1453,19 @@ const foundationFaqs = [
 
 	/* ═══ Responsive ═══ */
 	@media (max-width: 1040px) {
+		.templates-hero__grid {
+			grid-template-columns: 1fr;
+			gap: clamp(2.5rem, 7vw, 3.25rem);
+		}
+
+		.templates-hero__copy {
+			max-width: 640px;
+		}
+
+		.templates-hero__media {
+			order: 2;
+		}
+
 		.templates-define__inner {
 			grid-template-columns: 1fr;
 		}
@@ -1164,6 +1498,20 @@ const foundationFaqs = [
 
 		.templates-final .button-row {
 			justify-content: flex-start;
+		}
+
+		/* Tighten the hero visual + reduce callouts on small screens */
+		.foundation-visual {
+			width: min(100%, 380px);
+			padding: 1.75rem 1.4rem;
+		}
+
+		.fv-callout--edit {
+			display: none;
+		}
+
+		.fv-callout--lead {
+			right: 0;
 		}
 	}
 </style>
