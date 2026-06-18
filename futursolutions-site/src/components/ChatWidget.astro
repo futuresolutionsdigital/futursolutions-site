@@ -163,7 +163,10 @@ const isDemo = ctx.demoSlug !== null;
 		transition: opacity 160ms ease, transform 160ms ease;
 	}
 
-	.chat-widget__fab-icon--close {
+	/* Scoped with .chat-widget to outrank demo layout resets like
+	   `.vt svg { display: block }` (specificity 0,1,1) that would otherwise
+	   force the default-hidden icon to show alongside the active one. */
+	.chat-widget .chat-widget__fab-icon--close {
 		display: none;
 	}
 
@@ -424,7 +427,7 @@ const isDemo = ctx.demoSlug !== null;
 		height: 1.05rem;
 	}
 
-	.chat-widget__icon--muted {
+	.chat-widget .chat-widget__icon--muted {
 		display: none;
 	}
 
