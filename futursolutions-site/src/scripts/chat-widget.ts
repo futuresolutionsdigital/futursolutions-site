@@ -22,6 +22,11 @@ function initChatWidget(widget: HTMLElement) {
 	const nudge = widget.querySelector<HTMLElement>('[data-chat-nudge]');
 	const nudgeOpen = widget.querySelector<HTMLButtonElement>('[data-chat-nudge-open]');
 	const nudgeClose = widget.querySelector<HTMLButtonElement>('[data-chat-nudge-close]');
+	const resetBtn = widget.querySelector<HTMLButtonElement>('[data-chat-reset]');
+	const suggestBtn = widget.querySelector<HTMLButtonElement>('[data-chat-suggest]');
+	const suggestMenu = widget.querySelector<HTMLElement>('[data-chat-suggest-menu]');
+	const suggestClose = widget.querySelector<HTMLButtonElement>('[data-chat-suggest-close]');
+	const suggestList = widget.querySelector<HTMLElement>('[data-chat-suggest-list]');
 
 	const context = widget.dataset.context || 'base';
 	const greeting = widget.dataset.greeting || 'Hi! How can I help?';
@@ -30,6 +35,25 @@ function initChatWidget(widget: HTMLElement) {
 		quickReplies = JSON.parse(widget.dataset.quickReplies || '[]');
 	} catch {
 		quickReplies = [];
+	}
+
+	interface SuggestionGroup {
+		category: string;
+		questions: string[];
+	}
+	let suggestionGroups: SuggestionGroup[] = [];
+	try {
+		suggestionGroups = JSON.parse(widget.dataset.suggestionGroups || '[]');
+	} catch {
+		suggestionGroups = [];
+	}
+
+	const askedQuestions = new Set<string>();
+	const normalizeQ = (s: string): string =>
+		s.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+	const questionToCategory = new Map<string, string>();
+	for (const group of suggestionGroups) {
+		for (const q of group.questions) questionToCategory.set(normalizeQ(q), group.category);
 	}
 
 	const STORE_KEY = `fs-chat-msgs-${context}`;
@@ -92,6 +116,7 @@ function initChatWidget(widget: HTMLElement) {
 	}
 
 	function close() {
+		closeSuggestMenu();
 		widget.classList.remove('is-open');
 		toggleBtn.setAttribute('aria-expanded', 'false');
 		toggleBtn.focus();
@@ -105,7 +130,12 @@ function initChatWidget(widget: HTMLElement) {
 	closeBtn.addEventListener('click', close);
 
 	document.addEventListener('keydown', (e) => {
-		if (e.key === 'Escape' && widget.classList.contains('is-open')) close();
+		if (e.key !== 'Escape') return;
+		if (suggestMenu && !suggestMenu.hidden) {
+			closeSuggestMenu();
+			return;
+		}
+		if (widget.classList.contains('is-open')) close();
 	});
 
 	/* ── Mute ──────────────────────────────────────── */
@@ -116,9 +146,93 @@ function initChatWidget(widget: HTMLElement) {
 		muteBtn.setAttribute('aria-label', muted ? 'Unmute notification sound' : 'Mute notification sound');
 	});
 
-	/* ── Quick replies (revealed in batches for depth) ─ */
+	/* ── Suggestion menu ("Things you can ask") ────── */
+	let suggestMenuBuilt = false;
+
+	function buildSuggestMenu() {
+		if (suggestMenuBuilt || !suggestList) return;
+		suggestionGroups.forEach((group) => {
+			const section = document.createElement('div');
+			section.className = 'chat-widget__suggest-group';
+
+			const label = document.createElement('p');
+			label.className = 'chat-widget__suggest-group-label';
+			label.textContent = group.category;
+			section.appendChild(label);
+
+			const chips = document.createElement('div');
+			chips.className = 'chat-widget__suggest-chips';
+			group.questions.forEach((q) => {
+				const chip = document.createElement('button');
+				chip.type = 'button';
+				chip.className = 'chat-widget__suggest-chip';
+				chip.textContent = q;
+				chip.addEventListener('click', () => {
+					closeSuggestMenu();
+					if (!widget.classList.contains('is-open')) open();
+					clearSuggestions();
+					sendMessage(q);
+				});
+				chips.appendChild(chip);
+			});
+			section.appendChild(chips);
+			suggestList.appendChild(section);
+		});
+		suggestMenuBuilt = true;
+	}
+
+	function openSuggestMenu() {
+		if (!suggestMenu) return;
+		buildSuggestMenu();
+		suggestMenu.hidden = false;
+		suggestBtn?.setAttribute('aria-expanded', 'true');
+	}
+
+	function closeSuggestMenu() {
+		if (!suggestMenu) return;
+		suggestMenu.hidden = true;
+		suggestBtn?.setAttribute('aria-expanded', 'false');
+	}
+
+	suggestBtn?.addEventListener('click', () => {
+		if (suggestMenu && suggestMenu.hidden) openSuggestMenu();
+		else closeSuggestMenu();
+	});
+	suggestClose?.addEventListener('click', closeSuggestMenu);
+
+	/* ── Reset conversation ────────────────────────── */
+	resetBtn?.addEventListener('click', () => {
+		messages.length = 0;
+		saveMessages();
+		askedQuestions.clear();
+		suggestionIndex = 0;
+		messagesEl.innerHTML = '';
+		closeSuggestMenu();
+		renderMessage('assistant', greeting);
+		showNextSuggestions(4);
+		window.setTimeout(() => input.focus(), 60);
+	});
+
+	/* ── Quick replies + suggestions ───────────────── */
 	let suggestionIndex = 0;
 
+	function renderQuickChips(items: string[]) {
+		quickEl.innerHTML = '';
+		items.forEach((q) => {
+			const chip = document.createElement('button');
+			chip.type = 'button';
+			chip.className = 'chat-widget__quick-chip';
+			chip.textContent = q;
+			chip.addEventListener('click', () => {
+				clearSuggestions();
+				sendMessage(q);
+			});
+			quickEl.appendChild(chip);
+		});
+		quickEl.hidden = items.length === 0;
+	}
+
+	// Generic starter chips, revealed in batches for depth.
 	function showNextSuggestions(count: number) {
 		if (suggestionIndex >= quickReplies.length) {
 			clearSuggestions();
@@ -130,19 +244,21 @@ function initChatWidget(widget: HTMLElement) {
 			clearSuggestions();
 			return;
 		}
-		quickEl.innerHTML = '';
-		batch.forEach((q) => {
-			const chip = document.createElement('button');
-			chip.type = 'button';
-			chip.className = 'chat-widget__quick-chip';
-			chip.textContent = q;
-			chip.addEventListener('click', () => {
-				clearSuggestions();
-				sendMessage(q);
-			});
-			quickEl.appendChild(chip);
-		});
-		quickEl.hidden = false;
+		renderQuickChips(batch);
+	}
+
+	// Prefer follow-ups from the same topic as the visitor's last question.
+	function showFollowUps(lastText: string, count = 3) {
+		const category = questionToCategory.get(normalizeQ(lastText));
+		if (category) {
+			const group = suggestionGroups.find((g) => g.category === category);
+			const related = (group?.questions || []).filter((q) => !askedQuestions.has(normalizeQ(q)));
+			if (related.length) {
+				renderQuickChips(related.slice(0, count));
+				return;
+			}
+		}
+		showNextSuggestions(count);
 	}
 
 	function clearSuggestions() {
@@ -288,6 +404,7 @@ function initChatWidget(widget: HTMLElement) {
 
 	/* ── Send ──────────────────────────────────────── */
 	async function sendMessage(text: string) {
+		askedQuestions.add(normalizeQ(text));
 		appendMessage('user', text);
 		setLoading(true);
 
@@ -355,7 +472,7 @@ function initChatWidget(widget: HTMLElement) {
 				messages.push({ role: 'assistant', content: fullResponse });
 				saveMessages();
 				playReceive();
-				showNextSuggestions(3);
+				showFollowUps(text, 3);
 			}
 		} catch {
 			streamBubble.classList.remove('chat-msg--streaming');
