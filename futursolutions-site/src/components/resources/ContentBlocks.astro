@@ -1,0 +1,710 @@
+---
+import type { ContentBlock } from '../../data/resources';
+
+interface Props {
+	blocks: ContentBlock[];
+}
+
+const { blocks } = Astro.props;
+
+const calloutLane: Record<string, string> = {
+	tip: 'foundation',
+	insight: 'growth',
+	warning: 'audit',
+};
+const calloutLabel: Record<string, string> = {
+	tip: 'Tip',
+	insight: 'Insight',
+	warning: 'Heads up',
+};
+---
+
+<div class="rb">
+	{
+		blocks.map((block) => {
+			switch (block.kind) {
+				case 'heading':
+					return (
+						<h2 id={block.id} class="rb-heading">
+							{block.text}
+						</h2>
+					);
+				case 'paragraph':
+					return <p class="rb-p">{block.text}</p>;
+				case 'list':
+					return block.ordered ? (
+						<ol class="rb-list rb-list--ol">{block.items?.map((i) => <li>{i}</li>)}</ol>
+					) : (
+						<ul class="rb-list">{block.items?.map((i) => <li>{i}</li>)}</ul>
+					);
+				case 'callout':
+					return (
+						<aside class={`rb-callout rb-callout--${calloutLane[block.tone ?? 'tip']}`}>
+							<span class={`rb-callout__tag lane-tag lane-tag--${calloutLane[block.tone ?? 'tip']}`}>
+								{block.title ?? calloutLabel[block.tone ?? 'tip']}
+							</span>
+							<p class="rb-callout__text">{block.text}</p>
+						</aside>
+					);
+				case 'steps':
+					return (
+						<ol class="rb-steps">
+							{block.steps?.map((step, i) => (
+								<li class="rb-steps__item">
+									<span class="rb-steps__num">{String(i + 1).padStart(2, '0')}</span>
+									<div class="rb-steps__body">
+										<p class="rb-steps__title">{step.title}</p>
+										<p class="rb-steps__text">{step.text}</p>
+									</div>
+								</li>
+							))}
+						</ol>
+					);
+				case 'checklist':
+					return (
+						<div class="rb-check">
+							{block.title && <p class="rb-check__title">{block.title}</p>}
+							<ul class="rb-check__list">
+								{block.items?.map((item) => (
+									<li class="rb-check__item">
+										<label class="rb-check__label">
+											<input type="checkbox" class="rb-check__box" />
+											<span class="rb-check__mark" aria-hidden="true"></span>
+											<span class="rb-check__copy">{item}</span>
+										</label>
+									</li>
+								))}
+							</ul>
+						</div>
+					);
+				case 'stats':
+					return (
+						<div class="rb-stats">
+							{block.stats?.map((s) => (
+								<div class="rb-stats__item">
+									<span class="rb-stats__value">{s.value}</span>
+									<span class="rb-stats__label">{s.label}</span>
+								</div>
+							))}
+						</div>
+					);
+				case 'compare':
+					return (
+						<div class="rb-compare" data-cols={block.columns?.length}>
+							{block.columns?.map((col) => (
+								<div class="rb-compare__col">
+									<p class="rb-compare__label">{col.label}</p>
+									<ul class="rb-compare__points">
+										{col.points.map((p) => <li>{p}</li>)}
+									</ul>
+								</div>
+							))}
+						</div>
+					);
+				case 'doDont':
+					return (
+						<div class="rb-dodont">
+							<div class="rb-dodont__col rb-dodont__col--do">
+								<p class="rb-dodont__head">
+									<span class="rb-dodont__icon" aria-hidden="true">✓</span> Do
+								</p>
+								<ul>{block.doItems?.map((i) => <li>{i}</li>)}</ul>
+							</div>
+							<div class="rb-dodont__col rb-dodont__col--dont">
+								<p class="rb-dodont__head">
+									<span class="rb-dodont__icon" aria-hidden="true">✕</span> Don't
+								</p>
+								<ul>{block.dontItems?.map((i) => <li>{i}</li>)}</ul>
+							</div>
+						</div>
+					);
+				case 'quote':
+					return (
+						<blockquote class="rb-quote">
+							<p class="rb-quote__text">{block.text}</p>
+							{block.attribution && <cite class="rb-quote__cite">{block.attribution}</cite>}
+						</blockquote>
+					);
+				case 'script':
+					return (
+						<figure class="rb-script">
+							<figcaption class="rb-script__head">
+								<span class="rb-script__meta">
+									<span class={`rb-script__channel rb-script__channel--${block.channel?.toLowerCase()}`}>
+										{block.channel}
+									</span>
+									<span class="rb-script__title">{block.title}</span>
+								</span>
+								<button type="button" class="rb-script__copy" data-copy aria-label="Copy script">
+									<span class="rb-script__copy-label">Copy</span>
+								</button>
+							</figcaption>
+							<pre class="rb-script__body">{block.body}</pre>
+						</figure>
+					);
+				case 'figure':
+					return (
+						<figure class="rb-figure">
+							<div class="rb-figure__frame">
+								{block.image ? (
+									<img src={block.image} alt={block.caption ?? ''} loading="lazy" />
+								) : (
+									<span class="rb-figure__placeholder" aria-hidden="true">Diagram</span>
+								)}
+							</div>
+							{block.caption && <figcaption class="rb-figure__caption">{block.caption}</figcaption>}
+						</figure>
+					);
+				case 'faq':
+					return (
+						<div class="rb-faq">
+							{block.faqs?.map((f) => (
+								<details class="rb-faq__item">
+									<summary class="rb-faq__q">{f.q}</summary>
+									<p class="rb-faq__a">{f.a}</p>
+								</details>
+							))}
+						</div>
+					);
+				default:
+					return null;
+			}
+		})
+	}
+</div>
+
+<script>
+	document.querySelectorAll('.rb-script__copy[data-copy]').forEach((btn) => {
+		btn.addEventListener('click', () => {
+			const pre = btn.closest('.rb-script')?.querySelector('.rb-script__body');
+			const label = btn.querySelector('.rb-script__copy-label');
+			if (!pre || !navigator.clipboard) return;
+			navigator.clipboard.writeText(pre.textContent ?? '').then(() => {
+				if (!label) return;
+				const prev = label.textContent;
+				label.textContent = 'Copied';
+				window.setTimeout(() => {
+					label.textContent = prev ?? 'Copy';
+				}, 1600);
+			});
+		});
+	});
+</script>
+
+<style>
+	.rb {
+		display: flow-root;
+	}
+
+	/* Headings + text */
+	.rb-heading {
+		scroll-margin-top: 6rem;
+		margin: 2.6rem 0 0.9rem;
+		font-size: clamp(1.3rem, 2.4vw, 1.5rem);
+		font-weight: 700;
+		letter-spacing: -0.02em;
+		line-height: 1.25;
+		color: var(--color-text);
+	}
+	.rb-heading:first-child {
+		margin-top: 0;
+	}
+	.rb-p {
+		margin: 0 0 1.1rem;
+		color: var(--color-muted);
+		line-height: 1.75;
+	}
+	.rb-list {
+		display: grid;
+		gap: 0.55rem;
+		margin: 0 0 1.4rem;
+		padding-left: 1.2rem;
+		color: var(--color-muted);
+	}
+	.rb-list li {
+		line-height: 1.65;
+		padding-left: 0.2rem;
+	}
+	.rb-list--ol {
+		list-style: decimal;
+	}
+
+	/* Callout */
+	.rb-callout {
+		margin: 1.6rem 0 1.8rem;
+		padding: 1.2rem 1.3rem;
+		border: 1px solid var(--color-border);
+		border-left-width: 3px;
+		border-radius: var(--radius-md);
+		background: var(--color-white);
+	}
+	.rb-callout--foundation { border-left-color: var(--lane-foundation); background: color-mix(in srgb, var(--lane-foundation-tint) 45%, var(--color-white)); }
+	.rb-callout--growth     { border-left-color: var(--lane-growth);     background: color-mix(in srgb, var(--lane-growth-tint) 45%, var(--color-white)); }
+	.rb-callout--audit      { border-left-color: var(--lane-audit);      background: color-mix(in srgb, var(--lane-audit-tint) 45%, var(--color-white)); }
+	.rb-callout__tag {
+		margin-bottom: 0.6rem;
+	}
+	.rb-callout__text {
+		margin: 0;
+		color: var(--color-text);
+		line-height: 1.65;
+		font-size: 0.97rem;
+	}
+
+	/* Steps — numbered spine */
+	.rb-steps {
+		display: grid;
+		gap: 0;
+		margin: 1.4rem 0 1.9rem;
+		padding: 0;
+		list-style: none;
+		counter-reset: none;
+	}
+	.rb-steps__item {
+		position: relative;
+		display: grid;
+		grid-template-columns: 2.4rem 1fr;
+		gap: 1rem;
+		padding-bottom: 1.5rem;
+	}
+	.rb-steps__item::before {
+		content: '';
+		position: absolute;
+		top: 2.4rem;
+		bottom: 0;
+		left: 1.2rem;
+		width: 2px;
+		background: linear-gradient(var(--lane-growth), color-mix(in srgb, var(--lane-growth) 25%, transparent));
+		transform: translateX(-50%);
+	}
+	.rb-steps__item:last-child {
+		padding-bottom: 0;
+	}
+	.rb-steps__item:last-child::before {
+		display: none;
+	}
+	.rb-steps__num {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 2.4rem;
+		height: 2.4rem;
+		border-radius: 999px;
+		background: var(--color-white);
+		border: 1px solid color-mix(in srgb, var(--lane-growth) 35%, var(--color-border));
+		color: var(--lane-growth-ink);
+		font-size: 0.82rem;
+		font-weight: 800;
+		letter-spacing: 0.02em;
+		z-index: 1;
+	}
+	.rb-steps__body {
+		padding-top: 0.2rem;
+	}
+	.rb-steps__title {
+		margin: 0 0 0.25rem;
+		color: var(--color-text);
+		font-size: 1rem;
+		font-weight: 700;
+		letter-spacing: -0.01em;
+	}
+	.rb-steps__text {
+		margin: 0;
+		color: var(--color-muted);
+		font-size: 0.93rem;
+		line-height: 1.6;
+	}
+
+	/* Checklist */
+	.rb-check {
+		margin: 1.4rem 0 1.8rem;
+		padding: 1.3rem 1.4rem;
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		background: var(--color-white);
+		box-shadow: var(--shadow-card);
+	}
+	.rb-check__title {
+		margin: 0 0 0.9rem;
+		color: var(--color-text);
+		font-size: 0.95rem;
+		font-weight: 700;
+	}
+	.rb-check__list {
+		display: grid;
+		gap: 0.55rem;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	.rb-check__label {
+		display: grid;
+		grid-template-columns: 1.35rem 1fr;
+		gap: 0.7rem;
+		align-items: start;
+		cursor: pointer;
+	}
+	.rb-check__box {
+		position: absolute;
+		opacity: 0;
+		width: 1px;
+		height: 1px;
+	}
+	.rb-check__mark {
+		margin-top: 0.12rem;
+		width: 1.25rem;
+		height: 1.25rem;
+		border: 1.5px solid color-mix(in srgb, var(--lane-foundation) 45%, var(--color-border));
+		border-radius: 6px;
+		background: var(--color-white);
+		transition: background var(--transition-base), border-color var(--transition-base);
+	}
+	.rb-check__box:checked + .rb-check__mark {
+		border-color: var(--lane-foundation);
+		background: var(--lane-foundation)
+			url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E")
+			center / 0.85rem no-repeat;
+	}
+	.rb-check__box:focus-visible + .rb-check__mark {
+		outline: 2px solid var(--lane-foundation);
+		outline-offset: 2px;
+	}
+	.rb-check__copy {
+		color: var(--color-text);
+		font-size: 0.95rem;
+		line-height: 1.5;
+	}
+	.rb-check__box:checked ~ .rb-check__copy {
+		color: var(--color-muted-soft);
+		text-decoration: line-through;
+		text-decoration-color: color-mix(in srgb, var(--color-muted-soft) 50%, transparent);
+	}
+
+	/* Stats */
+	.rb-stats {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 0.9rem;
+		margin: 1.5rem 0 1.9rem;
+	}
+	.rb-stats__item {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+		padding: 1.3rem 1.2rem;
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		background: var(--color-white);
+		box-shadow: var(--shadow-card);
+	}
+	.rb-stats__value {
+		font-size: clamp(1.8rem, 4vw, 2.3rem);
+		font-weight: 800;
+		letter-spacing: -0.03em;
+		line-height: 1;
+		color: var(--lane-growth-ink);
+	}
+	.rb-stats__label {
+		color: var(--color-muted);
+		font-size: 0.86rem;
+		line-height: 1.5;
+	}
+
+	/* Compare */
+	.rb-compare {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 1rem;
+		margin: 1.5rem 0 1.9rem;
+	}
+	.rb-compare[data-cols='3'] {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+	.rb-compare__col {
+		padding: 1.3rem 1.3rem 1.4rem;
+		border: 1px solid var(--color-border);
+		border-top: 3px solid var(--lane-foundation);
+		border-radius: var(--radius-lg);
+		background: var(--color-white);
+		box-shadow: var(--shadow-card);
+	}
+	.rb-compare__label {
+		margin: 0 0 0.85rem;
+		color: var(--color-text);
+		font-size: 0.98rem;
+		font-weight: 700;
+		letter-spacing: -0.01em;
+	}
+	.rb-compare__points {
+		display: grid;
+		gap: 0.5rem;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	.rb-compare__points li {
+		position: relative;
+		padding-left: 1.1rem;
+		color: var(--color-muted);
+		font-size: 0.9rem;
+		line-height: 1.55;
+	}
+	.rb-compare__points li::before {
+		content: '';
+		position: absolute;
+		left: 0;
+		top: 0.55rem;
+		width: 0.4rem;
+		height: 0.4rem;
+		border-radius: 999px;
+		background: color-mix(in srgb, var(--lane-foundation) 70%, transparent);
+	}
+
+	/* Do / Don't */
+	.rb-dodont {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 1rem;
+		margin: 1.5rem 0 1.9rem;
+	}
+	.rb-dodont__col {
+		padding: 1.3rem 1.3rem 1.4rem;
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		background: var(--color-white);
+	}
+	.rb-dodont__col--do {
+		border-color: color-mix(in srgb, var(--lane-foundation) 30%, var(--color-border));
+		background: color-mix(in srgb, var(--lane-foundation-tint) 35%, var(--color-white));
+	}
+	.rb-dodont__col--dont {
+		border-color: color-mix(in srgb, var(--lane-audit) 30%, var(--color-border));
+		background: color-mix(in srgb, var(--lane-audit-tint) 35%, var(--color-white));
+	}
+	.rb-dodont__head {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		margin: 0 0 0.85rem;
+		font-size: 0.78rem;
+		font-weight: 800;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+	}
+	.rb-dodont__col--do .rb-dodont__head { color: var(--lane-foundation-ink); }
+	.rb-dodont__col--dont .rb-dodont__head { color: var(--lane-audit-ink); }
+	.rb-dodont__icon {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 1.25rem;
+		height: 1.25rem;
+		border-radius: 999px;
+		font-size: 0.7rem;
+		color: var(--color-white);
+	}
+	.rb-dodont__col--do .rb-dodont__icon { background: var(--lane-foundation); }
+	.rb-dodont__col--dont .rb-dodont__icon { background: var(--lane-audit); }
+	.rb-dodont__col ul {
+		display: grid;
+		gap: 0.5rem;
+		margin: 0;
+		padding-left: 1.1rem;
+	}
+	.rb-dodont__col li {
+		color: var(--color-muted);
+		font-size: 0.9rem;
+		line-height: 1.55;
+	}
+
+	/* Quote */
+	.rb-quote {
+		margin: 1.8rem 0;
+		padding: 0.5rem 0 0.5rem 1.4rem;
+		border-left: 3px solid var(--color-accent);
+	}
+	.rb-quote__text {
+		margin: 0;
+		font-size: 1.2rem;
+		font-style: italic;
+		line-height: 1.55;
+		color: var(--color-text);
+	}
+	.rb-quote__cite {
+		display: block;
+		margin-top: 0.7rem;
+		color: var(--color-muted);
+		font-size: 0.88rem;
+		font-style: normal;
+		font-weight: 600;
+	}
+
+	/* Script / copy-paste */
+	.rb-script {
+		margin: 1.5rem 0 1.9rem;
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		background: var(--color-white);
+		box-shadow: var(--shadow-card);
+		overflow: hidden;
+	}
+	.rb-script__head {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 0.75rem;
+		padding: 0.85rem 1.1rem;
+		border-bottom: 1px solid var(--color-border-soft);
+		background: var(--color-bg-secondary);
+	}
+	.rb-script__meta {
+		display: flex;
+		align-items: center;
+		gap: 0.6rem;
+		min-width: 0;
+	}
+	.rb-script__channel {
+		flex-shrink: 0;
+		padding: 0.2rem 0.5rem;
+		border-radius: 999px;
+		font-size: 0.66rem;
+		font-weight: 800;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+	}
+	.rb-script__channel--email { background: var(--lane-growth-tint); color: var(--lane-growth-ink); }
+	.rb-script__channel--sms { background: var(--lane-foundation-tint); color: var(--lane-foundation-ink); }
+	.rb-script__title {
+		color: var(--color-text);
+		font-size: 0.9rem;
+		font-weight: 700;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+	.rb-script__copy {
+		flex-shrink: 0;
+		padding: 0.4rem 0.75rem;
+		border: 1px solid var(--color-border);
+		border-radius: 999px;
+		background: var(--color-white);
+		color: var(--color-text);
+		font-size: 0.78rem;
+		font-weight: 700;
+		transition: border-color var(--transition-base), color var(--transition-base);
+	}
+	.rb-script__copy:hover {
+		border-color: color-mix(in srgb, var(--color-accent) 40%, var(--color-border));
+		color: var(--color-accent-dark);
+	}
+	.rb-script__body {
+		margin: 0;
+		padding: 1.1rem 1.2rem;
+		font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+		font-size: 0.86rem;
+		line-height: 1.6;
+		color: var(--color-text);
+		white-space: pre-wrap;
+		word-break: break-word;
+	}
+
+	/* Figure */
+	.rb-figure {
+		margin: 1.6rem 0 1.9rem;
+	}
+	.rb-figure__frame {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		aspect-ratio: 16 / 9;
+		border: 1px dashed color-mix(in srgb, var(--color-accent) 35%, var(--color-border));
+		border-radius: var(--radius-lg);
+		background:
+			radial-gradient(circle at 30% 20%, var(--color-accent-light), transparent 60%),
+			var(--color-bg-secondary);
+		overflow: hidden;
+	}
+	.rb-figure__frame img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+	.rb-figure__placeholder {
+		color: var(--color-muted-soft);
+		font-size: 0.8rem;
+		font-weight: 700;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+	}
+	.rb-figure__caption {
+		margin-top: 0.7rem;
+		color: var(--color-muted);
+		font-size: 0.85rem;
+		line-height: 1.5;
+		text-align: center;
+	}
+
+	/* FAQ */
+	.rb-faq {
+		display: grid;
+		gap: 0.6rem;
+		margin: 1.5rem 0 1.9rem;
+	}
+	.rb-faq__item {
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-md);
+		background: var(--color-white);
+		padding: 0.4rem 1.1rem;
+	}
+	.rb-faq__q {
+		padding: 0.7rem 0;
+		color: var(--color-text);
+		font-weight: 700;
+		cursor: pointer;
+		list-style: none;
+	}
+	.rb-faq__q::-webkit-details-marker {
+		display: none;
+	}
+	.rb-faq__q::after {
+		content: '+';
+		float: right;
+		color: var(--color-accent-dark);
+		font-weight: 700;
+	}
+	.rb-faq__item[open] .rb-faq__q::after {
+		content: '−';
+	}
+	.rb-faq__a {
+		margin: 0 0 0.8rem;
+		color: var(--color-muted);
+		line-height: 1.65;
+		font-size: 0.93rem;
+	}
+
+	@media (max-width: 680px) {
+		.rb-stats,
+		.rb-compare,
+		.rb-compare[data-cols='3'],
+		.rb-dodont {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	@media print {
+		.rb-script__copy {
+			display: none;
+		}
+		.rb-callout,
+		.rb-check,
+		.rb-stats__item,
+		.rb-compare__col,
+		.rb-script {
+			box-shadow: none;
+		}
+		.rb-faq__item[open] .rb-faq__q::after,
+		.rb-faq__q::after {
+			display: none;
+		}
+	}
+</style>

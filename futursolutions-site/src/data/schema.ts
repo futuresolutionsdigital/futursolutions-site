@@ -86,6 +86,27 @@ export function breadcrumbSchema(items: { name: string; path: string }[]) {
 	};
 }
 
+export function howToSchema(input: {
+	name: string;
+	description: string;
+	path: string;
+	steps: { name: string; text: string }[];
+}) {
+	return {
+		'@context': 'https://schema.org',
+		'@type': 'HowTo',
+		name: input.name,
+		description: input.description,
+		url: `${SITE_URL}${input.path}`,
+		step: input.steps.map((s, i) => ({
+			'@type': 'HowToStep',
+			position: i + 1,
+			name: s.name,
+			text: s.text,
+		})),
+	};
+}
+
 export function articleSchema(input: {
 	title: string;
 	description: string;

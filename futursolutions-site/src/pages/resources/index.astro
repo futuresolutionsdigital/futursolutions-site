@@ -1,67 +1,36 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { resources } from '../../data/resources';
+import { resources, publishedResources, featuredResource, RESOURCE_TYPE_META } from '../../data/resources';
+import type { ResourceLane, ResourceType } from '../../data/resources';
 
-const pageTitle = 'Resources | FutureSolutions';
+const pageTitle = 'Resource Library | FutureSolutions';
 const pageDescription =
-	'Practical website strategy, local visibility, conversion, and Growth System insights for healthcare and high-trust service businesses.';
+	'Field guides, playbooks, checklists, and toolkits for health and wellness operators: trust, conversion, local visibility, and follow-up, with no fluff.';
 const canonicalUrl = 'https://futuresolutions.io/resources/';
 
-const pillars = [
-	{
-		title: 'Trust and Credibility',
-		text: 'Healthcare websites must earn confidence quickly.',
-		lane: 'custom',
-		label: 'Brand',
-	},
-	{
-		title: 'Conversion and Booking Flow',
-		text: 'A website should guide visitors toward the next step.',
-		lane: 'audit',
-		label: 'Conversion',
-	},
-	{
-		title: 'Local Visibility',
-		text: 'Search visibility starts with structure, service clarity, and useful content.',
-		lane: 'foundation',
-		label: 'Visibility',
-	},
-	{
-		title: 'Growth Systems',
-		text: 'A lead is only useful if it is captured, organized, and followed up with.',
-		lane: 'growth',
-		label: 'Systems',
-	},
-	{
-		title: 'Website Foundations',
-		text: 'Website Foundations are valuable when they are niche-specific and strategically structured.',
-		lane: 'foundation',
-		label: 'Foundations',
-	},
-];
+const featured = featuredResource();
+const published = publishedResources();
+const gridItems = published.filter((r) => r.slug !== featured?.slug);
+const planned = resources.filter((r) => r.status === 'Planned');
 
-const categoryLane: Record<string, { lane: string; pillar: string }> = {
-	'Website Strategy': { lane: 'custom', pillar: 'Trust and Credibility' },
-	'Conversion': { lane: 'audit', pillar: 'Conversion and Booking Flow' },
-	'Med Spa Websites': { lane: 'custom', pillar: 'Trust and Credibility' },
-	'Solo Practices': { lane: 'custom', pillar: 'Trust and Credibility' },
-	'Local Visibility': { lane: 'foundation', pillar: 'Local Visibility' },
-	'Growth Systems': { lane: 'growth', pillar: 'Growth Systems' },
-	'Foundations': { lane: 'foundation', pillar: 'Website Foundations' },
+const laneLabel: Record<ResourceLane, string> = {
+	custom: 'Trust & Strategy',
+	audit: 'Conversion',
+	foundation: 'Foundations & Local',
+	growth: 'Growth Systems',
+	care: 'Care',
 };
 
-const published = resources.filter((r) => r.status === 'Published' && r.article);
+// Type filters (only those that have at least one published resource).
+const typeOrder: ResourceType[] = ['guide', 'playbook', 'checklist', 'toolkit'];
+const typeFilters = typeOrder.filter((t) => published.some((r) => r.type === t));
 
-const featured = published.map((r) => ({
-	...r,
-	lane: categoryLane[r.category]?.lane ?? 'foundation',
-	pillar: categoryLane[r.category]?.pillar ?? r.category,
-	dateLabel: new Date(r.article!.datePublished).toLocaleDateString('en-US', {
-		year: 'numeric',
-		month: 'short',
-		day: 'numeric',
-	}),
-}));
+// Topic (lane) filters present in the published set.
+const laneOrder: ResourceLane[] = ['custom', 'audit', 'foundation', 'growth', 'care'];
+const laneFilters = laneOrder.filter((l) => published.some((r) => r.lane === l));
+
+const fmt = (d?: string) =>
+	d ? new Date(d).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) : '';
 ---
 
 <BaseLayout
@@ -74,69 +43,121 @@ const featured = published.map((r) => ({
 >
 	<section class="section resources-hero" aria-labelledby="resources-heading">
 		<div class="site-container resources-hero__inner">
-			<p class="eyebrow">Resources</p>
-			<h1 id="resources-heading">Practical website strategy for health and wellness businesses.</h1>
+			<p class="eyebrow">Resource Library</p>
+			<h1 id="resources-heading">Field guides and tools for health and wellness operators.</h1>
 			<p class="lead">
-				Guides and insights on healthcare website trust, service clarity, local visibility, conversion flow, and Growth Systems.
+				Practical guides, playbooks, checklists, and copy-paste toolkits on the things that actually move a
+				healthcare website: trust, clarity, local visibility, conversion, and follow-up. Free to use, no fluff.
 			</p>
-			<div class="button-row">
-				<a class="button button-primary" href="/audit">Get a Website Audit</a>
-				<a class="button button-secondary" href="/templates">Explore Live Demos</a>
-			</div>
-		</div>
-	</section>
-
-	<section class="section resources-pillars" aria-labelledby="resources-pillars-heading">
-		<div class="site-container">
-			<div class="resources-pillars__intro">
-				<p class="eyebrow">Content pillars</p>
-				<h2 id="resources-pillars-heading">What FutureSolutions writes about.</h2>
-				<p class="lead">
-					Every resource is designed to help health and wellness businesses understand how trust, clarity, visibility, and follow-up affect website performance.
-				</p>
-			</div>
-			<ul class="resources-pillars__rail">
-				{pillars.map((pillar) => (
-					<li class={`resources-pillars__chip resources-pillars__chip--${pillar.lane}`}>
-						<span class={`lane-tag lane-tag--${pillar.lane}`}>{pillar.label}</span>
-						<div class="resources-pillars__chip-text">
-							<p class="resources-pillars__chip-title">{pillar.title}</p>
-							<p class="resources-pillars__chip-sub">{pillar.text}</p>
-						</div>
-					</li>
+			<div class="resources-hero__types">
+				{typeOrder.map((t) => (
+					<span class="resources-hero__type">
+						<strong>{RESOURCE_TYPE_META[t].plural}</strong>
+						<span>{RESOURCE_TYPE_META[t].blurb}</span>
+					</span>
 				))}
-			</ul>
+			</div>
 		</div>
 	</section>
 
-	<section id="featured-resources" class="section resources-published" aria-labelledby="resources-published-heading">
-		<div class="site-container">
-			<div class="resources-published__intro">
-				<p class="eyebrow">Latest articles</p>
-				<h2 id="resources-published-heading">Published guides.</h2>
-				<p class="lead">
-					Practical, no-fluff reads on the things that actually move the needle for healthcare websites.
-				</p>
+	{featured && (
+		<section class="section resources-spotlight" aria-labelledby="spotlight-heading">
+			<div class="site-container">
+				<a class={`resources-spotlight__card lane-accent-top lane-accent-top--${featured.lane}`} href={`/resources/${featured.slug}`}>
+					<div class="resources-spotlight__body">
+						<div class="resources-spotlight__badges">
+							<span class="resources-spotlight__flag">Featured</span>
+							<span class={`lane-tag lane-tag--${featured.lane}`}>{RESOURCE_TYPE_META[featured.type].label}</span>
+						</div>
+						<h2 id="spotlight-heading">{featured.title}</h2>
+						<p class="resources-spotlight__sub">{featured.subtitle ?? featured.excerpt}</p>
+						{featured.outcomes?.length && (
+							<ul class="resources-spotlight__outcomes">
+								{featured.outcomes.map((o) => <li>{o}</li>)}
+							</ul>
+						)}
+						<span class="resources-spotlight__link">
+							Open the {RESOURCE_TYPE_META[featured.type].label.toLowerCase()}
+							<span aria-hidden="true">&rarr;</span>
+						</span>
+					</div>
+					<div class="resources-spotlight__meta" aria-hidden="true">
+						<span class="resources-spotlight__meta-type">{RESOURCE_TYPE_META[featured.type].label}</span>
+						{featured.timeToImplement && <span class="resources-spotlight__meta-row">{featured.timeToImplement}</span>}
+						{featured.readingTime && <span class="resources-spotlight__meta-row">{featured.readingTime}</span>}
+						{featured.forWho && <span class="resources-spotlight__meta-foot">For {featured.forWho}</span>}
+					</div>
+				</a>
 			</div>
-			<div class="resources-published__grid">
-				{featured.map((item) => (
-					<a class={`card resources-article-card resources-article-card--${item.lane}`} href={`/resources/${item.slug}`}>
-						<div class="resources-article-card__meta">
-							<span class={`lane-tag lane-tag--${item.lane}`}>{item.pillar}</span>
-							<span class="resources-article-card__time">{item.article?.readingTime}</span>
+		</section>
+	)}
+
+	<section id="library" class="section resources-library" aria-labelledby="library-heading">
+		<div class="site-container">
+			<div class="resources-library__intro">
+				<p class="eyebrow">Browse</p>
+				<h2 id="library-heading">The library.</h2>
+				<p class="lead">Filter by format or topic to find what fits your situation right now.</p>
+			</div>
+
+			<div class="resources-filters" role="group" aria-label="Filter resources">
+				<div class="resources-filters__group" data-filter-group="type">
+					<span class="resources-filters__label">Format</span>
+					<button type="button" class="resources-filter is-active" data-filter-type="all">All</button>
+					{typeFilters.map((t) => (
+						<button type="button" class="resources-filter" data-filter-type={t}>{RESOURCE_TYPE_META[t].plural}</button>
+					))}
+				</div>
+				<div class="resources-filters__group" data-filter-group="lane">
+					<span class="resources-filters__label">Topic</span>
+					<button type="button" class="resources-filter is-active" data-filter-lane="all">All</button>
+					{laneFilters.map((l) => (
+						<button type="button" class="resources-filter" data-filter-lane={l}>{laneLabel[l]}</button>
+					))}
+				</div>
+			</div>
+
+			<div class="resources-grid" data-resource-grid>
+				{gridItems.map((item) => (
+					<a
+						class={`card resources-card resources-card--${item.lane}`}
+						href={`/resources/${item.slug}`}
+						data-resource-card
+						data-type={item.type}
+						data-lane={item.lane}
+					>
+						<div class="resources-card__meta">
+							<span class={`lane-tag lane-tag--${item.lane}`}>{RESOURCE_TYPE_META[item.type].label}</span>
+							<span class="resources-card__topic">{laneLabel[item.lane]}</span>
 						</div>
 						<h3>{item.title}</h3>
 						<p>{item.excerpt}</p>
-						<div class="resources-article-card__foot">
-							<span class="resources-article-card__date">{item.dateLabel}</span>
-							<span class="resources-article-card__link">
-								Read article
+						<div class="resources-card__foot">
+							<span class="resources-card__date">{item.readingTime ?? fmt(item.datePublished)}</span>
+							<span class="resources-card__link">
+								{RESOURCE_TYPE_META[item.type].label === 'Guide' ? 'Read' : 'Open'}
 								<span aria-hidden="true">&rarr;</span>
 							</span>
 						</div>
 					</a>
 				))}
 			</div>
+
+			<p class="resources-empty" data-resource-empty hidden>No resources match those filters yet. Try a different format or topic.</p>
+
+			{planned.length > 0 && (
+				<div class="resources-roadmap">
+					<p class="resources-roadmap__label">On the roadmap</p>
+					<ul class="resources-roadmap__list">
+						{planned.map((p) => (
+							<li class="resources-roadmap__item">
+								<span class={`lane-tag lane-tag--${p.lane}`}>{RESOURCE_TYPE_META[p.type].label}</span>
+								<span>{p.title}</span>
+							</li>
+						))}
+					</ul>
+				</div>
+			)}
 		</div>
 	</section>
 
@@ -145,27 +166,66 @@ const featured = published.map((r) => ({
 			<div class="resources-final__card">
 				<div>
 					<p class="eyebrow">Next step</p>
-					<h2 id="resources-final-heading">Want to know which issues matter most on your site?</h2>
+					<h2 id="resources-final-heading">Want these ideas applied to your own site?</h2>
 					<p class="lead">
-						Start with a Website and Systems Audit and get a clear recommendation based on trust, visibility, conversion, and follow-up.
+						Start with a free Website and Lead Flow Snapshot and get a clear, prioritized recommendation based
+						on trust, visibility, conversion, and follow-up.
 					</p>
 				</div>
 				<div class="button-row">
-					<a class="button button-primary" href="/audit">Get a Website Audit</a>
-					<a class="button button-secondary" href="/services">View Services</a>
+					<a class="button button-primary" href="/audit">Get My Free Snapshot</a>
+					<a class="button button-secondary" href="/templates">Explore Live Demos</a>
 				</div>
 			</div>
 		</div>
 	</section>
 </BaseLayout>
 
+<script>
+	const grid = document.querySelector('[data-resource-grid]');
+	if (grid) {
+		const cards = Array.from(grid.querySelectorAll('[data-resource-card]')) as HTMLElement[];
+		const empty = document.querySelector('[data-resource-empty]') as HTMLElement | null;
+		const typeBtns = Array.from(document.querySelectorAll('[data-filter-type]')) as HTMLElement[];
+		const laneBtns = Array.from(document.querySelectorAll('[data-filter-lane]')) as HTMLElement[];
+		let activeType = 'all';
+		let activeLane = 'all';
+
+		const apply = () => {
+			let visible = 0;
+			cards.forEach((card) => {
+				const okType = activeType === 'all' || card.dataset.type === activeType;
+				const okLane = activeLane === 'all' || card.dataset.lane === activeLane;
+				const show = okType && okLane;
+				card.hidden = !show;
+				if (show) visible += 1;
+			});
+			if (empty) empty.hidden = visible !== 0;
+		};
+
+		typeBtns.forEach((btn) => {
+			btn.addEventListener('click', () => {
+				activeType = btn.getAttribute('data-filter-type') ?? 'all';
+				typeBtns.forEach((b) => b.classList.toggle('is-active', b === btn));
+				apply();
+			});
+		});
+		laneBtns.forEach((btn) => {
+			btn.addEventListener('click', () => {
+				activeLane = btn.getAttribute('data-filter-lane') ?? 'all';
+				laneBtns.forEach((b) => b.classList.toggle('is-active', b === btn));
+				apply();
+			});
+		});
+	}
+</script>
+
 <style>
 	.resources-hero {
 		position: relative;
 		overflow: hidden;
-		padding-block: clamp(5rem, 8vw, 8rem);
+		padding-block: clamp(5rem, 8vw, 8rem) clamp(3rem, 5vw, 4rem);
 	}
-
 	.resources-hero::before {
 		position: absolute;
 		inset: 0;
@@ -175,74 +235,210 @@ const featured = published.map((r) => ({
 			linear-gradient(180deg, var(--color-white) 0%, var(--color-bg) 72%);
 		content: '';
 	}
-
-	.resources-hero__inner,
-	.resources-pillars__intro {
-		max-width: 820px;
+	.resources-hero__inner {
+		max-width: 880px;
 	}
-
 	.resources-hero h1 {
-		max-width: 860px;
+		max-width: 18ch;
 	}
-
-	.resources-pillars__rail {
-		display: grid;
-		grid-template-columns: repeat(5, minmax(0, 1fr));
-		gap: 0.65rem;
-		margin: clamp(2rem, 4vw, 3rem) 0 0;
-		padding: 0;
-		list-style: none;
+	.resources-hero .lead {
+		max-width: 64ch;
 	}
-
-	.resources-pillars__chip {
+	.resources-hero__types {
 		display: grid;
-		grid-template-rows: auto 1fr;
-		gap: 0.65rem;
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+		gap: 0.75rem;
+		margin-top: clamp(2rem, 4vw, 3rem);
+	}
+	.resources-hero__type {
+		display: grid;
+		gap: 0.3rem;
 		padding: 1rem 1.1rem;
 		border: 1px solid var(--color-border);
 		border-radius: var(--radius-md);
 		background: var(--color-white);
-		transition: border-color var(--transition-base), background var(--transition-base);
 	}
-
-	.resources-pillars__chip--foundation:hover { background: color-mix(in srgb, var(--lane-foundation-tint) 40%, var(--color-white)); border-color: color-mix(in srgb, var(--lane-foundation) 32%, var(--color-border)); }
-	.resources-pillars__chip--custom:hover     { background: color-mix(in srgb, var(--lane-custom-tint) 40%, var(--color-white));     border-color: color-mix(in srgb, var(--lane-custom) 30%, var(--color-border)); }
-	.resources-pillars__chip--growth:hover     { background: color-mix(in srgb, var(--lane-growth-tint) 40%, var(--color-white));     border-color: color-mix(in srgb, var(--lane-growth) 32%, var(--color-border)); }
-	.resources-pillars__chip--audit:hover      { background: color-mix(in srgb, var(--lane-audit-tint) 40%, var(--color-white));      border-color: color-mix(in srgb, var(--lane-audit) 34%, var(--color-border)); }
-	.resources-pillars__chip--care:hover       { background: color-mix(in srgb, var(--lane-care-tint) 40%, var(--color-white));       border-color: color-mix(in srgb, var(--lane-care) 32%, var(--color-border)); }
-
-	.resources-pillars__chip .lane-tag {
-		align-self: flex-start;
-	}
-
-	.resources-pillars__chip-title {
-		margin: 0;
+	.resources-hero__type strong {
 		color: var(--color-text);
-		font-size: 0.96rem;
-		font-weight: 700;
-		letter-spacing: -0.015em;
-		line-height: 1.25;
+		font-size: 0.95rem;
+		letter-spacing: -0.01em;
+	}
+	.resources-hero__type span {
+		color: var(--color-muted);
+		font-size: 0.82rem;
+		line-height: 1.45;
 	}
 
-	.resources-pillars__chip-sub {
-		margin: 0;
+	/* Spotlight */
+	.resources-spotlight {
+		padding-block: 0 clamp(2rem, 4vw, 3rem);
+	}
+	.resources-spotlight__card {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) 240px;
+		gap: 0;
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-xl);
+		background: var(--color-white);
+		box-shadow: var(--shadow-card);
+		overflow: hidden;
+		transition: transform 280ms var(--ease-out-quart), box-shadow var(--transition-base), border-color var(--transition-base);
+	}
+	.resources-spotlight__card:hover {
+		transform: translateY(-3px);
+		border-color: color-mix(in srgb, var(--color-accent) 30%, var(--color-border));
+		box-shadow: var(--shadow-card-hover);
+	}
+	.resources-spotlight__body {
+		padding: clamp(1.6rem, 3.5vw, 2.6rem);
+	}
+	.resources-spotlight__badges {
+		display: flex;
+		align-items: center;
+		gap: 0.6rem;
+		margin-bottom: 1rem;
+	}
+	.resources-spotlight__flag {
+		padding: 0.28rem 0.6rem;
+		border-radius: 999px;
+		background: var(--color-text);
+		color: var(--color-white);
+		font-size: 0.66rem;
+		font-weight: 800;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+	}
+	.resources-spotlight__card h2 {
+		margin: 0 0 0.6rem;
+		font-size: clamp(1.4rem, 3vw, 1.9rem);
+		letter-spacing: -0.025em;
+		line-height: 1.15;
+	}
+	.resources-spotlight__sub {
+		margin: 0 0 1.1rem;
+		max-width: 56ch;
 		color: var(--color-muted);
-		font-size: 0.85rem;
+		line-height: 1.6;
+	}
+	.resources-spotlight__outcomes {
+		display: grid;
+		gap: 0.45rem;
+		margin: 0 0 1.4rem;
+		padding: 0;
+		list-style: none;
+	}
+	.resources-spotlight__outcomes li {
+		position: relative;
+		padding-left: 1.5rem;
+		color: var(--color-text);
+		font-size: 0.92rem;
+		line-height: 1.5;
+	}
+	.resources-spotlight__outcomes li::before {
+		content: '';
+		position: absolute;
+		left: 0;
+		top: 0.1rem;
+		width: 1.05rem;
+		height: 1.05rem;
+		border-radius: 999px;
+		background: var(--color-accent)
+			url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E")
+			center / 0.68rem no-repeat;
+	}
+	.resources-spotlight__link {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.4rem;
+		color: var(--color-accent-dark);
+		font-weight: 800;
+		font-size: 0.92rem;
+	}
+	.resources-spotlight__link span {
+		transition: transform 220ms var(--ease-out-quart);
+	}
+	.resources-spotlight__card:hover .resources-spotlight__link span {
+		transform: translateX(3px);
+	}
+	.resources-spotlight__meta {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+		padding: clamp(1.6rem, 3.5vw, 2.6rem);
+		border-left: 1px solid var(--color-border-soft);
+		background: var(--color-bg-secondary);
+	}
+	.resources-spotlight__meta-type {
+		font-size: 0.78rem;
+		font-weight: 800;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: var(--color-accent-dark);
+	}
+	.resources-spotlight__meta-row {
+		color: var(--color-text);
+		font-size: 0.9rem;
+		font-weight: 600;
+	}
+	.resources-spotlight__meta-foot {
+		margin-top: auto;
+		color: var(--color-muted);
+		font-size: 0.82rem;
 		line-height: 1.5;
 	}
 
-	.resources-published__intro {
-		max-width: 820px;
+	/* Library */
+	.resources-library__intro {
+		max-width: 760px;
+	}
+	.resources-filters {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1.5rem 2.5rem;
+		margin: clamp(1.75rem, 3vw, 2.5rem) 0 1.5rem;
+		padding-bottom: 1.5rem;
+		border-bottom: 1px solid var(--color-border-soft);
+	}
+	.resources-filters__group {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 0.5rem;
+	}
+	.resources-filters__label {
+		margin-right: 0.25rem;
+		color: var(--color-muted-soft);
+		font-size: 0.72rem;
+		font-weight: 800;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+	}
+	.resources-filter {
+		padding: 0.42rem 0.85rem;
+		border: 1px solid var(--color-border);
+		border-radius: 999px;
+		background: var(--color-white);
+		color: var(--color-muted);
+		font-size: 0.82rem;
+		font-weight: 600;
+		transition: border-color var(--transition-base), color var(--transition-base), background var(--transition-base);
+	}
+	.resources-filter:hover {
+		border-color: color-mix(in srgb, var(--color-accent) 32%, var(--color-border));
+		color: var(--color-text);
+	}
+	.resources-filter.is-active {
+		border-color: var(--color-text);
+		background: var(--color-text);
+		color: var(--color-white);
 	}
 
-	.resources-published__grid {
+	.resources-grid {
 		display: grid;
 		grid-template-columns: repeat(3, minmax(0, 1fr));
 		gap: 1rem;
-		margin-top: clamp(2rem, 4vw, 3rem);
 	}
-
-	.resources-article-card {
+	.resources-card {
 		display: grid;
 		grid-template-rows: auto auto 1fr auto;
 		gap: 0.7rem;
@@ -250,34 +446,31 @@ const featured = published.map((r) => ({
 		border-left-width: 3px;
 		transition: transform 280ms var(--ease-out-quart), border-color var(--transition-base), box-shadow var(--transition-base);
 	}
-
-	.resources-article-card--foundation { border-left-color: var(--lane-foundation); }
-	.resources-article-card--custom     { border-left-color: var(--lane-custom); }
-	.resources-article-card--growth     { border-left-color: var(--lane-growth); }
-	.resources-article-card--audit      { border-left-color: var(--lane-audit); }
-	.resources-article-card--care       { border-left-color: var(--lane-care); }
-
-	.resources-article-card:hover {
+	.resources-card--foundation { border-left-color: var(--lane-foundation); }
+	.resources-card--custom     { border-left-color: var(--lane-custom); }
+	.resources-card--growth     { border-left-color: var(--lane-growth); }
+	.resources-card--audit      { border-left-color: var(--lane-audit); }
+	.resources-card--care       { border-left-color: var(--lane-care); }
+	.resources-card:hover {
 		transform: translateY(-3px);
 		border-color: color-mix(in srgb, var(--color-accent) 32%, var(--color-border));
 		box-shadow: 0 24px 52px rgba(15, 23, 42, 0.08);
 	}
-
-	.resources-article-card__meta {
+	.resources-card__meta {
 		display: flex;
 		flex-wrap: wrap;
 		align-items: center;
 		justify-content: space-between;
 		gap: 0.5rem;
 	}
-
-	.resources-article-card__time {
+	.resources-card__topic {
 		color: var(--color-muted);
-		font-size: 0.78rem;
-		font-weight: 600;
+		font-size: 0.74rem;
+		font-weight: 700;
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
 	}
-
-	.resources-article-card h3 {
+	.resources-card h3 {
 		margin: 0;
 		color: var(--color-text);
 		font-size: 1.12rem;
@@ -285,15 +478,13 @@ const featured = published.map((r) => ({
 		letter-spacing: -0.02em;
 		line-height: 1.3;
 	}
-
-	.resources-article-card p {
+	.resources-card p {
 		margin: 0;
 		color: var(--color-muted);
 		font-size: 0.9rem;
 		line-height: 1.55;
 	}
-
-	.resources-article-card__foot {
+	.resources-card__foot {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
@@ -302,14 +493,12 @@ const featured = published.map((r) => ({
 		padding-top: 0.85rem;
 		border-top: 1px solid var(--color-border-soft);
 	}
-
-	.resources-article-card__date {
+	.resources-card__date {
 		color: var(--color-muted-soft);
 		font-size: 0.8rem;
 		font-weight: 600;
 	}
-
-	.resources-article-card__link {
+	.resources-card__link {
 		display: inline-flex;
 		align-items: center;
 		gap: 0.35rem;
@@ -317,20 +506,53 @@ const featured = published.map((r) => ({
 		font-size: 0.85rem;
 		font-weight: 800;
 	}
-
-	.resources-article-card__link span {
+	.resources-card__link span {
 		display: inline-block;
 		transition: transform 220ms var(--ease-out-quart);
 	}
-
-	.resources-article-card:hover .resources-article-card__link span {
+	.resources-card:hover .resources-card__link span {
 		transform: translateX(3px);
 	}
 
+	.resources-empty {
+		margin: 2rem 0 0;
+		color: var(--color-muted);
+	}
+
+	/* Roadmap teaser */
+	.resources-roadmap {
+		margin-top: clamp(2.5rem, 5vw, 4rem);
+		padding-top: clamp(1.75rem, 3vw, 2.5rem);
+		border-top: 1px solid var(--color-border-soft);
+	}
+	.resources-roadmap__label {
+		margin: 0 0 1rem;
+		color: var(--color-muted-soft);
+		font-size: 0.72rem;
+		font-weight: 800;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+	}
+	.resources-roadmap__list {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 0.6rem 1.5rem;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	.resources-roadmap__item {
+		display: flex;
+		align-items: center;
+		gap: 0.7rem;
+		color: var(--color-muted);
+		font-size: 0.92rem;
+	}
+
+	/* Final CTA */
 	.resources-final {
 		background: var(--color-accent-light);
 	}
-
 	.resources-final__card {
 		display: grid;
 		grid-template-columns: minmax(0, 1fr) auto;
@@ -342,56 +564,63 @@ const featured = published.map((r) => ({
 		background: var(--color-text);
 		box-shadow: 0 24px 60px rgba(15, 23, 42, 0.12);
 	}
-
 	.resources-final .eyebrow {
 		color: color-mix(in srgb, var(--color-accent-light) 84%, var(--color-white));
 	}
-
 	.resources-final h2,
 	.resources-final .lead {
 		color: var(--color-white);
 	}
-
 	.resources-final .lead {
 		opacity: 0.78;
 	}
-
 	.resources-final .button-row {
 		justify-content: flex-end;
 		margin-top: 0;
 	}
-
 	.resources-final .button-secondary {
 		background: transparent;
 		border-color: rgba(255, 255, 255, 0.22);
 		color: var(--color-white);
 	}
-
 	.resources-final .button-secondary:hover {
 		background: rgba(255, 255, 255, 0.08);
 		border-color: rgba(255, 255, 255, 0.38);
 		color: var(--color-white);
 	}
 
-	@media (max-width: 1100px) {
-		.resources-pillars__rail {
-			grid-template-columns: repeat(3, minmax(0, 1fr));
-		}
-	}
-
-	@media (max-width: 920px) {
-		.resources-published__grid {
+	@media (max-width: 1040px) {
+		.resources-hero__types {
 			grid-template-columns: repeat(2, minmax(0, 1fr));
 		}
 	}
-
-	@media (max-width: 760px) {
-		.resources-pillars__rail,
-		.resources-published__grid,
+	@media (max-width: 920px) {
+		.resources-grid {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+		.resources-spotlight__card {
+			grid-template-columns: 1fr;
+		}
+		.resources-spotlight__meta {
+			flex-direction: row;
+			flex-wrap: wrap;
+			align-items: center;
+			gap: 0.4rem 1.25rem;
+			border-left: none;
+			border-top: 1px solid var(--color-border-soft);
+		}
+		.resources-spotlight__meta-foot {
+			margin-top: 0;
+			flex-basis: 100%;
+		}
+	}
+	@media (max-width: 680px) {
+		.resources-hero__types,
+		.resources-grid,
+		.resources-roadmap__list,
 		.resources-final__card {
 			grid-template-columns: 1fr;
 		}
-
 		.resources-final .button-row {
 			justify-content: flex-start;
 		}
