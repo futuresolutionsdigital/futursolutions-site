@@ -1,8 +1,28 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import TemplateCard from '../../components/TemplateCard.astro';
+import FeaturedFoundation from '../../components/FeaturedFoundation.astro';
+import DemoCard from '../../components/DemoCard.astro';
 import ServiceFAQSection from '../../components/ServiceFAQSection.astro';
 import { templateSystems, templateBrowseFilterDefs } from '../../data/templates';
+
+const featuredSlug = 'premium-wellness-clinic';
+const gridDemos = templateSystems.filter((t) => t.slug !== featuredSlug);
+const newDemoSlugs = new Set(['premium-wellness-clinic', 'hormone-trt']);
+
+// "Anatomy of a Foundation" layers for the mega-section graphic. Each layer maps
+// 1:1 to an includeCategories entry, so the diagram doubles as a visual index.
+const foundationLayers = [
+	'Strategy',
+	'Design',
+	'Pages',
+	'Lead path',
+	'SEO & tracking',
+	'Editable content',
+	'Launch',
+];
+
+// Subtle Growth-System flow shown in the add-on chapter.
+const growthFlow = ['Website', 'Form', 'CRM', 'Follow-up', 'Reporting'];
 
 const pageTitle = 'Website Foundations | FutureSolutions';
 const pageDescription =
@@ -355,58 +375,9 @@ const foundationFaqs = [
 		</div>
 	</section>
 
-	<!-- SECTION 4 — WHAT IS INCLUDED -->
-	<section class="section templates-include" aria-labelledby="templates-include-heading">
-		<div class="site-container">
-			<div class="templates-include__intro">
-				<p class="eyebrow">What you get</p>
-				<h2 id="templates-include-heading">What your Foundation can include.</h2>
-				<p class="lead">You are not handed a theme to figure out. You get a complete, launch-ready website with your content in place and a clear path for visitors to take the next step.</p>
-			</div>
-			<div class="templates-include__grid">
-				{includeCategories.map((cat) => (
-					<article class="card templates-include__card">
-						<h3>{cat.title}</h3>
-						<ul>
-							{cat.items.map((item) => (
-								<li>
-									<span class="templates-include__check" aria-hidden="true">
-										<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3,8.5 6.5,12 13,4" /></svg>
-									</span>
-									{item}
-								</li>
-							))}
-						</ul>
-					</article>
-				))}
-			</div>
-			<p class="templates-include__note">Final scope depends on page count, content needs, integrations, and whether a Growth System is included.</p>
-		</div>
-	</section>
-
-	<!-- SECTION 5 — HOW IT WORKS -->
-	<section class="section section-muted templates-process" aria-labelledby="templates-process-heading">
-		<div class="site-container">
-			<div class="templates-process__intro">
-				<p class="eyebrow">How it works</p>
-				<h2 id="templates-process-heading">How a Website Foundation comes together.</h2>
-				<p class="lead">A clear, low-pressure path from first conversation to a launched site you can keep improving.</p>
-			</div>
-			<ol class="templates-process__grid">
-				{processSteps.map((step) => (
-					<li class="card templates-process__card">
-						<span class="templates-process__step">{step.step}</span>
-						<h3>{step.title}</h3>
-						<p>{step.text}</p>
-					</li>
-				))}
-			</ol>
-		</div>
-	</section>
-
-	<!-- SECTION 6 — FOUNDATION EXAMPLES / DEMOS -->
+	<!-- SECTION 4 — FOUNDATION EXAMPLES / DEMOS -->
 	<section id="foundation-examples" class="section templates-examples" aria-labelledby="templates-examples-heading">
-		<div class="site-container">
+		<div class="site-container site-container--wide">
 			<div class="templates-examples__intro">
 				<p class="eyebrow">Foundation examples</p>
 				<h2 id="templates-examples-heading">Explore foundation starting points.</h2>
@@ -414,6 +385,9 @@ const foundationFaqs = [
 					These examples are not one-size-fits-all templates. They are real, clickable starting points — structured around the pages, trust signals, and conversion paths an industry needs — that we customize around your brand, services, content, and lead path.
 				</p>
 			</div>
+
+			<FeaturedFoundation slug={featuredSlug} />
+
 			<div
 				id="template-browse-toolbar"
 				class="template-browse-filters"
@@ -435,7 +409,9 @@ const foundationFaqs = [
 				))}
 			</div>
 			<div id="featured-templates-grid" class="templates-examples__grid">
-				{templateSystems.map((template, index) => <TemplateCard template={template} priority={index + 1} />)}
+				{gridDemos.map((template, index) => (
+					<DemoCard template={template} index={index} isNew={newDemoSlugs.has(template.slug)} />
+				))}
 			</div>
 		</div>
 	</section>
@@ -472,86 +448,191 @@ const foundationFaqs = [
 		})();
 	</script>
 
-	<!-- SECTION 7 — FOUNDATION VS CUSTOM -->
-	<section class="section section-muted templates-vs" aria-labelledby="templates-vs-heading">
+	<!-- SECTION 5 — HOW A WEBSITE FOUNDATION WORKS (unified mega-section) -->
+	<section class="section section-muted templates-system" aria-labelledby="templates-system-heading">
 		<div class="site-container">
-			<div class="templates-vs__intro">
-				<p class="eyebrow">Foundation or fully custom?</p>
-				<h2 id="templates-vs-heading">Which path fits your business?</h2>
-				<p class="lead">Most businesses are well served by a Foundation. A Signature Custom Website makes sense when the framework approach would be too limiting.</p>
+			<div class="templates-system__intro">
+				<p class="eyebrow">The full picture</p>
+				<h2 id="templates-system-heading">Everything behind a Website Foundation.</h2>
+				<p class="lead">From what you get, to how it comes together, compares, grows, and what it costs — here is the whole offer, end to end.</p>
 			</div>
-			<div class="templates-vs__grid">
-				{comparison.map((col) => (
-					<article class={`card templates-vs__card lane-accent-top lane-accent-top--${col.lane}`}>
-						<span class={`lane-tag lane-tag--${col.lane}`}>{col.tag}</span>
-						<h3>{col.name}</h3>
-						<ul>
-							{col.points.map((point) => (
-								<li>
-									<span class="templates-vs__check" aria-hidden="true">
-										<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3,8.5 6.5,12 13,4" /></svg>
-									</span>
-									{point}
+
+			<div class="fsys">
+				<!-- Chapter 01 — What you get -->
+				<article class="fsys__chapter">
+					<div class="fsys__node" aria-hidden="true"><span>01</span></div>
+					<div class="fsys__head">
+						<p class="fsys__kicker">What you get</p>
+						<h3 class="fsys__title">A complete, launch-ready website.</h3>
+						<p class="fsys__text">You are not handed a theme to figure out. Every Foundation is built in layers, each one customized around your business.</p>
+					</div>
+					<div class="fsys__body fsys__body--split">
+						<div class="fsys-anatomy" aria-hidden="true">
+							{foundationLayers.map((layer, i) => (
+								<div class={`fsys-anatomy__layer fsys-anatomy__layer--${i + 1}`}>
+									<span class="fsys-anatomy__num">{String(i + 1).padStart(2, '0')}</span>
+									<span class="fsys-anatomy__label">{layer}</span>
+								</div>
+							))}
+							<p class="fsys-anatomy__base">Your Website Foundation</p>
+						</div>
+						<div class="fsys-include">
+							{includeCategories.map((cat) => (
+								<div class="fsys-include__cat">
+									<h4>{cat.title}</h4>
+									<ul>
+										{cat.items.map((item) => (
+											<li>
+												<span class="fsys-check" aria-hidden="true">
+													<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3,8.5 6.5,12 13,4" /></svg>
+												</span>
+												{item}
+											</li>
+										))}
+									</ul>
+								</div>
+							))}
+						</div>
+					</div>
+					<p class="fsys__note">Final scope depends on page count, content needs, integrations, and whether a Growth System is included.</p>
+				</article>
+
+				<!-- Chapter 02 — How it comes together -->
+				<article class="fsys__chapter">
+					<div class="fsys__node" aria-hidden="true"><span>02</span></div>
+					<div class="fsys__head">
+						<p class="fsys__kicker">How it comes together</p>
+						<h3 class="fsys__title">A clear, low-pressure path to launch.</h3>
+						<p class="fsys__text">Six steps from first conversation to a launched site you can keep improving — starting with a free snapshot.</p>
+					</div>
+					<div class="fsys__body">
+						<ol class="fsys-steps">
+							{processSteps.map((step) => (
+								<li class="fsys-steps__item">
+									<span class="fsys-steps__num">{step.step}</span>
+									<div class="fsys-steps__copy">
+										<h4>{step.title}</h4>
+										<p>{step.text}</p>
+									</div>
 								</li>
 							))}
-						</ul>
-					</article>
-				))}
-			</div>
-			<div class="templates-vs__cta">
-				<a class="button button-primary" href="/audit">Get My Free Snapshot</a>
-				<p class="templates-vs__cta-note">Not sure which path fits? The free snapshot makes a clear recommendation.</p>
-			</div>
-		</div>
-	</section>
+						</ol>
+					</div>
+				</article>
 
-	<!-- SECTION 8 — OPTIONAL GROWTH SYSTEM ADD-ON -->
-	<section class="section templates-growth" aria-labelledby="templates-growth-heading">
-		<div class="site-container">
-			<div class="templates-growth__card">
-				<div class="templates-growth__copy">
-					<p class="eyebrow">Optional add-on</p>
-					<h2 id="templates-growth-heading">Add a Growth System when your site needs more than a form.</h2>
-					<p class="lead">
-						If your website also needs to connect to CRM, booking, automated follow-up, review requests, and reporting, a Growth System can be added to your Website Foundation — at launch or after it is live.
-					</p>
-					<a class="button button-primary templates-growth__btn" href="/services/growth-systems">Add a Growth System</a>
+				<!-- Chapter 03 — How it compares -->
+				<article class="fsys__chapter">
+					<div class="fsys__node" aria-hidden="true"><span>03</span></div>
+					<div class="fsys__head">
+						<p class="fsys__kicker">How it compares</p>
+						<h3 class="fsys__title">The premium middle path.</h3>
+						<p class="fsys__text">A Foundation sits between a cheap template and a fully custom build: the quality and strategy of custom, with a faster, more practical path.</p>
+					</div>
+					<div class="fsys__body">
+						<div class="fsys-scale" role="img" aria-label="A Website Foundation sits between a cheap template and a fully custom website.">
+							<div class="fsys-scale__track" aria-hidden="true"></div>
+							<div class="fsys-scale__stop">
+								<span class="fsys-scale__dot"></span>
+								<span class="fsys-scale__label">Cheap template</span>
+							</div>
+							<div class="fsys-scale__stop fsys-scale__stop--active">
+								<span class="fsys-scale__dot">
+									<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3,8.5 6.5,12 13,4" /></svg>
+								</span>
+								<span class="fsys-scale__label">Website Foundation</span>
+							</div>
+							<div class="fsys-scale__stop">
+								<span class="fsys-scale__dot"></span>
+								<span class="fsys-scale__label">Fully custom</span>
+							</div>
+						</div>
+						<div class="fsys-vs">
+							{comparison.map((col) => (
+								<article class={`card fsys-vs__card lane-accent-top lane-accent-top--${col.lane}`}>
+									<span class={`lane-tag lane-tag--${col.lane}`}>{col.tag}</span>
+									<h4>{col.name}</h4>
+									<ul>
+										{col.points.map((point) => (
+											<li>
+												<span class="fsys-check" aria-hidden="true">
+													<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3,8.5 6.5,12 13,4" /></svg>
+												</span>
+												{point}
+											</li>
+										))}
+									</ul>
+								</article>
+							))}
+						</div>
+						<p class="fsys-vs__note">Not sure which path fits? <a href="/audit">The free snapshot makes a clear recommendation.</a></p>
+					</div>
+				</article>
+
+				<!-- Chapter 04 — How it grows -->
+				<article class="fsys__chapter">
+					<div class="fsys__node" aria-hidden="true"><span>04</span></div>
+					<div class="fsys__head">
+						<p class="fsys__kicker">How it grows</p>
+						<h3 class="fsys__title">Add a Growth System when your site needs more than a form.</h3>
+						<p class="fsys__text">When you are ready to connect CRM, booking, follow-up, review requests, and reporting, a Growth System bolts onto your Foundation — at launch or after it is live.</p>
+					</div>
+					<div class="fsys__body">
+						<div class="fsys-growth">
+							<div class="fsys-growth__flow" aria-hidden="true">
+								{growthFlow.map((node, i) => (
+									<Fragment>
+										<span class="fsys-growth__node">{node}</span>
+										{i < growthFlow.length - 1 && <span class="fsys-growth__arrow">&rarr;</span>}
+									</Fragment>
+								))}
+							</div>
+							<ul class="fsys-growth__list">
+								{growthAddItems.map((item) => (
+									<li>
+										<span class="fsys-check fsys-check--ink" aria-hidden="true">
+											<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3,8.5 6.5,12 13,4" /></svg>
+										</span>
+										{item}
+									</li>
+								))}
+							</ul>
+							<a class="button button-primary fsys-growth__btn" href="/services/growth-systems">Add a Growth System</a>
+						</div>
+					</div>
+				</article>
+
+				<!-- Chapter 05 — What it costs -->
+				<article class="fsys__chapter">
+					<div class="fsys__node" aria-hidden="true"><span>05</span></div>
+					<div class="fsys__head">
+						<p class="fsys__kicker">What it costs</p>
+						<h3 class="fsys__title">Website Foundations start at $3,500.</h3>
+						<p class="fsys__text">Final scope depends on page count, content needs, integrations, and whether a Growth System or ongoing management plan is included.</p>
+					</div>
+					<div class="fsys__body">
+						<div class="fsys-pricing">
+							{pricingTiers.map((tier) => (
+								<article class:list={['card', 'fsys-pricing__card', { 'is-featured': tier.featured }]}>
+									{tier.featured && <span class="fsys-pricing__badge">Most popular</span>}
+									<h4>{tier.name}</h4>
+									<p class="fsys-pricing__price">{tier.price}</p>
+									<p class="fsys-pricing__text">{tier.text}</p>
+								</article>
+							))}
+						</div>
+					</div>
+				</article>
+
+				<!-- Spine terminus CTA -->
+				<div class="fsys__end">
+					<div class="fsys__node fsys__node--end" aria-hidden="true">
+						<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3,8.5 6.5,12 13,4" /></svg>
+					</div>
+					<div class="fsys__end-card">
+						<p>Every path starts the same way: a free, no-pressure snapshot with a clear recommendation.</p>
+						<a class="button button-primary" href="/audit">Get My Free Snapshot</a>
+					</div>
 				</div>
-				<ul class="templates-growth__list">
-					{growthAddItems.map((item) => (
-						<li>
-							<span class="templates-growth__check" aria-hidden="true">
-								<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3,8.5 6.5,12 13,4" /></svg>
-							</span>
-							{item}
-						</li>
-					))}
-				</ul>
-			</div>
-		</div>
-	</section>
-
-	<!-- SECTION 9 — PRICING / STARTING POINT -->
-	<section class="section section-muted templates-pricing" aria-labelledby="templates-pricing-heading">
-		<div class="site-container">
-			<div class="templates-pricing__intro">
-				<p class="eyebrow">Starting point</p>
-				<h2 id="templates-pricing-heading">Website Foundations start at $3,500.</h2>
-				<p class="lead">Final scope depends on page count, content needs, integrations, and whether a Growth System or ongoing management plan is included.</p>
-			</div>
-			<div class="templates-pricing__grid">
-				{pricingTiers.map((tier) => (
-					<article class:list={['card', 'templates-pricing__card', { 'is-featured': tier.featured }]}>
-						{tier.featured && <span class="templates-pricing__badge">Most popular</span>}
-						<h3>{tier.name}</h3>
-						<p class="templates-pricing__price">{tier.price}</p>
-						<p class="templates-pricing__text">{tier.text}</p>
-					</article>
-				))}
-			</div>
-			<div class="templates-pricing__cta">
-				<a class="button button-primary" href="/audit">Get My Free Snapshot</a>
-				<p class="templates-pricing__cta-note">Your Snapshot includes a clear recommendation and starting point — no pressure.</p>
 			</div>
 		</div>
 	</section>
@@ -599,11 +680,8 @@ const foundationFaqs = [
 	}
 
 	.templates-bestfor__intro,
-	.templates-include__intro,
-	.templates-process__intro,
 	.templates-examples__intro,
-	.templates-vs__intro,
-	.templates-pricing__intro {
+	.templates-system__intro {
 		max-width: 820px;
 	}
 
@@ -1101,10 +1179,7 @@ const foundationFaqs = [
 		line-height: 1.4;
 	}
 
-	.templates-bestfor__check,
-	.templates-include__check,
-	.templates-vs__check,
-	.templates-growth__check {
+	.templates-bestfor__check {
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
@@ -1116,10 +1191,7 @@ const foundationFaqs = [
 		color: var(--color-accent-dark);
 	}
 
-	.templates-bestfor__check svg,
-	.templates-include__check svg,
-	.templates-vs__check svg,
-	.templates-growth__check svg {
+	.templates-bestfor__check svg {
 		width: 0.85rem;
 		height: 0.85rem;
 	}
@@ -1155,98 +1227,11 @@ const foundationFaqs = [
 		text-underline-offset: 2px;
 	}
 
-	/* ═══ Included ═══ */
-	.templates-include__grid {
-		display: grid;
-		grid-template-columns: repeat(3, minmax(0, 1fr));
-		gap: 1rem;
-		margin-top: clamp(2rem, 4vw, 3rem);
-	}
-
-	.templates-include__card {
-		padding: 1.5rem;
-		align-content: start;
-	}
-
-	.templates-include__card h3 {
-		margin-bottom: 1rem;
-		font-size: 1.05rem;
-		letter-spacing: -0.02em;
-	}
-
-	.templates-include__card ul {
-		display: grid;
-		gap: 0.6rem;
-		margin: 0;
-		padding: 0;
-		list-style: none;
-	}
-
-	.templates-include__card li {
-		display: grid;
-		grid-template-columns: auto 1fr;
-		gap: 0.6rem;
-		align-items: start;
-		color: var(--color-muted);
-		font-size: 0.9rem;
-		line-height: 1.45;
-	}
-
-	.templates-include__note {
-		margin: 1.5rem 0 0;
-		color: var(--color-muted);
-		font-size: 0.9rem;
-		font-style: italic;
-	}
-
-	/* ═══ Process ═══ */
-	.templates-process__grid {
-		display: grid;
-		grid-template-columns: repeat(3, minmax(0, 1fr));
-		gap: 1.25rem;
-		margin: clamp(2rem, 4vw, 3rem) 0 0;
-		padding: 0;
-		list-style: none;
-	}
-
-	.templates-process__card {
-		display: grid;
-		gap: 0.55rem;
-		align-content: start;
-		padding: 1.5rem;
-	}
-
-	.templates-process__step {
-		display: inline-flex;
-		width: fit-content;
-		margin-bottom: 0.7rem;
-		padding: 0.35rem 0.52rem;
-		border: 1px solid color-mix(in srgb, var(--color-accent) 35%, var(--color-border));
-		border-radius: 999px;
-		background: var(--color-accent-light);
-		color: var(--color-accent-dark);
-		font-size: 0.72rem;
-		font-weight: 800;
-		line-height: 1;
-	}
-
-	.templates-process__card h3 {
-		font-size: 1.05rem;
-		letter-spacing: -0.02em;
-	}
-
-	.templates-process__card p {
-		margin: 0;
-		color: var(--color-muted);
-		font-size: 0.9375rem;
-		line-height: 1.6;
-	}
-
 	/* ═══ Examples ═══ */
 	.templates-examples__grid {
 		display: grid;
-		grid-template-columns: repeat(3, minmax(0, 1fr));
-		gap: 1rem;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 1.5rem;
 		margin-top: clamp(2rem, 4vw, 3rem);
 	}
 
@@ -1293,27 +1278,344 @@ const foundationFaqs = [
 		box-shadow: 0 0 0 1px color-mix(in srgb, var(--color-accent) 22%, transparent);
 	}
 
-	/* ═══ Foundation vs Custom ═══ */
-	.templates-vs__grid {
+	/* ═══ Mega-section: How a Website Foundation works ═══ */
+	.templates-system__intro {
+		margin-bottom: clamp(2.5rem, 5vw, 3.75rem);
+	}
+
+	.fsys {
+		position: relative;
+		display: grid;
+		gap: clamp(2.75rem, 5vw, 4.25rem);
+	}
+
+	/* the connecting spine */
+	.fsys::before {
+		content: '';
+		position: absolute;
+		top: 1rem;
+		bottom: 3rem;
+		left: 1.4rem;
+		width: 2px;
+		background: linear-gradient(
+			180deg,
+			var(--color-accent) 0%,
+			color-mix(in srgb, var(--color-accent) 55%, var(--color-border)) 60%,
+			var(--color-border) 100%
+		);
+		z-index: 0;
+	}
+
+	.fsys__chapter {
+		position: relative;
+		padding-left: clamp(3.5rem, 5vw, 4.75rem);
+	}
+
+	.fsys__node {
+		position: absolute;
+		left: 0;
+		top: 0;
+		z-index: 1;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 2.8rem;
+		height: 2.8rem;
+		border-radius: 999px;
+		background: var(--color-white);
+		border: 1px solid color-mix(in srgb, var(--color-accent) 42%, var(--color-border));
+		box-shadow: var(--shadow-card);
+	}
+
+	.fsys__node span {
+		color: var(--color-accent-dark);
+		font-size: 0.95rem;
+		font-weight: 800;
+		letter-spacing: -0.02em;
+	}
+
+	.fsys__head {
+		max-width: 64ch;
+		margin-bottom: 1.6rem;
+	}
+
+	.fsys__kicker {
+		margin: 0 0 0.5rem;
+		font-size: 0.72rem;
+		font-weight: 800;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		color: var(--color-accent-dark);
+	}
+
+	.fsys__title {
+		font-size: clamp(1.4rem, 2.2vw, 1.85rem);
+		letter-spacing: -0.025em;
+		line-height: 1.15;
+	}
+
+	.fsys__text {
+		margin: 0.6rem 0 0;
+		max-width: 56ch;
+		color: var(--color-muted);
+		font-size: 1rem;
+		line-height: 1.6;
+	}
+
+	.fsys__note {
+		margin: 1.25rem 0 0;
+		color: var(--color-muted);
+		font-size: 0.9rem;
+		font-style: italic;
+	}
+
+	.fsys__body--split {
+		display: grid;
+		grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+		gap: clamp(1.5rem, 3vw, 2.5rem);
+		align-items: start;
+	}
+
+	.fsys-check {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		flex-shrink: 0;
+		width: 1.2rem;
+		height: 1.2rem;
+		margin-top: 0.05rem;
+		border-radius: 999px;
+		background: var(--color-accent-light);
+		color: var(--color-accent-dark);
+	}
+
+	.fsys-check svg {
+		width: 0.72rem;
+		height: 0.72rem;
+	}
+
+	.fsys-check--ink {
+		background: var(--color-ink-accent);
+		color: var(--color-ink);
+	}
+
+	/* Chapter 01 — anatomy stack */
+	.fsys-anatomy {
+		display: grid;
+		gap: 0.5rem;
+		padding: 1.25rem;
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		background: linear-gradient(180deg, color-mix(in srgb, var(--color-accent-light) 45%, var(--color-white)), var(--color-white));
+		box-shadow: var(--shadow-card);
+	}
+
+	.fsys-anatomy__layer {
+		display: flex;
+		align-items: center;
+		gap: 0.7rem;
+		padding: 0.7rem 0.85rem;
+		border: 1px solid var(--color-border-soft);
+		border-left: 3px solid color-mix(in srgb, var(--color-accent) 55%, var(--color-border));
+		border-radius: 10px;
+		background: var(--color-white);
+		box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+	}
+
+	.fsys-anatomy__num {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 1.5rem;
+		height: 1.5rem;
+		border-radius: 6px;
+		background: var(--color-accent-light);
+		color: var(--color-accent-dark);
+		font-size: 0.6rem;
+		font-weight: 800;
+	}
+
+	.fsys-anatomy__label {
+		font-size: 0.9rem;
+		font-weight: 700;
+		color: var(--color-text);
+	}
+
+	.fsys-anatomy__base {
+		margin: 0.45rem 0 0;
+		text-align: center;
+		font-size: 0.72rem;
+		font-weight: 800;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		color: var(--color-accent-dark);
+	}
+
+	/* Chapter 01 — include detail */
+	.fsys-include {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 1.1rem 1.5rem;
+	}
+
+	.fsys-include__cat h4 {
+		margin: 0 0 0.5rem;
+		font-size: 0.95rem;
+		letter-spacing: -0.01em;
+	}
+
+	.fsys-include__cat ul {
+		display: grid;
+		gap: 0.42rem;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.fsys-include__cat li {
+		display: grid;
+		grid-template-columns: auto 1fr;
+		gap: 0.5rem;
+		align-items: start;
+		color: var(--color-muted);
+		font-size: 0.85rem;
+		line-height: 1.4;
+	}
+
+	/* Chapter 02 — steps */
+	.fsys-steps {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 1rem;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.fsys-steps__item {
+		display: grid;
+		gap: 0.5rem;
+		align-content: start;
+		padding: 1.35rem;
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		background: var(--color-white);
+		box-shadow: var(--shadow-card);
+	}
+
+	.fsys-steps__num {
+		display: inline-flex;
+		width: fit-content;
+		margin-bottom: 0.4rem;
+		padding: 0.3rem 0.5rem;
+		border-radius: 999px;
+		background: var(--color-accent-light);
+		color: var(--color-accent-dark);
+		font-size: 0.7rem;
+		font-weight: 800;
+		line-height: 1;
+	}
+
+	.fsys-steps__copy h4 {
+		margin: 0 0 0.25rem;
+		font-size: 1rem;
+		letter-spacing: -0.01em;
+	}
+
+	.fsys-steps__copy p {
+		margin: 0;
+		color: var(--color-muted);
+		font-size: 0.9rem;
+		line-height: 1.55;
+	}
+
+	/* Chapter 03 — middle-path scale */
+	.fsys-scale {
+		position: relative;
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 1rem;
+		margin-bottom: 1.75rem;
+		padding: 1.5rem 1.25rem 1.25rem;
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		background: var(--color-white);
+		box-shadow: var(--shadow-card);
+	}
+
+	.fsys-scale__track {
+		position: absolute;
+		top: 2.3rem;
+		left: 16.6%;
+		right: 16.6%;
+		height: 2px;
+		background: linear-gradient(90deg, var(--color-border), var(--color-accent), var(--color-border));
+	}
+
+	.fsys-scale__stop {
+		position: relative;
+		z-index: 1;
+		display: grid;
+		justify-items: center;
+		gap: 0.65rem;
+		text-align: center;
+	}
+
+	.fsys-scale__dot {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 1.6rem;
+		height: 1.6rem;
+		border-radius: 999px;
+		background: var(--color-white);
+		border: 2px solid var(--color-border);
+		color: transparent;
+	}
+
+	.fsys-scale__stop--active .fsys-scale__dot {
+		background: var(--color-accent-dark);
+		border-color: var(--color-accent-dark);
+		color: var(--color-white);
+		box-shadow: 0 0 0 5px color-mix(in srgb, var(--color-accent) 20%, transparent);
+	}
+
+	.fsys-scale__dot svg {
+		width: 0.85rem;
+		height: 0.85rem;
+	}
+
+	.fsys-scale__label {
+		font-size: 0.8rem;
+		font-weight: 700;
+		color: var(--color-muted);
+	}
+
+	.fsys-scale__stop--active .fsys-scale__label {
+		color: var(--color-text);
+		font-weight: 800;
+	}
+
+	/* Chapter 03 — comparison cards */
+	.fsys-vs {
 		display: grid;
 		grid-template-columns: repeat(2, minmax(0, 1fr));
 		gap: 1.25rem;
-		margin-top: clamp(2rem, 4vw, 3rem);
 	}
 
-	.templates-vs__card {
+	.fsys-vs__card {
 		display: grid;
 		gap: 0.85rem;
 		align-content: start;
 		padding: 1.75rem;
 	}
 
-	.templates-vs__card h3 {
-		font-size: 1.2rem;
+	.fsys-vs__card h4 {
+		font-size: 1.15rem;
 		letter-spacing: -0.02em;
 	}
 
-	.templates-vs__card ul {
+	.fsys-vs__card ul {
 		display: grid;
 		gap: 0.7rem;
 		margin: 0.4rem 0 0;
@@ -1321,7 +1623,7 @@ const foundationFaqs = [
 		list-style: none;
 	}
 
-	.templates-vs__card li {
+	.fsys-vs__card li {
 		display: grid;
 		grid-template-columns: auto 1fr;
 		gap: 0.6rem;
@@ -1331,61 +1633,62 @@ const foundationFaqs = [
 		line-height: 1.5;
 	}
 
-	.templates-vs__cta {
-		display: flex;
-		flex-wrap: wrap;
-		align-items: center;
-		gap: 1.25rem;
-		margin-top: 2rem;
-	}
-
-	.templates-vs__cta-note {
-		margin: 0;
+	.fsys-vs__note {
+		margin: 1.5rem 0 0;
 		color: var(--color-muted);
-		font-size: 0.9rem;
-		font-weight: 500;
+		font-size: 0.95rem;
 	}
 
-	/* ═══ Growth add-on ═══ */
-	.templates-growth__card {
+	.fsys-vs__note a {
+		color: var(--color-accent-dark);
+		font-weight: 700;
+		text-decoration: underline;
+		text-underline-offset: 2px;
+	}
+
+	/* Chapter 04 — growth (dark) */
+	.fsys-growth {
 		display: grid;
-		grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-		gap: clamp(2rem, 5vw, 3.5rem);
-		align-items: center;
-		padding: clamp(1.75rem, 4vw, 3rem);
+		gap: 1.5rem;
+		padding: clamp(1.75rem, 4vw, 2.5rem);
 		border: 1px solid var(--color-ink-line-strong);
 		border-radius: 20px;
 		background: var(--color-ink);
 		box-shadow: 0 24px 60px rgba(15, 23, 42, 0.18);
 	}
 
-	.templates-growth__copy .eyebrow {
-		color: var(--color-ink-accent);
+	.fsys-growth__flow {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 0.55rem;
 	}
 
-	.templates-growth__copy h2,
-	.templates-growth__copy .lead {
+	.fsys-growth__node {
+		padding: 0.45rem 0.8rem;
+		border-radius: 999px;
+		background: color-mix(in srgb, var(--color-ink-accent) 16%, transparent);
+		border: 1px solid var(--color-ink-line-strong);
 		color: var(--color-white);
+		font-size: 0.82rem;
+		font-weight: 700;
 	}
 
-	.templates-growth__copy .lead {
-		opacity: 0.82;
+	.fsys-growth__arrow {
+		color: var(--color-ink-accent);
+		font-weight: 800;
 	}
 
-	.templates-growth__btn {
-		margin-top: 1.5rem;
-	}
-
-	.templates-growth__list {
+	.fsys-growth__list {
 		display: grid;
 		grid-template-columns: repeat(2, minmax(0, 1fr));
-		gap: 0.85rem 1.25rem;
+		gap: 0.7rem 1.25rem;
 		margin: 0;
 		padding: 0;
 		list-style: none;
 	}
 
-	.templates-growth__list li {
+	.fsys-growth__list li {
 		display: grid;
 		grid-template-columns: auto 1fr;
 		gap: 0.6rem;
@@ -1395,22 +1698,18 @@ const foundationFaqs = [
 		line-height: 1.4;
 	}
 
-	.templates-growth__check {
-		width: 1.4rem;
-		height: 1.4rem;
-		background: var(--color-ink-accent);
-		color: var(--color-ink);
+	.fsys-growth__btn {
+		justify-self: start;
 	}
 
-	/* ═══ Pricing ═══ */
-	.templates-pricing__grid {
+	/* Chapter 05 — pricing */
+	.fsys-pricing {
 		display: grid;
 		grid-template-columns: repeat(3, minmax(0, 1fr));
 		gap: 1.25rem;
-		margin-top: clamp(2rem, 4vw, 3rem);
 	}
 
-	.templates-pricing__card {
+	.fsys-pricing__card {
 		position: relative;
 		display: grid;
 		gap: 0.5rem;
@@ -1418,12 +1717,12 @@ const foundationFaqs = [
 		padding: 1.75rem;
 	}
 
-	.templates-pricing__card.is-featured {
+	.fsys-pricing__card.is-featured {
 		border-color: color-mix(in srgb, var(--color-accent) 50%, var(--color-border));
 		box-shadow: 0 0 0 1px color-mix(in srgb, var(--color-accent) 26%, transparent), var(--shadow-card);
 	}
 
-	.templates-pricing__badge {
+	.fsys-pricing__badge {
 		position: absolute;
 		top: -0.7rem;
 		left: 1.75rem;
@@ -1437,12 +1736,12 @@ const foundationFaqs = [
 		text-transform: uppercase;
 	}
 
-	.templates-pricing__card h3 {
+	.fsys-pricing__card h4 {
 		font-size: 1.1rem;
 		letter-spacing: -0.02em;
 	}
 
-	.templates-pricing__price {
+	.fsys-pricing__price {
 		margin: 0;
 		color: var(--color-accent-dark);
 		font-size: 1.15rem;
@@ -1450,26 +1749,50 @@ const foundationFaqs = [
 		letter-spacing: -0.01em;
 	}
 
-	.templates-pricing__text {
+	.fsys-pricing__text {
 		margin: 0.25rem 0 0;
 		color: var(--color-muted);
 		font-size: 0.9375rem;
 		line-height: 1.55;
 	}
 
-	.templates-pricing__cta {
+	/* spine terminus */
+	.fsys__end {
+		position: relative;
+		padding-left: clamp(3.5rem, 5vw, 4.75rem);
+	}
+
+	.fsys__node--end {
+		background: var(--color-accent-dark);
+		border-color: var(--color-accent-dark);
+		color: var(--color-white);
+	}
+
+	.fsys__node--end svg {
+		width: 1.1rem;
+		height: 1.1rem;
+	}
+
+	.fsys__end-card {
 		display: flex;
 		flex-wrap: wrap;
 		align-items: center;
-		gap: 1.25rem;
-		margin-top: 2rem;
+		gap: 1.1rem 2rem;
+		padding: 1.5rem 1.75rem;
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		background: linear-gradient(180deg, color-mix(in srgb, var(--color-accent-light) 50%, var(--color-white)), var(--color-white));
+		box-shadow: var(--shadow-card);
 	}
 
-	.templates-pricing__cta-note {
+	.fsys__end-card p {
+		flex: 1;
+		min-width: 16rem;
 		margin: 0;
-		color: var(--color-muted);
-		font-size: 0.9rem;
-		font-weight: 500;
+		color: var(--color-text);
+		font-size: 1rem;
+		font-weight: 600;
+		line-height: 1.5;
 	}
 
 	/* ═══ Final CTA ═══ */
@@ -1541,33 +1864,52 @@ const foundationFaqs = [
 		}
 
 		.templates-bestfor__grid,
-		.templates-include__grid,
-		.templates-process__grid,
-		.templates-examples__grid,
-		.templates-pricing__grid {
+		.templates-examples__grid {
 			grid-template-columns: repeat(2, minmax(0, 1fr));
 		}
 
-		.templates-growth__card {
+		.fsys__body--split {
 			grid-template-columns: 1fr;
-			gap: 1.75rem;
+		}
+
+		.fsys-steps {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
 		}
 	}
 
 	@media (max-width: 720px) {
 		.templates-bestfor__grid,
-		.templates-include__grid,
-		.templates-process__grid,
 		.templates-examples__grid,
-		.templates-vs__grid,
-		.templates-pricing__grid,
-		.templates-growth__list,
-		.templates-final__card {
+		.templates-final__card,
+		.fsys-include,
+		.fsys-steps,
+		.fsys-vs,
+		.fsys-growth__list,
+		.fsys-pricing {
 			grid-template-columns: 1fr;
 		}
 
 		.templates-final .button-row {
 			justify-content: flex-start;
+		}
+
+		/* Tighten the spine + chapters on small screens */
+		.fsys::before {
+			left: 1rem;
+		}
+
+		.fsys__chapter,
+		.fsys__end {
+			padding-left: 2.75rem;
+		}
+
+		.fsys__node {
+			width: 2rem;
+			height: 2rem;
+		}
+
+		.fsys__node span {
+			font-size: 0.78rem;
 		}
 
 		/* Tighten the hero visual + reduce callouts on small screens */
