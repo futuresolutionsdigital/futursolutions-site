@@ -38,12 +38,16 @@ Published (live, in the new visual system):
 - Guide - Local SEO Basics for Medical and Wellness Practices (Local)
 - Guide - What Happens After Someone Fills Out Your Contact Form? (Growth)
 - Guide - Website Foundation vs Signature Custom (Foundations)
+- Guide - What Every Med Spa Website Needs to Drive Bookings (Med spa / Trust)
+- Toolkit - The Healthcare Homepage Wireframe & Section Outline (Trust)
+- Toolkit - First-5-Touches Follow-Up Templates (Growth)
+- Checklist - The New Website Launch Readiness Checklist (Foundations)
+- Playbook - The Google Business Profile Setup & Optimization SOP (Local)
 - **Playbook - The New Patient Inquiry Follow-Up SOP** (flagship)
 - **Checklist - The Website Trust & Conversion Audit Checklist** (flagship, featured)
 
 Planned (stubs in `resources.ts`, shown in the "On the roadmap" teaser):
 
-- Guide - What Every Med Spa Website Needs to Drive Bookings
 - Guide - How Solo Practices Can Build Trust Online
 - Guide - Why Every Service Deserves Its Own Page
 - Playbook - How to Turn Your Website Into a Lead and Booking System
@@ -56,12 +60,12 @@ Priority is weighted by: Snapshot pull, ideal-customer relevance, and reusabilit
 
 | Priority | Type | Working title | Pillar | Industry focus | Snapshot pull |
 | --- | --- | --- | --- | --- | --- |
-| 1 | Toolkit | Healthcare Homepage Wireframe & Section Outline | Trust | All | High |
-| 2 | Checklist | New Website Launch Readiness Checklist | Foundations | All | High |
-| 3 | Playbook | Google Business Profile Setup & Optimization SOP | Local | Local/appointment-based | High |
-| 4 | Guide | What Every Med Spa Website Needs to Drive Bookings | Trust | Med spa | Medium |
-| 5 | Toolkit | First-5-Touches Email & SMS Follow-Up Templates | Growth | All | High (pairs with the SOP) |
-| 6 | Guide | How Solo Practices Can Build Trust Online | Trust | Solo practice | Medium |
+| 1 | Guide | How Solo Practices Can Build Trust Online | Trust | Solo practice | Medium |
+| 2 | Checklist | Med Spa Website Conversion Checklist | Conversion | Med spa | Medium |
+| 3 | Guide | Why Every Service Deserves Its Own Page | Local | All | Medium |
+| 4 | Playbook | Review Request SOP (within privacy rules) | Local | All | Medium |
+| 5 | Toolkit | Service Page Template (structure + prompts) | Foundations | All | Medium |
+| 6 | Playbook | How to Turn Your Website Into a Lead and Booking System | Growth | All | High |
 
 ### Next
 
@@ -84,10 +88,10 @@ Aim for at least one strong resource in every cell over time. Bold = exists.
 
 | Pillar | Guide | Playbook | Checklist | Toolkit |
 | --- | --- | --- | --- | --- |
-| Trust & Strategy | **yes** | gap | gap | gap (priority 1) |
+| Trust & Strategy | **yes (x3)** | gap | gap | **yes** |
 | Conversion | **yes** | gap | **yes** | gap |
-| Foundations & Local | **yes (x2)** | gap (priority 3) | gap (priority 2) | gap (priority 7) |
-| Growth Systems | **yes** | **yes** | gap | gap (priority 5) |
+| Foundations & Local | **yes (x2)** | **yes** | **yes** | gap |
+| Growth Systems | **yes** | **yes** | gap | **yes** |
 
 ## Production standards (the quality bar)
 

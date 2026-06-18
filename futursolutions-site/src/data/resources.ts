@@ -878,7 +878,414 @@ export const resources: ResourceEntry[] = [
 		},
 	},
 
-	// ─── Planned (roadmap stubs) ───────────────────────────────────────
+	// ─── Toolkit ───────────────────────────────────────────────────────
+	{
+		slug: 'healthcare-homepage-wireframe',
+		title: 'The Healthcare Homepage Wireframe & Section Outline',
+		type: 'toolkit',
+		category: 'Website Strategy',
+		lane: 'custom',
+		audience: 'Owners and marketers planning a site',
+		excerpt:
+			'A copy-ready, section-by-section homepage outline: what each block should say, in what order, to build trust and drive the next step.',
+		subtitle:
+			'A section-by-section homepage blueprint built around how health and wellness visitors actually decide.',
+		outcomes: [
+			'A proven homepage section order you can hand to a designer',
+			'A prompt for what every section must answer',
+			'A built-in trust and conversion check before you publish',
+		],
+		forWho: 'Owners and marketers planning or rebuilding a site',
+		timeToImplement: 'About 45 minutes to draft',
+		datePublished: '2026-03-18',
+		lastUpdated: '2026-03-18',
+		readingTime: '7 min read',
+		relatedService: 'Website Foundations',
+		ctaLabel: 'Explore Live Demos',
+		ctaHref: '/templates',
+		status: 'Published',
+		body: {
+			intro:
+				'A homepage does not need more sections, it needs the right sections in the right order. This outline is the structure we build healthcare homepages on: each block has one job, and together they move a first-time visitor from "who is this?" to "I should reach out." Copy it into a doc and draft your own homepage section by section.',
+			blocks: [
+				{ kind: 'heading', id: 'how-to-use', text: 'How to use this outline' },
+				{
+					kind: 'paragraph',
+					text: 'Work top to bottom. For each section, write one or two sentences answering the prompt. If you cannot answer it clearly, that is exactly the spot most visitors get confused too.',
+				},
+				{
+					kind: 'callout',
+					tone: 'insight',
+					title: 'One job per section',
+					text: 'If a section is trying to do three things, split it. Clarity comes from each block doing one thing well.',
+				},
+				{ kind: 'heading', id: 'section-order', text: 'The section order' },
+				{
+					kind: 'steps',
+					steps: [
+						{ title: 'Hero', text: 'Who you help, what you do, and one clear action. Specific beats clever.' },
+						{ title: 'Trust bar', text: 'Credentials, affiliations, years, or a line of proof, immediately under the hero.' },
+						{ title: 'What you do', text: 'A plain statement of your core offer a visitor can repeat back.' },
+						{ title: 'Services overview', text: 'Name each meaningful service and link it to its own page.' },
+						{ title: 'How to begin', text: 'A simple, low-friction explanation of the first step (book, call, or inquire).' },
+						{ title: 'Proof', text: 'Reviews, outcomes, real photography, or recognizable affiliations.' },
+						{ title: 'Local relevance', text: 'City, region, and service area named on the page.' },
+						{ title: 'FAQ', text: 'Answer the three or four questions that quietly stop people from acting.' },
+						{ title: 'Final call to action', text: 'One more obvious, repeated way to take the next step.' },
+					],
+				},
+				{ kind: 'heading', id: 'hero-prompts', text: 'Getting the hero right' },
+				{
+					kind: 'doDont',
+					doItems: [
+						'"Hormone and weight-loss care for men in Austin, with same-week visits"',
+						'State who it is for and what they get',
+						'Pair it with one clear primary action',
+					],
+					dontItems: [
+						'"Your health is our priority"',
+						'Open with a rotating carousel of stock photos',
+						'Bury the action below the fold',
+					],
+				},
+				{ kind: 'heading', id: 'before-publish', text: 'Before you publish' },
+				{
+					kind: 'checklist',
+					title: 'Quick homepage gut-check',
+					items: [
+						'A stranger can tell what you do within five seconds',
+						'The primary action appears above the fold and repeats lower down',
+						'Every named service links to its own page',
+						'There is real proof, not just adjectives',
+						'Your city or service area is stated on the page',
+						'It reads cleanly on a phone first',
+					],
+				},
+			],
+			keyTakeaways: [
+				'Order matters more than adding sections.',
+				'Each section should answer one clear question.',
+				'Lead with a specific hero, not a slogan or carousel.',
+				'Route to dedicated service pages instead of explaining everything.',
+				'Gut-check trust, clarity, and the next step before launch.',
+			],
+		},
+	},
+
+	// ─── Checklist ──────────────────────────────────────────────────────
+	{
+		slug: 'website-launch-readiness-checklist',
+		title: 'The New Website Launch Readiness Checklist',
+		type: 'checklist',
+		category: 'Foundations',
+		lane: 'foundation',
+		audience: 'Anyone about to launch or relaunch a site',
+		excerpt:
+			'Everything to verify before a healthcare website goes live: content, trust, conversion, technical, local, and follow-up.',
+		subtitle:
+			'A pre-launch checklist so nothing important is missed the day your new site goes live.',
+		outcomes: [
+			'Confidence that the essentials are covered before launch',
+			'A shared list your team and developer can work from',
+			'Fewer "we forgot to test that" moments on day one',
+		],
+		forWho: 'Owners, marketers, and developers shipping a site',
+		timeToImplement: 'About 30 minutes',
+		datePublished: '2026-03-21',
+		lastUpdated: '2026-03-21',
+		readingTime: '6 min read',
+		relatedService: 'Website Foundations',
+		ctaLabel: 'Explore Live Demos',
+		ctaHref: '/templates',
+		status: 'Published',
+		body: {
+			intro:
+				'Launch day is the worst time to discover a broken form or a missing page. This checklist walks the six areas that decide whether a new healthcare site is actually ready, not just visually finished. Run it before you flip the switch, and again the morning after.',
+			blocks: [
+				{ kind: 'heading', id: 'content', text: '1. Content and pages' },
+				{
+					kind: 'checklist',
+					items: [
+						'Homepage, services overview, and individual service pages are complete',
+						'About / provider page with real names and credentials',
+						'Contact or booking page with correct details',
+						'Trust and FAQ sections are filled in, not placeholder text',
+						'Every page has a specific, human title and meta description',
+					],
+				},
+				{ kind: 'heading', id: 'trust', text: '2. Trust and proof' },
+				{
+					kind: 'checklist',
+					items: [
+						'Real photography, not obvious stock',
+						'Credentials, licensing, and affiliations are visible',
+						'Genuine reviews or outcomes appear where it matters',
+						'Branding is consistent from page to page',
+					],
+				},
+				{ kind: 'heading', id: 'conversion', text: '3. Conversion and forms' },
+				{
+					kind: 'checklist',
+					items: [
+						'A clear primary action in the header and repeated on long pages',
+						'Every form submits successfully and shows a confirmation',
+						'Form notifications reach the right person',
+						'Phone numbers and emails are tap-to-act on mobile',
+					],
+				},
+				{
+					kind: 'callout',
+					tone: 'warning',
+					title: 'Actually test the form',
+					text: 'Submit a real test inquiry from a phone and confirm the notification, the on-screen message, and where the lead lands. This is the most commonly broken thing at launch.',
+				},
+				{ kind: 'heading', id: 'technical', text: '4. Technical and performance' },
+				{
+					kind: 'checklist',
+					items: [
+						'HTTPS is active and there are no mixed-content warnings',
+						'Pages load fast on a phone on cellular data',
+						'No broken links or images',
+						'Favicon, social share image, and 404 page are set',
+						'Analytics and tag manager are installed and firing',
+					],
+				},
+				{ kind: 'heading', id: 'local', text: '5. Local and SEO' },
+				{
+					kind: 'checklist',
+					items: [
+						'Name, address, and phone match your Google Business Profile',
+						'Each location has its own page if you serve more than one',
+						'A sitemap is generated and submitted to Search Console',
+						'Important pages are indexable (no stray noindex)',
+					],
+				},
+				{ kind: 'heading', id: 'followup', text: '6. Follow-up and tracking' },
+				{
+					kind: 'checklist',
+					items: [
+						'An instant confirmation fires on form submission',
+						'Leads are captured somewhere durable, not just an inbox',
+						'A named owner and response-time target are set',
+						'You can measure how many inquiries the site produces',
+					],
+				},
+			],
+			keyTakeaways: [
+				'A site can look finished and still not be launch-ready.',
+				'Test every form with a real submission from a phone.',
+				'Confirm HTTPS, speed, indexing, and analytics before launch.',
+				'Match your details to your Google Business Profile.',
+				'Have follow-up and tracking live on day one.',
+			],
+		},
+	},
+
+	// ─── Playbook ─────────────────────────────────────────────────────
+	{
+		slug: 'google-business-profile-sop',
+		title: 'The Google Business Profile Setup & Optimization SOP',
+		type: 'playbook',
+		category: 'Local Visibility',
+		lane: 'foundation',
+		audience: 'Local and appointment-based practices',
+		excerpt:
+			'A step-by-step SOP to claim, complete, and optimize your Google Business Profile, the highest-impact local visibility asset for most practices.',
+		subtitle:
+			'A repeatable procedure to claim, complete, and optimize the local asset most patients see before your website.',
+		outcomes: [
+			'A fully completed, optimized profile',
+			'A simple routine to keep it fresh',
+			'A steady, compliant review flow',
+		],
+		forWho: 'Practice owners and office managers',
+		timeToImplement: 'About 1 to 2 hours',
+		datePublished: '2026-03-24',
+		lastUpdated: '2026-03-24',
+		readingTime: '8 min read',
+		relatedService: 'Local Visibility',
+		ctaLabel: 'Explore Local Visibility',
+		ctaHref: '/services/local-visibility',
+		status: 'Published',
+		body: {
+			intro:
+				'For most local practices, the Google Business Profile is the single highest-impact visibility asset, and it is free. It powers the map results and the panel many patients see before they ever reach your website. This SOP takes you from claiming the profile to keeping it optimized, in order.',
+			blocks: [
+				{ kind: 'heading', id: 'why', text: 'Why the profile comes first' },
+				{
+					kind: 'stats',
+					stats: [
+						{ value: 'Map pack', label: 'Most local searches surface a short map result set before any website. Your profile decides whether you appear in it.' },
+						{ value: 'Free', label: 'A Google Business Profile costs nothing and is usually the fastest local-visibility win available.' },
+						{ value: 'NAP', label: 'Consistent name, address, and phone across the web is a core local ranking signal.' },
+					],
+				},
+				{ kind: 'heading', id: 'steps', text: 'The setup and optimization steps' },
+				{
+					kind: 'steps',
+					steps: [
+						{ title: 'Claim and verify', text: 'Find or create your profile and complete Google verification. You cannot edit much until you do.' },
+						{ title: 'Complete every field', text: 'Name, address, phone, website, hours, and a thorough description. Empty fields cost you.' },
+						{ title: 'Choose categories carefully', text: 'Set the most accurate primary category, then add relevant secondary categories. This strongly affects what you rank for.' },
+						{ title: 'Add services and descriptions', text: 'List your services with short, plain-language descriptions that match what patients search for.' },
+						{ title: 'Upload real photos', text: 'Exterior, interior, team, and treatment spaces. Real photography builds trust and engagement.' },
+						{ title: 'Turn on a review routine', text: 'Make it easy for happy patients to leave honest reviews, and respond to them within privacy rules.' },
+						{ title: 'Post and maintain', text: 'Use updates and posts occasionally, and review the profile quarterly so hours and services stay current.' },
+					],
+				},
+				{ kind: 'heading', id: 'consistency', text: 'Keep your details consistent' },
+				{
+					kind: 'doDont',
+					doItems: [
+						'Match name, address, and phone exactly across your site and listings',
+						'Use a local phone number where possible',
+						'Keep hours updated around holidays',
+					],
+					dontItems: [
+						'Vary your business name between listings',
+						'Stuff keywords into the business name field',
+						'Let the address or hours drift out of date',
+					],
+				},
+				{
+					kind: 'callout',
+					tone: 'warning',
+					title: 'Do not keyword-stuff the name',
+					text: 'Adding keywords to your business name violates Google guidelines and can get the profile suspended. Put keywords in the description, services, and categories instead.',
+				},
+				{ kind: 'heading', id: 'completeness', text: 'Profile completeness check' },
+				{
+					kind: 'checklist',
+					title: 'Confirm before you call it done',
+					items: [
+						'Profile is claimed and verified',
+						'Primary and secondary categories are accurate',
+						'Hours, phone, and website are correct',
+						'At least a handful of real photos are uploaded',
+						'Services are listed with descriptions',
+						'A review request routine is in place',
+					],
+				},
+			],
+			keyTakeaways: [
+				'The profile is often seen before your website, optimize it first.',
+				'Complete every field and choose categories with care.',
+				'Keep name, address, and phone identical everywhere.',
+				'Never keyword-stuff the business name.',
+				'Reviews and quarterly upkeep compound over time.',
+			],
+		},
+	},
+
+	// ─── Toolkit ───────────────────────────────────────────────────────
+	{
+		slug: 'lead-followup-templates',
+		title: 'First-5-Touches Follow-Up Templates',
+		type: 'toolkit',
+		category: 'Growth Systems',
+		lane: 'growth',
+		audience: 'Front-desk teams and practice owners',
+		excerpt:
+			'Copy-paste email and SMS templates for the first five touches after an inquiry, ready to adapt to your practice.',
+		subtitle:
+			'Copy-paste email and SMS templates for the first five touches after a new inquiry.',
+		outcomes: [
+			'Five ready-to-send templates for the first week',
+			'A consistent voice for every responder',
+			'A faster, more human first response',
+		],
+		forWho: 'Front-desk teams, coordinators, and owners',
+		timeToImplement: 'About 30 minutes to adapt',
+		datePublished: '2026-03-27',
+		lastUpdated: '2026-03-27',
+		readingTime: '6 min read',
+		relatedService: 'Growth System Setup',
+		ctaLabel: 'Explore Growth Systems',
+		ctaHref: '/services/growth-systems',
+		status: 'Published',
+		body: {
+			intro:
+				'These are the templates behind the New Patient Inquiry Follow-Up SOP. Drop them into your inbox, CRM, or phone, swap the brackets for your details, and you have a consistent, human first week of follow-up that does not depend on who is at the desk. Keep them short and personal.',
+			blocks: [
+				{ kind: 'heading', id: 'how-to-use', text: 'How to use these' },
+				{
+					kind: 'callout',
+					tone: 'insight',
+					title: 'Adapt, do not copy blindly',
+					text: 'Replace every bracket, match your voice, and confirm logistics only. Keep clinical detail out of standard email and SMS.',
+				},
+				{ kind: 'heading', id: 'touches', text: 'The five touches' },
+				{
+					kind: 'steps',
+					steps: [
+						{ title: 'Touch 1 — Instant confirmation', text: 'Automated, the moment the form is submitted.' },
+						{ title: 'Touch 2 — Personal reply', text: 'Within about five minutes, from a real person.' },
+						{ title: 'Touch 3 — Value follow-up', text: 'Day 1, something genuinely helpful about their service.' },
+						{ title: 'Touch 4 — Gentle nudge', text: 'Day 3, a light, easy reason to book.' },
+						{ title: 'Touch 5 — Final touch', text: 'Day 7, a no-pressure door left open.' },
+					],
+				},
+				{ kind: 'heading', id: 'templates', text: 'The templates' },
+				{
+					kind: 'script',
+					channel: 'Email',
+					title: 'Touch 1 — Instant confirmation (automated)',
+					body: 'Subject: We received your message\n\nHi [First name],\n\nThanks for reaching out to [Practice]. We have your request and a team member will personally follow up within [one business hour]. If it is urgent, call us at [phone].\n\nTalk soon,\n[Practice] team',
+				},
+				{
+					kind: 'script',
+					channel: 'SMS',
+					title: 'Touch 2 — Personal reply',
+					body: 'Hi [First name], this is [Name] at [Practice]. Thanks for reaching out about [service]. Would [day/time] or [day/time] work for a quick call, or would you like me to book you in?',
+				},
+				{
+					kind: 'script',
+					channel: 'Email',
+					title: 'Touch 3 — Day 1 value follow-up',
+					body: 'Subject: A little more on [service]\n\nHi [First name],\n\nHere is what a first visit for [service] usually looks like, and what to expect on timing and cost: [1-2 lines].\n\nWhenever you are ready, you can book here: [link]. Or just reply with any question.\n\n[Name]',
+				},
+				{
+					kind: 'script',
+					channel: 'SMS',
+					title: 'Touch 4 — Day 3 gentle nudge',
+					body: 'Hi [First name], just checking in. We have a couple of openings this week for [service] if you would like one. Want me to hold a spot?',
+				},
+				{
+					kind: 'script',
+					channel: 'Email',
+					title: 'Touch 5 — Day 7 final touch',
+					body: 'Subject: Still here when you are ready\n\nHi [First name],\n\nNo pressure at all, I just wanted to leave the door open. If [service] is still on your mind, we would be glad to help, and you can reach us any time at [phone] or [link].\n\nWishing you well,\n[Name]',
+				},
+				{
+					kind: 'callout',
+					tone: 'warning',
+					title: 'Keep it compliant',
+					text: 'Use these channels to confirm receipt and logistics only. Keep diagnoses and treatment details out of standard email and SMS.',
+				},
+				{ kind: 'heading', id: 'make-yours', text: 'Make them yours' },
+				{
+					kind: 'checklist',
+					title: 'Before you send',
+					items: [
+						'Every bracket is replaced with your real details',
+						'The tone matches how your team actually talks',
+						'A booking link or clear next step is included',
+						'An owner is assigned to each touch',
+						'No clinical detail in email or SMS',
+					],
+				},
+			],
+			keyTakeaways: [
+				'A consistent first week of follow-up should not depend on memory.',
+				'Fast and human beats slow and polished.',
+				'Replace every bracket and keep your real voice.',
+				'End each message with one clear next step.',
+				'Confirm logistics only; keep PHI out of email and SMS.',
+			],
+		},
+	},
+
+	// ─── Guide ──────────────────────────────────────────────────────────
 	{
 		slug: 'med-spa-website-bookings',
 		title: 'What Every Med Spa Website Needs to Drive Bookings',
@@ -888,11 +1295,78 @@ export const resources: ResourceEntry[] = [
 		audience: 'Med spas and treatment-based clinics',
 		excerpt:
 			'Med spa websites need premium visual trust, clear treatment education, repeated booking prompts, and local service pages.',
+		forWho: 'Med spas and aesthetic clinics',
+		datePublished: '2026-03-30',
+		lastUpdated: '2026-03-30',
+		readingTime: '6 min read',
 		relatedService: 'Med Spa Website Foundation',
 		ctaLabel: 'View Med Spa Demo',
 		ctaHref: '/templates/med-spa',
-		status: 'Planned',
+		status: 'Published',
+		body: {
+			intro:
+				'A med spa sells a premium, often discretionary experience, and the website has to feel like the result the patient is hoping for. Beauty alone does not book appointments, though. The sites that convert pair a premium feel with clear treatment education and an obvious, repeated path to consultation. Here is what every med spa website needs.',
+			blocks: [
+				{ kind: 'heading', id: 'visual-trust', text: 'Premium visual trust' },
+				{
+					kind: 'paragraph',
+					text: 'Aesthetic patients judge results by what they see. A calm, polished design with real photography of your space, team, and (compliant) results signals the quality of care far better than stock imagery ever will. The look of the site is itself a sample of your work.',
+				},
+				{ kind: 'heading', id: 'education', text: 'Treatment education that reassures' },
+				{
+					kind: 'paragraph',
+					text: 'Most prospective patients are uncertain: what does the treatment do, will it hurt, what is the downtime, is it right for me? Each meaningful treatment deserves its own page that answers those questions honestly. Education lowers anxiety, and lower anxiety books more consultations.',
+				},
+				{
+					kind: 'list',
+					items: [
+						'What the treatment is and the concern it addresses.',
+						'What to expect during and after, including downtime.',
+						'Who it is and is not a good fit for.',
+						'A clear path to a consultation, not a hard sell.',
+					],
+				},
+				{ kind: 'heading', id: 'booking', text: 'Repeated, low-pressure booking prompts' },
+				{
+					kind: 'paragraph',
+					text: 'Med spa decisions are emotional and often happen over multiple visits to the site. A consultation call-to-action should appear in the header, after each treatment explanation, and at the end of every page. The framing matters: "book a consultation" feels safer than "buy now."',
+				},
+				{
+					kind: 'doDont',
+					doItems: [
+						'Lead treatment pages with education, then invite a consult',
+						'Show real, compliant before-and-after proof',
+						'Make booking a consultation effortless on mobile',
+					],
+					dontItems: [
+						'Bury pricing and process behind vague language',
+						'Use only stock imagery of models',
+						'Rely on a single contact link in the footer',
+					],
+				},
+				{ kind: 'heading', id: 'local', text: 'Local service pages' },
+				{
+					kind: 'paragraph',
+					text: 'Aesthetic patients search locally and by treatment. Dedicated, well-structured treatment pages that name your area help you show up for those searches and let patients self-select before they ever call. This is where local visibility and conversion reinforce each other.',
+				},
+				{
+					kind: 'callout',
+					tone: 'tip',
+					title: 'See it in a live build',
+					text: 'The Med Spa Website Foundation demo shows this structure in action, treatment education, trust, and a clear consultation path.',
+				},
+			],
+			keyTakeaways: [
+				'The site itself is a sample of your work, make it feel premium.',
+				'Give each treatment its own honest, reassuring page.',
+				'Frame the action as a consultation and repeat it throughout.',
+				'Use real, compliant photography over stock models.',
+				'Structured local treatment pages drive both visibility and bookings.',
+			],
+		},
 	},
+
+	// ─── Planned (roadmap stubs) ───────────────────────────────────────
 	{
 		slug: 'solo-practice-trust-online',
 		title: 'How Solo Practices Can Build Trust Online',
