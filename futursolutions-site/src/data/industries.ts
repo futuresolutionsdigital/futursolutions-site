@@ -81,7 +81,7 @@ export const industries: Industry[] = [
 		],
 		demo: { label: 'View the Med Spa demo', href: '/templates/med-spa' },
 		relatedServices: [
-			{ label: 'Website Foundations', href: '/services/template-setup' },
+			{ label: 'Foundation Setup', href: '/services/template-setup' },
 			{ label: 'Signature Custom Websites', href: '/services/custom-healthcare-websites' },
 			{ label: 'Growth Systems', href: '/services/growth-systems' },
 			{ label: 'Local Visibility', href: '/services/local-visibility' },
@@ -156,7 +156,7 @@ export const industries: Industry[] = [
 		],
 		demo: { label: 'View the Solo Practice demo', href: '/templates/solo-practice' },
 		relatedServices: [
-			{ label: 'Website Foundations', href: '/services/template-setup' },
+			{ label: 'Foundation Setup', href: '/services/template-setup' },
 			{ label: 'Local Visibility', href: '/services/local-visibility' },
 			{ label: 'Growth Systems', href: '/services/growth-systems' },
 			{ label: 'Care and Optimization', href: '/services/ongoing-optimization' },
@@ -309,7 +309,7 @@ export const industries: Industry[] = [
 			{ label: 'Growth Systems', href: '/services/growth-systems' },
 			{ label: 'Signature Custom Websites', href: '/services/custom-healthcare-websites' },
 			{ label: 'Local Visibility', href: '/services/local-visibility' },
-			{ label: 'Website Foundations', href: '/services/template-setup' },
+			{ label: 'Foundation Setup', href: '/services/template-setup' },
 		],
 		faqs: [
 			{

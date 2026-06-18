@@ -13,7 +13,7 @@ export interface ServiceOffering {
 export const serviceOfferings: ServiceOffering[] = [
 	{
 		slug: 'template-setup',
-		name: 'Website Foundations',
+		name: 'Foundation Setup',
 		shortDescription: 'A polished, launch-ready website built on one of our industry-specific Website Foundations.',
 		longDescription:
 			'A FutureSolutions Website Foundation turns a healthcare-specific website system into a polished, launch-ready foundation for your practice — shipped in days, not months.',

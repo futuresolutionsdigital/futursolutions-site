@@ -35,11 +35,11 @@ export interface ServiceDetail {
 export const serviceDetails: Record<string, ServiceDetail> = {
 	'template-setup': {
 		slug: 'template-setup',
-		title: 'Website Foundations | FutureSolutions',
+		title: 'Foundation Setup | FutureSolutions',
 		description:
 			'Launch faster with a healthcare-specific Website Foundation customized around your services, trust signals, conversion flow, and local visibility.',
 		canonicalPath: '/services/template-setup',
-		eyebrow: 'Website Foundations',
+		eyebrow: 'Foundation Setup',
 		heading: 'Launch faster on a healthcare website system built around trust and conversion.',
 		supportingCopy:
 			'FutureSolutions Website Foundations give health and wellness businesses a polished starting point — with the structure, pages, and conversion flow already planned.',
@@ -144,7 +144,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
 			{ label: 'Local Visibility', href: '/services/local-visibility' },
 			{ label: 'Growth System Setup', href: '/services/growth-systems' },
 			{ label: 'Care and Optimization', href: '/services/ongoing-optimization' },
-			{ label: 'Website Foundations', href: '/services/template-setup' },
+			{ label: 'Foundation Setup', href: '/services/template-setup' },
 		],
 		faqs: [
 			{
@@ -215,7 +215,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
 			{ label: 'Local Visibility', href: '/services/local-visibility' },
 			{ label: 'Growth System Setup', href: '/services/growth-systems' },
 			{ label: 'Signature Custom Website', href: '/services/custom-healthcare-websites' },
-			{ label: 'Website Foundations', href: '/services/template-setup' },
+			{ label: 'Foundation Setup', href: '/services/template-setup' },
 		],
 		faqs: [
 			{

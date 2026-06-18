@@ -166,7 +166,7 @@ function initChatWidget(widget: HTMLElement) {
 			'/services/growth-systems': 'Growth Systems',
 			'/services/custom-healthcare-websites': 'Custom Websites',
 			'/services/local-visibility': 'Local Visibility',
-			'/services/template-setup': 'Website Foundations',
+			'/services/template-setup': 'Foundation Setup',
 			'/services/ongoing-optimization': 'Care & Optimization',
 			'/resources': 'Resources',
 			'/contact': 'Contact',

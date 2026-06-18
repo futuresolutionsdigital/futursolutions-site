@@ -109,7 +109,7 @@ ${buildResourcesBlock()}
 /templates — Browse all Website Foundations with live demos
 /templates/{slug} — Individual Foundation detail page (med-spa, solo-practice, association, premium-wellness-clinic, hormone-trt)
 /services — All services overview
-/services/template-setup — Website Foundations service detail
+/services/template-setup — Foundation Setup service detail
 /services/custom-healthcare-websites — Signature Custom Websites detail
 /services/ongoing-optimization — Care and Optimization detail
 /services/local-visibility — Local Visibility (SEO) service
