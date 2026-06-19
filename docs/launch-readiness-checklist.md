@@ -1,216 +1,148 @@
 # FutureSolutions Launch Readiness Checklist
 
-> Checkbox-based checklist organized by priority. Every item includes affected files/routes, rationale, and acceptance criteria.
-> Source of truth: `docs/research/futuresolutions-market-research.md` and `docs/site-audit.md`.
+> Checkbox-based checklist organized by priority. Each item includes affected files/routes, rationale, and acceptance criteria.
+> **Last reviewed: June 18, 2026.** This supersedes the previous version — most earlier P0/P1 items (audit form wiring, canonical URLs, robots.txt, sitemap, privacy/terms, 404, About page, JSON-LD schema, industry pages, published resources) are now complete. See "Already complete" below.
+
+---
+
+## Already complete (verified June 18, 2026)
+
+These were prior blockers and are now done — no action needed:
+
+- Per-page SEO: `title`, `meta description`, `canonical`, Open Graph + Twitter card tags, JSON-LD schema (`BaseLayout.astro`, `src/data/schema.ts`).
+- Auto-generated sitemap (filtered to exclude `/api/` and the association portal) + `public/robots.txt`.
+- Legal pages with real content and effective dates: `/privacy`, `/terms`; footer links present.
+- Branded `/404` page.
+- Contact + Audit forms: client validation, inline errors, honeypot spam protection, rate limiting, and server-side forwarding to a GoHighLevel webhook (`api/contact.ts`, `api/audit.ts`).
+- Chat API hardened with input validation and rate limiting (`api/chat.ts`).
+- Real org identity wired through schema + footer (Future Solutions Digital LLC, admin@futuresolutions.io, California / US).
+- Redirects configured: `/seo`, `/backend`, `/snapshot` (`astro.config.mjs`).
 
 ---
 
 ## P0 — Launch Blockers
 
-Things that **must be fixed** before production. The site cannot go live without these.
+Must be resolved before production. Most are environment/asset items rather than code.
+
+- [ ] **P0 — Set `GHL_WEBHOOK_URL` in Vercel production**
+  - Routes/files: Vercel env settings; consumed by `src/pages/api/contact.ts`, `src/pages/api/audit.ts`
+  - Why it matters: Without it, both forms still return a "success" response to the visitor, but the lead is only `console.log`'d and **lost**. This is the single most dangerous gap — every lead silently disappears.
+  - Acceptance criteria: Env var set for Production (and Preview). A real test submission appears in the GHL pipeline and triggers the expected notification/automation.
+
+- [ ] **P0 — Set `OPENAI_API_KEY` in Vercel production**
+  - Routes/files: Vercel env settings; consumed by `src/pages/api/chat.ts`
+  - Why it matters: Without it the chat widget returns a 500 on every message ("Server configuration error") on the live site.
+  - Acceptance criteria: Env var set for Production (and Preview). Chat responds correctly on the live domain across the base site and all demos.
+
+- [ ] **P0 — Confirm and standardize the production domain**
+  - Routes/files: `astro.config.mjs` (`site`), `src/data/schema.ts` (`SITE_URL`), all hardcoded `canonicalUrl`, `public/robots.txt` sitemap line
+  - Why it matters: The repo folder is `futursolutions.io` (no "e") while all code uses `futuresolutions.io` (with "e"). One of these is wrong. Canonicals, sitemap, OG URLs, and schema all assume `futuresolutions.io`.
+  - Acceptance criteria: Registered/deployed domain confirmed; every reference matches it exactly.
+
+- [ ] **P0 — Replace the SVG Open Graph image with a PNG/JPG**
+  - Routes/files: `public/og/default.svg` → new `public/og/default.png`; default `ogImage` in `src/layouts/BaseLayout.astro`
+  - Why it matters: Facebook, LinkedIn, X, iMessage, and Slack do **not** render SVG OG images. Every shared link currently produces a blank/broken preview.
+  - Acceptance criteria: A `1200×630` PNG/JPG exists and is the default OG image. Validated in the Facebook Sharing Debugger / LinkedIn Post Inspector.
+
+- [ ] **P0 — Add real favicon / app icons**
+  - Routes/files: `public/` (`favicon.ico`, `apple-touch-icon.png`, optional `site.webmanifest`), `src/layouts/BaseLayout.astro`
+  - Why it matters: Only `favicon.svg` exists, and `apple-touch-icon` points to the SVG, which iOS ignores. No `.ico` fallback or manifest.
+  - Acceptance criteria: At minimum a `180×180` PNG apple-touch-icon; ideally a `favicon.ico` and a web manifest. Icons render correctly on iOS home screen and browser tabs.
+
+- [ ] **P0 — Install analytics + conversion tracking**
+  - Routes/files: `src/layouts/BaseLayout.astro`; Contact/Audit submit handlers; chat open handler
+  - Why it matters: There is currently **no** analytics. For a lead-gen site, traffic, form conversions, and chat engagement are unmeasurable.
+  - Acceptance criteria: GA4 or Plausible installed sitewide. Events fire on Contact submit, Audit submit, and chat open. Pageviews tracked. (If using GA4 / cookies, pair with the consent banner in P2.)
+
+- [ ] **P0 — Production deploy configuration**
+  - Routes/files: Vercel project + DNS
+  - Why it matters: Custom domain, SSL, and a canonical host redirect are required for a clean launch.
+  - Acceptance criteria: Domain attached in Vercel, SSL active, `www` ↔ apex redirect set in one direction.
+
+- [ ] **P0 — Replace the README**
+  - Routes/files: `futursolutions-site/README.md`
+  - Why it matters: It is still the default Astro starter template — no setup, env var, or deploy documentation.
+  - Acceptance criteria: README documents project overview, required env vars (`OPENAI_API_KEY`, `GHL_WEBHOOK_URL`, optional Sanity vars), local dev, and deploy steps.
 
 ---
 
-- [ ] **P0 — Connect audit form to GoHighLevel (or email fallback)**
-  - Routes/files: `src/components/AuditFormShell.astro`, `src/pages/api/audit.ts` (new), `src/pages/audit/index.astro`
-  - Why it matters: The audit form is the primary conversion mechanism. It currently has `onsubmit="return false"` and a `type="button"` submit with no handler. Submitting the form does literally nothing. Without this, the site cannot capture a single lead.
-  - Acceptance criteria: Form submits to GHL webhook (or server-side API route that forwards to email + GHL). Success redirects to `/audit-requested`. Errors show an inline message. Spam protection (honeypot at minimum) is active. Test submission verified in GHL pipeline.
+## P1 — Verify before launch (QA)
 
-- [ ] **P0 — Fix canonical URLs to production domain**
-  - Routes/files: `src/pages/index.astro`, `src/pages/services/index.astro`, `src/pages/templates/[slug].astro`, `src/pages/backend/index.astro`, `src/pages/seo/index.astro`, `src/pages/resources/index.astro`, `src/pages/audit/index.astro`, `src/pages/services/*.astro`, `src/layouts/BaseLayout.astro`
-  - Why it matters: All canonical URLs and OG URLs are hardcoded to `https://futursolutions.vercel.app`. This hurts SEO, creates duplicate content signals, and looks unprofessional in social sharing. If the production domain is `futursolutions.io`, every canonical and OG URL must reflect that.
-  - Acceptance criteria: All `canonicalUrl` and `ogUrl` references use the production domain. Consider centralizing the base URL in an env var or config constant to avoid future duplication.
+Should be completed and signed off before go-live.
 
-- [ ] **P0 — Add robots.txt**
-  - Routes/files: `public/robots.txt` (new)
-  - Why it matters: Without robots.txt, crawlers have no guidance. The site needs to allow crawling of parent pages, disallow `/api/`, and reference the sitemap.
-  - Acceptance criteria: `public/robots.txt` exists with `User-agent: *`, `Allow: /`, `Disallow: /api/`, and `Sitemap:` directive pointing to the production sitemap URL.
+- [ ] **P1 — End-to-end lead test into GoHighLevel**
+  - Why it matters: Confirms the most important business flow actually works end to end.
+  - Acceptance criteria: A submitted Contact and Audit lead arrives in GHL, fires notifications/auto-reply, and the 502 error path behaves correctly when the webhook is unreachable.
 
-- [ ] **P0 — Add sitemap generation**
-  - Routes/files: `astro.config.mjs`, `package.json` (if `@astrojs/sitemap` needed)
-  - Why it matters: Search engines need a sitemap to discover and index all pages. Without it, crawl coverage is poor.
-  - Acceptance criteria: `@astrojs/sitemap` is configured in `astro.config.mjs` with the correct production `site` URL. Build produces a valid `sitemap-index.xml`. Demo routes are included. API routes are excluded.
+- [ ] **P1 — Live chat test across all contexts**
+  - Acceptance criteria: With the real API key, the chat widget answers correctly on the base site and all 5 demos; inline suggestions, "Browse all topics", follow-ups, and reset all behave.
 
-- [ ] **P0 — Create privacy policy page**
-  - Routes/files: `src/pages/privacy/index.astro` (new)
-  - Why it matters: Legal requirement for any site that collects personal information (the audit form collects name, email, phone, business details). Also required for Google Analytics, Google Ads, and most ad platforms.
-  - Acceptance criteria: `/privacy` route exists. Page explains what data is collected, how it is used, how it is stored, third-party sharing (GHL, analytics), cookie use, and contact information. Footer links to it.
+- [ ] **P1 — Cross-device QA (iOS Safari + Android Chrome)**
+  - Acceptance criteria: Chat panel sizing (no header/first-message clipping), forms, and nav dropdowns verified on real mobile devices.
 
-- [ ] **P0 — Create terms of service page**
-  - Routes/files: `src/pages/terms/index.astro` (new)
-  - Why it matters: Standard legal requirement for a professional service business website.
-  - Acceptance criteria: `/terms` route exists. Footer links to it.
+- [ ] **P1 — Lighthouse pass on key pages**
+  - Routes/files: home, `/audit`, a service page, one demo
+  - Acceptance criteria: Performance and Accessibility reviewed; LCP under ~2.5s on mobile; no critical a11y violations.
 
-- [ ] **P0 — Add healthcare compliance language to appropriate pages**
-  - Routes/files: `src/pages/backend/index.astro`, `src/pages/privacy/index.astro` (new), `src/components/Footer.astro`
-  - Why it matters: The research warns against blanket "HIPAA-compliant" claims and recommends precise, scoped compliance language. Currently there is zero compliance language on the site.
-  - Acceptance criteria: Privacy policy includes form data handling disclosure. Backend/Growth Systems page includes a clear statement about data handling practices. No blanket HIPAA claims. Language follows the rules in `docs/strategy-reference.md`.
+- [ ] **P1 — Verify redirects and 404 on Vercel**
+  - Acceptance criteria: `/seo`, `/backend`, `/snapshot` redirect correctly; the branded 404 renders on a bad URL on the live deployment.
+
+- [ ] **P1 — Submit sitemap to search consoles**
+  - Acceptance criteria: Sitemap submitted to Google Search Console and Bing Webmaster Tools; confirmed it excludes `/api/` and the association portal.
+
+- [ ] **P1 — Content proofread + demo data containment**
+  - Acceptance criteria: Main marketing pages proofread. Fictional demo contact info (e.g., `(951) 555-0147`, `hello@lumenhealthhouse.com`) confirmed to appear only under `/demos/*`, never on the real site.
 
 ---
 
-## P1 — Launch Critical
+## P2 — Nice-to-have / polish
 
-Things that **strongly affect** clarity, conversion, SEO, tracking, or form handling. Should be resolved before or immediately at launch.
+Can ship at or shortly after launch.
 
----
+- [ ] **P2 — Decide on Sanity CMS**
+  - Routes/files: `src/lib/sanity.ts`, `sanity-studio/`, `package.json`
+  - Why it matters: `sanityClient` is configured but **never imported anywhere**; `PUBLIC_SANITY_PROJECT_ID/DATASET` are unused. Either wire it up or remove the dependency + studio to shrink surface area.
+  - Acceptance criteria: A decision is made and reflected in code (wired in, or removed).
 
-- [ ] **P1 — Add analytics (GA4 + Vercel Analytics)**
-  - Routes/files: `src/layouts/BaseLayout.astro`, `astro.config.mjs`, Vercel dashboard
-  - Why it matters: Without analytics, there is no way to measure traffic, conversion, or site performance. The audit form submission must be trackable.
-  - Acceptance criteria: GA4 script installed. Vercel Analytics enabled. Audit form submission fires a conversion event. Page views are tracked. Core Web Vitals are measurable.
+- [ ] **P2 — Add `.env.example`**
+  - Acceptance criteria: Documents every env var the app reads.
 
-- [ ] **P1 — Add OG images for all main pages**
-  - Routes/files: `src/layouts/BaseLayout.astro`, `public/og/` (new directory), each page's frontmatter
-  - Why it matters: Shared links on social media, Slack, and messaging apps show no image preview. This looks unprofessional and reduces click-through.
-  - Acceptance criteria: At least one default OG image (1200x630). Ideally per-page or per-section OG images. `<meta property="og:image">` is present on every page.
+- [ ] **P2 — Security headers via `vercel.json`**
+  - Acceptance criteria: CSP, `X-Content-Type-Options`, `Referrer-Policy`, and HSTS configured.
 
-- [ ] **P1 — Add favicon.ico**
-  - Routes/files: `public/favicon.ico` (new)
-  - Why it matters: `BaseLayout.astro` references `/favicon.ico` but only `favicon.svg` exists. Some browsers and platforms (bookmarks, tabs, shortcuts) need ICO format.
-  - Acceptance criteria: `public/favicon.ico` exists and matches the brand mark.
+- [ ] **P2 — Raster logo for schema**
+  - Routes/files: `src/data/schema.ts`
+  - Why it matters: Google rich results prefer a raster logo (≥112×112); currently `favicon.svg`.
+  - Acceptance criteria: `organizationSchema.logo` / `articleSchema` publisher logo points to a PNG.
 
-- [ ] **P1 — Add custom 404 page**
-  - Routes/files: `src/pages/404.astro` (new)
-  - Why it matters: Default Astro/Vercel 404 page breaks the brand experience. Users who hit a bad link see a generic error.
-  - Acceptance criteria: `/404` renders a branded page with navigation, a helpful message, and links back to key pages (home, demos, audit).
+- [ ] **P2 — Per-page OG images + `og:type: article` for resources**
+  - Acceptance criteria: At least section-level OG images; resource detail pages use `og:type=article` with published/author tags (articleSchema already exists).
 
-- [ ] **P1 — Add spam protection to audit form**
-  - Routes/files: `src/components/AuditFormShell.astro`, possibly `src/pages/api/audit.ts`
-  - Why it matters: Public forms without protection get spammed. GHL pipeline will be polluted.
-  - Acceptance criteria: Honeypot field (hidden, if filled → reject). Optionally reCAPTCHA v3 or Turnstile. Server-side validation if using API route.
+- [ ] **P2 — Email deliverability + auto-responder**
+  - Acceptance criteria: SPF/DKIM/DMARC set for `admin@futuresolutions.io`; optional confirmation auto-reply on form submit.
 
-- [ ] **P1 — Set production `site` in astro.config.mjs**
-  - Routes/files: `astro.config.mjs`
-  - Why it matters: Required for sitemap generation, canonical URL generation, and correct absolute URL construction.
-  - Acceptance criteria: `site: 'https://futursolutions.io'` (or correct production domain) is set in the Astro config.
+- [ ] **P2 — Error monitoring on API routes**
+  - Acceptance criteria: Sentry or Vercel log drains capture failures in `api/chat.ts`, `api/contact.ts`, `api/audit.ts`.
 
-- [ ] **P1 — Add footer legal links (privacy + terms)**
-  - Routes/files: `src/components/Footer.astro`
-  - Why it matters: Users and regulators expect privacy/terms links in the footer. Currently missing.
-  - Acceptance criteria: Footer bottom row includes links to `/privacy` and `/terms`.
+- [ ] **P2 — Cookie/consent banner (if analytics uses cookies)**
+  - Why it matters: CCPA is relevant since the entity is California-based.
+  - Acceptance criteria: Consent banner present when GA4/cookie-based analytics is used.
 
-- [ ] **P1 — Verify chatbot API key on Vercel**
-  - Routes/files: Vercel dashboard environment variables
-  - Why it matters: The Fit Assistant chatbot requires `OPENAI_API_KEY` as a server-side env var. If not set on Vercel, the chatbot will show "server configuration error" in production.
-  - Acceptance criteria: `OPENAI_API_KEY` is set in Vercel project settings for production and preview environments. Chatbot responds correctly on the live domain.
+- [ ] **P2 — Full accessibility pass**
+  - Acceptance criteria: Color contrast and keyboard navigation verified across nav dropdowns and all forms.
 
-- [ ] **P1 — Add Twitter/X card meta tags**
-  - Routes/files: `src/layouts/BaseLayout.astro`
-  - Why it matters: Twitter uses its own meta tags for card previews. Without them, shared links have no preview.
-  - Acceptance criteria: `<meta name="twitter:card" content="summary_large_image">`, `twitter:title`, `twitter:description`, `twitter:image` are present.
-
-- [ ] **P1 — Audit all image alt text**
-  - Routes/files: All pages and components with images/SVGs
-  - Why it matters: Accessibility requirement. Also affects SEO image indexing.
-  - Acceptance criteria: Every meaningful image has descriptive alt text. Decorative images have `alt=""` or `aria-hidden="true"`.
+> Note: the API rate-limit map is in-memory per serverless instance and resets on cold start. Acceptable for launch; revisit with a durable store only if abuse appears.
 
 ---
 
-## P2 — Soon After Launch
+## Post-launch roadmap (product/content)
 
-Important improvements that can wait until the site is live.
+Still-relevant growth items carried over from the prior plan; not launch blockers.
 
----
-
-- [ ] **P2 — Create About page**
-  - Routes/files: `src/pages/about/index.astro` (new)
-  - Why it matters: The research recommends an About page with: why this niche, point of view, what makes the studio different, stack in buyer language, process, values, quality bar.
-  - Acceptance criteria: `/about` route exists. Header nav updated to include it. Content follows research recommendations.
-
-- [ ] **P2 — Add structured data (JSON-LD schema)**
-  - Routes/files: `src/layouts/BaseLayout.astro`, individual pages
-  - Why it matters: Rich results in search (organization, local business, FAQ, service). Competitors like DoctorLogic and Orbit use this.
-  - Acceptance criteria: Organization schema on homepage. LocalBusiness or ProfessionalService schema where relevant. FAQ schema on pages with FAQs.
-
-- [ ] **P2 — Add Foundation vs Custom comparison section**
-  - Routes/files: `src/components/FoundationVsCustom.astro` (new), `src/pages/services/index.astro` or homepage
-  - Why it matters: The research identifies this as a major gap in the market. ProSites is the only competitor that explicitly separates the choice. FutureSolutions should make this decision architecture visible.
-  - Acceptance criteria: Clear comparison section explaining when to choose Foundation vs Custom vs Website + Growth System. Links to relevant detail pages.
-
-- [ ] **P2 — Add pricing visibility (starting ranges)**
-  - Routes/files: Service detail pages, possibly a new `/pricing` page
-  - Why it matters: The research notes that transparent pricing is rare in healthcare agencies but common in productized services. Publishing starting ranges reduces friction.
-  - Acceptance criteria: Starting investment language on at least Foundation and Care service pages. Not a full pricing page initially — just "starting from" language.
-
-- [ ] **P2 — Add industry pages**
-  - Routes/files: `src/pages/industries/[slug].astro` (new), `src/data/industries.ts` (new)
-  - Why it matters: The research recommends industry-specific pages for med spas, hormone/TRT, solo practices, wellness clinics, and associations. These improve SEO and buyer relevance.
-  - Acceptance criteria: At least 3 industry pages live. Each links to relevant demos, services, and audit form.
-
-- [ ] **P2 — Publish 2–3 resource articles**
-  - Routes/files: `src/pages/resources/[slug].astro` (new), `src/data/resources.ts`
-  - Why it matters: The resources page currently shows only "Planned" content. Publishing even 2–3 articles signals competence and supports SEO.
-  - Acceptance criteria: At least 2 articles from the planned list are published and linked from `/resources`.
-
-- [ ] **P2 — Add mobile mockup previews to Foundation detail pages**
-  - Routes/files: `src/pages/templates/[slug].astro`, `src/data/templates.ts`
-  - Why it matters: The research recommends showing mobile previews alongside desktop for every demo. Currently only desktop is implied.
-  - Acceptance criteria: Foundation detail pages show a mobile device frame or screenshot alongside the desktop demo link.
-
-- [ ] **P2 — Create email follow-up sequence in GHL**
-  - Routes/files: GoHighLevel workflows (external)
-  - Why it matters: The research recommends a 10-day nurture sequence after audit request. Without it, leads go cold.
-  - Acceptance criteria: 5-email sequence configured: confirmation, industry insight, foundation vs custom, Growth System explanation, strategy call CTA.
-
-- [ ] **P2 — Optimize font loading**
-  - Routes/files: `src/layouts/BaseLayout.astro`
-  - Why it matters: Google Fonts adds a render-blocking request. Self-hosting Inter or using `font-display: swap` more aggressively would improve LCP.
-  - Acceptance criteria: Inter fonts are self-hosted or loaded with optimal strategy. LCP is under 2.5s on mobile.
-
-- [ ] **P2 — Add conversion event tracking**
-  - Routes/files: Audit form handler, analytics setup
-  - Why it matters: Knowing how many visitors submit the audit form vs how many view it is essential for CRO.
-  - Acceptance criteria: `audit_form_submit` event fires in GA4. Demo CTA clicks tracked. Foundation detail page views tracked.
-
----
-
-## P3 — Future Enhancements
-
-Resources, case studies, more demos, advanced CMS, pricing ladders, client portal.
-
----
-
-- [ ] **P3 — Build case study structure**
-  - Routes/files: `src/pages/work/[slug].astro` (new), possibly Sanity schema
-  - Why it matters: The research cites case studies as a key proof mechanism. Even with anonymized or composite examples, structured case studies beat portfolio grids.
-  - Acceptance criteria: Case study template with challenge, solution, results, screenshots, testimonial slot.
-
-- [ ] **P3 — Add testimonial collection system**
-  - Routes/files: Sanity schema or static data file
-  - Why it matters: Social proof is critical. Currently zero testimonials on the site.
-  - Acceptance criteria: Testimonial display component. Testimonials appear on homepage, service pages, and Foundation detail pages.
-
-- [ ] **P3 — Expand Sanity CMS for articles and case studies**
-  - Routes/files: `sanity-studio/`, Sanity schemas
-  - Why it matters: Once content volume grows, static TS files become unmanageable. Sanity is already installed.
-  - Acceptance criteria: Sanity schemas for articles, case studies, and testimonials. Content queries integrated into relevant pages.
-
-- [ ] **P3 — Add lead magnets**
-  - Routes/files: New pages or downloadable assets
-  - Why it matters: The research recommends 5 specific lead magnets (Foundation vs Custom guide, booking flow checklist, med spa conversion checklist, TRT follow-up blueprint, association planning checklist).
-  - Acceptance criteria: At least 1 lead magnet live with email capture.
-
-- [ ] **P3 — Build interactive Foundation match tool**
-  - Routes/files: New component or page
-  - Why it matters: The research recommends an interactive recommendation tool. The Fit Assistant chatbot partially serves this role.
-  - Acceptance criteria: Quiz or guided flow that recommends Foundation, Custom, or Growth System path.
-
-- [ ] **P3 — Add video demo walkthroughs**
-  - Routes/files: Foundation detail pages, possibly YouTube/Loom embeds
-  - Why it matters: Video walkthroughs make demos more compelling and accessible.
-  - Acceptance criteria: At least 2 Loom-style walkthrough videos embedded on Foundation detail pages.
-
-- [ ] **P3 — Add funnel/lead-gen demo**
-  - Routes/files: New demo pages, `src/data/templates.ts`
-  - Why it matters: Demonstrates conversion expertise beyond brochure sites. Currently listed as a future demo.
-  - Acceptance criteria: Sixth demo in the library with landing page, offer page, thank-you flow.
-
-- [ ] **P3 — Client portal or dashboard preview**
-  - Routes/files: New page or component
-  - Why it matters: Makes retainer support feel more productized and premium.
-  - Acceptance criteria: Visual preview showing what ongoing Care and Optimization looks like from the client side.
-
-- [ ] **P3 — Add redirect plan for `/templates` → future URL**
-  - Routes/files: `vercel.json` or Astro redirects
-  - Why it matters: `/templates` is the current technical route but "templates" may be misleading. A future redirect to `/foundations` or `/library` may be appropriate.
-  - Acceptance criteria: Documented redirect plan. Not executed until there is a clear need to avoid link breakage.
+- [ ] Case study structure (challenge / solution / results / proof).
+- [ ] Testimonial collection + display (currently none live; see `src/data/testimonials.ts` policy on real proof only).
+- [ ] Lead magnets (Foundation-vs-Custom guide, booking checklist, med-spa conversion checklist, TRT follow-up blueprint, association planning checklist).
+- [ ] Interactive Foundation match tool (the chat assistant partially covers this).
+- [ ] Video/Loom demo walkthroughs on Foundation detail pages.
+- [ ] GHL nurture email sequence after audit request.
+- [ ] Self-host the Inter font to drop the Google Fonts request (improves LCP).
