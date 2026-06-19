@@ -695,6 +695,12 @@ const hasSuggestions = suggestionGroups.length > 0;
 		padding: 0 1rem 0.5rem;
 	}
 
+	/* The class `display` above outranks the UA `[hidden]` rule, so restore
+	   hidden behavior explicitly (specificity 0,2,0 beats 0,1,0). */
+	.chat-widget__quick[hidden] {
+		display: none;
+	}
+
 	.chat-widget__quick-chip {
 		padding: 0.4rem 0.75rem;
 		border: 1px solid var(--chat-border);
@@ -774,6 +780,13 @@ const hasSuggestions = suggestionGroups.length > 0;
 		flex-direction: column;
 		background: var(--chat-surface);
 		animation: chatSuggestIn 220ms cubic-bezier(0.25, 1, 0.5, 1) both;
+	}
+
+	/* Critical: without this, the class `display: flex` overrides the UA
+	   `[hidden]` rule and the menu permanently covers the panel as an opaque
+	   overlay. Specificity 0,2,0 beats the 0,1,0 base rule above. */
+	.chat-widget__suggest-menu[hidden] {
+		display: none;
 	}
 
 	@keyframes chatSuggestIn {
