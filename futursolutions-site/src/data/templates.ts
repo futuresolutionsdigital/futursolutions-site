@@ -366,6 +366,8 @@ export const templateSystems: TemplateSystem[] = [
 		demoUrl: '/demos/association',
 		auditUrl: '/audit?template=association',
 		featured: true,
+		previewImage: '/previews/association.jpg',
+		previewAlt: 'Meridian Health Professionals Association website homepage preview',
 		demoCardSummary:
 			'For associations that need to grow membership, promote events, activate advocacy, and organize resources.',
 		demoBestFit: 'Associations and member organizations',
