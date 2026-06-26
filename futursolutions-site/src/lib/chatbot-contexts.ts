@@ -271,9 +271,9 @@ export const chatbotContexts: Record<string, ChatbotContext> = {
 		],
 		theme: {
 			scheme: 'light',
-			accent: '#1F6F78',
+			accent: '#155E66',
 			accentInk: '#FFFFFF',
-			link: '#1A5B63',
+			link: '#155059',
 			surface: '#FFFFFF',
 			surface2: '#FAFBFC',
 			text: '#102A43',
