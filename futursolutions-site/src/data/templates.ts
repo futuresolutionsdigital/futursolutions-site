@@ -167,6 +167,8 @@ export const templateSystems: TemplateSystem[] = [
 		demoUrl: '/demos/med-spa',
 		auditUrl: '/audit?template=med-spa',
 		featured: true,
+		previewImage: '/previews/med-spa.jpg',
+		previewAlt: 'Auréa Skin & Aesthetics med spa website homepage preview',
 		demoCardSummary:
 			'For aesthetic clinics that need treatment education, provider trust, and a clear consultation path.',
 		demoBestFit: 'Aesthetic clinics and med spas',
@@ -265,6 +267,8 @@ export const templateSystems: TemplateSystem[] = [
 		demoUrl: '/demos/solo-practice',
 		auditUrl: '/audit?template=solo-practice',
 		featured: true,
+		previewImage: '/previews/solo-practice.jpg',
+		previewAlt: 'Aster Private Health solo practice website homepage preview',
 		demoCardSummary:
 			'For solo NPs, private primary care, and concierge practices that need provider trust and clear service navigation.',
 		demoBestFit: 'Solo NPs and private practices',
@@ -476,6 +480,8 @@ export const templateSystems: TemplateSystem[] = [
 		demoUrl: '/demos/premium-wellness-clinic',
 		auditUrl: '/audit?template=premium-wellness-clinic',
 		featured: true,
+		previewImage: '/previews/premium-wellness-clinic.jpg',
+		previewAlt: 'Lumen Health House premium wellness clinic website homepage preview',
 		salesFaqs: [
 			{ q: 'Is this a real wellness clinic?', a: 'No — Lumen Health House is a fictional demo created by FutureSolutions to show how a multi-service wellness clinic Foundation works. All provider names, services, pricing, and testimonials are entirely invented.' },
 			{ q: 'Can this be customized for my clinic?', a: 'Yes. Branding, service categories, provider bios, membership tiers, photography, and copy are all replaced with your real clinic details. We handle the customization so you launch with a site that reflects your actual programs and team.' },
@@ -531,6 +537,8 @@ export const templateSystems: TemplateSystem[] = [
 		demoUrl: '/demos/hormone-trt',
 		auditUrl: '/audit?template=hormone-trt',
 		featured: true,
+		previewImage: '/previews/hormone-trt.jpg',
+		previewAlt: "VANTAGE men's health and TRT clinic website homepage preview",
 		demoCardSummary:
 			"For men's health and TRT clinics that need a bold, direct-response path from assessment to consultation.",
 		demoBestFit: "Men's health, TRT, and hormone clinics",
